@@ -2377,46 +2377,49 @@
             </span>
         </div>
 
-        <!-- Hero Source Card (createHeroSourceCard: Nhập tay & Tra từ) -->
-        <div onclick="openDictionaryScreen()" class="p-4 sm:p-5 rounded-[24px] bg-[#20211C] border border-[#46483C] shadow-[0_6px_20px_rgba(0,0,0,0.4)] flex flex-col shrink-0 cursor-pointer transition-all duration-200 hover:border-[#B8D166]/50 hover:bg-[#252621] active:scale-[0.98] anim-create-item group relative overflow-hidden" style="animation-delay: 100ms;">
+        <!-- Hero Source Card (createHeroSourceCard: Tra từ điển & Tạo thẻ) -->
+        <div onclick="openDictionaryScreen(document.getElementById('createHeroSearchInput') ? document.getElementById('createHeroSearchInput').value : '')" class="p-4 sm:p-5 rounded-[24px] bg-[#20211C] border border-[#46483C] shadow-[0_6px_20px_rgba(0,0,0,0.4)] flex flex-col shrink-0 cursor-pointer transition-all duration-200 hover:border-[#B8D166]/50 hover:bg-[#252621] active:scale-[0.99] anim-create-item group relative overflow-hidden" style="animation-delay: 100ms;">
             <div class="flex items-start gap-4">
                 <!-- Icon 56x56dp inside comfortable container -->
                 <div class="w-14 h-14 shrink-0 rounded-2xl bg-[#3C4D00]/40 border border-[#B8D166]/30 flex items-center justify-center p-2 group-hover:scale-105 transition-transform shadow-inner">
-                    <img src="assets/create/ic_create_source_manual_new.png" alt="Nhập tay" class="w-full h-full object-contain filter drop-shadow">
+                    <img src="assets/create/ic_create_source_manual_new.png" alt="Tra từ điển" class="w-full h-full object-contain filter drop-shadow">
                 </div>
 
                 <!-- Content -->
                 <div class="flex-1 min-w-0">
                     <div class="flex items-center gap-2">
                         <h3 class="text-[17px] font-black text-[#E5E3DB] leading-tight group-hover:text-white transition-colors">
-                            Nhập từ vựng
+                            Tra từ điển
                         </h3>
                         <span class="text-[10.5px] font-bold text-[#D4EE7F] bg-[#3C4D00] px-2 py-0.5 rounded-full whitespace-nowrap shrink-0">
                             ⚡️ Nhanh nhất
                         </span>
                     </div>
                     <p class="text-[12.5px] text-[#C7C8B8] mt-1 leading-snug">
-                        Gõ từ bất kỳ, Lumi sẽ tự gợi ý phiên âm IPA, nghĩa và câu ví dụ chuẩn bản ngữ.
+                        Gõ từ bất kỳ để tra nghĩa, phiên âm IPA, câu ví dụ và lưu thành thẻ Flashcard tức thì.
                     </p>
                 </div>
             </div>
 
-            <!-- Fake Search / Quick Input Tactile Bar -->
+            <!-- Interactive Search / Quick Input Tactile Bar -->
             <div class="mt-4 pt-3 border-t border-[#46483C]/50 flex items-center justify-between gap-3">
-                <div class="flex-1 flex items-center gap-2 px-3 py-2 rounded-xl bg-[#1B1C17] border border-[#46483C]/70 text-[#909283] text-[13px]">
-                    <svg class="w-4 h-4 text-[#909283]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <div class="flex-1 flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#1B1C17] border border-[#46483C]/70 focus-within:border-[#B8D166] text-[#909283] text-[13px] transition-all">
+                    <svg class="w-4 h-4 text-[#909283] group-focus-within:text-[#B8D166] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="11" cy="11" r="7"/>
                         <path d="M21 21l-4.35-4.35"/>
                     </svg>
-                    <span class="truncate text-[12.5px] font-medium">Gõ từ bạn muốn học hôm nay...</span>
+                    <input type="text" id="createHeroSearchInput" placeholder="Nhập từ cần tra..."
+                           onclick="event.stopPropagation()"
+                           onkeydown="if(event.key==='Enter'){ event.stopPropagation(); openDictionaryScreen(this.value); }"
+                           class="flex-1 bg-transparent text-[#E5E3DB] placeholder-[#909283] font-semibold text-[13px] focus:outline-none tracking-wide" />
                 </div>
                 <!-- Tactile Button -->
-                <div class="h-[36px] px-3.5 rounded-xl bg-[#B8D166] text-[#283500] font-black text-[12px] flex items-center gap-1.5 shadow-[0_3px_0_#8BA63A] group-hover:brightness-105 active:translate-y-[2px] active:shadow-none transition-all shrink-0">
-                    <span>Nhập ngay</span>
+                <button type="button" onclick="event.stopPropagation(); openDictionaryScreen(document.getElementById('createHeroSearchInput') ? document.getElementById('createHeroSearchInput').value : '')" class="h-[38px] px-4 rounded-xl bg-[#B8D166] hover:bg-[#C8E176] text-[#283500] font-black text-[12.5px] flex items-center gap-1.5 shadow-[0_3px_0_#8BA63A] active:translate-y-[2px] active:shadow-none transition-all shrink-0 cursor-pointer" style="-webkit-tap-highlight-color: transparent;">
+                    <span>Tra từ</span>
                     <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
-                </div>
+                </button>
             </div>
         </div>
 
