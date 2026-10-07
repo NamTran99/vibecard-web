@@ -4,6 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Khám phá - Material Design 3 v2 (Dark Olive Green)</title>
+    <!-- Early Theme Initialization to Prevent FOUC -->
+    <script>
+        (function() {
+            try {
+                const savedTheme = localStorage.getItem('mindcard-theme-mode') || 'dark';
+                if (savedTheme === 'light' || (savedTheme === 'system' && window.matchMedia && !window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.remove('dark');
+                    document.documentElement.classList.add('light');
+                } else {
+                    document.documentElement.classList.remove('light');
+                    document.documentElement.classList.add('dark');
+                }
+            } catch (e) {}
+        })();
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script>
@@ -13,65 +28,65 @@
                 extend: {
                     colors: {
                         // Material 3 Dark Olive Green System v2 (m3.yaml / DESIGN.md / AppColorsM3.kt)
-                        screenBg: '#0D0E0B',
-                        appBg: '#0D0E0B',
-                        background: '#1B1C17',
-                        onBackground: '#E5E3DB',
-                        surface: '#1B1C17',
-                        onSurface: '#E5E3DB',
-                        surfaceVariant: '#46483C',
-                        onSurfaceVariant: '#C7C8B8',
-                        surfaceDim: '#0D0E0B',
-                        surfaceBright: '#3B3C36',
-                        surfaceContainerLowest: '#0D0E0B',
-                        surfaceContainerLow: '#1B1C17',
-                        surfaceContainer: '#20211C',
-                        surfaceContainerHigh: '#252621',
-                        surfaceContainerHighest: '#30312B',
+                        screenBg: 'var(--m3-screen-bg)',
+                        appBg: 'var(--m3-screen-bg)',
+                        background: 'var(--m3-background)',
+                        onBackground: 'var(--m3-on-background)',
+                        surface: 'var(--m3-surface)',
+                        onSurface: 'var(--m3-on-surface)',
+                        surfaceVariant: 'var(--m3-surface-variant)',
+                        onSurfaceVariant: 'var(--m3-on-surface-variant)',
+                        surfaceDim: 'var(--m3-surface-dim)',
+                        surfaceBright: 'var(--m3-surface-bright)',
+                        surfaceContainerLowest: 'var(--m3-surface-container-lowest)',
+                        surfaceContainerLow: 'var(--m3-surface-container-low)',
+                        surfaceContainer: 'var(--m3-surface-container)',
+                        surfaceContainerHigh: 'var(--m3-surface-container-high)',
+                        surfaceContainerHighest: 'var(--m3-surface-container-highest)',
 
-                        primary: '#B8D166',
-                        onPrimary: '#283500',
-                        primaryContainer: '#3C4D00',
-                        onPrimaryContainer: '#D4EE7F',
+                        primary: 'var(--m3-primary)',
+                        onPrimary: 'var(--m3-on-primary)',
+                        primaryContainer: 'var(--m3-primary-container)',
+                        onPrimaryContainer: 'var(--m3-on-primary-container)',
 
-                        secondary: '#C4CAA9',
-                        onSecondary: '#2E331C',
-                        secondaryContainer: '#444930',
-                        onSecondaryContainer: '#E0E6C3',
+                        secondary: 'var(--m3-secondary)',
+                        onSecondary: 'var(--m3-on-secondary)',
+                        secondaryContainer: 'var(--m3-secondary-container)',
+                        onSecondaryContainer: 'var(--m3-on-secondary-container)',
 
-                        tertiary: '#A1D0C5',
-                        onTertiary: '#033730',
-                        tertiaryContainer: '#214E46',
-                        onTertiaryContainer: '#BDECE1',
+                        tertiary: 'var(--m3-tertiary)',
+                        onTertiary: 'var(--m3-on-tertiary)',
+                        tertiaryContainer: 'var(--m3-tertiary-container)',
+                        onTertiaryContainer: 'var(--m3-on-tertiary-container)',
 
-                        accentAmber: '#FBBF24',
-                        amberGlow: '#FBBF24',
-                        amberContainer: '#3D2E0B',
-                        amberText: '#FDE68A',
+                        accentAmber: 'var(--m3-amber-glow)',
+                        amberGlow: 'var(--m3-amber-glow)',
+                        amberContainer: 'var(--m3-amber-container)',
+                        amberText: 'var(--m3-amber-text)',
 
-                        textPrimary: '#E5E3DB',
-                        textSecondary: '#C7C8B8',
-                        textTertiary: '#909283',
+                        textPrimary: 'var(--m3-on-surface)',
+                        textSecondary: 'var(--m3-on-surface-variant)',
+                        textTertiary: 'var(--m3-outline)',
 
-                        outline: '#909283',
-                        outlineVariant: '#46483C',
+                        outline: 'var(--m3-outline)',
+                        outlineVariant: 'var(--m3-outline-variant)',
 
-                        error: '#FFB4A9',
-                        onError: '#680003',
-                        errorContainer: '#930006',
-                        onErrorContainer: '#FFDAD4',
+                        error: 'var(--m3-error)',
+                        onError: 'var(--m3-on-error)',
+                        errorContainer: 'var(--m3-error-container)',
+                        onErrorContainer: 'var(--m3-on-error-container)',
 
                         success: '#86EFAC',
                         successContainer: '#14532D',
 
                         // System Aliases for Smooth Compatibility
-                        glassBg: 'rgba(32, 33, 28, 0.75)',
-                        glassBorder: 'rgba(70, 72, 60, 0.45)',
-                        accentCyan: '#B8D166',
-                        accentPurple: '#A1D0C5',
-                        accentPink: '#FBBF24',
-                        textMain: '#E5E3DB',
-                        textMuted: '#909283'
+                        glassBg: 'var(--m3-glass-bg)',
+                        glassBorder: 'var(--m3-glass-border)',
+                        accentCyan: 'var(--m3-primary)',
+                        accentPurple: 'var(--m3-tertiary)',
+                        accentPink: 'var(--m3-amber-glow)',
+                        textMain: 'var(--m3-on-surface)',
+                        textMuted: 'var(--m3-outline)'
                     },
                     fontFamily: {
                         sans: ['Plus Jakarta Sans', 'Inter', '-apple-system', 'sans-serif'],
@@ -97,12 +112,261 @@
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        /* ======================================================== */
+        /* 🌿 M3-07 DARK OLIVE GREEN THEME TOKENS (RULE M3 SPEC)    */
+        /* ======================================================== */
+        :root, html.dark {
+            /* Dark Mode Tokens (M3-07 Dark Olive Green Default) */
+            --m3-primary: #B8D166;
+            --m3-on-primary: #283500;
+            --m3-primary-container: #3C4D00;
+            --m3-on-primary-container: #D4EE7F;
+            --m3-secondary: #C4CAA9;
+            --m3-on-secondary: #2E331C;
+            --m3-secondary-container: #444930;
+            --m3-on-secondary-container: #E0E6C3;
+            --m3-tertiary: #A1D0C5;
+            --m3-on-tertiary: #033730;
+            --m3-tertiary-container: #214E46;
+            --m3-on-tertiary-container: #BDECE1;
+            --m3-error: #FFB4A9;
+            --m3-on-error: #680003;
+            --m3-error-container: #930006;
+            --m3-on-error-container: #FFDAD4;
+            --m3-background: #1B1C17;
+            --m3-on-background: #E5E3DB;
+            --m3-surface: #1B1C17;
+            --m3-on-surface: #E5E3DB;
+            --m3-surface-variant: #46483C;
+            --m3-on-surface-variant: #C7C8B8;
+            --m3-outline: #909283;
+            --m3-outline-variant: #46483C;
+            --m3-inverse-surface: #E5E3DB;
+            --m3-inverse-on-surface: #30312B;
+            --m3-inverse-primary: #526600;
+            --m3-surface-dim: #0D0E0B;
+            --m3-surface-bright: #3B3C36;
+            --m3-surface-container-lowest: #0D0E0B;
+            --m3-surface-container-low: #1B1C17;
+            --m3-surface-container: #20211C;
+            --m3-surface-container-high: #252621;
+            --m3-surface-container-highest: #30312B;
+            --m3-scrim: #000000;
+            --m3-shadow: #000000;
+            --m3-amber-glow: #FBBF24;
+            --m3-amber-container: #3D2E0B;
+            --m3-amber-text: #FDE68A;
+            --m3-screen-bg: #0D0E0B;
+            --m3-glass-bg: rgba(32, 33, 28, 0.75);
+            --m3-glass-border: rgba(70, 72, 60, 0.45);
+        }
+
+        html.light {
+            /* Light Mode Tokens (M3-07 Dark Olive Green - Light Spec) */
+            --m3-primary: #526600;
+            --m3-on-primary: #FFFFFF;
+            --m3-primary-container: #D4EE7F;
+            --m3-on-primary-container: #161F00;
+            --m3-secondary: #5B6146;
+            --m3-on-secondary: #FFFFFF;
+            --m3-secondary-container: #E0E6C3;
+            --m3-on-secondary-container: #191D08;
+            --m3-tertiary: #3A665E;
+            --m3-on-tertiary: #FFFFFF;
+            --m3-tertiary-container: #BDECE1;
+            --m3-on-tertiary-container: #00201B;
+            --m3-error: #BA1B1B;
+            --m3-on-error: #FFFFFF;
+            --m3-error-container: #FFDAD4;
+            --m3-on-error-container: #410001;
+            --m3-background: #FEFCF4;
+            --m3-on-background: #1B1C17;
+            --m3-surface: #FEFCF4;
+            --m3-on-surface: #1B1C17;
+            --m3-surface-variant: #E3E4D3;
+            --m3-on-surface-variant: #46483C;
+            --m3-outline: #77786B;
+            --m3-outline-variant: #C7C8B8;
+            --m3-inverse-surface: #30312B;
+            --m3-inverse-on-surface: #F3F1E9;
+            --m3-inverse-primary: #B8D166;
+            --m3-surface-dim: #D6D5CD;
+            --m3-surface-bright: #FEFCF4;
+            --m3-surface-container-lowest: #FFFFFF;
+            --m3-surface-container-low: #F3F1E9;
+            --m3-surface-container: #F3F1E9;
+            --m3-surface-container-high: #ECEAE2;
+            --m3-surface-container-highest: #E5E3DB;
+            --m3-scrim: #000000;
+            --m3-shadow: #000000;
+            --m3-amber-glow: #D97706;
+            --m3-amber-container: #FEF3C7;
+            --m3-amber-text: #78350F;
+            --m3-screen-bg: #FEFCF4;
+            --m3-glass-bg: rgba(243, 241, 233, 0.9);
+            --m3-glass-border: rgba(199, 200, 184, 0.65);
+        }
+
+        /* ------------------------------------------------------------- */
+        /* LIGHT MODE ADAPTATION FOR PROTOTYPE ELEMENTS                 */
+        /* ------------------------------------------------------------- */
+        html.light body {
+            background-color: var(--m3-screen-bg) !important;
+            color: var(--m3-on-surface) !important;
+            border-color: var(--m3-outline-variant) !important;
+            box-shadow: 0 20px 60px rgba(82, 102, 0, 0.12), 0 4px 16px rgba(0,0,0,0.06) !important;
+        }
+
+        /* Semantic Class Overrides in Light Mode */
+        html.light .bg-surfaceContainerLow { background-color: var(--m3-surface-container-low) !important; }
+        html.light .bg-surfaceContainer { background-color: var(--m3-surface-container) !important; }
+        html.light .bg-surfaceContainerHigh { background-color: var(--m3-surface-container-high) !important; }
+        html.light .bg-surfaceContainerHighest { background-color: var(--m3-surface-container-highest) !important; }
+        html.light .bg-surface { background-color: var(--m3-surface) !important; }
+        html.light .bg-appBg, html.light .bg-screenBg { background-color: var(--m3-screen-bg) !important; }
+        html.light .bg-primary { background-color: var(--m3-primary) !important; }
+        html.light .bg-primaryContainer { background-color: var(--m3-primary-container) !important; }
+        html.light .bg-secondaryContainer { background-color: var(--m3-secondary-container) !important; }
+        html.light .bg-tertiaryContainer { background-color: var(--m3-tertiary-container) !important; }
+        html.light .bg-amberContainer { background-color: var(--m3-amber-container) !important; }
+
+        html.light .text-textPrimary, html.light .text-textMain { color: var(--m3-on-surface) !important; }
+        html.light .text-textSecondary { color: var(--m3-on-surface-variant) !important; }
+        html.light .text-textTertiary, html.light .text-textMuted { color: var(--m3-outline) !important; }
+        html.light .text-primary { color: var(--m3-primary) !important; }
+        html.light .text-onPrimary { color: var(--m3-on-primary) !important; }
+        html.light .text-onPrimaryContainer { color: var(--m3-on-primary-container) !important; }
+        html.light .text-amberText { color: var(--m3-amber-text) !important; }
+        html.light .text-amberGlow { color: var(--m3-amber-glow) !important; }
+        html.light .border-outlineVariant { border-color: var(--m3-outline-variant) !important; }
+        html.light .border-outline { border-color: var(--m3-outline) !important; }
+
+        /* Hardcoded Hex Utility Classes Mapping in Light Mode */
+        html.light .bg-\[\#0D0E0B\] { background-color: var(--m3-surface-container-lowest) !important; }
+        html.light .bg-\[\#1B1C17\] { background-color: var(--m3-surface-container-low) !important; }
+        html.light .bg-\[\#20211C\] { background-color: var(--m3-surface-container) !important; }
+        html.light .bg-\[\#252621\] { background-color: var(--m3-surface-container-high) !important; }
+        html.light .bg-\[\#30312B\] { background-color: var(--m3-surface-container-highest) !important; }
+        html.light .bg-\[\#141610\], html.light .bg-\[\#1F201A\], html.light .bg-\[\#2B2D24\] { background-color: var(--m3-surface-container-low) !important; }
+
+        html.light .bg-\[\#3C4D00\] { background-color: var(--m3-primary-container) !important; }
+        html.light .bg-\[\#B8D166\] { background-color: var(--m3-primary) !important; }
+        html.light .bg-\[\#444930\] { background-color: var(--m3-secondary-container) !important; }
+        html.light .bg-\[\#214E46\] { background-color: var(--m3-tertiary-container) !important; }
+        html.light .bg-\[\#3D2E0B\] { background-color: var(--m3-amber-container) !important; }
+        html.light .bg-\[\#930006\] { background-color: var(--m3-error-container) !important; }
+
+        html.light .text-\[\#E5E3DB\], html.light .text-\[\#E4E3DB\] { color: var(--m3-on-surface) !important; }
+        html.light .text-\[\#C7C8B8\], html.light .text-\[\#C6C8B8\] { color: var(--m3-on-surface-variant) !important; }
+        html.light .text-\[\#909283\] { color: var(--m3-outline) !important; }
+        html.light .text-\[\#D4EE7F\] { color: var(--m3-on-primary-container) !important; }
+        html.light .text-\[\#B8D166\] { color: var(--m3-primary) !important; }
+        html.light .text-\[\#283500\] { color: var(--m3-on-primary) !important; }
+        html.light .text-\[\#E0E6C3\] { color: var(--m3-on-secondary-container) !important; }
+        html.light .text-\[\#BDECE1\] { color: var(--m3-on-tertiary-container) !important; }
+        html.light .text-\[\#A1D0C5\] { color: var(--m3-tertiary) !important; }
+        html.light .text-\[\#FDE68A\] { color: var(--m3-amber-text) !important; }
+        html.light .text-\[\#FBBF24\] { color: var(--m3-amber-glow) !important; }
+        html.light .text-\[\#FFB4A9\] { color: var(--m3-error) !important; }
+        html.light .text-\[\#FFDAD4\] { color: var(--m3-on-error-container) !important; }
+
+        html.light .border-\[\#46483C\] { border-color: var(--m3-outline-variant) !important; }
+        html.light .border-\[\#B8D166\] { border-color: var(--m3-primary) !important; }
+        html.light .border-\[\#A1D0C5\] { border-color: var(--m3-tertiary) !important; }
+        html.light .border-\[\#FBBF24\] { border-color: var(--m3-amber-glow) !important; }
+        html.light .border-\[\#C4CAA9\] { border-color: var(--m3-secondary) !important; }
+
+        /* Bottom Navigation Bar in Light Mode */
+        html.light #bottomNavPill {
+            background-color: var(--m3-surface-container-low) !important;
+            border-color: var(--m3-outline-variant) !important;
+            box-shadow: 0 16px 40px rgba(82, 102, 0, 0.12), inset 0 1px 1.5px rgba(255,255,255,0.9) !important;
+        }
+        html.light #bottomNavThumbInner {
+            background-color: var(--m3-primary-container) !important;
+            box-shadow: 0 2px 12px rgba(82, 102, 0, 0.25) !important;
+        }
+        html.light #bottomNavIcon-0 { color: var(--m3-on-primary-container) !important; }
+        html.light #bottomNavIcon-1 { color: var(--m3-tertiary) !important; }
+        html.light #bottomNavIcon-2 { color: var(--m3-secondary) !important; }
+        html.light #bottomNavIcon-3 { color: var(--m3-amber-glow) !important; }
+
+        /* Full Dictionary Screen in Light Mode */
+        html.light #fullDictionaryView {
+            background-color: var(--m3-screen-bg) !important;
+        }
+
+        /* Ambient aurora and scrim adjustments */
+        html.light .animate-aurora-1 { opacity: 0.18; }
+        html.light .animate-aurora-2 { opacity: 0.18; }
+        html.light #farmHeroScenery img {
+            filter: brightness(1.1) contrast(1.02) saturate(1.08);
+        }
+
+        /* Tactile Search Bar in Light Mode */
+        html.light .tactile-search-bar {
+            background-color: var(--m3-surface-container) !important;
+            border-color: var(--m3-outline-variant) !important;
+            border-bottom-color: var(--m3-surface-container-highest) !important;
+            box-shadow: 0 4px 14px rgba(82, 102, 0, 0.08) !important;
+        }
+        html.light .tactile-search-bar:focus-within,
+        html.light .tactile-search-bar.is-focused {
+            background-color: var(--m3-surface-container-highest) !important;
+            border-color: var(--m3-primary) !important;
+            border-bottom-color: var(--m3-primary-container) !important;
+            box-shadow: 0 6px 24px rgba(82, 102, 0, 0.16) !important;
+        }
+        html.light .tactile-search-bar .search-glyph {
+            color: var(--m3-outline) !important;
+        }
+        html.light .tactile-search-bar:focus-within .search-glyph,
+        html.light .tactile-search-bar.is-focused .search-glyph {
+            color: var(--m3-primary) !important;
+        }
+        html.light .tactile-search-bar input {
+            color: var(--m3-on-surface) !important;
+        }
+        html.light .tactile-search-bar input::placeholder {
+            color: var(--m3-on-surface-variant) !important;
+        }
+        html.light .tactile-search-bar .tactile-action-btn {
+            background-color: var(--m3-surface-container-high) !important;
+            color: var(--m3-outline) !important;
+            border-color: var(--m3-outline-variant) !important;
+            border-bottom-color: var(--m3-surface-container-highest) !important;
+        }
+        html.light .tactile-search-bar .tactile-action-btn:hover,
+        html.light .tactile-search-bar .tactile-action-btn:active,
+        html.light .tactile-search-bar .tactile-action-btn.has-query {
+            background-color: var(--m3-primary) !important;
+            color: var(--m3-on-primary) !important;
+            border-color: transparent !important;
+            border-bottom-color: var(--m3-primary-container) !important;
+        }
+
+        /* Physical Storybook in Light Mode */
+        html.light .storybook-container {
+            background-color: #EAE8DF !important;
+            border-color: var(--m3-outline-variant) !important;
+            box-shadow: 0 16px 36px rgba(82, 102, 0, 0.12) !important;
+        }
+        html.light .storybook-container .book-page .h-full {
+            background: linear-gradient(180deg, #FAF8F0 0%, #F3F1E9 100%) !important;
+            border-color: rgba(180, 83, 9, 0.25) !important;
+            box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.04) !important;
+        }
+        html.light .glass-panel {
+            background: var(--m3-glass-bg) !important;
+            border-color: var(--m3-glass-border) !important;
+        }
+
         * {
             -webkit-tap-highlight-color: transparent;
         }
         body {
-            background-color: theme('colors.appBg');
-            color: theme('colors.textMain');
+            background-color: var(--m3-screen-bg);
+            color: var(--m3-on-surface);
             font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
         }
@@ -2852,6 +3116,25 @@
 
         <!-- Settings Links List -->
         <div class="space-y-2">
+            <!-- Chế độ giao diện (M3 Dark / Light Mode) -->
+            <div onclick="openThemeSheet()" class="p-3.5 rounded-2xl bg-surfaceContainerLow border border-outlineVariant flex items-center justify-between hover:bg-surfaceContainer transition-colors cursor-pointer group select-none">
+                <div class="flex items-center gap-3">
+                    <div id="themeSettingIconWrap" class="w-8 h-8 rounded-xl bg-surfaceContainerHigh border border-outlineVariant flex items-center justify-center text-primary group-hover:scale-105 transition-transform">
+                        <svg id="themeSettingIconSvg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="text-[13px] font-bold text-textPrimary block">Chế độ giao diện</span>
+                        <span id="themeSettingSubtext" class="text-[11px] text-textSecondary">Tối (Dark Olive Green)</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span id="themeSettingBadge" class="text-[11px] font-extrabold px-2.5 py-1 rounded-full bg-primaryContainer text-onPrimaryContainer border border-primary/20">Tối</span>
+                    <span class="text-textTertiary text-sm">›</span>
+                </div>
+            </div>
+
             <div class="p-3.5 rounded-2xl bg-surfaceContainerLow border border-outlineVariant flex items-center justify-between hover:bg-surfaceContainer transition-colors cursor-pointer">
                 <span class="text-[13px] font-bold text-textPrimary">Mục tiêu học hàng ngày</span>
                 <span class="text-[12px] font-black text-primary">15 từ / ngày ›</span>
@@ -9288,8 +9571,240 @@ function toggleSlowAudio() {
                 modal.classList.add('hidden');
             }, 300);
         }
+
+        // =======================================================
+        // M3 THEME SWITCHER CONTROLLER (DARK / LIGHT / SYSTEM)
+        // =======================================================
+        function openThemeSheet() {
+            const modal = document.getElementById('themeBottomSheetModal');
+            const content = document.getElementById('themeBottomSheetContent');
+            if (!modal || !content) return;
+            updateThemeSheetUI();
+            modal.classList.remove('hidden');
+            void modal.offsetWidth;
+            modal.classList.remove('opacity-0');
+            content.classList.remove('translate-y-full');
+            if (typeof SoundEngine !== 'undefined' && SoundEngine.play) {
+                SoundEngine.play(1);
+            }
+        }
+
+        function closeThemeSheet() {
+            const modal = document.getElementById('themeBottomSheetModal');
+            const content = document.getElementById('themeBottomSheetContent');
+            if (!modal || !content) return;
+            modal.classList.add('opacity-0');
+            content.classList.add('translate-y-full');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        function setThemeMode(mode) {
+            try {
+                localStorage.setItem('mindcard-theme-mode', mode);
+            } catch (e) {}
+            applyThemeMode(mode);
+            updateThemeSheetUI();
+            if (typeof SoundEngine !== 'undefined' && SoundEngine.play) {
+                SoundEngine.play(1);
+            }
+            setTimeout(() => {
+                closeThemeSheet();
+            }, 260);
+        }
+
+        function applyThemeMode(mode) {
+            let isDark = true;
+            if (mode === 'light') {
+                isDark = false;
+            } else if (mode === 'system') {
+                isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            } else {
+                isDark = true;
+            }
+
+            if (isDark) {
+                document.documentElement.classList.remove('light');
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
+            }
+
+            const subtextEl = document.getElementById('themeSettingSubtext');
+            const badgeEl = document.getElementById('themeSettingBadge');
+            const iconSvg = document.getElementById('themeSettingIconSvg');
+
+            const modeLabels = {
+                'dark': { text: 'Tối (Dark Olive Green)', badge: 'Tối', icon: '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>' },
+                'light': { text: 'Sáng (Light Olive Green)', badge: 'Sáng', icon: '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>' },
+                'system': { text: 'Tự động theo hệ thống', badge: 'Hệ thống', icon: '<circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>' }
+            };
+
+            const currentMeta = modeLabels[mode] || modeLabels['dark'];
+            if (subtextEl) subtextEl.textContent = currentMeta.text;
+            if (badgeEl) badgeEl.textContent = currentMeta.badge;
+            if (iconSvg) iconSvg.innerHTML = currentMeta.icon;
+        }
+
+        function updateThemeSheetUI() {
+            let currentMode = 'dark';
+            try {
+                currentMode = localStorage.getItem('mindcard-theme-mode') || 'dark';
+            } catch (e) {}
+
+            ['dark', 'light', 'system'].forEach(m => {
+                const optionEl = document.getElementById('themeOption-' + m);
+                const checkEl = document.getElementById('themeCheck-' + m);
+                if (!optionEl || !checkEl) return;
+
+                if (m === currentMode) {
+                    optionEl.classList.remove('border-outlineVariant');
+                    optionEl.classList.add('border-primary', 'bg-primaryContainer/20');
+                    checkEl.innerHTML = `
+                        <div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-onPrimary shadow-sm">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                        </div>
+                    `;
+                } else {
+                    optionEl.classList.remove('border-primary', 'bg-primaryContainer/20');
+                    optionEl.classList.add('border-outlineVariant');
+                    checkEl.innerHTML = `<span class="text-[12px] font-semibold text-textTertiary group-hover:text-textPrimary">Chọn</span>`;
+                }
+            });
+        }
+
+        // Initialize Theme Mode on DOM Load
+        document.addEventListener('DOMContentLoaded', () => {
+            try {
+                const savedTheme = localStorage.getItem('mindcard-theme-mode') || 'dark';
+                applyThemeMode(savedTheme);
+            } catch (e) {}
+        });
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+                try {
+                    const currentMode = localStorage.getItem('mindcard-theme-mode');
+                    if (currentMode === 'system') {
+                        applyThemeMode('system');
+                    }
+                } catch (e) {}
+            });
+        }
         // =======================================================
 </script>
+
+    <!-- NATIVE M3 THEME MODE BOTTOM SHEET (DARK / LIGHT / SYSTEM SPEC) -->
+    <div id="themeBottomSheetModal" 
+         class="hidden fixed inset-0 z-[250] bg-black/75 backdrop-blur-sm flex flex-col justify-end transition-opacity duration-300 opacity-0"
+         onclick="if(event.target === this) closeThemeSheet()">
+        
+        <div id="themeBottomSheetContent" 
+             class="w-full max-w-[420px] mx-auto bg-surfaceContainerLow border-t border-outlineVariant/60 rounded-t-[32px] p-5 pb-[max(env(safe-area-inset-bottom),24px)] shadow-[0_-20px_50px_rgba(0,0,0,0.85)] transform translate-y-full transition-transform duration-300 select-none">
+            
+            <!-- Drag Handle -->
+            <div class="w-10 h-1 bg-outlineVariant rounded-full mx-auto mb-4 shrink-0"></div>
+
+            <!-- Header Row -->
+            <div class="flex items-center justify-between mb-4 pb-3 border-b border-outlineVariant/40">
+                <div>
+                    <h3 class="text-[17px] font-black text-textPrimary tracking-tight">Chế độ giao diện</h3>
+                    <p class="text-[12px] text-textSecondary font-normal mt-0.5">Chuẩn Material Design 3 (M3-07 Dark Olive Green)</p>
+                </div>
+                <button onclick="closeThemeSheet()" class="w-8 h-8 rounded-full bg-surfaceContainerHigh hover:bg-surfaceContainerHighest active:scale-90 flex items-center justify-center text-textSecondary hover:text-textPrimary transition-all cursor-pointer">
+                    <svg viewBox="0 0 100 100" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M 30 32 Q 50 45, 70 68 M 72 30 Q 50 55, 28 70"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Theme Options List -->
+            <div class="space-y-2.5 mb-4">
+                <!-- 1. Dark Mode (Default) -->
+                <button onclick="setThemeMode('dark')" 
+                        id="themeOption-dark"
+                        class="theme-select-item w-full flex items-center justify-between p-3.5 rounded-2xl bg-surfaceContainer border border-outlineVariant text-left active:scale-[0.98] transition-all group cursor-pointer">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-2xl bg-[#0D0E0B] border border-[#46483C] flex items-center justify-center text-[#B8D166] shadow-sm shrink-0">
+                            <!-- Moon icon -->
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-[14.5px] font-bold text-textPrimary group-hover:text-primary transition-colors">Chế độ Tối (Dark Mode)</span>
+                                <span class="text-[10px] font-extrabold px-1.5 py-0.5 rounded-md bg-primaryContainer text-onPrimaryContainer border border-primary/20">Mặc định</span>
+                            </div>
+                            <span class="text-[11.5px] text-textSecondary block mt-0.5">Sắc rêu huyền ảo (#0D0E0B & #1B1C17), dịu mắt và tiết kiệm pin</span>
+                            <!-- Palette Mini Dots -->
+                            <div class="flex items-center gap-1.5 mt-1.5">
+                                <span class="w-3.5 h-3.5 rounded-full border border-white/20 bg-[#0D0E0B]" title="#0D0E0B"></span>
+                                <span class="w-3.5 h-3.5 rounded-full border border-white/20 bg-[#1B1C17]" title="#1B1C17"></span>
+                                <span class="w-3.5 h-3.5 rounded-full border border-white/20 bg-[#B8D166]" title="#B8D166"></span>
+                                <span class="w-3.5 h-3.5 rounded-full border border-white/20 bg-[#A1D0C5]" title="#A1D0C5"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="themeCheck-dark" class="theme-check-icon shrink-0">
+                        <div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-onPrimary shadow-sm">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                        </div>
+                    </div>
+                </button>
+
+                <!-- 2. Light Mode -->
+                <button onclick="setThemeMode('light')" 
+                        id="themeOption-light"
+                        class="theme-select-item w-full flex items-center justify-between p-3.5 rounded-2xl bg-surfaceContainer border border-outlineVariant text-left active:scale-[0.98] transition-all group cursor-pointer">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-2xl bg-[#FEFCF4] border border-[#C7C8B8] flex items-center justify-center text-[#526600] shadow-sm shrink-0">
+                            <!-- Sun icon -->
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-[14.5px] font-bold text-textPrimary group-hover:text-primary transition-colors">Chế độ Sáng (Light Mode)</span>
+                                <span class="text-[10px] font-extrabold px-1.5 py-0.5 rounded-md bg-[#E0E6C3] text-[#191D08] border border-[#526600]/20">M3-07 Chuẩn</span>
+                            </div>
+                            <span class="text-[11.5px] text-textSecondary block mt-0.5">Sắc rêu xô thơm tươi sáng (#FEFCF4 & #F3F1E9), trang nhã</span>
+                            <!-- Palette Mini Dots -->
+                            <div class="flex items-center gap-1.5 mt-1.5">
+                                <span class="w-3.5 h-3.5 rounded-full border border-black/10 bg-[#FEFCF4]" title="#FEFCF4"></span>
+                                <span class="w-3.5 h-3.5 rounded-full border border-black/10 bg-[#F3F1E9]" title="#F3F1E9"></span>
+                                <span class="w-3.5 h-3.5 rounded-full border border-black/10 bg-[#526600]" title="#526600"></span>
+                                <span class="w-3.5 h-3.5 rounded-full border border-black/10 bg-[#3A665E]" title="#3A665E"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="themeCheck-light" class="theme-check-icon shrink-0">
+                        <span class="text-[12px] font-semibold text-textTertiary group-hover:text-textPrimary">Chọn</span>
+                    </div>
+                </button>
+
+                <!-- 3. System Mode -->
+                <button onclick="setThemeMode('system')" 
+                        id="themeOption-system"
+                        class="theme-select-item w-full flex items-center justify-between p-3.5 rounded-2xl bg-surfaceContainer border border-outlineVariant text-left active:scale-[0.98] transition-all group cursor-pointer">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-2xl bg-surfaceContainerHigh border border-outlineVariant flex items-center justify-center text-textPrimary shadow-sm shrink-0">
+                            <!-- Gear / System icon -->
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-[14.5px] font-bold text-textPrimary group-hover:text-primary transition-colors">Tự động theo hệ thống</span>
+                            </div>
+                            <span class="text-[11.5px] text-textSecondary block mt-0.5">Tự động chuyển đổi theo cài đặt Sáng / Tối của thiết bị</span>
+                        </div>
+                    </div>
+                    <div id="themeCheck-system" class="theme-check-icon shrink-0">
+                        <span class="text-[12px] font-semibold text-textTertiary group-hover:text-textPrimary">Chọn</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- NATIVE TARGET LANGUAGE BOTTOM SHEET (MOBILE-WEB-PWA SPEC) -->
     <div id="languageBottomSheetModal" 
