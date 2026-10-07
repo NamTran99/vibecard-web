@@ -1999,29 +1999,49 @@
             </div>
 
             <!-- Top Status HUD (Bespoke Flagship Mobile / mobile-web-pwa standard) -->
-            <div id="topStatusHUD" class="relative z-30 pt-[max(env(safe-area-inset-top),20px)] px-4 sm:px-5 flex items-center justify-between anim-hud-enter select-none">
+            <div id="topStatusHUD" class="relative z-30 pt-[max(env(safe-area-inset-top),20px)] px-3.5 sm:px-5 flex items-center justify-between anim-hud-enter select-none">
                 <!-- User Profile Area (Unboxed, Pure Typographic Authority, No Box-in-Box Fatigue) -->
-                <div onclick="replayHeroEntrance()" class="flex items-center gap-3 min-w-0 cursor-pointer group active:opacity-85 transition-opacity" title="Chạm để phát lại hiệu ứng vào màn">
+                <div onclick="replayHeroEntrance()" class="flex items-center gap-2.5 min-w-0 cursor-pointer group active:opacity-85 transition-opacity" title="Chạm để phát lại hiệu ứng vào màn">
                     <!-- Clean Squircle Avatar (Single outer boundary, zero cheesy multi-gradients) -->
                     <div class="relative shrink-0">
-                        <div class="relative w-[42px] h-[42px] rounded-2xl overflow-hidden ring-1 ring-white/20 shadow-[0_8px_24px_rgba(0,0,0,0.6)] bg-surfaceContainer group-hover:ring-primary/50 transition-all">
+                        <div class="relative w-[40px] h-[40px] rounded-2xl overflow-hidden ring-1 ring-white/20 shadow-[0_8px_24px_rgba(0,0,0,0.6)] bg-surfaceContainer group-hover:ring-primary/50 transition-all">
                             <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80" alt="Nam Tran" class="w-full h-full object-cover" />
                         </div>
-                        <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-success border-2 border-screenBg rounded-full shadow-[0_0_8px_rgba(134,239,172,0.6)]"></span>
+                        <span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-success border-2 border-screenBg rounded-full shadow-[0_0_8px_rgba(134,239,172,0.6)]"></span>
                     </div>
                     
                     <div class="flex flex-col min-w-0">
-                        <span class="text-[10px] font-bold text-textTertiary uppercase tracking-widest leading-none">Chào buổi tối,</span>
-                        <span class="text-[16px] font-black text-textPrimary tracking-tight leading-tight mt-1 truncate drop-shadow-sm group-hover:text-onPrimaryContainer transition-colors">Nam Tran</span>
+                        <span class="text-[10px] font-bold text-textTertiary uppercase tracking-wider leading-none whitespace-nowrap">Chào buổi tối,</span>
+                        <span class="text-[15px] font-black text-textPrimary tracking-tight leading-tight mt-1 truncate drop-shadow-sm group-hover:text-onPrimaryContainer transition-colors">Nam Tran</span>
                     </div>
                 </div>
 
-                <!-- Right Action Group: Two Standalone 44px Action Targets (Zero Pill-in-Pill, Zero Over-Bordering) -->
-                <div class="flex items-center gap-2 shrink-0 select-none">
+                <!-- Right Action Group: Three Standalone 44px Action Targets -->
+                <div class="flex items-center gap-1.5 sm:gap-2 shrink-0 select-none">
+                    <!-- Target 0: Dark / Light Mode Quick Toggle Button (44px Minimum Touch Target) -->
+                    <button onclick="toggleThemeModeQuick()"
+                            id="topThemeToggleBtn"
+                            class="group relative h-[44px] w-[44px] rounded-full flex items-center justify-center bg-surfaceContainerLow/90 backdrop-blur-2xl border border-outlineVariant shadow-[0_8px_24px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.18)] hover:bg-surfaceContainer active:scale-90 transition-all cursor-pointer shrink-0"
+                            title="Chuyển chế độ Sáng / Tối">
+                        <span id="topThemeIconSlot" class="flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                            <svg class="w-5 h-5 text-amber-400 group-hover:rotate-45 transition-transform duration-300 drop-shadow-[0_0_6px_rgba(251,191,36,0.5)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                        </span>
+                    </button>
+
                     <!-- Target 1: Dedicated High-Contrast Language Switcher (44px Minimum Touch Target) -->
                     <button onclick="openLanguageSheet()"
                             id="topLangSelectorBtn"
-                            class="group relative h-[44px] px-3.5 rounded-full flex items-center gap-1.5 bg-surfaceContainerLow/90 backdrop-blur-2xl border border-outlineVariant shadow-[0_8px_24px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.18)] hover:bg-surfaceContainer active:scale-95 transition-all cursor-pointer shrink-0"
+                            class="group relative h-[44px] px-3 sm:px-3.5 rounded-full flex items-center gap-1.5 bg-surfaceContainerLow/90 backdrop-blur-2xl border border-outlineVariant shadow-[0_8px_24px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.18)] hover:bg-surfaceContainer active:scale-95 transition-all cursor-pointer shrink-0"
                             title="Chọn ngôn ngữ học">
                         <span id="topLangFlag" class="text-[16px] leading-none select-none">🇺🇸</span>
                         <span id="topLangCode" class="text-[13px] font-black text-textPrimary tracking-tight leading-none">EN</span>
@@ -3091,7 +3111,18 @@
                     </div>
                 </div>
                 <div class="flex items-center gap-2">
-                    <span id="themeSettingBadge" class="text-[11px] font-extrabold px-2.5 py-1 rounded-full bg-primaryContainer text-onPrimaryContainer border border-primary/20">Tối</span>
+                    <!-- Quick Toggle Switch Pill -->
+                    <button onclick="event.stopPropagation(); toggleThemeModeQuick();"
+                            id="profileThemeQuickSwitch"
+                            class="relative w-12 h-6.5 rounded-full bg-surfaceContainerHighest border border-outlineVariant p-0.5 transition-colors cursor-pointer flex items-center"
+                            title="Bật/Tắt nhanh chế độ Sáng/Tối">
+                        <div id="profileThemeSwitchThumb" class="w-5 h-5 rounded-full bg-primary shadow-sm flex items-center justify-center transition-transform duration-300">
+                            <svg class="w-3 h-3 text-amber-300" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                            </svg>
+                        </div>
+                    </button>
+                    <span id="themeSettingBadge" class="text-[11px] font-extrabold px-2 py-0.5 rounded-full bg-primaryContainer text-onPrimaryContainer border border-primary/20">Tối</span>
                     <span class="text-textTertiary text-sm">›</span>
                 </div>
             </div>
@@ -3178,8 +3209,23 @@
                 </svg>
             </button>
 
-            <!-- Language Switcher Pill (Dual-Tone Neon Typography) -->
-            <button onclick="swapLanguageMode()" class="group relative flex items-center gap-3.5 px-4 h-10 rounded-full bg-[#1B1C17] hover:bg-[#20211C] border border-[#46483C] backdrop-blur-3xl shadow-[0_8px_32px_rgba(0,0,0,0.4)] active:scale-[0.96] transition-all duration-300 cursor-pointer select-none" title="Chạm để đảo chiều ngôn ngữ" style="-webkit-tap-highlight-color: transparent; -webkit-user-select: none;">
+            <div class="flex items-center gap-2">
+                <!-- Dark / Light Mode Quick Toggle Button in Dictionary -->
+                <button onclick="toggleThemeModeQuick()"
+                        id="dictThemeToggleBtn"
+                        class="w-10 h-10 rounded-full bg-[#20211C] hover:bg-[#252621] border border-[#46483C] flex items-center justify-center text-[#E5E3DB] active:scale-90 transition-all shadow-md group cursor-pointer"
+                        title="Chuyển chế độ Sáng / Tối">
+                    <span id="dictThemeIconSlot" class="flex items-center justify-center">
+                        <svg class="w-4 h-4 text-amber-400 group-hover:rotate-45 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                        </svg>
+                    </span>
+                </button>
+
+                <!-- Language Switcher Pill (Dual-Tone Neon Typography) -->
+                <button onclick="swapLanguageMode()" class="group relative flex items-center gap-3.5 px-4 h-10 rounded-full bg-[#1B1C17] hover:bg-[#20211C] border border-[#46483C] backdrop-blur-3xl shadow-[0_8px_32px_rgba(0,0,0,0.4)] active:scale-[0.96] transition-all duration-300 cursor-pointer select-none" title="Chạm để đảo chiều ngôn ngữ" style="-webkit-tap-highlight-color: transparent; -webkit-user-select: none;">
                 
                 <!-- Glowing Ambient Light Behind Pill -->
                 <div class="absolute inset-0 bg-gradient-to-r from-[#B8D166]/15 via-transparent to-[#FBBF24]/15 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
@@ -3203,6 +3249,7 @@
                     <span id="codeTarget" class="text-[13.5px] font-black tracking-widest text-[#FBBF24] drop-shadow-[0_0_8px_rgba(251,191,36,0.4)] transition-colors">VI</span>
                 </div>
             </button>
+            </div>
         </div>
 
         <!-- Segmented Mode Switcher (Option 2: Minimalist Tab Strip with Glowing Underline) -->
@@ -9649,6 +9696,111 @@ function toggleSlowAudio() {
             if (subtextEl) subtextEl.textContent = currentMeta.text;
             if (badgeEl) badgeEl.textContent = currentMeta.badge;
             if (iconSvg) iconSvg.innerHTML = currentMeta.icon;
+
+            // Synchronize All Quick Toggle Buttons Across UI
+            updateQuickThemeButtons(isDark);
+        }
+
+        function updateQuickThemeButtons(isDark) {
+            // 1. Top Status HUD button (Home/Explore screen)
+            const topSlot = document.getElementById('topThemeIconSlot');
+            const topBtn = document.getElementById('topThemeToggleBtn');
+            if (topSlot) {
+                if (isDark) {
+                    topSlot.innerHTML = `
+                        <svg class="w-5 h-5 text-amber-400 group-hover:rotate-45 transition-transform duration-300 drop-shadow-[0_0_6px_rgba(251,191,36,0.5)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    `;
+                    if (topBtn) topBtn.title = "Đang ở chế độ Tối • Chạm để đổi sang Sáng";
+                } else {
+                    topSlot.innerHTML = `
+                        <svg class="w-5 h-5 text-primary group-hover:-rotate-12 transition-transform duration-300 drop-shadow-[0_0_6px_rgba(85,101,21,0.35)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    `;
+                    if (topBtn) topBtn.title = "Đang ở chế độ Sáng • Chạm để đổi sang Tối";
+                }
+            }
+
+            // 2. Dictionary Screen top bar button
+            const dictSlot = document.getElementById('dictThemeIconSlot');
+            const dictBtn = document.getElementById('dictThemeToggleBtn');
+            if (dictSlot) {
+                if (isDark) {
+                    dictSlot.innerHTML = `
+                        <svg class="w-4 h-4 text-amber-400 group-hover:rotate-45 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                        </svg>
+                    `;
+                    if (dictBtn) dictBtn.title = "Chuyển sang chế độ Sáng";
+                } else {
+                    dictSlot.innerHTML = `
+                        <svg class="w-4 h-4 text-primary group-hover:-rotate-12 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    `;
+                    if (dictBtn) dictBtn.title = "Chuyển sang chế độ Tối";
+                }
+            }
+
+            // 3. Profile Screen Quick Toggle Switch
+            const profileThumb = document.getElementById('profileThemeSwitchThumb');
+            const profileSwitch = document.getElementById('profileThemeQuickSwitch');
+            if (profileThumb && profileSwitch) {
+                if (isDark) {
+                    profileThumb.style.transform = 'translateX(0px)';
+                    profileSwitch.classList.remove('bg-primary/25');
+                    profileSwitch.classList.add('bg-surfaceContainerHighest');
+                    profileThumb.innerHTML = `
+                        <svg class="w-3 h-3 text-amber-300" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    `;
+                } else {
+                    profileThumb.style.transform = 'translateX(22px)';
+                    profileSwitch.classList.remove('bg-surfaceContainerHighest');
+                    profileSwitch.classList.add('bg-primary/25');
+                    profileThumb.innerHTML = `
+                        <svg class="w-3 h-3 text-onPrimary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                            <circle cx="12" cy="12" r="5"></circle>
+                        </svg>
+                    `;
+                }
+            }
+        }
+
+        function toggleThemeModeQuick() {
+            let current = 'dark';
+            try {
+                current = localStorage.getItem('mindcard-theme-mode') || 'dark';
+            } catch (e) {}
+
+            let nextMode = 'light';
+            if (current === 'light') {
+                nextMode = 'dark';
+            } else if (current === 'dark') {
+                nextMode = 'light';
+            } else {
+                const isSystemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                nextMode = isSystemDark ? 'light' : 'dark';
+            }
+
+            setThemeMode(nextMode);
+
+            if (typeof SoundEngine !== 'undefined' && SoundEngine.play) {
+                SoundEngine.play(1);
+            }
         }
 
         function updateThemeSheetUI() {
