@@ -153,6 +153,77 @@
         .anim-create-item {
             animation: createItemCascade 0.4s cubic-bezier(0.16, 1, 0.3, 1) backwards;
         }
+
+        /* ======================================================== */
+        /* M3 BOTTOM NAV PLAYFUL DOODLE ICON ANIMATIONS ON CLICK     */
+        /* ======================================================== */
+
+        /* Sliding Thumb Jelly/Squish Physics Motion */
+        @keyframes navThumbJelly {
+            0% { transform: scale(1); }
+            35% { transform: scale(1.18, 0.82); }
+            70% { transform: scale(0.94, 1.06); }
+            100% { transform: scale(1, 1); }
+        }
+        .anim-nav-thumb-jelly {
+            animation: navThumbJelly 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* 0. Home Icon: Roof wiggle & cheerful bounce */
+        @keyframes navHomeWiggle {
+            0% { transform: scale(1) translateY(0) rotate(0deg); }
+            18% { transform: scale(0.84) translateY(2px) rotate(-7deg); }
+            45% { transform: scale(1.28) translateY(-4px) rotate(6deg); }
+            70% { transform: scale(1.08) translateY(1px) rotate(-2deg); }
+            85% { transform: scale(1.14) translateY(-1px) rotate(1deg); }
+            100% { transform: scale(1.12) translateY(0) rotate(0deg); }
+        }
+        .anim-nav-home {
+            animation: navHomeWiggle 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            transform-origin: 50% 85%;
+        }
+
+        /* 1. Create Icon: Elastic spin & pop */
+        @keyframes navCreateSpinPop {
+            0% { transform: scale(1) rotate(0deg); }
+            20% { transform: scale(0.8) rotate(-22deg); }
+            50% { transform: scale(1.3) rotate(45deg); }
+            75% { transform: scale(1.06) rotate(-8deg); }
+            90% { transform: scale(1.14) rotate(4deg); }
+            100% { transform: scale(1.12) rotate(0deg); }
+        }
+        .anim-nav-create {
+            animation: navCreateSpinPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            transform-origin: 50% 50%;
+        }
+
+        /* 2. Library Icon: Bookshelf tilt & lift */
+        @keyframes navLibraryShelf {
+            0% { transform: scale(1) translateY(0) skewX(0deg); }
+            18% { transform: scale(0.85) translateY(2px) skewX(0deg); }
+            45% { transform: scale(1.25) translateY(-4px) skewX(-8deg); }
+            70% { transform: scale(1.08) translateY(-1px) skewX(4deg); }
+            85% { transform: scale(1.14) translateY(0) skewX(-2deg); }
+            100% { transform: scale(1.12) translateY(0) skewX(0deg); }
+        }
+        .anim-nav-library {
+            animation: navLibraryShelf 0.48s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            transform-origin: 50% 90%;
+        }
+
+        /* 3. Profile Icon: Joyful nod & jump */
+        @keyframes navProfileJoy {
+            0% { transform: scale(1) translateY(0); }
+            18% { transform: scale(0.88, 0.76) translateY(3px); }
+            45% { transform: scale(1.22, 1.3) translateY(-6px); }
+            70% { transform: scale(1.08, 0.95) translateY(1px); }
+            85% { transform: scale(1.14, 1.12) translateY(-1px); }
+            100% { transform: scale(1.12, 1.12) translateY(0); }
+        }
+        .anim-nav-profile {
+            animation: navProfileJoy 0.46s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            transform-origin: 50% 70%;
+        }
         
         .glass-panel {
             background: #20211C;
@@ -2556,28 +2627,28 @@
         </div>
 
         <!-- Tab 0: Trang chủ (Primary Olive Green) -->
-        <button onclick="switchBottomNav(0)" id="bottomNavBtn-0" class="flex-1 h-full flex items-center justify-center relative z-10 cursor-pointer group" title="Trang chủ">
+        <button onclick="switchBottomNav(0)" id="bottomNavBtn-0" class="flex-1 h-full flex items-center justify-center relative z-10 cursor-pointer group active:scale-90 transition-transform" title="Trang chủ">
             <svg viewBox="0 0 100 100" id="bottomNavIcon-0" class="w-6 h-6 text-[#D4EE7F] scale-110 transition-all duration-200" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M 15 52 Q 50 18, 85 55 M 25 45 Q 27 65, 25 85 M 75 48 Q 73 65, 75 85 M 18 85 Q 50 82, 82 85 M 40 85 Q 38 65, 42 60 Q 50 58, 58 60 Q 62 65, 60 85"/>
             </svg>
         </button>
 
         <!-- Tab 1: Tạo (Tertiary Mint/Cyan) -->
-        <button onclick="switchBottomNav(1)" id="bottomNavBtn-1" class="flex-1 h-full flex items-center justify-center relative z-10 cursor-pointer group" title="Tạo">
+        <button onclick="switchBottomNav(1)" id="bottomNavBtn-1" class="flex-1 h-full flex items-center justify-center relative z-10 cursor-pointer group active:scale-90 transition-transform" title="Tạo">
             <svg viewBox="0 0 100 100" id="bottomNavIcon-1" class="w-6 h-6 text-[#A1D0C5] opacity-80 group-hover:opacity-100 transition-all duration-200" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M 32 25 Q 50 20, 72 28 Q 82 50, 75 75 Q 50 82, 28 75 Q 20 50, 32 25 Z M 50 38 Q 48 50, 52 62 M 38 52 Q 50 50, 62 48"/>
             </svg>
         </button>
 
         <!-- Tab 2: Thư viện (Secondary Sage) -->
-        <button onclick="switchBottomNav(2)" id="bottomNavBtn-2" class="flex-1 h-full flex items-center justify-center relative z-10 cursor-pointer group" title="Thư viện">
+        <button onclick="switchBottomNav(2)" id="bottomNavBtn-2" class="flex-1 h-full flex items-center justify-center relative z-10 cursor-pointer group active:scale-90 transition-transform" title="Thư viện">
             <svg viewBox="0 0 100 100" id="bottomNavIcon-2" class="w-6 h-6 text-[#C4CAA9] opacity-80 group-hover:opacity-100 transition-all duration-200" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M 15 85 Q 50 88, 85 85 M 25 85 Q 23 60, 25 40 Q 35 35, 40 40 Q 42 60, 40 85 M 45 85 Q 43 55, 45 30 Q 55 25, 60 30 Q 62 55, 60 85 M 60 85 Q 65 65, 70 45 Q 80 50, 80 55 Q 75 75, 72 85"/>
             </svg>
         </button>
 
         <!-- Tab 3: Profile (Amber Glow) -->
-        <button onclick="switchBottomNav(3)" id="bottomNavBtn-3" class="flex-1 h-full flex items-center justify-center relative z-10 cursor-pointer group" title="Profile">
+        <button onclick="switchBottomNav(3)" id="bottomNavBtn-3" class="flex-1 h-full flex items-center justify-center relative z-10 cursor-pointer group active:scale-90 transition-transform" title="Profile">
             <svg viewBox="0 0 100 100" id="bottomNavIcon-3" class="w-6 h-6 text-[#FBBF24] opacity-80 group-hover:opacity-100 transition-all duration-200" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M 50 25 Q 65 22, 65 38 Q 62 52, 50 52 Q 38 52, 35 38 Q 35 22, 50 25 Z M 25 85 Q 25 65, 40 60 Q 50 62, 60 60 Q 75 65, 75 85"/>
             </svg>
@@ -4625,20 +4696,34 @@ function toggleSlowAudio() {
             }
         ];
 
+        const navIconAnimClasses = ['anim-nav-home', 'anim-nav-create', 'anim-nav-library', 'anim-nav-profile'];
+
         function updateBottomNavState(index) {
             const thumb = document.getElementById('bottomNavThumb');
+            const thumbInner = document.getElementById('bottomNavThumbInner');
             if (thumb) {
                 thumb.style.transform = `translateX(${index * 100}%)`;
             }
+            if (thumbInner) {
+                thumbInner.classList.remove('anim-nav-thumb-jelly');
+                void thumbInner.offsetWidth;
+                thumbInner.classList.add('anim-nav-thumb-jelly');
+            }
+
             // Background của item selected là SOLID #3C4D00, không viền, không đổi màu giữa các tab
             for (let i = 0; i < 4; i++) {
                 const icon = document.getElementById(`bottomNavIcon-${i}`);
                 if (!icon) continue;
                 const theme = m3NavThemes[i];
+
+                // Remove previous animation classes
+                navIconAnimClasses.forEach(cls => icon.classList.remove(cls));
+
                 if (i === index) {
-                    icon.className = `w-6 h-6 ${theme.activeColor} scale-110 opacity-100 transition-all duration-200`;
+                    void icon.offsetWidth; // Force reflow so animation restarts cleanly on click
+                    icon.className = `w-6 h-6 ${theme.activeColor} ${navIconAnimClasses[i]} opacity-100 transition-colors duration-200`;
                 } else {
-                    icon.className = `w-6 h-6 ${theme.inactiveColor} opacity-80 hover:opacity-100 transition-all duration-200`;
+                    icon.className = `w-6 h-6 ${theme.inactiveColor} opacity-80 hover:opacity-100 scale-100 transition-all duration-200`;
                 }
             }
         }
