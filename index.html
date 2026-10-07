@@ -138,6 +138,21 @@
         .anim-pulse-dot {
             animation: pulseDot 2s ease-in-out infinite;
         }
+
+        /* Create Screen Staggered Cascade Animation (matching Android DecelerateInterpolator) */
+        @keyframes createItemCascade {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .anim-create-item {
+            animation: createItemCascade 0.4s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+        }
         
         .glass-panel {
             background: #20211C;
@@ -2168,72 +2183,163 @@
     </div>
 
     <!-- ========================================================== -->
-    <!-- TAB SCREEN 1: TẠO FLASHCARD & NỘI DUNG (CREATE SCREEN) -->
+    <!-- TAB SCREEN 1: TẠO FLASHCARD (EXACT REPLICA OF ANDROID CREATE SCREEN) -->
     <!-- ========================================================== -->
-    <div id="tabScreen-1" class="hidden flex-1 overflow-y-auto hide-scrollbar px-5 pt-8 pb-36 z-20 flex-col select-none">
-        <!-- Top App Bar -->
-        <div class="flex items-center justify-between mb-6 pt-3">
-            <div>
-                <span class="text-[11px] font-black text-primary uppercase tracking-widest">Sáng tạo tri thức</span>
-                <h2 class="text-[24px] font-black text-textPrimary tracking-tight">Tạo Flashcard mới</h2>
+    <div id="tabScreen-1" class="hidden flex-1 overflow-y-auto hide-scrollbar px-5 pt-5 pb-[136px] z-20 flex-col select-none">
+        
+        <!-- Header (createHubHeader) -->
+        <div class="flex items-center justify-between min-h-[104px] anim-create-item" style="animation-delay: 0ms;">
+            <div class="flex-1 pr-2">
+                <h1 class="text-[28px] font-black leading-tight tracking-tight bg-gradient-to-r from-[#B666FF] via-[#FF66B2] to-[#FFB266] bg-clip-text text-transparent">
+                    Tạo Flashcard
+                </h1>
+                <p class="text-[15px] text-[#BEC9DA] mt-2.5 leading-snug line-clamp-2">
+                    Chọn cách bạn muốn tạo bộ thẻ mới.
+                </p>
             </div>
-            <div class="w-10 h-10 rounded-full bg-surfaceContainer border border-outlineVariant flex items-center justify-center text-primary font-black shadow-sm">
-                +
-            </div>
-        </div>
-
-        <!-- 4 Quick Creation Method Cards -->
-        <div class="grid grid-cols-2 gap-3.5 mb-6">
-            <!-- Method 1: AI Lumi -->
-            <div onclick="openLumiChat()" class="p-4 rounded-2xl bg-surfaceContainer border border-outlineVariant hover:border-primary/50 transition-all cursor-pointer group relative overflow-hidden">
-                <div class="absolute -right-4 -bottom-4 w-16 h-16 bg-primary/10 rounded-full blur-xl pointer-events-none"></div>
-                <div class="w-9 h-9 rounded-xl bg-primaryContainer text-onPrimaryContainer flex items-center justify-center mb-2.5 text-lg">
-                    🪄
-                </div>
-                <h4 class="text-[14px] font-bold text-textPrimary leading-tight mb-1">Tạo bằng AI</h4>
-                <p class="text-[11px] text-textSecondary leading-normal">Nhập chủ đề bất kỳ, Lumi tự tạo 10-20 thẻ chuẩn CEFR</p>
-            </div>
-
-            <!-- Method 2: Manual -->
-            <div onclick="openDictionaryScreen()" class="p-4 rounded-2xl bg-surfaceContainer border border-outlineVariant hover:border-primary/50 transition-all cursor-pointer group relative overflow-hidden">
-                <div class="w-9 h-9 rounded-xl bg-surfaceContainerLow text-primary border border-outlineVariant flex items-center justify-center mb-2.5 text-lg">
-                    ✍️
-                </div>
-                <h4 class="text-[14px] font-bold text-textPrimary leading-tight mb-1">Tạo thủ công</h4>
-                <p class="text-[11px] text-textSecondary leading-normal">Tự gõ từ vựng, thêm ngữ cảnh & hình ảnh cá nhân</p>
-            </div>
-
-            <!-- Method 3: Scan / OCR -->
-            <div onclick="alert('Tính năng: Chụp hoặc quét trang sách để bóc tách từ vựng tự động! 📸📖')" class="p-4 rounded-2xl bg-surfaceContainer border border-outlineVariant hover:border-primary/50 transition-all cursor-pointer group relative overflow-hidden">
-                <div class="w-9 h-9 rounded-xl bg-surfaceContainerLow text-accentCyan border border-outlineVariant flex items-center justify-center mb-2.5 text-lg">
-                    📸
-                </div>
-                <h4 class="text-[14px] font-bold text-textPrimary leading-tight mb-1">Quét trang sách</h4>
-                <p class="text-[11px] text-textSecondary leading-normal">Nhận diện chữ qua camera và tạo bộ bài ngay</p>
-            </div>
-
-            <!-- Method 4: Voice -->
-            <div onclick="triggerDedicatedVoiceLookup()" class="p-4 rounded-2xl bg-surfaceContainer border border-outlineVariant hover:border-primary/50 transition-all cursor-pointer group relative overflow-hidden">
-                <div class="w-9 h-9 rounded-xl bg-surfaceContainerLow text-amberText border border-outlineVariant flex items-center justify-center mb-2.5 text-lg">
-                    🎙️
-                </div>
-                <h4 class="text-[14px] font-bold text-textPrimary leading-tight mb-1">Từ giọng nói</h4>
-                <p class="text-[11px] text-textSecondary leading-normal">Nói để tạo flashcard kèm kiểm tra phát âm IPA</p>
+            <!-- Lumi Fox Character (createHeaderCharacterView) -->
+            <div onclick="tapLumiCharacter(this)" class="w-[124px] h-[124px] shrink-0 ml-2 flex items-end justify-center cursor-pointer transition-transform select-none relative group" title="Chạm để xem mẹo từ Lumi">
+                <img src="assets/create/lumi_fox.png" alt="Lumi Fox" class="w-full h-full object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.4)] pointer-events-none transition-transform group-hover:scale-105 active:scale-95">
             </div>
         </div>
 
-        <!-- Empty State Hero -->
-        <div class="flex-1 flex flex-col items-center justify-center text-center py-4 border-t border-outlineVariant/40">
-            <div class="w-16 h-16 rounded-[22px] bg-[#2DD4BF]/10 border border-[#2DD4BF]/30 flex items-center justify-center text-[#2DD4BF] mb-3 shadow-inner">
-                <svg viewBox="0 0 100 100" class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M 32 25 Q 50 20, 72 28 Q 82 50, 75 75 Q 50 82, 28 75 Q 20 50, 32 25 Z M 50 38 Q 48 50, 52 62 M 38 52 Q 50 50, 62 48"/>
+        <!-- Spacer 22dp -->
+        <div class="h-[22px]"></div>
+
+        <!-- Section Title (text_b_n_mu_n_t_o_t_u_f9c0cd) -->
+        <h2 class="text-[22px] font-bold text-white tracking-tight leading-none anim-create-item" style="animation-delay: 60ms;">
+            Bạn muốn tạo từ đâu?
+        </h2>
+
+        <!-- Spacer 20dp -->
+        <div class="h-5"></div>
+
+        <!-- Hero Source Card (createHeroSourceCard: Nhập tay) -->
+        <div onclick="openDictionaryScreen()" class="min-h-[110px] p-5 rounded-[24px] bg-gradient-to-b from-[#2A2D36] to-[#1E2026] border border-white/[0.08] shadow-[0_8px_24px_rgba(0,0,0,0.35)] flex items-center justify-between cursor-pointer transition-all duration-200 hover:border-white/20 active:scale-[0.97] anim-create-item group" style="animation-delay: 120ms;">
+            <!-- Icon 64x64dp -->
+            <div class="w-16 h-16 shrink-0 flex items-center justify-center">
+                <img src="assets/create/ic_create_source_manual_new.png" alt="Nhập tay" class="w-full h-full object-contain filter drop-shadow-md">
+            </div>
+
+            <!-- Content -->
+            <div class="flex-1 ml-4 mr-3 min-w-0">
+                <div class="flex items-center gap-2.5">
+                    <h3 class="text-[20px] font-bold text-[#EDF1F8] leading-tight truncate">
+                        Nhập tay
+                    </h3>
+                    <span class="inline-flex items-center justify-center h-6 px-2.5 rounded-full bg-[#A1D0C5] text-[#033730] font-bold text-[10.5px] leading-none shrink-0 shadow-sm">
+                        Nhanh nhất
+                    </span>
+                </div>
+                <p class="text-[14px] text-[#A0A5AF] mt-2 leading-[1.35] line-clamp-2">
+                    Nhập từ, chọn nghĩa và để Lumi hoàn thiện thẻ.
+                </p>
+            </div>
+
+            <!-- Continue Circle Button (createHubContinueButton) -->
+            <div class="w-11 h-11 shrink-0 rounded-full bg-gradient-to-br from-[#B8D166] to-[#A1D0C5] flex items-center justify-center shadow-[0_4px_14px_rgba(184,209,102,0.35)] group-hover:scale-105 active:scale-95 transition-transform">
+                <svg class="w-4 h-4 text-[#1B1C17]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8.5 6.5L14.5 12L8.5 17.5"/>
                 </svg>
             </div>
-            <h3 class="text-[16px] font-black text-textPrimary tracking-tight mb-1">Chưa có bản nháp nào</h3>
-            <p class="text-[12px] text-textSecondary max-w-[260px] leading-relaxed">
-                Chọn một trong các phương thức trên để bắt đầu tạo bộ thẻ đầu tiên của bạn.
-            </p>
         </div>
+
+        <!-- Spacer 20dp -->
+        <div class="h-5"></div>
+
+        <!-- Section 2 Grid Title (text_c_ng_c_ai_ti_n_9fc2a4) -->
+        <h3 class="text-[16px] font-bold text-white tracking-tight leading-none anim-create-item" style="animation-delay: 180ms;">
+            ✨ Công cụ Lumi & Tiện ích
+        </h3>
+
+        <!-- Spacer 14dp -->
+        <div class="h-3.5"></div>
+
+        <!-- 2x2 Grid of Source Cards -->
+        <div class="grid grid-cols-2 gap-3.5 anim-create-item" style="animation-delay: 240ms;">
+            <!-- Grid Item 1: Từ ảnh OCR -->
+            <div onclick="openOcrDialog()" class="min-h-[170px] p-4 rounded-[18px] bg-gradient-to-b from-[#2A2D36] to-[#1E2026] border border-white/[0.08] flex flex-col justify-between cursor-pointer transition-all duration-200 hover:border-white/20 active:scale-[0.95] group">
+                <div>
+                    <div class="w-[72px] h-[72px]">
+                        <img src="assets/create/ic_create_source_ocr_new.png" alt="Từ ảnh OCR" class="w-full h-full object-contain filter drop-shadow">
+                    </div>
+                    <h4 class="text-[16px] font-bold text-[#EDF1F8] mt-3.5 leading-tight truncate">
+                        Từ ảnh OCR
+                    </h4>
+                    <p class="text-[13px] text-[#96A0AF] mt-1.5 leading-[1.35] line-clamp-2">
+                        Quét chữ trong ảnh và tạo thẻ tự động.
+                    </p>
+                </div>
+                <div class="self-end mt-3.5 w-7 h-7 rounded-full bg-gradient-to-br from-[#B8D166] to-[#A1D0C5] flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+                    <svg class="w-3.5 h-3.5 text-[#1B1C17]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M8.5 6.5L14.5 12L8.5 17.5"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Grid Item 2: Từ Audio/Video -->
+            <div onclick="openAudioVideoDialog()" class="min-h-[170px] p-4 rounded-[18px] bg-gradient-to-b from-[#2A2D36] to-[#1E2026] border border-white/[0.08] flex flex-col justify-between cursor-pointer transition-all duration-200 hover:border-white/20 active:scale-[0.95] group">
+                <div>
+                    <div class="w-[72px] h-[72px]">
+                        <img src="assets/create/ic_create_source_audio_new.png" alt="Từ Audio/Video" class="w-full h-full object-contain filter drop-shadow">
+                    </div>
+                    <h4 class="text-[16px] font-bold text-[#EDF1F8] mt-3.5 leading-tight truncate">
+                        Từ Audio/Video
+                    </h4>
+                    <p class="text-[13px] text-[#96A0AF] mt-1.5 leading-[1.35] line-clamp-2">
+                        Tách từ transcript từ audio hoặc video.
+                    </p>
+                </div>
+                <div class="self-end mt-3.5 w-7 h-7 rounded-full bg-gradient-to-br from-[#B8D166] to-[#A1D0C5] flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+                    <svg class="w-3.5 h-3.5 text-[#1B1C17]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M8.5 6.5L14.5 12L8.5 17.5"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Grid Item 3: Từ văn bản -->
+            <div onclick="openTextImportDialog()" class="min-h-[170px] p-4 rounded-[18px] bg-gradient-to-b from-[#2A2D36] to-[#1E2026] border border-white/[0.08] flex flex-col justify-between cursor-pointer transition-all duration-200 hover:border-white/20 active:scale-[0.95] group">
+                <div>
+                    <div class="w-[72px] h-[72px]">
+                        <img src="assets/create/ic_create_source_text_3d.png" alt="Từ văn bản" class="w-full h-full object-contain filter drop-shadow">
+                    </div>
+                    <h4 class="text-[16px] font-bold text-[#EDF1F8] mt-3.5 leading-tight truncate">
+                        Từ văn bản
+                    </h4>
+                    <p class="text-[13px] text-[#96A0AF] mt-1.5 leading-[1.35] line-clamp-2">
+                        Dán đoạn văn, hội thoại để tạo thẻ nhanh.
+                    </p>
+                </div>
+                <div class="self-end mt-3.5 w-7 h-7 rounded-full bg-gradient-to-br from-[#B8D166] to-[#A1D0C5] flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+                    <svg class="w-3.5 h-3.5 text-[#1B1C17]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M8.5 6.5L14.5 12L8.5 17.5"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Grid Item 4: Từ bài học -->
+            <div onclick="openLessonImportDialog()" class="min-h-[170px] p-4 rounded-[18px] bg-gradient-to-b from-[#2A2D36] to-[#1E2026] border border-white/[0.08] flex flex-col justify-between cursor-pointer transition-all duration-200 hover:border-white/20 active:scale-[0.95] group">
+                <div>
+                    <div class="w-[72px] h-[72px]">
+                        <img src="assets/create/ic_create_source_lesson_new.png" alt="Từ bài học" class="w-full h-full object-contain filter drop-shadow">
+                    </div>
+                    <h4 class="text-[16px] font-bold text-[#EDF1F8] mt-3.5 leading-tight truncate">
+                        Từ bài học
+                    </h4>
+                    <p class="text-[13px] text-[#96A0AF] mt-1.5 leading-[1.35] line-clamp-2">
+                        Tạo thẻ từ lesson đã học.
+                    </p>
+                </div>
+                <div class="self-end mt-3.5 w-7 h-7 rounded-full bg-gradient-to-br from-[#B8D166] to-[#A1D0C5] flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+                    <svg class="w-3.5 h-3.5 text-[#1B1C17]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M8.5 6.5L14.5 12L8.5 17.5"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Invisible File Input for OCR Demo -->
+        <input type="file" id="ocrImageInput" accept="image/*" class="hidden" onchange="handleOcrImageSelected(this)">
     </div>
 
     <!-- ========================================================== -->
@@ -4482,10 +4588,62 @@ function toggleSlowAudio() {
                 }, 300);
             }
 
+            if (index === 1) {
+                const screen1 = document.getElementById('tabScreen-1');
+                if (screen1) {
+                    const items = screen1.querySelectorAll('.anim-create-item');
+                    items.forEach((item, idx) => {
+                        item.style.animation = 'none';
+                        void item.offsetWidth;
+                        item.style.animation = `createItemCascade 0.4s cubic-bezier(0.16, 1, 0.3, 1) ${idx * 60}ms backwards`;
+                    });
+                }
+            }
+
             if (index === 0) {
                 const scrollContainer = document.querySelector('.scroll-container');
                 if (scrollContainer) scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
             }
+        }
+
+        function tapLumiCharacter(el) {
+            if (el) {
+                el.classList.add('scale-110');
+                setTimeout(() => el.classList.remove('scale-110'), 200);
+            }
+            showEntranceToast("🦊 Lumi: Mẹo: Chụp ảnh trang sách hoặc tài liệu để tạo thẻ nhanh nhất!");
+        }
+
+        function openOcrDialog() {
+            const input = document.getElementById('ocrImageInput');
+            if (input) {
+                input.click();
+            } else {
+                showEntranceToast("📸 Đang mở máy ảnh quét chữ OCR...");
+            }
+        }
+
+        function handleOcrImageSelected(input) {
+            if (input && input.files && input.files[0]) {
+                const fileName = input.files[0].name;
+                showEntranceToast(`✨ Lumi đang quét "${fileName}" & tạo thẻ...`);
+                setTimeout(() => {
+                    showEntranceToast("🎉 Đã nhận diện 6 từ vựng mới từ ảnh!");
+                }, 1200);
+            }
+        }
+
+        function openAudioVideoDialog() {
+            showEntranceToast("🎬 Đang khởi tạo bộ bóc tách transcript từ Audio/Video...");
+        }
+
+        function openTextImportDialog() {
+            showEntranceToast("📝 Dán văn bản hoặc hội thoại để Lumi tự tạo flashcards!");
+        }
+
+        function openLessonImportDialog() {
+            switchBottomNav(0);
+            showEntranceToast("📚 Đã chuyển về lộ trình bài học để tạo thẻ!");
         }
 
         function openDictionaryScreen(word = '', instant = false) {
