@@ -161,68 +161,77 @@
         /* Sliding Thumb Jelly/Squish Physics Motion */
         @keyframes navThumbJelly {
             0% { transform: scale(1); }
-            35% { transform: scale(1.18, 0.82); }
-            70% { transform: scale(0.94, 1.06); }
+            30% { transform: scale(1.24, 0.78); }
+            65% { transform: scale(0.92, 1.1); }
+            85% { transform: scale(1.04, 0.98); }
             100% { transform: scale(1, 1); }
         }
         .anim-nav-thumb-jelly {
-            animation: navThumbJelly 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            animation: navThumbJelly 0.42s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        /* 0. Home Icon: Roof wiggle & cheerful bounce */
-        @keyframes navHomeWiggle {
-            0% { transform: scale(1) translateY(0) rotate(0deg); }
-            18% { transform: scale(0.82, 0.78) translateY(4px) rotate(-9deg); }
-            45% { transform: scale(1.3, 1.25) translateY(-7px) rotate(9deg); }
-            70% { transform: scale(1.05) translateY(1px) rotate(-3deg); }
-            85% { transform: scale(1.15) translateY(-1px) rotate(1deg); }
-            100% { transform: scale(1.12) translateY(0) rotate(0deg); }
+        /* ------------------------------------------------------------- */
+        /* 4 DISTINCT ICON ANIMATIONS (4 NGUYÊN LÝ CHUYỂN ĐỘNG KHÁC NHAU) */
+        /* ------------------------------------------------------------- */
+
+        /* 0. Home Icon: Pure Vertical Spring Trampoline (Trục dọc: Lò xo nhún nảy tưng bừng) */
+        @keyframes navHomeTrampoline {
+            0% { transform: scale(1, 1) translateY(0); }
+            18% { transform: scale(1.35, 0.65) translateY(5px); }  /* Nén sâu sát đáy lấy đà */
+            42% { transform: scale(0.8, 1.38) translateY(-13px); } /* Phóng vút lên cao */
+            65% { transform: scale(1.15, 0.9) translateY(2px); }   /* Rơi xuống nén nhẹ */
+            80% { transform: scale(0.96, 1.06) translateY(-3px); }  /* Bật nảy hồi lần 2 */
+            92% { transform: scale(1.02, 0.98) translateY(0px); }
+            100% { transform: scale(1.08, 1.08) translateY(0); }   /* Đứng yên uy nghi */
         }
         .anim-nav-home {
-            animation: navHomeWiggle 0.48s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-            transform-origin: 50% 85%;
+            animation: navHomeTrampoline 0.54s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            transform-origin: 50% 95%;
         }
 
-        /* 1. Create Icon: Elastic spin 90deg & pop */
-        @keyframes navCreateSpinPop {
+        /* 1. Create Icon: 360° Whirlwind Spin & Radial Burst (Trục xoay tròn 360° & Bung nở ma thuật) */
+        @keyframes navCreateWhirlwind {
             0% { transform: scale(1) rotate(0deg); }
-            20% { transform: scale(0.76) rotate(-35deg); }
-            50% { transform: scale(1.34) rotate(105deg); }
-            72% { transform: scale(1.04) rotate(82deg); }
-            88% { transform: scale(1.15) rotate(93deg); }
-            100% { transform: scale(1.12) rotate(90deg); }
+            16% { transform: scale(0.68) rotate(-35deg); }         /* Lùi lại vặn cót ngược */
+            52% { transform: scale(1.38) rotate(395deg); }         /* Bắn vọt xoay tròn 360° quá đà */
+            75% { transform: scale(0.96) rotate(352deg); }         /* Bật nảy hồi ngược lại */
+            88% { transform: scale(1.12) rotate(364deg); }         /* Dao động tắt dần */
+            100% { transform: scale(1.08) rotate(360deg); }        /* Cân bằng hoàn mỹ */
         }
         .anim-nav-create {
-            animation: navCreateSpinPop 0.52s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            animation: navCreateWhirlwind 0.58s cubic-bezier(0.34, 1.45, 0.64, 1) forwards;
             transform-origin: 50% 50%;
         }
 
-        /* 2. Library Icon: Bookshelf tilt & wave */
-        @keyframes navLibraryShelf {
-            0% { transform: scale(1) translateY(0) skewX(0deg); }
-            18% { transform: scale(0.84) translateY(3px) skewX(0deg); }
-            45% { transform: scale(1.3) translateY(-7px) skewX(-14deg); }
-            70% { transform: scale(1.05) translateY(-1px) skewX(6deg); }
-            85% { transform: scale(1.14) translateY(0) skewX(-2deg); }
-            100% { transform: scale(1.12) translateY(0) skewX(0deg); }
+        /* 2. Library Icon: Domino Wave & Horizontal Pendulum (Trục ngang: Sóng domino lắc lư con lắc) */
+        @keyframes navLibraryDominoWave {
+            0% { transform: scale(1) skewX(0deg) rotate(0deg); }
+            18% { transform: scale(0.95) skewX(16deg) rotate(-8deg); }   /* Nghiêng sang trái đón lực */
+            42% { transform: scale(1.22) skewX(-20deg) rotate(11deg); }  /* Đập bật sang phải như domino */
+            64% { transform: scale(1.06) skewX(12deg) rotate(-6deg); }   /* Lắc dội lại sang trái */
+            80% { transform: scale(1.02) skewX(-6deg) rotate(2deg); }    /* Lắc nhẹ sang phải */
+            92% { transform: scale(1.05) skewX(2deg) rotate(-1deg); }
+            100% { transform: scale(1.08) skewX(0deg) rotate(0deg); }   /* Đứng thẳng ngay ngắn */
         }
         .anim-nav-library {
-            animation: navLibraryShelf 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-            transform-origin: 50% 90%;
+            animation: navLibraryDominoWave 0.6s cubic-bezier(0.34, 1.4, 0.64, 1) forwards;
+            transform-origin: 50% 100%;
         }
 
-        /* 3. Profile Icon: Joyful nod & jump */
-        @keyframes navProfileJoy {
-            0% { transform: scale(1) translateY(0) rotate(0deg); }
-            18% { transform: scale(0.82, 0.72) translateY(5px) rotate(0deg); }
-            45% { transform: scale(1.24, 1.34) translateY(-8px) rotate(9deg); }
-            70% { transform: scale(1.05, 0.95) translateY(1px) rotate(-4deg); }
-            85% { transform: scale(1.15, 1.12) translateY(-1px) rotate(1deg); }
-            100% { transform: scale(1.12, 1.12) translateY(0) rotate(0deg); }
+        /* 3. Profile Icon: Respectful Nod & Double Heartbeat (Nhân thái: Cúi đầu chào & Tim đập phập phồng) */
+        @keyframes navProfileNodPulse {
+            0% { transform: scale(1, 1) translateY(0); }
+            18% { transform: scale(1.18, 0.78) translateY(6px); }  /* Cúi gập đầu chào lễ phép */
+            36% { transform: scale(0.92, 1.18) translateY(-4px); }  /* Bật người ngước mặt lên */
+            52% { transform: scale(1.36, 1.36) translateY(-2px); }  /* THUMP 1: Nhịp đập tim số 1 bùng nổ */
+            68% { transform: scale(1.02, 1.02) translateY(0px); }   /* Thu về */
+            80% { transform: scale(1.22, 1.22) translateY(-1px); }  /* THUMP 2: Nhịp đập tim số 2 */
+            92% { transform: scale(1.05, 1.05) translateY(0px); }
+            100% { transform: scale(1.08, 1.08) translateY(0); }    /* Trạng thái sống động */
         }
         .anim-nav-profile {
-            animation: navProfileJoy 0.48s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-            transform-origin: 50% 70%;
+            animation: navProfileNodPulse 0.58s cubic-bezier(0.34, 1.5, 0.64, 1) forwards;
+            transform-origin: 50% 45%;
         }
 
         .nav-icon-wrap {
