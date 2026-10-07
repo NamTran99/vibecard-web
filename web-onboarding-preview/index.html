@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>MindCards Onboarding Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=4">
+</head>
+<body>
+  <div class="app-container">
+    
+    <!-- Top Header -->
+    <header class="header" id="main-header">
+      <div class="brand-row">
+        <div class="brand-logo">✦</div>
+        <div class="brand-name">MindCards</div>
+        <div class="spacer"></div>
+        <div class="skip-btn" id="skip-btn">Xem Premium</div>
+      </div>
+      <div class="progress-bar" id="progress-bar">
+        <div class="progress-segment active"></div>
+        <div class="progress-segment"></div>
+        <div class="progress-segment"></div>
+        <div class="progress-segment"></div>
+      </div>
+    </header>
+
+    <!-- Carousel Container -->
+    <div class="carousel-container" id="carousel">
+      
+      <!-- Step 0: Goal Selection -->
+      <section class="step step-goal">
+        <div class="step-content h-full">
+          <div class="kicker text-cyan">CÁ NHÂN HÓA LỘ TRÌNH</div>
+          <h1 class="title">Mục tiêu tiếng Anh<br>hiện tại của bạn?</h1>
+          <p class="subtitle">MindCards sẽ phân tích và tự động tinh chỉnh kho từ vựng dành riêng cho bạn.</p>
+          
+          <div class="ai-cards-wrapper">
+            
+            <div class="ai-goal-card selected" onclick="selectGoal(this)">
+              <div class="card-bg-glow"></div>
+              <div class="card-content">
+                <div class="goal-icon">✈️</div>
+                <div class="goal-info">
+                  <div class="goal-title">Du lịch & Giao tiếp</div>
+                  <div class="goal-sub">Phản xạ tự nhiên đời thường</div>
+                </div>
+                <div class="goal-radio"></div>
+              </div>
+              <div class="ai-scanner"></div>
+              <div class="scan-text">HỆ THỐNG ĐANG PHÂN TÍCH...</div>
+            </div>
+
+            <div class="ai-goal-card" onclick="selectGoal(this)">
+              <div class="card-bg-glow" style="background: radial-gradient(circle at top right, rgba(255, 213, 114, 0.15), transparent 70%);"></div>
+              <div class="card-content">
+                <div class="goal-icon">💼</div>
+                <div class="goal-info">
+                  <div class="goal-title">Công việc & Phỏng vấn</div>
+                  <div class="goal-sub">Mở rộng vốn từ chuyên ngành</div>
+                </div>
+                <div class="goal-radio"></div>
+              </div>
+              <div class="ai-scanner"></div>
+              <div class="scan-text">HỆ THỐNG ĐANG PHÂN TÍCH...</div>
+            </div>
+
+            <div class="ai-goal-card" onclick="selectGoal(this)">
+              <div class="card-bg-glow" style="background: radial-gradient(circle at top right, rgba(255, 128, 107, 0.15), transparent 70%);"></div>
+              <div class="card-content">
+                <div class="goal-icon">📚</div>
+                <div class="goal-info">
+                  <div class="goal-title">Thi cử (IELTS/TOEIC)</div>
+                  <div class="goal-sub">Học thuật và từ vựng nâng cao</div>
+                </div>
+                <div class="goal-radio"></div>
+              </div>
+              <div class="ai-scanner"></div>
+              <div class="scan-text">HỆ THỐNG ĐANG PHÂN TÍCH...</div>
+            </div>
+
+          </div>
+          <div class="spacer"></div>
+        </div>
+      </section>
+
+      <!-- Step 1: Interactive Trial (Mini-experience) -->
+      <section class="step step-interactive">
+        <div class="step-content h-full">
+          <div class="kicker text-cyan">TRẢI NGHIỆM NHANH</div>
+          <h1 class="title">Thử kiểm tra<br>trí nhớ của bạn</h1>
+          <p class="subtitle">Hệ thống đã chọn ra 3 từ vựng công sở. Phân loại chúng nhé.</p>
+
+          <div class="flashcard-container" id="fc-container">
+            <!-- Cards will be injected by JS -->
+          </div>
+
+          <div class="flashcard-controls mt-16" id="fc-controls">
+            <div class="fc-btn fc-btn-no" onclick="swipeCard('left')">
+              <div class="fc-icon">✕</div>
+              <div>Chưa nhớ</div>
+            </div>
+            <div class="fc-btn fc-btn-yes" onclick="swipeCard('right')">
+              <div class="fc-icon">✓</div>
+              <div>Đã nhớ</div>
+            </div>
+          </div>
+
+          <div class="flashcard-result mt-16" id="fc-result" style="display: none;">
+            <div class="r-icon text-cyan" style="font-size: 32px; margin-bottom: 12px; text-align: center;">✨</div>
+            <h2 class="title text-center" style="font-size: 20px;">Hoàn hảo!</h2>
+            <p class="subtitle text-center">Các từ bạn "Chưa nhớ" đã được hệ thống tự động lưu vào thư mục đặc biệt để lặp lại vào ngày mai.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Step 2: Roadmap -->
+      <section class="step step-roadmap">
+        <div class="step-content">
+          <div class="kicker">BẢN ĐỒ CÁ NHÂN ĐÃ SẴN SÀNG</div>
+          <h1 class="title">Mỗi bài học đều<br>đưa bạn tới một nơi rõ ràng.</h1>
+          <p class="subtitle">Hoàn thành từng điểm, mở khoá tình huống mới và luôn biết bài tiếp theo nên học.</p>
+          
+          <div class="map-card">
+            <div class="map-badge">HÀNH TRÌNH · 30 NGÀY</div>
+            <div class="stars"></div>
+            <svg class="dashed-path" viewBox="0 0 200 300" preserveAspectRatio="none">
+              <path d="M 30,250 C 40,190 70,210 85,150 C 100,90 135,180 160,100 C 175,60 178,50 180,45" fill="none" stroke="rgba(132, 230, 226, 0.6)" stroke-width="3" stroke-dasharray="6 8" stroke-linecap="round"/>
+            </svg>
+            <div class="node active" style="left: 12%; top: 78%;">
+              <div class="node-circle">👋</div>
+              <div class="node-label">Làm quen</div>
+            </div>
+            <div class="node active" style="left: 38%; top: 50%;">
+              <div class="node-circle">☕</div>
+              <div class="node-label">Đời sống</div>
+            </div>
+            <div class="node" style="left: 70%; top: 65%;">
+              <div class="node-circle">💬</div>
+              <div class="node-label">Phản xạ</div>
+            </div>
+            <div class="node" style="left: 84%; top: 16%;">
+              <div class="node-circle">🏆</div>
+              <div class="node-label">Tự tin</div>
+            </div>
+            <div class="rocket">🚀</div>
+          </div>
+          
+          <div class="result-strip mt-16">
+            <div class="strip-text">
+              <div class="strip-title">5–10 phút mỗi ngày</div>
+              <div class="strip-sub">Nhịp học bạn có thể duy trì</div>
+            </div>
+            <div class="ai-badge">✦ Tự động điều chỉnh</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Step 3: Mechanism -->
+      <section class="step step-mechanism">
+        <div class="step-content">
+          <div class="kicker" style="color: #FF806B;">THIẾT KẾ LỘ TRÌNH ĐỘC QUYỀN</div>
+          <h1 class="title">Học trong ngữ cảnh.<br>Nhớ đúng lúc cần dùng.</h1>
+          <p class="subtitle">Mỗi topic mở ra một hội thoại hoặc câu chuyện, rồi chỉ tạo Flashcards từ những Words bạn đánh dấu "Cần ôn".</p>
+          
+          <div class="engine-flow">
+            <div class="engine-card base-card">
+              <div class="e-icon text-cyan">🗺️</div>
+              <div class="e-title">Topic trên bản đồ</div>
+              <div class="e-sub">Gặp nhau trước giờ học</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="engine-card premium-card">
+              <div class="e-icon text-cyan">✦</div>
+              <div class="e-title">Tạo bài học riêng</div>
+              <div class="e-sub">Đúng level và số từ bạn chọn</div>
+            </div>
+          </div>
+          
+          <div class="lesson-preview mt-16">
+            <div class="preview-badge">PREVIEW LESSON</div>
+            
+            <div class="chat-bubble">
+              <div class="avatar bg-yellow">A</div>
+              <div class="bubble-content">
+                Hey! Are you <span class="highlight">heading</span> to class?
+              </div>
+            </div>
+            <div class="chat-bubble mt-8">
+              <div class="avatar bg-cyan">B</div>
+              <div class="bubble-content">
+                Yes, I'm a little early today.
+              </div>
+            </div>
+            
+            <div class="word-flow mt-12">
+              <div class="flow-pill">Words</div>
+              <div class="flow-arr">→</div>
+              <div class="flow-pill">Cần ôn</div>
+              <div class="flow-arr">→</div>
+              <div class="flow-pill">Flashcards</div>
+              <div class="flow-arr">→</div>
+              <div class="flow-pill">Nhớ lâu</div>
+            </div>
+          </div>
+
+          <div class="unlock-grid mt-16">
+            <div class="unlock-card">
+              <div class="u-icon">🔁</div>
+              <div class="u-title">Ôn đúng thời điểm</div>
+              <div class="u-sub">4 cấp ghi nhớ tự động</div>
+            </div>
+            <div class="unlock-card">
+              <div class="u-icon">🎧</div>
+              <div class="u-title">Nghe & phản xạ</div>
+              <div class="u-sub">Audio theo từng hội thoại</div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Step 4: Plan Preview -->
+      <section class="step step-plan">
+        <div class="step-content">
+          <div class="kicker text-cyan" style="color: #7DE4DF;">PHÂN TÍCH LỘ TRÌNH</div>
+          <h1 class="title">Bạn sẽ "lột xác" hoàn toàn sau 30 ngày.</h1>
+          <p class="subtitle">MindCards đã tính toán xong lộ trình "hack não" dành riêng cho bạn. Cứ học là trúng, không thể quên!</p>
+          
+          <div class="result-card">
+            <div class="ring-container">
+              <svg class="progress-ring" width="80" height="80">
+                <circle class="ring-bg" cx="40" cy="40" r="34"></circle>
+                <circle class="ring-fill" cx="40" cy="40" r="34" stroke-dasharray="213" stroke-dashoffset="64"></circle>
+              </svg>
+              <div class="ring-text">
+                <div class="ring-val" style="color: #7DE4DF;">500%</div>
+                <div class="ring-lbl" style="font-size: 7px;">TỐC ĐỘ NẠP</div>
+              </div>
+            </div>
+            <div class="result-info">
+              <div class="r-row">
+                <div class="r-icon text-cyan">🚀</div>
+                <div class="r-text">
+                  <div class="r-title">Tăng 5x Phản xạ giao tiếp</div>
+                  <div class="r-sub">Bật ra tiếng Anh tự nhiên không cần dịch tiếng Việt trong đầu.</div>
+                </div>
+              </div>
+              <div class="r-row mt-8">
+                <div class="r-icon text-cyan">🧠</div>
+                <div class="r-text">
+                  <div class="r-title">Ghim chặt vào trí nhớ vĩnh viễn</div>
+                  <div class="r-sub">Thuật toán đẩy thẳng từ vựng vào vùng trí nhớ dài hạn (tỷ lệ quên < 1%).</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="streak-card mt-12">
+            <div class="streak-header">
+              <div class="s-title">Vượt qua 99% người học truyền thống</div>
+              <div class="s-badge" style="background: #FFF0B8; color: #6D5317;">TOP 1%</div>
+            </div>
+            <p style="font-size: 10px; color: var(--text-sub); margin-top: 6px; line-height: 1.4;">
+              Phương pháp này tiết kiệm cho bạn hàng nghìn giờ học vẹt. Bạn đã sẵn sàng để bứt phá chưa?
+            </p>
+          </div>
+          
+        </div>
+      </section>
+
+      <!-- Step 5: Paywall -->
+      <section class="step step-paywall">
+        <div class="step-content paywall-content">
+          
+          <div class="crown-icon">♛</div>
+          <div class="kicker text-gold text-center mt-12">MINDCARDS PREMIUM</div>
+          <h1 class="title text-center mt-4">Mở toàn bộ hành trình<br>bạn vừa tạo.</h1>
+          <p class="subtitle text-center text-light">Học không giới hạn, bản đồ cá nhân và lịch ôn theo trí nhớ của riêng bạn.</p>
+          
+          <div class="premium-benefits mt-16">
+            <div class="pb-row">
+              <div class="pb-card">
+                <div class="pb-badge">✦</div>
+                <div class="pb-text">Tạo bài học hội thoại & câu chuyện không giới hạn</div>
+              </div>
+              <div class="pb-card">
+                <div class="pb-badge">🗺</div>
+                <div class="pb-text">Toàn bộ bản đồ 30 ngày và các chặng tiếp theo</div>
+              </div>
+            </div>
+            <div class="pb-row mt-8">
+              <div class="pb-card">
+                <div class="pb-badge">🧠</div>
+                <div class="pb-text">Flashcards + lịch ôn 4 cấp ghi nhớ</div>
+              </div>
+              <div class="pb-card">
+                <div class="pb-badge">↗</div>
+                <div class="pb-text">Theo dõi streak, tiến độ và kỹ năng đã mở khoá</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="plan-selector mt-16">
+            <div class="plan-card selected" onclick="selectPlan(this)">
+              <div class="plan-radio"></div>
+              <div class="plan-info">
+                <div class="plan-name">12 tháng</div>
+                <div class="plan-sub">Tiết kiệm 41% · Giá minh hoạ</div>
+              </div>
+              <div class="plan-price-col">
+                <div class="plan-price">699.000đ</div>
+                <div class="plan-period">/ năm</div>
+              </div>
+              <div class="popular-badge">PHỔ BIẾN</div>
+            </div>
+            <div class="plan-card mt-8" onclick="selectPlan(this)">
+              <div class="plan-radio"></div>
+              <div class="plan-info">
+                <div class="plan-name">1 tháng</div>
+                <div class="plan-sub">Thanh toán hàng tháng</div>
+              </div>
+              <div class="plan-price-col">
+                <div class="plan-price">99.000đ</div>
+                <div class="plan-period">/ tháng</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="trial-toggle mt-16">
+            <div class="toggle-switch"></div>
+            <div class="toggle-lbl">Bật nhắc trước khi trial kết thúc</div>
+          </div>
+
+          <div class="cta-btn shimmer-btn mt-12" onclick="alert('Đăng ký thành công!')">
+            Dùng thử Premium 7 ngày
+          </div>
+          
+          <div class="legal-text mt-8">Hôm nay chưa tính phí. Sau 7 ngày, gói đã chọn sẽ tự gia hạn trừ khi bạn huỷ trước đó.</div>
+          
+          <div class="free-link mt-16" onclick="alert('Tiếp tục miễn phí')">Tiếp tục với bản miễn phí</div>
+
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Bottom Bar (Hidden on Paywall) -->
+    <footer class="bottom-bar" id="bottom-bar">
+      <div class="back-btn" id="back-btn" onclick="prevStep()">← Quay lại</div>
+      <div class="spacer"></div>
+      <div class="next-btn" id="next-btn" onclick="nextStep()">Vẽ hành trình cho tôi →</div>
+    </footer>
+
+  </div>
+  <script src="script.js?v=4"></script>
+</body>
+</html>

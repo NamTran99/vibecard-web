@@ -1,0 +1,26 @@
+{
+  "name": "mindcard-web",
+  "version": "1.0.0",
+  "description": "MindCard & VibeCard - Material Design 3 (Dark Olive Green) Web Application Prototype",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "serve": "npx serve -l 3000 ."
+  },
+  "keywords": [
+    "mindcard",
+    "vibecard",
+    "flashcard",
+    "material-design-3",
+    "m3",
+    "wabi-sabi",
+    "english-learning"
+  ],
+  "author": "Nam Tran",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^5.4.8"
+  }
+}
