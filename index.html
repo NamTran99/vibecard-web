@@ -715,15 +715,15 @@
         html.light .tactile-search-bar {
             background-color: var(--m3-surface-container) !important;
             border-color: var(--m3-outline-variant) !important;
-            border-bottom-color: var(--m3-surface-container-highest) !important;
-            box-shadow: 0 4px 14px rgba(82, 102, 0, 0.08) !important;
+            border-bottom: 3.5px solid var(--m3-surface-container-highest) !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
         }
         html.light .tactile-search-bar:focus-within,
         html.light .tactile-search-bar.is-focused {
-            background-color: var(--m3-surface-container-highest) !important;
-            border-color: var(--m3-primary) !important;
-            border-bottom-color: var(--m3-primary-container) !important;
-            box-shadow: 0 6px 24px rgba(82, 102, 0, 0.16) !important;
+            background-color: #FFFFFF !important;
+            border-color: #526600 !important;
+            border-bottom: 3.5px solid #3C4D00 !important;
+            box-shadow: 0 4px 16px rgba(82, 102, 0, 0.12) !important;
         }
         html.light .tactile-search-bar .search-glyph {
             color: var(--m3-outline) !important;
@@ -741,16 +741,51 @@
         html.light .tactile-search-bar .tactile-action-btn {
             background-color: var(--m3-surface-container-high) !important;
             color: var(--m3-outline) !important;
-            border-color: var(--m3-outline-variant) !important;
-            border-bottom-color: var(--m3-surface-container-highest) !important;
+            border: 1px solid var(--m3-outline-variant) !important;
+            border-bottom: 2px solid var(--m3-surface-container-highest) !important;
+            box-shadow: none !important;
         }
         html.light .tactile-search-bar .tactile-action-btn:hover,
         html.light .tactile-search-bar .tactile-action-btn:active,
         html.light .tactile-search-bar .tactile-action-btn.has-query {
             background-color: var(--m3-primary) !important;
             color: var(--m3-on-primary) !important;
-            border-color: transparent !important;
-            border-bottom-color: var(--m3-primary-container) !important;
+            border-color: var(--m3-primary) !important;
+            border-bottom: 2.5px solid #3C4D00 !important;
+            box-shadow: 0 2px 8px rgba(82, 102, 0, 0.25) !important;
+        }
+
+        /* Friendly Lumi Greeting Card in Light Mode */
+        html.light #dictLumiGreetingCard {
+            background: #FFFFFF !important;
+            border: 1px solid #E3E0D4 !important;
+            box-shadow: 0 4px 20px rgba(82, 102, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+        }
+        html.light #dictLumiGreetingCard h3 {
+            color: #1B1C17 !important;
+        }
+        html.light #dictLumiGreetingCard p {
+            color: #5B6146 !important;
+        }
+        html.light #dictLumiGreetingCard .lumi-avatar-box {
+            background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%) !important;
+            border-color: rgba(217, 119, 6, 0.35) !important;
+            box-shadow: 0 2px 8px rgba(217, 119, 6, 0.12) !important;
+        }
+        html.light #dictLumiGreetingCard .lumi-assistant-tag {
+            background-color: #FEF3C7 !important;
+            color: #92400E !important;
+            border-color: #FCD34D !important;
+        }
+
+        /* Dictionary Tab Strip Indicator in Light Mode */
+        html.light #dictModeTabLookup span.rounded-full {
+            background-color: var(--m3-primary) !important;
+            box-shadow: none !important;
+        }
+        html.light #dictModeTabLookup > div {
+            background: var(--m3-primary) !important;
+            box-shadow: none !important;
         }
 
         /* Physical Storybook in Light Mode */
@@ -3909,17 +3944,17 @@
             <!-- SUB-VIEW A: EMPTY STATE (Khi chưa nhập từ hoặc vừa xóa tìm kiếm) -->
             <div id="dictEmptyStateView" class="hidden flex flex-col gap-3.5 pt-1 pb-4">
                 
-                <!-- 1. Friendly Lumi Greeting Card (Harmonious M3 Dark Olive Surface) -->
-                <div class="rounded-[24px] p-4 bg-gradient-to-br from-[#252621] via-[#20211C] to-[#1B1C17] border border-[#46483C]/70 relative overflow-hidden shadow-[0_12px_32px_rgba(0,0,0,0.45)]">
+                <!-- 1. Friendly Lumi Greeting Card (Harmonious M3 Surface) -->
+                <div id="dictLumiGreetingCard" class="dict-lumi-greeting rounded-[24px] p-4 bg-gradient-to-br from-[#252621] via-[#20211C] to-[#1B1C17] border border-[#46483C]/70 relative overflow-hidden shadow-[0_12px_32px_rgba(0,0,0,0.45)]">
                     <div class="absolute -right-4 -bottom-4 w-32 h-32 bg-[#B8D166]/10 blur-[45px] rounded-full pointer-events-none"></div>
                     <div class="absolute -left-4 -top-4 w-28 h-28 bg-[#FBBF24]/10 blur-[40px] rounded-full pointer-events-none"></div>
                     <div class="flex items-center gap-3.5 relative z-10">
-                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#3D2E0B]/80 to-[#1B1C17] border border-[#FBBF24]/30 p-1 flex items-center justify-center shrink-0 shadow-[0_0_16px_rgba(251,191,36,0.12)]">
+                        <div class="lumi-avatar-box w-14 h-14 rounded-2xl bg-gradient-to-br from-[#3D2E0B]/80 to-[#1B1C17] border border-[#FBBF24]/30 p-1 flex items-center justify-center shrink-0 shadow-[0_0_16px_rgba(251,191,36,0.12)]">
                             <img src="./img_lumi_reading.png" alt="Lumi" class="w-12 h-12 object-contain scale-105" />
                         </div>
                         <div class="flex-1 min-w-0">
                             <div class="flex items-center gap-1.5">
-                                <span class="text-[10px] font-black uppercase tracking-wider text-[#FDE68A] bg-[#3D2E0B] border border-[#FBBF24]/30 px-2.5 py-0.5 rounded-full flex items-center gap-1">
+                                <span class="lumi-assistant-tag text-[10px] font-black uppercase tracking-wider text-[#FDE68A] bg-[#3D2E0B] border border-[#FBBF24]/30 px-2.5 py-0.5 rounded-full flex items-center gap-1">
                                     <span>Trợ lý Lumi</span>
                                 </span>
                                 <span class="w-1.5 h-1.5 rounded-full bg-[#B8D166] animate-pulse"></span>
