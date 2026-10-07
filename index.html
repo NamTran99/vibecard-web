@@ -2220,332 +2220,293 @@
 
         <!-- Khóa học nổi bật (Cozy Soulful Story Courses - Mobile Web PWA Standard) -->
         <div class="mb-10 animate-slide-up stagger-2 select-none">
-            <!-- Section Header -->
-            <div class="flex justify-between items-end mb-4">
-                <div>
-                    <div class="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-primary mb-0.5">
-                        <span class="w-1.5 h-1.5 rounded-full bg-primary anim-pulse-dot"></span>
-                        <span>Hành trình cốt truyện</span>
-                    </div>
-                    <h3 class="text-[20px] font-black tracking-tight text-textPrimary">Khóa học nổi bật</h3>
+            <!-- Section Header with Quick Nav & All Link -->
+            <div class="flex justify-between items-center mb-3">
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-primary anim-pulse-dot shrink-0"></span>
+                    <h3 class="text-[19px] font-black tracking-tight text-textPrimary whitespace-nowrap">Khóa học nổi bật</h3>
+                    <span class="px-2 py-0.5 rounded-full text-[10.5px] font-extrabold bg-primary/15 text-primary border border-primary/20 whitespace-nowrap shrink-0">4 bài</span>
                 </div>
-                <a href="#" class="text-[12px] font-bold text-textTertiary hover:text-textPrimary transition-colors flex items-center gap-1">
-                    Tất cả <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-                </a>
+                <div class="flex items-center gap-1.5 shrink-0">
+                    <button onclick="scrollStoryCarousel(-1)" id="carouselPrevBtn" class="hidden sm:flex w-7 h-7 rounded-full bg-surfaceContainer border border-outlineVariant hover:border-primary/50 text-textSecondary hover:text-textPrimary items-center justify-center transition-all active:scale-95 disabled:opacity-30 disabled:pointer-events-none cursor-pointer" title="Bài trước">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                    </button>
+                    <button onclick="scrollStoryCarousel(1)" id="carouselNextBtn" class="hidden sm:flex w-7 h-7 rounded-full bg-surfaceContainer border border-outlineVariant hover:border-primary/50 text-textSecondary hover:text-textPrimary items-center justify-center transition-all active:scale-95 disabled:opacity-30 disabled:pointer-events-none cursor-pointer" title="Bài tiếp">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                    </button>
+                    <a href="javascript:void(0)" onclick="openStoryBookReader(0)" class="text-[12px] font-bold text-textTertiary hover:text-primary transition-colors flex items-center gap-0.5 ml-1 whitespace-nowrap">
+                        Tất cả <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
             </div>
 
-            <!-- 3D INTERACTIVE STORYBOOK SHOWCASE (LẬT TRANG SÁCH 3D) -->
-            <div id="interactiveStoryBook" class="storybook-theater relative w-full select-none py-1">
-                
-                <!-- Ambient Warm Atmospheric Glow behind book -->
-                <div class="book-ambient-glow absolute -inset-2 bg-gradient-to-b from-amber-500/10 via-transparent to-black/60 blur-2xl rounded-[36px] pointer-events-none"></div>
-
-                <!-- Main Physical Book Binder & Shell -->
-                <div class="storybook-container relative mx-auto rounded-[32px] bg-[#161712] border border-[#3E4133] shadow-[0_24px_50px_rgba(0,0,0,0.85),0_0_40px_rgba(245,158,11,0.06)] overflow-visible">
+            <!-- MULTI-CARD HORIZONTAL PEEK CAROUSEL (LƯỚT NGANG HÉ LỘ BÀI KẾ TIẾP) -->
+            <div class="relative w-full">
+                <!-- Carousel Horizontal Scrollable Track -->
+                <div id="storyCarouselContainer" class="flex gap-3.5 overflow-x-auto snap-x snap-mandatory scrollbar-none py-1.5 px-0.5 scroll-smooth select-none" style="-webkit-overflow-scrolling: touch;">
                     
-                    <!-- 1. LEFT SPINE (Gáy sách da cao cấp, chỉ thêu vàng, rãnh gáy) -->
-                    <div class="book-spine absolute left-0 top-0 bottom-0 w-[24px] sm:w-[28px] rounded-l-[32px] z-30 flex flex-col justify-between items-center py-5 pointer-events-none">
-                        <!-- Top Brass Spine Clamp / Cap -->
-                        <div class="w-3.5 h-1.5 rounded-full bg-gradient-to-r from-amber-600 via-amber-300 to-amber-600 shadow-sm border border-amber-400/40"></div>
-                        
-                        <!-- Golden Stitched Seam Pattern (Chỉ may thủ công) -->
-                        <div class="book-stitch-line flex-1 w-full flex flex-col items-center justify-around my-2 opacity-50">
-                            <span class="w-1 h-3 rounded-full bg-amber-400/80 mb-2"></span>
-                            <span class="w-1 h-3 rounded-full bg-amber-400/80 mb-2"></span>
-                            <span class="w-1 h-3 rounded-full bg-amber-400/80 mb-2"></span>
-                            <span class="w-1 h-3 rounded-full bg-amber-400/80 mb-2"></span>
-                            <span class="w-1 h-3 rounded-full bg-amber-400/80 mb-2"></span>
-                            <span class="w-1 h-3 rounded-full bg-amber-400/80 mb-2"></span>
-                            <span class="w-1 h-3 rounded-full bg-amber-400/80"></span>
-                        </div>
+                    <!-- CARD 1: CHƯƠNG 1 - MƯA DƯỚI MÁI HIÊN (Đang học) -->
+                    <div id="storyCard-0" onclick="openStoryBookReader(0)" class="story-peek-card w-[84%] sm:w-[350px] shrink-0 snap-center rounded-[28px] bg-surfaceContainer border border-outlineVariant hover:border-primary/60 transition-all duration-300 shadow-[0_12px_28px_rgba(0,0,0,0.35)] flex flex-col overflow-hidden group cursor-pointer relative">
+                        <!-- Top Image Banner -->
+                        <div class="h-[142px] sm:h-[150px] w-full relative overflow-hidden bg-surfaceContainerLow">
+                            <img src="assets/cards/lumi_rain_coffee_eaves.jpg" alt="Mưa Dưới Mái Hiên" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-surfaceContainer via-surfaceContainer/25 to-transparent"></div>
+                            
+                            <!-- Badges -->
+                            <div class="absolute top-3 left-3 right-3 flex items-center justify-between z-10">
+                                <span class="bg-primary text-onPrimary font-extrabold text-[11px] px-2.5 py-0.5 rounded-full shadow-md flex items-center gap-1">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-onPrimary anim-pulse-dot"></span>
+                                    Đang học
+                                </span>
+                                <span class="bg-[#1C1D17]/85 backdrop-blur-md text-amber-300 border border-amber-400/30 font-black text-[11px] px-2.5 py-0.5 rounded-full shadow-sm">
+                                    +350 XP
+                                </span>
+                            </div>
 
-                        <!-- 3 Raised Spine Ribs (Gờ gáy sách dập nổi) -->
-                        <div class="w-4 h-1 rounded-sm bg-[#323627] shadow-[0_1px_2px_rgba(0,0,0,0.8),inset_0_1px_1px_rgba(255,255,255,0.15)]"></div>
-                        
-                        <!-- Bottom Brass Cap -->
-                        <div class="w-3.5 h-1.5 rounded-full bg-gradient-to-r from-amber-600 via-amber-300 to-amber-600 shadow-sm border border-amber-400/40"></div>
-                    </div>
-
-                    <!-- 2. SILK BOOKMARK RIBBON (Dải ruy băng lụa màu vàng hổ phách) -->
-                    <div class="book-ribbon absolute -top-3 right-10 sm:right-14 w-[24px] h-[64px] z-40 pointer-events-none filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.7)]">
-                        <div class="w-full h-full bg-gradient-to-b from-[#F59E0B] via-[#FBBF24] to-[#D97706] relative rounded-t-sm shadow-[inset_0_0_6px_rgba(0,0,0,0.3)] clip-ribbon-swallowtail">
-                            <!-- Golden woven thread highlight -->
-                            <div class="absolute inset-y-0 left-1.5 w-[2px] bg-white/40 blur-[0.5px]"></div>
-                        </div>
-                    </div>
-
-                    <!-- 3. RIGHT STACKED PAPER DECKLE EDGES (Mép giấy xếp tầng 3D bên phải) -->
-                    <div class="book-paper-stack absolute -right-2.5 top-3 bottom-3 w-[11px] rounded-r-[12px] z-10 pointer-events-none"></div>
-
-                    <!-- 4. PAGES STAGE (3D Turning Pages Stage) -->
-                    <div id="storybookStage" class="book-stage relative w-full h-[525px] sm:h-[530px] pl-[26px] pr-2 py-2 overflow-hidden rounded-[32px] cursor-grab active:cursor-grabbing">
-                        
-                        <!-- ============================================== -->
-                        <!-- PAGE 1: CHƯƠNG 1 - MƯA DƯỚI MÁI HIÊN (ACTIVE) -->
-                        <!-- ============================================== -->
-                        <div id="storyBookPage-0" class="book-page page-active" data-page-index="0">
-                            <!-- Page Interior Parchment Texture & Subtle Vignette -->
-                            <div class="h-full rounded-[24px] bg-gradient-to-b from-[#23241D] via-[#1C1D18] to-[#151611] border border-amber-500/25 p-4 flex flex-col justify-between shadow-[inset_0_0_30px_rgba(0,0,0,0.6)] relative overflow-hidden group">
-                                
-                                <!-- Crease Shadow from left spine -->
-                                <div class="absolute left-0 inset-y-0 w-8 bg-gradient-to-r from-black/60 to-transparent pointer-events-none z-10"></div>
-                                <!-- Warm Lantern Glow -->
-                                <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-48 h-32 bg-amber-500/15 blur-2xl rounded-full pointer-events-none"></div>
-
-                                <!-- Top Page Bar (Chapter Badge & XP) -->
-                                <div class="relative h-[180px] rounded-[20px] overflow-hidden bg-screenBg mb-3 shadow-inner border border-white/10 group-hover:border-amber-400/35 transition-all">
-                                    <img src="assets/cards/lumi_rain_coffee_eaves.jpg" alt="Mưa Dưới Mái Hiên" class="w-full h-full object-cover object-[center_35%] group-hover:scale-105 transition-transform duration-700" />
-                                    <div class="absolute inset-0 bg-gradient-to-t from-[#1C1D18] via-transparent to-black/35"></div>
-
-                                    <!-- Story Badges (Floating on Art) -->
-                                    <div class="absolute top-2.5 left-2.5 flex items-center gap-1.5">
-                                        <span class="px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-md border border-amber-400/40 text-amber-300 text-[10.5px] font-extrabold flex items-center gap-1.5 shadow-lg">
-                                            <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
-                                            Đang học
-                                        </span>
-                                    </div>
-
-                                    <div class="absolute top-2.5 right-2.5">
-                                        <span class="px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-md border border-primary/40 text-primary text-[10.5px] font-black flex items-center gap-1 shadow-lg">
-                                            <span>⚡</span>
-                                            <span>+350 XP</span>
-                                        </span>
-                                    </div>
-
-                                    <!-- Bottom chapter pill on art -->
-                                    <div class="absolute bottom-2.5 left-2.5 right-2.5 flex justify-between items-center text-[10px] font-bold text-textSecondary">
-                                        <span class="px-2.5 py-1 rounded-lg bg-surface/85 backdrop-blur-md border border-white/10 text-amber-200 flex items-center gap-1">
-                                            <span>📖</span> Chương 1: Quán cà phê góc phố
-                                        </span>
-                                        <span class="text-textTertiary font-mono">8/12 bài</span>
-                                    </div>
-                                </div>
-
-                                <!-- Page Story Details -->
-                                <div class="flex-1 flex flex-col justify-between px-1">
-                                    <div>
-                                        <div class="flex items-center gap-2 mb-1.5 text-[11px]">
-                                            <span class="font-bold text-amber-400 flex items-center gap-1">☕ Hội thoại đời sống</span>
-                                            <span class="text-outline">•</span>
-                                            <span class="text-textTertiary font-medium">Mưa đêm Tokyo</span>
-                                        </div>
-
-                                        <h4 class="text-[20px] font-black text-textPrimary tracking-tight leading-snug group-hover:text-amberText transition-colors mb-1.5">
-                                            Mưa Dưới Mái Hiên
-                                        </h4>
-
-                                        <p class="text-[12.5px] text-textSecondary leading-relaxed font-normal mb-3 line-clamp-2">
-                                            Trú mưa bên hiên quán nhỏ & gọi một ly latte ấm nóng. Cùng Lumi khám phá văn hóa trò chuyện tinh tế của người bản xứ.
-                                        </p>
-                                    </div>
-
-                                    <!-- Journey Track Progress Bar -->
-                                    <div class="mb-3.5 bg-white/[0.04] p-2.5 rounded-2xl border border-white/[0.06]">
-                                        <div class="flex justify-between items-center text-[11px] font-bold mb-1.5">
-                                            <span class="text-amber-300 truncate mr-2 flex items-center gap-1">
-                                                <span>🎯</span> Bài 9: Cảm ơn & Tạm biệt
-                                            </span>
-                                            <span class="text-textSecondary shrink-0 font-extrabold">67%</span>
-                                        </div>
-                                        <div class="w-full h-2 bg-black/40 rounded-full overflow-hidden p-[0.5px]">
-                                            <div class="h-full bg-gradient-to-r from-amber-400 via-orange-400 to-amber-300 rounded-full shadow-[0_0_10px_rgba(251,191,36,0.6)]" style="width: 67%;"></div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Action Button: Open Spread / Learn Lesson 9 -->
-                                    <button onclick="openStoryBookReader(0)" class="w-full h-[48px] rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-400 hover:brightness-105 active:scale-[0.98] text-[#1B1104] font-black text-[14px] flex items-center justify-center gap-2 shadow-[0_6px_20px_rgba(245,158,11,0.28)] transition-all btn-tactile">
-                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                                        <span>Vào học tiếp bài 9</span>
-                                    </button>
-                                </div>
-
-                                <!-- Folded Dog-Ear Corner at Bottom-Right (Lật trang ❯) -->
-                                <div onclick="flipStoryBook(1)" class="book-dog-ear absolute bottom-0 right-0 w-10 h-10 cursor-pointer z-20 group/dogear" title="Bấm để lật sang trang sau">
-                                    <div class="dog-ear-peel"></div>
-                                    <span class="absolute bottom-1 right-1 text-[9px] font-black text-amber-300/80 group-hover/dogear:text-amber-200">❯</span>
-                                </div>
+                            <!-- Bottom Image Chip -->
+                            <div class="absolute bottom-2.5 left-3.5 z-10">
+                                <span class="text-[11px] font-semibold text-white/90 bg-black/50 backdrop-blur-md px-2 py-0.5 rounded-lg border border-white/10">
+                                    ☕ Hội thoại đời sống • Mưa Tokyo
+                                </span>
                             </div>
                         </div>
 
-                        <!-- ============================================== -->
-                        <!-- PAGE 2: CHƯƠNG 2 - NHẦM CHUYẾN XE              -->
-                        <!-- ============================================== -->
-                        <div id="storyBookPage-1" class="book-page page-next" data-page-index="1">
-                            <div class="h-full rounded-[24px] bg-gradient-to-b from-[#20221D] via-[#1A1B16] to-[#141510] border border-outline p-4 flex flex-col justify-between shadow-[inset_0_0_30px_rgba(0,0,0,0.6)] relative overflow-hidden group">
-                                <div class="absolute left-0 inset-y-0 w-8 bg-gradient-to-r from-black/60 to-transparent pointer-events-none z-10"></div>
-                                <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-48 h-32 bg-tertiary/12 blur-2xl rounded-full pointer-events-none"></div>
+                        <!-- Card Content Body -->
+                        <div class="p-4 pt-3 flex flex-col flex-1 justify-between gap-3">
+                            <div>
+                                <div class="text-[11px] font-bold text-primary uppercase tracking-wider mb-0.5">Chương 1 • Quán cà phê</div>
+                                <h4 class="text-[17px] font-extrabold text-textPrimary leading-snug group-hover:text-primary transition-colors line-clamp-1">
+                                    Mưa Dưới Mái Hiên
+                                </h4>
+                                <p class="text-[12px] text-textSecondary line-clamp-2 leading-relaxed mt-1">
+                                    Trú mưa bên hiên quán nhỏ & gọi một ly latte ấm nóng. Cùng Lumi khám phá văn hóa trò chuyện tinh tế.
+                                </p>
+                            </div>
 
-                                <div class="relative h-[180px] rounded-[20px] overflow-hidden bg-screenBg mb-3 shadow-inner border border-white/10 group-hover:border-tertiary/35 transition-all">
-                                    <img src="assets/cards/lumi_train_station_night.jpg" alt="Nhầm Chuyến Xe" class="w-full h-full object-cover object-[center_35%] group-hover:scale-105 transition-transform duration-700" />
-                                    <div class="absolute inset-0 bg-gradient-to-t from-[#1A1B16] via-transparent to-black/35"></div>
-
-                                    <div class="absolute top-2.5 left-2.5 flex items-center gap-1.5">
-                                        <span class="px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-textSecondary text-[10.5px] font-bold shadow-lg">
-                                            Chưa mở
-                                        </span>
-                                    </div>
-                                    <div class="absolute top-2.5 right-2.5">
-                                        <span class="px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-md border border-tertiary/40 text-tertiary text-[10.5px] font-black flex items-center gap-1 shadow-lg">
-                                            <span>⚡</span>
-                                            <span>+400 XP</span>
-                                        </span>
-                                    </div>
-                                    <div class="absolute bottom-2.5 left-2.5 right-2.5 flex justify-between items-center text-[10px] font-bold text-textSecondary">
-                                        <span class="px-2.5 py-1 rounded-lg bg-surface/85 backdrop-blur-md border border-white/10 text-tertiary flex items-center gap-1">
-                                            <span>📖</span> Chương 2: Chuyến tàu nửa đêm
-                                        </span>
-                                        <span class="text-textTertiary font-mono">0/10 bài</span>
-                                    </div>
+                            <!-- Progress Track -->
+                            <div class="bg-surfaceContainerLow/90 rounded-2xl p-2.5 border border-outlineVariant/60">
+                                <div class="flex items-center justify-between text-[11px] mb-1.5 font-bold">
+                                    <span class="text-textSecondary">Bài 9: Cảm ơn & Tạm biệt</span>
+                                    <span class="text-primary font-black">67% (8/12)</span>
                                 </div>
-
-                                <div class="flex-1 flex flex-col justify-between px-1">
-                                    <div>
-                                        <div class="flex items-center gap-2 mb-1.5 text-[11px]">
-                                            <span class="font-bold text-tertiary flex items-center gap-1">🎫 Du lịch & Khám phá</span>
-                                            <span class="text-outline">•</span>
-                                            <span class="text-textTertiary font-medium">Ga đêm 00:00</span>
-                                        </div>
-                                        <h4 class="text-[20px] font-black text-textPrimary tracking-tight leading-snug group-hover:text-onTertiaryContainer transition-colors mb-1.5">
-                                            Nhầm Chuyến Xe
-                                        </h4>
-                                        <p class="text-[12.5px] text-textSecondary leading-relaxed font-normal mb-3 line-clamp-2">
-                                            Lên nhầm chuyến tàu đêm đến thành phố ánh sao. Học cách hỏi thông tin vé, đọc biển báo ga và xoay sở tình huống bất ngờ.
-                                        </p>
-                                    </div>
-
-                                    <div class="mb-3.5 bg-white/[0.04] p-2.5 rounded-2xl border border-white/[0.06]">
-                                        <div class="flex justify-between items-center text-[11px] font-bold mb-1.5">
-                                            <span class="text-textTertiary flex items-center gap-1">
-                                                <span>🔒</span> Khóa: Cần hoàn thành Chương 1
-                                            </span>
-                                            <span class="text-textTertiary font-extrabold">0%</span>
-                                        </div>
-                                        <div class="w-full h-2 bg-black/40 rounded-full overflow-hidden">
-                                            <div class="h-full bg-white/15 rounded-full" style="width: 0%;"></div>
-                                        </div>
-                                    </div>
-
-                                    <button onclick="openStoryBookReader(1)" class="w-full h-[48px] rounded-xl bg-white/[0.08] hover:bg-white/[0.12] active:scale-[0.98] border border-white/15 text-textPrimary font-extrabold text-[14px] flex items-center justify-center gap-2 transition-all btn-tactile">
-                                        <span>Xem mục lục chương</span>
-                                        <svg class="w-3.5 h-3.5 fill-none stroke-current stroke-2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-                                    </button>
-                                </div>
-
-                                <div onclick="flipStoryBook(1)" class="book-dog-ear absolute bottom-0 right-0 w-10 h-10 cursor-pointer z-20 group/dogear" title="Bấm để lật sang trang sau">
-                                    <div class="dog-ear-peel"></div>
-                                    <span class="absolute bottom-1 right-1 text-[9px] font-black text-tertiary/80 group-hover/dogear:text-tertiary">❯</span>
+                                <div class="w-full h-1.5 bg-surfaceContainerHighest rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-primary to-amber-400 rounded-full transition-all duration-500" style="width: 67%;"></div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- ============================================== -->
-                        <!-- PAGE 3: CHƯƠNG 3 - THỬ THÁCH ÂM ĐIỆU           -->
-                        <!-- ============================================== -->
-                        <div id="storyBookPage-2" class="book-page page-next" data-page-index="2">
-                            <div class="h-full rounded-[24px] bg-gradient-to-b from-[#1C2422] via-[#171E1C] to-[#121615] border border-tertiary/30 p-4 flex flex-col justify-between shadow-[inset_0_0_30px_rgba(0,0,0,0.6)] relative overflow-hidden group">
-                                <div class="absolute left-0 inset-y-0 w-8 bg-gradient-to-r from-black/60 to-transparent pointer-events-none z-10"></div>
-                                <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-48 h-32 bg-tertiary/15 blur-2xl rounded-full pointer-events-none"></div>
-
-                                <div class="relative h-[180px] rounded-[20px] overflow-hidden bg-screenBg mb-3 shadow-inner border border-white/10 group-hover:border-tertiary/40 transition-all">
-                                    <img src="assets/cards/lumi_melody_arena.jpg" alt="Thử Thách Âm Điệu" class="w-full h-full object-cover object-[center_35%] group-hover:scale-105 transition-transform duration-700" />
-                                    <div class="absolute inset-0 bg-gradient-to-t from-[#171E1C] via-transparent to-black/35"></div>
-
-                                    <div class="absolute top-2.5 left-2.5 flex items-center gap-1.5">
-                                        <span class="px-2.5 py-1 rounded-full bg-tertiaryContainer/90 backdrop-blur-md border border-tertiary/40 text-onTertiaryContainer text-[10.5px] font-black flex items-center gap-1.5 shadow-lg">
-                                            <span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
-                                            Đấu trường
-                                        </span>
-                                    </div>
-                                    <div class="absolute top-2.5 right-2.5">
-                                        <span class="px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-md border border-amberGlow/35 text-amberGlow text-[10.5px] font-black flex items-center gap-1 shadow-lg">
-                                            <span>👑</span>
-                                            <span>+500 XP</span>
-                                        </span>
-                                    </div>
-                                    <div class="absolute bottom-2.5 left-2.5 right-2.5 flex justify-between items-center text-[10px] font-bold text-textSecondary">
-                                        <span class="px-2.5 py-1 rounded-lg bg-surface/90 backdrop-blur-md border border-outlineVariant text-onTertiaryContainer flex items-center gap-1">
-                                            <span>🎙️</span> Đặc biệt: 20 câu phản xạ âm
-                                        </span>
-                                        <span class="text-amberGlow font-extrabold">Còn 3 ngày</span>
-                                    </div>
-                                </div>
-
-                                <div class="flex-1 flex flex-col justify-between px-1">
-                                    <div>
-                                        <div class="flex items-center gap-2 mb-1.5 text-[11px]">
-                                            <span class="font-bold text-tertiary flex items-center gap-1">🎙️ Phát âm & Ngữ điệu</span>
-                                            <span class="text-outline">•</span>
-                                            <span class="text-textTertiary font-medium">Trời cực quang</span>
-                                        </div>
-                                        <h4 class="text-[20px] font-black text-textPrimary tracking-tight leading-snug group-hover:text-onTertiaryContainer transition-colors mb-1.5">
-                                            Thử Thách Âm Điệu
-                                        </h4>
-                                        <p class="text-[12.5px] text-textSecondary leading-relaxed font-normal mb-3 line-clamp-2">
-                                            Bắt nhịp ngữ điệu bản xứ dưới trời cực quang. Thử thách bắt tai, nhại giọng theo thang âm chuẩn của diễn viên lồng tiếng.
-                                        </p>
-                                    </div>
-
-                                    <div class="mb-3.5 bg-white/[0.04] p-2.5 rounded-2xl border border-white/[0.06]">
-                                        <div class="flex justify-between items-center text-[11px] font-bold mb-1.5">
-                                            <span class="text-onTertiaryContainer flex items-center gap-1">
-                                                <span>🔥</span> Sự kiện tuần: 7/20 câu
-                                            </span>
-                                            <span class="text-tertiary font-extrabold">35%</span>
-                                        </div>
-                                        <div class="w-full h-2 bg-black/40 rounded-full overflow-hidden p-[0.5px]">
-                                            <div class="h-full bg-gradient-to-r from-tertiaryContainer via-tertiary to-primary rounded-full shadow-[0_0_10px_rgba(161,208,196,0.6)]" style="width: 35%;"></div>
-                                        </div>
-                                    </div>
-
-                                    <button onclick="openStoryBookReader(2)" class="w-full h-[48px] rounded-xl bg-gradient-to-r from-tertiaryContainer via-tertiaryContainer to-tertiaryContainer hover:brightness-110 active:scale-[0.98] text-onTertiaryContainer font-black text-[14px] flex items-center justify-center gap-2 border border-tertiary/35 shadow-[0_6px_20px_rgba(33,78,69,0.35)] transition-all btn-tactile">
-                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                                        <span>Vào đấu trường ngay</span>
-                                    </button>
-                                </div>
-
-                                <div onclick="flipStoryBook(-1)" class="book-dog-ear absolute bottom-0 left-8 w-10 h-10 cursor-pointer z-20 group/dogear" title="Bấm để lật về trang trước">
-                                    <div class="dog-ear-peel dog-ear-left"></div>
-                                    <span class="absolute bottom-1 left-1 text-[9px] font-black text-tertiary/80 group-hover/dogear:text-tertiary">❮</span>
-                                </div>
+                            <!-- Action Button Row -->
+                            <div class="flex items-center gap-2 pt-0.5">
+                                <button onclick="event.stopPropagation(); openStoryBookReader(0)" class="flex-1 py-2.5 px-3.5 rounded-xl bg-primary hover:bg-primary/90 text-onPrimary font-extrabold text-[12.5px] flex items-center justify-center gap-1.5 shadow-md active:scale-95 transition-all">
+                                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    <span>Vào học tiếp</span>
+                                </button>
+                                <button onclick="event.stopPropagation(); openStoryBookReader(0)" class="w-10 h-10 rounded-xl bg-surfaceContainerHigh hover:bg-surfaceContainerHighest text-textSecondary hover:text-textPrimary border border-outlineVariant flex items-center justify-center transition-colors shrink-0" title="Mục lục bài học">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                                </button>
                             </div>
                         </div>
-
                     </div>
 
-                    <!-- 5. SLEEK PHYSICAL BOOK FLIP CONTROLS (Nút lật trang 2 bên) -->
-                    <div class="absolute inset-y-0 left-0 right-0 flex justify-between items-center px-1 pointer-events-none z-30">
-                        <!-- Prev Flip Button -->
-                        <button id="bookPrevBtn" onclick="flipStoryBook(-1)" class="pointer-events-auto w-9 h-9 rounded-full bg-[#1F201A]/90 hover:bg-[#2B2D24] text-textSecondary hover:text-white border border-[#46483C]/70 shadow-[0_4px_12px_rgba(0,0,0,0.6)] backdrop-blur-md flex items-center justify-center -translate-x-3 transition-all active:scale-90 disabled:opacity-0 disabled:pointer-events-none cursor-pointer" title="Lật về trang trước">
-                            <svg class="w-4 h-4 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
-                        </button>
-                        <!-- Next Flip Button -->
-                        <button id="bookNextBtn" onclick="flipStoryBook(1)" class="pointer-events-auto w-9 h-9 rounded-full bg-[#1F201A]/90 hover:bg-[#2B2D24] text-textSecondary hover:text-white border border-[#46483C]/70 shadow-[0_4px_12px_rgba(0,0,0,0.6)] backdrop-blur-md flex items-center justify-center translate-x-3 transition-all active:scale-90 disabled:opacity-0 disabled:pointer-events-none cursor-pointer" title="Lật sang trang sau">
-                            <svg class="w-4 h-4 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-                        </button>
+                    <!-- CARD 2: CHƯƠNG 2 - NHẦM CHUYẾN XE (Mở tiếp theo) -->
+                    <div id="storyCard-1" onclick="openStoryBookReader(1)" class="story-peek-card w-[84%] sm:w-[350px] shrink-0 snap-center rounded-[28px] bg-surfaceContainer border border-outlineVariant hover:border-amber-400/50 transition-all duration-300 shadow-[0_12px_28px_rgba(0,0,0,0.35)] flex flex-col overflow-hidden group cursor-pointer relative">
+                        <!-- Top Image Banner -->
+                        <div class="h-[142px] sm:h-[150px] w-full relative overflow-hidden bg-surfaceContainerLow">
+                            <img src="assets/cards/lumi_train_station_night.jpg" alt="Nhầm Chuyến Xe" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 filter brightness-95">
+                            <div class="absolute inset-0 bg-gradient-to-t from-surfaceContainer via-surfaceContainer/25 to-transparent"></div>
+                            
+                            <!-- Badges -->
+                            <div class="absolute top-3 left-3 right-3 flex items-center justify-between z-10">
+                                <span class="bg-surfaceContainerHighest/90 backdrop-blur-md text-textSecondary font-bold text-[11px] px-2.5 py-0.5 rounded-full border border-outlineVariant flex items-center gap-1">
+                                    <svg class="w-3 h-3 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg>
+                                    Mở tiếp theo
+                                </span>
+                                <span class="bg-[#1C1D17]/85 backdrop-blur-md text-amber-300 border border-amber-400/30 font-black text-[11px] px-2.5 py-0.5 rounded-full shadow-sm">
+                                    +400 XP
+                                </span>
+                            </div>
+
+                            <!-- Bottom Image Chip -->
+                            <div class="absolute bottom-2.5 left-3.5 z-10">
+                                <span class="text-[11px] font-semibold text-white/90 bg-black/50 backdrop-blur-md px-2 py-0.5 rounded-lg border border-white/10">
+                                    🎫 Du lịch & Khám phá • Ga đêm 00:00
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Card Content Body -->
+                        <div class="p-4 pt-3 flex flex-col flex-1 justify-between gap-3">
+                            <div>
+                                <div class="text-[11px] font-bold text-amber-400 uppercase tracking-wider mb-0.5">Chương 2 • Chuyến tàu đêm</div>
+                                <h4 class="text-[17px] font-extrabold text-textPrimary leading-snug group-hover:text-amber-300 transition-colors line-clamp-1">
+                                    Nhầm Chuyến Xe
+                                </h4>
+                                <p class="text-[12px] text-textSecondary line-clamp-2 leading-relaxed mt-1">
+                                    Lên nhầm chuyến tàu đêm đến thành phố ánh sao. Học cách hỏi thông tin vé, đọc biển báo ga và xoay sở tình huống.
+                                </p>
+                            </div>
+
+                            <!-- Progress Track -->
+                            <div class="bg-surfaceContainerLow/90 rounded-2xl p-2.5 border border-outlineVariant/60">
+                                <div class="flex items-center justify-between text-[11px] mb-1.5 font-bold">
+                                    <span class="text-textTertiary">Khóa: Hoàn thành Ch.1</span>
+                                    <span class="text-textTertiary font-medium">0/10 bài</span>
+                                </div>
+                                <div class="w-full h-1.5 bg-surfaceContainerHighest rounded-full overflow-hidden">
+                                    <div class="h-full bg-outlineVariant rounded-full" style="width: 0%;"></div>
+                                </div>
+                            </div>
+
+                            <!-- Action Button Row -->
+                            <div class="flex items-center gap-2 pt-0.5">
+                                <button onclick="event.stopPropagation(); openStoryBookReader(1)" class="flex-1 py-2.5 px-3.5 rounded-xl bg-surfaceContainerHigh hover:bg-surfaceContainerHighest text-textPrimary font-extrabold text-[12.5px] border border-outlineVariant flex items-center justify-center gap-1.5 active:scale-95 transition-all">
+                                    <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                    <span>Xem mục lục & chi tiết</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CARD 3: ĐẤU TRƯỜNG - THỬ THÁCH ÂM ĐIỆU (Thử thách phát âm) -->
+                    <div id="storyCard-2" onclick="openStoryBookReader(2)" class="story-peek-card w-[84%] sm:w-[350px] shrink-0 snap-center rounded-[28px] bg-surfaceContainer border border-outlineVariant hover:border-tertiary/60 transition-all duration-300 shadow-[0_12px_28px_rgba(0,0,0,0.35)] flex flex-col overflow-hidden group cursor-pointer relative">
+                        <!-- Top Image Banner -->
+                        <div class="h-[142px] sm:h-[150px] w-full relative overflow-hidden bg-surfaceContainerLow">
+                            <img src="assets/cards/lumi_melody_arena.jpg" alt="Thử Thách Âm Điệu" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-surfaceContainer via-surfaceContainer/25 to-transparent"></div>
+                            
+                            <!-- Badges -->
+                            <div class="absolute top-3 left-3 right-3 flex items-center justify-between z-10">
+                                <span class="bg-tertiaryContainer text-onTertiaryContainer font-extrabold text-[11px] px-2.5 py-0.5 rounded-full shadow-md flex items-center gap-1">
+                                    <span>🎙️</span> Đấu trường tuần
+                                </span>
+                                <span class="bg-[#1C1D17]/85 backdrop-blur-md text-amber-300 border border-amber-400/30 font-black text-[11px] px-2.5 py-0.5 rounded-full shadow-sm">
+                                    +500 XP
+                                </span>
+                            </div>
+
+                            <!-- Bottom Image Chip -->
+                            <div class="absolute bottom-2.5 left-3.5 z-10">
+                                <span class="text-[11px] font-semibold text-white/90 bg-black/50 backdrop-blur-md px-2 py-0.5 rounded-lg border border-white/10">
+                                    🌌 Phát âm & Ngữ điệu • Trời cực quang
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Card Content Body -->
+                        <div class="p-4 pt-3 flex flex-col flex-1 justify-between gap-3">
+                            <div>
+                                <div class="text-[11px] font-bold text-tertiary uppercase tracking-wider mb-0.5">Sự kiện đặc biệt</div>
+                                <h4 class="text-[17px] font-extrabold text-textPrimary leading-snug group-hover:text-tertiary transition-colors line-clamp-1">
+                                    Thử Thách Âm Điệu
+                                </h4>
+                                <p class="text-[12px] text-textSecondary line-clamp-2 leading-relaxed mt-1">
+                                    Bắt nhịp ngữ điệu bản xứ dưới trời cực quang. Thử thách bắt tai, nhại giọng chuẩn diễn viên lồng tiếng.
+                                </p>
+                            </div>
+
+                            <!-- Progress Track -->
+                            <div class="bg-surfaceContainerLow/90 rounded-2xl p-2.5 border border-outlineVariant/60">
+                                <div class="flex items-center justify-between text-[11px] mb-1.5 font-bold">
+                                    <span class="text-textSecondary">Sự kiện tuần: 7/20 câu</span>
+                                    <span class="text-tertiary font-black">35%</span>
+                                </div>
+                                <div class="w-full h-1.5 bg-surfaceContainerHighest rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-tertiary to-primary rounded-full transition-all duration-500" style="width: 35%;"></div>
+                                </div>
+                            </div>
+
+                            <!-- Action Button Row -->
+                            <div class="flex items-center gap-2 pt-0.5">
+                                <button onclick="event.stopPropagation(); openStoryBookReader(2)" class="flex-1 py-2.5 px-3.5 rounded-xl bg-tertiaryContainer hover:bg-tertiaryContainer/90 text-onTertiaryContainer font-extrabold text-[12.5px] flex items-center justify-center gap-1.5 shadow-md active:scale-95 transition-all">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg>
+                                    <span>Vào thử thách</span>
+                                </button>
+                                <button onclick="event.stopPropagation(); openStoryBookReader(2)" class="w-10 h-10 rounded-xl bg-surfaceContainerHigh hover:bg-surfaceContainerHighest text-textSecondary hover:text-textPrimary border border-outlineVariant flex items-center justify-center transition-colors shrink-0" title="Chi tiết câu chuyện">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CARD 4: CHƯƠNG 3 - ĐÊM HỘI ĐOM ĐÓM (Nông trại ngàn sao) -->
+                    <div id="storyCard-3" onclick="openStoryBookReader(3)" class="story-peek-card w-[84%] sm:w-[350px] shrink-0 snap-center rounded-[28px] bg-surfaceContainer border border-outlineVariant hover:border-amber-400/50 transition-all duration-300 shadow-[0_12px_28px_rgba(0,0,0,0.35)] flex flex-col overflow-hidden group cursor-pointer relative">
+                        <!-- Top Image Banner -->
+                        <div class="h-[142px] sm:h-[150px] w-full relative overflow-hidden bg-surfaceContainerLow">
+                            <img src="assets/cards/pixar_night_farm_scenery.jpg" alt="Đêm Hội Đom Đóm" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-surfaceContainer via-surfaceContainer/25 to-transparent"></div>
+                            
+                            <!-- Badges -->
+                            <div class="absolute top-3 left-3 right-3 flex items-center justify-between z-10">
+                                <span class="bg-amberContainer text-amberText font-extrabold text-[11px] px-2.5 py-0.5 rounded-full shadow-md flex items-center gap-1">
+                                    <span>✨</span> Ngoại truyện
+                                </span>
+                                <span class="bg-[#1C1D17]/85 backdrop-blur-md text-amber-300 border border-amber-400/30 font-black text-[11px] px-2.5 py-0.5 rounded-full shadow-sm">
+                                    +600 XP
+                                </span>
+                            </div>
+
+                            <!-- Bottom Image Chip -->
+                            <div class="absolute bottom-2.5 left-3.5 z-10">
+                                <span class="text-[11px] font-semibold text-white/90 bg-black/50 backdrop-blur-md px-2 py-0.5 rounded-lg border border-white/10">
+                                    🌾 Nông thôn yên bình • Đêm ngàn sao
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Card Content Body -->
+                        <div class="p-4 pt-3 flex flex-col flex-1 justify-between gap-3">
+                            <div>
+                                <div class="text-[11px] font-bold text-amber-400 uppercase tracking-wider mb-0.5">Chương 3 • Thung lũng đom đóm</div>
+                                <h4 class="text-[17px] font-extrabold text-textPrimary leading-snug group-hover:text-amber-300 transition-colors line-clamp-1">
+                                    Đêm Hội Đom Đóm
+                                </h4>
+                                <p class="text-[12px] text-textSecondary line-clamp-2 leading-relaxed mt-1">
+                                    Dạo bước giữa cánh đồng đêm lấp lánh đom đóm. Thu lượm các từ vựng cảm xúc, phong cảnh và ký ức êm dịu.
+                                </p>
+                            </div>
+
+                            <!-- Progress Track -->
+                            <div class="bg-surfaceContainerLow/90 rounded-2xl p-2.5 border border-outlineVariant/60">
+                                <div class="flex items-center justify-between text-[11px] mb-1.5 font-bold">
+                                    <span class="text-textSecondary">Chuẩn bị ra mắt tuần này</span>
+                                    <span class="text-amber-400 font-bold">Sắp mở</span>
+                                </div>
+                                <div class="w-full h-1.5 bg-surfaceContainerHighest rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-amber-400 to-amber-200 rounded-full" style="width: 15%;"></div>
+                                </div>
+                            </div>
+
+                            <!-- Action Button Row -->
+                            <div class="flex items-center gap-2 pt-0.5">
+                                <button onclick="event.stopPropagation(); openStoryBookReader(3)" class="flex-1 py-2.5 px-3.5 rounded-xl bg-surfaceContainerHigh hover:bg-surfaceContainerHighest text-textPrimary font-extrabold text-[12.5px] border border-outlineVariant flex items-center justify-center gap-1.5 active:scale-95 transition-all">
+                                    <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                                    <span>Xem trước ngoại truyện</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
 
-                <!-- 6. BOOK STATUS BAR & INTUITIVE PAGINATION -->
-                <div class="flex flex-col items-center justify-center mt-3 gap-1.5">
-                    <!-- Page dots & live chapter title -->
-                    <div class="flex items-center gap-2">
-                        <button onclick="goToStoryBookPage(0)" id="bookDot-0" class="book-nav-dot h-2 w-6 bg-amber-400 rounded-full transition-all duration-300 shadow-[0_0_8px_rgba(251,191,36,0.6)]"></button>
-                        <button onclick="goToStoryBookPage(1)" id="bookDot-1" class="book-nav-dot h-2 w-2 bg-white/20 hover:bg-white/40 rounded-full transition-all duration-300"></button>
-                        <button onclick="goToStoryBookPage(2)" id="bookDot-2" class="book-nav-dot h-2 w-2 bg-white/20 hover:bg-white/40 rounded-full transition-all duration-300"></button>
+                <!-- CAROUSEL PAGINATION DOTS & HINT -->
+                <div class="flex items-center justify-between mt-3 px-1">
+                    <!-- Dots Indicator -->
+                    <div class="flex items-center gap-1.5">
+                        <button onclick="scrollStoryCarouselTo(0)" id="storyDot-0" class="h-2 w-7 bg-primary rounded-full transition-all duration-300 shadow-sm" aria-label="Xem bài 1"></button>
+                        <button onclick="scrollStoryCarouselTo(1)" id="storyDot-1" class="h-2 w-2 bg-outlineVariant hover:bg-outline rounded-full transition-all duration-300" aria-label="Xem bài 2"></button>
+                        <button onclick="scrollStoryCarouselTo(2)" id="storyDot-2" class="h-2 w-2 bg-outlineVariant hover:bg-outline rounded-full transition-all duration-300" aria-label="Xem bài 3"></button>
+                        <button onclick="scrollStoryCarouselTo(3)" id="storyDot-3" class="h-2 w-2 bg-outlineVariant hover:bg-outline rounded-full transition-all duration-300" aria-label="Xem bài 4"></button>
                     </div>
 
-                    <!-- Live Page Badge & Swipe Tip -->
-                    <div class="flex items-center justify-center gap-2 text-[11.5px] text-textTertiary font-medium text-center px-2">
-                        <span id="bookPageLabel" class="text-amber-300 font-extrabold tracking-tight">Trang 1/3 • Mưa Dưới Mái Hiên</span>
-                        <span class="opacity-40">•</span>
-                        <span class="text-textTertiary/80 flex items-center gap-1">
-                            <span>Vuốt để lật</span>
-                            <span class="animate-pulse">↷</span>
+                    <!-- Swipe Tip / Live Counter -->
+                    <div class="flex items-center gap-1.5 text-[11.5px] text-textTertiary font-medium">
+                        <span id="storyCarouselCounter" class="text-textSecondary font-bold">1 / 4</span>
+                        <span>•</span>
+                        <span class="flex items-center gap-1 text-textTertiary/80">
+                            <span>Vuốt xem thêm</span>
+                            <span class="text-[13px] animate-pulse">➔</span>
                         </span>
                     </div>
                 </div>
-
             </div>
         </div>
         
@@ -4924,87 +4885,131 @@
                     { num: 3, title: "Nối âm phụ âm nguyên âm", active: true },
                     { num: 4, title: "Tốc độ 1.5x bản xứ", locked: true }
                 ]
+            },
+            {
+                chapterNumber: 4,
+                title: "Đêm Hội Đom Đóm",
+                subtitle: "Thung lũng đom đóm",
+                category: "🌾 Nông thôn yên bình • Đêm ngàn sao",
+                desc: "Dạo bước giữa cánh đồng đêm lấp lánh đom đóm. Thu lượm các từ vựng cảm xúc, phong cảnh và ký ức êm dịu.",
+                image: "assets/cards/pixar_night_farm_scenery.jpg",
+                xp: "+600 XP",
+                badge: "Ngoại truyện",
+                progress: 15,
+                currentLesson: "Chuẩn bị ra mắt tuần này",
+                totalLessons: 14,
+                completedLessons: 2,
+                excerptEn: "Thousands of bioluminescent fireflies illuminated the quiet rice paddies, turning the rural midnight into a glowing constellation.",
+                excerptVi: "Hàng ngàn chú đom đóm phát quang thắp sáng những thửa ruộng đêm thanh vắng, biến màn đêm miền quê thành một dải ngân hà lấp lánh.",
+                vocab: [
+                    { word: "bioluminescent", ipa: "/ˌbaɪ.əʊˌluː.mɪˈnes.ənt/", meaning: "phát quang sinh học" },
+                    { word: "constellation", ipa: "/ˌkɒn.stəˈleɪ.ʃən/", meaning: "chòm sao / dải sao" },
+                    { word: "serene", ipa: "/səˈriːn/", meaning: "thanh bình / êm ả" }
+                ],
+                roadmap: [
+                    { num: 1, title: "Lạc bước giữa cánh đồng", done: true },
+                    { num: 2, title: "Ánh sáng đom đóm", done: true },
+                    { num: 3, title: "Trăng soi bóng nước", active: true },
+                    { num: 4, title: "Khúc hát côn trùng", locked: true }
+                ]
             }
         ];
 
-        function updateStoryBookUI() {
-            for (let i = 0; i < totalStoryPages; i++) {
-                const pageEl = document.getElementById(`storyBookPage-${i}`);
-                if (!pageEl) continue;
-                pageEl.classList.remove('page-active', 'page-past', 'page-next');
-                if (i === currentStoryPage) {
-                    pageEl.classList.add('page-active');
-                } else if (i < currentStoryPage) {
-                    pageEl.classList.add('page-past');
+        // ========================================================
+        // STORY PEEK CAROUSEL CONTROLLER & GESTURES
+        // ========================================================
+        let currentStoryCarouselIdx = 0;
+        const totalStoryCards = 4;
+
+        function updateStoryCarouselDots(idx) {
+            currentStoryCarouselIdx = Math.max(0, Math.min(idx, totalStoryCards - 1));
+            for (let i = 0; i < totalStoryCards; i++) {
+                const dot = document.getElementById(`storyDot-${i}`);
+                if (!dot) continue;
+                if (i === currentStoryCarouselIdx) {
+                    dot.className = "h-2 w-7 bg-primary rounded-full transition-all duration-300 shadow-sm";
                 } else {
-                    pageEl.classList.add('page-next');
-                }
-
-                // Update dots
-                const dot = document.getElementById(`bookDot-${i}`);
-                if (dot) {
-                    if (i === currentStoryPage) {
-                        dot.className = "book-nav-dot h-2 w-6 bg-amber-400 rounded-full transition-all duration-300 shadow-[0_0_8px_rgba(251,191,36,0.6)]";
-                    } else {
-                        dot.className = "book-nav-dot h-2 w-2 bg-white/20 hover:bg-white/40 rounded-full transition-all duration-300";
-                    }
+                    dot.className = "h-2 w-2 bg-outlineVariant hover:bg-outline rounded-full transition-all duration-300";
                 }
             }
-
-            // Update Page Label
-            const labelEl = document.getElementById('bookPageLabel');
-            if (labelEl && storyChapters[currentStoryPage]) {
-                const ch = storyChapters[currentStoryPage];
-                labelEl.innerHTML = `Trang ${currentStoryPage + 1}/${totalStoryPages} • ${ch.title}`;
+            const counter = document.getElementById('storyCarouselCounter');
+            if (counter) {
+                counter.innerText = `${currentStoryCarouselIdx + 1} / ${totalStoryCards}`;
             }
 
-            // Update button states
-            const prevBtn = document.getElementById('bookPrevBtn');
-            const nextBtn = document.getElementById('bookNextBtn');
-            if (prevBtn) prevBtn.disabled = (currentStoryPage === 0);
-            if (nextBtn) nextBtn.disabled = (currentStoryPage === totalStoryPages - 1);
+            // Update desktop prev/next buttons
+            const prevBtn = document.getElementById('carouselPrevBtn');
+            const nextBtn = document.getElementById('carouselNextBtn');
+            if (prevBtn) prevBtn.disabled = (currentStoryCarouselIdx === 0);
+            if (nextBtn) nextBtn.disabled = (currentStoryCarouselIdx === totalStoryCards - 1);
         }
 
-        function flipStoryBook(delta) {
-            const nextIdx = currentStoryPage + delta;
-            if (nextIdx < 0 || nextIdx >= totalStoryPages) return;
-            currentStoryPage = nextIdx;
-            updateStoryBookUI();
-            if (typeof SoundEngine !== 'undefined' && SoundEngine.play) {
-                SoundEngine.play(1); // soft breeze / page turn sound
-            }
-        }
+        function scrollStoryCarouselTo(idx) {
+            const container = document.getElementById('storyCarouselContainer');
+            const targetCard = document.getElementById(`storyCard-${idx}`);
+            if (!container || !targetCard) return;
 
-        function goToStoryBookPage(idx) {
-            if (idx < 0 || idx >= totalStoryPages) return;
-            currentStoryPage = idx;
-            updateStoryBookUI();
+            const cardLeft = targetCard.offsetLeft;
+            const containerWidth = container.clientWidth;
+            const cardWidth = targetCard.clientWidth;
+            const scrollPos = cardLeft - (containerWidth - cardWidth) / 2;
+
+            container.scrollTo({
+                left: Math.max(0, scrollPos),
+                behavior: 'smooth'
+            });
+            updateStoryCarouselDots(idx);
             if (typeof SoundEngine !== 'undefined' && SoundEngine.play) {
                 SoundEngine.play(1);
             }
         }
 
-        // Touch Swipe Gesture for Storybook
-        let bookTouchStartX = 0;
-        let bookTouchEndX = 0;
-        function initStoryBookGestures() {
-            const stage = document.getElementById('storybookStage');
-            if (!stage) return;
-            stage.addEventListener('touchstart', (e) => {
-                bookTouchStartX = e.changedTouches[0].screenX;
-            }, { passive: true });
-            stage.addEventListener('touchend', (e) => {
-                bookTouchEndX = e.changedTouches[0].screenX;
-                const diff = bookTouchStartX - bookTouchEndX;
-                if (diff > 40) {
-                    flipStoryBook(1); // swipe left -> next page
-                } else if (diff < -40) {
-                    flipStoryBook(-1); // swipe right -> prev page
-                }
-            }, { passive: true });
+        function scrollStoryCarousel(direction) {
+            let nextIdx = currentStoryCarouselIdx + direction;
+            if (nextIdx < 0) nextIdx = 0;
+            if (nextIdx >= totalStoryCards) nextIdx = totalStoryCards - 1;
+            scrollStoryCarouselTo(nextIdx);
         }
 
-        // Open Book Reader Modal (Two-Page Spread)
+        function initStoryCarousel() {
+            const container = document.getElementById('storyCarouselContainer');
+            if (!container) return;
+
+            let isScrolling = null;
+            container.addEventListener('scroll', () => {
+                clearTimeout(isScrolling);
+                isScrolling = setTimeout(() => {
+                    const scrollLeft = container.scrollLeft;
+                    const containerWidth = container.clientWidth;
+                    const centerPoint = scrollLeft + containerWidth / 2;
+
+                    let closestIdx = 0;
+                    let minDiff = Infinity;
+
+                    for (let i = 0; i < totalStoryCards; i++) {
+                        const card = document.getElementById(`storyCard-${i}`);
+                        if (!card) continue;
+                        const cardCenter = card.offsetLeft + card.clientWidth / 2;
+                        const diff = Math.abs(centerPoint - cardCenter);
+                        if (diff < minDiff) {
+                            minDiff = diff;
+                            closestIdx = i;
+                        }
+                    }
+                    updateStoryCarouselDots(closestIdx);
+                }, 60);
+            }, { passive: true });
+
+            updateStoryCarouselDots(0);
+        }
+
+        // Backward compatibility wrappers
+        function flipStoryBook(delta) { scrollStoryCarousel(delta); }
+        function goToStoryBookPage(idx) { scrollStoryCarouselTo(idx); }
+        function updateStoryBookUI() { updateStoryCarouselDots(currentStoryCarouselIdx); }
+        function initStoryBookGestures() { initStoryCarousel(); }
+
+                // Open Book Reader Modal (Two-Page Spread)
         function openStoryBookReader(chapterIdx = 0) {
             const ch = storyChapters[chapterIdx] || storyChapters[0];
             const modal = document.getElementById('storybookSpreadModal');
@@ -5135,15 +5140,13 @@
             }
         }
 
-        // Initialize storybook when script loads or DOM is ready
+        // Initialize story carousel when script loads or DOM is ready
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => {
-                updateStoryBookUI();
-                initStoryBookGestures();
+                initStoryCarousel();
             });
         } else {
-            updateStoryBookUI();
-            initStoryBookGestures();
+            initStoryCarousel();
         }
 
         // ==========================================
