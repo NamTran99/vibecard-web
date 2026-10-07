@@ -276,6 +276,17 @@
         html.light .border-\[\#FBBF24\] { border-color: var(--m3-amber-glow) !important; }
         html.light .border-\[\#C4CAA9\] { border-color: var(--m3-secondary) !important; }
 
+        /* Word Discovery Shelf Tactile Cards in Light Mode */
+        html.light [class*="group/card"] {
+            background-color: var(--m3-surface-container-low) !important;
+            border-color: var(--m3-outline-variant) !important;
+            box-shadow: 0 4px 16px rgba(85, 101, 21, 0.08) !important;
+        }
+        html.light [class*="group/card"]:hover {
+            background-color: var(--m3-surface-container) !important;
+            box-shadow: 0 8px 24px rgba(85, 101, 21, 0.14) !important;
+        }
+
         /* Solid Top Action Buttons (Language Selector & Theme Toggle) */
         html.light #topThemeToggleBtn,
         html.light #topLangSelectorBtn {
@@ -2310,53 +2321,100 @@
                         </button>
                     </div>
 
-                    <!-- Scrollable Cards with Natural Horizontal Edge-Fade Mask (No Loud Outlines) -->
-                    <div id="trendingWordList" class="flex items-center gap-2 overflow-x-auto hide-scrollbar -mx-1 px-1 transition-all pb-0.5 snap-x snap-mandatory"
+                    <!-- Scrollable Cards with Natural Horizontal Edge-Fade Mask (Tactile Mini Discovery Cards) -->
+                    <div id="trendingWordList" class="flex items-stretch gap-3 overflow-x-auto hide-scrollbar -mx-1 px-1 transition-all py-1 snap-x snap-mandatory"
                          style="-webkit-mask-image: linear-gradient(to right, black calc(100% - 36px), transparent 100%); mask-image: linear-gradient(to right, black calc(100% - 36px), transparent 100%); -webkit-overflow-scrolling: touch;">
-                        <!-- Card 1 -->
-                        <button onclick="openDictionaryScreen('resilient')" class="group/card flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-surfaceContainerHigh border border-outlineVariant hover:bg-primaryContainer/50 active:scale-95 transition-all shrink-0 cursor-pointer text-left snap-start anim-word-chip-1">
-                            <div>
-                                <div class="flex items-center gap-1.5">
-                                    <span class="text-[13px] font-bold text-textPrimary tracking-tight group-hover/card:text-onPrimaryContainer transition-colors">resilient</span>
-                                    <svg class="w-3 h-3 text-textTertiary group-hover/card:text-onPrimaryContainer transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-                                </div>
-                                <span class="text-[11px] text-textTertiary block mt-0.5 font-medium group-hover/card:text-textSecondary transition-colors">kiên cường, bền bỉ</span>
+                        <!-- Card 1: resilient (B2 • Adj) -->
+                        <div onclick="openDictionaryScreen('resilient')" class="group/card relative flex flex-col justify-between p-3.5 rounded-[22px] bg-surfaceContainerLow hover:bg-surfaceContainer border border-outlineVariant/80 hover:border-primary/40 shadow-[0_6px_20px_rgba(0,0,0,0.35)] hover:shadow-[0_10px_28px_rgba(184,209,102,0.2)] active:scale-[0.97] transition-all duration-200 shrink-0 cursor-pointer text-left snap-start min-w-[176px] sm:min-w-[190px] max-w-[210px] overflow-hidden select-none anim-word-chip-1">
+                            <div class="absolute top-0 inset-x-0 h-[2.5px] bg-gradient-to-r from-[#B8D166] via-[#B8D166]/80 to-transparent opacity-80 group-hover/card:opacity-100 transition-opacity"></div>
+                            <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-[#B8D166] to-transparent opacity-[0.07] rounded-bl-full pointer-events-none group-hover/card:scale-125 transition-transform duration-300"></div>
+                            <div class="flex items-center justify-between gap-1.5 mb-2.5 relative z-10">
+                                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-[#3C4D00] text-[#D4EE7F] border border-[#B8D166]/30 shadow-xs">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
+                                    <span>B2 • ADJ</span>
+                                </span>
+                                <button onclick="event.stopPropagation(); playQuickWordAudio('resilient', this)" class="w-7 h-7 rounded-full bg-surfaceContainerHigh hover:bg-primary/20 hover:text-primary hover:border-primary/40 border border-outlineVariant/80 text-textTertiary flex items-center justify-center transition-all duration-200 active:scale-85 shadow-xs group/audio" title="Nghe phát âm chuẩn">
+                                    <svg class="w-3.5 h-3.5 group-hover/audio:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                                </button>
                             </div>
-                        </button>
+                            <div class="mb-3 relative z-10">
+                                <span class="text-[16px] font-extrabold text-textPrimary tracking-tight group-hover/card:text-primary transition-colors block truncate">resilient</span>
+                                <span class="text-[11px] font-mono text-textTertiary block -mt-0.5 tracking-tight truncate">/rɪˈzɪl.jənt/</span>
+                            </div>
+                            <div class="pt-2 border-t border-outlineVariant/50 flex items-center justify-between gap-1.5 relative z-10">
+                                <span class="text-[11.5px] font-semibold text-textSecondary group-hover/card:text-textPrimary line-clamp-1 transition-colors leading-snug">kiên cường, bền bỉ</span>
+                                <span class="text-[9.5px] font-black text-amberGlow shrink-0 bg-amberContainer/20 px-1.5 py-0.5 rounded-md border border-amberGlow/20">+15 XP</span>
+                            </div>
+                        </div>
 
-                        <!-- Card 2 -->
-                        <button onclick="openDictionaryScreen('serendipity')" class="group/card flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-surfaceContainerHigh border border-outlineVariant hover:bg-primaryContainer/50 active:scale-95 transition-all shrink-0 cursor-pointer text-left snap-start anim-word-chip-2">
-                            <div>
-                                <div class="flex items-center gap-1.5">
-                                    <span class="text-[13px] font-bold text-textPrimary tracking-tight group-hover/card:text-onPrimaryContainer transition-colors">serendipity</span>
-                                    <svg class="w-3 h-3 text-textTertiary group-hover/card:text-onPrimaryContainer transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-                                </div>
-                                <span class="text-[11px] text-textTertiary block mt-0.5 font-medium group-hover/card:text-textSecondary transition-colors">may mắn bất ngờ</span>
+                        <!-- Card 2: serendipity (C2 • Noun) -->
+                        <div onclick="openDictionaryScreen('serendipity')" class="group/card relative flex flex-col justify-between p-3.5 rounded-[22px] bg-surfaceContainerLow hover:bg-surfaceContainer border border-outlineVariant/80 hover:border-amber-400/40 shadow-[0_6px_20px_rgba(0,0,0,0.35)] hover:shadow-[0_10px_28px_rgba(245,158,11,0.2)] active:scale-[0.97] transition-all duration-200 shrink-0 cursor-pointer text-left snap-start min-w-[176px] sm:min-w-[190px] max-w-[210px] overflow-hidden select-none anim-word-chip-2">
+                            <div class="absolute top-0 inset-x-0 h-[2.5px] bg-gradient-to-r from-amber-400 via-amber-300/80 to-transparent opacity-80 group-hover/card:opacity-100 transition-opacity"></div>
+                            <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-amber-400 to-transparent opacity-[0.07] rounded-bl-full pointer-events-none group-hover/card:scale-125 transition-transform duration-300"></div>
+                            <div class="flex items-center justify-between gap-1.5 mb-2.5 relative z-10">
+                                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-400/15 text-amber-300 border border-amber-400/30 shadow-xs">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
+                                    <span>C2 • NOUN</span>
+                                </span>
+                                <button onclick="event.stopPropagation(); playQuickWordAudio('serendipity', this)" class="w-7 h-7 rounded-full bg-surfaceContainerHigh hover:bg-amber-400/20 hover:text-amber-300 hover:border-amber-400/40 border border-outlineVariant/80 text-textTertiary flex items-center justify-center transition-all duration-200 active:scale-85 shadow-xs group/audio" title="Nghe phát âm chuẩn">
+                                    <svg class="w-3.5 h-3.5 group-hover/audio:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                                </button>
                             </div>
-                        </button>
+                            <div class="mb-3 relative z-10">
+                                <span class="text-[16px] font-extrabold text-textPrimary tracking-tight group-hover/card:text-amber-400 transition-colors block truncate">serendipity</span>
+                                <span class="text-[11px] font-mono text-textTertiary block -mt-0.5 tracking-tight truncate">/ˌser.ənˈdɪp.ə.ti/</span>
+                            </div>
+                            <div class="pt-2 border-t border-outlineVariant/50 flex items-center justify-between gap-1.5 relative z-10">
+                                <span class="text-[11.5px] font-semibold text-textSecondary group-hover/card:text-textPrimary line-clamp-1 transition-colors leading-snug">may mắn bất ngờ</span>
+                                <span class="text-[9.5px] font-black text-amberGlow shrink-0 bg-amberContainer/20 px-1.5 py-0.5 rounded-md border border-amberGlow/20">+15 XP</span>
+                            </div>
+                        </div>
 
-                        <!-- Card 3 -->
-                        <button onclick="openDictionaryScreen('break the ice')" class="group/card flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-surfaceContainerHigh border border-outlineVariant hover:bg-primaryContainer/50 active:scale-95 transition-all shrink-0 cursor-pointer text-left snap-start anim-word-chip-3">
-                            <div>
-                                <div class="flex items-center gap-1.5">
-                                    <span class="text-[13px] font-bold text-textPrimary tracking-tight group-hover/card:text-onPrimaryContainer transition-colors">break the ice</span>
-                                    <svg class="w-3 h-3 text-textTertiary group-hover/card:text-onPrimaryContainer transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-                                </div>
-                                <span class="text-[11px] text-textTertiary block mt-0.5 font-medium group-hover/card:text-textSecondary transition-colors">phá vỡ e ngại</span>
+                        <!-- Card 3: break the ice (B1 • Idiom) -->
+                        <div onclick="openDictionaryScreen('break the ice')" class="group/card relative flex flex-col justify-between p-3.5 rounded-[22px] bg-surfaceContainerLow hover:bg-surfaceContainer border border-outlineVariant/80 hover:border-[#A1D0C5]/40 shadow-[0_6px_20px_rgba(0,0,0,0.35)] hover:shadow-[0_10px_28px_rgba(161,208,197,0.2)] active:scale-[0.97] transition-all duration-200 shrink-0 cursor-pointer text-left snap-start min-w-[176px] sm:min-w-[190px] max-w-[210px] overflow-hidden select-none anim-word-chip-3">
+                            <div class="absolute top-0 inset-x-0 h-[2.5px] bg-gradient-to-r from-[#A1D0C5] via-[#A1D0C5]/80 to-transparent opacity-80 group-hover/card:opacity-100 transition-opacity"></div>
+                            <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-[#A1D0C5] to-transparent opacity-[0.07] rounded-bl-full pointer-events-none group-hover/card:scale-125 transition-transform duration-300"></div>
+                            <div class="flex items-center justify-between gap-1.5 mb-2.5 relative z-10">
+                                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-[#214E46] text-[#A1D0C5] border border-[#A1D0C5]/30 shadow-xs">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
+                                    <span>B1 • IDIOM</span>
+                                </span>
+                                <button onclick="event.stopPropagation(); playQuickWordAudio('break the ice', this)" class="w-7 h-7 rounded-full bg-surfaceContainerHigh hover:bg-[#A1D0C5]/20 hover:text-[#A1D0C5] hover:border-[#A1D0C5]/40 border border-outlineVariant/80 text-textTertiary flex items-center justify-center transition-all duration-200 active:scale-85 shadow-xs group/audio" title="Nghe phát âm chuẩn">
+                                    <svg class="w-3.5 h-3.5 group-hover/audio:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                                </button>
                             </div>
-                        </button>
+                            <div class="mb-3 relative z-10">
+                                <span class="text-[16px] font-extrabold text-textPrimary tracking-tight group-hover/card:text-[#A1D0C5] transition-colors block truncate">break the ice</span>
+                                <span class="text-[11px] font-mono text-textTertiary block -mt-0.5 tracking-tight truncate">/breɪk ðiː aɪs/</span>
+                            </div>
+                            <div class="pt-2 border-t border-outlineVariant/50 flex items-center justify-between gap-1.5 relative z-10">
+                                <span class="text-[11.5px] font-semibold text-textSecondary group-hover/card:text-textPrimary line-clamp-1 transition-colors leading-snug">phá vỡ e ngại</span>
+                                <span class="text-[9.5px] font-black text-amberGlow shrink-0 bg-amberContainer/20 px-1.5 py-0.5 rounded-md border border-amberGlow/20">+15 XP</span>
+                            </div>
+                        </div>
 
-                        <!-- Card 4 -->
-                        <button onclick="openDictionaryScreen('ephemeral')" class="group/card flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-surfaceContainerHigh border border-outlineVariant hover:bg-primaryContainer/50 active:scale-95 transition-all shrink-0 cursor-pointer text-left snap-start">
-                            <div>
-                                <div class="flex items-center gap-1.5">
-                                    <span class="text-[13px] font-bold text-textPrimary tracking-tight group-hover/card:text-onPrimaryContainer transition-colors">ephemeral</span>
-                                    <svg class="w-3 h-3 text-textTertiary group-hover/card:text-onPrimaryContainer transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-                                </div>
-                                <span class="text-[11px] text-textTertiary block mt-0.5 font-medium group-hover/card:text-textSecondary transition-colors">chóng tàn, phù du</span>
+                        <!-- Card 4: ephemeral (C2 • Adj) -->
+                        <div onclick="openDictionaryScreen('ephemeral')" class="group/card relative flex flex-col justify-between p-3.5 rounded-[22px] bg-surfaceContainerLow hover:bg-surfaceContainer border border-outlineVariant/80 hover:border-[#D0BCFF]/40 shadow-[0_6px_20px_rgba(0,0,0,0.35)] hover:shadow-[0_10px_28px_rgba(208,188,255,0.2)] active:scale-[0.97] transition-all duration-200 shrink-0 cursor-pointer text-left snap-start min-w-[176px] sm:min-w-[190px] max-w-[210px] overflow-hidden select-none anim-word-chip-4">
+                            <div class="absolute top-0 inset-x-0 h-[2.5px] bg-gradient-to-r from-[#D0BCFF] via-[#D0BCFF]/80 to-transparent opacity-80 group-hover/card:opacity-100 transition-opacity"></div>
+                            <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-[#D0BCFF] to-transparent opacity-[0.07] rounded-bl-full pointer-events-none group-hover/card:scale-125 transition-transform duration-300"></div>
+                            <div class="flex items-center justify-between gap-1.5 mb-2.5 relative z-10">
+                                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-[#381E72] text-[#E8DEF8] border border-[#D0BCFF]/30 shadow-xs">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
+                                    <span>C2 • ADJ</span>
+                                </span>
+                                <button onclick="event.stopPropagation(); playQuickWordAudio('ephemeral', this)" class="w-7 h-7 rounded-full bg-surfaceContainerHigh hover:bg-[#D0BCFF]/20 hover:text-[#D0BCFF] hover:border-[#D0BCFF]/40 border border-outlineVariant/80 text-textTertiary flex items-center justify-center transition-all duration-200 active:scale-85 shadow-xs group/audio" title="Nghe phát âm chuẩn">
+                                    <svg class="w-3.5 h-3.5 group-hover/audio:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                                </button>
                             </div>
-                        </button>
-                    </div>
+                            <div class="mb-3 relative z-10">
+                                <span class="text-[16px] font-extrabold text-textPrimary tracking-tight group-hover/card:text-[#D0BCFF] transition-colors block truncate">ephemeral</span>
+                                <span class="text-[11px] font-mono text-textTertiary block -mt-0.5 tracking-tight truncate">/ɪˈfem.ər.əl/</span>
+                            </div>
+                            <div class="pt-2 border-t border-outlineVariant/50 flex items-center justify-between gap-1.5 relative z-10">
+                                <span class="text-[11.5px] font-semibold text-textSecondary group-hover/card:text-textPrimary line-clamp-1 transition-colors leading-snug">chóng tàn, phù du</span>
+                                <span class="text-[9.5px] font-black text-amberGlow shrink-0 bg-amberContainer/20 px-1.5 py-0.5 rounded-md border border-amberGlow/20">+15 XP</span>
+                            </div>
+                        </div>                    </div>
                 </div>
             </div>
         </div>
@@ -4723,7 +4781,7 @@
             <div class="flex flex-col items-center justify-center py-2">
                 <button id="practiceMicBtn" onclick="togglePracticeRecording()" class="relative w-16 h-16 rounded-full bg-[#B8D166] flex items-center justify-center text-[#283500] shadow-[0_0_25px_rgba(184,209,102,0.4)] active:scale-95 transition-all">
                     <div id="practiceMicWave" class="hidden absolute -inset-2 rounded-full border-2 border-[#B8D166] animate-ping"></div>
-                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 24 24">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
                     </svg>
                 </button>
@@ -8891,28 +8949,130 @@ function toggleSlowAudio() {
 
         setTimeout(runTypewriter, 1200);
 
-        // --- Shuffle Trending Words Logic ---
+        // --- Shuffle Trending Words Logic (Tactile Discovery Mini Cards) ---
         const trendingWordPools = [
             [
-                { word: 'resilient', level: 'B2', levelColor: 'cyan', vi: 'kiên cường, bền bỉ' },
-                { word: 'serendipity', level: 'C2', levelColor: 'amber', vi: 'may mắn bất ngờ' },
-                { word: 'break the ice', level: 'B1', levelColor: 'emerald', vi: 'phá vỡ e ngại' },
-                { word: 'ephemeral', level: 'C2', levelColor: 'purple', vi: 'chóng tàn, phù du' }
+                { word: 'resilient', level: 'B2', type: 'ADJ', ipa: '/rɪˈzɪl.jənt/', accent: 'primary', vi: 'kiên cường, bền bỉ' },
+                { word: 'serendipity', level: 'C2', type: 'NOUN', ipa: '/ˌser.ənˈdɪp.ə.ti/', accent: 'amber', vi: 'may mắn bất ngờ' },
+                { word: 'break the ice', level: 'B1', type: 'IDIOM', ipa: '/breɪk ðiː aɪs/', accent: 'tertiary', vi: 'phá vỡ e ngại' },
+                { word: 'ephemeral', level: 'C2', type: 'ADJ', ipa: '/ɪˈfem.ər.əl/', accent: 'purple', vi: 'chóng tàn, phù du' }
             ],
             [
-                { word: 'lucid', level: 'C1', levelColor: 'cyan', vi: 'minh bạch, sáng suốt' },
-                { word: 'eloquent', level: 'C1', levelColor: 'amber', vi: 'hùng hồn, truyền cảm' },
-                { word: 'cut corners', level: 'B2', levelColor: 'emerald', vi: 'đốt cháy giai đoạn' },
-                { word: 'tenacious', level: 'C2', levelColor: 'purple', vi: 'kiên trì, ngoan cường' }
+                { word: 'lucid', level: 'C1', type: 'ADJ', ipa: '/ˈluː.sɪd/', accent: 'tertiary', vi: 'minh bạch, sáng suốt' },
+                { word: 'eloquent', level: 'C1', type: 'ADJ', ipa: '/ˈel.ə.kwənt/', accent: 'amber', vi: 'hùng hồn, truyền cảm' },
+                { word: 'cut corners', level: 'B2', type: 'IDIOM', ipa: '/kʌt ˈkɔː.nərz/', accent: 'primary', vi: 'đốt cháy giai đoạn' },
+                { word: 'tenacious', level: 'C2', type: 'ADJ', ipa: '/təˈneɪ.ʃəs/', accent: 'purple', vi: 'kiên trì, ngoan cường' }
             ],
             [
-                { word: 'catalyst', level: 'C1', levelColor: 'cyan', vi: 'chất xúc tác, động lực' },
-                { word: 'pragmatic', level: 'C1', levelColor: 'amber', vi: 'thực tế, sắc bén' },
-                { word: 'spill the beans', level: 'B1', levelColor: 'emerald', vi: 'tiết lộ bí mật' },
-                { word: 'ubiquitous', level: 'C2', levelColor: 'purple', vi: 'phổ biến ở khắp nơi' }
+                { word: 'catalyst', level: 'C1', type: 'NOUN', ipa: '/ˈkæt.əl.ɪst/', accent: 'tertiary', vi: 'chất xúc tác, động lực' },
+                { word: 'pragmatic', level: 'C1', type: 'ADJ', ipa: '/præɡˈmæt.ɪk/', accent: 'amber', vi: 'thực tế, sắc bén' },
+                { word: 'spill the beans', level: 'B1', type: 'IDIOM', ipa: '/spɪl ðə biːnz/', accent: 'primary', vi: 'tiết lộ bí mật' },
+                { word: 'ubiquitous', level: 'C2', type: 'ADJ', ipa: '/juːˈbɪk.wɪ.təs/', accent: 'purple', vi: 'phổ biến ở khắp nơi' }
             ]
         ];
         let currentWordPoolIndex = 0;
+
+        function getTrendingAccentStyle(accent) {
+            switch(accent) {
+                case 'amber':
+                    return {
+                        barGrad: 'from-amber-400 via-amber-300/80 to-transparent',
+                        badgeCls: 'bg-amber-400/15 text-amber-300 border-amber-400/30',
+                        accentHover: 'group-hover/card:text-amber-400',
+                        glowHover: 'hover:shadow-[0_10px_28px_rgba(245,158,11,0.2)] hover:border-amber-400/40',
+                        audioHover: 'hover:bg-amber-400/20 hover:text-amber-300 hover:border-amber-400/40'
+                    };
+                case 'tertiary':
+                    return {
+                        barGrad: 'from-[#A1D0C5] via-[#A1D0C5]/80 to-transparent',
+                        badgeCls: 'bg-[#214E46] text-[#A1D0C5] border-[#A1D0C5]/30',
+                        accentHover: 'group-hover/card:text-[#A1D0C5]',
+                        glowHover: 'hover:shadow-[0_10px_28px_rgba(161,208,197,0.2)] hover:border-[#A1D0C5]/40',
+                        audioHover: 'hover:bg-[#A1D0C5]/20 hover:text-[#A1D0C5] hover:border-[#A1D0C5]/40'
+                    };
+                case 'purple':
+                    return {
+                        barGrad: 'from-[#D0BCFF] via-[#D0BCFF]/80 to-transparent',
+                        badgeCls: 'bg-[#381E72] text-[#E8DEF8] border-[#D0BCFF]/30',
+                        accentHover: 'group-hover/card:text-[#D0BCFF]',
+                        glowHover: 'hover:shadow-[0_10px_28px_rgba(208,188,255,0.2)] hover:border-[#D0BCFF]/40',
+                        audioHover: 'hover:bg-[#D0BCFF]/20 hover:text-[#D0BCFF] hover:border-[#D0BCFF]/40'
+                    };
+                case 'primary':
+                default:
+                    return {
+                        barGrad: 'from-[#B8D166] via-[#B8D166]/80 to-transparent',
+                        badgeCls: 'bg-[#3C4D00] text-[#D4EE7F] border-[#B8D166]/30',
+                        accentHover: 'group-hover/card:text-primary',
+                        glowHover: 'hover:shadow-[0_10px_28px_rgba(184,209,102,0.2)] hover:border-primary/40',
+                        audioHover: 'hover:bg-primary/20 hover:text-primary hover:border-primary/40'
+                    };
+            }
+        }
+
+        function renderTrendingCard(item, index = 0) {
+            const st = getTrendingAccentStyle(item.accent);
+            return `
+            <div onclick="openDictionaryScreen('${item.word.replace(/'/g, "\\'")}')" 
+                 class="group/card relative flex flex-col justify-between p-3.5 rounded-[22px] bg-surfaceContainerLow hover:bg-surfaceContainer border border-outlineVariant/80 ${st.glowHover} shadow-[0_6px_20px_rgba(0,0,0,0.35)] active:scale-[0.97] transition-all duration-200 shrink-0 cursor-pointer text-left snap-start min-w-[176px] sm:min-w-[190px] max-w-[210px] overflow-hidden select-none anim-word-chip-${(index % 4) + 1}">
+                
+                <!-- Top Color Accent Lightbeam -->
+                <div class="absolute top-0 inset-x-0 h-[2.5px] bg-gradient-to-r ${st.barGrad} opacity-80 group-hover/card:opacity-100 transition-opacity"></div>
+                <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br ${st.barGrad} opacity-[0.07] rounded-bl-full pointer-events-none group-hover/card:scale-125 transition-transform duration-300"></div>
+
+                <!-- Header: CEFR Level Badge & Micro Audio Button -->
+                <div class="flex items-center justify-between gap-1.5 mb-2.5 relative z-10">
+                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider ${st.badgeCls} border shadow-xs">
+                        <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
+                        <span>${item.level} • ${item.type}</span>
+                    </span>
+
+                    <button onclick="event.stopPropagation(); playQuickWordAudio('${item.word.replace(/'/g, "\\'")}', this)" 
+                            class="w-7 h-7 rounded-full bg-surfaceContainerHigh ${st.audioHover} border border-outlineVariant/80 text-textTertiary flex items-center justify-center transition-all duration-200 active:scale-85 shadow-xs group/audio"
+                            title="Nghe phát âm chuẩn">
+                        <svg class="w-3.5 h-3.5 group-hover/audio:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Word & Phonetic IPA -->
+                <div class="mb-3 relative z-10">
+                    <span class="text-[16px] font-extrabold text-textPrimary tracking-tight ${st.accentHover} transition-colors block truncate">
+                        ${item.word}
+                    </span>
+                    <span class="text-[11px] font-mono text-textTertiary block -mt-0.5 tracking-tight truncate">
+                        ${item.ipa}
+                    </span>
+                </div>
+
+                <!-- Vietnamese Meaning & XP Gamification Badge -->
+                <div class="pt-2 border-t border-outlineVariant/50 flex items-center justify-between gap-1.5 relative z-10">
+                    <span class="text-[11.5px] font-semibold text-textSecondary group-hover/card:text-textPrimary line-clamp-1 transition-colors leading-snug">
+                        ${item.vi}
+                    </span>
+                    <span class="text-[9.5px] font-black text-amberGlow shrink-0 bg-amberContainer/20 px-1.5 py-0.5 rounded-md border border-amberGlow/20">
+                        +15 XP
+                    </span>
+                </div>
+            </div>
+            `;
+        }
+
+        function playQuickWordAudio(word, btn) {
+            if (typeof speakWordAccent === 'function') {
+                speakWordAccent(word, 'en-US', false);
+            }
+            if (typeof SoundEngine !== 'undefined' && SoundEngine.play) {
+                SoundEngine.play(4);
+            }
+            if (btn) {
+                btn.classList.add('scale-125', 'bg-primary', 'text-onPrimary');
+                setTimeout(() => {
+                    btn.classList.remove('scale-125', 'bg-primary', 'text-onPrimary');
+                }, 300);
+            }
+        }
 
         function shuffleTrendingWords() {
             currentWordPoolIndex = (currentWordPoolIndex + 1) % trendingWordPools.length;
@@ -8921,27 +9081,14 @@ function toggleSlowAudio() {
             if (!listEl) return;
             
             listEl.style.opacity = '0';
-            listEl.style.transform = 'translateY(4px)';
+            listEl.style.transform = 'translateY(6px)';
             
             setTimeout(() => {
-                listEl.innerHTML = pool.map(item => {
-                    return `
-                    <button onclick="openDictionaryScreen('${item.word}')" class="group/card flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-[#252621] border border-[#46483C] hover:bg-[#3C4D00]/50 active:scale-95 transition-all shrink-0 cursor-pointer text-left snap-start">
-                        <div>
-                            <div class="flex items-center gap-1.5">
-                                <span class="text-[13px] font-bold text-white tracking-tight group-hover/card:text-[#D4EE7F] transition-colors">${item.word}</span>
-                                <svg class="w-3 h-3 text-[#909283] group-hover/card:text-[#D4EE7F] transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-                            </div>
-                            <span class="text-[11px] text-white/50 block mt-0.5 font-medium group-hover/card:text-white/80 transition-colors truncate max-w-[130px]">${item.vi}</span>
-                        </div>
-                    </button>
-                    `;
-                }).join('');
+                listEl.innerHTML = pool.map((item, idx) => renderTrendingCard(item, idx)).join('');
                 listEl.style.opacity = '1';
                 listEl.style.transform = 'translateY(0)';
             }, 180);
         }
-
 
         // --- 4 Unique Dictionary Styles Switcher ---
         const dictStyleNames = [
