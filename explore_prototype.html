@@ -224,6 +224,68 @@
             animation: navProfileJoy 0.46s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
             transform-origin: 50% 70%;
         }
+
+        /* ======================================================== */
+        /* TACTILE SEARCH BAR 2-STATE FOCUS SYSTEM                  */
+        /* ======================================================== */
+        .tactile-search-bar {
+            background-color: #20211C;
+            border: 2px solid #46483C;
+            border-bottom: 5px solid #30312B;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .tactile-search-bar:focus-within,
+        .tactile-search-bar.is-focused {
+            background-color: #30312C;
+            border-color: #B8D166;
+            border-bottom: 5px solid #8BA63A;
+            box-shadow: 0 8px 32px rgba(184, 209, 102, 0.45);
+        }
+
+        .tactile-search-bar .search-glyph {
+            color: #909283;
+            transition: color 0.2s ease;
+        }
+        .tactile-search-bar:focus-within .search-glyph,
+        .tactile-search-bar.is-focused .search-glyph {
+            color: #B8D166;
+        }
+
+        .tactile-search-bar .pulse-glow {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .tactile-search-bar:focus-within .pulse-glow,
+        .tactile-search-bar.is-focused .pulse-glow {
+            opacity: 1;
+        }
+
+        .tactile-search-bar .tactile-action-btn {
+            background-color: #2A2B24;
+            color: #909283;
+            border: 1px solid #46483C;
+            border-bottom: 3px solid #1B1C17;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .tactile-search-bar:focus-within .tactile-action-btn,
+        .tactile-search-bar.is-focused .tactile-action-btn {
+            background-color: #444930;
+            color: #E0E6C4;
+            border: 1px solid rgba(184, 209, 102, 0.25);
+            border-bottom: 3px solid #282E16;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+        }
+        .tactile-search-bar .tactile-action-btn:hover,
+        .tactile-search-bar .tactile-action-btn:active,
+        .tactile-search-bar .tactile-action-btn.has-query {
+            background-color: #B8D166 !important;
+            color: #283500 !important;
+            border-color: transparent !important;
+            border-bottom: 3px solid #8BA63A !important;
+            box-shadow: 0 4px 14px rgba(184, 209, 102, 0.45) !important;
+        }
         
         .glass-panel {
             background: #20211C;
@@ -1658,14 +1720,14 @@
 
                 <!-- Tactile Omnibar (Exact Replica of Inner Screen Search Bar in Image 1) -->
                 <div onclick="openDictionaryScreen(document.getElementById('dictInput').value)"
-                     class="group/search relative flex items-center rounded-full bg-[#30312C] border-[2px] border-[#B8D166] border-b-[5px] border-b-[#B8D166] h-[60px] pl-5 pr-2 gap-3 transition-all duration-200 mb-3.5 cursor-pointer shadow-[0_8px_24px_-6px_rgba(184,209,102,0.35)] hover:shadow-[0_8px_30px_rgba(184,209,102,0.45)] active:translate-y-[2px] active:border-b-[3px] anim-inner-2 select-none"
+                     class="tactile-search-bar group/search relative flex items-center rounded-full h-[60px] pl-5 pr-2.5 gap-3 mb-3.5 cursor-pointer active:translate-y-[2px] active:border-b-[3px] anim-inner-2 select-none overflow-hidden"
                      style="-webkit-tap-highlight-color: transparent;">
                     
                     <!-- Tactile Pulse Glow Behind Icon -->
-                    <div class="absolute left-4 w-8 h-8 bg-[#B8D166]/20 blur-xl rounded-full pointer-events-none"></div>
+                    <div class="pulse-glow absolute left-4 w-8 h-8 bg-[#B8D166]/20 blur-xl rounded-full pointer-events-none"></div>
 
-                    <!-- Lime Search Glyph -->
-                    <svg viewBox="0 0 100 100" class="w-5 h-5 text-[#B8D166] shrink-0" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- Search Glyph -->
+                    <svg viewBox="0 0 100 100" class="search-glyph w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M42 26 C 54 25, 59 34, 57 44 C 55 54, 46 58, 36 56 C 26 54, 24 45, 27 34 C 30 25, 36 27, 42 26 Z M 54 54 Q 65 60, 73 71"/>
                     </svg>
 
@@ -1676,9 +1738,8 @@
                            onclick="event.stopPropagation(); openDictionaryScreen(this.value)"
                            class="dict-typewriter-input flex-1 min-w-0 bg-transparent text-[15.5px] text-[#E5E3DB] placeholder-[#909283] font-bold focus:outline-none cursor-pointer truncate tracking-wide" />
 
-
-                    <!-- Search Action Circle Button (M3 SecondaryContainer #444930) -->
-                    <div class="w-[42px] h-[42px] rounded-full bg-[#444930] hover:bg-[#52583a] text-[#E0E6C3] border border-[#C4CAA9]/30 flex items-center justify-center shrink-0 cursor-pointer shadow-sm active:scale-90 transition-transform">
+                    <!-- Search Action Circle Button (Tactile Action Button) -->
+                    <div class="tactile-action-btn w-[42px] h-[42px] rounded-full flex items-center justify-center shrink-0 cursor-pointer shadow-sm active:scale-90 transition-transform">
                         <svg viewBox="0 0 100 100" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M 25 50 Q 50 52, 70 48 M 55 30 Q 65 40, 72 49 Q 60 60, 53 72"/>
                         </svg>
@@ -2726,16 +2787,16 @@
         <div id="dictViewLookup" class="flex-1 flex flex-col overflow-hidden min-h-0 relative">
             <!-- Premium Search Bar (High-End Asymmetric Layout) -->
             <div class="px-5 pt-3 pb-2 z-50 shrink-0 relative bg-[#0D0E0B]">
-                <!-- CLEAN GAMIFIED SEARCH BAR WITH SHIMMER -->
-                <div class="relative w-full bg-[#30312C] border-[2px] border-[#B8D166] border-b-[5px] border-b-[#B8D166] rounded-full flex items-center h-[60px] pl-5 pr-2.5 shadow-[0_8px_24px_-6px_rgba(184,209,102,0.35)] focus-within:shadow-[0_8px_32px_rgba(184,209,102,0.45)] transition-all overflow-hidden group">
+                <!-- CLEAN GAMIFIED SEARCH BAR WITH SHIMMER (2 STATES: UNFOCUS VS FOCUS) -->
+                <div id="fullDictSearchContainer" class="tactile-search-bar relative w-full rounded-full flex items-center h-[60px] pl-5 pr-2.5 overflow-hidden group">
                     
                     <!-- Continuous Premium Shimmer across the whole bar -->
-                    <div class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.05] to-transparent skew-x-[-20deg] animate-[shimmerSweep_4s_ease-in-out_infinite] pointer-events-none"></div>
+                    <div class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.05] to-transparent skew-x-[-20deg] animate-[shimmerSweep_4s_ease-in-out_infinite] pointer-events-none opacity-40 group-focus-within:opacity-100 transition-opacity"></div>
 
-                    <!-- Subtle Pulse Glow Behind Icon -->
-                    <div class="absolute left-4 w-8 h-8 bg-[#B8D166]/20 blur-xl rounded-full animate-pulse pointer-events-none"></div>
+                    <!-- Subtle Pulse Glow Behind Icon (Visible only on Focus) -->
+                    <div class="pulse-glow absolute left-4 w-8 h-8 bg-[#B8D166]/20 blur-xl rounded-full animate-pulse pointer-events-none"></div>
                     
-                    <svg viewBox="0 0 100 100" class="w-5 h-5 text-[#B8D166] relative z-10 shrink-0" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+                    <svg viewBox="0 0 100 100" class="search-glyph w-5 h-5 relative z-10 shrink-0" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M42 26 C 54 25, 59 34, 57 44 C 55 54, 46 58, 36 56 C 26 54, 24 45, 27 34 C 30 25, 36 27, 42 26 Z M 54 54 Q 65 60, 73 71"/>
                     </svg>
                     
@@ -2746,7 +2807,7 @@
                            class="flex-1 w-full min-w-0 h-full bg-transparent text-[16px] text-[#E5E3DB] placeholder-[#909283] font-bold focus:outline-none tracking-wide ml-3.5 relative z-10" />
                     
                     <!-- Clear Button -->
-                    <button id="clearSearchBtn" onclick="clearSearchInput()" class="hidden w-[36px] h-[36px] flex items-center justify-center text-[#909283] active:text-[#E5E3DB] active:scale-[0.95] transition-all relative z-10 shrink-0 mr-1" style="-webkit-tap-highlight-color: transparent;">
+                    <button id="clearSearchBtn" onclick="clearSearchInput()" class="hidden w-[36px] h-[36px] flex items-center justify-center text-[#909283] hover:text-[#E5E3DB] active:scale-[0.95] transition-all relative z-10 shrink-0 mr-1" style="-webkit-tap-highlight-color: transparent;">
                         <svg viewBox="0 0 100 100" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M 30 32 Q 50 45, 70 68 M 72 30 Q 50 55, 28 70"/>
                         </svg>
@@ -2754,7 +2815,7 @@
                     
                     <!-- Paste & Voice Shortcuts -->
                     <div id="searchShortcuts" class="flex items-center gap-0.5 mr-1 shrink-0 relative z-10">
-                        <button onclick="pasteClipboardToSearch()" class="w-[36px] h-[36px] flex items-center justify-center text-[#909283] active:text-[#B8D166] active:scale-[0.95] transition-all cursor-pointer" style="-webkit-tap-highlight-color: transparent;">
+                        <button onclick="pasteClipboardToSearch()" class="w-[36px] h-[36px] flex items-center justify-center text-[#909283] hover:text-[#B8D166] active:scale-[0.95] transition-all cursor-pointer" style="-webkit-tap-highlight-color: transparent;">
                             <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                                 <rect width="8" height="4" x="8" y="2" rx="1.5" ry="1.5"/>
                                 <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
@@ -2762,15 +2823,15 @@
                                 <path d="m9 14 3 3 3-3"/>
                             </svg>
                         </button>
-                        <button onclick="triggerDedicatedVoiceLookup()" class="w-[36px] h-[36px] flex items-center justify-center text-[#909283] active:text-[#B8D166] active:scale-[0.95] transition-all cursor-pointer" style="-webkit-tap-highlight-color: transparent;">
+                        <button onclick="triggerDedicatedVoiceLookup()" class="w-[36px] h-[36px] flex items-center justify-center text-[#909283] hover:text-[#B8D166] active:scale-[0.95] transition-all cursor-pointer" style="-webkit-tap-highlight-color: transparent;">
                             <svg viewBox="0 0 100 100" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M 35 30 L 35 50 C 35 60, 65 60, 65 50 L 65 30 C 65 20, 35 20, 35 30 Z M 25 50 C 25 70, 75 70, 75 50 M 50 72 L 50 85 M 35 85 L 65 85"/>
                             </svg>
                         </button>
                     </div>
                     
-                    <!-- Search Action Circle (M3 SecondaryContainer) -->
-                    <button onclick="executeFullLookup(document.getElementById('fullDictSearchInput').value)" style="-webkit-tap-highlight-color: transparent;" class="w-[44px] h-[44px] rounded-full bg-[#444930] hover:bg-[#52583a] text-[#E0E6C3] border border-[#C4CAA9]/30 flex items-center justify-center active:scale-90 transition-all shrink-0 cursor-pointer relative z-10 shadow-sm">
+                    <!-- Search Action Circle Tactile Button (2 States: Unfocused vs Focused) -->
+                    <button id="dictSearchActionBtn" onclick="executeFullLookup(document.getElementById('fullDictSearchInput').value)" style="-webkit-tap-highlight-color: transparent;" class="tactile-action-btn w-[44px] h-[44px] rounded-full flex items-center justify-center active:translate-y-[2px] active:border-b-0 transition-all shrink-0 cursor-pointer relative z-10">
                         <!-- Mũi tên bay nhẹ -->
                         <svg viewBox="0 0 100 100" class="w-[20px] h-[20px] anim-arrow-bounce" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"><path d="M 25 50 Q 50 52, 70 48 M 55 30 Q 65 40, 72 49 Q 60 60, 53 72"/></svg>
                     </button>
@@ -5395,15 +5456,18 @@ function toggleSlowAudio() {
             const clearBtn = document.getElementById('clearSearchBtn');
             const dropdown = document.getElementById('autocompleteDropdown');
             const shortcuts = document.getElementById('searchShortcuts');
+            const actionBtn = document.getElementById('dictSearchActionBtn');
             if (!val || val.trim().length === 0) {
                 if (clearBtn) clearBtn.classList.add('hidden');
                 if (dropdown) dropdown.classList.add('hidden');
                 if (shortcuts) shortcuts.classList.remove('hidden');
+                if (actionBtn) actionBtn.classList.remove('has-query');
                 showDictEmptyState();
                 return;
             }
             if (clearBtn) clearBtn.classList.remove('hidden');
             if (shortcuts) shortcuts.classList.add('hidden');
+            if (actionBtn) actionBtn.classList.add('has-query');
 
             const q = val.trim().toLowerCase();
             const allWords = [...new Set([
@@ -5472,6 +5536,8 @@ function toggleSlowAudio() {
         function clearSearchInput() {
             const input = document.getElementById('fullDictSearchInput');
             if (input) input.value = '';
+            const actionBtn = document.getElementById('dictSearchActionBtn');
+            if (actionBtn) actionBtn.classList.remove('has-query');
             showDictEmptyState();
             if (input) input.focus();
         }
