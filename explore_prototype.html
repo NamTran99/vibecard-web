@@ -351,10 +351,24 @@
         #dictHeaderTopBar {
             background-color: #191B16;
             border-bottom: 1px solid #36392E;
+            box-shadow: none !important;
+        }
+        #dictHeaderTopBar button,
+        #dictHeaderTopBar [class*="shadow"] {
+            box-shadow: none !important;
         }
         html.light #dictHeaderTopBar {
             background-color: #FFFFFF !important;
             border-bottom: 1px solid #E8E5DA !important;
+            box-shadow: none !important;
+        }
+        html.light #dictHeaderTopBar button {
+            box-shadow: none !important;
+        }
+        html.light #dictHeaderTopBar [class*="drop-shadow"],
+        html.light #dictHeaderTopBar .drop-shadow {
+            filter: none !important;
+            text-shadow: none !important;
         }
 
         /* Part 2: Segmented Mode Switcher (Tab Strip) */
@@ -3747,9 +3761,9 @@
         <div class="absolute -bottom-10 right-4 w-60 h-60 bg-[#FBBF24]/10 blur-[80px] rounded-full pointer-events-none mix-blend-screen"></div>
 
         <!-- Top Header Bar (Part 1: Header) -->
-        <div id="dictHeaderTopBar" class="px-5 pt-11 pb-3 flex items-center justify-between z-30 sticky top-0 transition-colors">
+        <div id="dictHeaderTopBar" class="px-5 pt-11 pb-3 flex items-center justify-between z-30 sticky top-0 transition-colors shadow-none">
             <!-- Back Button (Borderless) -->
-            <button onclick="closeDictionaryScreen()" class="w-10 h-10 rounded-full bg-[#20211C] hover:bg-[#252621] border border-[#46483C] flex items-center justify-center text-[#E5E3DB] active:scale-90 transition-all shadow-md group cursor-pointer" title="Trở về Trang chủ">
+            <button onclick="closeDictionaryScreen()" class="w-10 h-10 rounded-full bg-[#20211C] hover:bg-[#252621] border border-[#46483C] flex items-center justify-center text-[#E5E3DB] active:scale-90 transition-all shadow-none group cursor-pointer" title="Trở về Trang chủ">
                 <svg viewBox="0 0 100 100" class="w-5 h-5 transition-transform group-hover:-translate-x-0.5" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M 75 50 Q 50 52, 30 48 M 45 30 Q 35 40, 28 49 Q 40 60, 47 72"/>
                 </svg>
@@ -3759,7 +3773,7 @@
                 <!-- Dark / Light Mode Quick Toggle Button in Dictionary -->
                 <button onclick="toggleThemeModeQuick()"
                         id="dictThemeToggleBtn"
-                        class="w-10 h-10 rounded-full bg-[#20211C] hover:bg-[#252621] border border-[#46483C] flex items-center justify-center text-[#E5E3DB] active:scale-90 transition-all shadow-md group cursor-pointer"
+                        class="w-10 h-10 rounded-full bg-[#20211C] hover:bg-[#252621] border border-[#46483C] flex items-center justify-center text-[#E5E3DB] active:scale-90 transition-all shadow-none group cursor-pointer"
                         title="Chuyển chế độ Sáng / Tối">
                     <span id="dictThemeIconSlot" class="flex items-center justify-center">
                         <svg class="w-4 h-4 text-amber-400 group-hover:rotate-45 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -3771,19 +3785,19 @@
                 </button>
 
                 <!-- Language Switcher Pill (Dual-Tone Neon Typography) -->
-                <button onclick="swapLanguageMode()" class="group relative flex items-center gap-3.5 px-4 h-10 rounded-full bg-[#1B1C17] hover:bg-[#20211C] border border-[#46483C] backdrop-blur-3xl shadow-[0_8px_32px_rgba(0,0,0,0.4)] active:scale-[0.96] transition-all duration-300 cursor-pointer select-none" title="Chạm để đảo chiều ngôn ngữ" style="-webkit-tap-highlight-color: transparent; -webkit-user-select: none;">
+                <button onclick="swapLanguageMode()" class="group relative flex items-center gap-3.5 px-4 h-10 rounded-full bg-[#1B1C17] hover:bg-[#20211C] border border-[#46483C] backdrop-blur-3xl shadow-none active:scale-[0.96] transition-all duration-300 cursor-pointer select-none" title="Chạm để đảo chiều ngôn ngữ" style="-webkit-tap-highlight-color: transparent; -webkit-user-select: none;">
                 
                 <!-- Glowing Ambient Light Behind Pill -->
                 <div class="absolute inset-0 bg-gradient-to-r from-[#B8D166]/15 via-transparent to-[#FBBF24]/15 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
 
                 <!-- Source Lang -->
                 <div class="flex items-center gap-1.5 relative z-10">
-                    <span id="flagSource" class="text-[15px] leading-none filter drop-shadow opacity-90">🇺🇸</span>
-                    <span id="codeSource" class="text-[13.5px] font-black tracking-widest text-[#B8D166] drop-shadow-[0_0_8px_rgba(184,209,102,0.4)] transition-colors">EN</span>
+                    <span id="flagSource" class="text-[15px] leading-none opacity-90">🇺🇸</span>
+                    <span id="codeSource" class="text-[13.5px] font-black tracking-widest text-[#B8D166] transition-colors">EN</span>
                 </div>
 
                 <!-- Swap Icon Badge -->
-                <div class="w-6 h-6 rounded-full bg-[#252621] group-hover:bg-[#30312B] border border-[#46483C] flex items-center justify-center text-[#909283] group-hover:text-[#E5E3DB] shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] group-hover:scale-110 transition-all relative z-10">
+                <div class="w-6 h-6 rounded-full bg-[#252621] group-hover:bg-[#30312B] border border-[#46483C] flex items-center justify-center text-[#909283] group-hover:text-[#E5E3DB] group-hover:scale-110 transition-all relative z-10 shadow-none">
                     <svg id="swapLangIcon" class="w-3.5 h-3.5 transition-transform duration-300 ease-out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
                     </svg>
@@ -3791,8 +3805,8 @@
 
                 <!-- Target Lang -->
                 <div class="flex items-center gap-1.5 relative z-10">
-                    <span id="flagTarget" class="text-[15px] leading-none filter drop-shadow opacity-90">🇻🇳</span>
-                    <span id="codeTarget" class="text-[13.5px] font-black tracking-widest text-[#FBBF24] drop-shadow-[0_0_8px_rgba(251,191,36,0.4)] transition-colors">VI</span>
+                    <span id="flagTarget" class="text-[15px] leading-none opacity-90">🇻🇳</span>
+                    <span id="codeTarget" class="text-[13.5px] font-black tracking-widest text-[#FBBF24] transition-colors">VI</span>
                 </div>
             </button>
             </div>
