@@ -1585,22 +1585,49 @@
                     </button>
                 </div>
 
-                <!-- Apple Spotlight / Raycast Magic Omnibar (Integrated, Zero Internal Boxes) -->
+                <!-- Tactile Omnibar (Exact Replica of Inner Screen Search Bar in Image 1) -->
                 <div onclick="openDictionaryScreen(document.getElementById('dictInput').value)"
-                     class="group/search relative flex items-center rounded-2xl bg-surfaceContainerHighest hover:bg-surfaceContainerHigh active:scale-[0.99] h-[50px] px-4 gap-3 transition-all duration-300 mb-3 cursor-pointer border border-outlineVariant focus-within:border-primary anim-inner-2"
+                     class="group/search relative flex items-center rounded-full bg-[#30312C] border-[2px] border-[#B8D166] border-b-[5px] border-b-[#B8D166] h-[60px] pl-5 pr-2 gap-3 transition-all duration-200 mb-3.5 cursor-pointer shadow-[0_8px_24px_-6px_rgba(184,209,102,0.35)] hover:shadow-[0_8px_30px_rgba(184,209,102,0.45)] active:translate-y-[2px] active:border-b-[3px] anim-inner-2 select-none"
                      style="-webkit-tap-highlight-color: transparent;">
                     
-                    <!-- Minimalist Search Glyph (No Box Around It) -->
-                    <svg class="w-[18px] h-[18px] text-textTertiary group-hover/search:text-primary transition-colors shrink-0" width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    <!-- Tactile Pulse Glow Behind Icon -->
+                    <div class="absolute left-4 w-8 h-8 bg-[#B8D166]/20 blur-xl rounded-full pointer-events-none"></div>
+
+                    <!-- Lime Search Glyph -->
+                    <svg viewBox="0 0 100 100" class="w-5 h-5 text-[#B8D166] shrink-0" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M42 26 C 54 25, 59 34, 57 44 C 55 54, 46 58, 36 56 C 26 54, 24 45, 27 34 C 30 25, 36 27, 42 26 Z M 54 54 Q 65 60, 73 71"/>
                     </svg>
 
-                    <!-- Spacious Typewriter Text Input (16px font to prevent iOS Safari auto-zoom) -->
-                    <input type="text" id="dictInput" placeholder="Tra từ vựng, idioms, ngữ cảnh..."
+                    <!-- Typewriter Text Input -->
+                    <input type="text" id="dictInput" placeholder="Tra từ vựng theo chủ đề..."
                            readonly
                            inputmode="search" enterkeyhint="search" autocomplete="off" spellcheck="false"
                            onclick="event.stopPropagation(); openDictionaryScreen(this.value)"
-                           class="dict-typewriter-input flex-1 min-w-0 bg-transparent text-[15px] sm:text-[16px] text-textPrimary placeholder-[#909283] font-medium focus:outline-none cursor-pointer truncate" />
+                           class="dict-typewriter-input flex-1 min-w-0 bg-transparent text-[15.5px] text-[#E5E3DB] placeholder-[#909283] font-bold focus:outline-none cursor-pointer truncate tracking-wide" />
+
+                    <!-- Paste & Voice Shortcuts -->
+                    <div class="flex items-center gap-0.5 shrink-0 text-[#909283]">
+                        <button onclick="event.stopPropagation(); pasteClipboardToSearch();" class="w-8 h-8 flex items-center justify-center hover:text-[#B8D166] active:scale-95 transition-all cursor-pointer" title="Dán từ khay nhớ tạm">
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="8" height="4" x="8" y="2" rx="1.5" ry="1.5"/>
+                                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+                                <path d="M12 11v6"/>
+                                <path d="m9 14 3 3 3-3"/>
+                            </svg>
+                        </button>
+                        <button onclick="event.stopPropagation(); triggerDedicatedVoiceLookup();" class="w-8 h-8 flex items-center justify-center hover:text-[#B8D166] active:scale-95 transition-all cursor-pointer" title="Tra bằng giọng nói">
+                            <svg viewBox="0 0 100 100" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M 35 30 L 35 50 C 35 60, 65 60, 65 50 L 65 30 C 65 20, 35 20, 35 30 Z M 25 50 C 25 70, 75 70, 75 50 M 50 72 L 50 85 M 35 85 L 65 85"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Search Action Circle Button (M3 SecondaryContainer #444930) -->
+                    <div class="w-[42px] h-[42px] rounded-full bg-[#444930] hover:bg-[#52583a] text-[#E0E6C3] border border-[#C4CAA9]/30 flex items-center justify-center shrink-0 cursor-pointer shadow-sm active:scale-90 transition-transform">
+                        <svg viewBox="0 0 100 100" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M 25 50 Q 50 52, 70 48 M 55 30 Q 65 40, 72 49 Q 60 60, 53 72"/>
+                        </svg>
+                    </div>
                 </div>
 
                 <!-- Unified Segmented Quick Actions (1 Clean Bar instead of 3 Disconnected Floating Bordered Boxes) -->
@@ -2568,7 +2595,7 @@
             <!-- Premium Search Bar (High-End Asymmetric Layout) -->
             <div class="px-5 pt-3 pb-2 z-50 shrink-0 relative bg-[#0D0E0B]">
                 <!-- CLEAN GAMIFIED SEARCH BAR WITH SHIMMER -->
-                <div class="relative w-full bg-[#30312B] border-b-[4px] border-[#20211C] border border-[#909283]/60 rounded-[24px] flex items-center h-[64px] pl-5 pr-2.5 shadow-[0_8px_24px_-8px_rgba(0,0,0,0.5)] focus-within:shadow-[0_8px_32px_-4px_rgba(184,209,102,0.25)] focus-within:border-[#B8D166] transition-all overflow-hidden group">
+                <div class="relative w-full bg-[#30312C] border-[2px] border-[#B8D166] border-b-[5px] border-b-[#B8D166] rounded-full flex items-center h-[60px] pl-5 pr-2.5 shadow-[0_8px_24px_-6px_rgba(184,209,102,0.35)] focus-within:shadow-[0_8px_32px_rgba(184,209,102,0.45)] transition-all overflow-hidden group">
                     
                     <!-- Continuous Premium Shimmer across the whole bar -->
                     <div class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.05] to-transparent skew-x-[-20deg] animate-[shimmerSweep_4s_ease-in-out_infinite] pointer-events-none"></div>
