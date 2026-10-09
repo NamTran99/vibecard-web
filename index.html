@@ -18,7 +18,871 @@
                 }
             } catch (e) {}
         })();
-    </script>
+    
+        // ===================================================================
+        // NATIVE M3-07 DARK OLIVE GREEN LIBRARY & SRS LEITNER CONTROLLER
+        // ===================================================================
+        let libraryDecks = [
+            {
+                deckKey: 'deck-farm-night',
+                title: 'Nông trại đêm hè',
+                sourceFilter: 'STORY',
+                sourceLabel: 'Truyện',
+                accentColor: '#B8D166',
+                badge: 'MỚI',
+                meta: '10 phút trước',
+                latestUpdatedAt: Date.now() - 10 * 60 * 1000,
+                coverUri: 'assets/cards/pixar_night_farm_scenery.jpg',
+                topicId: 'topic_001',
+                cards: [
+                    {
+                        term: 'firefly',
+                        ipa: '/ˈfaɪər.flaɪ/',
+                        type: 'Danh từ',
+                        meaning: 'Đom đóm phát sáng lập lòe trong đêm thanh vắng',
+                        example: 'Hundreds of fireflies lit up the summer night farm with golden glow.',
+                        image: 'assets/cards/pixar_night_farm_scenery.jpg',
+                        leitnerLevel: 4
+                    },
+                    {
+                        term: 'harvest',
+                        ipa: '/ˈhɑːr.vɪst/',
+                        type: 'Danh từ',
+                        meaning: 'Mùa vụ thu hoạch lúa mì và nông sản bội thu',
+                        example: 'Farmers gather the golden grain during the autumn harvest.',
+                        image: 'assets/cards/lumi_farmer_night.png',
+                        leitnerLevel: 3
+                    },
+                    {
+                        term: 'serene',
+                        ipa: '/səˈriːn/',
+                        type: 'Tính từ',
+                        meaning: 'Thanh bình, tĩnh lặng và yên ả không chút gợn sóng',
+                        example: 'The countryside feels wonderfully serene under starry skies.',
+                        image: 'assets/cards/pixar_night_farm_scenery.jpg',
+                        leitnerLevel: 4
+                    },
+                    {
+                        term: 'meadow',
+                        ipa: '/ˈmed.oʊ/',
+                        type: 'Danh từ',
+                        meaning: 'Đồng cỏ xanh tươi trải dài bên sườn đồi thoai thoải',
+                        example: 'Dewdrops glisten on the wild grass across the misty meadow.',
+                        image: 'assets/cards/pixar_night_farm_scenery.jpg',
+                        leitnerLevel: 2
+                    },
+                    {
+                        term: 'barn',
+                        ipa: '/bɑːrn/',
+                        type: 'Danh từ',
+                        meaning: 'Kho thóc, chuồng trại nông thôn lát gỗ mộc mạc',
+                        example: 'The wooden barn was warmly lit by an old kerosene lantern.',
+                        image: 'assets/cards/pixar_night_farm_scenery.jpg',
+                        leitnerLevel: 1
+                    }
+                ]
+            },
+            {
+                deckKey: 'deck-coffee-rain',
+                title: 'Cà phê mưa ngâu',
+                sourceFilter: 'AUDIO',
+                sourceLabel: 'Audio',
+                accentColor: '#A1D0C5',
+                badge: null,
+                meta: '2 giờ trước',
+                latestUpdatedAt: Date.now() - 2 * 3600 * 1000,
+                coverUri: 'assets/cards/lumi_rain_coffee_eaves.jpg',
+                topicId: 'topic_002',
+                cards: [
+                    {
+                        term: 'aroma',
+                        ipa: '/əˈroʊ.mə/',
+                        type: 'Danh từ',
+                        meaning: 'Hương thơm nồng nàn đặc trưng của cà phê rang xay',
+                        example: 'The rich aroma of freshly roasted espresso filled the room.',
+                        image: 'assets/cards/lumi_rain_coffee_eaves.jpg',
+                        leitnerLevel: 4
+                    },
+                    {
+                        term: 'drizzle',
+                        ipa: '/ˈdrɪz.əl/',
+                        type: 'Danh từ',
+                        meaning: 'Cơn mưa phùn lất phất tí tách ngoài hiên nhỏ',
+                        example: 'A gentle afternoon drizzle tapped softly against the café glass.',
+                        image: 'assets/cards/lumi_rain_coffee_eaves.jpg',
+                        leitnerLevel: 3
+                    },
+                    {
+                        term: 'ambiance',
+                        ipa: '/ˈæm.bi.əns/',
+                        type: 'Danh từ',
+                        meaning: 'Bầu không khí, cảm giác ấm cúng của quán nhỏ',
+                        example: 'The warm jazz tune created an intimate, relaxing coffee ambiance.',
+                        image: 'assets/cards/lumi_rain_coffee_eaves.jpg',
+                        leitnerLevel: 3
+                    },
+                    {
+                        term: 'linger',
+                        ipa: '/ˈlɪŋ.ɡər/',
+                        type: 'Động từ',
+                        meaning: 'Vương vấn, nấn ná đọng lại dư vị ngọt ngào',
+                        example: 'The sweet caramel aftertaste continued to linger on the tongue.',
+                        image: 'assets/cards/lumi_rain_coffee_eaves.jpg',
+                        leitnerLevel: 2
+                    }
+                ]
+            },
+            {
+                deckKey: 'deck-night-train',
+                title: 'Chuyến tàu đêm',
+                sourceFilter: 'OCR',
+                sourceLabel: 'OCR',
+                accentColor: '#38BDF8',
+                badge: null,
+                meta: 'Hôm qua',
+                latestUpdatedAt: Date.now() - 24 * 3600 * 1000,
+                coverUri: 'assets/cards/lumi_train_station_night.jpg',
+                topicId: 'topic_003',
+                cards: [
+                    {
+                        term: 'platform',
+                        ipa: '/ˈplæt.fɔːrm/',
+                        type: 'Danh từ',
+                        meaning: 'Sân ga, thềm ga hành khách đợi tàu cập bến',
+                        example: 'Passengers hurried along the chilly platform to catch the train.',
+                        image: 'assets/cards/lumi_train_station_night.jpg',
+                        leitnerLevel: 4
+                    },
+                    {
+                        term: 'journey',
+                        ipa: '/ˈdʒɜːr.ni/',
+                        type: 'Danh từ',
+                        meaning: 'Cuộc hành trình dài đầy trải nghiệm và khám phá',
+                        example: 'Every great journey begins with a courageous single step.',
+                        image: 'assets/cards/lumi_train_station_night.jpg',
+                        leitnerLevel: 4
+                    },
+                    {
+                        term: 'departure',
+                        ipa: '/dɪˈpɑːr.tʃər/',
+                        type: 'Danh từ',
+                        meaning: 'Giờ khởi hành xuất bến của chuyến tàu lúc nửa đêm',
+                        example: 'The whistle signaled the train’s midnight departure into the mist.',
+                        image: 'assets/cards/lumi_train_station_night.jpg',
+                        leitnerLevel: 3
+                    },
+                    {
+                        term: 'commuter',
+                        ipa: '/kəˈmjuː.tər/',
+                        type: 'Danh từ',
+                        meaning: 'Người đi lại thường xuyên bằng phương tiện công cộng',
+                        example: 'Weary commuters read novels quietly under the dim carriage lights.',
+                        image: 'assets/cards/lumi_train_station_night.jpg',
+                        leitnerLevel: 2
+                    },
+                    {
+                        term: 'scenery',
+                        ipa: '/ˈsiː.nər.i/',
+                        type: 'Danh từ',
+                        meaning: 'Phong cảnh non nước hữu tình vút qua khung cửa sổ',
+                        example: 'The moonlit mountain scenery flashed past the speeding window.',
+                        image: 'assets/cards/lumi_train_station_night.jpg',
+                        leitnerLevel: 1
+                    }
+                ]
+            },
+            {
+                deckKey: 'deck-ielts-vocab',
+                title: 'IELTS Band 7.0 Vocabulary',
+                sourceFilter: 'TEXT',
+                sourceLabel: 'Văn bản',
+                accentColor: '#FBBF24',
+                badge: null,
+                meta: '2 ngày trước',
+                latestUpdatedAt: Date.now() - 48 * 3600 * 1000,
+                coverUri: 'assets/cards/lumi_melody_arena.jpg',
+                topicId: null,
+                cards: [
+                    {
+                        term: 'ubiquitous',
+                        ipa: '/juːˈbɪk.wə.təs/',
+                        type: 'Tính từ',
+                        meaning: 'Phổ biến, hiện diện khắp mọi nơi trong đời sống',
+                        example: 'Digital technology has become ubiquitous in modern education.',
+                        image: 'assets/cards/resilient.jpg',
+                        leitnerLevel: 3
+                    },
+                    {
+                        term: 'meticulous',
+                        ipa: '/məˈtɪk.jə.ləs/',
+                        type: 'Tính từ',
+                        meaning: 'Tỉ mỉ, cẩn trọng từng chi tiết nhỏ với độ chính xác cao',
+                        example: 'She was meticulous in documenting every experimental finding.',
+                        image: 'assets/cards/meticulous.jpg',
+                        leitnerLevel: 4
+                    },
+                    {
+                        term: 'pragmatic',
+                        ipa: '/præɡˈmæt.ɪk/',
+                        type: 'Tính từ',
+                        meaning: 'Thực tế, có tính ứng dụng cao thay vì lý thuyết suông',
+                        example: 'We must adopt a pragmatic approach to solve resource constraints.',
+                        image: 'assets/cards/serendipity.jpg',
+                        leitnerLevel: 3
+                    },
+                    {
+                        term: 'resilient',
+                        ipa: '/rɪˈzɪl.jənt/',
+                        type: 'Tính từ',
+                        meaning: 'Kiên cường, mau hồi phục sau những vấp ngã thử thách',
+                        example: 'Young learners are remarkably resilient when guided with empathy.',
+                        image: 'assets/cards/resilient.jpg',
+                        leitnerLevel: 2
+                    },
+                    {
+                        term: 'eloquent',
+                        ipa: '/ˈel.ə.kwənt/',
+                        type: 'Tính từ',
+                        meaning: 'Hùng biện lưu loát, truyền cảm và giàu sức thuyết phục',
+                        example: 'Her eloquent speech moved the entire audience to applause.',
+                        image: 'assets/cards/lumi_melody_arena.jpg',
+                        leitnerLevel: 1
+                    },
+                    {
+                        term: 'serendipity',
+                        ipa: '/ˌser.ənˈdɪp.ə.t̬i/',
+                        type: 'Danh từ',
+                        meaning: 'Sự tình cờ may mắn mang lại phát hiện quý báu',
+                        example: 'Discovering this charming old book was pure serendipity.',
+                        image: 'assets/cards/serendipity.jpg',
+                        leitnerLevel: 4
+                    }
+                ]
+            }
+        ];
+
+        let activeCatalogSourceFilter = 'ALL';
+        let activeCatalogLevelFilter = null;
+        let currentDetailDeckKey = null;
+        let activeDetailLevelFilter = null;
+        let detailSearchQuery = '';
+
+        // Calculate Leitner Statistics
+        function getLibraryStats() {
+            let intro = 0, familiar = 0, memory = 0, fluent = 0;
+            let totalCards = 0;
+            libraryDecks.forEach(deck => {
+                deck.cards.forEach(c => {
+                    totalCards++;
+                    if (c.leitnerLevel === 1) intro++;
+                    else if (c.leitnerLevel === 2) familiar++;
+                    else if (c.leitnerLevel === 3) memory++;
+                    else if (c.leitnerLevel === 4) fluent++;
+                });
+            });
+            const total = totalCards || 1;
+            const masteryRate = Math.round((fluent / total) * 100);
+            return { intro, familiar, memory, fluent, total: totalCards, masteryRate };
+        }
+
+        // Get due cards (level 1 & 2, and sample of level 3)
+        function getLibraryDueCards() {
+            const due = [];
+            libraryDecks.forEach(deck => {
+                deck.cards.forEach(c => {
+                    if (c.leitnerLevel <= 2 || c.leitnerLevel === 3) {
+                        due.push({
+                            ...c,
+                            deckTitle: deck.title,
+                            deckKey: deck.deckKey
+                        });
+                    }
+                });
+            });
+            return due;
+        }
+
+        // Render main Library UI
+        function renderLibraryUI() {
+            const stats = getLibraryStats();
+            const dueCards = getLibraryDueCards();
+
+            // Update Hub Due Review Stats
+            const dueCountEl = document.getElementById('libDueCountText');
+            const dueTimeEl = document.getElementById('libDueTimeText');
+            if (dueCountEl) dueCountEl.innerText = `${dueCards.length} thẻ`;
+            if (dueTimeEl) dueTimeEl.innerText = `Khoảng ${Math.max(1, Math.round(dueCards.length / 3))} phút`;
+
+            // Update Collection Count Badge
+            const colBadge = document.getElementById('libCollectionBadge');
+            if (colBadge) colBadge.innerText = `${libraryDecks.length} bộ`;
+
+            // Update Memory Summary Card Stats
+            const badgeMastery = document.getElementById('libMasteryRateBadge');
+            if (badgeMastery) badgeMastery.innerText = `${stats.masteryRate}% Thuộc`;
+
+            const countIntro = document.getElementById('libCountIntro');
+            const countFamiliar = document.getElementById('libCountFamiliar');
+            const countMemory = document.getElementById('libCountMemory');
+            const countFluent = document.getElementById('libCountFluent');
+
+            if (countIntro) countIntro.innerText = `${stats.intro} thẻ`;
+            if (countFamiliar) countFamiliar.innerText = `${stats.familiar} thẻ`;
+            if (countMemory) countMemory.innerText = `${stats.memory} thẻ`;
+            if (countFluent) countFluent.innerText = `${stats.fluent} thẻ`;
+
+            // Multi-segment progress bar percentages
+            const t = stats.total || 1;
+            const barIntro = document.getElementById('libBarIntro');
+            const barFamiliar = document.getElementById('libBarFamiliar');
+            const barMemory = document.getElementById('libBarMemory');
+            const barFluent = document.getElementById('libBarFluent');
+
+            if (barIntro) barIntro.style.width = `${(stats.intro / t) * 100}%`;
+            if (barFamiliar) barFamiliar.style.width = `${(stats.familiar / t) * 100}%`;
+            if (barMemory) barMemory.style.width = `${(stats.memory / t) * 100}%`;
+            if (barFluent) barFluent.style.width = `${(stats.fluent / t) * 100}%`;
+
+            // Update Catalog Quick Filter Badges
+            const bL1 = document.getElementById('libBadgeL1');
+            const bL2 = document.getElementById('libBadgeL2');
+            const bL3 = document.getElementById('libBadgeL3');
+            const bL4 = document.getElementById('libBadgeL4');
+            if (bL1) bL1.innerText = stats.intro;
+            if (bL2) bL2.innerText = stats.familiar;
+            if (bL3) bL3.innerText = stats.memory;
+            if (bL4) bL4.innerText = stats.fluent;
+
+            const catalogMeta = document.getElementById('libCatalogMetaSub');
+            if (catalogMeta) catalogMeta.innerText = `${libraryDecks.length} bộ thẻ • ${stats.total} từ vựng`;
+
+            // Render Recent Decks Carousel on Hub
+            renderRecentDecksCarousel();
+        }
+
+        // Render Recent Decks Horizontal Carousel
+        function renderRecentDecksCarousel() {
+            const container = document.getElementById('libRecentDecksContainer');
+            if (!container) return;
+
+            container.innerHTML = libraryDecks.map(deck => {
+                const total = deck.cards.length;
+                const fluent = deck.cards.filter(c => c.leitnerLevel === 4).length;
+                const percent = Math.round((fluent / (total || 1)) * 100);
+
+                return `
+                    <div onclick="openDeckDetailView('${deck.deckKey}')" 
+                         class="w-[172px] shrink-0 p-3.5 rounded-2xl bg-[#1B1C17] border border-[#46483C]/70 hover:border-[#B8D166]/50 active:scale-[0.97] transition-all cursor-pointer flex flex-col justify-between shadow-md relative group">
+                        
+                        <!-- Top Cover & Source Badge -->
+                        <div class="relative w-full h-[96px] rounded-xl overflow-hidden mb-2.5 bg-[#20211C]">
+                            <img src="${deck.coverUri}" alt="${deck.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                            
+                            <span class="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-black/60 backdrop-blur-md text-[10px] font-bold text-white border border-white/10">
+                                ${deck.sourceLabel}
+                            </span>
+                            
+                            ${deck.badge ? `
+                                <span class="absolute top-2 right-2 px-1.5 py-0.5 rounded-md bg-[#B8D166] text-[#283500] text-[9.5px] font-black shadow-sm">
+                                    ${deck.badge}
+                                </span>
+                            ` : ''}
+
+                            <div class="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-[10.5px] text-white/90 font-bold">
+                                <span>${total} thẻ</span>
+                                <span class="text-[#FBBF24]">${percent}%</span>
+                            </div>
+                        </div>
+
+                        <!-- Title & Meta -->
+                        <div>
+                            <h4 class="text-[14px] font-bold text-[#E5E3DB] truncate leading-snug">${deck.title}</h4>
+                            <p class="text-[11px] text-[#909283] truncate mt-0.5 flex items-center gap-1">
+                                <span>♨</span>
+                                <span>${deck.meta}</span>
+                            </p>
+                        </div>
+
+                        <!-- Micro Mastery Bar -->
+                        <div class="w-full h-1 rounded-full bg-[#2A2B24] overflow-hidden mt-2.5">
+                            <div class="h-full bg-gradient-to-r from-[#B8D166] to-[#FBBF24]" style="width: ${percent}%;"></div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Open Deck Catalog View
+        function openDeckCatalogView(e) {
+            if (e) e.stopPropagation();
+            document.getElementById('libHubView').classList.add('hidden');
+            document.getElementById('libDeckDetailView').classList.add('hidden');
+            const catalog = document.getElementById('libDeckListView');
+            catalog.classList.remove('hidden');
+            catalog.classList.add('flex');
+            renderDeckCatalogList();
+            const tab2 = document.getElementById('tabScreen-2');
+            if (tab2) tab2.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Close Deck Catalog View (return to Hub)
+        function closeDeckCatalogView() {
+            document.getElementById('libDeckListView').classList.add('hidden');
+            document.getElementById('libDeckListView').classList.remove('flex');
+            document.getElementById('libDeckDetailView').classList.add('hidden');
+            const hub = document.getElementById('libHubView');
+            hub.classList.remove('hidden');
+            hub.classList.add('flex');
+            renderLibraryUI();
+        }
+
+        // Apply Catalog Filter
+        function applyCatalogFilter(type, value) {
+            if (type === 'source') {
+                activeCatalogSourceFilter = value;
+                ['ALL', 'STORY', 'AUDIO', 'OCR', 'TEXT', 'MANUAL'].forEach(s => {
+                    const el = document.getElementById(`libChip-${s}`);
+                    if (!el) return;
+                    if (s === value) {
+                        el.className = 'px-3.5 py-1.5 rounded-full bg-[#B8D166] text-[#283500] font-black text-[12px] shrink-0 transition-all cursor-pointer shadow-sm';
+                    } else {
+                        el.className = 'px-3.5 py-1.5 rounded-full bg-[#20211C] text-[#C4CAA9] border border-[#46483C]/70 hover:border-[#B8D166] font-bold text-[12px] shrink-0 transition-all cursor-pointer';
+                    }
+                });
+            } else if (type === 'level') {
+                if (activeCatalogLevelFilter === value) {
+                    activeCatalogLevelFilter = null; // Toggle off
+                } else {
+                    activeCatalogLevelFilter = value;
+                }
+                [1, 2, 3, 4].forEach(l => {
+                    const el = document.getElementById(`libFilterBtn-l${l}`);
+                    if (!el) return;
+                    if (l === activeCatalogLevelFilter) {
+                        el.classList.add('ring-2', 'ring-[#B8D166]', 'bg-[#2A2B24]');
+                    } else {
+                        el.classList.remove('ring-2', 'ring-[#B8D166]', 'bg-[#2A2B24]');
+                    }
+                });
+            }
+            renderDeckCatalogList();
+        }
+
+        // Filter Catalog by Level from Hub summary cards
+        function filterCatalogByLevel(level) {
+            openDeckCatalogView();
+            applyCatalogFilter('level', level);
+        }
+
+        // Render Deck Catalog List with Stacked Layers
+        function renderDeckCatalogList() {
+            const container = document.getElementById('libDeckCardsList');
+            if (!container) return;
+
+            let filtered = libraryDecks;
+            if (activeCatalogSourceFilter !== 'ALL') {
+                filtered = filtered.filter(d => d.sourceFilter === activeCatalogSourceFilter);
+            }
+            if (activeCatalogLevelFilter !== null) {
+                filtered = filtered.filter(d => d.cards.some(c => c.leitnerLevel === activeCatalogLevelFilter));
+            }
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="py-12 flex flex-col items-center justify-center text-center">
+                        <div class="w-16 h-16 rounded-2xl bg-[#20211C] border border-[#46483C]/50 flex items-center justify-center mb-3 text-2xl">
+                            🔍
+                        </div>
+                        <h4 class="text-[16px] font-bold text-white mb-1">Không có bộ thẻ phù hợp</h4>
+                        <p class="text-[12.5px] text-[#909283] max-w-[240px] mb-4">Thử thay đổi bộ lọc nguồn hoặc mức độ ghi nhớ.</p>
+                        <button onclick="applyCatalogFilter('source', 'ALL'); applyCatalogFilter('level', null);" 
+                                class="px-4 py-2 rounded-xl bg-[#2A2B24] text-[#B8D166] text-xs font-bold border border-[#B8D166]/30">
+                            Xóa bộ lọc
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = filtered.map(deck => {
+                const total = deck.cards.length;
+                const intro = deck.cards.filter(c => c.leitnerLevel === 1).length;
+                const familiar = deck.cards.filter(c => c.leitnerLevel === 2).length;
+                const memory = deck.cards.filter(c => c.leitnerLevel === 3).length;
+                const fluent = deck.cards.filter(c => c.leitnerLevel === 4).length;
+                const percent = Math.round((fluent / (total || 1)) * 100);
+
+                return `
+                    <div class="deck-card-stack-wrap">
+                        <!-- Stacked depth layers -->
+                        <div class="deck-card-stack-layer-2"></div>
+                        <div class="deck-card-stack-layer-1"></div>
+
+                        <!-- Main Deck Card -->
+                        <div class="deck-card-main p-4 rounded-3xl bg-[#1B1C17] border border-[#46483C]/70 shadow-lg space-y-3.5">
+                            
+                            <!-- Top Info Row -->
+                            <div class="flex items-start gap-3.5">
+                                <div class="w-20 h-20 rounded-2xl bg-[#20211C] border border-[#46483C]/50 overflow-hidden shrink-0 shadow-inner">
+                                    <img src="${deck.coverUri}" alt="${deck.title}" class="w-full h-full object-cover" />
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <div class="flex items-center justify-between gap-1 mb-1">
+                                        <h4 class="text-[16px] font-bold text-white truncate">${deck.title}</h4>
+                                        <button onclick="showDictToast('Tùy chọn: ${deck.title}')" class="text-[#909283] hover:text-white px-1.5 py-0.5 text-base">⋮</button>
+                                    </div>
+                                    <div class="flex items-center gap-2 mb-1.5">
+                                        <span class="px-2 py-0.5 rounded-md bg-[#2A2B24] text-[10.5px] font-bold text-[#C4CAA9] border border-[#46483C]/50">
+                                            ${deck.sourceLabel}
+                                        </span>
+                                        <span class="text-[11.5px] text-[#909283] font-medium">• ${total} thẻ</span>
+                                        <span class="text-[11.5px] text-[#909283] font-medium">• ♨ ${deck.meta}</span>
+                                    </div>
+                                    
+                                    <!-- Micro Leitner Levels Counter -->
+                                    <div class="flex items-center gap-2 text-[10.5px] font-bold">
+                                        <span class="flex items-center gap-0.5 text-[#FF84C2]">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-[#FF84C2]"></span>${intro}
+                                        </span>
+                                        <span class="flex items-center gap-0.5 text-[#5294FF]">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-[#5294FF]"></span>${familiar}
+                                        </span>
+                                        <span class="flex items-center gap-0.5 text-[#22D3EE]">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-[#22D3EE]"></span>${memory}
+                                        </span>
+                                        <span class="flex items-center gap-0.5 text-[#FBBF24]">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-[#FBBF24]"></span>${fluent}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Mastery Progress Line -->
+                            <div class="flex items-center gap-3">
+                                <div class="flex-1 h-1.5 rounded-full bg-[#20211C] overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-[#B8D166] to-[#FBBF24] rounded-full" style="width: ${percent}%;"></div>
+                                </div>
+                                <span class="text-[11px] font-black text-[#FBBF24] shrink-0">${percent}%</span>
+                            </div>
+
+                            <!-- Actions Row -->
+                            <div class="grid grid-cols-2 gap-2.5 pt-1 border-t border-[#46483C]/40">
+                                <button onclick="openDeckDetailView('${deck.deckKey}')" 
+                                        class="h-10 rounded-xl bg-[#20211C] hover:bg-[#2A2B24] active:scale-95 text-[#C4CAA9] hover:text-white font-bold text-[12.5px] flex items-center justify-center border border-[#46483C]/60 transition-all cursor-pointer">
+                                    Xem thẻ
+                                </button>
+                                <button onclick="launchDeckReview('${deck.deckKey}')" 
+                                        class="h-10 rounded-xl bg-[#B8D166] hover:brightness-105 active:scale-95 text-[#283500] font-black text-[12.5px] flex items-center justify-center gap-1.5 shadow-[0_2px_10px_rgba(184,209,102,0.3)] transition-all cursor-pointer">
+                                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                                    <span>Ôn tập</span>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Open Deck Detail View
+        function openDeckDetailView(deckKey) {
+            currentDetailDeckKey = deckKey;
+            activeDetailLevelFilter = null;
+            detailSearchQuery = '';
+            const searchInput = document.getElementById('libDetailSearchInput');
+            if (searchInput) searchInput.value = '';
+
+            const deck = libraryDecks.find(d => d.deckKey === deckKey);
+            if (!deck) return;
+
+            document.getElementById('libHubView').classList.add('hidden');
+            document.getElementById('libDeckListView').classList.add('hidden');
+            const detailView = document.getElementById('libDeckDetailView');
+            detailView.classList.remove('hidden');
+            detailView.classList.add('flex');
+
+            // Set Header details
+            const titleEl = document.getElementById('libDetailDeckTitle');
+            if (titleEl) titleEl.innerText = deck.title;
+
+            const lessonBtn = document.getElementById('libDetailTopicLessonBtn');
+            if (lessonBtn) {
+                if (deck.topicId) {
+                    lessonBtn.classList.remove('hidden');
+                } else {
+                    lessonBtn.classList.add('hidden');
+                }
+            }
+
+            renderDeckDetailCards();
+            const tab2 = document.getElementById('tabScreen-2');
+            if (tab2) tab2.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Close Deck Detail View
+        function closeDeckDetailView() {
+            document.getElementById('libDeckDetailView').classList.add('hidden');
+            document.getElementById('libDeckDetailView').classList.remove('flex');
+            // If catalog was open before, return to catalog, otherwise to hub
+            openDeckCatalogView();
+        }
+
+        // Filter cards inside detail by level
+        function filterDetailCardsByLevel(level) {
+            activeDetailLevelFilter = level;
+            [null, 1, 2, 3, 4].forEach(l => {
+                const id = l === null ? 'libDetailChip-all' : `libDetailChip-${l}`;
+                const el = document.getElementById(id);
+                if (!el) return;
+                if (l === level) {
+                    el.className = 'px-3 py-1 rounded-full bg-[#B8D166] text-[#283500] font-black text-[11.5px] shrink-0 cursor-pointer shadow-sm';
+                } else {
+                    el.className = 'px-3 py-1 rounded-full bg-[#20211C] text-[#C4CAA9] border border-[#46483C]/50 font-bold text-[11.5px] shrink-0 cursor-pointer';
+                }
+            });
+            renderDeckDetailCards();
+        }
+
+        // Search inside deck cards
+        function handleDeckCardSearch(query) {
+            detailSearchQuery = (query || '').trim().toLowerCase();
+            renderDeckDetailCards();
+        }
+
+        // Render Deck Detail Cards List
+        function renderDeckDetailCards() {
+            const container = document.getElementById('libDetailCardsContainer');
+            if (!container) return;
+
+            const deck = libraryDecks.find(d => d.deckKey === currentDetailDeckKey);
+            if (!deck) return;
+
+            const total = deck.cards.length;
+            const fluent = deck.cards.filter(c => c.leitnerLevel === 4).length;
+            const mastery = Math.round((fluent / (total || 1)) * 100);
+
+            // Update Meta Subtitle
+            const metaSub = document.getElementById('libDetailDeckMeta');
+            if (metaSub) metaSub.innerText = `${total} flashcards • Đã thuộc ${mastery}%`;
+
+            // Update Detail Chip Counts
+            const cAll = document.getElementById('libDetailCountAll');
+            const c1 = document.getElementById('libDetailCount1');
+            const c2 = document.getElementById('libDetailCount2');
+            const c3 = document.getElementById('libDetailCount3');
+            const c4 = document.getElementById('libDetailCount4');
+            if (cAll) cAll.innerText = total;
+            if (c1) c1.innerText = deck.cards.filter(c => c.leitnerLevel === 1).length;
+            if (c2) c2.innerText = deck.cards.filter(c => c.leitnerLevel === 2).length;
+            if (c3) c3.innerText = deck.cards.filter(c => c.leitnerLevel === 3).length;
+            if (c4) c4.innerText = deck.cards.filter(c => c.leitnerLevel === 4).length;
+
+            const reviewBtnText = document.getElementById('libDetailReviewBtnText');
+            if (reviewBtnText) reviewBtnText.innerText = `Ôn tất cả bộ thẻ (${total} thẻ)`;
+
+            // Filter cards
+            let cards = deck.cards;
+            if (activeDetailLevelFilter !== null) {
+                cards = cards.filter(c => c.leitnerLevel === activeDetailLevelFilter);
+            }
+            if (detailSearchQuery) {
+                cards = cards.filter(c => 
+                    c.term.toLowerCase().includes(detailSearchQuery) || 
+                    c.meaning.toLowerCase().includes(detailSearchQuery)
+                );
+            }
+
+            if (cards.length === 0) {
+                container.innerHTML = `
+                    <div class="py-12 text-center text-[#909283] text-sm">
+                        Không tìm thấy flashcard nào phù hợp.
+                    </div>
+                `;
+                return;
+            }
+
+            const levelBadges = {
+                1: { label: 'Nhập môn', color: '#FF84C2', bg: 'rgba(255,132,194,0.15)', border: 'rgba(255,132,194,0.3)' },
+                2: { label: 'Làm quen', color: '#5294FF', bg: 'rgba(82,148,255,0.15)', border: 'rgba(82,148,255,0.3)' },
+                3: { label: 'Ghi nhớ', color: '#22D3EE', bg: 'rgba(34,211,238,0.15)', border: 'rgba(34,211,238,0.3)' },
+                4: { label: 'Thông thạo', color: '#FBBF24', bg: 'rgba(251,191,36,0.15)', border: 'rgba(251,191,36,0.3)' }
+            };
+
+            container.innerHTML = cards.map((card, idx) => {
+                const lvl = levelBadges[card.leitnerLevel] || levelBadges[1];
+                return `
+                    <div class="lib-flip-card-container">
+                        <div id="libCard-${idx}" class="lib-flip-card-inner relative rounded-2xl bg-[#1B1C17] border border-[#46483C]/70 p-4 shadow-sm hover:border-[#B8D166]/40 transition-colors">
+                            
+                            <!-- Header info row -->
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-[11px] font-black text-[#909283]">#${String(idx + 1).padStart(2, '0')} / ${String(cards.length).padStart(2, '0')}</span>
+                                <div class="flex items-center gap-1.5">
+                                    <span class="px-2.5 py-0.5 rounded-full text-[10.5px] font-black border" 
+                                          style="color: ${lvl.color}; background: ${lvl.bg}; border-color: ${lvl.border};">
+                                        ${lvl.label}
+                                    </span>
+                                    <button onclick="speakWord('${card.term}')" 
+                                            class="w-7 h-7 rounded-full bg-[#20211C] hover:bg-[#2A2B24] active:scale-90 text-[#B8D166] flex items-center justify-center transition-transform" 
+                                            title="Phát âm">
+                                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Term & IPA -->
+                            <div class="mb-2">
+                                <h4 class="text-[20px] font-black text-white tracking-tight">${card.term}</h4>
+                                <span class="text-[12.5px] font-mono text-[#D4EE7F]">${card.ipa}</span>
+                            </div>
+
+                            <!-- Meaning -->
+                            <p class="text-[13.5px] text-[#E5E3DB] font-medium leading-relaxed mb-2.5">
+                                ${card.meaning}
+                            </p>
+
+                            <!-- Example sentence -->
+                            <div class="p-2.5 rounded-xl bg-[#20211C] border border-[#46483C]/40 text-[12px] text-[#A1D0C5] italic mb-3">
+                                "${card.example}"
+                            </div>
+
+                            <!-- Actions & Status Updates -->
+                            <div class="flex items-center justify-between pt-2 border-t border-[#46483C]/40 text-xs">
+                                <button onclick="toggleCardFlip('libCard-${idx}')" 
+                                        class="text-[#909283] hover:text-white flex items-center gap-1 font-bold">
+                                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                                    <span>Lật ảnh</span>
+                                </button>
+                                
+                                <div class="flex items-center gap-2">
+                                    <button onclick="updateCardLeitner('${deck.deckKey}', '${card.term}', 1)" 
+                                            class="px-2.5 py-1 rounded-lg bg-[#FF84C2]/15 text-[#FF84C2] border border-[#FF84C2]/30 text-[11px] font-bold active:scale-95 transition-all">
+                                        ⚡ Cần ôn
+                                    </button>
+                                    <button onclick="updateCardLeitner('${deck.deckKey}', '${card.term}', 4)" 
+                                            class="px-2.5 py-1 rounded-lg bg-[#FBBF24]/15 text-[#FBBF24] border border-[#FBBF24]/30 text-[11px] font-bold active:scale-95 transition-all">
+                                        ✓ Đã nhớ
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Toggle card flip
+        function toggleCardFlip(cardId) {
+            const el = document.getElementById(cardId);
+            if (el) el.classList.toggle('is-flipped');
+        }
+
+        // Update card Leitner level
+        function updateCardLeitner(deckKey, term, newLevel) {
+            const deck = libraryDecks.find(d => d.deckKey === deckKey);
+            if (!deck) return;
+            const card = deck.cards.find(c => c.term.toLowerCase() === term.toLowerCase());
+            if (!card) return;
+            card.leitnerLevel = newLevel;
+            renderDeckDetailCards();
+            renderLibraryUI();
+            const msg = newLevel === 4 ? `Đã chuyển "${term}" sang Thông thạo! 🌟` : `Đã chuyển "${term}" vào Hộp ôn tập! ⚡`;
+            if (typeof showDictToast === 'function') {
+                showDictToast(msg);
+            }
+        }
+
+        // Open topic lesson from library
+        function openTopicFromLibrary() {
+            if (typeof openLessonImportDialog === 'function') {
+                openLessonImportDialog();
+            } else {
+                switchBottomNav(0);
+            }
+        }
+
+        // Start Review for due cards across library
+        function startDueCardsReview(e) {
+            if (e) e.stopPropagation();
+            const dueCards = getLibraryDueCards();
+            if (dueCards.length === 0) {
+                if (typeof showDictToast === 'function') showDictToast('🎉 Tuyệt vời! Bạn không còn thẻ nào cần ôn hôm nay.');
+                return;
+            }
+            launchReviewSession('Ôn tập hôm nay (SRS)', dueCards);
+        }
+
+        // Launch review for specific deck
+        function launchDeckReview(deckKey) {
+            const deck = libraryDecks.find(d => d.deckKey === deckKey);
+            if (!deck || deck.cards.length === 0) return;
+            launchReviewSession(deck.title, deck.cards);
+        }
+
+        // Launch review for current detail deck
+        function reviewCurrentDetailDeck() {
+            if (!currentDetailDeckKey) return;
+            launchDeckReview(currentDetailDeckKey);
+        }
+
+        // Launch review modal with given cards
+        function launchReviewSession(title, cards) {
+            reviewSessionWords = cards.map(c => ({
+                word: c.term,
+                ipa: c.ipa || '',
+                type: c.type || 'Danh từ',
+                meaningVi: c.meaning,
+                image: c.image || 'assets/cards/pixar_night_farm_scenery.jpg',
+                meanings: [{ text: c.meaning, image: c.image || 'assets/cards/pixar_night_farm_scenery.jpg' }],
+                example: c.example || '',
+                level: 'B2'
+            }));
+            currentReviewIndex = 0;
+
+            const titleEl = document.getElementById('reviewDeckTitleText');
+            if (titleEl) titleEl.innerText = title;
+
+            const deckModal = document.getElementById('reviewDeckModal');
+            if (deckModal) {
+                deckModal.classList.remove('hidden');
+                setTimeout(() => {
+                    deckModal.classList.remove('opacity-0');
+                }, 10);
+                if (typeof renderCurrentReviewCard === 'function') {
+                    renderCurrentReviewCard();
+                }
+            }
+        }
+
+        // Spaced Repetition SRS Info Modal Handlers
+        function openSpacedRepetitionInfoModal() {
+            const modal = document.getElementById('spacedRepetitionModal');
+            const content = document.getElementById('spacedRepetitionContent');
+            if (modal && content) {
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modal.classList.remove('opacity-0');
+                    content.classList.remove('translate-y-full');
+                }, 10);
+            }
+        }
+
+        function closeSpacedRepetitionInfoModal() {
+            const modal = document.getElementById('spacedRepetitionModal');
+            const content = document.getElementById('spacedRepetitionContent');
+            if (modal && content) {
+                modal.classList.add('opacity-0');
+                content.classList.add('translate-y-full');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                }, 300);
+            }
+        }
+        // ===================================================================
+
+</script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script>
@@ -334,16 +1198,7 @@
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
         }
 
-        /* Bottom Navigation Bar in Light Mode */
-        html.light #bottomNavPill {
-            background-color: var(--m3-surface-container-low) !important;
-            border-color: var(--m3-outline-variant) !important;
-            box-shadow: 0 16px 40px rgba(82, 102, 0, 0.12), inset 0 1px 1.5px rgba(255,255,255,0.9) !important;
-        }
-        html.light #bottomNavThumbInner {
-            background-color: var(--m3-primary-container) !important;
-            box-shadow: 0 2px 12px rgba(82, 102, 0, 0.25) !important;
-        }
+        /* Bottom Navigation Bar styled below */
         html.light #bottomNavIcon-0 { color: var(--m3-on-primary-container) !important; }
         html.light #bottomNavIcon-1 { color: var(--m3-tertiary) !important; }
         html.light #bottomNavIcon-2 { color: var(--m3-secondary) !important; }
@@ -785,6 +1640,32 @@
             background-color: #FEF3C7 !important;
             color: #92400E !important;
             border-color: #FCD34D !important;
+        }
+        html.light #dictLumiGreetingCard .lumi-tip-badge {
+            background-color: rgba(245, 158, 11, 0.15) !important;
+            color: #B45309 !important;
+            border-color: rgba(245, 158, 11, 0.3) !important;
+        }
+        html.light #dictLumiGreetingCard .lumi-tip-footer {
+            border-color: rgba(0, 0, 0, 0.08) !important;
+        }
+        html.light #dictLumiGreetingCard .lumi-tip-dismiss-btn {
+            color: #5B6146 !important;
+        }
+        html.light #dictLumiGreetingCard .lumi-tip-dismiss-btn:hover {
+            color: #1B1C17 !important;
+            background: rgba(0, 0, 0, 0.05) !important;
+        }
+        html.light #dictLumiGreetingCard .lumi-tip-ok-btn {
+            background: #526600 !important;
+            color: #FFFFFF !important;
+        }
+        html.light #dictLumiGreetingCard .lumi-tip-close-icon {
+            color: #76786B !important;
+        }
+        html.light #dictLumiGreetingCard .lumi-tip-close-icon:hover {
+            color: #1B1C17 !important;
+            background: rgba(0, 0, 0, 0.06) !important;
         }
 
         /* Dictionary Tab Strip Indicator in Light Mode */
@@ -2364,7 +3245,253 @@
             scale: 1 !important;
             border-color: rgba(70, 72, 60, 0.4) !important;
         }
-</style>
+
+        /* NATIVE M3 LIBRARY STACKED CARDS & 3D FLIP */
+        .deck-card-stack-wrap {
+            position: relative;
+        }
+        .deck-card-stack-layer-1 {
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            background: #181914;
+            border: 1px solid rgba(70, 72, 60, 0.4);
+            transform: translateY(6px) scale(0.96);
+            z-index: 1;
+            pointer-events: none;
+        }
+        .deck-card-stack-layer-2 {
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            background: #12130F;
+            border: 1px solid rgba(70, 72, 60, 0.2);
+            transform: translateY(11px) scale(0.92);
+            z-index: 0;
+            pointer-events: none;
+        }
+        .deck-card-main {
+            position: relative;
+            z-index: 2;
+        }
+        .lib-flip-card-container {
+            perspective: 1000px;
+        }
+        .lib-flip-card-inner {
+            transition: transform 0.5s cubic-bezier(0.34, 1.35, 0.64, 1);
+            transform-style: preserve-3d;
+        }
+        .lib-flip-card-inner.is-flipped {
+            transform: rotateY(180deg);
+        }
+        .lib-flip-front, .lib-flip-back {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        .lib-flip-back {
+            transform: rotateY(180deg);
+        }
+
+    
+        /* ================================================================= */
+        /* 🌿 M3 LIQUID GLASS BOTTOM NAV DOCK (SYNCHRONIZED WITH 3D ORB)      */
+        /* ================================================================= */
+        #bottomNavPill {
+            position: absolute !important;
+            bottom: 24px !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            width: 88% !important;
+            max-width: 320px !important;
+            height: 62px !important;
+            overflow: hidden !important;
+            backdrop-filter: blur(24px) !important;
+            -webkit-backdrop-filter: blur(24px) !important;
+            background: radial-gradient(130% 120% at 50% 15%, #2D3900 0%, #1E2700 55%, #111700 100%) !important;
+            border: 1px solid rgba(184, 209, 102, 0.38) !important;
+            box-shadow: 0 18px 44px rgba(0, 0, 0, 0.85), 0 0 24px rgba(61, 78, 0, 0.45), inset 0 2px 2.5px rgba(255, 255, 255, 0.32), inset 0 6px 16px rgba(184, 209, 102, 0.15), inset 0 -2.5px 5px rgba(0, 0, 0, 0.6) !important;
+            z-index: 40 !important;
+        }
+
+        #bottomNavPill::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 18px;
+            right: 18px;
+            height: 10px;
+            border-radius: 50%;
+            background: radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0) 80%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        #bottomNavPill::before {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 20px;
+            right: 20px;
+            height: 6px;
+            border-radius: 50%;
+            background: radial-gradient(ellipse at 50% 100%, rgba(212, 238, 127, 0.28) 0%, rgba(212, 238, 127, 0) 75%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        html.light #bottomNavPill {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(242, 247, 230, 0.94) 50%, rgba(226, 238, 202, 0.92) 100%) !important;
+            border: 1px solid rgba(189, 217, 122, 0.6) !important;
+            box-shadow: 0 14px 38px rgba(82, 102, 0, 0.12), 0 0 16px rgba(189, 217, 122, 0.25), inset 0 2px 3px rgba(255, 255, 255, 0.95), inset 0 -1.5px 3px rgba(82, 102, 0, 0.1) !important;
+        }
+
+        html.light #bottomNavPill::after {
+            background: radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0) 80%) !important;
+        }
+
+        html.light #bottomNavPill::before {
+            background: radial-gradient(ellipse at 50% 100%, rgba(189, 217, 122, 0.35) 0%, rgba(189, 217, 122, 0) 75%) !important;
+        }
+
+        /* 3D Liquid Water Droplet Selected Indicator (Quả cầu 3D) */
+        #bottomNavThumbInner {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 38% 30%, #526600 0%, #3C4D00 55%, #243000 100%);
+            box-shadow: 0 4px 16px rgba(61, 78, 0, 0.55), 0 0 16px rgba(184, 209, 102, 0.35), inset 0 2px 3px rgba(255, 255, 255, 0.3), inset 0 -2.5px 5px rgba(0, 0, 0, 0.5);
+            position: relative;
+            transform-origin: center center;
+            transition: transform 0.38s cubic-bezier(0.2, 0.8, 0.25, 1), border-radius 0.38s cubic-bezier(0.2, 0.8, 0.25, 1);
+        }
+
+        html.light #bottomNavThumbInner {
+            background: radial-gradient(circle at 38% 30%, #FFFFFF 0%, #E2ECD0 50%, #BDD97A 100%) !important;
+            box-shadow: 0 4px 14px rgba(82, 102, 0, 0.2), inset 0 2px 3px rgba(255, 255, 255, 0.85), inset 0 -2px 4px rgba(82, 102, 0, 0.15) !important;
+        }
+
+        #bottomNavThumbInner::after {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 10px;
+            width: 20px;
+            height: 10px;
+            border-radius: 50%;
+            background: radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0) 80%);
+            transform: rotate(-32deg);
+            pointer-events: none;
+        }
+
+        #bottomNavThumbInner::before {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 12px;
+            right: 12px;
+            height: 8px;
+            border-radius: 50%;
+            background: radial-gradient(ellipse at 50% 100%, rgba(212, 238, 127, 0.65) 0%, rgba(212, 238, 127, 0) 80%);
+            pointer-events: none;
+        }
+
+        /* Tap Water Ripple Effect (Chỉ gợn sóng ngắn khi người dùng chủ động chạm) */
+        .water-tap-ripple {
+            position: absolute;
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            animation: waterTapRippleSpread 0.75s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+            pointer-events: none;
+            background: radial-gradient(circle, rgba(184, 209, 102, 0.45) 0%, rgba(184, 209, 102, 0.12) 45%, rgba(184, 209, 102, 0) 70%);
+        }
+        html.light .water-tap-ripple {
+            background: radial-gradient(circle, rgba(140, 175, 45, 0.4) 0%, rgba(140, 175, 45, 0.1) 45%, rgba(140, 175, 45, 0) 70%);
+        }
+
+        @keyframes waterTapRippleSpread {
+            0% {
+                width: 8px;
+                height: 8px;
+                opacity: 0.95;
+                transform: translate(-50%, -50%) scale(0.2);
+            }
+            100% {
+                width: 150px;
+                height: 150px;
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.6);
+            }
+        }
+
+            /* 📱 DICT LOOKUP BOTTOM BAR OPAQUE FIX */
+        #dictLookupBottomBar {
+            background-color: rgba(27, 28, 23, 0.96) !important;
+            border-color: rgba(70, 72, 60, 0.6) !important;
+        }
+        html.light #dictLookupBottomBar {
+            background-color: rgba(250, 249, 241, 0.96) !important;
+            border-color: rgba(226, 228, 212, 0.8) !important;
+        }
+        #screenDictionary {
+            background-color: #141611 !important;
+        }
+        html.light #screenDictionary {
+            background-color: #FAF8F2 !important;
+        }
+    
+        /* ======================================================== */
+        /* 🗺️ VISUAL LANGUAGE ROADMAP STYLES (DUOLINGO S-PATHWAY)  */
+        /* ======================================================== */
+        .roadmap-dots-completed {
+            stroke: #A855F7;
+            stroke-width: 5.5;
+            stroke-linecap: round;
+            stroke-dasharray: 0 15;
+            fill: none;
+        }
+        .roadmap-dots-pending {
+            stroke: #CBD5E1;
+            stroke-width: 5.5;
+            stroke-linecap: round;
+            stroke-dasharray: 0 15;
+            fill: none;
+        }
+        .dark .roadmap-dots-pending {
+            stroke: #38432a;
+        }
+        .roadmap-puck {
+            position: relative;
+            border-radius: 9999px;
+            box-shadow: 0 6px 0 rgba(0, 0, 0, 0.14), 0 12px 24px -4px rgba(0, 0, 0, 0.12);
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+        }
+        .roadmap-puck:active {
+            transform: translateY(3px) scale(0.97);
+            box-shadow: 0 3px 0 rgba(0, 0, 0, 0.14), 0 6px 12px rgba(0, 0, 0, 0.08);
+        }
+        .tactile-continue-btn {
+            background-color: #0095FF;
+            border-bottom: 4px solid #0077CC;
+            box-shadow: 0 6px 16px rgba(0, 149, 255, 0.35);
+            transition: all 0.15s ease;
+        }
+        .tactile-continue-btn:hover {
+            background-color: #0084E6;
+        }
+        .tactile-continue-btn:active {
+            transform: translateY(2px);
+            border-bottom-width: 2px;
+            box-shadow: 0 2px 8px rgba(0, 149, 255, 0.35);
+        }
+        .pulse-ring {
+            animation: pulse-ring-anim 2.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        @keyframes pulse-ring-anim {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.15); opacity: 0; }
+            100% { transform: scale(1.15); opacity: 0; }
+        }
+    </style>
 </head>
 <body class="h-[820px] w-full max-w-[420px] mx-auto relative overflow-hidden bg-appBg border border-white/10 shadow-[0_30px_100px_rgba(0,0,0,0.9)] rounded-[48px] mt-4 flex flex-col">
     
@@ -2596,7 +3723,7 @@
                 </div>
 
                 <!-- Unified Segmented Quick Actions (1 Clean Bar instead of 3 Disconnected Floating Bordered Boxes) -->
-                <div class="flex items-center rounded-xl bg-surfaceContainerLow border border-outlineVariant p-1 mb-4 relative z-10 anim-inner-3">
+                <div class="flex items-center rounded-xl bg-surfaceContainerLow border border-outlineVariant p-1 mb-0 relative z-10 anim-inner-3">
                     <!-- Action 1: Phản xạ giao tiếp -->
                     <button onclick="openLumiChat()" class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg hover:bg-white/[0.06] active:scale-[0.98] text-[12px] font-semibold text-textSecondary hover:text-textPrimary transition-all cursor-pointer select-none">
                         <svg viewBox="0 0 100 100" class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
@@ -2624,162 +3751,6 @@
                         </svg>
                         <span>Quét từ</span>
                     </button>
-                </div>
-
-                <!-- Word Discovery Shelf: Clean Borderless Floating Chips -->
-                <div class="pt-3.5 border-t border-outlineVariant relative z-10">
-                    <div class="flex items-center justify-between mb-2.5">
-                        <div class="flex items-center gap-2">
-                            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
-                            <span class="text-[10px] font-black text-textTertiary uppercase tracking-widest">Từ vựng gợi ý hôm nay</span>
-                        </div>
-                        <button onclick="shuffleTrendingWords()" class="text-[11px] font-bold text-primary hover:text-onPrimaryContainer flex items-center gap-1.5 transition-colors cursor-pointer group/refresh">
-                            <svg class="w-3.5 h-3.5 transition-transform group-hover/refresh:rotate-180 duration-500 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-                            <span>Đổi từ khác</span>
-                        </button>
-                    </div>
-
-                    <!-- Scrollable Cards with Natural Horizontal Edge-Fade Mask (Tactile Mini Discovery Cards) -->
-                    <div id="trendingWordList" class="flex items-stretch gap-3 overflow-x-auto hide-scrollbar -mx-1 px-1 transition-all py-1 snap-x snap-mandatory"
-                         style="-webkit-mask-image: linear-gradient(to right, black calc(100% - 36px), transparent 100%); mask-image: linear-gradient(to right, black calc(100% - 36px), transparent 100%); -webkit-overflow-scrolling: touch;">
-                        <!-- Card 1: resilient (B2 • Adj) -->
-                        <div onclick="openDictionaryScreen('resilient')" 
-                             class="discovery-ticket-card group/card relative flex flex-col justify-between rounded-[24px] border-b-[4px] border-b-[#B8D166] hover:border-b-[#D4EE7F] hover:shadow-[0_12px_28px_rgba(184,209,102,0.22)] active:scale-[0.98] active:translate-y-1 active:border-b-[2px] transition-all duration-200 shrink-0 cursor-pointer text-left snap-start min-w-[200px] sm:min-w-[215px] max-w-[225px] overflow-hidden select-none anim-word-chip-1">
-                            
-                            <!-- Top Header Band: CEFR Badge + XP Gamification -->
-                            <div class="disc-band-primary bg-gradient-to-r from-[#3C4D00]/90 via-[#2A3700]/70 to-transparent px-3.5 py-2.5 flex items-center justify-between border-b border-[#B8D166]/25 relative z-10">
-                                <span class="disc-badge inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-[#283500]/80 text-[#D4EE7F] border border-[#B8D166]/40 shadow-xs">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-[#B8D166] animate-pulse"></span>
-                                    <span>B2 • ADJ</span>
-                                </span>
-                                <span class="disc-xp-chip text-[9.5px] font-black px-2 py-0.5 rounded-md bg-amber-400/20 text-amber-300 border border-amber-400/30 shadow-xs flex items-center gap-1">
-                                    <span>⚡</span><span>+15 XP</span>
-                                </span>
-                            </div>
-
-                            <!-- Body: Word + Monospace IPA + Tactile Audio Button -->
-                            <div class="p-3.5 pb-2.5 flex-1 flex flex-col justify-between relative z-10">
-                                <div class="flex items-start justify-between gap-2">
-                                    <div class="min-w-0 flex-1">
-                                        <span class="disc-title text-[18.5px] font-black group-hover/card:text-[#B8D166] transition-colors block truncate leading-tight tracking-tight">resilient</span>
-                                        <span class="disc-ipa text-[11px] font-mono block mt-0.5 tracking-tight truncate">/rɪˈzɪl.jənt/</span>
-                                    </div>
-                                    <button onclick="event.stopPropagation(); playQuickWordAudio('resilient', this)" 
-                                            class="disc-audio-btn w-7 h-7 rounded-full border hover:bg-[#B8D166] hover:text-[#283500] hover:border-[#B8D166] flex items-center justify-center shrink-0 transition-all duration-200 active:scale-85 shadow-xs group/audio" 
-                                            title="Nghe phát âm chuẩn">
-                                        <svg class="w-3.5 h-3.5 group-hover/audio:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-                                    </button>
-                                </div>
-
-                                <!-- Ticket Perforated Divider & Meaning Shelf -->
-                                <div class="disc-dashed mt-3 pt-2.5 border-t border-dashed flex items-center justify-between gap-1.5">
-                                    <span class="disc-meaning text-[12px] font-bold group-hover/card:text-[#B8D166] line-clamp-1 transition-colors leading-snug">kiên cường, bền bỉ</span>
-                                    <svg class="w-3.5 h-3.5 text-[#B8D166] opacity-0 group-hover/card:opacity-100 transition-all transform group-hover/card:translate-x-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card 2: serendipity (C2 • Noun) -->
-                        <div onclick="openDictionaryScreen('serendipity')" 
-                             class="discovery-ticket-card group/card relative flex flex-col justify-between rounded-[24px] border-b-[4px] border-b-amber-400 hover:border-b-amber-300 hover:shadow-[0_12px_28px_rgba(245,158,11,0.22)] active:scale-[0.98] active:translate-y-1 active:border-b-[2px] transition-all duration-200 shrink-0 cursor-pointer text-left snap-start min-w-[200px] sm:min-w-[215px] max-w-[225px] overflow-hidden select-none anim-word-chip-2">
-                            
-                            <div class="disc-band-amber bg-gradient-to-r from-[#3D2E0B]/90 via-[#2F2104]/70 to-transparent px-3.5 py-2.5 flex items-center justify-between border-b border-amber-400/25 relative z-10">
-                                <span class="disc-badge inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-[#3D2E0B]/90 text-amber-300 border border-amber-400/40 shadow-xs">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
-                                    <span>C2 • NOUN</span>
-                                </span>
-                                <span class="disc-xp-chip text-[9.5px] font-black px-2 py-0.5 rounded-md bg-amber-400/20 text-amber-300 border border-amber-400/30 shadow-xs flex items-center gap-1">
-                                    <span>⚡</span><span>+15 XP</span>
-                                </span>
-                            </div>
-
-                            <div class="p-3.5 pb-2.5 flex-1 flex flex-col justify-between relative z-10">
-                                <div class="flex items-start justify-between gap-2">
-                                    <div class="min-w-0 flex-1">
-                                        <span class="disc-title text-[18.5px] font-black group-hover/card:text-amber-400 transition-colors block truncate leading-tight tracking-tight">serendipity</span>
-                                        <span class="disc-ipa text-[11px] font-mono block mt-0.5 tracking-tight truncate">/ˌser.ənˈdɪp.ə.ti/</span>
-                                    </div>
-                                    <button onclick="event.stopPropagation(); playQuickWordAudio('serendipity', this)" 
-                                            class="disc-audio-btn w-7 h-7 rounded-full border hover:bg-amber-400 hover:text-amber-950 hover:border-amber-400 flex items-center justify-center shrink-0 transition-all duration-200 active:scale-85 shadow-xs group/audio" 
-                                            title="Nghe phát âm chuẩn">
-                                        <svg class="w-3.5 h-3.5 group-hover/audio:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-                                    </button>
-                                </div>
-
-                                <div class="disc-dashed mt-3 pt-2.5 border-t border-dashed flex items-center justify-between gap-1.5">
-                                    <span class="disc-meaning text-[12px] font-bold group-hover/card:text-amber-400 line-clamp-1 transition-colors leading-snug">may mắn bất ngờ</span>
-                                    <svg class="w-3.5 h-3.5 text-amber-400 opacity-0 group-hover/card:opacity-100 transition-all transform group-hover/card:translate-x-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card 3: break the ice (B1 • Idiom) -->
-                        <div onclick="openDictionaryScreen('break the ice')" 
-                             class="discovery-ticket-card group/card relative flex flex-col justify-between rounded-[24px] border-b-[4px] border-b-[#A1D0C5] hover:border-b-[#BDECE1] hover:shadow-[0_12px_28px_rgba(161,208,197,0.22)] active:scale-[0.98] active:translate-y-1 active:border-b-[2px] transition-all duration-200 shrink-0 cursor-pointer text-left snap-start min-w-[200px] sm:min-w-[215px] max-w-[225px] overflow-hidden select-none anim-word-chip-3">
-                            
-                            <div class="disc-band-tertiary bg-gradient-to-r from-[#214E46]/90 via-[#163832]/70 to-transparent px-3.5 py-2.5 flex items-center justify-between border-b border-[#A1D0C5]/25 relative z-10">
-                                <span class="disc-badge inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-[#163832]/90 text-[#BDECE1] border border-[#A1D0C5]/40 shadow-xs">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-[#A1D0C5] animate-pulse"></span>
-                                    <span>B1 • IDIOM</span>
-                                </span>
-                                <span class="disc-xp-chip text-[9.5px] font-black px-2 py-0.5 rounded-md bg-amber-400/20 text-amber-300 border border-amber-400/30 shadow-xs flex items-center gap-1">
-                                    <span>⚡</span><span>+15 XP</span>
-                                </span>
-                            </div>
-
-                            <div class="p-3.5 pb-2.5 flex-1 flex flex-col justify-between relative z-10">
-                                <div class="flex items-start justify-between gap-2">
-                                    <div class="min-w-0 flex-1">
-                                        <span class="disc-title text-[18.5px] font-black group-hover/card:text-[#A1D0C5] transition-colors block truncate leading-tight tracking-tight">break the ice</span>
-                                        <span class="disc-ipa text-[11px] font-mono block mt-0.5 tracking-tight truncate">/breɪk ðiː aɪs/</span>
-                                    </div>
-                                    <button onclick="event.stopPropagation(); playQuickWordAudio('break the ice', this)" 
-                                            class="disc-audio-btn w-7 h-7 rounded-full border hover:bg-[#A1D0C5] hover:text-[#00201B] hover:border-[#A1D0C5] flex items-center justify-center shrink-0 transition-all duration-200 active:scale-85 shadow-xs group/audio" 
-                                            title="Nghe phát âm chuẩn">
-                                        <svg class="w-3.5 h-3.5 group-hover/audio:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-                                    </button>
-                                </div>
-
-                                <div class="disc-dashed mt-3 pt-2.5 border-t border-dashed flex items-center justify-between gap-1.5">
-                                    <span class="disc-meaning text-[12px] font-bold group-hover/card:text-[#A1D0C5] line-clamp-1 transition-colors leading-snug">phá vỡ e ngại</span>
-                                    <svg class="w-3.5 h-3.5 text-[#A1D0C5] opacity-0 group-hover/card:opacity-100 transition-all transform group-hover/card:translate-x-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card 4: ephemeral (C2 • Adj) -->
-                        <div onclick="openDictionaryScreen('ephemeral')" 
-                             class="discovery-ticket-card group/card relative flex flex-col justify-between rounded-[24px] border-b-[4px] border-b-[#D0BCFF] hover:border-b-[#E8DEF8] hover:shadow-[0_12px_28px_rgba(208,188,255,0.22)] active:scale-[0.98] active:translate-y-1 active:border-b-[2px] transition-all duration-200 shrink-0 cursor-pointer text-left snap-start min-w-[200px] sm:min-w-[215px] max-w-[225px] overflow-hidden select-none anim-word-chip-4">
-                            
-                            <div class="disc-band-purple bg-gradient-to-r from-[#381E72]/90 via-[#271052]/70 to-transparent px-3.5 py-2.5 flex items-center justify-between border-b border-[#D0BCFF]/25 relative z-10">
-                                <span class="disc-badge inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-[#381E72]/90 text-[#E8DEF8] border border-[#D0BCFF]/40 shadow-xs">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-[#D0BCFF] animate-pulse"></span>
-                                    <span>C2 • ADJ</span>
-                                </span>
-                                <span class="disc-xp-chip text-[9.5px] font-black px-2 py-0.5 rounded-md bg-amber-400/20 text-amber-300 border border-amber-400/30 shadow-xs flex items-center gap-1">
-                                    <span>⚡</span><span>+15 XP</span>
-                                </span>
-                            </div>
-
-                            <div class="p-3.5 pb-2.5 flex-1 flex flex-col justify-between relative z-10">
-                                <div class="flex items-start justify-between gap-2">
-                                    <div class="min-w-0 flex-1">
-                                        <span class="disc-title text-[18.5px] font-black group-hover/card:text-[#D0BCFF] transition-colors block truncate leading-tight tracking-tight">ephemeral</span>
-                                        <span class="disc-ipa text-[11px] font-mono block mt-0.5 tracking-tight truncate">/ɪˈfem.ər.əl/</span>
-                                    </div>
-                                    <button onclick="event.stopPropagation(); playQuickWordAudio('ephemeral', this)" 
-                                            class="disc-audio-btn w-7 h-7 rounded-full border hover:bg-[#D0BCFF] hover:text-[#21005D] hover:border-[#D0BCFF] flex items-center justify-center shrink-0 transition-all duration-200 active:scale-85 shadow-xs group/audio" 
-                                            title="Nghe phát âm chuẩn">
-                                        <svg class="w-3.5 h-3.5 group-hover/audio:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-                                    </button>
-                                </div>
-
-                                <div class="disc-dashed mt-3 pt-2.5 border-t border-dashed flex items-center justify-between gap-1.5">
-                                    <span class="disc-meaning text-[12px] font-bold group-hover/card:text-[#D0BCFF] line-clamp-1 transition-colors leading-snug">chóng tàn, phù du</span>
-                                    <svg class="w-3.5 h-3.5 text-[#D0BCFF] opacity-0 group-hover/card:opacity-100 transition-all transform group-hover/card:translate-x-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-                                </div>
-                            </div>
-                        </div>                    </div>
                 </div>
             </div>
         </div>
@@ -3028,24 +3999,14 @@
 
                 </div>
 
-                <!-- CAROUSEL PAGINATION DOTS & HINT -->
-                <div class="flex items-center justify-between mt-3 px-1">
+                <!-- CAROUSEL PAGINATION DOTS -->
+                <div class="flex items-center mt-3 px-1">
                     <!-- Dots Indicator -->
                     <div class="flex items-center gap-1.5">
                         <button onclick="scrollStoryCarouselTo(0)" id="storyDot-0" class="h-2 w-7 bg-primary rounded-full transition-all duration-300 shadow-sm" aria-label="Xem bài 1"></button>
                         <button onclick="scrollStoryCarouselTo(1)" id="storyDot-1" class="h-2 w-2 bg-outlineVariant hover:bg-outline rounded-full transition-all duration-300" aria-label="Xem bài 2"></button>
                         <button onclick="scrollStoryCarouselTo(2)" id="storyDot-2" class="h-2 w-2 bg-outlineVariant hover:bg-outline rounded-full transition-all duration-300" aria-label="Xem bài 3"></button>
                         <button onclick="scrollStoryCarouselTo(3)" id="storyDot-3" class="h-2 w-2 bg-outlineVariant hover:bg-outline rounded-full transition-all duration-300" aria-label="Xem bài 4"></button>
-                    </div>
-
-                    <!-- Swipe Tip / Live Counter -->
-                    <div class="flex items-center gap-1.5 text-[11.5px] text-textTertiary font-medium">
-                        <span id="storyCarouselCounter" class="text-textSecondary font-bold">1 / 4</span>
-                        <span>•</span>
-                        <span class="flex items-center gap-1 text-textTertiary/80">
-                            <span>Vuốt xem thêm</span>
-                            <span class="text-[13px] animate-pulse">➔</span>
-                        </span>
                     </div>
                 </div>
             </div>
@@ -3376,28 +4337,28 @@
                         <!-- Big Letter V in center -->
                         <path d="M 46 68 L 53 82 L 60 74" fill="none" stroke="#1E231D" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 
-                        <!-- Floating Label 1: Nghĩa -->
-                        <g transform="translate(14, 15) rotate(-10)">
-                            <rect x="0" y="0" width="40" height="21" rx="7" fill="#FFFFFF" stroke="#1E231D" stroke-width="2.5" />
-                            <text x="20" y="14" font-size="9" font-weight="900" fill="#1E231D" text-anchor="middle">Nghĩa</text>
+                        <!-- Floating Label 1: Meaning -->
+                        <g id="dictBookBadgeMeaning" transform="translate(31, 21) rotate(-10)">
+                            <rect id="dictBookRectMeaning" x="-24" y="-10.5" width="48" height="21" rx="7" fill="#FFFFFF" stroke="#1E231D" stroke-width="2.5" />
+                            <text id="dictBookTextMeaning" x="0" y="0.5" dominant-baseline="central" font-size="8.5" font-weight="900" fill="#1E231D" text-anchor="middle">Meaning</text>
                         </g>
 
-                        <!-- Floating Label 2: IPA -->
-                        <g transform="translate(100, 10) rotate(12)">
-                            <rect x="0" y="0" width="42" height="21" rx="7" fill="#FFFFFF" stroke="#1E231D" stroke-width="2.5" />
-                            <text x="21" y="14" font-size="9" font-weight="900" fill="#1E231D" text-anchor="middle">/aɪ.piː/ </text>
+                        <!-- Floating Label 2: IPA / Pronunciation -->
+                        <g id="dictBookBadgeIPA" transform="translate(122, 18) rotate(12)">
+                            <rect id="dictBookRectIPA" x="-22" y="-10.5" width="44" height="21" rx="7" fill="#FFFFFF" stroke="#1E231D" stroke-width="2.5" />
+                            <text id="dictBookTextIPA" x="0" y="0.5" dominant-baseline="central" font-size="8.5" font-weight="900" fill="#1E231D" text-anchor="middle">/aɪ.piː/</text>
                         </g>
 
-                        <!-- Floating Label 3: Ví dụ -->
-                        <g transform="translate(32, 42) rotate(14)">
-                            <rect x="0" y="0" width="44" height="21" rx="7" fill="#FFFFFF" stroke="#1E231D" stroke-width="2.5" />
-                            <text x="22" y="14" font-size="9" font-weight="900" fill="#1E231D" text-anchor="middle">Ví dụ</text>
+                        <!-- Floating Label 3: Example -->
+                        <g id="dictBookBadgeExample" transform="translate(50, 55) rotate(14)">
+                            <rect id="dictBookRectExample" x="-24" y="-10.5" width="48" height="21" rx="7" fill="#FFFFFF" stroke="#1E231D" stroke-width="2.5" />
+                            <text id="dictBookTextExample" x="0" y="0.5" dominant-baseline="central" font-size="8.5" font-weight="900" fill="#1E231D" text-anchor="middle">Example</text>
                         </g>
 
-                        <!-- Floating Label 4: Gốc từ -->
-                        <g transform="translate(98, 42) rotate(-12)">
-                            <rect x="0" y="0" width="42" height="21" rx="7" fill="#8FB8A8" stroke="#1E231D" stroke-width="2.5" />
-                            <text x="21" y="14" font-size="9" font-weight="900" fill="#1E231D" text-anchor="middle">Gốc từ</text>
+                        <!-- Floating Label 4: Root -->
+                        <g id="dictBookBadgeRoot" transform="translate(119, 53) rotate(-12)">
+                            <rect id="dictBookRectRoot" x="-18" y="-10.5" width="36" height="21" rx="7" fill="#8FB8A8" stroke="#1E231D" stroke-width="2.5" />
+                            <text id="dictBookTextRoot" x="0" y="0.5" dominant-baseline="central" font-size="9" font-weight="900" fill="#1E231D" text-anchor="middle">Root</text>
                         </g>
                     </svg>
                 </div>
@@ -3452,12 +4413,6 @@
                     </svg>
                 </div>
                 <div class="mt-2 text-left">
-                    <div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#526600]/10 dark:bg-[#B8D166]/15 border border-[#526600]/25 dark:border-[#B8D166]/30 text-[#526600] dark:text-[#B8D166] mb-1">
-                        <svg viewBox="0 0 100 100" class="w-3 h-3 shrink-0" fill="currentColor" stroke="currentColor" stroke-width="4" stroke-linejoin="round">
-                            <path d="M 55 15 L 35 50 L 50 50 L 45 85 L 70 45 L 55 45 Z" />
-                        </svg>
-                        <span class="text-[9.5px] font-black uppercase tracking-wider">Đa phương tiện</span>
-                    </div>
                     <span class="text-[15px] font-black tracking-tight text-[#1E231D] dark:text-[#E4E3DB] leading-tight block group-hover:text-primary transition-colors">
                         Từ Audio / Video
                     </span>
@@ -3496,12 +4451,6 @@
                     </svg>
                 </div>
                 <div class="mt-2 text-left">
-                    <div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-500/10 dark:bg-amber-400/15 border border-amber-600/25 dark:border-amber-400/30 text-amber-700 dark:text-amber-400 mb-1">
-                        <svg viewBox="0 0 100 100" class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M 20 35 L 80 35 L 80 75 L 20 75 Z M 35 35 L 35 25 L 65 25 L 65 35 M 50 45 A 12 12 0 1 0 50 65 A 12 12 0 1 0 50 45 M 50 55 A 3 3 0 1 0 50 55.1" />
-                        </svg>
-                        <span class="text-[9.5px] font-black uppercase tracking-wider">AI Scanner</span>
-                    </div>
                     <span class="text-[15px] font-black tracking-tight text-[#1E231D] dark:text-[#E4E3DB] leading-tight block group-hover:text-primary transition-colors">
                         Quét ảnh OCR
                     </span>
@@ -3538,12 +4487,6 @@
                     </svg>
                 </div>
                 <div class="mt-2 text-left">
-                    <div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#526600]/10 dark:bg-[#B8D166]/15 border border-[#526600]/25 dark:border-[#B8D166]/30 text-[#526600] dark:text-[#B8D166] mb-1">
-                        <svg viewBox="0 0 100 100" class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M 30 20 L 55 20 L 75 40 L 75 80 L 30 80 Z M 55 20 L 55 40 L 75 40 M 40 50 L 60 50 M 40 60 L 65 60 M 40 70 L 55 70" />
-                        </svg>
-                        <span class="text-[9.5px] font-black uppercase tracking-wider">Bóc tách nhanh</span>
-                    </div>
                     <span class="text-[15px] font-black tracking-tight text-[#1E231D] dark:text-[#E4E3DB] leading-tight block group-hover:text-primary transition-colors">
                         Từ văn bản
                     </span>
@@ -3566,19 +4509,13 @@
                         
                         <polygon points="44,58 55,64 55,87 49.5,83 44,87" fill="#8FB8A8" stroke="#1E231D" stroke-width="2" />
                         
-                        <path d="M 90 54 Q 90 63, 99 63 Q 90 63, 90 72 Q 90 63, 81 63 Q 90 54 Z" fill="#FDE68A" stroke="#1E231D" stroke-width="2" />
+                        <path d="M 90 54 Q 90 63, 99 63 Q 90 63, 90 72 Q 90 63, 81 63 Q 90 63, 90 54 Z" fill="#FDE68A" stroke="#1E231D" stroke-width="2" />
                         
                         <line x1="68" y1="78" x2="114" y2="95" stroke="#8FB8A8" stroke-width="4.5" stroke-linecap="round" />
                         <line x1="68" y1="78" x2="92" y2="86" stroke="#1E231D" stroke-width="4.5" stroke-linecap="round" />
                     </svg>
                 </div>
                 <div class="mt-2 text-left">
-                    <div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#3A665E]/10 dark:bg-[#A1D0C5]/15 border border-[#3A665E]/25 dark:border-[#A1D0C5]/30 text-[#3A665E] dark:text-[#A1D0C5] mb-1">
-                        <svg viewBox="0 0 100 100" class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M 20 30 L 40 20 L 60 30 L 80 20 L 80 70 L 60 80 L 40 70 L 20 80 Z M 40 20 L 40 70 M 60 30 L 60 80" />
-                        </svg>
-                        <span class="text-[9.5px] font-black uppercase tracking-wider">Theo giáo trình</span>
-                    </div>
                     <span class="text-[15px] font-black tracking-tight text-[#1E231D] dark:text-[#E4E3DB] leading-tight block group-hover:text-primary transition-colors">
                         Từ bài học
                     </span>
@@ -3613,49 +4550,361 @@
     </div>
 
     <!-- ========================================================== -->
-    <!-- TAB SCREEN 2: THƯ VIỆN BỘ THẺ & KHO TỪ (LIBRARY SCREEN) -->
+    <!-- TAB SCREEN 2: THƯ VIỆN BỘ THẺ & KHO TỪ (LIBRARY SCREEN - NATIVE M3) -->
     <!-- ========================================================== -->
-    <div id="tabScreen-2" class="hidden flex-1 overflow-y-auto hide-scrollbar px-5 pt-8 pb-36 z-20 flex-col select-none">
-        <!-- Top App Bar -->
-        <div class="flex items-center justify-between mb-6 pt-3">
-            <div>
-                <span class="text-[11px] font-black text-primary uppercase tracking-widest">Kho tri thức</span>
-                <h2 class="text-[24px] font-black text-textPrimary tracking-tight">Thư viện của bạn</h2>
-            </div>
-            <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surfaceContainer border border-outlineVariant text-[11px] font-black text-textSecondary">
-                <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-                <span>0 bộ thẻ</span>
-            </div>
-        </div>
-
-        <!-- Filter Chips Strip -->
-        <div class="flex items-center gap-2 mb-6 overflow-x-auto hide-scrollbar -mx-1 px-1">
-            <span class="px-3.5 py-1.5 rounded-full bg-primaryContainer text-onPrimaryContainer border border-primary/30 text-[12px] font-black">Tất cả (0)</span>
-            <span class="px-3.5 py-1.5 rounded-full bg-surfaceContainerLow text-textSecondary border border-outlineVariant text-[12px] font-bold">IELTS</span>
-            <span class="px-3.5 py-1.5 rounded-full bg-surfaceContainerLow text-textSecondary border border-outlineVariant text-[12px] font-bold">Giao tiếp</span>
-            <span class="px-3.5 py-1.5 rounded-full bg-surfaceContainerLow text-textSecondary border border-outlineVariant text-[12px] font-bold">Đã lưu</span>
-        </div>
-
-        <!-- Empty State Hero -->
-        <div class="flex-1 flex flex-col items-center justify-center text-center py-6">
-            <div class="relative mb-5">
-                <div class="absolute inset-0 bg-[#C084FC]/15 blur-2xl rounded-full"></div>
-                <div class="relative w-20 h-20 rounded-[28px] bg-surfaceContainer border border-[#C084FC]/30 flex items-center justify-center shadow-lg">
-                    <svg viewBox="0 0 100 100" class="w-10 h-10 text-[#C084FC]" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M 15 85 Q 50 88, 85 85 M 25 85 Q 23 60, 25 40 Q 35 35, 40 40 Q 42 60, 40 85 M 45 85 Q 43 55, 45 30 Q 55 25, 60 30 Q 62 55, 60 85 M 60 85 Q 65 65, 70 45 Q 80 50, 80 55 Q 75 75, 72 85"/>
-                    </svg>
+    <div id="tabScreen-2" class="hidden flex-1 overflow-y-auto hide-scrollbar px-4 pt-6 pb-36 z-20 flex-col select-none">
+        
+        <!-- ================= VIEW 1: LIBRARY HUB (MÀN HÌNH CHÍNH THƯ VIỆN) ================= -->
+        <div id="libHubView" class="flex flex-col space-y-6 animate-fadeIn">
+            
+            <!-- Library Header (libraryHubHeader) -->
+            <div class="flex items-center justify-between min-h-[96px] pt-2">
+                <div class="flex-1 pr-3">
+                    <span class="text-[11px] font-black text-[#B8D166] uppercase tracking-widest block mb-1">Kho tri thức</span>
+                    <h2 class="text-[28px] font-black text-[#E5E3DB] tracking-tight leading-tight">Thư viện</h2>
+                    <p id="libHubSubtitle" class="text-[13.5px] text-[#C4CAA9] leading-snug mt-1 font-medium">Bộ thẻ của bạn sẵn sàng để học</p>
+                </div>
+                <div class="w-24 h-24 shrink-0 flex items-center justify-center relative">
+                    <img src="assets/library/library_header_character_1233.gif" 
+                         alt="Lumi Character" 
+                         class="w-full h-full object-contain filter drop-shadow-[0_4px_16px_rgba(184,209,102,0.25)] select-none pointer-events-none" />
                 </div>
             </div>
 
-            <h3 class="text-[18px] font-black text-textPrimary tracking-tight mb-2">Thư viện đang trống</h3>
-            <p class="text-[13px] text-textSecondary max-w-[280px] leading-relaxed mb-6">
-                Bạn chưa có bộ thẻ flashcard nào trong thư viện. Hãy tạo bộ thẻ mới hoặc lưu các từ vựng yêu thích.
-            </p>
+            <!-- Review Today Hero Card (libraryReviewTodayCard) -->
+            <div id="libReviewTodayCard" class="relative rounded-[28px] bg-gradient-to-br from-[#1A2238] via-[#101424] to-[#0A0C18] border border-[#5294FF]/30 p-5 shadow-2xl overflow-hidden group cursor-pointer active:scale-[0.98] transition-transform">
+                <!-- Background ambient glow -->
+                <div class="absolute -right-8 -top-8 w-44 h-44 bg-[#5294FF]/15 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -left-10 -bottom-10 w-40 h-40 bg-[#B8D166]/10 rounded-full blur-3xl pointer-events-none"></div>
 
-            <button onclick="switchBottomNav(1)" class="h-[48px] px-6 rounded-2xl bg-primary hover:brightness-105 active:scale-95 text-onPrimary font-black text-[14px] flex items-center gap-2 shadow-[0_4px_20px_rgba(184,209,102,0.35)] transition-all cursor-pointer">
-                <span>+ Tạo bộ thẻ đầu tiên</span>
-            </button>
+                <!-- Floating Right Hero Art -->
+                <img src="assets/library/library_review_hero_art.webp" 
+                     alt="Review Art" 
+                     class="absolute -right-2 top-2 w-[118px] h-[118px] object-contain drop-shadow-[0_4px_24px_rgba(82,148,255,0.4)] pointer-events-none group-hover:scale-105 transition-transform duration-500" />
+
+                <!-- Content Area -->
+                <div class="relative z-10 max-w-[210px] space-y-2.5">
+                    <!-- Top Pill -->
+                    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#5294FF]/15 border border-[#5294FF]/40 text-[#7DD3FC] text-[11px] font-black tracking-wide">
+                        <svg class="w-3.5 h-3.5 text-[#FBBF24]" viewBox="0 0 100 100" fill="currentColor">
+                            <path d="M 50 15 Q 55 35, 75 40 Q 55 50, 50 75 Q 45 50, 25 40 Q 45 35, 50 15 Z" />
+                        </svg>
+                        <span>Ưu tiên hôm nay</span>
+                    </div>
+
+                    <!-- Title -->
+                    <h3 class="text-[22px] font-black text-white tracking-tight leading-snug">Ôn tập hôm nay</h3>
+
+                    <!-- Subtitle / Meta -->
+                    <div class="flex items-center gap-1.5 text-[12.5px] font-bold text-[#7DD3FC]">
+                        <svg class="w-3.5 h-3.5 opacity-80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        <span id="libDueCountText">7 thẻ</span>
+                        <span class="text-white/30 font-normal">|</span>
+                        <span class="text-[#C4CAA9] font-medium" id="libDueTimeText">Khoảng 2 phút</span>
+                    </div>
+
+                    <!-- Description -->
+                    <p class="text-[12px] text-[#A5B4FC]/80 leading-relaxed font-normal">
+                        Ưu tiên thẻ đến hạn để củng cố phản xạ trước khi não bộ quên đi.
+                    </p>
+                </div>
+
+                <!-- CTAs Action Row -->
+                <div class="relative z-10 mt-5 pt-3 border-t border-white/10 flex flex-col gap-2.5">
+                    <!-- Primary CTA -->
+                    <button onclick="startDueCardsReview(event)" 
+                            class="w-full h-[46px] rounded-2xl bg-gradient-to-r from-[#B8D166] via-[#C5E17A] to-[#B8D166] hover:brightness-105 active:scale-[0.98] text-[#283500] font-black text-[14px] flex items-center justify-between px-5 shadow-[0_4px_16px_rgba(184,209,102,0.35)] transition-all cursor-pointer">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-[#F59E0B]" fill="currentColor" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                            <span>Bắt đầu ôn</span>
+                        </div>
+                        <span class="text-[18px] leading-none font-bold">›</span>
+                    </button>
+
+                    <!-- Secondary CTA -->
+                    <button onclick="openDeckCatalogView(event)" 
+                            class="w-full h-[38px] rounded-xl bg-white/5 hover:bg-white/10 active:scale-[0.98] text-[#C4CAA9] hover:text-white font-bold text-[12.5px] flex items-center justify-center gap-2 border border-white/10 transition-all cursor-pointer">
+                        <svg class="w-3.5 h-3.5 text-[#7DD3FC]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                        <span>Mở trung tâm ôn tập bộ thẻ</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Flashcard Collection Entry Row (libraryAllCardsRow) -->
+            <div onclick="openDeckCatalogView()" 
+                 class="p-4 rounded-2xl bg-[#1B1C17] border border-[#46483C]/70 hover:border-[#B8D166]/50 active:scale-[0.98] transition-all cursor-pointer flex items-center gap-3.5 shadow-sm">
+                <div class="w-12 h-12 rounded-xl bg-[#2A2B24] border border-[#46483C]/50 flex items-center justify-center shrink-0 shadow-inner">
+                    <img src="assets/library/library_collection_folder_icon.webp" alt="Folder" class="w-8 h-8 object-contain" />
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-2">
+                        <h4 class="text-[15px] font-bold text-[#E5E3DB] truncate">Bộ sưu tập flashcard</h4>
+                        <span id="libCollectionBadge" class="px-2 py-0.5 rounded-full bg-[#B8D166]/20 text-[#B8D166] text-[10.5px] font-black">4 bộ</span>
+                    </div>
+                    <p class="text-[12px] text-[#909283] truncate mt-0.5">Xem, tìm kiếm và quản lý tất cả các thẻ bạn đã tạo</p>
+                </div>
+                <div class="w-8 h-8 rounded-full bg-[#2A2B24] flex items-center justify-center text-[#B8D166] shrink-0">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                </div>
+            </div>
+
+            <!-- Recent Decks Section (libraryRecentDecksRow) -->
+            <div class="space-y-3">
+                <div class="flex items-center justify-between px-1">
+                    <span class="text-[12px] font-black text-[#909283] uppercase tracking-wider">Học tiếp</span>
+                    <button onclick="openDeckCatalogView()" class="text-[12.5px] font-bold text-[#B8D166] hover:underline cursor-pointer">
+                        Xem tất cả
+                    </button>
+                </div>
+
+                <!-- Horizontal Carousel of Recent Decks -->
+                <div id="libRecentDecksContainer" class="flex gap-3 overflow-x-auto hide-scrollbar -mx-4 px-4 pb-2 pt-1">
+                    <!-- Populated via JS -->
+                </div>
+            </div>
+
+            <!-- Memory Summary Card (libraryMemorySummaryCard - Leitner System) -->
+            <div class="rounded-3xl bg-[#1B1C17] border border-[#46483C]/70 p-5 space-y-4 shadow-lg">
+                <!-- Header -->
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-full bg-[#20211C] border border-[#46483C]/40 flex items-center justify-center overflow-hidden shrink-0 shadow-sm">
+                            <img src="assets/library/library_memory_summary_icon.webp" alt="Memory" class="w-8 h-8 object-contain" />
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h4 class="text-[16px] font-black text-[#E5E3DB]">Tóm tắt ghi nhớ</h4>
+                                <button onclick="openSpacedRepetitionInfoModal()" 
+                                        class="w-5 h-5 rounded-full bg-[#2A2B24] hover:bg-[#35362F] text-[#B8D166] font-black text-[11px] flex items-center justify-center cursor-pointer transition-colors" 
+                                        title="Tìm hiểu phương pháp Spaced Repetition">
+                                    ?
+                                </button>
+                            </div>
+                            <p class="text-[11.5px] text-[#909283] font-medium">Hệ thống ngắt quãng Leitner 4 cấp độ</p>
+                        </div>
+                    </div>
+                    <span id="libMasteryRateBadge" class="px-2.5 py-1 rounded-full bg-[#FBBF24]/15 border border-[#FBBF24]/30 text-[#FBBF24] text-[11px] font-black">
+                        35% Thuộc
+                    </span>
+                </div>
+
+                <!-- Multi-segment Leitner Progress Bar -->
+                <div class="space-y-1.5">
+                    <div class="w-full h-2 rounded-full bg-[#20211C] overflow-hidden flex shadow-inner">
+                        <div id="libBarIntro" class="h-full bg-[#FF84C2] transition-all duration-500" style="width: 15%;" title="Nhập môn"></div>
+                        <div id="libBarFamiliar" class="h-full bg-[#5294FF] transition-all duration-500" style="width: 20%;" title="Làm quen"></div>
+                        <div id="libBarMemory" class="h-full bg-[#22D3EE] transition-all duration-500" style="width: 30%;" title="Ghi nhớ"></div>
+                        <div id="libBarFluent" class="h-full bg-[#FBBF24] transition-all duration-500" style="width: 35%;" title="Thông thạo"></div>
+                    </div>
+                </div>
+
+                <!-- 4 Level Stat Rows -->
+                <div class="grid grid-cols-2 gap-2.5 pt-1">
+                    <!-- Level 1: Nhập môn -->
+                    <div onclick="filterCatalogByLevel(1)" class="p-3 rounded-2xl bg-[#20211C] border border-[#FF84C2]/20 flex items-center gap-2.5 cursor-pointer active:scale-95 transition-all">
+                        <img src="assets/library/library_memory_intro_icon.webp" alt="Intro" class="w-8 h-8 object-contain shrink-0" />
+                        <div class="min-w-0 flex-1">
+                            <span class="text-[11px] font-bold text-[#FF84C2] block truncate">Nhập môn</span>
+                            <span id="libCountIntro" class="text-[15px] font-black text-white leading-none">3 thẻ</span>
+                        </div>
+                    </div>
+
+                    <!-- Level 2: Làm quen -->
+                    <div onclick="filterCatalogByLevel(2)" class="p-3 rounded-2xl bg-[#20211C] border border-[#5294FF]/20 flex items-center gap-2.5 cursor-pointer active:scale-95 transition-all">
+                        <img src="assets/library/library_memory_familiar_icon.webp" alt="Familiar" class="w-8 h-8 object-contain shrink-0" />
+                        <div class="min-w-0 flex-1">
+                            <span class="text-[11px] font-bold text-[#5294FF] block truncate">Làm quen</span>
+                            <span id="libCountFamiliar" class="text-[15px] font-black text-white leading-none">4 thẻ</span>
+                        </div>
+                    </div>
+
+                    <!-- Level 3: Ghi nhớ -->
+                    <div onclick="filterCatalogByLevel(3)" class="p-3 rounded-2xl bg-[#20211C] border border-[#22D3EE]/20 flex items-center gap-2.5 cursor-pointer active:scale-95 transition-all">
+                        <img src="assets/library/library_memory_remember_icon.webp" alt="Memory" class="w-8 h-8 object-contain shrink-0" />
+                        <div class="min-w-0 flex-1">
+                            <span class="text-[11px] font-bold text-[#22D3EE] block truncate">Ghi nhớ</span>
+                            <span id="libCountMemory" class="text-[15px] font-black text-white leading-none">6 thẻ</span>
+                        </div>
+                    </div>
+
+                    <!-- Level 4: Thông thạo -->
+                    <div onclick="filterCatalogByLevel(4)" class="p-3 rounded-2xl bg-[#20211C] border border-[#FBBF24]/20 flex items-center gap-2.5 cursor-pointer active:scale-95 transition-all">
+                        <img src="assets/library/library_memory_mastered_icon.webp" alt="Mastered" class="w-8 h-8 object-contain shrink-0" />
+                        <div class="min-w-0 flex-1">
+                            <span class="text-[11px] font-bold text-[#FBBF24] block truncate">Thông thạo</span>
+                            <span id="libCountFluent" class="text-[15px] font-black text-white leading-none">7 thẻ</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
+
+        <!-- ================= VIEW 2: DECK CATALOG / COLLECTION (BỘ SƯU TẬP FLASHCARD) ================= -->
+        <div id="libDeckListView" class="hidden flex-col space-y-5 animate-fadeIn">
+            
+            <!-- Top App Bar with Back Button -->
+            <div class="flex items-center justify-between min-h-[48px] pt-1">
+                <button onclick="closeDeckCatalogView()" 
+                        class="w-10 h-10 rounded-full bg-[#1B1C17] border border-[#46483C]/70 hover:bg-[#252621] active:scale-90 flex items-center justify-center text-[#E5E3DB] transition-all cursor-pointer"
+                        title="Quay lại Thư viện">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <div class="text-center">
+                    <h3 class="text-[17px] font-black text-white tracking-tight">Bộ sưu tập flashcard</h3>
+                    <span id="libCatalogMetaSub" class="text-[11.5px] font-bold text-[#909283]">4 bộ thẻ • 20 từ vựng</span>
+                </div>
+                <div class="w-10 h-10"></div> <!-- Balance spacer -->
+            </div>
+
+            <!-- Leitner 4 Circular Quick Filter Row (libraryLeitnerStats) -->
+            <div class="flex items-center justify-between gap-2 p-3 rounded-2xl bg-[#1B1C17] border border-[#46483C]/60">
+                <!-- Level 1 -->
+                <button onclick="applyCatalogFilter('level', 1)" id="libFilterBtn-l1" 
+                        class="flex-1 flex flex-col items-center gap-1.5 p-1 rounded-xl transition-all active:scale-90 cursor-pointer">
+                    <div class="w-10 h-10 rounded-full bg-[#FF84C2]/15 border border-[#FF84C2]/40 flex items-center justify-center relative">
+                        <img src="assets/library/library_memory_intro_icon.webp" alt="L1" class="w-6 h-6 object-contain" />
+                        <span id="libBadgeL1" class="absolute -bottom-1 -right-1 px-1.5 py-0.2 rounded-full bg-[#FF84C2] text-[#280514] font-black text-[9px] shadow-sm leading-tight">3</span>
+                    </div>
+                    <span class="text-[10px] font-bold text-[#FF84C2]">Nhập môn</span>
+                </button>
+
+                <!-- Level 2 -->
+                <button onclick="applyCatalogFilter('level', 2)" id="libFilterBtn-l2" 
+                        class="flex-1 flex flex-col items-center gap-1.5 p-1 rounded-xl transition-all active:scale-90 cursor-pointer">
+                    <div class="w-10 h-10 rounded-full bg-[#5294FF]/15 border border-[#5294FF]/40 flex items-center justify-center relative">
+                        <img src="assets/library/library_memory_familiar_icon.webp" alt="L2" class="w-6 h-6 object-contain" />
+                        <span id="libBadgeL2" class="absolute -bottom-1 -right-1 px-1.5 py-0.2 rounded-full bg-[#5294FF] text-[#051428] font-black text-[9px] shadow-sm leading-tight">4</span>
+                    </div>
+                    <span class="text-[10px] font-bold text-[#5294FF]">Làm quen</span>
+                </button>
+
+                <!-- Level 3 -->
+                <button onclick="applyCatalogFilter('level', 3)" id="libFilterBtn-l3" 
+                        class="flex-1 flex flex-col items-center gap-1.5 p-1 rounded-xl transition-all active:scale-90 cursor-pointer">
+                    <div class="w-10 h-10 rounded-full bg-[#22D3EE]/15 border border-[#22D3EE]/40 flex items-center justify-center relative">
+                        <img src="assets/library/library_memory_remember_icon.webp" alt="L3" class="w-6 h-6 object-contain" />
+                        <span id="libBadgeL3" class="absolute -bottom-1 -right-1 px-1.5 py-0.2 rounded-full bg-[#22D3EE] text-[#052028] font-black text-[9px] shadow-sm leading-tight">6</span>
+                    </div>
+                    <span class="text-[10px] font-bold text-[#22D3EE]">Ghi nhớ</span>
+                </button>
+
+                <!-- Level 4 -->
+                <button onclick="applyCatalogFilter('level', 4)" id="libFilterBtn-l4" 
+                        class="flex-1 flex flex-col items-center gap-1.5 p-1 rounded-xl transition-all active:scale-90 cursor-pointer">
+                    <div class="w-10 h-10 rounded-full bg-[#FBBF24]/15 border border-[#FBBF24]/40 flex items-center justify-center relative">
+                        <img src="assets/library/library_memory_mastered_icon.webp" alt="L4" class="w-6 h-6 object-contain" />
+                        <span id="libBadgeL4" class="absolute -bottom-1 -right-1 px-1.5 py-0.2 rounded-full bg-[#FBBF24] text-[#281c05] font-black text-[9px] shadow-sm leading-tight">7</span>
+                    </div>
+                    <span class="text-[10px] font-bold text-[#FBBF24]">Thông thạo</span>
+                </button>
+            </div>
+
+            <!-- Source Filter Chips Strip (libraryDeckListFilters) -->
+            <div class="flex items-center gap-2 overflow-x-auto hide-scrollbar -mx-4 px-4 py-1">
+                <button onclick="applyCatalogFilter('source', 'ALL')" id="libChip-ALL" 
+                        class="px-3.5 py-1.5 rounded-full bg-[#B8D166] text-[#283500] font-black text-[12px] shrink-0 transition-all cursor-pointer">
+                    Tất cả
+                </button>
+                <button onclick="applyCatalogFilter('source', 'STORY')" id="libChip-STORY" 
+                        class="px-3.5 py-1.5 rounded-full bg-[#20211C] text-[#C4CAA9] border border-[#46483C]/70 hover:border-[#B8D166] font-bold text-[12px] shrink-0 transition-all cursor-pointer">
+                    Truyện
+                </button>
+                <button onclick="applyCatalogFilter('source', 'AUDIO')" id="libChip-AUDIO" 
+                        class="px-3.5 py-1.5 rounded-full bg-[#20211C] text-[#C4CAA9] border border-[#46483C]/70 hover:border-[#B8D166] font-bold text-[12px] shrink-0 transition-all cursor-pointer">
+                    Audio
+                </button>
+                <button onclick="applyCatalogFilter('source', 'OCR')" id="libChip-OCR" 
+                        class="px-3.5 py-1.5 rounded-full bg-[#20211C] text-[#C4CAA9] border border-[#46483C]/70 hover:border-[#B8D166] font-bold text-[12px] shrink-0 transition-all cursor-pointer">
+                    OCR
+                </button>
+                <button onclick="applyCatalogFilter('source', 'TEXT')" id="libChip-TEXT" 
+                        class="px-3.5 py-1.5 rounded-full bg-[#20211C] text-[#C4CAA9] border border-[#46483C]/70 hover:border-[#B8D166] font-bold text-[12px] shrink-0 transition-all cursor-pointer">
+                    Văn bản
+                </button>
+                <button onclick="applyCatalogFilter('source', 'MANUAL')" id="libChip-MANUAL" 
+                        class="px-3.5 py-1.5 rounded-full bg-[#20211C] text-[#C4CAA9] border border-[#46483C]/70 hover:border-[#B8D166] font-bold text-[12px] shrink-0 transition-all cursor-pointer">
+                    Thủ công
+                </button>
+            </div>
+
+            <!-- List of Deck Cards (Rendered with Stacked layers) -->
+            <div id="libDeckCardsList" class="space-y-4 pt-1">
+                <!-- Populated via JS -->
+            </div>
+
+        </div>
+
+        <!-- ================= VIEW 3: DECK DETAIL (CHI TIẾT BỘ THẺ & DANH SÁCH TỪ) ================= -->
+        <div id="libDeckDetailView" class="hidden flex-col space-y-4 animate-fadeIn">
+            
+            <!-- Top App Bar -->
+            <div class="flex items-center justify-between min-h-[48px] pt-1">
+                <button onclick="closeDeckDetailView()" 
+                        class="w-10 h-10 rounded-full bg-[#1B1C17] border border-[#46483C]/70 hover:bg-[#252621] active:scale-90 flex items-center justify-center text-[#E5E3DB] transition-all cursor-pointer">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <div class="text-center max-w-[200px]">
+                    <h3 id="libDetailDeckTitle" class="text-[17px] font-black text-white tracking-tight truncate">Tên bộ thẻ</h3>
+                    <span id="libDetailDeckMeta" class="text-[11.5px] font-bold text-[#B8D166]">5 flashcards • Đã thuộc 40%</span>
+                </div>
+                <button id="libDetailTopicLessonBtn" onclick="openTopicFromLibrary()" 
+                        class="px-3 py-1.5 rounded-full bg-[#3C4D00] border border-[#B8D166]/40 text-[#D4EE7F] text-[11px] font-bold hover:brightness-110 active:scale-95 transition-all cursor-pointer">
+                    Vào bài học
+                </button>
+            </div>
+
+            <!-- Search input row (16px to prevent iOS auto-zoom) -->
+            <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#909283]">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </div>
+                <input type="text" id="libDetailSearchInput" oninput="handleDeckCardSearch(this.value)"
+                       placeholder="Tìm từ vựng trong bộ thẻ..." 
+                       class="w-full h-11 pl-10 pr-4 rounded-2xl bg-[#1B1C17] border border-[#46483C]/70 text-[16px] md:text-[14px] text-[#E5E3DB] placeholder-[#909283] focus:border-[#B8D166] focus:outline-none transition-colors" />
+            </div>
+
+            <!-- Detail Level Quick Filter Chips -->
+            <div class="flex items-center gap-1.5 overflow-x-auto hide-scrollbar -mx-4 px-4 py-0.5">
+                <button onclick="filterDetailCardsByLevel(null)" id="libDetailChip-all" 
+                        class="px-3 py-1 rounded-full bg-[#B8D166] text-[#283500] font-black text-[11.5px] shrink-0 cursor-pointer">
+                    Tất cả (<span id="libDetailCountAll">5</span>)
+                </button>
+                <button onclick="filterDetailCardsByLevel(1)" id="libDetailChip-1" 
+                        class="px-3 py-1 rounded-full bg-[#20211C] text-[#FF84C2] border border-[#FF84C2]/30 font-bold text-[11.5px] shrink-0 cursor-pointer">
+                    Nhập môn (<span id="libDetailCount1">1</span>)
+                </button>
+                <button onclick="filterDetailCardsByLevel(2)" id="libDetailChip-2" 
+                        class="px-3 py-1 rounded-full bg-[#20211C] text-[#5294FF] border border-[#5294FF]/30 font-bold text-[11.5px] shrink-0 cursor-pointer">
+                    Làm quen (<span id="libDetailCount2">1</span>)
+                </button>
+                <button onclick="filterDetailCardsByLevel(3)" id="libDetailChip-3" 
+                        class="px-3 py-1 rounded-full bg-[#20211C] text-[#22D3EE] border border-[#22D3EE]/30 font-bold text-[11.5px] shrink-0 cursor-pointer">
+                    Ghi nhớ (<span id="libDetailCount3">1</span>)
+                </button>
+                <button onclick="filterDetailCardsByLevel(4)" id="libDetailChip-4" 
+                        class="px-3 py-1 rounded-full bg-[#20211C] text-[#FBBF24] border border-[#FBBF24]/30 font-bold text-[11.5px] shrink-0 cursor-pointer">
+                    Thông thạo (<span id="libDetailCount4">2</span>)
+                </button>
+            </div>
+
+            <!-- Flashcards Interactive List -->
+            <div id="libDetailCardsContainer" class="space-y-3.5 pb-20">
+                <!-- Populated via JS -->
+            </div>
+
+            <!-- Fixed Bottom Review All Button -->
+            <div class="fixed bottom-20 left-0 right-0 max-w-[420px] mx-auto px-4 z-30 pointer-events-none">
+                <button onclick="reviewCurrentDetailDeck()" 
+                        class="w-full h-[52px] rounded-2xl bg-gradient-to-r from-[#B8D166] via-[#C8E478] to-[#B8D166] hover:brightness-110 active:scale-[0.98] text-[#283500] font-black text-[15px] flex items-center justify-center gap-2 shadow-[0_6px_24px_rgba(184,209,102,0.45)] transition-all cursor-pointer pointer-events-auto">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    <span id="libDetailReviewBtnText">Ôn tất cả bộ thẻ (5 thẻ)</span>
+                </button>
+            </div>
+
+        </div>
+
     </div>
 
     <!-- ========================================================== -->
@@ -3762,13 +5011,16 @@
     <!-- ============================================== -->
     <nav id="bottomNavPill" class="absolute bottom-6 left-1/2 -translate-x-1/2 w-[88%] max-w-[320px] h-[62px] bg-[#1B1C17] border border-[#46483C] rounded-full p-1.5 shadow-[0_16px_44px_rgba(0,0,0,0.85),inset_0_1px_1.5px_rgba(255,255,255,0.06)] z-40 select-none anim-bottom-nav-enter flex items-center justify-between relative">
         
+        <!-- Interactive Tap Ripple Emitter (Chỉ gợn sóng khi chạm) -->
+        <div id="waterRippleHost" class="absolute inset-0 rounded-full overflow-hidden pointer-events-none z-0"></div>
+
         <!-- Sliding Solid M3 Circular Thumb -->
-        <div id="bottomNavThumb" class="absolute top-1.5 bottom-1.5 left-1.5 w-[calc((100%-12px)/4)] flex items-center justify-center transition-transform duration-300 ease-[cubic-bezier(0.34,1.35,0.64,1)] pointer-events-none z-0" style="transform: translateX(0%);">
+        <div id="bottomNavThumb" class="absolute top-1.5 bottom-1.5 left-1.5 w-[calc((100%-12px)/4)] flex items-center justify-center transition-transform duration-300 ease-[cubic-bezier(0.34,1.35,0.64,1)] pointer-events-none z-10" style="transform: translateX(0%);">
             <div id="bottomNavThumbInner" class="w-[50px] h-[50px] rounded-full bg-[#3C4D00] shadow-[0_2px_14px_rgba(61,78,0,0.5)] transition-all duration-300"></div>
         </div>
 
         <!-- Tab 0: Trang chủ (Primary Olive Green) -->
-        <button onclick="switchBottomNav(0)" id="bottomNavBtn-0" class="flex-1 h-full flex items-center justify-center relative z-10 cursor-pointer group active:scale-90 transition-transform" title="Trang chủ">
+        <button onclick="switchBottomNav(0)" id="bottomNavBtn-0" class="flex-1 h-full flex items-center justify-center relative z-20 cursor-pointer group active:scale-90 transition-transform" title="Trang chủ">
             <div id="bottomNavIconWrap-0" class="nav-icon-wrap w-6 h-6 anim-nav-home">
                 <svg viewBox="0 0 100 100" id="bottomNavIcon-0" class="w-6 h-6 text-[#D4EE7F]" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M 15 52 Q 50 18, 85 55 M 25 45 Q 27 65, 25 85 M 75 48 Q 73 65, 75 85 M 18 85 Q 50 82, 82 85 M 40 85 Q 38 65, 42 60 Q 50 58, 58 60 Q 62 65, 60 85"/>
@@ -3777,7 +5029,7 @@
         </button>
 
         <!-- Tab 1: Tạo (Tertiary Mint/Cyan) -->
-        <button onclick="switchBottomNav(1)" id="bottomNavBtn-1" class="flex-1 h-full flex items-center justify-center relative z-10 cursor-pointer group active:scale-90 transition-transform" title="Tạo">
+        <button onclick="switchBottomNav(1)" id="bottomNavBtn-1" class="flex-1 h-full flex items-center justify-center relative z-20 cursor-pointer group active:scale-90 transition-transform" title="Tạo">
             <div id="bottomNavIconWrap-1" class="nav-icon-wrap w-6 h-6 opacity-80">
                 <svg viewBox="0 0 100 100" id="bottomNavIcon-1" class="w-6 h-6 text-[#A1D0C5]" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M 32 25 Q 50 20, 72 28 Q 82 50, 75 75 Q 50 82, 28 75 Q 20 50, 32 25 Z M 50 38 Q 48 50, 52 62 M 38 52 Q 50 50, 62 48"/>
@@ -3786,7 +5038,7 @@
         </button>
 
         <!-- Tab 2: Thư viện (Secondary Sage) -->
-        <button onclick="switchBottomNav(2)" id="bottomNavBtn-2" class="flex-1 h-full flex items-center justify-center relative z-10 cursor-pointer group active:scale-90 transition-transform" title="Thư viện">
+        <button onclick="switchBottomNav(2)" id="bottomNavBtn-2" class="flex-1 h-full flex items-center justify-center relative z-20 cursor-pointer group active:scale-90 transition-transform" title="Thư viện">
             <div id="bottomNavIconWrap-2" class="nav-icon-wrap w-6 h-6 opacity-80">
                 <svg viewBox="0 0 100 100" id="bottomNavIcon-2" class="w-6 h-6 text-[#C4CAA9]" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M 15 85 Q 50 88, 85 85 M 25 85 Q 23 60, 25 40 Q 35 35, 40 40 Q 42 60, 40 85 M 45 85 Q 43 55, 45 30 Q 55 25, 60 30 Q 62 55, 60 85 M 60 85 Q 65 65, 70 45 Q 80 50, 80 55 Q 75 75, 72 85"/>
@@ -3795,7 +5047,7 @@
         </button>
 
         <!-- Tab 3: Profile (Amber Glow) -->
-        <button onclick="switchBottomNav(3)" id="bottomNavBtn-3" class="flex-1 h-full flex items-center justify-center relative z-10 cursor-pointer group active:scale-90 transition-transform" title="Profile">
+        <button onclick="switchBottomNav(3)" id="bottomNavBtn-3" class="flex-1 h-full flex items-center justify-center relative z-20 cursor-pointer group active:scale-90 transition-transform" title="Profile">
             <div id="bottomNavIconWrap-3" class="nav-icon-wrap w-6 h-6 opacity-80">
                 <svg viewBox="0 0 100 100" id="bottomNavIcon-3" class="w-6 h-6 text-[#FBBF24]" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M 50 25 Q 65 22, 65 38 Q 62 52, 50 52 Q 38 52, 35 38 Q 35 22, 50 25 Z M 25 85 Q 25 65, 40 60 Q 50 62, 60 60 Q 75 65, 75 85"/>
@@ -3808,6 +5060,228 @@
     <!-- ============================================== -->
     <!-- DEDICATED FULL-FEATURED DICTIONARY SCREEN VIEW -->
     <!-- ============================================== -->
+        <!-- ============================================================== -->
+    <!-- VISUAL LANGUAGE LEARNING ROADMAP (DUOLINGO/MEMRISE S-PATHWAY)  -->
+    <!-- ============================================================== -->
+    <div id="screenParchmentRoadmap" class="hidden absolute inset-0 z-50 bg-[#F8FAFC] dark:bg-[#12140e] flex flex-col transition-transform duration-300 ease-out translate-x-full select-none overflow-hidden">
+        
+        <!-- Top Sticky Header Navigation Bar -->
+        <div class="w-full h-[68px] z-30 flex items-center justify-between px-4 bg-white/90 dark:bg-[#161811]/90 backdrop-blur-md border-b border-slate-200/70 dark:border-slate-800/80 shrink-0">
+            <!-- Back Button -->
+            <button onclick="closeParchmentRoadmap()" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-200 active:scale-90 transition-all shadow-sm cursor-pointer" title="Quay lại khám phá">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+                </svg>
+            </button>
+            
+            <!-- Center Title -->
+            <div class="flex flex-col items-center">
+                <span class="text-[11px] font-black uppercase tracking-wider text-amber-500">Chương 1 • Cơ Bản</span>
+                <h1 class="text-[17px] font-black text-slate-900 dark:text-white tracking-tight">Hành Trình Ngôn Ngữ</h1>
+            </div>
+
+            <!-- Progress Pill -->
+            <div class="px-3 py-1 rounded-full bg-amber-50 dark:bg-amber-950/40 border border-amber-200/60 dark:border-amber-700/40 text-amber-600 dark:text-amber-400 text-[12px] font-extrabold flex items-center gap-1.5 shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                <span>Bài 3 / 8</span>
+            </div>
+        </div>
+        
+        <!-- Scrollable Roadmap Area -->
+        <div id="scrollAreaRoadmap" class="flex-1 overflow-y-auto no-scrollbar relative z-10 scroll-smooth p-4 pt-6">
+            <div class="w-full max-w-[390px] mx-auto relative" style="height: 1480px;">
+                
+                <!-- SVG S-Curve Dotted Path Layer -->
+                <svg class="absolute inset-0 w-full h-full pointer-events-none z-0" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Segment 1: Node 1 (115, 60) -> Node 2 (265, 220) [COMPLETED - PURPLE] -->
+                    <path d="M 115 60 C 235 60, 265 140, 265 220" class="roadmap-dots-completed" />
+                    
+                    <!-- Segment 2: Node 2 (265, 220) -> Node 3 (115, 410) [PENDING - GRAY] -->
+                    <path d="M 265 220 C 265 310, 115 320, 115 410" class="roadmap-dots-pending" />
+                    
+                    <!-- Segment 3: Node 3 (115, 410) -> Node 4 (260, 600) [PENDING - GRAY] -->
+                    <path d="M 115 410 C 115 500, 260 510, 260 600" class="roadmap-dots-pending" />
+                    
+                    <!-- Segment 4: Node 4 (260, 600) -> Node 5 (175, 780) [PENDING - GRAY] -->
+                    <path d="M 260 600 C 260 690, 175 690, 175 780" class="roadmap-dots-pending" />
+                    
+                    <!-- Segment 5: Node 5 (175, 780) -> Node 6 (115, 960) [PENDING - GRAY] -->
+                    <path d="M 175 780 C 175 870, 115 870, 115 960" class="roadmap-dots-pending" />
+
+                    <!-- Segment 6: Node 6 (115, 960) -> Node 7 (260, 1140) [PENDING - GRAY] -->
+                    <path d="M 115 960 C 115 1050, 260 1050, 260 1140" class="roadmap-dots-pending" />
+
+                    <!-- Segment 7: Node 7 (260, 1140) -> Node 8 (175, 1320) [PENDING - GRAY] -->
+                    <path d="M 260 1140 C 260 1230, 175 1230, 175 1320" class="roadmap-dots-pending" />
+                </svg>
+
+                <!-- NODE 1: First meeting (Completed) -->
+                <div onclick="handleParchmentNodeClick(1, 'First meeting', true)" class="absolute flex flex-col items-center z-10 cursor-pointer active:scale-95 transition-transform" style="top: 20px; left: 75px;" title="Chặng 1: First meeting (Đã hoàn thành)">
+                    <div class="roadmap-puck w-[82px] h-[82px] p-[5px] bg-[#F59E0B] border-[3px] border-[#D97706]">
+                        <div class="w-full h-full rounded-full overflow-hidden bg-amber-100 border border-white/40">
+                            <img src="assets/cards/lumi_farmer_strawhat.jpg" alt="First meeting" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-1 mt-2.5">
+                        <span class="text-amber-400 text-sm">★</span>
+                        <span class="text-amber-400 text-sm">★</span>
+                        <span class="text-amber-400 text-sm">★</span>
+                    </div>
+                    <span class="text-[14px] font-black text-slate-800 dark:text-slate-100 tracking-tight mt-0.5 whitespace-nowrap">First meeting</span>
+                    <span class="text-[11px] font-semibold text-slate-400 dark:text-slate-500">Chào hỏi cơ bản</span>
+                </div>
+
+                <!-- NODE 2: New words (Completed) -->
+                <div onclick="handleParchmentNodeClick(2, 'New words', true)" class="absolute flex flex-col items-center z-10 cursor-pointer active:scale-95 transition-transform" style="top: 180px; left: 224px;" title="Chặng 2: New words (Đã hoàn thành)">
+                    <div class="roadmap-puck w-[82px] h-[82px] p-[5px] bg-[#8B5CF6] border-[3px] border-[#6D28D9]">
+                        <div class="w-full h-full rounded-full overflow-hidden bg-purple-100 border border-white/40">
+                            <img src="assets/cards/lumi_review_flashcards.jpg" alt="New words" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-1 mt-2.5">
+                        <span class="text-slate-300 dark:text-slate-600 text-sm">★</span>
+                        <span class="text-slate-300 dark:text-slate-600 text-sm">★</span>
+                        <span class="text-slate-300 dark:text-slate-600 text-sm">★</span>
+                    </div>
+                    <span class="text-[14px] font-black text-slate-800 dark:text-slate-100 tracking-tight mt-0.5 whitespace-nowrap">New words</span>
+                    <span class="text-[11px] font-semibold text-slate-400 dark:text-slate-500">Thẻ từ cốt lõi</span>
+                </div>
+
+                <!-- NODE 3: Active Current Lesson with tactile CONTINUE button! -->
+                <div class="absolute z-20 flex items-center" style="top: 365px; left: 75px;">
+                    <div onclick="handleParchmentNodeClick(3, 'Coffee talk', true)" class="flex flex-col items-center cursor-pointer active:scale-95 transition-transform" title="Chặng 3: Coffee talk (Đang học)">
+                        <div class="relative">
+                            <div class="absolute -inset-2.5 rounded-full border-2 border-sky-400 pulse-ring pointer-events-none"></div>
+                            <div class="roadmap-puck w-[84px] h-[84px] p-[5px] bg-slate-300 dark:bg-slate-700 border-[3px] border-slate-400 dark:border-slate-600">
+                                <div class="w-full h-full rounded-full overflow-hidden bg-slate-100 dark:bg-slate-800 border border-white/40">
+                                    <img src="assets/cards/lumi_rain_coffee_eaves.jpg" alt="Coffee talk" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-1 mt-2.5">
+                            <span class="text-slate-300 dark:text-slate-600 text-sm">★</span>
+                            <span class="text-slate-300 dark:text-slate-600 text-sm">★</span>
+                            <span class="text-slate-300 dark:text-slate-600 text-sm">★</span>
+                        </div>
+                        <span class="text-[14px] font-black text-slate-800 dark:text-slate-100 tracking-tight mt-0.5 whitespace-nowrap">Coffee talk</span>
+                        <span class="text-[11px] font-semibold text-sky-600 dark:text-sky-400 font-bold">Đang học • Bài 3</span>
+                    </div>
+
+                    <!-- Floating CONTINUE Button attached to the right! -->
+                    <div class="ml-4 -mt-6">
+                        <button onclick="handleParchmentNodeClick(3, 'Coffee talk', true)" class="tactile-continue-btn px-6 py-3 rounded-2xl text-white font-black text-[15px] tracking-wide flex items-center gap-2 cursor-pointer select-none">
+                            <span>Continue</span>
+                            <svg class="w-4 h-4 fill-white" viewBox="0 0 20 20"><path d="M6.3 2.841A1.5 1.5 0 004 4.11v11.78a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- NODE 4: Grammar reflex (Next / Locked) -->
+                <div onclick="handleParchmentNodeClick(4, 'Grammar reflex', false)" class="absolute flex flex-col items-center z-10 opacity-75 hover:opacity-100 transition-opacity cursor-pointer" style="top: 560px; left: 219px;" title="Chặng 4: Grammar reflex (Chưa mở khóa)">
+                    <div class="roadmap-puck w-[82px] h-[82px] p-[5px] bg-slate-200 dark:bg-slate-800 border-[3px] border-slate-300 dark:border-slate-700">
+                        <div class="w-full h-full rounded-full overflow-hidden bg-slate-100 dark:bg-slate-800 relative">
+                            <img src="assets/cards/lumi_train_station_night.jpg" alt="Grammar reflex" class="w-full h-full object-cover grayscale-[30%]">
+                            <div class="absolute inset-0 bg-black/25 flex items-center justify-center">
+                                <span class="text-white text-base">🔒</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-1 mt-2.5">
+                        <span class="text-slate-300 dark:text-slate-600 text-sm">★</span>
+                        <span class="text-slate-300 dark:text-slate-600 text-sm">★</span>
+                        <span class="text-slate-300 dark:text-slate-600 text-sm">★</span>
+                    </div>
+                    <span class="text-[14px] font-black text-slate-800 dark:text-slate-100 tracking-tight mt-0.5 whitespace-nowrap">Grammar reflex</span>
+                    <span class="text-[11px] font-semibold text-slate-400 dark:text-slate-500">Phản xạ câu hỏi</span>
+                </div>
+
+                <!-- NODE 5: Bonus Chest (Milestone) -->
+                <div onclick="claimRoadmapBonusChest()" class="absolute flex flex-col items-center z-10 cursor-pointer active:scale-95 transition-transform" style="top: 740px; left: 134px;" title="Chặng 5: Rương phần thưởng đặc biệt">
+                    <div class="roadmap-puck w-[84px] h-[84px] p-[5px] bg-[#F59E0B] border-[3px] border-[#D97706]">
+                        <div class="w-full h-full rounded-full overflow-hidden bg-amber-50 border border-white/40">
+                            <img src="assets/cards/reward_gift_box.jpg" alt="Bonus Chest" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-1 mt-2.5">
+                        <span class="text-amber-400 text-sm">✨</span>
+                        <span class="text-amber-400 text-sm">🎁</span>
+                        <span class="text-amber-400 text-sm">✨</span>
+                    </div>
+                    <span class="text-[14px] font-black text-amber-600 dark:text-amber-400 tracking-tight mt-0.5 whitespace-nowrap">Bonus Chest</span>
+                    <span class="text-[11px] font-extrabold text-amber-500">+150 XP Thưởng</span>
+                </div>
+
+                <!-- NODE 6: Speaking Arena -->
+                <div onclick="handleParchmentNodeClick(6, 'Speaking arena', false)" class="absolute flex flex-col items-center z-10 opacity-75 hover:opacity-100 transition-opacity cursor-pointer" style="top: 920px; left: 74px;" title="Chặng 6: Speaking arena (Chưa mở khóa)">
+                    <div class="roadmap-puck w-[82px] h-[82px] p-[5px] bg-slate-200 dark:bg-slate-800 border-[3px] border-slate-300 dark:border-slate-700">
+                        <div class="w-full h-full rounded-full overflow-hidden bg-slate-100 dark:bg-slate-800 relative">
+                            <img src="assets/cards/lumi_melody_arena.jpg" alt="Speaking arena" class="w-full h-full object-cover grayscale-[30%]">
+                            <div class="absolute inset-0 bg-black/25 flex items-center justify-center">
+                                <span class="text-white text-base">🔒</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-1 mt-2.5">
+                        <span class="text-slate-300 dark:text-slate-600 text-sm">★</span>
+                        <span class="text-slate-300 dark:text-slate-600 text-sm">★</span>
+                        <span class="text-slate-300 dark:text-slate-600 text-sm">★</span>
+                    </div>
+                    <span class="text-[14px] font-black text-slate-800 dark:text-slate-100 tracking-tight mt-0.5 whitespace-nowrap">Speaking arena</span>
+                    <span class="text-[11px] font-semibold text-slate-400 dark:text-slate-500">Luyện ngữ điệu</span>
+                </div>
+
+                <!-- NODE 7: Daily Life -->
+                <div onclick="handleParchmentNodeClick(7, 'Daily life', false)" class="absolute flex flex-col items-center z-10 opacity-75 hover:opacity-100 transition-opacity cursor-pointer" style="top: 1100px; left: 219px;" title="Chặng 7: Daily life (Chưa mở khóa)">
+                    <div class="roadmap-puck w-[82px] h-[82px] p-[5px] bg-slate-200 dark:bg-slate-800 border-[3px] border-slate-300 dark:border-slate-700">
+                        <div class="w-full h-full rounded-full overflow-hidden bg-slate-100 dark:bg-slate-800 relative">
+                            <img src="assets/cards/pixar_night_farm_scenery.jpg" alt="Daily life" class="w-full h-full object-cover grayscale-[30%]">
+                            <div class="absolute inset-0 bg-black/25 flex items-center justify-center">
+                                <span class="text-white text-base">🔒</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-1 mt-2.5">
+                        <span class="text-slate-300 dark:text-slate-600 text-sm">★</span>
+                        <span class="text-slate-300 dark:text-slate-600 text-sm">★</span>
+                        <span class="text-slate-300 dark:text-slate-600 text-sm">★</span>
+                    </div>
+                    <span class="text-[14px] font-black text-slate-800 dark:text-slate-100 tracking-tight mt-0.5 whitespace-nowrap">Daily life</span>
+                    <span class="text-[11px] font-semibold text-slate-400 dark:text-slate-500">Ngữ cảnh nông trại</span>
+                </div>
+
+                <!-- NODE 8: Chapter Boss Milestone -->
+                <div onclick="handleParchmentNodeClick(8, 'Mastery challenge', false)" class="absolute flex flex-col items-center z-10 cursor-pointer active:scale-95 transition-transform" style="top: 1280px; left: 134px;" title="Chặng 8: Thử thách vượt ải">
+                    <div class="roadmap-puck w-[86px] h-[86px] p-[6px] bg-gradient-to-tr from-amber-500 to-yellow-300 border-[3px] border-amber-600">
+                        <div class="w-full h-full rounded-full overflow-hidden bg-amber-100 border border-white/50">
+                            <img src="assets/cards/lumi_progress_celebration.jpg" alt="Mastery challenge" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-1 mt-2.5">
+                        <span class="text-amber-400 text-sm">👑</span>
+                        <span class="text-amber-400 text-sm">★</span>
+                        <span class="text-amber-400 text-sm">👑</span>
+                    </div>
+                    <span class="text-[15px] font-black text-amber-600 dark:text-amber-400 tracking-tight mt-0.5 whitespace-nowrap">Mastery challenge</span>
+                    <span class="text-[11px] font-extrabold text-slate-500">Thử thách vượt ải</span>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Floating Chat Bubble (Matching exact reference image on bottom right!) -->
+        <div class="absolute bottom-6 right-5 z-40 pointer-events-auto">
+            <button onclick="if(typeof openAITutorChat === 'function') openAITutorChat(); else if(typeof showDictToast === 'function') showDictToast('💬 Trợ lý AI sẵn sàng hỗ trợ bạn học bài!');" class="relative w-14 h-14 rounded-full bg-[#0095FF] hover:bg-[#0084E6] active:scale-95 text-white shadow-[0_8px_20px_rgba(0,149,255,0.4)] flex items-center justify-center cursor-pointer transition-transform" title="Trợ lý AI luyện tập">
+                <svg class="w-7 h-7 fill-white" viewBox="0 0 24 24">
+                    <path d="M12 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5L2.1 21.9a1 1 0 001.2 1.2l4.9-1.238A9.957 9.957 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+                </svg>
+                <span class="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#FF3B30] text-white text-[11px] font-black flex items-center justify-center border-2 border-white dark:border-[#161811] shadow">
+                    2
+                </span>
+            </button>
+        </div>
+
+    </div>
+
     <div id="screenDictionary" class="hidden absolute inset-0 z-50 bg-screenBg text-textPrimary flex flex-col transition-transform duration-300 ease-out translate-x-full">
         <!-- Ambient Aurora Backdrops -->
         <div class="absolute -top-12 -right-12 w-60 h-60 bg-[#B8D166]/10 blur-[80px] rounded-full pointer-events-none mix-blend-screen"></div>
@@ -3963,25 +5437,49 @@
             <!-- SUB-VIEW A: EMPTY STATE (Khi chưa nhập từ hoặc vừa xóa tìm kiếm) -->
             <div id="dictEmptyStateView" class="hidden flex flex-col gap-3.5 pt-1 pb-4">
                 
-                <!-- 1. Friendly Lumi Greeting Card (Harmonious M3 Surface) -->
-                <div id="dictLumiGreetingCard" class="dict-lumi-greeting rounded-[24px] p-4 bg-gradient-to-br from-[#252621] via-[#20211C] to-[#1B1C17] border border-[#46483C]/70 relative overflow-hidden shadow-[0_12px_32px_rgba(0,0,0,0.45)]">
+                <!-- 1. Friendly Lumi Tip / Greeting Card (Dismissible Onboarding Tip) -->
+                <div id="dictLumiGreetingCard" class="dict-lumi-greeting rounded-[24px] p-4 bg-gradient-to-br from-[#252621] via-[#20211C] to-[#1B1C17] border border-[#46483C]/70 relative overflow-hidden shadow-[0_12px_32px_rgba(0,0,0,0.45)] transition-all duration-300">
+                    <!-- Top-Right Close Button (Tạm đóng tip) -->
+                    <button onclick="dismissLumiTip(false)" class="lumi-tip-close-icon absolute top-3 right-3 w-7 h-7 rounded-full hover:bg-white/10 text-[#909283] hover:text-[#E5E3DB] flex items-center justify-center transition-colors cursor-pointer z-20" title="Tạm ẩn mẹo này">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+
                     <div class="absolute -right-4 -bottom-4 w-32 h-32 bg-[#B8D166]/10 blur-[45px] rounded-full pointer-events-none"></div>
                     <div class="absolute -left-4 -top-4 w-28 h-28 bg-[#FBBF24]/10 blur-[40px] rounded-full pointer-events-none"></div>
-                    <div class="flex items-center gap-3.5 relative z-10">
-                        <div class="lumi-avatar-box w-14 h-14 rounded-2xl bg-gradient-to-br from-[#3D2E0B]/80 to-[#1B1C17] border border-[#FBBF24]/30 p-1 flex items-center justify-center shrink-0 shadow-[0_0_16px_rgba(251,191,36,0.12)]">
-                            <img src="./img_lumi_reading.png" alt="Lumi" class="w-12 h-12 object-contain scale-105" />
+                    <div class="flex items-start gap-3.5 relative z-10">
+                        <div class="lumi-avatar-box w-13 h-13 rounded-2xl bg-gradient-to-br from-[#3D2E0B]/80 to-[#1B1C17] border border-[#FBBF24]/30 p-1 flex items-center justify-center shrink-0 shadow-[0_0_16px_rgba(251,191,36,0.12)]">
+                            <img src="./img_lumi_reading.png" alt="Lumi" class="w-11 h-11 object-contain scale-105" />
                         </div>
-                        <div class="flex-1 min-w-0">
-                            <div class="flex items-center gap-1.5">
+                        <div class="flex-1 min-w-0 pr-6">
+                            <div class="flex items-center gap-1.5 flex-wrap">
                                 <span class="lumi-assistant-tag text-[10px] font-black uppercase tracking-wider text-[#FDE68A] bg-[#3D2E0B] border border-[#FBBF24]/30 px-2.5 py-0.5 rounded-full flex items-center gap-1">
                                     <span>Trợ lý Lumi</span>
                                 </span>
                                 <span class="w-1.5 h-1.5 rounded-full bg-[#B8D166] animate-pulse"></span>
+                                <span class="lumi-tip-badge inline-flex items-center gap-1 text-[9.5px] font-black uppercase tracking-wider text-[#FBBF24] bg-[#FBBF24]/15 px-2 py-0.5 rounded-md border border-[#FBBF24]/25">
+                                    <span>💡</span> Tip
+                                </span>
                             </div>
-                            <h3 class="text-[14.5px] font-black text-[#E5E3DB] mt-1 leading-snug">Hôm nay bạn muốn học từ nào?</h3>
-                            <p class="text-[11px] text-[#C7C8B8] mt-0.5 leading-relaxed font-medium">
+                            <h3 class="text-[14.5px] font-black text-[#E5E3DB] mt-1.5 leading-snug">Hôm nay bạn muốn học từ nào?</h3>
+                            <p class="text-[11.5px] text-[#C7C8B8] mt-0.5 leading-relaxed font-medium">
                                 Nhập từ, cụm từ idioms, hoặc chạm từ gợi ý bên dưới để tạo thẻ Flashcard.
                             </p>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Action Row: 'Không hiển thị nữa' & 'Đã hiểu' -->
+                    <div class="lumi-tip-footer flex items-center justify-between mt-3 pt-2.5 border-t border-white/[0.08] relative z-10">
+                        <span class="text-[10.5px] text-[#909283] font-medium flex items-center gap-1 select-none">
+                            <span>✨</span> Mẹo tương tác
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <button onclick="dismissLumiTip(true)" class="lumi-tip-dismiss-btn text-[11px] font-semibold text-[#A6A899] hover:text-[#E5E3DB] px-2.5 py-1 rounded-lg hover:bg-white/[0.08] transition-colors cursor-pointer flex items-center gap-1 select-none active:scale-95" title="Không bao giờ hiển thị lại tip này">
+                                <svg class="w-3 h-3 text-[#A6A899]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+                                <span>Không hiển thị nữa</span>
+                            </button>
+                            <button onclick="dismissLumiTip(false)" class="lumi-tip-ok-btn text-[11px] font-bold text-[#283500] bg-[#B8D166] hover:bg-[#D4EE7F] px-3 py-1 rounded-full shadow-xs transition-colors cursor-pointer select-none active:scale-95">
+                                <span>Đã hiểu</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -6370,7 +7868,31 @@ function toggleSlowAudio() {
 
         let currentNavIndex = 0;
 
+        
+        // Trigger water ripple when switching bottom nav
+        function triggerWaterRipple(index) {
+            const host = document.getElementById('waterRippleHost');
+            const btn = document.getElementById(`bottomNavBtn-${index}`);
+            if (!host || !btn) return;
+
+            const rect = btn.getBoundingClientRect();
+            const hostRect = host.getBoundingClientRect();
+            const x = rect.left + rect.width / 2 - hostRect.left;
+            const y = rect.top + rect.height / 2 - hostRect.top;
+
+            const ripple = document.createElement('div');
+            ripple.className = 'water-tap-ripple';
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+            host.appendChild(ripple);
+
+            setTimeout(() => {
+                if (ripple.parentNode) ripple.parentNode.removeChild(ripple);
+            }, 800);
+        }
+
         function switchBottomNav(index) {
+            triggerWaterRipple(index);
             currentNavIndex = index;
             updateBottomNavState(index);
 
@@ -6395,6 +7917,12 @@ function toggleSlowAudio() {
                 setTimeout(() => {
                     dictScreen.classList.add('hidden');
                 }, 300);
+            }
+
+            if (index === 2) {
+                if (typeof renderLibraryUI === 'function') {
+                    renderLibraryUI();
+                }
             }
 
             if (index === 1) {
@@ -7209,8 +8737,68 @@ function toggleSlowAudio() {
             }, 5000);
         }
 
+        // ================= LUMI ONBOARDING TIP LOGIC =================
+        function checkLumiTipVisibility() {
+            const card = document.getElementById('dictLumiGreetingCard');
+            if (!card) return false;
+            try {
+                if (localStorage.getItem('mindcard_hide_lumi_tip') === 'true') {
+                    card.classList.add('hidden');
+                    card.style.display = 'none';
+                    return false;
+                }
+            } catch (e) {
+                console.error('Error reading localStorage for lumi tip:', e);
+            }
+            card.classList.remove('hidden');
+            card.style.display = '';
+            card.style.opacity = '1';
+            card.style.transform = '';
+            card.style.maxHeight = '';
+            return true;
+        }
+
+        function dismissLumiTip(neverShowAgain = false) {
+            const card = document.getElementById('dictLumiGreetingCard');
+            if (!card) return;
+
+            if (neverShowAgain) {
+                try {
+                    localStorage.setItem('mindcard_hide_lumi_tip', 'true');
+                } catch (e) {
+                    console.error('Error writing to localStorage for lumi tip:', e);
+                }
+                if (typeof showToast === 'function') {
+                    showToast('✨ Đã ghi nhớ: Sẽ không hiển thị mẹo này lần sau.');
+                } else if (typeof showDictToast === 'function') {
+                    showDictToast('✨ Đã ghi nhớ: Sẽ không hiển thị mẹo này lần sau.');
+                }
+            }
+
+            // Smooth animated collapse
+            card.style.transition = 'all 320ms cubic-bezier(0.4, 0, 0.2, 1)';
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(-12px) scale(0.96)';
+            card.style.maxHeight = `${card.offsetHeight}px`;
+            card.style.overflow = 'hidden';
+
+            setTimeout(() => {
+                card.style.maxHeight = '0px';
+                card.style.paddingTop = '0px';
+                card.style.paddingBottom = '0px';
+                card.style.marginTop = '0px';
+                card.style.marginBottom = '0px';
+                card.style.borderWidth = '0px';
+                setTimeout(() => {
+                    card.classList.add('hidden');
+                    card.style.display = 'none';
+                }, 320);
+            }, 50);
+        }
+
         function showDictEmptyState() {
             currentActiveWord = '';
+            checkLumiTipVisibility();
             const emptyView = document.getElementById('dictEmptyStateView');
             const wordView = document.getElementById('dictWordDetailView');
             const recentRow = document.getElementById('recentSearchesRow');
@@ -10306,24 +11894,144 @@ function toggleSlowAudio() {
             }, 300);
         }
 
+        const DICT_BOOK_I18N = {
+            'EN': {
+                meaning: { text: 'Meaning', width: 48, fontSize: 8.5 },
+                ipa:     { text: '/aɪ.piː/', width: 44, fontSize: 8.5 },
+                example: { text: 'Example', width: 48, fontSize: 8.5 },
+                root:    { text: 'Root',    width: 36, fontSize: 9 }
+            },
+            'JA': {
+                meaning: { text: '意味',   width: 36, fontSize: 9 },
+                ipa:     { text: '/かな/', width: 42, fontSize: 8.5 },
+                example: { text: '例文',   width: 36, fontSize: 9 },
+                root:    { text: '語源',   width: 36, fontSize: 9 }
+            },
+            'KO': {
+                meaning: { text: '의미',   width: 36, fontSize: 9 },
+                ipa:     { text: '/발음/', width: 42, fontSize: 8.5 },
+                example: { text: '예문',   width: 36, fontSize: 9 },
+                root:    { text: '어원',   width: 36, fontSize: 9 }
+            },
+            'ZH': {
+                meaning: { text: '释义',   width: 36, fontSize: 9 },
+                ipa:     { text: '拼音',   width: 36, fontSize: 9 },
+                example: { text: '例句',   width: 36, fontSize: 9 },
+                root:    { text: '词根',   width: 36, fontSize: 9 }
+            },
+            'VI': {
+                meaning: { text: 'Nghĩa',  width: 40, fontSize: 9 },
+                ipa:     { text: '/aɪ.piː/', width: 44, fontSize: 8.5 },
+                example: { text: 'Ví dụ',  width: 44, fontSize: 9 },
+                root:    { text: 'Gốc từ', width: 42, fontSize: 9 }
+            },
+            'FR': {
+                meaning: { text: 'Sens',    width: 36, fontSize: 9 },
+                ipa:     { text: '/aɪ.piː/', width: 44, fontSize: 8.5 },
+                example: { text: 'Exemple', width: 48, fontSize: 8.5 },
+                root:    { text: 'Racine',  width: 44, fontSize: 8.5 }
+            },
+            'ES': {
+                meaning: { text: 'Significado', width: 52, fontSize: 7.5 },
+                ipa:     { text: '/aɪ.piː/',    width: 44, fontSize: 8.5 },
+                example: { text: 'Ejemplo',     width: 46, fontSize: 8.5 },
+                root:    { text: 'Raíz',        width: 36, fontSize: 9 }
+            },
+            'DE': {
+                meaning: { text: 'Bedeutung',  width: 52, fontSize: 7.5 },
+                ipa:     { text: '/aɪ.piː/',    width: 44, fontSize: 8.5 },
+                example: { text: 'Beispiel',    width: 48, fontSize: 8.5 },
+                root:    { text: 'Stamm',       width: 40, fontSize: 8.5 }
+            }
+        };
+
+        function updateDictionaryBookLanguage(code) {
+            const data = DICT_BOOK_I18N[code] || DICT_BOOK_I18N['EN'];
+            
+            // 1. Meaning Badge
+            const rectMeaning = document.getElementById('dictBookRectMeaning');
+            const textMeaning = document.getElementById('dictBookTextMeaning');
+            if (rectMeaning && textMeaning) {
+                rectMeaning.setAttribute('width', data.meaning.width);
+                rectMeaning.setAttribute('x', -data.meaning.width / 2);
+                textMeaning.textContent = data.meaning.text;
+                textMeaning.setAttribute('font-size', data.meaning.fontSize);
+            }
+
+            // 2. IPA / Pronunciation Badge
+            const rectIPA = document.getElementById('dictBookRectIPA');
+            const textIPA = document.getElementById('dictBookTextIPA');
+            if (rectIPA && textIPA) {
+                rectIPA.setAttribute('width', data.ipa.width);
+                rectIPA.setAttribute('x', -data.ipa.width / 2);
+                textIPA.textContent = data.ipa.text;
+                textIPA.setAttribute('font-size', data.ipa.fontSize);
+            }
+
+            // 3. Example Badge
+            const rectExample = document.getElementById('dictBookRectExample');
+            const textExample = document.getElementById('dictBookTextExample');
+            if (rectExample && textExample) {
+                rectExample.setAttribute('width', data.example.width);
+                rectExample.setAttribute('x', -data.example.width / 2);
+                textExample.textContent = data.example.text;
+                textExample.setAttribute('font-size', data.example.fontSize);
+            }
+
+            // 4. Root Badge
+            const rectRoot = document.getElementById('dictBookRectRoot');
+            const textRoot = document.getElementById('dictBookTextRoot');
+            if (rectRoot && textRoot) {
+                rectRoot.setAttribute('width', data.root.width);
+                rectRoot.setAttribute('x', -data.root.width / 2);
+                textRoot.textContent = data.root.text;
+                textRoot.setAttribute('font-size', data.root.fontSize);
+            }
+
+            // Micro-interaction bounce on SVG
+            const cardArt = document.querySelector('#dictBookBadgeMeaning')?.closest('svg');
+            if (cardArt) {
+                cardArt.style.transition = 'transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                cardArt.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    cardArt.style.transform = 'scale(1)';
+                }, 280);
+            }
+        }
+        window.updateDictionaryBookLanguage = updateDictionaryBookLanguage;
+
+        function applyTargetLanguageUI(code) {
+            const allItems = document.querySelectorAll('.lang-select-item');
+            allItems.forEach(item => {
+                const badgeEl = item.querySelector('.lang-learning-badge');
+                if (item.dataset.langCode === code) {
+                    item.className = "lang-select-item w-full flex items-center justify-between p-3.5 rounded-2xl bg-[#3C4D00]/30 border border-[#B8D166]/50 text-left active:scale-[0.98] transition-all group cursor-pointer";
+                    const indicator = item.querySelector('.lang-check-indicator');
+                    if (indicator) indicator.innerHTML = '<div class="w-6 h-6 rounded-full bg-[#B8D166] flex items-center justify-center text-[#283500]"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>';
+                    if (badgeEl) badgeEl.classList.remove('hidden');
+                } else {
+                    item.className = "lang-select-item w-full flex items-center justify-between p-3.5 rounded-2xl bg-[#20211C] hover:bg-[#252621] border border-[#46483C]/40 text-left active:scale-[0.98] transition-all group cursor-pointer";
+                    const indicator = item.querySelector('.lang-check-indicator');
+                    if (indicator) indicator.innerHTML = '<span class="text-[12px] font-semibold text-[#C6C8B8]/60 group-hover:text-[#E4E3DB]">Chọn</span>';
+                    if (badgeEl) badgeEl.classList.add('hidden');
+                }
+            });
+        }
+        window.applyTargetLanguageUI = applyTargetLanguageUI;
+
         function selectTargetLanguage(flag, code, name) {
             const flagEl = document.getElementById('topLangFlag');
             const codeEl = document.getElementById('topLangCode');
             if (flagEl) flagEl.innerText = flag;
             if (codeEl) codeEl.innerText = code;
             
-            const allItems = document.querySelectorAll('.lang-select-item');
-            allItems.forEach(item => {
-                if (item.dataset.langCode === code) {
-                    item.className = "lang-select-item w-full flex items-center justify-between p-3.5 rounded-2xl bg-[#3C4D00]/30 border border-[#B8D166]/50 text-left active:scale-[0.98] transition-all group cursor-pointer";
-                    const indicator = item.querySelector('.lang-check-indicator');
-                    if (indicator) indicator.innerHTML = '<div class="w-6 h-6 rounded-full bg-[#B8D166] flex items-center justify-center text-[#283500]"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>';
-                } else {
-                    item.className = "lang-select-item w-full flex items-center justify-between p-3.5 rounded-2xl bg-[#20211C] hover:bg-[#252621] border border-[#46483C]/40 text-left active:scale-[0.98] transition-all group cursor-pointer";
-                    const indicator = item.querySelector('.lang-check-indicator');
-                    if (indicator) indicator.innerHTML = '<span class="text-[12px] font-semibold text-[#C6C8B8]/60 group-hover:text-[#E4E3DB]">Chọn</span>';
-                }
-            });
+            try {
+                localStorage.setItem('mindcard-target-lang', code);
+                localStorage.setItem('mindcard-target-flag', flag);
+            } catch (e) {}
+
+            updateDictionaryBookLanguage(code);
+            applyTargetLanguageUI(code);
 
             closeLanguageSheet();
 
@@ -10331,6 +12039,7 @@ function toggleSlowAudio() {
                 SoundEngine.play(7);
             }
         }
+        window.selectTargetLanguage = selectTargetLanguage;
 
         // --- Native Flashcard PRO Sheet (mobile-web-pwa) ---
         function openProSheet() {
@@ -10565,11 +12274,26 @@ function toggleSlowAudio() {
             });
         }
 
-        // Initialize Theme Mode on DOM Load
+        // Initialize Theme Mode and Target Language on DOM Load
         document.addEventListener('DOMContentLoaded', () => {
             try {
                 const savedTheme = localStorage.getItem('mindcard-theme-mode') || 'dark';
                 applyThemeMode(savedTheme);
+            } catch (e) {}
+
+            try {
+                const savedLang = localStorage.getItem('mindcard-target-lang') || 'EN';
+                const savedFlag = localStorage.getItem('mindcard-target-flag') || '🇺🇸';
+                const flagEl = document.getElementById('topLangFlag');
+                const codeEl = document.getElementById('topLangCode');
+                if (flagEl) flagEl.innerText = savedFlag;
+                if (codeEl) codeEl.innerText = savedLang;
+                updateDictionaryBookLanguage(savedLang);
+                applyTargetLanguageUI(savedLang);
+            } catch (e) {}
+
+            try {
+                checkLumiTipVisibility();
             } catch (e) {}
         });
 
@@ -10721,7 +12445,7 @@ function toggleSlowAudio() {
             </div>
 
             <!-- Fluid Apple Music-Style Tracklist of Languages -->
-            <div class="space-y-2 mb-4">
+            <div class="space-y-2 mb-4 max-h-[58vh] overflow-y-auto pr-1">
                 <!-- English (Default Active) -->
                 <button onclick="selectTargetLanguage('🇺🇸', 'EN', 'Tiếng Anh')" 
                         data-lang-code="EN"
@@ -10731,7 +12455,7 @@ function toggleSlowAudio() {
                         <div>
                             <div class="flex items-center gap-2">
                                 <span class="text-[15px] font-bold text-[#E4E3DB] group-hover:text-[#D4EE7F] transition-colors">Tiếng Anh</span>
-                                <span class="text-[10px] font-extrabold px-1.5 py-0.2 rounded-md bg-[#3C4D00] text-[#D4EE7F] border border-[#B8D166]/30">Đang học</span>
+                                <span class="lang-learning-badge text-[10px] font-extrabold px-1.5 py-0.2 rounded-md bg-[#3C4D00] text-[#D4EE7F] border border-[#B8D166]/30">Đang học</span>
                             </div>
                             <span class="text-[11.5px] text-[#C6C8B8]/70">English • 3.420 từ vựng cốt lõi</span>
                         </div>
@@ -10750,7 +12474,10 @@ function toggleSlowAudio() {
                     <div class="flex items-center gap-3">
                         <span class="text-2xl select-none">🇯🇵</span>
                         <div>
-                            <span class="text-[15px] font-bold text-[#E4E3DB] group-hover:text-[#D4EE7F] transition-colors">Tiếng Nhật</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-[15px] font-bold text-[#E4E3DB] group-hover:text-[#D4EE7F] transition-colors">Tiếng Nhật</span>
+                                <span class="lang-learning-badge hidden text-[10px] font-extrabold px-1.5 py-0.2 rounded-md bg-[#3C4D00] text-[#D4EE7F] border border-[#B8D166]/30">Đang học</span>
+                            </div>
                             <span class="text-[11.5px] text-[#C6C8B8]/70 block">Japanese • Lộ trình N5 - N1 JLPT</span>
                         </div>
                     </div>
@@ -10766,7 +12493,10 @@ function toggleSlowAudio() {
                     <div class="flex items-center gap-3">
                         <span class="text-2xl select-none">🇰🇷</span>
                         <div>
-                            <span class="text-[15px] font-bold text-[#E4E3DB] group-hover:text-[#D4EE7F] transition-colors">Tiếng Hàn</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-[15px] font-bold text-[#E4E3DB] group-hover:text-[#D4EE7F] transition-colors">Tiếng Hàn</span>
+                                <span class="lang-learning-badge hidden text-[10px] font-extrabold px-1.5 py-0.2 rounded-md bg-[#3C4D00] text-[#D4EE7F] border border-[#B8D166]/30">Đang học</span>
+                            </div>
                             <span class="text-[11.5px] text-[#C6C8B8]/70 block">Korean • Lộ trình TOPIK I - II</span>
                         </div>
                     </div>
@@ -10782,8 +12512,87 @@ function toggleSlowAudio() {
                     <div class="flex items-center gap-3">
                         <span class="text-2xl select-none">🇨🇳</span>
                         <div>
-                            <span class="text-[15px] font-bold text-[#E4E3DB] group-hover:text-[#D4EE7F] transition-colors">Tiếng Trung</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-[15px] font-bold text-[#E4E3DB] group-hover:text-[#D4EE7F] transition-colors">Tiếng Trung</span>
+                                <span class="lang-learning-badge hidden text-[10px] font-extrabold px-1.5 py-0.2 rounded-md bg-[#3C4D00] text-[#D4EE7F] border border-[#B8D166]/30">Đang học</span>
+                            </div>
                             <span class="text-[11.5px] text-[#C6C8B8]/70 block">Chinese • Lộ trình HSK 1 - 6</span>
+                        </div>
+                    </div>
+                    <div class="lang-check-indicator">
+                        <span class="text-[12px] font-semibold text-[#C6C8B8]/60 group-hover:text-[#E4E3DB]">Chọn</span>
+                    </div>
+                </button>
+
+                <!-- Vietnamese -->
+                <button onclick="selectTargetLanguage('🇻🇳', 'VI', 'Tiếng Việt')" 
+                        data-lang-code="VI"
+                        class="lang-select-item w-full flex items-center justify-between p-3.5 rounded-2xl bg-[#20211C] hover:bg-[#252621] border border-[#46483C]/40 text-left active:scale-[0.98] transition-all group cursor-pointer">
+                    <div class="flex items-center gap-3">
+                        <span class="text-2xl select-none">🇻🇳</span>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-[15px] font-bold text-[#E4E3DB] group-hover:text-[#D4EE7F] transition-colors">Tiếng Việt</span>
+                                <span class="lang-learning-badge hidden text-[10px] font-extrabold px-1.5 py-0.2 rounded-md bg-[#3C4D00] text-[#D4EE7F] border border-[#B8D166]/30">Đang học</span>
+                            </div>
+                            <span class="text-[11.5px] text-[#C6C8B8]/70 block">Vietnamese • Giao tiếp &amp; Thành ngữ</span>
+                        </div>
+                    </div>
+                    <div class="lang-check-indicator">
+                        <span class="text-[12px] font-semibold text-[#C6C8B8]/60 group-hover:text-[#E4E3DB]">Chọn</span>
+                    </div>
+                </button>
+
+                <!-- French -->
+                <button onclick="selectTargetLanguage('🇫🇷', 'FR', 'Tiếng Pháp')" 
+                        data-lang-code="FR"
+                        class="lang-select-item w-full flex items-center justify-between p-3.5 rounded-2xl bg-[#20211C] hover:bg-[#252621] border border-[#46483C]/40 text-left active:scale-[0.98] transition-all group cursor-pointer">
+                    <div class="flex items-center gap-3">
+                        <span class="text-2xl select-none">🇫🇷</span>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-[15px] font-bold text-[#E4E3DB] group-hover:text-[#D4EE7F] transition-colors">Tiếng Pháp</span>
+                                <span class="lang-learning-badge hidden text-[10px] font-extrabold px-1.5 py-0.2 rounded-md bg-[#3C4D00] text-[#D4EE7F] border border-[#B8D166]/30">Đang học</span>
+                            </div>
+                            <span class="text-[11.5px] text-[#C6C8B8]/70 block">French • Lộ trình DELF A1 - C2</span>
+                        </div>
+                    </div>
+                    <div class="lang-check-indicator">
+                        <span class="text-[12px] font-semibold text-[#C6C8B8]/60 group-hover:text-[#E4E3DB]">Chọn</span>
+                    </div>
+                </button>
+
+                <!-- Spanish -->
+                <button onclick="selectTargetLanguage('🇪🇸', 'ES', 'Tiếng Tây Ban Nha')" 
+                        data-lang-code="ES"
+                        class="lang-select-item w-full flex items-center justify-between p-3.5 rounded-2xl bg-[#20211C] hover:bg-[#252621] border border-[#46483C]/40 text-left active:scale-[0.98] transition-all group cursor-pointer">
+                    <div class="flex items-center gap-3">
+                        <span class="text-2xl select-none">🇪🇸</span>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-[15px] font-bold text-[#E4E3DB] group-hover:text-[#D4EE7F] transition-colors">Tiếng Tây Ban Nha</span>
+                                <span class="lang-learning-badge hidden text-[10px] font-extrabold px-1.5 py-0.2 rounded-md bg-[#3C4D00] text-[#D4EE7F] border border-[#B8D166]/30">Đang học</span>
+                            </div>
+                            <span class="text-[11.5px] text-[#C6C8B8]/70 block">Spanish • Lộ trình DELE A1 - C2</span>
+                        </div>
+                    </div>
+                    <div class="lang-check-indicator">
+                        <span class="text-[12px] font-semibold text-[#C6C8B8]/60 group-hover:text-[#E4E3DB]">Chọn</span>
+                    </div>
+                </button>
+
+                <!-- German -->
+                <button onclick="selectTargetLanguage('🇩🇪', 'DE', 'Tiếng Đức')" 
+                        data-lang-code="DE"
+                        class="lang-select-item w-full flex items-center justify-between p-3.5 rounded-2xl bg-[#20211C] hover:bg-[#252621] border border-[#46483C]/40 text-left active:scale-[0.98] transition-all group cursor-pointer">
+                    <div class="flex items-center gap-3">
+                        <span class="text-2xl select-none">🇩🇪</span>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-[15px] font-bold text-[#E4E3DB] group-hover:text-[#D4EE7F] transition-colors">Tiếng Đức</span>
+                                <span class="lang-learning-badge hidden text-[10px] font-extrabold px-1.5 py-0.2 rounded-md bg-[#3C4D00] text-[#D4EE7F] border border-[#B8D166]/30">Đang học</span>
+                            </div>
+                            <span class="text-[11.5px] text-[#C6C8B8]/70 block">German • Lộ trình Goethe-Zertifikat</span>
                         </div>
                     </div>
                     <div class="lang-check-indicator">
@@ -10945,6 +12754,127 @@ function toggleSlowAudio() {
         <span>Phát lại vào màn</span>
     </button>
 
+    <!-- SPACED REPETITION (SRS LEITNER) INFO BOTTOM SHEET -->
+    <div id="spacedRepetitionModal" 
+         class="hidden fixed inset-0 z-[250] bg-black/75 backdrop-blur-sm flex flex-col justify-end transition-opacity duration-300 opacity-0"
+         onclick="if(event.target === this) closeSpacedRepetitionInfoModal()">
+        
+        <div id="spacedRepetitionContent" 
+             class="w-full max-w-[420px] mx-auto bg-[#1B1C17] border-t border-[#46483C]/70 rounded-t-[32px] p-5 pb-8 shadow-[0_-20px_50px_rgba(0,0,0,0.85)] transform translate-y-full transition-transform duration-300 select-none">
+            
+            <!-- Drag Handle -->
+            <div class="w-10 h-1 bg-[#46483C] rounded-full mx-auto mb-4 shrink-0"></div>
+
+            <div class="flex items-center justify-between pb-3 border-b border-[#46483C]/50 mb-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-2xl bg-[#3C4D00] border border-[#B8D166]/40 flex items-center justify-center overflow-hidden shrink-0 shadow-sm">
+                        <img src="assets/library/library_memory_summary_icon.webp" alt="SRS" class="w-7 h-7 object-contain" />
+                    </div>
+                    <div>
+                        <h3 class="text-[17px] font-black text-white">Hệ thống ngắt quãng Leitner</h3>
+                        <p class="text-[12px] text-[#C4CAA9]">Spaced Repetition System (SRS)</p>
+                    </div>
+                </div>
+                <button onclick="closeSpacedRepetitionInfoModal()" class="w-8 h-8 rounded-full bg-[#20211C] hover:bg-[#2A2B24] text-[#909283] hover:text-white flex items-center justify-center cursor-pointer transition-colors">
+                    ✕
+                </button>
+            </div>
+
+            <p class="text-[12.5px] text-[#C4CAA9] leading-relaxed mb-4">
+                Thay vì học dồn dập rồi quên nhanh, MindCard phân loại từ vựng thành 4 hộp ghi nhớ. Mỗi khi bạn ôn tập đúng hạn, từ sẽ tiến dần vào bộ nhớ dài hạn vĩnh viễn.
+            </p>
+
+            <div class="space-y-2.5 mb-5">
+                <div class="flex items-start gap-3 p-3 rounded-2xl bg-[#20211C] border border-[#FF84C2]/20">
+                    <img src="assets/library/library_memory_intro_icon.webp" alt="L1" class="w-7 h-7 object-contain mt-0.5 shrink-0" />
+                    <div>
+                        <span class="text-[13px] font-bold text-[#FF84C2] block">Cấp 1: Nhập môn (Hàng ngày)</span>
+                        <span class="text-[11.5px] text-[#909283]">Từ mới tạo hoặc vừa trả lời sai. Cần ôn tập hàng ngày.</span>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-3 p-3 rounded-2xl bg-[#20211C] border border-[#5294FF]/20">
+                    <img src="assets/library/library_memory_familiar_icon.webp" alt="L2" class="w-7 h-7 object-contain mt-0.5 shrink-0" />
+                    <div>
+                        <span class="text-[13px] font-bold text-[#5294FF] block">Cấp 2: Làm quen (2 - 3 ngày)</span>
+                        <span class="text-[11.5px] text-[#909283]">Đã nhận biết được từ và nghĩa. Ôn lại sau mỗi 2 - 3 ngày.</span>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-3 p-3 rounded-2xl bg-[#20211C] border border-[#22D3EE]/20">
+                    <img src="assets/library/library_memory_remember_icon.webp" alt="L3" class="w-7 h-7 object-contain mt-0.5 shrink-0" />
+                    <div>
+                        <span class="text-[13px] font-bold text-[#22D3EE] block">Cấp 3: Ghi nhớ (1 tuần)</span>
+                        <span class="text-[11.5px] text-[#909283]">Hiểu sâu ngữ cảnh và câu ví dụ. Ôn lại sau mỗi 7 ngày.</span>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-3 p-3 rounded-2xl bg-[#20211C] border border-[#FBBF24]/20">
+                    <img src="assets/library/library_memory_mastered_icon.webp" alt="L4" class="w-7 h-7 object-contain mt-0.5 shrink-0" />
+                    <div>
+                        <span class="text-[13px] font-bold text-[#FBBF24] block">Cấp 4: Thông thạo (2 - 4 tuần)</span>
+                        <span class="text-[11.5px] text-[#909283]">Phản xạ tức thì không cần dịch nhẩm. Ôn củng cố sau 2 - 4 tuần.</span>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="closeSpacedRepetitionInfoModal()" 
+                    class="w-full h-[46px] rounded-2xl bg-[#B8D166] text-[#283500] font-black text-[14px] flex items-center justify-center shadow-[0_4px_16px_rgba(184,209,102,0.3)] active:scale-[0.98] transition-all cursor-pointer">
+                Đã hiểu, tiếp tục học
+            </button>
+        </div>
+    </div>
+
+
+        // ==============================================================
+        <script>
+        // VISUAL LANGUAGE LEARNING ROADMAP CONTROLLER
+        // ==============================================================
+        function openParchmentRoadmap() {
+            const screen = document.getElementById('screenParchmentRoadmap');
+            if (!screen) return;
+            screen.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                screen.classList.remove('translate-x-full');
+            });
+            const scrollArea = document.getElementById('scrollAreaRoadmap');
+            if (scrollArea) {
+                setTimeout(() => {
+                    scrollArea.scrollTo({ top: 200, behavior: 'smooth' });
+                }, 300);
+            }
+        }
+
+        function closeParchmentRoadmap() {
+            const screen = document.getElementById('screenParchmentRoadmap');
+            if (!screen) return;
+            screen.classList.add('translate-x-full');
+            setTimeout(() => {
+                screen.classList.add('hidden');
+            }, 320);
+        }
+
+        function handleParchmentNodeClick(nodeId, title, unlocked) {
+            if (!unlocked) {
+                if (typeof showDictToast === 'function') {
+                    showDictToast('🔒 Hãy hoàn thành chặng trước để mở khóa!');
+                }
+                return;
+            }
+            if (typeof showDictToast === 'function') {
+                showDictToast('🚀 Đang tải bài học: ' + title);
+            }
+        }
+
+        function claimRoadmapBonusChest() {
+            if (typeof SoundEngine !== 'undefined' && SoundEngine.play) {
+                SoundEngine.play(1);
+            }
+            if (typeof showDictToast === 'function') {
+                showDictToast('🎁 Chúc mừng! Bạn nhận được +150 XP từ Rương Kho Báu!');
+            }
+        }
+    </script>
 </body>
 
 
