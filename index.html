@@ -58,7 +58,7 @@
     <link rel="stylesheet" href="css/create-circle.css?v=20261012_m3_audit_clean">
     <link rel="stylesheet" href="css/lumi-wakeup.css?v=20261010_wakeup">
     <link rel="stylesheet" href="css/pronunciation-modal.css?v=20261012_v1">
-    <link rel="stylesheet" href="css/story-reader.css?v=20261015_m3_v39">
+    <link rel="stylesheet" href="css/story-reader.css?v=20261015_m3_v40">
     <link rel="stylesheet" href="css/components/storyTargetCard.css?v=20261015_m3_v37">
     <link rel="stylesheet" href="css/components/storyWordLookup.css?v=20261015_m3_v37">
     <link rel="stylesheet" href="css/components/storyFlippableCard.css?v=20261015_m3_v34">
@@ -2639,19 +2639,32 @@
 
                 <!-- Overlapping Literary Reading Sheet (Pure Distraction-Free Editorial Layout) -->
                 <div class="story-text-card">
-                    <!-- Minimal Frameless Top Meta Row (Interactive Chapter Stepper + Tools) -->
+                    <!-- Interactive Visual Storyboard Header (Scene Thumbnails + Title + Word Mastery Dots + Tools) -->
                     <div class="story-progress-row">
-                        <div id="storyProgressStepper" class="story-progress-stepper" aria-label="Các phần của truyện">
-                            <button type="button" class="story-step-node is-active" onclick="storyReaderGoToPart(0)">
-                                <span class="story-step-node-dot"></span>
-                                <span class="story-step-node-text">Phần 1</span>
+                        <div id="storyProgressStepper" class="story-progress-stepper" aria-label="Các cảnh của truyện">
+                            <button type="button" class="story-scene-node is-active" onclick="storyReaderGoToPart(0)">
+                                <span class="story-scene-thumb-wrap">
+                                    <img src="Cloud_Deploy/cloudflare_worker/admin/story-images/codex-realistic-parts/lesson_003_part_01.webp" alt="" class="story-scene-thumb" />
+                                </span>
+                                <span class="story-scene-meta">
+                                    <span class="story-scene-title">Mở đầu</span>
+                                    <span class="story-scene-dots">
+                                        <span class="story-word-dot"></span><span class="story-word-dot"></span><span class="story-word-dot"></span><span class="story-word-dot"></span><span class="story-word-dot"></span>
+                                    </span>
+                                </span>
                             </button>
-                            <span class="story-step-connector"></span>
-                            <button type="button" class="story-step-node is-upcoming" onclick="storyReaderGoToPart(1)">2</button>
-                            <span class="story-step-connector"></span>
-                            <button type="button" class="story-step-node is-upcoming" onclick="storyReaderGoToPart(2)">3</button>
-                            <span class="story-step-connector"></span>
-                            <button type="button" class="story-step-node is-upcoming" onclick="storyReaderGoToPart(3)">4</button>
+                            <button type="button" class="story-scene-node is-upcoming" onclick="storyReaderGoToPart(1)" title="Xuất phát">
+                                <img src="Cloud_Deploy/cloudflare_worker/admin/story-images/codex-realistic-parts/lesson_003_part_02.webp" alt="" class="story-scene-thumb" />
+                                <span class="story-scene-overlay">2</span>
+                            </button>
+                            <button type="button" class="story-scene-node is-upcoming" onclick="storyReaderGoToPart(2)" title="Ngủ quên">
+                                <img src="Cloud_Deploy/cloudflare_worker/admin/story-images/codex-realistic-parts/lesson_003_part_03.webp" alt="" class="story-scene-thumb" />
+                                <span class="story-scene-overlay">3</span>
+                            </button>
+                            <button type="button" class="story-scene-node is-upcoming" onclick="storyReaderGoToPart(3)" title="Về đích">
+                                <img src="Cloud_Deploy/cloudflare_worker/admin/story-images/codex-realistic-parts/lesson_003_part_04.webp" alt="" class="story-scene-thumb" />
+                                <span class="story-scene-overlay">4</span>
+                            </button>
                         </div>
                         <div class="story-inline-tools">
                             <button id="storySpeakerBtn" onclick="toggleStoryAudioPlayback()" class="story-inline-tool-btn" title="Nghe đọc đoạn truyện" aria-label="Nghe đọc đoạn truyện">
@@ -5250,7 +5263,7 @@
     <script src="js/data/storyReaderState.js?v=20261014_m3_v31"></script>
     <script src="js/data/storyLexiconData.js?v=20261014_m3_v31"></script>
     <script src="js/components/story/storyAddedCardsList.js?v=20261015_m3_v37"></script>
-    <script src="js/components/story/storyReaderUI.js?v=20261015_m3_v39"></script>
+    <script src="js/components/story/storyReaderUI.js?v=20261015_m3_v40"></script>
     <script src="js/components/story/storyTargetCard.js?v=20261014_m3_v31"></script>
     <script src="js/components/story/storyWordLookup.js?v=20261015_m3_v36"></script>
     <script src="js/components/story/storyWordDefSheet.js?v=20261015_m3_v38"></script>
