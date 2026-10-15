@@ -298,9 +298,8 @@
             bookShell.addEventListener('touchmove', (e) => { if (bookShell.scrollTop <= 18 && e.touches && e.touches[0] && (e.touches[0].clientY - touchStartY) > 16) window.revealStoryHeroHeaderTemporarily(); }, { passive: true });
         }
         scheduleHeroHeaderAutoHide(2200);
-        const sheetList = document.getElementById('storyAddedCardsSheetList'), sheetSubtitle = document.getElementById('storyAddedCardsSheetSubtitle'), sheetReviewBtn = document.getElementById('storyAddedCardsReviewNowBtn');
+        const sheetList = document.getElementById('storyAddedCardsSheetList'), sheetSubtitle = document.getElementById('storyAddedCardsSheetSubtitle');
         if (sheetSubtitle) sheetSubtitle.textContent = hasCards ? `Đã thu thập ${cards.length} thẻ Flashcard 2 mặt • Chạm vào thẻ để lật` : `Chưa có thẻ nào được thêm. Hãy bấm "+ Lưu từ" khi tra để tạo thẻ 2 mặt!`;
-        if (sheetReviewBtn) { sheetReviewBtn.style.display = hasCards ? 'flex' : 'none'; sheetReviewBtn.textContent = `Ôn tập ngay ${cards.length} thẻ Flashcard`; }
         if (sheetList) sheetList.innerHTML = hasCards ? cards.map((c, i) => buildAddedCardItemHTML(c, i, cards.length, c.term.toLowerCase() === latestKey)).join('') : `<div class="text-center py-8 px-4 text-[var(--m3-on-surface-variant)] text-[13.5px]">Chưa có thẻ Flashcard nào trong danh sách.</div>`;
     }
     window.renderStoryAddedCardsUI = renderStoryAddedCardsUI;
@@ -319,12 +318,5 @@
         if (Array.isArray(state.addedFlashcardsOrder)) state.addedFlashcardsOrder = state.addedFlashcardsOrder.filter(k => k !== key);
         if (window.StoryReaderUI) window.StoryReaderUI.renderTargetWordCard();
         renderStoryAddedCardsUI();
-    };
-    window.reviewStoryAddedCardsNow = function () {
-        const cards = getStoryAddedFlashcards();
-        if (cards.length === 0) return;
-        window.closeStoryAddedCardsModal();
-        const activeVocab = cards.map(c => ({ word: c.term, ipa: c.phonetic, type: POS_VI_MAP[String(c.pos || '').toUpperCase()] || c.pos, meaningVi: c.meaning, meaning: c.meaning, image: c.imageUrl, imageSource: `Truyện • ${c.partTitle}`, example: c.example, exampleTr: c.exampleTr, usage: c.usageNote, synonyms: c.synonyms }));
-        if (typeof window.openLessonFlashcardReview === 'function') window.openLessonFlashcardReview({ title: (window.StoryReaderState && window.StoryReaderState.currentStory.title) || 'Thẻ từ truyện đọc', activeVocab, image: cards[0].imageUrl, openDirectReview: true, fromStoryReader: true });
     };
 })(window);
