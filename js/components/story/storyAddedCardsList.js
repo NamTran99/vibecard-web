@@ -166,14 +166,12 @@
     function buildAddedCardItemHTML(card, idx, total, isJustAdded) {
         const termKey = card.term.toLowerCase(), st = getCardState(termKey), encTerm = encodeURIComponent(card.term);
         const posLabel = POS_VI_MAP[String(card.pos || '').toUpperCase()] || card.pos || 'WORD';
-        const sourceTag = card.isExtraLookup ? `Tự chọn • Đoạn ${card.partIndex + 1}` : `Đoạn ${card.partIndex + 1} • ${card.partTitle}`;
         const hasIpa = Boolean(card.phonetic && card.phonetic !== '/.../');
 
         return `<div id="storySavedFlipCard_${idx}" data-term-key="${escapeHtml(termKey)}" class="story-flippable-card ${isJustAdded ? 'just-added' : ''}" onclick="flipStorySavedCard(${idx}, '${encTerm}')">
             <div class="story-flippable-face story-flippable-front" style="display: ${st.showingBack ? 'none' : 'flex'}; transform: rotateY(0deg); opacity: 1;">
                 <div class="story-flip-header">
                     <div class="story-flip-badge-group">
-                        <span class="story-flip-level-badge"><span class="story-flip-badge-dot"></span>${escapeHtml(sourceTag)}</span>
                         ${isJustAdded ? '<span class="story-flip-new-badge">Mới thêm</span>' : ''}
                     </div>
                     <div class="story-flip-header-right">
