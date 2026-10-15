@@ -36,18 +36,16 @@ function renderRoadmapLessonRow(chapter, index, flags, order) {
     const onClick = getRoadmapNodeAction(chapter, index);
 
     const kicker = type === 'chest'
-        ? `<span>${meta.label}</span><span>•</span><span>${node.subtitle}</span>`
-        : `<span>${meta.label}</span><span>•</span><span>${meta.minutes} phút</span>`;
+        ? `<span>🎁 ${node.subtitle || '+150 XP'}</span>`
+        : type === 'boss'
+            ? `<span>👑 ${meta.minutes} phút</span>`
+            : `<span>${meta.minutes} phút</span>`;
 
     const cta = state === 'active' && type !== 'chest'
         ? `<span class="mb-card-cta">Tiếp tục ${ROADMAP_ICON_PLAY}</span>`
         : state === 'active'
             ? '<span class="mb-card-cta">Nhận thưởng</span>'
-            : state === 'completed' && type !== 'chest'
-                ? '<span class="mb-card-cta is-review">Ôn lại ↺</span>'
-                : state === 'completed' && type === 'chest'
-                    ? '<span class="mb-card-cta is-review">Đã nhận ✓</span>'
-                    : '';
+            : '';
 
     const badge = state === 'locked' ? '<div class="mb-thumb-badge" aria-hidden="true">🔒</div>' : '';
     const crown = type === 'boss' ? '<span class="mb-crown" aria-hidden="true">👑</span>' : '';
@@ -160,10 +158,12 @@ function renderRoadmapSection(chapter, loop, characters, orderStart) {
                 </div>
                 <div class="mb-head">
                     <div class="mb-head-text">
-                        <span class="mb-head-eyebrow">Vòng ${loop + 1} • ${ROADMAP_LESSONS_PER_LOOP} bài</span>
+                        <span class="mb-head-eyebrow">Vòng ${loop + 1}</span>
                         <h3 class="mb-head-title">${sectionTitle}</h3>
-                        <div class="mb-segbar ${mastered ? 'is-mastered' : ''}" role="img" aria-label="Đã tô ${completed} trên ${ROADMAP_LESSONS_PER_LOOP}">${segments}</div>
-                        <span class="mb-head-meta">${char.name} · ${mastered ? 'Đã tô hoàn chỉnh 5/5 🏆' : `đã tô ${completed}/${ROADMAP_LESSONS_PER_LOOP}`}</span>
+                        <div class="mb-segbar-row">
+                            <div class="mb-segbar ${mastered ? 'is-mastered' : ''}" role="img" aria-label="Đã tô ${completed} trên ${ROADMAP_LESSONS_PER_LOOP}">${segments}</div>
+                            <span class="mb-segbar-count">${completed}/${ROADMAP_LESSONS_PER_LOOP}</span>
+                        </div>
                     </div>
                     <div class="mb-char ${mastered ? 'is-mastered' : ''} ${started ? '' : 'is-waiting'}"
                          role="button" tabindex="0"
@@ -209,8 +209,8 @@ function renderRoadmapLockedNotice(chapter) {
         <div class="mb-locked-notice" style="--i:0">
             <span class="mb-locked-icon" aria-hidden="true">${ROADMAP_ICON_LOCK}</span>
             <div class="mb-locked-text">
-                <strong>Chương này đang khóa</strong>
-                <span>Hoàn thành "${prevName}" để mở. Các nhân vật bên dưới đang chờ bạn tô màu.</span>
+                <strong>Chương đang khóa</strong>
+                <span>Hoàn thành "${prevName}" để mở.</span>
             </div>
             ${backBtn}
         </div>
@@ -297,7 +297,7 @@ function renderRoadmapNextBar(chapter) {
                 <span class="mb-nextbar-emoji" aria-hidden="true">🎉</span>
                 <span class="mb-nextbar-text">
                     <span class="mb-nextbar-kicker">Hoàn thành chương</span>
-                    <span class="mb-nextbar-title">${next ? `Sang: ${next.title}` : 'Bạn đã đi hết hành trình!'}</span>
+                    <span class="mb-nextbar-title">${next ? `Sang: ${next.title}` : 'Đã đi hết hành trình!'}</span>
                 </span>
             </button>`;
         bar.classList.add('is-visible');
@@ -305,12 +305,6 @@ function renderRoadmapNextBar(chapter) {
     }
 
     const node = chapter.nodes[activeIdx];
-    const loop = Math.floor(activeIdx / ROADMAP_LESSONS_PER_LOOP);
-    const loopStart = loop * ROADMAP_LESSONS_PER_LOOP;
-    const doneInLoop = chapter.nodes.slice(loopStart, loopStart + ROADMAP_LESSONS_PER_LOOP)
-        .filter(n => n.status === 'completed').length;
-    const remaining = ROADMAP_LESSONS_PER_LOOP - doneInLoop;
-    const char = (chapter.characters || [])[loop] || { name: 'nhân vật' };
 
     bar.innerHTML = `
         <div class="mb-nextbar-inner" onclick="${getRoadmapNodeAction(chapter, activeIdx)}">
@@ -319,9 +313,8 @@ function renderRoadmapNextBar(chapter) {
                 <span class="mb-nextbar-lumi-badge">2</span>
             </button>
             <div class="mb-nextbar-text">
-                <span class="mb-nextbar-kicker">Tiếp theo · Bài ${node.num}</span>
+                <span class="mb-nextbar-kicker">Bài ${node.num} · Tiếp theo</span>
                 <span class="mb-nextbar-title">${node.title}</span>
-                <span class="mb-nextbar-sub">Còn ${remaining} bài để tô xong ${char.name}</span>
             </div>
             <button type="button" class="mb-nextbar-go" aria-label="Học tiếp" onclick="event.stopPropagation(); ${getRoadmapNodeAction(chapter, activeIdx)}">
                 ${ROADMAP_ICON_PLAY}

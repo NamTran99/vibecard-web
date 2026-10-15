@@ -110,9 +110,9 @@
                 <div class="flex-1 min-w-0">
                     <div class="flex items-center justify-between mb-0.5">
                         <span class="text-[15px] font-bold text-[var(--rm-on-surface)] tracking-tight">Đồng Thoại & Ngụ Ngôn</span>
-                        <span class="age-badge age-badge-3">3+ • All Ages</span>
+                        <span class="age-badge age-badge-3">3+</span>
                     </div>
-                    <p class="text-[11.5px] text-[var(--rm-on-surface-variant)] leading-relaxed">Bài học cuộc sống, động vật thông thái & ngữ cảnh ấm áp.</p>
+                    <p class="text-[11.5px] text-[var(--rm-on-surface-variant)] truncate">Động vật thông thái · Bài học cuộc sống</p>
                 </div>
             </div>
             <div class="genre-choice-card" onclick="handleSelectGenreAndReveal('travel_daily')">
@@ -120,9 +120,9 @@
                 <div class="flex-1 min-w-0">
                     <div class="flex items-center justify-between mb-0.5">
                         <span class="text-[15px] font-bold text-[var(--rm-on-surface)] tracking-tight">Du Ký & Đời Thường</span>
-                        <span class="age-badge age-badge-15">15+ • Thực Tế</span>
+                        <span class="age-badge age-badge-15">15+</span>
                     </div>
-                    <p class="text-[11.5px] text-[var(--rm-on-surface-variant)] leading-relaxed">Quán cà phê Tokyo dưới mưa, bắt chuyện người lạ, hỏi giờ tàu.</p>
+                    <p class="text-[11.5px] text-[var(--rm-on-surface-variant)] truncate">Quán cà phê Tokyo · Chuyến tàu đêm</p>
                 </div>
             </div>
             <div class="genre-choice-card" onclick="handleSelectGenreAndReveal('pro_business')">
@@ -130,9 +130,9 @@
                 <div class="flex-1 min-w-0">
                     <div class="flex items-center justify-between mb-0.5">
                         <span class="text-[15px] font-bold text-[var(--rm-on-surface)] tracking-tight">Công Sở & Đàm Phán</span>
-                        <span class="age-badge age-badge-18">18+ • Người Lớn</span>
+                        <span class="age-badge age-badge-18">18+</span>
                     </div>
-                    <p class="text-[11.5px] text-[var(--rm-on-surface-variant)] leading-relaxed">Thương thảo hợp đồng, giải quyết xung đột dự án & đối đáp sắc bén.</p>
+                    <p class="text-[11.5px] text-[var(--rm-on-surface-variant)] truncate">Thương thảo hợp đồng · Xử lý dự án</p>
                 </div>
             </div>
             <div class="genre-choice-card genre-choice-card-random" onclick="handleSelectGenreAndReveal('mystery_random')">
@@ -142,7 +142,7 @@
                         <span class="text-[15px] font-black text-[var(--rm-on-surface)] tracking-tight">Chiếc Hộp Pandora</span>
                         <span class="age-badge age-badge-10">🎲 Random</span>
                     </div>
-                    <p class="text-[11.5px] text-[var(--rm-on-surface-variant)] leading-relaxed">Để định mệnh lựa chọn! Tự động quét và khớp câu chuyện ngẫu nhiên.</p>
+                    <p class="text-[11.5px] text-[var(--rm-on-surface-variant)] truncate">Khớp ngẫu nhiên câu chuyện bất ngờ</p>
                 </div>
             </div>
         `;

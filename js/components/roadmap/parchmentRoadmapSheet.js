@@ -132,17 +132,11 @@ function selectRoadmapChapter(idx, opts = {}) {
     function formatHeroTagHtml(chObj, chIdx) {
         if (!chObj) return '';
         const chNum = (typeof chIdx === 'number') ? (chIdx + 1) : ((typeof chObj.id === 'number') ? chObj.id + 1 : 1);
-        let title = chObj.title || '';
-        if (!title && chObj.chapterTag) {
-            const parts = chObj.chapterTag.split('•');
-            title = parts[1] ? parts[1].trim() : chObj.chapterTag;
-        }
         return `
             <span class="roadmap-tag-pill">
                 <span class="roadmap-tag-sparkle">✦</span>
                 <span>CHƯƠNG ${chNum}</span>
             </span>
-            <span class="roadmap-tag-title">${title}</span>
         `;
     }
 

@@ -23,20 +23,13 @@
 
     function loadSavedState() {
         try {
-            const raw = localStorage.getItem(STORAGE_KEY);
-            if (raw) {
-                const parsed = JSON.parse(raw);
-                if (parsed && typeof parsed === 'object') {
-                    mysteryState = Object.assign(mysteryState, parsed);
-                }
-            }
+            const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+            if (parsed && typeof parsed === 'object') mysteryState = Object.assign(mysteryState, parsed);
         } catch (e) {}
     }
 
     function saveState() {
-        try {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(mysteryState));
-        } catch (e) {}
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(mysteryState)); } catch (e) {}
     }
 
     function bindMysteryScrollListener() {
@@ -45,7 +38,6 @@
         const topBar = document.getElementById('mysteryRoadmapTopBar');
         if (!scrollArea) return;
         mysteryListenersBound = true;
-
         let lastY = 0;
         scrollArea.addEventListener('scroll', () => {
             const y = scrollArea.scrollTop;
@@ -67,24 +59,17 @@
         loadSavedState();
         const screen = document.getElementById('screenMysteryRoadmap');
         if (!screen) return;
-
         const classicScreen = document.getElementById('screenParchmentRoadmap');
-        if (classicScreen && !classicScreen.classList.contains('hidden')) {
-            classicScreen.classList.add('hidden');
-        }
-
+        if (classicScreen && !classicScreen.classList.contains('hidden')) classicScreen.classList.add('hidden');
         bindMysteryScrollListener();
         renderMysteryAmbientRain();
         renderMysteryRoadmapTimeline();
         screen.classList.remove('hidden');
-
         requestAnimationFrame(() => screen.classList.remove('translate-x-full'));
-
         const scrollArea = document.getElementById('scrollAreaMysteryRoadmap');
         const topBar = document.getElementById('mysteryRoadmapTopBar');
         if (scrollArea) scrollArea.scrollTop = 0;
         if (topBar) topBar.classList.remove('is-scrolled');
-
         if (typeof SoundEngine !== 'undefined' && SoundEngine.play) SoundEngine.play(1);
     }
 
@@ -111,11 +96,7 @@
         if (!container) return;
         let html = '';
         for (let i = 0; i < 16; i++) {
-            const left = (Math.random() * 100).toFixed(1);
-            const top = (Math.random() * -80).toFixed(0);
-            const dur = (0.85 + Math.random() * 0.65).toFixed(2);
-            const del = (Math.random() * 2).toFixed(2);
-            html += `<div class="ambient-rain-drop" style="left:${left}%; top:${top}px; animation-duration:${dur}s; animation-delay:${del}s;"></div>`;
+            html += `<div class="ambient-rain-drop" style="left:${(Math.random() * 100).toFixed(1)}%; top:${(Math.random() * -80).toFixed(0)}px; animation-duration:${(0.85 + Math.random() * 0.65).toFixed(2)}s; animation-delay:${(Math.random() * 2).toFixed(2)}s;"></div>`;
         }
         container.innerHTML = html;
     }
@@ -160,10 +141,12 @@
                         </div>
                         <div class="mb-head">
                             <div class="mb-head-text">
-                                <span class="mb-head-eyebrow">Vòng ${loop + 1} • 5 chặng thám hiểm</span>
+                                <span class="mb-head-eyebrow">Vòng ${loop + 1}</span>
                                 <h3 class="mb-head-title">${sectionTitle}</h3>
-                                <div class="mb-segbar ${mastered ? 'is-mastered' : ''}">${segments}</div>
-                                <span class="mb-head-meta">${char.name} · ${mastered ? 'Đã tô 5/5 hoàn chỉnh 🏆' : `đã tô ${completedCount}/5`}</span>
+                                <div class="mb-segbar-row">
+                                    <div class="mb-segbar ${mastered ? 'is-mastered' : ''}">${segments}</div>
+                                    <span class="mb-segbar-count">${completedCount}/5</span>
+                                </div>
                             </div>
                             <div class="mb-char ${mastered ? 'is-mastered' : ''} ${started ? '' : 'is-waiting'}"
                                  onclick="if(typeof handleCharacterTap==='function') handleCharacterTap(this);">
@@ -204,12 +187,11 @@
                     <div class="mb-rail"><span class="mb-dot">${ICON_CHECK}</span></div>
                     <div class="mb-card" onclick="openStoryReaderScreen()" role="button" tabindex="0">
                         <div class="mb-card-body">
-                            <div class="flex items-center gap-1.5 mb-0.5">
+                            <div class="flex items-center gap-1.5">
                                 <span class="age-badge ${ageCls}">${ageBadge}</span>
-                                <span class="mb-card-kicker">Hoàn thành • 5 phút</span>
+                                <span class="mb-card-kicker">5 phút</span>
                             </div>
                             <h4 class="mb-card-title">${node.title}</h4>
-                            <span class="mb-card-cta is-review">Ôn lại ↺</span>
                         </div>
                         <div class="mb-thumb"><img src="${node.img}" alt="${node.title}" loading="lazy" /></div>
                     </div>
@@ -224,12 +206,12 @@
                         <div class="mb-card mb-card-mystery" onclick="openRoadmapGenrePickerSheet(${num})" role="button" tabindex="0">
                             <div class="mystery-shimmer-sweep"></div>
                             <div class="mb-card-body relative z-10">
-                                <div class="flex items-center gap-1.5 mb-0.5">
+                                <div class="flex items-center gap-1.5">
                                     <span class="age-badge age-badge-15">🎲 BÍ ẨN</span>
-                                    <span class="mb-card-kicker font-black" style="color: var(--rm-amber-text, #D97706);">Ngã rẽ định mệnh • 5 phút</span>
+                                    <span class="mb-card-kicker font-black" style="color: var(--rm-amber-text, #D97706);">5 phút</span>
                                 </div>
-                                <h4 class="mb-card-title font-extrabold text-[15px] leading-tight">Chặng ${num} • Chạm Để Khám Phá</h4>
-                                <span class="mb-card-cta" style="background:#FBBF24; color:#1C1E17; font-weight:800;">Lật mở thẻ bài ✨</span>
+                                <h4 class="mb-card-title font-extrabold text-[15px] leading-tight">Chặng ${num}</h4>
+                                <span class="mb-card-cta" style="background:#FBBF24; color:#1C1E17; font-weight:800;">Lật mở ✨</span>
                             </div>
                             <div class="mb-thumb mb-thumb-mystery relative z-10"><span class="mystery-qmark-icon">?</span></div>
                         </div>
@@ -242,7 +224,7 @@
                     <div class="mb-rail"><span class="mb-dot"><span class="mb-active-lumi-companion">🦊</span></span></div>
                     <div class="mb-card" onclick="launchRevealedLesson(${num})" role="button" tabindex="0">
                         <div class="mb-card-body">
-                            <div class="flex items-center justify-between gap-1 mb-0.5">
+                            <div class="flex items-center justify-between gap-1">
                                 <div class="flex items-center gap-1.5">
                                     <span class="age-badge ${genre.ageClass}">${story.age}</span>
                                     <span class="mb-card-kicker text-[10.5px]">${genre.icon} ${genre.name}</span>
@@ -250,7 +232,6 @@
                                 <button type="button" onclick="event.stopPropagation(); openRoadmapGenrePickerSheet(${num})" class="text-[10.5px] font-bold hover:underline" style="color: var(--rm-amber-text, #D97706);">Đổi ↺</button>
                             </div>
                             <h4 class="mb-card-title font-extrabold">${story.title}</h4>
-                            <p class="text-[11.5px] text-[var(--rm-on-surface-variant)] line-clamp-1 mb-1">${story.subtitle}</p>
                             <span class="mb-card-cta">Học ngay ${ICON_PLAY}</span>
                         </div>
                         <div class="mb-thumb"><img src="${story.img}" alt="${story.title}" loading="lazy" /></div>
@@ -258,7 +239,7 @@
                 </div>`;
         }
 
-        const kickerLabel = type === 'chest' ? 'Rương Kho Báu • +150 XP' : (type === 'boss' ? 'Thử Thách Trùm Cuối • 8 phút' : `Chặng ${num} • Đang khóa`);
+        const kickerLabel = type === 'chest' ? '🎁 +150 XP' : (type === 'boss' ? '👑 8 phút' : `Chặng ${num}`);
         const extraCls = type === 'chest' ? 'mb-type-chest' : (type === 'boss' ? 'mb-type-boss mt-4' : '');
         const crown = type === 'boss' ? '<span class="mb-crown">👑</span>' : '';
         return `
@@ -298,9 +279,8 @@
                     <span class="mb-nextbar-lumi-badge">✨</span>
                 </button>
                 <div class="mb-nextbar-text">
-                    <span class="mb-nextbar-kicker">${isRevealed ? 'Tiếp tục bài học' : 'Ngã rẽ định mệnh'} · Chặng ${activeNode.num}</span>
-                    <span class="mb-nextbar-title">${isRevealed ? story.title : 'Chạm để lật mở thẻ bài bí ẩn'}</span>
-                    <span class="mb-nextbar-sub">${isRevealed ? story.subtitle : 'Chọn thể loại ngụ ngôn, du ký hoặc công sở'}</span>
+                    <span class="mb-nextbar-kicker">Chặng ${activeNode.num} · ${isRevealed ? 'Tiếp tục' : 'Bí ẩn'}</span>
+                    <span class="mb-nextbar-title">${isRevealed ? story.title : 'Lật mở thẻ bài'}</span>
                 </div>
                 <button type="button" class="mb-nextbar-go" aria-label="Tiếp tục">${isRevealed ? ICON_PLAY : '✨'}</button>
             </div>`;
