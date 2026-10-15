@@ -208,9 +208,10 @@
         const rawContent = currentPart.contentEn || currentPart.content || "", firstTok = draft[0], lastTok = draft[draft.length - 1];
         const combinedTerm = (draft.length > 1 && firstTok.start != null && lastTok.end != null && rawContent) ? rawContent.slice(firstTok.start, lastTok.end).trim() : draft.map(t => t.value).join(' ').trim();
         const isPhrase = draft.length >= 2, sentTokens = (state.currentPartTokens || []).filter(t => t.sentenceIdx === sIdx), isFullSentence = sentTokens.length > 1 && draft.length >= sentTokens.length;
-        const resolved = (typeof window.resolveStoryLexiconEntry === 'function') ? window.resolveStoryLexiconEntry(combinedTerm, matched.text, matched.translation) : { ipa: "/.../", pos: "TỪ VỰNG", meaning: `Nghĩa của "${combinedTerm}"`, needsLiveTranslate: true };
+        const resolved = (typeof window.resolveStoryLexiconEntry === 'function') ? window.resolveStoryLexiconEntry(combinedTerm, matched.text, matched.translation) : { ipa: "", pos: "TỪ VỰNG", meaning: `Nghĩa của "${combinedTerm}"`, needsLiveTranslate: true };
         const useSentenceVi = Boolean(isFullSentence && matched.translation && matched.translation.trim());
-        state.activePopupWord = { tokenIndex: draft[0].index, tokenIndices: draft.map(t => t.index), word: combinedTerm, isPhrase, isFullSentence, wordCount: draft.length, ipa: isPhrase ? "" : (resolved.ipa || "/.../"), pos: isFullSentence ? "CÂU TRUYỆN" : (isPhrase ? "CỤM / CÂU" : (resolved.pos || "TỪ VỰNG")), meaning: useSentenceVi ? matched.translation.trim() : ((resolved.needsLiveTranslate && isPhrase) ? "Đang dịch..." : (resolved.meaning || "")), needsLiveTranslate: useSentenceVi ? false : Boolean(resolved.needsLiveTranslate), sentenceIdx: sIdx, sentenceEn: matched.text, sentenceVi: matched.translation };
+        const cleanIpa = (!isPhrase && resolved.ipa && resolved.ipa !== "/.../") ? resolved.ipa : "";
+        state.activePopupWord = { tokenIndex: draft[0].index, tokenIndices: draft.map(t => t.index), word: combinedTerm, isPhrase, isFullSentence, wordCount: draft.length, ipa: cleanIpa, pos: isFullSentence ? "CÂU TRUYỆN" : (isPhrase ? "CỤM / CÂU" : (resolved.pos || "TỪ VỰNG")), meaning: useSentenceVi ? matched.translation.trim() : ((resolved.needsLiveTranslate && isPhrase) ? "Đang dịch..." : (resolved.meaning || "")), needsLiveTranslate: useSentenceVi ? false : Boolean(resolved.needsLiveTranslate), sentenceIdx: sIdx, sentenceEn: matched.text, sentenceVi: matched.translation };
         window.StoryReaderUI.refreshParagraphHighlights(); renderPopupWordStrip(draft, sentTokens);
         showStoryWordActionPopupAtElement(targetEl, state.activePopupWord, bridgedTargetTerm);
         if (state.activePopupWord.needsLiveTranslate) enrichPopupWordLive(state.activePopupWord);
@@ -245,7 +246,7 @@
                 if (!ph) return;
                 popupItem.ipa = ph;
                 const state = window.StoryReaderState, iEl = document.getElementById('storyActionPopupIpa');
-                if (state && state.activePopupWord && state.activePopupWord.word === popupItem.word && !state.activePopupWord.isPhrase && iEl) iEl.textContent = ph;
+                if (state && state.activePopupWord && state.activePopupWord.word === popupItem.word && !state.activePopupWord.isPhrase && iEl) { iEl.textContent = ph; iEl.style.display = 'inline'; }
             }).catch(() => {});
         }
     }
@@ -265,7 +266,8 @@
         const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
         const wordEl = document.getElementById('storyActionPopupWord');
         if (wordEl) { wordEl.textContent = popupData.word; wordEl.classList.toggle('is-long-selection', Boolean(popupData.wordCount >= 6)); }
-        setEl('storyActionPopupIpa', popupData.isPhrase ? "" : (popupData.ipa || "/.../"));
+        const hasRealIpa = !popupData.isPhrase && Boolean(popupData.ipa && popupData.ipa !== "/.../");
+        setEl('storyActionPopupIpa', hasRealIpa ? popupData.ipa : "");
         setEl('storyActionPopupMeaning', popupData.meaning || ""); setEl('storyActionBtnSave', "+ Lưu thẻ");
         const hintEl = document.getElementById('storyActionPopupHint'), ipaEl = document.getElementById('storyActionPopupIpa'), resetBtn = document.getElementById('storyActionBtnReset');
         if (hintEl) {
@@ -273,7 +275,7 @@
             if (bridgedTargetTerm && popupData.isPhrase) { hintEl.classList.add('is-target-merged-banner'); hintEl.innerHTML = `🔗 Đã nối từ mục tiêu <b>«${bridgedTargetTerm}»</b> · <button type="button" class="story-popup-hint-link" onclick="switchPopupToTargetWord('${encodeURIComponent(bridgedTargetTerm)}')">Mở thẻ mục tiêu ↵</button>`; }
             else hintEl.textContent = popupData.isPhrase ? "✨ Kéo/chạm trong câu để tra cụm hoặc cả câu • Đóng ✕ để tra mới" : "💡 Kéo/chạm tiếp trong câu để tra cụm hoặc cả câu • Đóng ✕ để tra mới";
         }
-        if (ipaEl) { ipaEl.classList.remove('is-phrase-badge'); ipaEl.style.display = popupData.isPhrase ? 'none' : 'inline'; }
+        if (ipaEl) { ipaEl.classList.remove('is-phrase-badge'); ipaEl.style.display = hasRealIpa ? 'inline' : 'none'; }
         if (resetBtn) { resetBtn.classList.toggle('hidden', !popupData.isPhrase); resetBtn.style.display = popupData.isPhrase ? 'inline-flex' : 'none'; }
         const transEl = document.getElementById('storyActionPopupSentenceVi'), dividerEl = document.getElementById('storyActionPopupDivider'), sentRow = document.getElementById('storyActionPopupSentenceRow');
         if (transEl) {

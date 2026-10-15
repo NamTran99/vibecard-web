@@ -12,6 +12,20 @@
     let activeLookupSession = null;
     let activeSavedWordKey = null;
 
+    function extractCollocationSnippet(rawTerm, sentenceEn) {
+        if (!rawTerm || !sentenceEn) return "";
+        const cleanTerm = rawTerm.trim();
+        if (cleanTerm.includes(' ')) return `«${cleanTerm}»`;
+        const escaped = cleanTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const reg = new RegExp(`(?:[A-Za-z']+\\s+)?\\b${escaped}\\b(?:\\s+[A-Za-z']+){0,2}`, 'gi');
+        const matches = sentenceEn.match(reg);
+        if (matches && matches.length > 0) {
+            const unique = Array.from(new Set(matches.map(m => m.trim()))).slice(0, 2);
+            return unique.map(m => `«${m}»`).join(', ');
+        }
+        return `«${cleanTerm}»`;
+    }
+
     function resolveLexiconEntry(rawTerm, sentenceEn, sentenceVi) {
         const lower = (rawTerm || "").trim().toLowerCase();
         const state = window.StoryReaderState;
@@ -21,10 +35,10 @@
         const targetMatch = targetWords.find(w => w.term && w.term.toLowerCase() === lower);
         if (targetMatch) {
             return {
-                term: rawTerm, ipa: targetMatch.phonetic || "/.../", pos: targetMatch.pos || "TỪ VỰNG",
+                term: rawTerm, ipa: targetMatch.phonetic || "", pos: targetMatch.pos || "TỪ VỰNG",
                 meaning: targetMatch.meaning || "Nghĩa trong ngữ cảnh",
-                explanation: targetMatch.definition || `Trong câu này, "${rawTerm}" mang nghĩa "${targetMatch.meaning}".`,
-                dictMeanings: [{ meaning: targetMatch.meaning, pos: targetMatch.pos || "TỪ VỰNG", sense: targetMatch.definition || targetMatch.example || "" }]
+                explanation: targetMatch.definition || `Xuất hiện trong cụm ${extractCollocationSnippet(rawTerm, sentenceEn)} — mang nghĩa "${targetMatch.meaning}".`,
+                dictMeanings: [{ meaning: targetMatch.meaning, pos: targetMatch.pos || "TỪ VỰNG", sense: targetMatch.definition || "Nghĩa chuẩn theo từ điển ngữ cảnh câu chuyện." }]
             };
         }
 
@@ -34,16 +48,19 @@
         }
 
         const isPhrase = lower.includes(' ');
+        const snippet = extractCollocationSnippet(rawTerm, sentenceEn);
         return {
             term: rawTerm,
-            ipa: isPhrase ? "Cụm từ" : "/.../",
+            ipa: isPhrase ? "Cụm từ" : "",
             pos: isPhrase ? "CỤM TỪ" : "TỪ VỰNG",
-            meaning: isPhrase ? `Cụm "${rawTerm}" trong ngữ cảnh câu` : `Nghĩa của "${rawTerm}" trong câu`,
-            explanation: sentenceVi ? `Trong câu: "${sentenceVi}"` : `Từ/cụm từ xuất hiện trong câu: "${sentenceEn}"`,
+            meaning: isPhrase ? `Đang dịch cụm "${rawTerm}"...` : `Đang tra nghĩa "${rawTerm}"...`,
+            explanation: isPhrase
+                ? `Cụm diễn đạt kết nối trực tiếp trong mạch câu chuyện hiện tại.`
+                : `Xuất hiện trong cụm ${snippet} để bổ nghĩa cho ngữ cảnh câu chuyện.`,
             dictMeanings: [{
-                meaning: isPhrase ? `Cụm diễn đạt "${rawTerm}"` : `Từ "${rawTerm}" theo ngữ cảnh truyện`,
-                pos: isPhrase ? "CỤM TỪ" : "TỪ VỰNG",
-                sense: sentenceEn || ""
+                meaning: isPhrase ? `Cụm từ "${rawTerm}"` : `Nghĩa thông dụng của "${rawTerm}"`,
+                pos: isPhrase ? "CỤM TỪ" : "TỪ ĐIỂN",
+                sense: isPhrase ? "Cách diễn đạt theo cụm trong văn viết tiếng Anh." : "Nghĩa gốc phổ biến trong từ điển tiếng Anh."
             }],
             needsLiveTranslate: true
         };
@@ -53,21 +70,35 @@
     async function enrichLookupWithLiveTranslation(session) {
         if (!session || !session.needsLiveTranslate) return;
         const cleanLower = session.term.trim().toLowerCase();
+        let apiDefinitions = [];
+
         if (!cleanLower.includes(' ')) {
             fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(cleanLower)}`)
                 .then(r => r.ok ? r.json() : null)
                 .then(arr => {
                     const entry = Array.isArray(arr) ? arr[0] : null;
-                    const ph = entry && (entry.phonetic || ((entry.phonetics || []).find(p => p.text) || {}).text);
+                    if (!entry) return;
+                    const ph = entry.phonetic || ((entry.phonetics || []).find(p => p.text) || {}).text;
                     if (ph) {
                         session.ipa = ph;
                         const st = window.StoryReaderState;
                         if (st && st.extraVocabularyItems && st.extraVocabularyItems[cleanLower]) {
                             st.extraVocabularyItems[cleanLower].phonetic = ph;
                         }
-                        if (activeLookupSession && activeLookupSession.term === session.term) {
-                            renderWordDefinitionSheetUI(session);
+                    }
+                    if (Array.isArray(entry.meanings)) {
+                        entry.meanings.slice(0, 2).forEach(m => {
+                            const defObj = (m.definitions && m.definitions[0]) || null;
+                            if (defObj && defObj.definition) apiDefinitions.push(defObj.definition);
+                        });
+                        if (apiDefinitions.length > 0 && session.dictMeanings && session.dictMeanings.length > 0) {
+                            session.dictMeanings.forEach((dm, idx) => {
+                                if (apiDefinitions[idx]) dm.sense = apiDefinitions[idx];
+                            });
                         }
+                    }
+                    if (activeLookupSession && activeLookupSession.term === session.term) {
+                        renderWordDefinitionSheetUI(session);
                     }
                 }).catch(() => {});
         }
@@ -82,32 +113,42 @@
             let posLabel = session.pos;
             const dictOptions = [];
             if (data[1] && Array.isArray(data[1])) {
-                data[1].forEach(group => {
+                data[1].forEach((group, gIdx) => {
                     const rawPos = (group[0] || "").toUpperCase();
                     const viPos = rawPos === "NOUN" ? "DANH TỪ"
                         : rawPos === "VERB" ? "ĐỘNG TỪ"
                         : rawPos === "ADJECTIVE" ? "TÍNH TỪ"
-                        : rawPos === "ADVERB" ? "TRẠNG TỪ" : (rawPos || session.pos);
+                        : rawPos === "ADVERB" ? "TRẠNG TỪ"
+                        : rawPos === "PREPOSITION" ? "GIỚI TỪ"
+                        : rawPos === "CONJUNCTION" ? "LIÊN TỪ"
+                        : rawPos === "PRONOUN" ? "ĐẠI TỪ"
+                        : rawPos === "ARTICLE" ? "MẠO TỪ" : (rawPos || session.pos);
                     if (posLabel === "TỪ VỰNG") posLabel = viPos;
-                    const terms = (group[1] || []).slice(0, 3).join(', ');
+                    const terms = (group[1] || []).slice(0, 4).join(', ');
                     if (terms) {
                         dictOptions.push({
                             meaning: terms.charAt(0).toUpperCase() + terms.slice(1),
                             pos: viPos,
-                            sense: `Nghĩa từ điển phổ biến của "${session.term}".`
+                            sense: apiDefinitions[gIdx] || `Các sắc thái nghĩa ${viPos.toLowerCase()} phổ biến của «${session.term}».`
                         });
                     }
                 });
             }
 
-            session.meaning = translated.charAt(0).toUpperCase() + translated.slice(1);
+            const capMeaning = translated.charAt(0).toUpperCase() + translated.slice(1);
+            const snippet = extractCollocationSnippet(session.term, session.sentenceEn);
+            session.meaning = capMeaning;
             session.pos = posLabel;
-            session.explanation = session.sentenceVi
-                ? `Trong ngữ cảnh câu truyện: "${session.sentenceVi}"`
-                : `Nghĩa phù hợp nhất trong đoạn truyện hiện tại.`;
+            session.explanation = session.term.includes(' ')
+                ? `Cụm từ ${snippet} mang nghĩa «${capMeaning}», giúp câu văn mượt mà và giàu hình ảnh hơn.`
+                : `Kết hợp trong cụm ${snippet} — mang nghĩa «${capMeaning}» phù hợp nhất với ngữ cảnh câu chuyện.`;
             session.dictMeanings = dictOptions.length > 0
                 ? dictOptions
-                : [{ meaning: session.meaning, pos: posLabel, sense: session.sentenceEn }];
+                : [{
+                    meaning: capMeaning,
+                    pos: posLabel === "TỪ VỰNG" ? "NGHĨA GỐC" : posLabel,
+                    sense: apiDefinitions[0] || `Nghĩa từ điển tiêu chuẩn khi tra cứu độc lập của «${session.term}».`
+                }];
             if (activeLookupSession && activeLookupSession.term === session.term) {
                 renderWordDefinitionSheetUI(session);
             }
@@ -163,29 +204,33 @@
     function renderWordDefinitionSheetUI(session) {
         const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
         setEl('storyDefSheetWord', session.term);
-        setEl('storyDefSheetIpa', session.ipa || "/.../");
+        const cleanIpa = (session.ipa && session.ipa !== '/.../') ? session.ipa : (session.term.includes(' ') ? 'Nghe cụm' : 'Phát âm');
+        setEl('storyDefSheetIpa', cleanIpa);
         setEl('storyDefSheetContextVi', session.sentenceVi || "");
 
         const ctxEnEl = document.getElementById('storyDefSheetContextEn');
         if (ctxEnEl) {
-            const escaped = session.term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-            const reg = new RegExp(`(${escaped})`, 'gi');
-            ctxEnEl.innerHTML = (session.sentenceEn || "").replace(reg, '<b class="text-[var(--m3-amber-glow)] underline">$1</b>');
+            const clean = (session.term || "").trim();
+            const escaped = clean.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const pattern = clean.includes(' ') ? `(${escaped})` : `(\\b${escaped}\\b)`;
+            const reg = new RegExp(pattern, 'gi');
+            ctxEnEl.innerHTML = (session.sentenceEn || "").replace(reg, '<mark class="story-def-ctx-hl">$1</mark>');
         }
 
         const lumiCard = document.getElementById('storyDefLumiCard');
         if (lumiCard) {
             const isSelected = session.selectedOptionKey === 'lumi';
-            lumiCard.className = `story-def-choice-card ${isSelected ? 'selected' : ''}`;
+            lumiCard.className = `story-def-choice-card is-lumi-card ${isSelected ? 'selected' : ''}`;
             lumiCard.innerHTML = `
-                <div class="flex items-start justify-between gap-2">
-                    <div>
-                        <span class="inline-block px-2 py-0.5 rounded bg-[var(--m3-amber-container)] text-[var(--m3-amber-text)] text-[10px] font-black uppercase mb-1.5">${session.pos} · THEO NGỮ CẢNH</span>
-                        <div class="text-[17px] font-extrabold text-[var(--m3-on-surface)] leading-snug">${session.meaning}</div>
-                        <div class="text-[13px] text-[var(--m3-on-surface-variant)] mt-1 leading-relaxed">${session.explanation}</div>
+                <div class="story-def-card-top">
+                    <div class="story-def-badge-group">
+                        <span class="story-def-lumi-pill">✦ THEO NGỮ CẢNH</span>
+                        <span class="story-def-pos-tag">${session.pos}</span>
                     </div>
-                    <div class="story-def-radio-dot ${isSelected ? 'checked' : ''}"></div>
-                </div>`;
+                    <div class="story-def-radio-dot ${isSelected ? 'checked' : ''}">✓</div>
+                </div>
+                <div class="story-def-meaning-main">${session.meaning}</div>
+                <div class="story-def-meaning-sub">${session.explanation}</div>`;
         }
 
         const dictList = document.getElementById('storyDefDictList');
@@ -198,14 +243,15 @@
                 const isSelected = session.selectedOptionKey === key;
                 return `
                     <div onclick="selectStoryWordDefinitionOption('${key}')" class="story-def-choice-card ${isSelected ? 'selected' : ''}">
-                        <div class="flex items-start justify-between gap-2">
-                            <div>
-                                <span class="inline-block px-2 py-0.5 rounded bg-[var(--m3-secondary-container)] text-[var(--m3-on-secondary-container)] text-[10px] font-bold uppercase mb-1">${d.pos || session.pos}</span>
-                                <div class="text-[15.5px] font-bold text-[var(--m3-on-surface)] leading-snug">${d.meaning}</div>
-                                ${d.sense ? `<div class="text-[12.5px] text-[var(--m3-on-surface-variant)] mt-0.5 leading-relaxed">${d.sense}</div>` : ''}
+                        <div class="story-def-card-top">
+                            <div class="story-def-badge-group">
+                                <span class="story-def-sense-num">#${idx + 1}</span>
+                                <span class="story-def-pos-tag is-dict">${d.pos || session.pos}</span>
                             </div>
-                            <div class="story-def-radio-dot ${isSelected ? 'checked' : ''}"></div>
+                            <div class="story-def-radio-dot ${isSelected ? 'checked' : ''}">✓</div>
                         </div>
+                        <div class="story-def-meaning-dict">${d.meaning}</div>
+                        ${d.sense ? `<div class="story-def-meaning-sub">${d.sense}</div>` : ''}
                     </div>`;
             }).join('');
         }
@@ -224,6 +270,17 @@
             const utter = new SpeechSynthesisUtterance(activeLookupSession.term);
             utter.lang = 'en-US';
             utter.rate = 0.95;
+            window.speechSynthesis.speak(utter);
+        } catch (e) {}
+    };
+
+    window.speakStoryDefContextSentence = function () {
+        if (!activeLookupSession || !activeLookupSession.sentenceEn || !('speechSynthesis' in window)) return;
+        try {
+            window.speechSynthesis.cancel();
+            const utter = new SpeechSynthesisUtterance(activeLookupSession.sentenceEn);
+            utter.lang = 'en-US';
+            utter.rate = 0.94;
             window.speechSynthesis.speak(utter);
         } catch (e) {}
     };
@@ -247,7 +304,7 @@
         const key = activeLookupSession.term.trim().toLowerCase();
         state.extraVocabularyItems[key] = {
             term: activeLookupSession.term.trim(),
-            phonetic: activeLookupSession.ipa || "/.../",
+            phonetic: activeLookupSession.ipa || "",
             pos: chosenPos,
             meaning: chosenMeaning,
             example: activeLookupSession.sentenceEn || "",
@@ -292,7 +349,7 @@
         const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
         setEl('storySavedModalTerm', item.term);
         setEl('storySavedModalPos', item.pos || "TỪ ĐÃ LƯU");
-        setEl('storySavedModalIpa', item.phonetic || "/.../");
+        setEl('storySavedModalIpa', (item.phonetic && item.phonetic !== '/.../') ? item.phonetic : "Phát âm");
         setEl('storySavedModalMeaning', item.meaning || "");
         setEl('storySavedModalExEn', item.example || "");
         setEl('storySavedModalExVi', item.exampleTr || "");

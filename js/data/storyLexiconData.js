@@ -9,19 +9,79 @@
     'use strict';
 
     window.BUILTIN_STORY_LEXICON = {
+        "the": {
+            ipa: "/ðə/", pos: "MẠO TỪ XÁC ĐỊNH",
+            meaning: "Cái, con, vùng, ánh (mạo từ xác định)",
+            explanation: "Đi trong cụm «the valley» (thung lũng ấy) và «the warm sunlight» (ánh nắng ấm áp) để chỉ sự vật cụ thể trong bối cảnh câu chuyện.",
+            dictMeanings: [
+                { meaning: "Cái, con, người, vật ấy (đã xác định)", pos: "MẠO TỪ", sense: "Dùng trước danh từ chỉ đối tượng đã được người đọc và người kể biết rõ." },
+                { meaning: "Nhất, càng... càng (dùng với so sánh)", pos: "PHÓ TỪ", sense: "Dùng trước tính từ/trạng từ so sánh hơn hoặc so sánh nhất (ví dụ: the best)." }
+            ]
+        },
+        "on": {
+            ipa: "/ɒn/", pos: "GIỚI TỪ",
+            meaning: "Vào (một buổi sáng / ngày cụ thể)",
+            explanation: "Đi trong cụm «On a beautiful morning» để chỉ mốc thời gian vào một buổi sáng đẹp trời.",
+            dictMeanings: [
+                { meaning: "Vào (ngày, buổi cụ thể)", pos: "GIỚI TỪ", sense: "Dùng chỉ thời điểm các buổi hoặc ngày đặc biệt (On a beautiful morning, On Sunday)." },
+                { meaning: "Ở trên, tiếp xúc bề mặt", pos: "GIỚI TỪ", sense: "Chỉ vị trí nằm trên một bề mặt (on the table, on the path)." }
+            ]
+        },
+        "a": {
+            ipa: "/ə/", pos: "MẠO TỪ BẤT ĐỊNH",
+            meaning: "Một (mạo từ bất định)",
+            explanation: "Đi trong cụm «a beautiful morning» để giới thiệu một buổi sáng đẹp trời lần đầu được nhắc tới.",
+            dictMeanings: [
+                { meaning: "Một (bất kỳ, chưa xác định)", pos: "MẠO TỪ", sense: "Dùng trước danh từ đếm được số ít bắt đầu bằng phụ âm." }
+            ]
+        },
+        "beautiful": {
+            ipa: "/ˈbjuː.tɪ.fəl/", pos: "TÍNH TỪ",
+            meaning: "Tuyệt đẹp, tươi đẹp, rực rỡ",
+            explanation: "Miêu tả khung cảnh buổi sáng trong trẻo và tràn đầy sức sống («a beautiful morning»).",
+            dictMeanings: [
+                { meaning: "Đẹp, tuyệt đẹp, làm say đắm", pos: "TÍNH TỪ", sense: "Pleasing the senses or mind aesthetically." },
+                { meaning: "Tuyệt vời, dễ chịu (thời tiết)", pos: "TÍNH TỪ", sense: "Very pleasant or sunny weather." }
+            ]
+        },
+        "morning": {
+            ipa: "/ˈmɔː.nɪŋ/", pos: "DANH TỪ",
+            meaning: "Buổi sáng, ban mai",
+            explanation: "Khoảng thời gian đầu ngày khi mặt trời vừa lên và chim chóc bắt đầu ca hót.",
+            dictMeanings: [
+                { meaning: "Buổi sáng, sáng sớm", pos: "DANH TỪ", sense: "The period of time between midnight and noon, especially from sunrise to noon." }
+            ]
+        },
+        "warm": {
+            ipa: "/wɔːm/", pos: "TÍNH TỪ",
+            meaning: "Ấm áp, dịu nhẹ",
+            explanation: "Đi trong cụm «the warm sunlight» — miêu tả ánh nắng ban mai dịu ngọt, sưởi ấm cả thung lũng.",
+            dictMeanings: [
+                { meaning: "Ấm, ấm áp (nhiệt độ, ánh nắng)", pos: "TÍNH TỪ", sense: "Of or at a fairly or comfortably high temperature." },
+                { meaning: "Nồng hậu, trìu mến (tình cảm)", pos: "TÍNH TỪ", sense: "Having or showing enthusiasm, affection, or kindness." }
+            ]
+        },
+        "sunlight": {
+            ipa: "/ˈsʌn.laɪt/", pos: "DANH TỪ",
+            meaning: "Ánh nắng mặt trời, nắng sớm",
+            explanation: "Ánh sáng tự nhiên tỏa ra từ mặt trời buổi ban mai chiếu xuống thung lũng.",
+            dictMeanings: [
+                { meaning: "Ánh nắng mặt trời, ánh thái dương", pos: "DANH TỪ", sense: "Light from the sun." }
+            ]
+        },
         "filled": {
             ipa: "/fɪld/", pos: "ĐỘNG TỪ / TÍNH TỪ",
             meaning: "Ngập tràn, tràn ngập, lấp đầy",
-            explanation: "Trong cụm 'was filled with birdsong': thung lũng ngập tràn tiếng chim hót buổi sớm.",
+            explanation: "Trong cụm «was filled with birdsong»: cả thung lũng tràn ngập tiếng chim hót buổi sớm.",
             dictMeanings: [
-                { meaning: "Ngập tràn, lấp đầy", pos: "ĐỘNG TỪ", sense: "Caused a space or container to become full." },
+                { meaning: "Ngập tràn, lấp đầy không gian", pos: "ĐỘNG TỪ", sense: "Caused a space or area to become full of sound or light." },
                 { meaning: "Đầy ắp, chứa đầy", pos: "TÍNH TỪ", sense: "Full of a particular thing or quality." }
             ]
         },
         "intentionally": {
             ipa: "/ɪnˈten.ʃən.əl.i/", pos: "TRẠNG TỪ",
             meaning: "Cố tình, có chủ đích",
-            explanation: "Được thực hiện một cách có kế hoạch, cố ý chứ không phải tình cờ (trong câu: Thỏ cố tình phanh gấp trước mặt Rùa để trêu chọc).",
+            explanation: "Được thực hiện một cách có kế hoạch, cố ý chứ không phải tình cờ (Thỏ cố tình phanh gấp trước mặt Rùa để trêu chọc).",
             dictMeanings: [
                 { meaning: "Cố tình, cố ý, có chủ tâm", pos: "TRẠNG TỪ", sense: "In a way that is planned or intended; deliberately." },
                 { meaning: "Một cách có ý thức", pos: "TRẠNG TỪ", sense: "With full awareness of what one is doing." }
@@ -41,13 +101,13 @@
             meaning: "Tiếng chim hót, khúc ca của loài chim",
             explanation: "Âm thanh du dương của các loài chim hót chào đón ánh bình minh trong thung lũng.",
             dictMeanings: [
-                { meaning: "Tiếng chim hót", pos: "DANH TỪ", sense: "The musical vocalizations of birds." }
+                { meaning: "Tiếng chim hót, tiếng chim ca", pos: "DANH TỪ", sense: "The musical vocalizations of birds in nature." }
             ]
         },
         "welcoming": {
             ipa: "/ˈwel.kəm.ɪŋ/", pos: "ĐỘNG TỪ",
             meaning: "Đón chào, chào đón",
-            explanation: "Hân hoan đón nhận sự xuất hiện của ánh nắng ấm áp buổi sớm.",
+            explanation: "Trong cụm «welcoming the warm sunlight»: hân hoan đón nhận ánh nắng ấm áp buổi sớm.",
             dictMeanings: [
                 { meaning: "Đón chào, chào mừng", pos: "ĐỘNG TỪ", sense: "Greeting or receiving gladly and warmly." },
                 { meaning: "Thân thiện, niềm nở", pos: "TÍNH TỪ", sense: "Behaving in a polite or friendly way to a guest." }
@@ -73,7 +133,7 @@
         "offense": {
             ipa: "/əˈfens/", pos: "DANH TỪ",
             meaning: "Sự phật lòng, sự tức giận",
-            explanation: "Trong cụm 'took no offense': không hề tự ái, bận lòng hay giận dữ trước lời trêu chọc.",
+            explanation: "Trong cụm «took no offense»: không hề tự ái, bận lòng hay giận dữ trước lời trêu chọc.",
             dictMeanings: [
                 { meaning: "Sự xúc phạm, sự phật ý", pos: "DANH TỪ", sense: "Annoyance or resentment brought about by a perceived insult." },
                 { meaning: "Sự vi phạm, lỗi lầm", pos: "DANH TỪ", sense: "A breach of a law or rule." }

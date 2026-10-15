@@ -2857,23 +2857,25 @@
         <!-- ========================================================== -->
         <div id="storyWordDefinitionModal" onclick="closeStoryWordDefinitionModal(event)" class="story-word-def-backdrop hidden" style="display: none;">
             <div class="story-word-def-sheet" onclick="event.stopPropagation()">
-                <div class="story-sheet-handle mb-3"></div>
+                <div class="story-sheet-handle mb-2.5"></div>
 
                 <!-- Header: Word + Speaker + Close -->
-                <div class="flex items-center justify-between gap-3 pb-3 border-b border-[var(--m3-outline-variant)]">
+                <div class="story-def-header-row">
                     <div class="min-w-0 flex-1">
                         <div class="flex items-center gap-2.5 flex-wrap">
-                            <span id="storyDefSheetWord" class="text-[24px] font-black text-[var(--m3-on-surface)] tracking-tight">intentionally</span>
+                            <span id="storyDefSheetWord" class="story-def-word-title">intentionally</span>
                             <button onclick="speakStoryLookupWord()" class="story-def-tts-pill" title="Phát âm">
-                                <svg class="w-4 h-4 text-[var(--m3-primary)]" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
-                                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
-                                    <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
-                                </svg>
+                                <span class="story-def-tts-icon">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24">
+                                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                                        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                                    </svg>
+                                </span>
                                 <span id="storyDefSheetIpa">/ɪnˈten.ʃən.əl.i/</span>
                             </button>
                         </div>
                     </div>
-                    <button onclick="closeStoryWordDefinitionModal()" class="w-9 h-9 rounded-full bg-[var(--m3-surface-container-high)] flex items-center justify-center text-[var(--m3-on-surface-variant)] hover:text-[var(--m3-on-surface)]">
+                    <button onclick="closeStoryWordDefinitionModal()" class="story-def-close-btn" aria-label="Đóng">
                         ✕
                     </button>
                 </div>
@@ -2881,28 +2883,37 @@
                 <!-- Scrollable Content -->
                 <div class="story-word-def-scroll">
                     <!-- Context Section -->
-                    <div class="story-def-section-header">NGỮ CẢNH TRONG TRUYỆN</div>
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="story-def-section-header !mb-0">📖 NGỮ CẢNH TRONG TRUYỆN</span>
+                        <button type="button" onclick="speakStoryDefContextSentence()" class="story-def-ctx-tts-btn">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                            </svg>
+                            <span>Nghe câu</span>
+                        </button>
+                    </div>
                     <div class="story-def-context-box">
-                        <div id="storyDefSheetContextEn" class="text-[14.5px] text-[var(--m3-on-surface)] leading-relaxed"></div>
-                        <div id="storyDefSheetContextVi" class="text-[13.5px] text-[var(--m3-on-surface-variant)] italic mt-1.5 leading-relaxed"></div>
+                        <div id="storyDefSheetContextEn" class="story-def-ctx-en"></div>
+                        <div id="storyDefSheetContextVi" class="story-def-ctx-vi"></div>
                     </div>
 
                     <!-- Lumi AI Contextual Recommendation -->
                     <div class="story-def-section-header mt-4">✨ LUMI GỢI Ý NGHĨA PHÙ HỢP NHẤT</div>
-                    <div id="storyDefLumiCard" onclick="selectStoryWordDefinitionOption('lumi')" class="story-def-choice-card selected"></div>
+                    <div id="storyDefLumiCard" onclick="selectStoryWordDefinitionOption('lumi')" class="story-def-choice-card is-lumi-card selected"></div>
 
                     <!-- Dictionary Definitions -->
                     <div class="flex items-center justify-between mt-4 mb-2">
-                        <span class="story-def-section-header !mb-0">NGHĨA TỪ TỪ ĐIỂN</span>
-                        <span id="storyDefDictCount" class="text-[12px] text-[var(--m3-on-surface-variant)]">2 lựa chọn</span>
+                        <span class="story-def-section-header !mb-0">📚 NGHĨA TỪ TỪ ĐIỂN</span>
+                        <span id="storyDefDictCount" class="story-def-count-pill">2 lựa chọn</span>
                     </div>
                     <div id="storyDefDictList" class="flex flex-col gap-2.5"></div>
                 </div>
 
                 <!-- Bottom Save CTA -->
-                <div class="pt-3 border-t border-[var(--m3-outline-variant)]">
+                <div class="story-def-footer-bar">
                     <button id="storyDefSaveBtn" onclick="saveStoryLookupWord()" class="story-def-save-btn">
-                        Chọn từ này
+                        <span>Chọn từ này</span>
                     </button>
                 </div>
             </div>
