@@ -180,7 +180,7 @@
         const hasIpa = Boolean(card.phonetic && card.phonetic !== '/.../');
 
         return `<div id="storySavedFlipCard_${idx}" data-term-key="${escapeHtml(termKey)}" class="story-flippable-card ${isJustAdded ? 'just-added' : ''}" onclick="flipStorySavedCard(${idx}, '${encTerm}')">
-            <div class="story-flippable-face story-flippable-front" style="display: ${st.showingBack ? 'none' : 'flex'}; transform: rotateY(0deg); opacity: 1;">
+            <div class="story-flippable-face story-flippable-front ${st.showingBack ? 'is-face-hidden' : ''}" style="transform: rotateY(0deg);">
                 <div class="story-flip-header">
                     <div class="story-flip-badge-group">
                         <span class="story-flip-counter">${idx + 1} / ${total}</span>
@@ -216,7 +216,7 @@
                 </div>
             </div>
 
-            <div class="story-flippable-face story-flippable-back" style="display: ${st.showingBack ? 'flex' : 'none'}; transform: rotateY(0deg); opacity: 1;">
+            <div class="story-flippable-face story-flippable-back ${st.showingBack ? '' : 'is-face-hidden'}" style="transform: rotateY(0deg);">
                 <div class="story-flip-header">
                     <span class="story-flip-meaning-label">Mặt sau • Nghĩa &amp; Ngữ cảnh</span>
                     <div class="story-flip-header-right">
@@ -262,14 +262,15 @@
         st.flipInProgress = true;
         if (typeof playFlip === 'function') playFlip(!st.showingBack); else if (typeof SoundEngine !== 'undefined' && SoundEngine.play) SoundEngine.play(8);
         outgoing.style.transition = 'transform 150ms cubic-bezier(0.4, 0, 1, 1), opacity 150ms ease-in';
-        outgoing.style.transform = 'rotateY(90deg)'; outgoing.style.opacity = '0.15';
+        outgoing.style.transform = 'rotateY(90deg)'; outgoing.style.opacity = '0';
         setTimeout(() => {
-            outgoing.style.display = 'none'; incoming.style.display = 'flex';
+            outgoing.classList.add('is-face-hidden'); outgoing.style.transition = 'none'; outgoing.style.transform = 'rotateY(0deg)'; outgoing.style.opacity = '';
+            incoming.classList.remove('is-face-hidden');
             incoming.style.transition = 'none'; incoming.style.transform = 'rotateY(-90deg)'; incoming.style.opacity = '0.15';
             void incoming.offsetWidth;
             incoming.style.transition = 'transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 240ms ease-out';
             incoming.style.transform = 'rotateY(0deg)'; incoming.style.opacity = '1';
-            setTimeout(() => { st.showingBack = !st.showingBack; st.flipInProgress = false; container.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 300);
+            setTimeout(() => { st.showingBack = !st.showingBack; st.flipInProgress = false; incoming.style.opacity = ''; }, 300);
         }, 150);
     };
 
