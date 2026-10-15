@@ -197,9 +197,26 @@
 .story-def-pos-tag { display: inline-block; padding: 2.5px 8px; border-radius: 9999px; background: var(--m3-primary-container); color: var(--m3-on-primary-container); font-size: 9.5px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
 .story-def-pos-tag.is-dict { background: var(--m3-secondary-container); color: var(--m3-on-secondary-container); }
 .story-def-sense-num { font-size: 10.5px; font-weight: 900; color: var(--m3-primary); padding: 1.5px 6px; border-radius: 6px; background: var(--m3-surface-container-highest); }
-.story-def-meaning-main { font-size: 18px; font-weight: 900; color: var(--m3-on-surface); line-height: 1.28; }
-.story-def-meaning-dict { font-size: 16px; font-weight: 800; color: var(--m3-on-surface); line-height: 1.3; }
-.story-def-meaning-sub { font-size: 12.5px; color: var(--m3-on-surface-variant); margin-top: 5px; line-height: 1.45; }
+.story-def-meaning-main { font-size: 19px; font-weight: 900; color: var(--m3-on-surface); line-height: 1.28; }
+.story-def-lumi-note { font-size: 12.5px; color: var(--m3-on-surface-variant); margin-top: 5px; line-height: 1.45; }
+.story-def-embedded-ctx {
+    margin-top: 11px; padding: 10px 12px; border-radius: 14px;
+    background: var(--m3-surface-container-low); border: 1px solid var(--m3-outline-variant);
+    border-left: 3px solid var(--m3-primary); cursor: default;
+}
+.story-def-embedded-ctx-head {
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    font-size: 10px; font-weight: 800; letter-spacing: 0.07em; color: var(--m3-on-surface-variant);
+    margin-bottom: 5px;
+}
+.story-def-meaning-dict { font-size: 15.5px; font-weight: 800; color: var(--m3-on-surface); line-height: 1.3; }
+.story-def-meaning-sub { font-size: 12px; color: var(--m3-on-surface-variant); margin-top: 4px; line-height: 1.42; }
+.story-def-custom-input {
+    width: 100%; margin-top: 4px; padding: 9px 12px; border-radius: 12px;
+    background: var(--m3-surface-container-low); border: 1px solid var(--m3-outline-variant);
+    color: var(--m3-on-surface); font-size: 13.5px; font-weight: 600; outline: none;
+}
+.story-def-custom-input:focus { border-color: var(--m3-primary); box-shadow: 0 0 0 2px rgba(184, 209, 102, 0.2); }
 .story-def-radio-dot {
     width: 22px; height: 22px; border-radius: 9999px; border: 1.5px solid var(--m3-outline);
     background: var(--m3-surface-container-low); color: transparent;

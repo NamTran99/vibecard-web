@@ -1,7 +1,7 @@
 /**
  * ==========================================================================
  * 📘 STORY WORD DEFINITION BOTTOM SHEET & SAVED WORD MODAL
- * 1:1 Replica from Android Native: WordDefinitionDialog.kt
+ * Unified Contextual Hero Card + Dictionary Senses + Custom Meaning
  * ==========================================================================
  */
 
@@ -25,7 +25,7 @@
         return `«${cleanTerm}»`;
     }
 
-    function resolveLexiconEntry(rawTerm, sentenceEn, sentenceVi) {
+    function resolveLexiconEntry(rawTerm, sentenceEn) {
         const lower = (rawTerm || "").trim().toLowerCase();
         const state = window.StoryReaderState;
         const currentPart = (state.currentStory.parts || [])[state.currentPartIndex] || {};
@@ -51,11 +51,7 @@
             explanation: isPhrase
                 ? `Cụm diễn đạt kết nối trực tiếp trong mạch câu chuyện hiện tại.`
                 : `Xuất hiện trong cụm ${snippet} để bổ nghĩa cho ngữ cảnh câu chuyện.`,
-            dictMeanings: [{
-                meaning: isPhrase ? `Cụm từ "${rawTerm}"` : `Nghĩa thông dụng của "${rawTerm}"`,
-                pos: isPhrase ? "CỤM TỪ" : "TỪ ĐIỂN",
-                sense: isPhrase ? "Cách diễn đạt theo cụm trong văn viết tiếng Anh." : "Nghĩa gốc phổ biến trong từ điển tiếng Anh."
-            }],
+            dictMeanings: [],
             needsLiveTranslate: true
         };
     }
@@ -79,7 +75,7 @@
                         if (st && st.extraVocabularyItems && st.extraVocabularyItems[cleanLower]) st.extraVocabularyItems[cleanLower].phonetic = ph;
                     }
                     if (Array.isArray(entry.meanings)) {
-                        entry.meanings.slice(0, 2).forEach(m => {
+                        entry.meanings.slice(0, 3).forEach(m => {
                             const defObj = (m.definitions && m.definitions[0]) || null;
                             if (defObj && defObj.definition) apiDefinitions.push(defObj.definition);
                         });
@@ -111,7 +107,7 @@
                         dictOptions.push({
                             meaning: terms.charAt(0).toUpperCase() + terms.slice(1),
                             pos: viPos,
-                            sense: apiDefinitions[gIdx] || `Các sắc thái nghĩa ${viPos.toLowerCase()} phổ biến của «${session.term}».`
+                            sense: apiDefinitions[gIdx] || `Các sắc thái nghĩa ${viPos.toLowerCase()} thông dụng của «${session.term}».`
                         });
                     }
                 });
@@ -123,12 +119,10 @@
             session.pos = posLabel;
             session.explanation = session.term.includes(' ')
                 ? `Cụm từ ${snippet} mang nghĩa «${capMeaning}», giúp câu văn mượt mà và giàu hình ảnh hơn.`
-                : `Kết hợp trong cụm ${snippet} — mang nghĩa «${capMeaning}» phù hợp nhất với ngữ cảnh câu chuyện.`;
-            session.dictMeanings = dictOptions.length > 0 ? dictOptions : [{
-                meaning: capMeaning,
-                pos: posLabel === "TỪ VỰNG" ? "NGHĨA GỐC" : posLabel,
-                sense: apiDefinitions[0] || `Nghĩa từ điển tiêu chuẩn khi tra cứu độc lập của «${session.term}».`
-            }];
+                : `Kết hợp trong cụm ${snippet} — mang nghĩa «${capMeaning}» phù hợp nhất với mạch truyện.`;
+            session.dictMeanings = dictOptions.length > 0 ? dictOptions : (apiDefinitions.length > 0 ? [{
+                meaning: capMeaning, pos: posLabel === "TỪ VỰNG" ? "TỪ ĐIỂN" : posLabel, sense: apiDefinitions[0]
+            }] : []);
             if (activeLookupSession && activeLookupSession.term === session.term) renderWordDefinitionSheetUI(session);
         } catch (e) {}
     }
@@ -150,7 +144,7 @@
             term: rawTerm, ipa: resolved.ipa, pos: resolved.pos, meaning: resolved.meaning,
             explanation: resolved.explanation, dictMeanings: resolved.dictMeanings || [],
             sentenceIdx, sentenceEn: matchedSentence.text, sentenceVi: matchedSentence.translation,
-            tokenIndices, selectedOptionKey: 'lumi', needsLiveTranslate: Boolean(resolved.needsLiveTranslate)
+            tokenIndices, selectedOptionKey: 'lumi', customMeaning: '', needsLiveTranslate: Boolean(resolved.needsLiveTranslate)
         };
         renderWordDefinitionSheetUI(activeLookupSession);
         const modal = document.getElementById('storyWordDefinitionModal');
@@ -158,19 +152,27 @@
         if (activeLookupSession.needsLiveTranslate) enrichLookupWithLiveTranslation(activeLookupSession);
     };
 
+    function getActiveSelectedMeaning(session) {
+        if (!session) return "";
+        if (session.selectedOptionKey === 'custom' && session.customMeaning.trim()) return session.customMeaning.trim();
+        if (session.selectedOptionKey && session.selectedOptionKey.startsWith('dict_')) {
+            const idx = parseInt(session.selectedOptionKey.replace('dict_', ''), 10);
+            const dItem = (session.dictMeanings || [])[idx];
+            if (dItem) return dItem.meaning;
+        }
+        return session.meaning || "";
+    }
+
     function renderWordDefinitionSheetUI(session) {
         const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
         setEl('storyDefSheetWord', session.term);
+        setEl('storyDefHeaderPos', session.pos || "TỪ VỰNG");
         const cleanIpa = (session.ipa && session.ipa !== '/.../') ? session.ipa : (session.term.includes(' ') ? 'Nghe cụm' : 'Phát âm');
         setEl('storyDefSheetIpa', cleanIpa);
-        setEl('storyDefSheetContextVi', session.sentenceVi || "");
 
-        const ctxEnEl = document.getElementById('storyDefSheetContextEn');
-        if (ctxEnEl) {
-            const clean = (session.term || "").trim(), escaped = clean.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-            const reg = new RegExp(clean.includes(' ') ? `(${escaped})` : `(\\b${escaped}\\b)`, 'gi');
-            ctxEnEl.innerHTML = (session.sentenceEn || "").replace(reg, '<mark class="story-def-ctx-hl">$1</mark>');
-        }
+        const clean = (session.term || "").trim(), escaped = clean.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const reg = new RegExp(clean.includes(' ') ? `(${escaped})` : `(\\b${escaped}\\b)`, 'gi');
+        const highlightedEn = (session.sentenceEn || "").replace(reg, '<mark class="story-def-ctx-hl">$1</mark>');
 
         const lumiCard = document.getElementById('storyDefLumiCard');
         if (lumiCard) {
@@ -179,20 +181,27 @@
             lumiCard.innerHTML = `
                 <div class="story-def-card-top">
                     <div class="story-def-badge-group">
-                        <span class="story-def-lumi-pill">✦ THEO NGỮ CẢNH</span>
-                        <span class="story-def-pos-tag">${session.pos}</span>
+                        <span class="story-def-lumi-pill">✦ NGHĨA TRONG MẠCH TRUYỆN</span>
                     </div>
                     <div class="story-def-radio-dot ${isSelected ? 'checked' : ''}">✓</div>
                 </div>
                 <div class="story-def-meaning-main">${session.meaning}</div>
-                <div class="story-def-meaning-sub">${session.explanation}</div>`;
+                <div class="story-def-lumi-note">💡 ${session.explanation}</div>
+                <div class="story-def-embedded-ctx" onclick="event.stopPropagation()">
+                    <div class="story-def-embedded-ctx-head">
+                        <span>📖 NGỮ CẢNH CÂU TRUYỆN</span>
+                        <button type="button" onclick="speakStoryDefContextSentence()" class="story-def-ctx-tts-btn">🔊 Nghe câu</button>
+                    </div>
+                    <div class="story-def-ctx-en">${highlightedEn}</div>
+                    ${session.sentenceVi ? `<div class="story-def-ctx-vi">${session.sentenceVi}</div>` : ''}
+                </div>`;
         }
 
         const dictList = document.getElementById('storyDefDictList'), dictCount = document.getElementById('storyDefDictCount');
         if (dictList) {
             const items = session.dictMeanings || [];
-            if (dictCount) dictCount.textContent = `${items.length} lựa chọn`;
-            dictList.innerHTML = items.map((d, idx) => {
+            if (dictCount) dictCount.textContent = items.length > 0 ? `${items.length} nghĩa mở rộng` : `Tùy chỉnh`;
+            const dictCardsHtml = items.map((d, idx) => {
                 const key = `dict_${idx}`, isSelected = session.selectedOptionKey === key;
                 return `
                     <div onclick="selectStoryWordDefinitionOption('${key}')" class="story-def-choice-card ${isSelected ? 'selected' : ''}">
@@ -207,13 +216,49 @@
                         ${d.sense ? `<div class="story-def-meaning-sub">${d.sense}</div>` : ''}
                     </div>`;
             }).join('');
+
+            const isCustom = session.selectedOptionKey === 'custom';
+            const customCardHtml = `
+                <div onclick="selectStoryWordDefinitionOption('custom')" class="story-def-choice-card is-custom-card ${isCustom ? 'selected' : ''}">
+                    <div class="story-def-card-top">
+                        <div class="story-def-badge-group">
+                            <span class="story-def-pos-tag is-dict">✏️ TỰ GHI NGHĨA RIÊNG</span>
+                        </div>
+                        <div class="story-def-radio-dot ${isCustom ? 'checked' : ''}">✓</div>
+                    </div>
+                    <input id="storyDefCustomInput" type="text" class="story-def-custom-input"
+                        placeholder="Nhập nghĩa hoặc ghi chú bạn muốn lưu vào thẻ..."
+                        value="${(session.customMeaning || '').replace(/"/g, '&quot;')}"
+                        onclick="event.stopPropagation(); selectStoryWordDefinitionOption('custom', true)"
+                        oninput="onStoryDefCustomInput(this.value)" />
+                </div>`;
+            dictList.innerHTML = dictCardsHtml + customCardHtml;
         }
+        updateSaveButtonLabel(session);
     }
 
-    window.selectStoryWordDefinitionOption = function (optionKey) {
+    function updateSaveButtonLabel(session) {
+        const btnLabel = document.getElementById('storyDefSaveBtnLabel');
+        if (!btnLabel || !session) return;
+        const chosen = getActiveSelectedMeaning(session);
+        const shortMeaning = chosen.length > 26 ? chosen.slice(0, 25) + '…' : chosen;
+        btnLabel.textContent = shortMeaning ? `+ Lưu thẻ · «${shortMeaning}»` : `+ Lưu vào Flashcard`;
+    }
+
+    window.onStoryDefCustomInput = function (val) {
+        if (!activeLookupSession) return;
+        activeLookupSession.customMeaning = val || "";
+        activeLookupSession.selectedOptionKey = 'custom';
+        updateSaveButtonLabel(activeLookupSession);
+    };
+
+    window.selectStoryWordDefinitionOption = function (optionKey, focusInput) {
         if (!activeLookupSession) return;
         activeLookupSession.selectedOptionKey = optionKey;
         renderWordDefinitionSheetUI(activeLookupSession);
+        if (optionKey === 'custom' || focusInput) {
+            setTimeout(() => { const inp = document.getElementById('storyDefCustomInput'); if (inp) inp.focus(); }, 20);
+        }
     };
 
     window.speakStoryLookupWord = function () {
@@ -231,11 +276,11 @@
         const state = window.StoryReaderState;
         if (!state.extraVocabularyItems) state.extraVocabularyItems = {};
 
-        let chosenMeaning = activeLookupSession.meaning, chosenPos = activeLookupSession.pos;
+        let chosenMeaning = getActiveSelectedMeaning(activeLookupSession), chosenPos = activeLookupSession.pos;
         if (activeLookupSession.selectedOptionKey && activeLookupSession.selectedOptionKey.startsWith('dict_')) {
             const idx = parseInt(activeLookupSession.selectedOptionKey.replace('dict_', ''), 10);
             const dItem = (activeLookupSession.dictMeanings || [])[idx];
-            if (dItem) { chosenMeaning = dItem.meaning; chosenPos = dItem.pos || chosenPos; }
+            if (dItem) chosenPos = dItem.pos || chosenPos;
         }
 
         const key = activeLookupSession.term.trim().toLowerCase();
@@ -269,16 +314,11 @@
         const term = decodeURIComponent(encodedTerm).trim(), key = term.toLowerCase();
         const state = window.StoryReaderState, item = (state.extraVocabularyItems && state.extraVocabularyItems[key]) || null;
         if (!item) return;
-
         activeSavedWordKey = key;
         const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
-        setEl('storySavedModalTerm', item.term);
-        setEl('storySavedModalPos', item.pos || "TỪ ĐÃ LƯU");
+        setEl('storySavedModalTerm', item.term); setEl('storySavedModalPos', item.pos || "TỪ ĐÃ LƯU");
         setEl('storySavedModalIpa', (item.phonetic && item.phonetic !== '/.../') ? item.phonetic : "Phát âm");
-        setEl('storySavedModalMeaning', item.meaning || "");
-        setEl('storySavedModalExEn', item.example || "");
-        setEl('storySavedModalExVi', item.exampleTr || "");
-
+        setEl('storySavedModalMeaning', item.meaning || ""); setEl('storySavedModalExEn', item.example || ""); setEl('storySavedModalExVi', item.exampleTr || "");
         const modal = document.getElementById('storySavedWordActionModal');
         if (modal) { modal.classList.remove('hidden'); modal.style.display = 'flex'; }
     };
@@ -293,14 +333,12 @@
         if (!activeSavedWordKey) return;
         const state = window.StoryReaderState, item = state.extraVocabularyItems ? state.extraVocabularyItems[activeSavedWordKey] : null;
         if (item) {
-            delete state.extraVocabularyItems[activeSavedWordKey];
-            delete state.wordClassifications[item.term];
+            delete state.extraVocabularyItems[activeSavedWordKey]; delete state.wordClassifications[item.term];
             const currentPart = (state.currentStory.parts || [])[state.currentPartIndex];
             if (currentPart && currentPart.targetWords) currentPart.targetWords = currentPart.targetWords.filter(w => w.term.toLowerCase() !== activeSavedWordKey);
             if (typeof showDictToast === 'function') showDictToast(`🗑️ Đã bỏ chọn từ "${item.term}"`);
         }
-        window.closeStorySavedWordActionModal();
-        window.StoryReaderUI.renderTargetWordCard();
+        window.closeStorySavedWordActionModal(); window.StoryReaderUI.renderTargetWordCard();
     };
 
     window.viewOtherMeaningForSavedWord = function () {
