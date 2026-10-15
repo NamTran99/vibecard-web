@@ -43,45 +43,46 @@
     to { transform: rotateY(0deg) translateX(0); opacity: 1; }
 }
 
-/* Top Floating Hero Header (Auto-hides so it doesn't cover hero image) */
+/* Dedicated Top Tabbar (Placed above Hero Image — Zero Overlap) */
 .story-hero-header {
-    position: absolute; top: 0; left: 0; right: 0; z-index: 25;
-    padding: 12px 14px 0 14px;
+    position: sticky; top: 0; z-index: 30;
+    width: 100%; flex-shrink: 0;
+    padding: 10px 14px;
+    background: var(--m3-screen-bg);
+    border-bottom: 1px solid var(--m3-outline-variant);
     display: flex; align-items: center; justify-content: space-between; gap: 8px;
-    pointer-events: none;
-    transition: opacity 0.28s cubic-bezier(0.22, 1, 0.36, 1), transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: auto;
 }
 .story-hero-header.story-header-auto-hidden,
 .story-hero-header.story-header-auto-hidden * {
-    opacity: 0; transform: translateY(-16px); pointer-events: none !important;
+    opacity: 1; transform: none; pointer-events: auto !important;
 }
 
 .story-hero-btn {
     pointer-events: auto; width: 36px; height: 36px; border-radius: 9999px;
-    background: var(--m3-glass-bg); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-    border: 1px solid var(--m3-glass-border);
+    background: var(--m3-surface-container-high);
+    border: 1px solid var(--m3-outline-variant);
     display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0;
     transition: transform 0.15s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
-.story-hero-btn:hover { background: var(--m3-surface-container-high); border-color: var(--m3-primary); }
+.story-hero-btn:hover { background: var(--m3-surface-container-highest); border-color: var(--m3-primary); }
 .story-hero-btn:active { transform: scale(0.92); }
 .story-hero-btn svg { color: var(--m3-on-surface) !important; }
 
 .story-header-title-pill {
-    pointer-events: auto; max-width: 215px; height: 32px; padding: 0 12px;
-    border-radius: 9999px; background: var(--m3-glass-bg);
-    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-    border: 1px solid var(--m3-glass-border);
+    pointer-events: auto; max-width: 225px; height: 34px; padding: 0 14px;
+    border-radius: 9999px; background: var(--m3-surface-container-high);
+    border: 1px solid var(--m3-outline-variant);
     display: flex; align-items: center; gap: 6px;
-    color: var(--m3-on-surface); font-size: 11.5px; font-weight: 700;
+    color: var(--m3-on-surface); font-size: 12px; font-weight: 800;
 }
 .story-header-book-dot { width: 6px; height: 6px; border-radius: 9999px; background: var(--m3-amber-glow); flex-shrink: 0; }
 
-/* Hero Image Frame (True 16:9 Full-Bleed Mobile Fit — Zero Cropping of Characters/Ears) */
+/* Hero Image Frame (Placed cleanly below Top Tabbar — Zero Overlap) */
 .story-hero-frame {
     position: relative; width: 100%;
     aspect-ratio: 16 / 9.3; height: auto; min-height: 220px; max-height: 252px;
-    overflow: hidden; cursor: pointer;
+    overflow: hidden; cursor: default;
     background: var(--m3-surface-container-lowest);
 }
 
@@ -108,13 +109,9 @@
     to { opacity: 1; transform: translate3d(0, var(--hero-parallax, 0px), 0) scale(1.005); }
 }
 
-/* Crystal-Clear Optical Vignette (Top shade auto-clears when Topbar hides) */
+/* Subtle bottom blend vignette only (Top of image is 100% unobstructed) */
 .story-hero-vignette {
     position: absolute; inset: 0; pointer-events: none;
-    background: linear-gradient(180deg, rgba(10, 12, 8, 0.24) 0%, rgba(10, 12, 8, 0) 24%, rgba(10, 12, 8, 0) 86%, var(--m3-surface) 100%);
-    transition: opacity 0.28s ease;
-}
-.story-hero-header.story-header-auto-hidden ~ .story-hero-frame .story-hero-vignette {
     background: linear-gradient(180deg, rgba(10, 12, 8, 0) 86%, var(--m3-surface) 100%);
 }
 
