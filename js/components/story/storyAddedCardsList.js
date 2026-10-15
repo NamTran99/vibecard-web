@@ -175,7 +175,6 @@
             <div class="story-flippable-face story-flippable-front ${st.showingBack ? 'is-face-hidden' : ''}" style="transform: rotateY(0deg);">
                 <div class="story-flip-header">
                     <div class="story-flip-badge-group">
-                        <span class="story-flip-counter">${idx + 1} / ${total}</span>
                         ${isJustAdded ? '<span class="story-flip-new-badge">Mới thêm</span>' : ''}
                     </div>
                     <div class="story-flip-header-right">
@@ -218,7 +217,6 @@
                         </button>
                     </div>
                     <div class="story-flip-header-right">
-                        <span class="story-flip-counter">${idx + 1} / ${total}</span>
                         <button type="button" onclick="event.stopPropagation(); removeAddedStoryCard('${encTerm}')" class="story-flip-icon-btn" title="Xoá khỏi bộ thẻ" aria-label="Xoá thẻ">✕</button>
                     </div>
                 </div>
