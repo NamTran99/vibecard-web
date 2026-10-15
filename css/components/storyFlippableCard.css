@@ -15,7 +15,7 @@
 
 .story-flippable-face {
     grid-area: 1 / 1;
-    width: 100%; height: 100%; min-height: 234px;
+    width: 100%; height: 100%; min-height: 212px;
     border-radius: 24px;
     overflow: hidden; position: relative;
     display: flex; flex-direction: column; justify-content: space-between;
@@ -23,7 +23,7 @@
     transform-origin: center center; will-change: transform, opacity;
     background: var(--m3-surface-container-high);
     border: 1px solid var(--m3-outline-variant);
-    padding: 15px 16px 14px 16px;
+    padding: 16px;
     color: var(--m3-on-surface);
     box-shadow: 0 10px 26px -8px rgba(0, 0, 0, 0.22);
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -51,62 +51,44 @@
     border-color: var(--m3-primary);
 }
 
-/* 1. Top Meta Header Row */
-.story-flip-header {
-    display: flex; align-items: center; justify-content: space-between;
-    gap: 8px; width: 100%; margin-bottom: 6px;
-}
-
-.story-flip-badge-group { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; min-width: 0; }
-
-.story-flip-level-badge {
-    display: inline-flex; align-items: center; gap: 6px;
-    padding: 4px 10px; border-radius: 9999px;
-    font-size: 11px; font-weight: 800; letter-spacing: 0.02em;
-    background: var(--m3-surface-container-highest);
-    color: var(--m3-on-surface-variant);
-    max-width: 215px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-
-.story-flip-badge-dot {
-    width: 6px; height: 6px; border-radius: 9999px;
-    background: var(--m3-primary); flex-shrink: 0;
-}
-
-.story-flip-new-badge {
-    display: inline-flex; align-items: center; padding: 3.5px 9px;
-    border-radius: 9999px; font-size: 10.5px; font-weight: 800;
-    background: var(--m3-amber-container); color: var(--m3-amber-text);
-}
-
-.story-flip-meaning-label {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-size: 11px; font-weight: 800; letter-spacing: 0.06em;
-    text-transform: uppercase; color: var(--m3-primary);
-}
-
-.story-flip-header-right { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
-
-.story-flip-counter {
-    font-size: 11.5px; font-weight: 800; letter-spacing: 0.03em;
-    color: var(--m3-on-surface-variant); opacity: 0.72;
-}
-
+/* 1. Floating Top-Right Close Button & Inline Meta Labels */
 .story-flip-icon-btn {
-    width: 28px; height: 28px; border-radius: 9999px; border: 1px solid var(--m3-outline-variant);
-    background: transparent; color: var(--m3-on-surface-variant); opacity: 0.75;
-    font-size: 11px; font-weight: 800;
+    position: absolute; top: 12px; right: 12px; z-index: 5;
+    width: 28px; height: 28px; border-radius: 9999px; border: none;
+    background: transparent; color: var(--m3-on-surface-variant); opacity: 0.58;
+    font-size: 12px; font-weight: 800;
     display: inline-flex; align-items: center; justify-content: center;
     cursor: pointer; transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease, opacity 0.15s ease;
 }
 .story-flip-icon-btn:hover, .story-flip-icon-btn:active {
-    opacity: 1; background: var(--m3-error-container); color: var(--m3-on-error-container); border-color: var(--m3-error); transform: scale(0.92);
+    opacity: 1; background: var(--m3-error-container); color: var(--m3-on-error-container); transform: scale(0.92);
 }
 
-/* 2. Minimalist Front Hero with Word-Specific Illustration */
+.story-flip-meta-inline {
+    display: flex; align-items: center; gap: 7px; flex-wrap: wrap;
+}
+
+.story-flip-pos-label {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--m3-on-surface-variant); opacity: 0.85;
+}
+
+.story-flip-pos-dot {
+    width: 5px; height: 5px; border-radius: 9999px;
+    background: #486600; flex-shrink: 0;
+}
+
+.story-flip-new-badge {
+    display: inline-flex; align-items: center; padding: 2px 8px;
+    border-radius: 9999px; font-size: 10px; font-weight: 800;
+    background: var(--m3-amber-container); color: var(--m3-amber-text);
+}
+
+/* 2. Minimalist Front Hero at Top of Card */
 .story-flip-hero-minimal {
     display: flex; align-items: center; gap: 14px;
-    padding: 4px 0 10px 0;
+    padding: 0 26px 12px 0;
 }
 
 .story-flip-word-thumb {
@@ -122,53 +104,54 @@
 }
 
 .story-flip-hero-text {
-    flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 7px;
+    flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px;
 }
 
 .story-flip-front-term {
-    font-size: 26px; font-weight: 900; line-height: 1.12; letter-spacing: -0.025em;
+    font-size: 25px; font-weight: 900; line-height: 1.12; letter-spacing: -0.025em;
     color: var(--m3-on-surface); word-break: break-word;
 }
 
 .story-flip-sub-row {
-    display: flex; align-items: center; flex-wrap: wrap; gap: 7px;
-}
-
-.story-flip-pos-chip {
-    display: inline-flex; align-items: center;
-    padding: 3.5px 10px; border-radius: 9999px;
-    font-size: 11px; font-weight: 800;
-    background: var(--m3-surface-container);
-    border: 1px solid var(--m3-outline-variant);
-    color: var(--m3-on-surface-variant);
+    display: flex; align-items: center; flex-wrap: wrap; gap: 7px; margin-top: 2px;
 }
 
 .story-flip-audio-pill {
     display: inline-flex; align-items: center; gap: 5px;
-    padding: 3.5px 11px; border-radius: 9999px;
-    border: 1px solid var(--m3-outline-variant);
-    background: var(--m3-surface-container);
+    padding: 4px 11px; border-radius: 9999px; border: none;
+    background: rgba(72, 102, 0, 0.1);
     color: #486600;
-    font-size: 12px; font-weight: 700;
-    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-    cursor: pointer; transition: transform 0.15s ease, border-color 0.15s ease;
+    font-size: 12px; font-weight: 800;
+    cursor: pointer; transition: transform 0.15s ease, background-color 0.15s ease;
 }
-.story-flip-audio-pill:active { transform: scale(0.94); border-color: #486600; }
+.story-flip-audio-pill.has-ipa {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-weight: 700;
+}
+.story-flip-audio-pill:active { transform: scale(0.94); background: rgba(72, 102, 0, 0.18); }
 
-/* 3. Soft Surface Context Quote Box + Inline Flip Hint */
+/* 3. Editorial Watermark Quote Box (No Hard Left Bar) */
 .story-flip-quote-minimal {
-    width: 100%; padding: 11px 14px 9px 14px;
+    position: relative;
+    width: 100%; padding: 11px 14px 10px 26px;
     border-radius: 16px;
     background: var(--m3-surface-container);
-    border-left: 3px solid rgba(72, 102, 0, 0.45);
-    display: flex; flex-direction: column; gap: 6px;
+    display: flex; flex-direction: column; gap: 4px;
+}
+
+.story-flip-quote-minimal::before {
+    content: "“";
+    position: absolute; top: 4px; left: 9px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 28px; font-weight: 700; line-height: 1;
+    color: #486600; opacity: 0.28; pointer-events: none;
 }
 
 .story-flip-prompt-text {
     margin: 0;
     font-family: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
     font-size: 16.5px; font-weight: 500; font-style: italic;
-    line-height: 1.45; color: var(--m3-on-surface-variant);
+    line-height: 1.44; color: var(--m3-on-surface-variant);
 }
 
 .story-flip-prompt-hl {
@@ -179,61 +162,66 @@
     border-bottom: 1.5px solid rgba(72, 102, 0, 0.45);
 }
 
-/* 4. Bottom Flip Hint Footer */
-.story-flip-footer {
-    display: flex; align-items: center; justify-content: flex-end;
-    margin-top: 6px;
-}
-
+/* 4. Subtle Corner Flip Indicator */
 .story-flip-hint-pill {
     align-self: flex-end;
-    display: inline-flex; align-items: center; gap: 4.5px;
-    font-size: 10.5px; font-weight: 700; letter-spacing: 0.03em;
-    color: var(--m3-on-surface-variant); opacity: 0.68;
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 10.5px; font-weight: 700; letter-spacing: 0.02em;
+    color: var(--m3-on-surface-variant); opacity: 0.58;
 }
 
 /* 5. Back Face Layout & Meaning Hierarchy */
-.story-flip-back-main { display: flex; flex-direction: column; gap: 6px; flex: 1; justify-content: space-between; }
-
-.story-flip-back-term-row {
-    display: flex; align-items: center; gap: 8px; flex-wrap: wrap; min-width: 0;
+.story-flip-back-header {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    padding-right: 28px; margin-bottom: 4px;
 }
 
+.story-flip-back-main { display: flex; flex-direction: column; gap: 6px; flex: 1; justify-content: space-between; }
+
 .story-flip-back-term {
-    font-size: 21px; font-weight: 900; color: var(--m3-on-surface); line-height: 1.2;
+    font-size: 20px; font-weight: 900; color: var(--m3-on-surface); line-height: 1.2;
 }
 
 .story-flip-back-meaning {
-    font-size: 18.5px; font-weight: 800; line-height: 1.3;
-    color: var(--m3-on-surface); margin: 0 0 2px 0;
+    font-size: 19px; font-weight: 800; line-height: 1.3;
+    color: var(--m3-on-surface); margin: 0 0 4px 0;
 }
 
-.story-flip-back-meaning-primary { color: var(--m3-primary); font-weight: 900; }
+.story-flip-back-meaning-primary { color: #486600; font-weight: 900; }
 .story-flip-back-meaning-rest { color: var(--m3-on-surface); font-weight: 700; }
 
-/* 6. Back Face Unified Segmented Control Tabs (Zero Nested Borders) */
+/* 6. Back Face Soft Apple-Style Segmented Control Tabs */
 .story-flip-tabs-bar {
-    display: flex; align-items: center; gap: 4px; padding: 4px;
-    border-radius: 13px; background: var(--m3-surface-container);
+    display: flex; align-items: center; gap: 4px; padding: 3.5px;
+    border-radius: 12px; background: var(--m3-surface-container);
 }
 
 .story-flip-tab-btn {
-    flex: 1; padding: 6px 8px; border-radius: 9px; border: none;
+    flex: 1; padding: 5.5px 8px; border-radius: 9px; border: none;
     font-size: 12px; font-weight: 700;
     color: var(--m3-on-surface-variant); background: transparent;
     cursor: pointer; transition: all 0.16s ease; text-align: center;
 }
 
 .story-flip-tab-btn.active {
-    background: var(--m3-primary); color: var(--m3-on-primary); font-weight: 800;
+    background: var(--m3-surface-container-highest);
+    color: #486600;
+    font-weight: 800;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
 }
 
 .story-flip-tab-panel {
-    margin-top: 2px; padding: 10px 14px; border-radius: 16px;
+    position: relative;
+    margin-top: 2px; padding: 10px 26px 10px 14px; border-radius: 16px;
     background: var(--m3-surface-container);
-    border-left: 3px solid var(--m3-amber-glow);
     height: 82px; overflow-y: auto;
     display: flex; flex-direction: column; justify-content: center;
+}
+
+.story-flip-corner-icon {
+    position: absolute; bottom: 8px; right: 10px;
+    color: var(--m3-on-surface-variant); opacity: 0.45;
+    pointer-events: none;
 }
 
 .story-flip-back-ex-wrap {

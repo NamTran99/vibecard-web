@@ -153,17 +153,20 @@
 
     const getCardState = (termKey) => cardFlipStates[termKey] || (cardFlipStates[termKey] = { showingBack: false, flipInProgress: false, activeTab: 'example', showExTr: true });
 
+    const FLIP_ICON_SVG = `<svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>`;
+
     function renderBackTabInnerHTML(card, st, encTerm) {
-        if (st.activeTab === 'usage') return `<p class="story-flip-usage-text">${escapeHtml(card.usageNote)}</p>`;
+        const cornerFlip = `<span class="story-flip-corner-icon">${FLIP_ICON_SVG}</span>`;
+        if (st.activeTab === 'usage') return `<p class="story-flip-usage-text">${escapeHtml(card.usageNote)}</p>${cornerFlip}`;
         if (st.activeTab === 'synonym') {
-            return `<div class="story-flip-synonym-wrap">${(card.synonyms || []).map(syn => `<button type="button" onclick="event.stopPropagation(); speakAddedStoryCard('${encodeURIComponent(syn)}')" class="story-flip-synonym-pill"><svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg><span>${escapeHtml(syn)}</span></button>`).join('')}</div>`;
+            return `<div class="story-flip-synonym-wrap">${(card.synonyms || []).map(syn => `<button type="button" onclick="event.stopPropagation(); speakAddedStoryCard('${encodeURIComponent(syn)}')" class="story-flip-synonym-pill"><svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg><span>${escapeHtml(syn)}</span></button>`).join('')}</div>${cornerFlip}`;
         }
         const highlightedEx = highlightTermInSentence(card.example, card.term);
         return `<div class="story-flip-back-ex-wrap" onclick="event.stopPropagation(); toggleStorySavedCardExTranslation('${encTerm}')">
                 <p class="story-flip-back-ex-en">“${highlightedEx}”</p>
                 ${st.showExTr && card.exampleTr ? `<p class="story-flip-back-ex-vi">${escapeHtml(card.exampleTr)}</p>` : ''}
                 ${card.exampleTr ? `<span class="story-flip-back-ex-toggle">${st.showExTr ? 'Ẩn bản dịch ▲' : 'Xem bản dịch ▼'}</span>` : ''}
-            </div>`;
+            </div>${cornerFlip}`;
     }
 
     function buildAddedCardItemHTML(card, idx, total, isJustAdded) {
@@ -173,24 +176,20 @@
 
         return `<div id="storySavedFlipCard_${idx}" data-term-key="${escapeHtml(termKey)}" class="story-flippable-card ${isJustAdded ? 'just-added' : ''}" onclick="flipStorySavedCard(${idx}, '${encTerm}')">
             <div class="story-flippable-face story-flippable-front ${st.showingBack ? 'is-face-hidden' : ''}" style="transform: rotateY(0deg);">
-                <div class="story-flip-header">
-                    <div class="story-flip-badge-group">
-                        ${isJustAdded ? '<span class="story-flip-new-badge">Mới thêm</span>' : ''}
-                    </div>
-                    <div class="story-flip-header-right">
-                        <button type="button" onclick="event.stopPropagation(); removeAddedStoryCard('${encTerm}')" class="story-flip-icon-btn" title="Xoá khỏi bộ thẻ" aria-label="Xoá thẻ">✕</button>
-                    </div>
-                </div>
+                <button type="button" onclick="event.stopPropagation(); removeAddedStoryCard('${encTerm}')" class="story-flip-icon-btn" title="Xoá khỏi bộ thẻ" aria-label="Xoá thẻ">✕</button>
 
                 <div class="story-flip-hero-minimal">
                     <div class="story-flip-word-thumb">
                         <img src="${escapeHtml(card.imageUrl)}" alt="${escapeHtml(card.term)}" onerror="this.src='assets/cards/serendipity.jpg'" />
                     </div>
                     <div class="story-flip-hero-text">
+                        <div class="story-flip-meta-inline">
+                            <span class="story-flip-pos-label"><span class="story-flip-pos-dot"></span>${escapeHtml(posLabel)}</span>
+                            ${isJustAdded ? '<span class="story-flip-new-badge">Mới thêm</span>' : ''}
+                        </div>
                         <div class="story-flip-front-term">${escapeHtml(card.term)}</div>
                         <div class="story-flip-sub-row">
-                            <span class="story-flip-pos-chip">${escapeHtml(posLabel)}</span>
-                            <button type="button" onclick="event.stopPropagation(); speakAddedStoryCard('${encTerm}')" class="story-flip-audio-pill" title="Nghe phát âm">
+                            <button type="button" onclick="event.stopPropagation(); speakAddedStoryCard('${encTerm}')" class="story-flip-audio-pill ${hasIpa ? 'has-ipa' : ''}" title="Nghe phát âm">
                                 <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
                                 <span>${hasIpa ? escapeHtml(card.phonetic) : 'Phát âm'}</span>
                             </button>
@@ -199,44 +198,34 @@
                 </div>
 
                 <div class="story-flip-quote-minimal">
-                    <p class="story-flip-prompt-text">“${highlightTermInSentence(card.example, card.term)}”</p>
+                    <p class="story-flip-prompt-text">${highlightTermInSentence(card.example, card.term)}</p>
                     <span class="story-flip-hint-pill">
-                        <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-                        <span>${idx === 0 ? 'Chạm để lật' : 'Lật'}</span>
+                        ${FLIP_ICON_SVG}
+                        ${idx === 0 ? '<span>Chạm để lật</span>' : ''}
                     </span>
                 </div>
             </div>
 
             <div class="story-flippable-face story-flippable-back ${st.showingBack ? '' : 'is-face-hidden'}" style="transform: rotateY(0deg);">
-                <div class="story-flip-header">
-                    <div class="story-flip-back-term-row">
-                        <span class="story-flip-back-term">${escapeHtml(card.term)}</span>
-                        <button type="button" onclick="event.stopPropagation(); speakAddedStoryCard('${encTerm}')" class="story-flip-audio-pill" title="Nghe phát âm">
-                            <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-                            <span>${hasIpa ? escapeHtml(card.phonetic) : 'Phát âm'}</span>
-                        </button>
-                    </div>
-                    <div class="story-flip-header-right">
-                        <button type="button" onclick="event.stopPropagation(); removeAddedStoryCard('${encTerm}')" class="story-flip-icon-btn" title="Xoá khỏi bộ thẻ" aria-label="Xoá thẻ">✕</button>
-                    </div>
+                <button type="button" onclick="event.stopPropagation(); removeAddedStoryCard('${encTerm}')" class="story-flip-icon-btn" title="Xoá khỏi bộ thẻ" aria-label="Xoá thẻ">✕</button>
+
+                <div class="story-flip-back-header">
+                    <span class="story-flip-back-term">${escapeHtml(card.term)}</span>
+                    <button type="button" onclick="event.stopPropagation(); speakAddedStoryCard('${encTerm}')" class="story-flip-audio-pill ${hasIpa ? 'has-ipa' : ''}" title="Nghe phát âm">
+                        <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                        <span>${hasIpa ? escapeHtml(card.phonetic) : 'Phát âm'}</span>
+                    </button>
                 </div>
 
                 <div class="story-flip-back-main">
                     <div class="story-flip-back-meaning">${formatMeaningSpannable(card.meaning)}</div>
 
                     <div class="story-flip-tabs-bar" onclick="event.stopPropagation()">
-                        <button type="button" onclick="event.stopPropagation(); switchStorySavedCardTab('${encTerm}', 'example', ${idx})" class="story-flip-tab-btn ${st.activeTab === 'example' ? 'active' : ''}">Ví dụ truyện</button>
+                        <button type="button" onclick="event.stopPropagation(); switchStorySavedCardTab('${encTerm}', 'example', ${idx})" class="story-flip-tab-btn ${st.activeTab === 'example' ? 'active' : ''}">Ví dụ</button>
                         <button type="button" onclick="event.stopPropagation(); switchStorySavedCardTab('${encTerm}', 'usage', ${idx})" class="story-flip-tab-btn ${st.activeTab === 'usage' ? 'active' : ''}">Ghi chú</button>
                         <button type="button" onclick="event.stopPropagation(); switchStorySavedCardTab('${encTerm}', 'synonym', ${idx})" class="story-flip-tab-btn ${st.activeTab === 'synonym' ? 'active' : ''}">Đồng nghĩa</button>
                     </div>
                     <div id="storySavedCardTabPanel_${idx}" class="story-flip-tab-panel" onclick="event.stopPropagation()">${renderBackTabInnerHTML(card, st, encTerm)}</div>
-                </div>
-
-                <div class="story-flip-footer">
-                    <span class="story-flip-hint-pill">
-                        <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-                        <span>Lật mặt trước</span>
-                    </span>
                 </div>
             </div>
         </div>`;
