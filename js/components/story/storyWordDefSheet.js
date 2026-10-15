@@ -135,12 +135,15 @@
         window.openStoryWordDefinitionSheet(word, sentenceIdx, tokenIndices);
     };
 
+    const CUSTOM_POS_OPTIONS = ['DANH TỪ', 'ĐỘNG TỪ', 'TÍNH TỪ', 'TRẠNG TỪ', 'CỤM TỪ', 'GIỚI TỪ', 'MẠO TỪ'];
+
     window.openStoryWordDefinitionSheet = function (rawTerm, sentenceIdx = 0, tokenIndices = []) {
         const state = window.StoryReaderState, currentPart = (state.currentStory.parts || [])[state.currentPartIndex] || {};
         const sentences = (typeof window.getStoryPartSentences === 'function') ? window.getStoryPartSentences(currentPart) : [];
         const matchedSentence = sentences[sentenceIdx] || sentences[0] || { text: currentPart.contentEn || "", translation: currentPart.contentVi || "" };
         const resolved = resolveLexiconEntry(rawTerm, matchedSentence.text, matchedSentence.translation);
-        activeLookupSession = { term: rawTerm, ipa: resolved.ipa, pos: resolved.pos, meaning: resolved.meaning, explanation: resolved.explanation, dictMeanings: resolved.dictMeanings || [], sentenceIdx, sentenceEn: matchedSentence.text, sentenceVi: matchedSentence.translation, tokenIndices, selectedOptionKey: 'lumi', customMeaning: '', needsLiveTranslate: Boolean(resolved.needsLiveTranslate) };
+        const initCustomPos = (resolved.pos && resolved.pos !== 'TỪ VỰNG') ? resolved.pos : (rawTerm.trim().includes(' ') ? 'CỤM TỪ' : 'DANH TỪ');
+        activeLookupSession = { term: rawTerm, ipa: resolved.ipa, pos: resolved.pos, meaning: resolved.meaning, explanation: resolved.explanation, dictMeanings: resolved.dictMeanings || [], sentenceIdx, sentenceEn: matchedSentence.text, sentenceVi: matchedSentence.translation, tokenIndices, selectedOptionKey: 'lumi', customMeaning: '', customPos: initCustomPos, needsLiveTranslate: Boolean(resolved.needsLiveTranslate) };
         renderWordDefinitionSheetUI(activeLookupSession);
         const modal = document.getElementById('storyWordDefinitionModal');
         if (modal) { modal.classList.remove('hidden'); modal.style.display = 'flex'; }
@@ -213,14 +216,19 @@
             }).join('');
 
             const isCustom = session.selectedOptionKey === 'custom';
+            const activeCustomPos = session.customPos || session.pos || 'DANH TỪ';
+            const posPool = CUSTOM_POS_OPTIONS.includes(activeCustomPos) ? CUSTOM_POS_OPTIONS : [activeCustomPos, ...CUSTOM_POS_OPTIONS];
+            const posChipsHtml = posPool.map(p => `<button type="button" onclick="event.stopPropagation(); selectStoryDefCustomPos('${p}')" class="story-def-pos-chip ${activeCustomPos === p ? 'active' : ''}">${p}</button>`).join('');
             const customCardHtml = `
                 <div onclick="selectStoryWordDefinitionOption('custom')" class="story-def-choice-card is-custom-card ${isCustom ? 'selected' : ''}">
                     <div class="story-def-card-top">
                         <div class="story-def-badge-group">
                             <span class="story-def-pos-tag is-dict story-def-icon-tag">${penSvg}<span>TỰ GHI NGHĨA RIÊNG</span></span>
+                            <span class="story-def-pos-tag">${activeCustomPos}</span>
                         </div>
                         <div class="story-def-radio-dot ${isCustom ? 'checked' : ''}">${checkSvg}</div>
                     </div>
+                    <div class="story-def-pos-picker">${posChipsHtml}</div>
                     <input id="storyDefCustomInput" type="text" class="story-def-custom-input"
                         placeholder="Nhập nghĩa hoặc ghi chú bạn muốn lưu vào thẻ..."
                         value="${(session.customMeaning || '').replace(/"/g, '&quot;')}"
@@ -234,9 +242,15 @@
 
     function updateSaveButtonLabel(session) {
         const btnLabel = document.getElementById('storyDefSaveBtnLabel');
-        if (!btnLabel || !session) return;
-        btnLabel.textContent = 'Lưu vào Flashcard';
+        if (btnLabel && session) btnLabel.textContent = 'Lưu vào Flashcard';
     }
+
+    window.selectStoryDefCustomPos = function (pos) {
+        if (!activeLookupSession) return;
+        activeLookupSession.customPos = pos;
+        activeLookupSession.selectedOptionKey = 'custom';
+        renderWordDefinitionSheetUI(activeLookupSession);
+    };
 
     window.onStoryDefCustomInput = function (val) {
         if (!activeLookupSession) return;
@@ -249,20 +263,12 @@
         if (!activeLookupSession) return;
         activeLookupSession.selectedOptionKey = optionKey;
         renderWordDefinitionSheetUI(activeLookupSession);
-        if (optionKey === 'custom' || focusInput) {
-            setTimeout(() => { const inp = document.getElementById('storyDefCustomInput'); if (inp) inp.focus(); }, 20);
-        }
+        if (optionKey === 'custom' || focusInput) setTimeout(() => { const inp = document.getElementById('storyDefCustomInput'); if (inp) inp.focus(); }, 20);
     };
 
-    window.speakStoryLookupWord = function () {
-        if (!activeLookupSession || !activeLookupSession.term || !('speechSynthesis' in window)) return;
-        try { window.speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(activeLookupSession.term); u.lang = 'en-US'; u.rate = 0.95; window.speechSynthesis.speak(u); } catch (e) {}
-    };
-
-    window.speakStoryDefContextSentence = function () {
-        if (!activeLookupSession || !activeLookupSession.sentenceEn || !('speechSynthesis' in window)) return;
-        try { window.speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(activeLookupSession.sentenceEn); u.lang = 'en-US'; u.rate = 0.94; window.speechSynthesis.speak(u); } catch (e) {}
-    };
+    const speakEn = (txt, rate = 0.95) => { if (!txt || !('speechSynthesis' in window)) return; try { window.speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(txt); u.lang = 'en-US'; u.rate = rate; window.speechSynthesis.speak(u); } catch (e) {} };
+    window.speakStoryLookupWord = () => activeLookupSession && speakEn(activeLookupSession.term, 0.95);
+    window.speakStoryDefContextSentence = () => activeLookupSession && speakEn(activeLookupSession.sentenceEn, 0.94);
 
     window.saveStoryLookupWord = function () {
         if (!activeLookupSession) return;
@@ -270,31 +276,26 @@
         if (!state.extraVocabularyItems) state.extraVocabularyItems = {};
 
         let chosenMeaning = getActiveSelectedMeaning(activeLookupSession), chosenPos = activeLookupSession.pos;
-        if (activeLookupSession.selectedOptionKey && activeLookupSession.selectedOptionKey.startsWith('dict_')) {
-            const idx = parseInt(activeLookupSession.selectedOptionKey.replace('dict_', ''), 10);
-            const dItem = (activeLookupSession.dictMeanings || [])[idx];
+        if (activeLookupSession.selectedOptionKey === 'custom') chosenPos = activeLookupSession.customPos || chosenPos;
+        else if (activeLookupSession.selectedOptionKey && activeLookupSession.selectedOptionKey.startsWith('dict_')) {
+            const dItem = (activeLookupSession.dictMeanings || [])[parseInt(activeLookupSession.selectedOptionKey.replace('dict_', ''), 10)];
             if (dItem) chosenPos = dItem.pos || chosenPos;
         }
 
-        const key = activeLookupSession.term.trim().toLowerCase();
-        state.extraVocabularyItems[key] = {
-            term: activeLookupSession.term.trim(), phonetic: activeLookupSession.ipa || "", pos: chosenPos,
-            meaning: chosenMeaning, example: activeLookupSession.sentenceEn || "", exampleTr: activeLookupSession.sentenceVi || "",
-            partIndex: state.currentPartIndex, tokenIndices: activeLookupSession.tokenIndices || [], isExtraLookup: true
-        };
+        const term = activeLookupSession.term.trim(), key = term.toLowerCase();
+        state.extraVocabularyItems[key] = { term, phonetic: activeLookupSession.ipa || "", pos: chosenPos, meaning: chosenMeaning, example: activeLookupSession.sentenceEn || "", exampleTr: activeLookupSession.sentenceVi || "", partIndex: state.currentPartIndex, tokenIndices: activeLookupSession.tokenIndices || [], isExtraLookup: true };
 
         const currentPart = (state.currentStory.parts || [])[state.currentPartIndex];
         if (currentPart) {
             if (!currentPart.targetWords) currentPart.targetWords = [];
             if (!currentPart.targetWords.some(w => w.term.toLowerCase() === key)) currentPart.targetWords.push(state.extraVocabularyItems[key]);
-            state.wordClassifications[activeLookupSession.term.trim()] = false;
+            state.wordClassifications[term] = false;
         }
-
         state.phraseDraftTokens = [];
         if (typeof window.updateStoryPhraseDraftBarUI === 'function') window.updateStoryPhraseDraftBarUI();
         window.closeStoryWordDefinitionModal();
         window.StoryReaderUI.renderTargetWordCard();
-        if (typeof window.notifyStoryFlashcardAdded === 'function') window.notifyStoryFlashcardAdded(activeLookupSession.term.trim());
+        if (typeof window.notifyStoryFlashcardAdded === 'function') window.notifyStoryFlashcardAdded(term);
     };
 
     window.closeStoryWordDefinitionModal = function (event) {
@@ -316,11 +317,7 @@
         if (modal) { modal.classList.remove('hidden'); modal.style.display = 'flex'; }
     };
 
-    window.speakActiveSavedStoryWord = function () {
-        const state = window.StoryReaderState, item = activeSavedWordKey && state.extraVocabularyItems ? state.extraVocabularyItems[activeSavedWordKey] : null;
-        if (!item || !('speechSynthesis' in window)) return;
-        try { window.speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(item.term); u.lang = 'en-US'; window.speechSynthesis.speak(u); } catch (e) {}
-    };
+    window.speakActiveSavedStoryWord = () => { const st = window.StoryReaderState, it = activeSavedWordKey && st.extraVocabularyItems ? st.extraVocabularyItems[activeSavedWordKey] : null; if (it) speakEn(it.term, 0.95); };
 
     window.removeStorySavedWord = function () {
         if (!activeSavedWordKey) return;
@@ -329,7 +326,7 @@
             delete state.extraVocabularyItems[activeSavedWordKey]; delete state.wordClassifications[item.term];
             const currentPart = (state.currentStory.parts || [])[state.currentPartIndex];
             if (currentPart && currentPart.targetWords) currentPart.targetWords = currentPart.targetWords.filter(w => w.term.toLowerCase() !== activeSavedWordKey);
-            if (typeof showDictToast === 'function') showDictToast(`🗑️ Đã bỏ chọn từ "${item.term}"`);
+            if (typeof showDictToast === 'function') showDictToast(`Đã bỏ chọn từ "${item.term}"`);
         }
         window.closeStorySavedWordActionModal(); window.StoryReaderUI.renderTargetWordCard();
     };
