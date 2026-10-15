@@ -79,9 +79,8 @@
             if (swipeState) swipeState.blockedReason = null;
             window.StoryReaderState.phraseDraftTokens = bridged;
             if (window.StoryReaderUI) window.StoryReaderUI.refreshParagraphHighlights();
-            const isTargetSpan = swipeState && swipeState.lastSpan && swipeState.lastSpan.getAttribute('data-is-target') === '1';
             const shownWord = crossedSentence ? (targetBounds.first > anchorLast ? bridged[bridged.length - 1].value : bridged[0].value) : fallbackWord;
-            updateFingerLoupe(clientX, clientY, shownWord, crossedSentence ? "Đã chọn tới cuối câu • Thả ra để tra" : (isTargetSpan ? "Từ mục tiêu • Thả ra để gộp tra câu/cụm" : `Đang chọn ${bridged.length} từ • Thả ra để tra`), "", true);
+            updateFingerLoupe(clientX, clientY, shownWord, "", "", true);
             return true;
         }
         if (swipeState) { swipeState.blockedReason = 'cross_sentence'; swipeState.targetSentenceIdx = tSent; }
@@ -107,7 +106,7 @@
             swipeState = { pointerId: e.pointerId, startX: e.clientX, startY: e.clientY, downAt: Date.now(), anchorFirst, anchorLast, lastFirst: bounds.first, lastLast: bounds.last, lastSpan: sp, lastWord: wordText, sentenceIdx: sIdx, targetSentenceIdx: tappedSentIdx, isSwiping: false, isPhraseMode: dialogOpen, blockedReason: null };
             clearAimHighlights();
             if (dialogOpen) { setSwipeVisualClasses(true); playTick(); applyPhraseBridgePreview(anchorFirst, anchorLast, bounds, sIdx, e.clientX, e.clientY, wordText); }
-            else { sp.classList.add('finger-aim-active'); updateFingerLoupe(e.clientX, e.clientY, wordText, "Thả ra để tra từ", "", false); }
+            else { sp.classList.add('finger-aim-active'); updateFingerLoupe(e.clientX, e.clientY, wordText, "", "", false); }
         });
 
         window.addEventListener('pointermove', (e) => {
@@ -120,7 +119,7 @@
             if (!swipeState.isSwiping) {
                 if (b.first === swipeState.lastFirst && b.last === swipeState.lastLast) {
                     if (swipeState.isPhraseMode) applyPhraseBridgePreview(swipeState.anchorFirst, swipeState.anchorLast, b, swipeState.sentenceIdx, e.clientX, e.clientY, wordText);
-                    else updateFingerLoupe(e.clientX, e.clientY, wordText, "Thả ra để tra từ", "", false);
+                    else updateFingerLoupe(e.clientX, e.clientY, wordText, "", "", false);
                     return;
                 }
                 swipeState.isSwiping = true; setSwipeVisualClasses(true);
@@ -130,7 +129,7 @@
             if (movedToken) { swipeState.lastFirst = b.first; swipeState.lastLast = b.last; swipeState.lastSpan = sp; swipeState.lastWord = wordText; playTick(); }
             if (!swipeState.isPhraseMode) {
                 if (movedToken) { clearAimHighlights(); sp.classList.add('finger-aim-active'); }
-                updateFingerLoupe(e.clientX, e.clientY, wordText, "Thả ra để tra từ", "", false); return;
+                updateFingerLoupe(e.clientX, e.clientY, wordText, "", "", false); return;
             }
             applyPhraseBridgePreview(swipeState.anchorFirst, swipeState.anchorLast, b, swipeState.sentenceIdx, e.clientX, e.clientY, wordText);
         }, { passive: false });
