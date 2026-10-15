@@ -83,15 +83,6 @@
 .story-hero-btn:active { transform: scale(0.92); }
 .story-hero-btn svg { color: var(--m3-on-surface) !important; }
 
-.story-header-title-pill {
-    pointer-events: auto; max-width: 225px; height: 34px; padding: 0 14px;
-    border-radius: 9999px; background: var(--m3-surface-container-high);
-    border: 1px solid var(--m3-outline-variant);
-    display: flex; align-items: center; gap: 6px;
-    color: var(--m3-on-surface); font-size: 12px; font-weight: 800;
-}
-.story-header-book-dot { width: 6px; height: 6px; border-radius: 9999px; background: var(--m3-amber-glow); flex-shrink: 0; }
-
 /* Hero Image Frame (Placed cleanly below Top Tabbar — Zero Overlap) */
 .story-hero-frame {
     position: relative; width: 100%;

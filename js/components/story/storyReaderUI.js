@@ -15,9 +15,6 @@
             const currentPart = parts[state.currentPartIndex] || parts[0];
             const words = currentPart.targetWords || [];
 
-            const bookHeaderTitle = document.getElementById('storyBookHeaderTitle');
-            if (bookHeaderTitle) bookHeaderTitle.textContent = state.currentStory.title || "Story to Card";
-
             const heroImg = document.getElementById('storyHeroImg');
             const heroPlaceholder = document.getElementById('storyHeroPlaceholder');
             if (heroImg) {
