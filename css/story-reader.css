@@ -43,19 +43,33 @@
     to { transform: rotateY(0deg) translateX(0); opacity: 1; }
 }
 
-/* Dedicated Top Tabbar (Placed above Hero Image — Zero Overlap) */
+/* Dedicated Top Tabbar (Placed above Hero Image — Auto-collapses after idle, reveals on scroll to top) */
 .story-hero-header {
-    position: sticky; top: 0; z-index: 30;
+    position: relative; z-index: 30;
     width: 100%; flex-shrink: 0;
+    max-height: 58px;
     padding: 10px 14px;
     background: var(--m3-screen-bg);
     border-bottom: 1px solid var(--m3-outline-variant);
     display: flex; align-items: center; justify-content: space-between; gap: 8px;
-    pointer-events: auto;
+    pointer-events: auto; overflow: hidden;
+    transition: max-height 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+                padding 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.26s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.26s ease;
 }
-.story-hero-header.story-header-auto-hidden,
+.story-hero-header.story-header-auto-hidden {
+    max-height: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    opacity: 0 !important;
+    border-bottom-color: transparent !important;
+    transform: translateY(-14px) !important;
+    pointer-events: none !important;
+}
 .story-hero-header.story-header-auto-hidden * {
-    opacity: 1; transform: none; pointer-events: auto !important;
+    pointer-events: none !important;
 }
 
 .story-hero-btn {

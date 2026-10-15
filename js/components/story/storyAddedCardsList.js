@@ -1,14 +1,6 @@
 /**
- * ==========================================================================
- * 🗂️ STORY ADDED FLASHCARDS COUNTER & 2-SIDED FLIPPABLE FLASHCARD LIST
- * Ported 1:1 from Android:
- * - FlippableFlashcardView.kt (2-stage 150ms/300ms 3D Y-rotation + Overshoot)
- * - ImageTextManualSaveViews.kt (saveLessonFlashcardView, Front & Back faces)
- * - MainActivityLessonFlashcards.kt (highlightBracketedFlashcardTerm, Tabs)
- * Separated according to SRP (< 350 lines/file rule)
- * ==========================================================================
+ * 🗂️ STORY ADDED FLASHCARDS COUNTER & 2-SIDED FLIPPABLE FLASHCARD LIST (< 350 lines SRP)
  */
-
 (function (window) {
     'use strict';
 
@@ -135,10 +127,11 @@
         triggerFlashcardCounterBumpAnimation();
     };
 
-    function scheduleHeroHeaderAutoHide(delayMs = 1800) {
+    function scheduleHeroHeaderAutoHide(delayMs = 2200) {
         if (heroHudTimer) clearTimeout(heroHudTimer);
         heroHudTimer = setTimeout(() => {
-            const state = window.StoryReaderState || {}, actionPill = document.getElementById('storyActionPill');
+            const state = window.StoryReaderState || {}, header = document.getElementById('storyHeroHeader'), actionPill = document.getElementById('storyActionPill');
+            if (header) header.classList.add('story-header-auto-hidden');
             if (actionPill && !state.isAudioPlaying) actionPill.classList.add('story-header-auto-hidden');
         }, delayMs);
     }
@@ -297,7 +290,7 @@
         const bookShell = document.getElementById('storyBookShell');
         if (bookShell && !bookShell.__hudScrollBound) {
             bookShell.__hudScrollBound = true;
-            let lastScrollY = 0;
+            let lastScrollY = 0, touchStartY = 0;
             bookShell.addEventListener('scroll', () => {
                 const curY = bookShell.scrollTop, heroFrame = document.getElementById('storyHeroFrame');
                 if (heroFrame) heroFrame.style.setProperty('--hero-parallax', `${Math.min(28, Math.max(0, curY * 0.18)).toFixed(1)}px`);
@@ -305,15 +298,20 @@
                 if (curY > 18) {
                     if (header) header.classList.add('story-header-auto-hidden');
                     if (actionPill && !(window.StoryReaderState && window.StoryReaderState.isAudioPlaying)) actionPill.classList.add('story-header-auto-hidden');
-                } else window.revealStoryHeroHeaderTemporarily();
+                } else if (curY <= 18 && curY < lastScrollY) {
+                    window.revealStoryHeroHeaderTemporarily();
+                }
                 if (bottomNav && !(window.StoryReaderState && window.StoryReaderState.isTargetCardExpanded)) {
                     const isScrollingDown = curY > lastScrollY + 6 && curY > 30, nearBottom = (bookShell.scrollHeight - curY - bookShell.clientHeight) < 80;
                     bottomNav.classList.toggle('story-bottom-nav-hidden', isScrollingDown && !nearBottom);
                 }
                 lastScrollY = curY;
             }, { passive: true });
+            bookShell.addEventListener('wheel', (e) => { if (e.deltaY < -4 && bookShell.scrollTop <= 18) window.revealStoryHeroHeaderTemporarily(); }, { passive: true });
+            bookShell.addEventListener('touchstart', (e) => { if (e.touches && e.touches[0]) touchStartY = e.touches[0].clientY; }, { passive: true });
+            bookShell.addEventListener('touchmove', (e) => { if (bookShell.scrollTop <= 18 && e.touches && e.touches[0] && (e.touches[0].clientY - touchStartY) > 16) window.revealStoryHeroHeaderTemporarily(); }, { passive: true });
         }
-        scheduleHeroHeaderAutoHide(1200);
+        scheduleHeroHeaderAutoHide(2200);
         const sheetList = document.getElementById('storyAddedCardsSheetList'), sheetSubtitle = document.getElementById('storyAddedCardsSheetSubtitle'), sheetReviewBtn = document.getElementById('storyAddedCardsReviewNowBtn');
         if (sheetSubtitle) sheetSubtitle.textContent = hasCards ? `Đã thu thập ${cards.length} thẻ Flashcard 2 mặt • Chạm vào thẻ để lật` : `Chưa có thẻ nào được thêm. Hãy bấm "+ Lưu từ" khi tra để tạo thẻ 2 mặt!`;
         if (sheetReviewBtn) { sheetReviewBtn.style.display = hasCards ? 'flex' : 'none'; sheetReviewBtn.textContent = `Ôn tập ngay ${cards.length} thẻ Flashcard`; }
