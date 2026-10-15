@@ -271,25 +271,27 @@
             const total = parts.length || 1;
             const currentPart = parts[state.currentPartIndex] || parts[0];
             const words = (currentPart && currentPart.targetWords) || [];
-
-            const progressLabel = document.getElementById('storyProgressLabel');
-            const progressFill = document.getElementById('storyProgressFill');
             const unclassifiedCount = words.filter(w => state.wordClassifications[w.term] === undefined).length;
-            const isPartDone = unclassifiedCount === 0;
-
-            if (progressLabel) {
-                progressLabel.textContent = isPartDone
-                    ? `ĐOẠN ${state.currentPartIndex + 1} / ${total} ✓`
-                    : `ĐOẠN ${state.currentPartIndex + 1} / ${total}`;
-                progressLabel.classList.toggle('is-completed', isPartDone);
+            const stepper = document.getElementById('storyProgressStepper');
+            if (stepper) {
+                const checkSvg = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+                stepper.innerHTML = parts.map((p, idx) => {
+                    const pWords = p.targetWords || [];
+                    const pDone = pWords.length > 0 && pWords.every(w => state.wordClassifications[w.term] !== undefined);
+                    const conn = idx < total - 1 ? `<span class="story-step-connector${idx < state.currentPartIndex ? ' is-done' : ''}"></span>` : '';
+                    if (idx === state.currentPartIndex) {
+                        const icon = pDone ? checkSvg : `<span class="story-step-node-dot"></span>`;
+                        return `<button type="button" class="story-step-node is-active" onclick="storyReaderGoToPart(${idx})">${icon}<span class="story-step-node-text">Phần ${idx + 1}</span></button>${conn}`;
+                    }
+                    const cls = (idx < state.currentPartIndex || pDone) ? 'is-completed' : 'is-upcoming';
+                    const label = (idx < state.currentPartIndex || pDone) ? checkSvg : (idx + 1);
+                    return `<button type="button" class="story-step-node ${cls}" onclick="storyReaderGoToPart(${idx})" title="Phần ${idx + 1}">${label}</button>${conn}`;
+                }).join('');
             }
-            if (progressFill) progressFill.style.width = `${((state.currentPartIndex + 1) / total) * 100}%`;
-
             const bottomNav = document.getElementById('storyBottomNav');
             const prevBtn = document.getElementById('storyNavPrevBtn');
             const nextBtn = document.getElementById('storyNavNextBtn');
             const nextLabel = document.getElementById('storyNavNextLabel');
-
             if (bottomNav) {
                 const hideBottomNav = Boolean(state.isTargetCardExpanded || state.activePopupWord || (state.phraseDraftTokens && state.phraseDraftTokens.length > 0));
                 bottomNav.classList.toggle('story-bottom-nav-hidden', hideBottomNav);

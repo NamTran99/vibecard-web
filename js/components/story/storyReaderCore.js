@@ -253,6 +253,30 @@
         }
     };
 
+    window.storyReaderGoToPart = function (targetIdx) {
+        const state = window.StoryReaderState;
+        const parts = (state && state.currentStory && state.currentStory.parts) || [];
+        if (!state || state.isFlipping || targetIdx < 0 || targetIdx >= parts.length || targetIdx === state.currentPartIndex) return;
+        for (let i = 0; i < targetIdx; i++) {
+            const pWords = (parts[i] && parts[i].targetWords) || [];
+            const missing = pWords.filter(w => state.wordClassifications[w.term] === undefined).length;
+            if (missing > 0) {
+                if (!state.isTargetCardExpanded) window.toggleStoryTargetCardExpand(true);
+                if (typeof showDictToast === 'function') showDictToast(`🔒 Hãy phân loại hết từ vựng ở Phần ${i + 1} trước khi mở Phần ${targetIdx + 1}!`);
+                return;
+            }
+        }
+        if (typeof window.dismissStoryWordActionPopup === 'function') window.dismissStoryWordActionPopup();
+        if (typeof window.cancelStoryPhraseDraft === 'function') window.cancelStoryPhraseDraft();
+        safeStopStoryAudio();
+        state.currentPartIndex = targetIdx;
+        state.currentWordIndex = 0;
+        state.isTargetCardExpanded = false;
+        window.StoryReaderUI.renderStoryUI();
+        const bookShell = document.getElementById('storyBookShell');
+        if (bookShell) bookShell.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
     /**
      * Bật / Tắt dịch nghĩa đoạn
      */
