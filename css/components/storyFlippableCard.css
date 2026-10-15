@@ -94,14 +94,30 @@
     opacity: 1; background: var(--m3-error-container); color: var(--m3-on-error-container); border-color: var(--m3-error); transform: scale(0.92);
 }
 
-/* 2. Minimalist Typography-First Front Hero */
+/* 2. Minimalist Front Hero with Word-Specific Illustration */
 .story-flip-hero-minimal {
-    display: flex; flex-direction: column; align-items: flex-start; gap: 8px;
-    padding: 4px 2px 14px 2px;
+    display: flex; align-items: center; gap: 13px;
+    padding: 2px 0 13px 0;
+}
+
+.story-flip-word-thumb {
+    width: 64px; height: 64px; border-radius: 16px;
+    overflow: hidden; flex-shrink: 0;
+    background: var(--m3-surface-container);
+    border: 1px solid var(--m3-outline-variant);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.story-flip-word-thumb img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+}
+
+.story-flip-hero-text {
+    flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px;
 }
 
 .story-flip-front-term {
-    font-size: 26px; font-weight: 900; line-height: 1.15; letter-spacing: -0.025em;
+    font-size: 24px; font-weight: 900; line-height: 1.15; letter-spacing: -0.025em;
     color: var(--m3-on-surface); word-break: break-word;
 }
 

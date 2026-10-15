@@ -15,32 +15,45 @@
     let bumpTimer = null, heroHudTimer = null;
     const cardFlipStates = {}; // key -> { showingBack, flipInProgress, activeTab, showExTr }
 
-    const POS_VI_MAP = {
-        VERB: 'Động từ', NOUN: 'Danh từ', ADJ: 'Tính từ', ADJECTIVE: 'Tính từ',
-        ADV: 'Trạng từ', ADVERB: 'Trạng từ', PHRASE: 'Cụm từ', 'CỤM TỪ': 'Cụm từ',
-        'TỪ VỰNG': 'Từ vựng', PREPOSITION: 'Giới từ', ARTICLE: 'Mạo từ', 'MẠO TỪ XÁC ĐỊNH': 'Mạo từ', 'MẠO TỪ BẤT ĐỊNH': 'Mạo từ'
-    };
-
+    const POS_VI_MAP = { VERB: 'Động từ', NOUN: 'Danh từ', ADJ: 'Tính từ', ADJECTIVE: 'Tính từ', ADV: 'Trạng từ', ADVERB: 'Trạng từ', PHRASE: 'Cụm từ', 'CỤM TỪ': 'Cụm từ', 'TỪ VỰNG': 'Từ vựng', PREPOSITION: 'Giới từ', ARTICLE: 'Mạo từ', 'MẠO TỪ XÁC ĐỊNH': 'Mạo từ', 'MẠO TỪ BẤT ĐỊNH': 'Mạo từ' };
     const DEFAULT_SYNONYMS = {
-        'beautiful morning': ['bright dawn', 'lovely daybreak', 'sunny morning'],
-        'braked abruptly': ['stopped suddenly', 'halted sharply', 'slammed the brakes'],
-        'calm smile': ['serene grin', 'gentle smile', 'peaceful expression'],
-        'leisurely': ['unhurriedly', 'calmly', 'at an easy pace'],
-        'deeply astonished': ['utterly amazed', 'stunned', 'shocked'],
-        'leaped forward': ['sprang ahead', 'bounded forward', 'dashed out'],
-        'measured stride': ['steady step', 'deliberate pace', 'even rhythm'],
-        'arrogant': ['conceited', 'haughty', 'overconfident'],
-        'profound slumber': ['deep sleep', 'heavy nap', 'sound rest']
+        'beautiful morning': ['bright dawn', 'lovely daybreak', 'sunny morning'], 'braked abruptly': ['stopped suddenly', 'halted sharply', 'slammed the brakes'],
+        'calm smile': ['serene grin', 'gentle smile', 'peaceful expression'], 'leisurely': ['unhurriedly', 'calmly', 'at an easy pace'],
+        'deeply astonished': ['utterly amazed', 'stunned', 'shocked'], 'leaped forward': ['sprang ahead', 'bounded forward', 'dashed out'],
+        'measured stride': ['steady step', 'deliberate pace', 'even rhythm'], 'arrogant': ['conceited', 'haughty', 'overconfident'], 'profound slumber': ['deep sleep', 'heavy nap', 'sound rest']
     };
+    const U_SUN = 'https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=320&q=80', U_HARE = 'https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?auto=format&fit=crop&w=320&q=80', U_OAK = 'https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=320&q=80';
+    const WORD_IMAGE_MAP = {
+        'beautiful morning': U_SUN, 'morning': U_SUN, 'sunlight': 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=320&q=80', 'warm sunlight': 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=320&q=80',
+        'valley': 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=320&q=80', 'birdsong': 'https://images.unsplash.com/photo-1444464666168-49d633b86797?auto=format&fit=crop&w=320&q=80',
+        'braked abruptly': U_HARE, 'hare': U_HARE, 'tortoise': 'https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?auto=format&fit=crop&w=320&q=80',
+        'calm smile': 'assets/cards/serendipity.jpg', 'leisurely': 'assets/cards/lumi_farmer_strawhat.jpg', 'deeply astonished': 'assets/cards/lumi_avatar_portrait.png',
+        'oak': U_OAK, 'tree': U_OAK, 'old oak tree': U_OAK, 'road': 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=320&q=80',
+        'leaped forward': 'https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=320&q=80', 'measured stride': 'assets/cards/meticulous.jpg',
+        'arrogant': 'assets/cards/billy_possum_cover.png', 'profound slumber': 'assets/lumi/lumi_sleeping.jpg', 'persevered': 'assets/cards/resilient.jpg', 'triumphant cheers': 'assets/cards/lumi_progress_celebration.jpg'
+    };
+    const liveWordImageCache = {}, FALLBACK_WORD_THUMBS = ['assets/cards/serendipity.jpg', 'assets/cards/meticulous.jpg', 'assets/cards/resilient.jpg', 'assets/cards/lumi_farmer_strawhat.jpg', 'assets/cards/lumi_rain_coffee_eaves.jpg'];
+
+    function resolveWordImage(w, partObj) {
+        if (w.imageUrl) return w.imageUrl;
+        const lower = String(w.term || '').trim().toLowerCase(), words = lower.split(/\s+/).filter(Boolean);
+        if (WORD_IMAGE_MAP[lower] || liveWordImageCache[lower]) return WORD_IMAGE_MAP[lower] || liveWordImageCache[lower];
+        for (const tok of words) { if (WORD_IMAGE_MAP[tok]) return WORD_IMAGE_MAP[tok]; }
+        const headWord = words.find(t => t.length > 3) || words[0] || lower;
+        if (headWord && !liveWordImageCache[lower]) {
+            liveWordImageCache[lower] = FALLBACK_WORD_THUMBS[Math.abs(lower.split('').reduce((a, c) => a + c.charCodeAt(0), 0)) % FALLBACK_WORD_THUMBS.length];
+            fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(headWord)}`).then(r => r.ok ? r.json() : null).then(d => {
+                if (d && d.thumbnail && d.thumbnail.source) { liveWordImageCache[lower] = d.thumbnail.source; if (w) w.imageUrl = d.thumbnail.source; renderStoryAddedCardsUI(); }
+            }).catch(() => {});
+        }
+        return liveWordImageCache[lower] || (partObj && partObj.imageUrl) || 'assets/cards/serendipity.jpg';
+    }
 
     const escapeHtml = (str) => String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-
     function findSentenceInText(text, term) {
         if (!text) return '';
-        const sentences = text.split(/(?<=[.!?])\s+/);
-        if (!term) return sentences[0] || '';
-        const lowerTerm = term.toLowerCase();
-        return sentences.find(s => s.toLowerCase().includes(lowerTerm)) || sentences[0] || '';
+        const sentences = text.split(/(?<=[.!?])\s+/), lowerTerm = (term || '').toLowerCase();
+        return (term ? sentences.find(s => s.toLowerCase().includes(lowerTerm)) : null) || sentences[0] || '';
     }
 
     function highlightTermInSentence(sentence, term) {
@@ -76,7 +89,7 @@
                 pos: w.pos || 'WORD', meaning: w.meaning || `Nghĩa của "${w.term}"`,
                 example: exampleEn, exampleTr: exampleVi, usageNote: usage, synonyms: synonyms,
                 partIndex: pIdx, partTitle: partObj.title || `Phần ${pIdx + 1}`,
-                imageUrl: partObj.imageUrl || 'assets/cards/lumi_farmer_strawhat.jpg',
+                imageUrl: resolveWordImage(w, partObj),
                 isExtraLookup: Boolean(isExtra || w.isExtraLookup)
             };
         }
@@ -143,10 +156,7 @@
         if (pillBtn) { pillBtn.classList.remove('badge-bump'); void pillBtn.offsetWidth; pillBtn.classList.add('badge-bump'); }
         if (pillPlusOne) { pillPlusOne.classList.remove('pop-active'); void pillPlusOne.offsetWidth; pillPlusOne.classList.add('pop-active'); }
         if (bumpTimer) clearTimeout(bumpTimer);
-        bumpTimer = setTimeout(() => {
-            if (pillBtn) pillBtn.classList.remove('badge-bump');
-            if (pillPlusOne) pillPlusOne.classList.remove('pop-active');
-        }, 900);
+        bumpTimer = setTimeout(() => { if (pillBtn) pillBtn.classList.remove('badge-bump'); if (pillPlusOne) pillPlusOne.classList.remove('pop-active'); }, 900);
     }
 
     const getCardState = (termKey) => cardFlipStates[termKey] || (cardFlipStates[termKey] = { showingBack: false, flipInProgress: false, activeTab: 'example', showExTr: true });
@@ -182,13 +192,18 @@
                 </div>
 
                 <div class="story-flip-hero-minimal">
-                    <div class="story-flip-front-term">${escapeHtml(card.term)}</div>
-                    <div class="story-flip-sub-row">
-                        <span class="story-flip-pos-chip">${escapeHtml(posLabel)}</span>
-                        <button type="button" onclick="event.stopPropagation(); speakAddedStoryCard('${encTerm}')" class="story-flip-audio-pill" title="Nghe phát âm">
-                            <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-                            <span>${hasIpa ? escapeHtml(card.phonetic) : 'Phát âm'}</span>
-                        </button>
+                    <div class="story-flip-word-thumb">
+                        <img src="${escapeHtml(card.imageUrl)}" alt="${escapeHtml(card.term)}" onerror="this.src='assets/cards/serendipity.jpg'" />
+                    </div>
+                    <div class="story-flip-hero-text">
+                        <div class="story-flip-front-term">${escapeHtml(card.term)}</div>
+                        <div class="story-flip-sub-row">
+                            <span class="story-flip-pos-chip">${escapeHtml(posLabel)}</span>
+                            <button type="button" onclick="event.stopPropagation(); speakAddedStoryCard('${encTerm}')" class="story-flip-audio-pill" title="Nghe phát âm">
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                                <span>${hasIpa ? escapeHtml(card.phonetic) : 'Phát âm'}</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -302,7 +317,7 @@
         scheduleHeroHeaderAutoHide(1200);
         const sheetList = document.getElementById('storyAddedCardsSheetList'), sheetSubtitle = document.getElementById('storyAddedCardsSheetSubtitle'), sheetReviewBtn = document.getElementById('storyAddedCardsReviewNowBtn');
         if (sheetSubtitle) sheetSubtitle.textContent = hasCards ? `Đã thu thập ${cards.length} thẻ Flashcard 2 mặt • Chạm vào thẻ để lật` : `Chưa có thẻ nào được thêm. Hãy bấm "+ Lưu từ" khi tra để tạo thẻ 2 mặt!`;
-        if (sheetReviewBtn) { sheetReviewBtn.style.display = hasCards ? 'flex' : 'none'; sheetReviewBtn.textContent = `Ôn tập ngay ${cards.length} thẻ Flashcard ✨`; }
+        if (sheetReviewBtn) { sheetReviewBtn.style.display = hasCards ? 'flex' : 'none'; sheetReviewBtn.textContent = `Ôn tập ngay ${cards.length} thẻ Flashcard`; }
         if (sheetList) sheetList.innerHTML = hasCards ? cards.map((c, i) => buildAddedCardItemHTML(c, i, cards.length, c.term.toLowerCase() === latestKey)).join('') : `<div class="text-center py-8 px-4 text-[var(--m3-on-surface-variant)] text-[13.5px]">Chưa có thẻ Flashcard nào trong danh sách.</div>`;
     }
     window.renderStoryAddedCardsUI = renderStoryAddedCardsUI;

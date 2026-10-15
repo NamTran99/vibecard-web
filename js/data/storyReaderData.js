@@ -22,7 +22,8 @@
                         meaning: "Buổi sáng tuyệt đẹp",
                         definition: "A lovely, peaceful and bright start of the day.",
                         example: "On a beautiful morning, the valley was filled with birdsong.",
-                        exampleTr: "Vào một buổi sáng tuyệt đẹp, thung lũng ngập tràn tiếng chim ca."
+                        exampleTr: "Vào một buổi sáng tuyệt đẹp, thung lũng ngập tràn tiếng chim ca.",
+                        imageUrl: "https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=320&q=80"
                     },
                     {
                         term: "braked abruptly",
@@ -31,7 +32,8 @@
                         meaning: "Phanh gấp, dừng đột ngột",
                         definition: "Stopped movement very suddenly and sharply.",
                         example: "Hare dashed past and intentionally braked abruptly.",
-                        exampleTr: "Thỏ lao vút qua rồi cố tình phanh gấp lại."
+                        exampleTr: "Thỏ lao vút qua rồi cố tình phanh gấp lại.",
+                        imageUrl: "https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?auto=format&fit=crop&w=320&q=80"
                     },
                     {
                         term: "calm smile",
@@ -40,7 +42,8 @@
                         meaning: "Nụ cười điềm tĩnh",
                         definition: "A tranquil and confident facial expression.",
                         example: "Tortoise took no offense, merely raising his head with a calm smile.",
-                        exampleTr: "Rùa không giận, chỉ khẽ ngẩng đầu với nụ cười điềm tĩnh."
+                        exampleTr: "Rùa không giận, chỉ khẽ ngẩng đầu với nụ cười điềm tĩnh.",
+                        imageUrl: "assets/cards/serendipity.jpg"
                     },
                     {
                         term: "leisurely",
@@ -49,7 +52,8 @@
                         meaning: "Thong thả, ung dung",
                         definition: "Acting in an unhurried, relaxed and peaceful manner.",
                         example: "He leisurely proposed that they race to the old oak tree.",
-                        exampleTr: "Chú thong thả đề nghị cả hai cùng chạy đua."
+                        exampleTr: "Chú thong thả đề nghị cả hai cùng chạy đua.",
+                        imageUrl: "assets/cards/lumi_farmer_strawhat.jpg"
                     },
                     {
                         term: "deeply astonished",
@@ -58,7 +62,8 @@
                         meaning: "Vô cùng sửng sốt, kinh ngạc",
                         definition: "Extremely surprised and utterly amazed.",
                         example: "The little woodland animals were deeply astonished by the challenge.",
-                        exampleTr: "Muông thú trong rừng vô cùng sửng sốt trước lời thách đấu."
+                        exampleTr: "Muông thú trong rừng vô cùng sửng sốt trước lời thách đấu.",
+                        imageUrl: "assets/cards/lumi_avatar_portrait.png"
                     }
                 ]
             },
@@ -77,7 +82,8 @@
                         meaning: "Lao vụt về phía trước",
                         definition: "Jumped or bounded forward with high speed.",
                         example: "Hare leaped forward like an arrow released from a bow.",
-                        exampleTr: "Thỏ phóng vụt đi như một mũi tên rời cung."
+                        exampleTr: "Thỏ phóng vụt đi như một mũi tên rời cung.",
+                        imageUrl: "https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=320&q=80"
                     },
                     {
                         term: "measured stride",
@@ -86,7 +92,8 @@
                         meaning: "Bước chân vững vàng, có tính toán",
                         definition: "A steady, deliberate and controlled step.",
                         example: "Tortoise took his very first heavy, measured stride.",
-                        exampleTr: "Rùa cất bước chân nặng nhọc nhưng vô cùng vững chãi."
+                        exampleTr: "Rùa cất bước chân nặng nhọc nhưng vô cùng vững chãi.",
+                        imageUrl: "assets/cards/meticulous.jpg"
                     }
                 ]
             },
@@ -105,7 +112,8 @@
                         meaning: "Kiêu ngạo, tự phụ",
                         definition: "Having an exaggerated sense of one's own abilities.",
                         example: "Feeling overwhelmingly arrogant, Hare lay down to sleep.",
-                        exampleTr: "Cảm thấy kiêu ngạo tột cùng, Thỏ nằm xuống ngủ."
+                        exampleTr: "Cảm thấy kiêu ngạo tột cùng, Thỏ nằm xuống ngủ.",
+                        imageUrl: "assets/cards/billy_possum_cover.png"
                     },
                     {
                         term: "profound slumber",
@@ -114,7 +122,8 @@
                         meaning: "Giấc ngủ say sưa, mê mệt",
                         definition: "A very deep and peaceful sleep.",
                         example: "The gentle breeze lulled him into a profound slumber.",
-                        exampleTr: "Làn gió nhẹ ru nó vào giấc ngủ say sưa."
+                        exampleTr: "Làn gió nhẹ ru nó vào giấc ngủ say sưa.",
+                        imageUrl: "assets/lumi/lumi_sleeping.jpg"
                     }
                 ]
             },
@@ -133,7 +142,8 @@
                         meaning: "Kiên trì, bền chí vượt khó",
                         definition: "Continued in a course of action even in the face of difficulty.",
                         example: "Tortoise persevered without a single moment of hesitation.",
-                        exampleTr: "Rùa bền bỉ tiến lên không một chút ngần ngại."
+                        exampleTr: "Rùa bền bỉ tiến lên không một chút ngần ngại.",
+                        imageUrl: "assets/cards/resilient.jpg"
                     },
                     {
                         term: "triumphant cheers",
@@ -142,7 +152,8 @@
                         meaning: "Tiếng reo hò chiến thắng",
                         definition: "Joyful shouts celebrating a glorious victory.",
                         example: "The triumphant cheers of the crowd echoed through the valley.",
-                        exampleTr: "Tiếng reo hò chiến thắng vang vọng khắp thung lũng."
+                        exampleTr: "Tiếng reo hò chiến thắng vang vọng khắp thung lũng.",
+                        imageUrl: "assets/cards/lumi_progress_celebration.jpg"
                     }
                 ]
             }
