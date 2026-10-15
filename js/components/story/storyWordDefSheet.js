@@ -163,45 +163,42 @@
         setEl('storyDefHeaderPos', session.pos || "TỪ VỰNG");
         const cleanIpa = (session.ipa && session.ipa !== '/.../') ? session.ipa : (session.term.includes(' ') ? 'Nghe cụm' : 'Phát âm');
         setEl('storyDefSheetIpa', cleanIpa);
+        setEl('storyDefSheetContextVi', session.sentenceVi || "");
+        setEl('storyDefSheetUsageText', session.explanation || "");
 
-        const clean = (session.term || "").trim(), escaped = clean.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        const reg = new RegExp(clean.includes(' ') ? `(${escaped})` : `(\\b${escaped}\\b)`, 'gi');
-        const highlightedEn = (session.sentenceEn || "").replace(reg, '<mark class="story-def-ctx-hl">$1</mark>');
+        const ctxEnEl = document.getElementById('storyDefSheetContextEn');
+        if (ctxEnEl) {
+            const clean = (session.term || "").trim(), escaped = clean.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const reg = new RegExp(clean.includes(' ') ? `(${escaped})` : `(\\b${escaped}\\b)`, 'gi');
+            ctxEnEl.innerHTML = (session.sentenceEn || "").replace(reg, '<mark class="story-def-ctx-hl">$1</mark>');
+        }
 
         const lumiCard = document.getElementById('storyDefLumiCard');
         if (lumiCard) {
             const isSelected = session.selectedOptionKey === 'lumi';
-            lumiCard.className = `story-def-choice-card is-lumi-card ${isSelected ? 'selected' : ''}`;
+            lumiCard.className = `story-def-choice-card is-lumi-card mb-2 ${isSelected ? 'selected' : ''}`;
             lumiCard.innerHTML = `
                 <div class="story-def-card-top">
                     <div class="story-def-badge-group">
-                        <span class="story-def-lumi-pill">✦ NGHĨA TRONG MẠCH TRUYỆN</span>
+                        <span class="story-def-lumi-pill">✦ LUMI GỢI Ý THEO NGỮ CẢNH</span>
+                        <span class="story-def-pos-tag">${session.pos}</span>
                     </div>
                     <div class="story-def-radio-dot ${isSelected ? 'checked' : ''}">✓</div>
                 </div>
-                <div class="story-def-meaning-main">${session.meaning}</div>
-                <div class="story-def-lumi-note">💡 ${session.explanation}</div>
-                <div class="story-def-embedded-ctx" onclick="event.stopPropagation()">
-                    <div class="story-def-embedded-ctx-head">
-                        <span>📖 NGỮ CẢNH CÂU TRUYỆN</span>
-                        <button type="button" onclick="speakStoryDefContextSentence()" class="story-def-ctx-tts-btn">🔊 Nghe câu</button>
-                    </div>
-                    <div class="story-def-ctx-en">${highlightedEn}</div>
-                    ${session.sentenceVi ? `<div class="story-def-ctx-vi">${session.sentenceVi}</div>` : ''}
-                </div>`;
+                <div class="story-def-meaning-main">${session.meaning}</div>`;
         }
 
         const dictList = document.getElementById('storyDefDictList'), dictCount = document.getElementById('storyDefDictCount');
         if (dictList) {
             const items = session.dictMeanings || [];
-            if (dictCount) dictCount.textContent = items.length > 0 ? `${items.length} nghĩa mở rộng` : `Tùy chỉnh`;
+            if (dictCount) dictCount.textContent = `${items.length + 2} lựa chọn`;
             const dictCardsHtml = items.map((d, idx) => {
                 const key = `dict_${idx}`, isSelected = session.selectedOptionKey === key;
                 return `
                     <div onclick="selectStoryWordDefinitionOption('${key}')" class="story-def-choice-card ${isSelected ? 'selected' : ''}">
                         <div class="story-def-card-top">
                             <div class="story-def-badge-group">
-                                <span class="story-def-sense-num">#${idx + 1}</span>
+                                <span class="story-def-sense-num">TỪ ĐIỂN #${idx + 1}</span>
                                 <span class="story-def-pos-tag is-dict">${d.pos || session.pos}</span>
                             </div>
                             <div class="story-def-radio-dot ${isSelected ? 'checked' : ''}">✓</div>

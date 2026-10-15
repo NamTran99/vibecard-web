@@ -2881,19 +2881,39 @@
                     </button>
                 </div>
 
-                <!-- 2. Scrollable Body: Unified Contextual Hero Card -> Dictionary Senses -->
+                <!-- 2. Scrollable Body: Top Context & Usage Card -> Meaning Selection List -->
                 <div class="story-word-def-scroll">
-                    <!-- Primary: Unified Contextual Meaning + Story Quote Card -->
-                    <div id="storyDefLumiCard" onclick="selectStoryWordDefinitionOption('lumi')" class="story-def-choice-card is-lumi-card selected"></div>
-
-                    <!-- Secondary: Alternative Dictionary Senses -->
-                    <div id="storyDefDictSection" class="mt-3.5">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="story-def-section-header !mb-0">📚 NGHĨA TỪ ĐIỂN & CÁCH DÙNG KHÁC</span>
-                            <span id="storyDefDictCount" class="story-def-count-pill">2 nghĩa</span>
+                    <!-- Top Card: Story Sentence + Usage Explanation in Sentence -->
+                    <div class="story-def-context-card">
+                        <div class="story-def-context-head">
+                            <span class="story-def-section-header !mb-0">📖 NGỮ CẢNH & CÁCH DÙNG TRONG CÂU</span>
+                            <button type="button" onclick="speakStoryDefContextSentence()" class="story-def-ctx-tts-btn">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                                    <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                                </svg>
+                                <span>Nghe câu</span>
+                            </button>
                         </div>
-                        <div id="storyDefDictList" class="flex flex-col gap-2"></div>
+                        <div id="storyDefSheetContextEn" class="story-def-ctx-en"></div>
+                        <div id="storyDefSheetContextVi" class="story-def-ctx-vi"></div>
+                        <div class="story-def-usage-note">
+                            <span class="story-def-usage-badge">💡 Cách dùng trong câu</span>
+                            <span id="storyDefSheetUsageText" class="story-def-usage-body"></span>
+                        </div>
                     </div>
+
+                    <!-- Meaning Selection Section -->
+                    <div class="flex items-center justify-between mt-4 mb-2">
+                        <span class="story-def-section-header !mb-0">🎯 CHỌN NGHĨA ĐỂ LƯU THẺ</span>
+                        <span id="storyDefDictCount" class="story-def-count-pill">3 lựa chọn</span>
+                    </div>
+
+                    <!-- Primary Lumi Recommended Meaning -->
+                    <div id="storyDefLumiCard" onclick="selectStoryWordDefinitionOption('lumi')" class="story-def-choice-card is-lumi-card selected mb-2"></div>
+
+                    <!-- Alternative Dictionary Meanings & Custom Input -->
+                    <div id="storyDefDictList" class="flex flex-col gap-2"></div>
                 </div>
 
                 <!-- 3. Bottom Save CTA with Selected Meaning Preview -->
