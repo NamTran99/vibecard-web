@@ -274,20 +274,19 @@
             const unclassifiedCount = words.filter(w => state.wordClassifications[w.term] === undefined).length;
             const stepper = document.getElementById('storyProgressStepper');
             if (stepper) {
-                const checkSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
-                stepper.innerHTML = parts.map((p, idx) => {
+                const curIdx = state.currentPartIndex;
+                const numStr = String(curIdx + 1).padStart(2, '0');
+                const curTitle = (currentPart && currentPart.title) || `Phần ${curIdx + 1}`;
+                const isCurDone = words.length > 0 && unclassifiedCount === 0;
+                const checkBadge = isCurDone ? `<span class="story-editorial-done-check" title="Đã hoàn thành từ vựng chương này"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>` : '';
+                const dotsHtml = parts.map((p, idx) => {
                     const pWords = p.targetWords || [];
                     const pDone = pWords.length > 0 && pWords.every(w => state.wordClassifications[w.term] !== undefined);
-                    const thumb = (p.imageUrl || 'assets/cards/lumi_farmer_strawhat.jpg').replace(/classics\/(lesson_003_part_0[1-4]|lesson_006_part_0[1-5]|lesson_009_part_0[1-3])\.jpg$/, 'codex-realistic-parts/$1.webp');
+                    const cls = idx === curIdx ? 'is-active' : ((idx < curIdx || pDone) ? 'is-completed' : 'is-upcoming');
                     const pTitle = p.title || `Phần ${idx + 1}`;
-                    if (idx === state.currentPartIndex) {
-                        const dots = pWords.map(w => `<span class="story-word-dot${state.wordClassifications[w.term] !== undefined ? ' is-lit' : ''}"></span>`).join('');
-                        const badge = pDone ? `<span class="story-scene-done-badge">${checkSvg}</span>` : '';
-                        return `<button type="button" class="story-scene-node is-active${pDone ? ' is-all-words-done' : ''}" onclick="storyReaderGoToPart(${idx})"><span class="story-scene-thumb-wrap"><img src="${thumb}" alt="" class="story-scene-thumb" />${badge}</span><span class="story-scene-meta"><span class="story-scene-title">${pTitle}</span><span class="story-scene-dots">${dots}</span></span></button>`;
-                    }
-                    const isDone = idx < state.currentPartIndex || pDone;
-                    return `<button type="button" class="story-scene-node ${isDone ? 'is-completed' : 'is-upcoming'}" onclick="storyReaderGoToPart(${idx})" title="${pTitle}"><img src="${thumb}" alt="" class="story-scene-thumb" /><span class="story-scene-overlay">${isDone ? checkSvg : (idx + 1)}</span></button>`;
+                    return `<button type="button" class="story-editorial-dot-btn ${cls}" onclick="storyReaderGoToPart(${idx})" title="${String(idx + 1).padStart(2, '0')} · ${pTitle}"><span class="story-editorial-dot"></span></button>`;
                 }).join('');
+                stepper.innerHTML = `<div class="story-editorial-title-row"><span class="story-editorial-num">${numStr}</span><span class="story-editorial-sep">·</span><span class="story-editorial-name">${curTitle}</span>${checkBadge}</div><div class="story-editorial-dots" role="tablist">${dotsHtml}</div>`;
             }
             const bottomNav = document.getElementById('storyBottomNav');
             const prevBtn = document.getElementById('storyNavPrevBtn');

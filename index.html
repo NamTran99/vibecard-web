@@ -58,9 +58,9 @@
     <link rel="stylesheet" href="css/create-circle.css?v=20261012_m3_audit_clean">
     <link rel="stylesheet" href="css/lumi-wakeup.css?v=20261010_wakeup">
     <link rel="stylesheet" href="css/pronunciation-modal.css?v=20261012_v1">
-    <link rel="stylesheet" href="css/story-reader.css?v=20261015_m3_v40">
+    <link rel="stylesheet" href="css/story-reader.css?v=20261015_m3_v41">
     <link rel="stylesheet" href="css/components/storyTargetCard.css?v=20261015_m3_v37">
-    <link rel="stylesheet" href="css/components/storyWordLookup.css?v=20261015_m3_v37">
+    <link rel="stylesheet" href="css/components/storyWordLookup.css?v=20261015_m3_v41">
     <link rel="stylesheet" href="css/components/storyFlippableCard.css?v=20261015_m3_v34">
     <link rel="stylesheet" href="css/components/bottomNav.css?v=20261012_pill">
     <link rel="stylesheet" href="css/roadmap-mystery.css?v=20261013_mystery_v1">
@@ -2639,32 +2639,20 @@
 
                 <!-- Overlapping Literary Reading Sheet (Pure Distraction-Free Editorial Layout) -->
                 <div class="story-text-card">
-                    <!-- Interactive Visual Storyboard Header (Scene Thumbnails + Title + Word Mastery Dots + Tools) -->
+                    <!-- Editorial Chapter Bar (Apple Books Style: 01 · Title + Interactive Chapter Dots + Soft Tonal Tools) -->
                     <div class="story-progress-row">
-                        <div id="storyProgressStepper" class="story-progress-stepper" aria-label="Các cảnh của truyện">
-                            <button type="button" class="story-scene-node is-active" onclick="storyReaderGoToPart(0)">
-                                <span class="story-scene-thumb-wrap">
-                                    <img src="Cloud_Deploy/cloudflare_worker/admin/story-images/codex-realistic-parts/lesson_003_part_01.webp" alt="" class="story-scene-thumb" />
-                                </span>
-                                <span class="story-scene-meta">
-                                    <span class="story-scene-title">Mở đầu</span>
-                                    <span class="story-scene-dots">
-                                        <span class="story-word-dot"></span><span class="story-word-dot"></span><span class="story-word-dot"></span><span class="story-word-dot"></span><span class="story-word-dot"></span>
-                                    </span>
-                                </span>
-                            </button>
-                            <button type="button" class="story-scene-node is-upcoming" onclick="storyReaderGoToPart(1)" title="Xuất phát">
-                                <img src="Cloud_Deploy/cloudflare_worker/admin/story-images/codex-realistic-parts/lesson_003_part_02.webp" alt="" class="story-scene-thumb" />
-                                <span class="story-scene-overlay">2</span>
-                            </button>
-                            <button type="button" class="story-scene-node is-upcoming" onclick="storyReaderGoToPart(2)" title="Ngủ quên">
-                                <img src="Cloud_Deploy/cloudflare_worker/admin/story-images/codex-realistic-parts/lesson_003_part_03.webp" alt="" class="story-scene-thumb" />
-                                <span class="story-scene-overlay">3</span>
-                            </button>
-                            <button type="button" class="story-scene-node is-upcoming" onclick="storyReaderGoToPart(3)" title="Về đích">
-                                <img src="Cloud_Deploy/cloudflare_worker/admin/story-images/codex-realistic-parts/lesson_003_part_04.webp" alt="" class="story-scene-thumb" />
-                                <span class="story-scene-overlay">4</span>
-                            </button>
+                        <div id="storyProgressStepper" class="story-progress-stepper" aria-label="Chương truyện">
+                            <div class="story-editorial-title-row">
+                                <span class="story-editorial-num">01</span>
+                                <span class="story-editorial-sep">·</span>
+                                <span class="story-editorial-name">Mở đầu</span>
+                            </div>
+                            <div class="story-editorial-dots" role="tablist">
+                                <button type="button" class="story-editorial-dot-btn is-active" onclick="storyReaderGoToPart(0)" title="01 · Mở đầu"><span class="story-editorial-dot"></span></button>
+                                <button type="button" class="story-editorial-dot-btn is-upcoming" onclick="storyReaderGoToPart(1)" title="02 · Xuất phát"><span class="story-editorial-dot"></span></button>
+                                <button type="button" class="story-editorial-dot-btn is-upcoming" onclick="storyReaderGoToPart(2)" title="03 · Ngủ quên"><span class="story-editorial-dot"></span></button>
+                                <button type="button" class="story-editorial-dot-btn is-upcoming" onclick="storyReaderGoToPart(3)" title="04 · Về đích"><span class="story-editorial-dot"></span></button>
+                            </div>
                         </div>
                         <div class="story-inline-tools">
                             <button id="storySpeakerBtn" onclick="toggleStoryAudioPlayback()" class="story-inline-tool-btn" title="Nghe đọc đoạn truyện" aria-label="Nghe đọc đoạn truyện">
@@ -5263,7 +5251,7 @@
     <script src="js/data/storyReaderState.js?v=20261014_m3_v31"></script>
     <script src="js/data/storyLexiconData.js?v=20261014_m3_v31"></script>
     <script src="js/components/story/storyAddedCardsList.js?v=20261015_m3_v37"></script>
-    <script src="js/components/story/storyReaderUI.js?v=20261015_m3_v40"></script>
+    <script src="js/components/story/storyReaderUI.js?v=20261015_m3_v41"></script>
     <script src="js/components/story/storyTargetCard.js?v=20261014_m3_v31"></script>
     <script src="js/components/story/storyWordLookup.js?v=20261015_m3_v36"></script>
     <script src="js/components/story/storyWordDefSheet.js?v=20261015_m3_v38"></script>

@@ -281,10 +281,11 @@
     100% { opacity: 0; transform: translateX(-50%) translateY(-18px) scale(0.9); }
 }
 .story-added-cards-pill {
-    position: relative; overflow: visible !important; display: inline-flex; align-items: center; gap: 4px;
-    height: 26px; padding: 0 9px; border-radius: 9999px; background: var(--m3-primary-container);
-    border: 1px solid var(--m3-primary); color: var(--m3-on-primary-container); font-size: 11px; font-weight: 800; cursor: pointer; flex-shrink: 0;
+    position: relative; overflow: visible !important; display: inline-flex; align-items: center; gap: 5px;
+    height: 32px; padding: 0 11px; border-radius: 9999px; background: rgba(82, 102, 0, 0.11);
+    border: 1px solid rgba(82, 102, 0, 0.25); color: var(--m3-primary); font-size: 12px; font-weight: 800; cursor: pointer; flex-shrink: 0;
 }
+html:not(.light) .story-added-cards-pill { background: rgba(184, 209, 102, 0.14); border-color: rgba(184, 209, 102, 0.30); }
 .story-added-cards-count-badge { padding: 2px 8px; border-radius: 9999px; background: var(--m3-primary-container); color: var(--m3-on-primary-container); font-size: 10.5px; font-weight: 800; }
 .story-added-cards-list { display: flex; flex-direction: column; gap: 8px; }
 .story-added-card-item { padding: 11px 13px; border-radius: 16px; background: var(--m3-surface-container-high); border: 1px solid var(--m3-outline-variant); transition: all 0.2s ease; }
