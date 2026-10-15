@@ -2806,7 +2806,12 @@
                     <span id="storyActionPopupIpa" class="story-action-popup-ipa">/ɪnˈten.ʃən.əl.i/</span>
                 </div>
                 <div class="story-action-popup-head-actions">
-                    <button onclick="speakStoryPopupWord()" class="story-action-popup-tts" title="Nghe phát âm">🔊</button>
+                    <button onclick="speakStoryPopupWord()" class="story-action-popup-tts" title="Nghe phát âm">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                        </svg>
+                    </button>
                     <button onclick="dismissStoryWordActionPopup()" class="story-action-popup-close" title="Đóng">✕</button>
                 </div>
             </div>
@@ -2817,7 +2822,7 @@
                 <button id="storyActionBtnReset" onclick="resetStoryPhraseToSingleWord()" class="story-action-btn-phrase hidden" style="display: none;">1 từ</button>
                 <button id="storyActionBtnSave" onclick="quickSaveWordFromPopup()" class="story-action-btn-save">+ Lưu thẻ</button>
             </div>
-            <div id="storyActionPopupHint" class="story-action-popup-hint">💡 Chạm từ trong dải hoặc trên truyện để nối/cắt cụm</div>
+            <div id="storyActionPopupHint" class="story-action-popup-hint">Chạm từ trong dải hoặc trên truyện để nối/cắt cụm</div>
             <div id="storyActionPopupDivider" class="story-action-popup-divider"></div>
             <div id="storyActionPopupSentenceRow" class="story-action-popup-sentence-row">
                 <div id="storyActionPopupSentenceVi" class="story-action-popup-sentence">
@@ -2867,7 +2872,7 @@
                             <span id="storyDefHeaderPos" class="story-def-pos-tag">TRẠNG TỪ</span>
                             <button onclick="speakStoryLookupWord()" class="story-def-tts-pill" title="Phát âm từ">
                                 <span class="story-def-tts-icon">
-                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
                                         <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
                                         <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
                                     </svg>
@@ -2886,9 +2891,15 @@
                     <!-- Top Card: Story Sentence + Usage Explanation in Sentence -->
                     <div class="story-def-context-card">
                         <div class="story-def-context-head">
-                            <span class="story-def-section-header !mb-0">📖 NGỮ CẢNH & CÁCH DÙNG TRONG CÂU</span>
+                            <span class="story-def-section-header !mb-0">
+                                <svg class="story-def-line-icon is-olive" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                                </svg>
+                                <span>NGỮ CẢNH & CÁCH DÙNG TRONG CÂU</span>
+                            </span>
                             <button type="button" onclick="speakStoryDefContextSentence()" class="story-def-ctx-tts-btn">
-                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
                                     <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
                                     <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
                                 </svg>
@@ -2898,14 +2909,28 @@
                         <div id="storyDefSheetContextEn" class="story-def-ctx-en"></div>
                         <div id="storyDefSheetContextVi" class="story-def-ctx-vi"></div>
                         <div class="story-def-usage-note">
-                            <span class="story-def-usage-badge">💡 Cách dùng trong câu</span>
+                            <span class="story-def-usage-badge">
+                                <svg class="story-def-line-icon is-amber" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <path d="M9 18h6"/>
+                                    <path d="M10 22h4"/>
+                                    <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/>
+                                </svg>
+                                <span>Cách dùng trong câu</span>
+                            </span>
                             <span id="storyDefSheetUsageText" class="story-def-usage-body"></span>
                         </div>
                     </div>
 
                     <!-- Meaning Selection Section -->
                     <div class="flex items-center justify-between mt-4 mb-2">
-                        <span class="story-def-section-header !mb-0">🎯 CHỌN NGHĨA ĐỂ LƯU THẺ</span>
+                        <span class="story-def-section-header !mb-0">
+                            <svg class="story-def-line-icon is-olive" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>
+                                <path d="M8 7h6"/>
+                                <path d="M8 11h8"/>
+                            </svg>
+                            <span>NGHĨA TỪ ĐIỂN & LỰA CHỌN LƯU THẺ</span>
+                        </span>
                         <span id="storyDefDictCount" class="story-def-count-pill">3 lựa chọn</span>
                     </div>
 
@@ -2916,10 +2941,15 @@
                     <div id="storyDefDictList" class="flex flex-col gap-2"></div>
                 </div>
 
-                <!-- 3. Bottom Save CTA with Selected Meaning Preview -->
+                <!-- 3. Bottom Save CTA -->
                 <div class="story-def-footer-bar">
                     <button id="storyDefSaveBtn" onclick="saveStoryLookupWord()" class="story-def-save-btn">
-                        <span id="storyDefSaveBtnLabel">+ Lưu vào Flashcard</span>
+                        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+                            <line x1="12" y1="7" x2="12" y2="13"/>
+                            <line x1="9" y1="10" x2="15" y2="10"/>
+                        </svg>
+                        <span id="storyDefSaveBtnLabel">Lưu vào Flashcard</span>
                     </button>
                 </div>
             </div>

@@ -173,6 +173,10 @@
             ctxEnEl.innerHTML = (session.sentenceEn || "").replace(reg, '<mark class="story-def-ctx-hl">$1</mark>');
         }
 
+        const checkSvg = `<svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>`;
+        const sparkleSvg = `<svg class="story-def-line-icon is-amber" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 3l1.9 5.8a2 2 0 0 0 1.3 1.3L21 12l-5.8 1.9a2 2 0 0 0-1.3 1.3L12 21l-1.9-5.8a2 2 0 0 0-1.3-1.3L3 12l5.8-1.9a2 2 0 0 0 1.3-1.3L12 3z"/></svg>`;
+        const penSvg = `<svg class="story-def-line-icon is-olive" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>`;
+
         const lumiCard = document.getElementById('storyDefLumiCard');
         if (lumiCard) {
             const isSelected = session.selectedOptionKey === 'lumi';
@@ -180,10 +184,10 @@
             lumiCard.innerHTML = `
                 <div class="story-def-card-top">
                     <div class="story-def-badge-group">
-                        <span class="story-def-lumi-pill">✦ LUMI GỢI Ý THEO NGỮ CẢNH</span>
+                        <span class="story-def-lumi-pill">${sparkleSvg}<span>NGHĨA TRONG MẠCH TRUYỆN</span></span>
                         <span class="story-def-pos-tag">${session.pos}</span>
                     </div>
-                    <div class="story-def-radio-dot ${isSelected ? 'checked' : ''}">✓</div>
+                    <div class="story-def-radio-dot ${isSelected ? 'checked' : ''}">${checkSvg}</div>
                 </div>
                 <div class="story-def-meaning-main">${session.meaning}</div>`;
         }
@@ -198,10 +202,10 @@
                     <div onclick="selectStoryWordDefinitionOption('${key}')" class="story-def-choice-card ${isSelected ? 'selected' : ''}">
                         <div class="story-def-card-top">
                             <div class="story-def-badge-group">
-                                <span class="story-def-sense-num">TỪ ĐIỂN #${idx + 1}</span>
+                                <span class="story-def-sense-num">#${idx + 1}</span>
                                 <span class="story-def-pos-tag is-dict">${d.pos || session.pos}</span>
                             </div>
-                            <div class="story-def-radio-dot ${isSelected ? 'checked' : ''}">✓</div>
+                            <div class="story-def-radio-dot ${isSelected ? 'checked' : ''}">${checkSvg}</div>
                         </div>
                         <div class="story-def-meaning-dict">${d.meaning}</div>
                         ${d.sense ? `<div class="story-def-meaning-sub">${d.sense}</div>` : ''}
@@ -213,9 +217,9 @@
                 <div onclick="selectStoryWordDefinitionOption('custom')" class="story-def-choice-card is-custom-card ${isCustom ? 'selected' : ''}">
                     <div class="story-def-card-top">
                         <div class="story-def-badge-group">
-                            <span class="story-def-pos-tag is-dict">✏️ TỰ GHI NGHĨA RIÊNG</span>
+                            <span class="story-def-pos-tag is-dict story-def-icon-tag">${penSvg}<span>TỰ GHI NGHĨA RIÊNG</span></span>
                         </div>
-                        <div class="story-def-radio-dot ${isCustom ? 'checked' : ''}">✓</div>
+                        <div class="story-def-radio-dot ${isCustom ? 'checked' : ''}">${checkSvg}</div>
                     </div>
                     <input id="storyDefCustomInput" type="text" class="story-def-custom-input"
                         placeholder="Nhập nghĩa hoặc ghi chú bạn muốn lưu vào thẻ..."
@@ -231,7 +235,7 @@
     function updateSaveButtonLabel(session) {
         const btnLabel = document.getElementById('storyDefSaveBtnLabel');
         if (!btnLabel || !session) return;
-        btnLabel.textContent = '+ Lưu vào Flashcard';
+        btnLabel.textContent = 'Lưu vào Flashcard';
     }
 
     window.onStoryDefCustomInput = function (val) {

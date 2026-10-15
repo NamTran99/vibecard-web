@@ -61,7 +61,7 @@
         hintEl.innerHTML = encTarget ? `${prefix}<button type="button" class="story-popup-hint-link" onclick="switchPopupToTargetWord('${encTarget}')">Xem mục tiêu «${decodeURIComponent(encTarget)}» ↵</button>` : `${prefix}<button type="button" class="story-popup-hint-link" onclick="switchPopupToNewWord(${tokenIndex || 0},'${encodeURIComponent(word || '')}',${sentenceIdx || 0})">Tra câu này «${word || ''}» ↵</button>`;
         hintEl.classList.remove('is-target-merged-banner'); hintEl.classList.add('is-warn-banner');
         if (warnHintTimer) clearTimeout(warnHintTimer);
-        warnHintTimer = setTimeout(() => { hintEl.classList.remove('is-warn-banner'); const act = window.StoryReaderState && window.StoryReaderState.activePopupWord; if (act) hintEl.textContent = act.isPhrase ? "✨ Kéo/chạm trong câu để tra cụm hoặc cả câu • Đóng ✕ để tra mới" : "💡 Kéo/chạm tiếp trong câu để tra cụm hoặc cả câu • Đóng ✕ để tra mới"; }, 3600);
+        warnHintTimer = setTimeout(() => { hintEl.classList.remove('is-warn-banner'); const act = window.StoryReaderState && window.StoryReaderState.activePopupWord; if (act) hintEl.textContent = "Kéo/chạm tiếp trong câu để tra cụm hoặc cả câu • Đóng ✕ để tra mới"; }, 3600);
     }
 
     window.switchPopupToTargetWord = (encTerm) => { window.dismissStoryWordActionPopup(); if (typeof window.selectTargetWordByTerm === 'function') window.selectTargetWordByTerm(encTerm); };
@@ -273,7 +273,7 @@
         if (hintEl) {
             hintEl.classList.remove('is-warn-banner', 'is-target-merged-banner');
             if (bridgedTargetTerm && popupData.isPhrase) { hintEl.classList.add('is-target-merged-banner'); hintEl.innerHTML = `🔗 Đã nối từ mục tiêu <b>«${bridgedTargetTerm}»</b> · <button type="button" class="story-popup-hint-link" onclick="switchPopupToTargetWord('${encodeURIComponent(bridgedTargetTerm)}')">Mở thẻ mục tiêu ↵</button>`; }
-            else hintEl.textContent = popupData.isPhrase ? "✨ Kéo/chạm trong câu để tra cụm hoặc cả câu • Đóng ✕ để tra mới" : "💡 Kéo/chạm tiếp trong câu để tra cụm hoặc cả câu • Đóng ✕ để tra mới";
+            else hintEl.textContent = "Kéo/chạm tiếp trong câu để tra cụm hoặc cả câu • Đóng ✕ để tra mới";
         }
         if (ipaEl) { ipaEl.classList.remove('is-phrase-badge'); ipaEl.style.display = hasRealIpa ? 'inline' : 'none'; }
         if (resetBtn) { resetBtn.classList.toggle('hidden', !popupData.isPhrase); resetBtn.style.display = popupData.isPhrase ? 'inline-flex' : 'none'; }
