@@ -1,0 +1,1595 @@
+
+/* ========================================================
+ * ⚡ PERFORMANCE OPTIMIZATION: PAUSE INACTIVE ANIMATIONS
+ * Giúp GPU & CPU giảm 100% chu kỳ render khi tab đang ẩn
+ * ======================================================== */
+.screen-container.hidden *,
+.hidden *,
+[hidden] *,
+.tab-inactive * {
+    animation-play-state: paused !important;
+}
+
+/* ========================================================
+ * 🎬 ANIMATIONS & KEYFRAME MOTIONS
+ * ======================================================== */
+
+/* ======================================================== */
+        /* M3 BOTTOM NAV PLAYFUL DOODLE ICON ANIMATIONS ON CLICK     */
+        /* ======================================================== */
+
+        /* Sliding Thumb Jelly/Squish Physics Motion */
+        @keyframes navThumbJelly {
+            0% { transform: scale(1); }
+            30% { transform: scale(1.24, 0.78); }
+            65% { transform: scale(0.92, 1.1); }
+            85% { transform: scale(1.04, 0.98); }
+            100% { transform: scale(1, 1); }
+        }
+        .anim-nav-thumb-jelly {
+            animation: navThumbJelly 0.42s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* ------------------------------------------------------------- */
+        /* 4 DISTINCT ICON ANIMATIONS (4 NGUYÊN LÝ CHUYỂN ĐỘNG KHÁC NHAU) */
+        /* ------------------------------------------------------------- */
+
+        /* 0. Home Icon: Pure Vertical Spring Trampoline (Trục dọc: Lò xo nhún nảy tưng bừng) */
+        @keyframes navHomeTrampoline {
+            0% { transform: scale(1, 1) translateY(0); }
+            18% { transform: scale(1.35, 0.65) translateY(5px); }  /* Nén sâu sát đáy lấy đà */
+            42% { transform: scale(0.8, 1.38) translateY(-13px); } /* Phóng vút lên cao */
+            65% { transform: scale(1.15, 0.9) translateY(2px); }   /* Rơi xuống nén nhẹ */
+            80% { transform: scale(0.96, 1.06) translateY(-3px); }  /* Bật nảy hồi lần 2 */
+            92% { transform: scale(1.02, 0.98) translateY(0px); }
+            100% { transform: scale(1.08, 1.08) translateY(0); }   /* Đứng yên uy nghi */
+        }
+        .anim-nav-home {
+            animation: navHomeTrampoline 0.54s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            transform-origin: 50% 95%;
+        }
+
+        /* 1. Create Icon: 360° Whirlwind Spin & Radial Burst (Trục xoay tròn 360° & Bung nở ma thuật) */
+        @keyframes navCreateWhirlwind {
+            0% { transform: scale(1) rotate(0deg); }
+            16% { transform: scale(0.68) rotate(-35deg); }         /* Lùi lại vặn cót ngược */
+            52% { transform: scale(1.38) rotate(395deg); }         /* Bắn vọt xoay tròn 360° quá đà */
+            75% { transform: scale(0.96) rotate(352deg); }         /* Bật nảy hồi ngược lại */
+            88% { transform: scale(1.12) rotate(364deg); }         /* Dao động tắt dần */
+            100% { transform: scale(1.08) rotate(360deg); }        /* Cân bằng hoàn mỹ */
+        }
+        .anim-nav-create {
+            animation: navCreateWhirlwind 0.58s cubic-bezier(0.34, 1.45, 0.64, 1) forwards;
+            transform-origin: 50% 50%;
+        }
+
+        /* 2. Library Icon: Domino Wave & Horizontal Pendulum (Trục ngang: Sóng domino lắc lư con lắc) */
+        @keyframes navLibraryDominoWave {
+            0% { transform: scale(1) skewX(0deg) rotate(0deg); }
+            18% { transform: scale(0.95) skewX(16deg) rotate(-8deg); }   /* Nghiêng sang trái đón lực */
+            42% { transform: scale(1.22) skewX(-20deg) rotate(11deg); }  /* Đập bật sang phải như domino */
+            64% { transform: scale(1.06) skewX(12deg) rotate(-6deg); }   /* Lắc dội lại sang trái */
+            80% { transform: scale(1.02) skewX(-6deg) rotate(2deg); }    /* Lắc nhẹ sang phải */
+            92% { transform: scale(1.05) skewX(2deg) rotate(-1deg); }
+            100% { transform: scale(1.08) skewX(0deg) rotate(0deg); }   /* Đứng thẳng ngay ngắn */
+        }
+        .anim-nav-library {
+            animation: navLibraryDominoWave 0.6s cubic-bezier(0.34, 1.4, 0.64, 1) forwards;
+            transform-origin: 50% 100%;
+        }
+
+        /* 3. Profile Icon: Respectful Nod & Double Heartbeat (Nhân thái: Cúi đầu chào & Tim đập phập phồng) */
+        @keyframes navProfileNodPulse {
+            0% { transform: scale(1, 1) translateY(0); }
+            18% { transform: scale(1.18, 0.78) translateY(6px); }  /* Cúi gập đầu chào lễ phép */
+            36% { transform: scale(0.92, 1.18) translateY(-4px); }  /* Bật người ngước mặt lên */
+            52% { transform: scale(1.36, 1.36) translateY(-2px); }  /* THUMP 1: Nhịp đập tim số 1 bùng nổ */
+            68% { transform: scale(1.02, 1.02) translateY(0px); }   /* Thu về */
+            80% { transform: scale(1.22, 1.22) translateY(-1px); }  /* THUMP 2: Nhịp đập tim số 2 */
+            92% { transform: scale(1.05, 1.05) translateY(0px); }
+            100% { transform: scale(1.08, 1.08) translateY(0); }    /* Trạng thái sống động */
+        }
+        .anim-nav-profile {
+            animation: navProfileNodPulse 0.58s cubic-bezier(0.34, 1.5, 0.64, 1) forwards;
+            transform-origin: 50% 45%;
+        }
+
+        .nav-icon-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            will-change: transform;
+            transition: opacity 0.25s ease;
+        }
+
+        /* Gliding Light Streak Keyframes */
+        @keyframes navLightTrailGlideRight {
+            0% {
+                opacity: 0;
+                transform: translateY(-50%) scaleX(0.15) scaleY(0.4);
+                transform-origin: left center;
+                filter: brightness(1.5);
+            }
+            30% {
+                opacity: 0.95;
+                transform: translateY(-50%) scaleX(1) scaleY(1);
+                transform-origin: left center;
+                filter: brightness(1.3);
+            }
+            65% {
+                opacity: 0.85;
+                transform: translateY(-50%) scaleX(1) scaleY(0.85);
+                transform-origin: right center;
+                filter: brightness(1.1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-50%) scaleX(0.7) scaleY(0.2);
+                transform-origin: right center;
+                filter: brightness(0.8);
+            }
+        }
+
+        @keyframes navLightTrailGlideLeft {
+            0% {
+                opacity: 0;
+                transform: translateY(-50%) scaleX(0.15) scaleY(0.4);
+                transform-origin: right center;
+                filter: brightness(1.5);
+            }
+            30% {
+                opacity: 0.95;
+                transform: translateY(-50%) scaleX(1) scaleY(1);
+                transform-origin: right center;
+                filter: brightness(1.3);
+            }
+            65% {
+                opacity: 0.85;
+                transform: translateY(-50%) scaleX(1) scaleY(0.85);
+                transform-origin: left center;
+                filter: brightness(1.1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-50%) scaleX(0.7) scaleY(0.2);
+                transform-origin: left center;
+                filter: brightness(0.8);
+            }
+        }
+
+        @keyframes navSparkleFly {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) translate(0, 0) scale(0.2) rotate(0deg);
+            }
+            35% {
+                opacity: 1;
+                transform: translate(-50%, -50%) translate(calc(var(--dx) * 0.45), calc(var(--dy) * 0.45)) scale(1.4) rotate(45deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) translate(var(--dx), var(--dy)) scale(0.2) rotate(90deg);
+            }
+        }
+
+        @keyframes navDropletFly {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) translate(0, 0) scale(0.2);
+            }
+            40% {
+                opacity: 1;
+                transform: translate(-50%, -50%) translate(calc(var(--dx) * 0.5), calc(var(--dy) * 0.5)) scale(1.25);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) translate(var(--dx), var(--dy)) scale(0.15);
+            }
+        }
+
+        /* ======================================================== */
+        /* TACTILE SEARCH BAR 2-STATE FOCUS SYSTEM                  */
+        /* ======================================================== */
+        .tactile-search-bar {
+            background-color: #20211C;
+            border: 2px solid #46483C;
+            border-bottom: 5px solid #30312B;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .tactile-search-bar:focus-within,
+        .tactile-search-bar.is-focused {
+            background-color: #30312B;
+            border-color: #B8D166;
+            border-bottom: 5px solid #3C4D00;
+            box-shadow: 0 8px 32px rgba(184, 209, 102, 0.45);
+        }
+
+        .tactile-search-bar .search-glyph {
+            color: #909283;
+            transition: color 0.2s ease;
+        }
+        .tactile-search-bar:focus-within .search-glyph,
+        .tactile-search-bar.is-focused .search-glyph {
+            color: #B8D166;
+        }
+
+        .tactile-search-bar .pulse-glow {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .tactile-search-bar:focus-within .pulse-glow,
+        .tactile-search-bar.is-focused .pulse-glow {
+            opacity: 1;
+        }
+
+        .tactile-search-bar .tactile-action-btn {
+            background-color: #252621;
+            color: #909283;
+            border: 1px solid #46483C;
+            border-bottom: 3px solid #1B1C17;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .tactile-search-bar:focus-within .tactile-action-btn,
+        .tactile-search-bar.is-focused .tactile-action-btn {
+            background-color: #444930;
+            color: #E0E6C3;
+            border: 1px solid rgba(184, 209, 102, 0.25);
+            border-bottom: 3px solid #2E331C;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+        }
+        .tactile-search-bar .tactile-action-btn:hover,
+        .tactile-search-bar .tactile-action-btn:active,
+        .tactile-search-bar .tactile-action-btn.has-query {
+            background-color: #B8D166 !important;
+            color: #283500 !important;
+            border-color: transparent !important;
+            border-bottom: 3px solid #3C4D00 !important;
+            box-shadow: 0 4px 14px rgba(184, 209, 102, 0.45) !important;
+        }
+        
+        .glass-panel {
+            background: #20211C;
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid #46483C;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+        }
+
+        /* ======================================================== */
+        /* 3D INTERACTIVE STORYBOOK SYSTEM                           */
+        /* ======================================================== */
+        .storybook-theater {
+            perspective: 1400px;
+        }
+        .storybook-container {
+            perspective: 1400px;
+            transform-style: preserve-3d;
+        }
+        .book-spine {
+            background: linear-gradient(90deg, #0D0E0B 0%, #2E331C 38%, #1B1C17 75%, #0D0E0B 100%);
+            box-shadow: inset -3px 0 6px rgba(0,0,0,0.65), inset 2px 0 3px rgba(184,209,102,0.1), 2px 0 8px rgba(0,0,0,0.4);
+            border-right: 1px solid #1B1C17;
+        }
+        .book-paper-stack {
+            background: repeating-linear-gradient(to bottom, #252621 0px, #252621 2px, #1B1C17 2px, #1B1C17 4px);
+            box-shadow: 2px 0 0 #20211C, 4px 1px 0 #1B1C17, 6px 2px 0 #0D0E0B, 10px 4px 18px rgba(0,0,0,0.7);
+            border-left: 1px solid #46483C;
+        }
+        .clip-ribbon-swallowtail {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 82%, 0 100%);
+        }
+        .book-stage {
+            perspective: 1400px;
+            transform-style: preserve-3d;
+        }
+        .book-page {
+            position: absolute;
+            inset: 8px 8px 8px 24px;
+            transform-origin: left center;
+            transform-style: preserve-3d;
+            transition: transform 0.65s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.45s ease, filter 0.5s ease;
+            backface-visibility: hidden;
+            will-change: transform, opacity;
+        }
+        .book-page.page-active {
+            transform: rotateY(0deg) scale(1);
+            opacity: 1;
+            z-index: 10;
+            pointer-events: auto;
+            filter: brightness(1);
+        }
+        .book-page.page-past {
+            transform: rotateY(-82deg) scale(0.95);
+            opacity: 0;
+            z-index: 5;
+            pointer-events: none;
+            filter: brightness(0.35);
+        }
+        .book-page.page-next {
+            transform: rotateY(0deg) scale(0.98);
+            opacity: 0;
+            z-index: 6;
+            pointer-events: none;
+            filter: brightness(0.6);
+        }
+        .book-dog-ear {
+            overflow: hidden;
+        }
+        .dog-ear-peel {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 0 28px 28px;
+            border-color: transparent transparent #2A2C23 transparent;
+            box-shadow: -2px -2px 6px rgba(0,0,0,0.5);
+            transition: border-width 0.2s ease, border-color 0.2s ease;
+        }
+        .group\/dogear:hover .dog-ear-peel {
+            border-width: 0 0 34px 34px;
+            border-color: transparent transparent #3E4233 transparent;
+        }
+        .dog-ear-left {
+            right: auto;
+            left: 0;
+            border-width: 0 28px 28px 0;
+            border-color: transparent #2A2C23 transparent transparent;
+            box-shadow: 2px -2px 6px rgba(0,0,0,0.5);
+        }
+        .group\/dogear:hover .dog-ear-left {
+            border-width: 0 34px 34px 0;
+            border-color: transparent #3E4233 transparent transparent;
+        }
+        /* Open Book Modal Spread Styles */
+        .book-spread-open {
+            box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9), 0 0 40px rgba(245, 158, 11, 0.12);
+        }
+        .book-spread-gutter {
+            background: linear-gradient(90deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.85) 48%, rgba(0,0,0,0.85) 52%, rgba(0,0,0,0.35) 100%);
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+        }
+
+        /* Living Farm 60fps Ambient CSS Animations */
+        @keyframes driftCloudsSlow {
+            0% { transform: translateX(-140px); }
+            100% { transform: translateX(430px); }
+        }
+        @keyframes driftCloudsFast {
+            0% { transform: translateX(-110px); }
+            100% { transform: translateX(430px); }
+        }
+        .anim-cloud-slow {
+            animation: driftCloudsSlow 52s linear infinite -18s;
+        }
+        .anim-cloud-fast {
+            animation: driftCloudsFast 36s linear infinite -32s;
+        }
+
+        /* Windmill Propeller Rotation */
+        @keyframes spinWindmill {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .anim-windmill-1 {
+            transform-origin: 92px 145px;
+            animation: spinWindmill 3.5s linear infinite;
+        }
+        .anim-windmill-2 {
+            transform-origin: 132px 165px;
+            animation: spinWindmill 5s linear infinite reverse;
+        }
+        .anim-windmill-3 {
+            transform-origin: 345px 152px;
+            animation: spinWindmill 4s linear infinite;
+        }
+
+        /* Pulsing Warm Sun */
+        @keyframes sunPulse {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 16px rgba(251, 191, 36, 0.65)); }
+            50% { transform: scale(1.08); filter: drop-shadow(0 0 32px rgba(251, 191, 36, 0.95)); }
+        }
+        .anim-sun {
+            transform-origin: 275px 125px;
+            animation: sunPulse 4s ease-in-out infinite;
+        }
+
+
+        /* Lumi Breathing / Gentle Idle Motion */
+        @keyframes lumiIdle {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-5px) rotate(1deg); }
+        }
+        .anim-lumi-idle {
+            animation: lumiIdle 4.5s ease-in-out infinite;
+        }
+
+        /* Gentle Crop / Tree Sway */
+        @keyframes treeSway {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(2deg); }
+        }
+        .anim-tree-sway {
+            transform-origin: bottom center;
+            animation: treeSway 3s ease-in-out infinite;
+        }
+
+        /* Soft Floating Weather Sun */
+        @keyframes weatherSunSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .anim-weather-sun {
+            animation: weatherSunSpin 12s linear infinite;
+        }
+
+        /* Night Theme: Stars, Moon, Fireflies, Barn Glow & Zzz Animations */
+        @keyframes starTwinkle {
+            0%, 100% { opacity: 0.15; filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.4)); }
+            50% { opacity: 1; filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.95)); }
+        }
+        @keyframes starTwinkleSoft {
+            0%, 100% { opacity: 0.2; }
+            40% { opacity: 0.9; filter: drop-shadow(0 0 2.5px rgba(254, 240, 138, 0.85)); }
+            75% { opacity: 0.25; }
+        }
+        @keyframes starTwinkleSlow {
+            0%, 100% { opacity: 0.25; }
+            50% { opacity: 0.95; filter: drop-shadow(0 0 2.5px rgba(224, 231, 255, 0.9)); }
+        }
+        .anim-star-1 { animation: starTwinkle 2.8s ease-in-out infinite; }
+        .anim-star-2 { animation: starTwinkleSoft 4.2s ease-in-out infinite 1.1s; }
+        .anim-star-3 { animation: starTwinkleSlow 3.5s ease-in-out infinite 0.6s; }
+
+        @keyframes moonPulse {
+            0%, 100% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 8px rgba(253, 224, 71, 0.45)) drop-shadow(0 0 16px rgba(245, 158, 11, 0.2));
+            }
+            50% {
+                transform: scale(1.03);
+                filter: drop-shadow(0 0 13px rgba(254, 240, 138, 0.7)) drop-shadow(0 0 25px rgba(251, 191, 36, 0.35));
+            }
+        }
+        .anim-moon {
+            transform-origin: 285px 92px;
+            animation: moonPulse 5.5s ease-in-out infinite;
+        }
+
+
+        @keyframes cozyWindowGlow {
+            0%, 100% { fill: #FEF08A; filter: drop-shadow(0 0 8px rgba(254, 240, 138, 0.8)); }
+            50% { fill: #FDE047; filter: drop-shadow(0 0 16px rgba(253, 224, 71, 0.95)); }
+        }
+        .anim-cozy-window { animation: cozyWindowGlow 3s ease-in-out infinite; }
+
+        @keyframes zzzFloat {
+            0% { transform: translate(0, 0) scale(0.6); opacity: 0; }
+            40% { opacity: 0.8; }
+            100% { transform: translate(12px, -18px) scale(1.1); opacity: 0; }
+        }
+        .anim-zzz { animation: zzzFloat 3.5s ease-out infinite; }
+        
+        /* 3D Living Fireflies Animation */
+        @keyframes fireflyFloat1 {
+            0%, 100% { transform: translate(0, 0) scale(0.6); opacity: 0.15; }
+            50% { transform: translate(25px, -18px) scale(1.1); opacity: 0.95; filter: drop-shadow(0 0 6px #FDE047); }
+        }
+        @keyframes fireflyFloat2 {
+            0%, 100% { transform: translate(0, 0) scale(0.8); opacity: 0.2; }
+            45% { transform: translate(-30px, -24px) scale(1.2); opacity: 1; filter: drop-shadow(0 0 8px #A7F3D0); }
+        }
+        @keyframes fireflyFloat3 {
+            0%, 100% { transform: translate(0, 0) scale(0.5); opacity: 0.1; }
+            60% { transform: translate(20px, -30px) scale(1); opacity: 0.9; filter: drop-shadow(0 0 6px #FDE047); }
+        }
+        .anim-firefly {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 9999px;
+            background: #FEF08A;
+        }
+        .firefly-1 { top: 65%; left: 22%; animation: fireflyFloat1 4.5s ease-in-out infinite; }
+        .firefly-2 { top: 58%; left: 45%; animation: fireflyFloat2 5.8s ease-in-out infinite 1.2s; background: #6EE7B7; }
+        .firefly-3 { top: 72%; left: 60%; animation: fireflyFloat3 4.2s ease-in-out infinite 0.7s; }
+        .firefly-4 { top: 50%; left: 78%; animation: fireflyFloat1 6.2s ease-in-out infinite 2.1s; background: #A7F3D0; }
+        .firefly-5 { top: 40%; left: 35%; animation: fireflyFloat2 5.1s ease-in-out infinite 1.8s; }
+
+        @keyframes mistDrift {
+            0%, 100% { transform: translateX(-5%); opacity: 0.35; }
+            50% { transform: translateX(5%); opacity: 0.65; }
+        }
+        .anim-mist-drift {
+            animation: mistDrift 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes moonGlowPulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.15); opacity: 0.85; filter: drop-shadow(0 0 20px rgba(254, 240, 138, 0.4)); }
+        }
+        .anim-moon-pulse {
+            animation: moonGlowPulse 6s ease-in-out infinite;
+        }
+
+        /* Warm Lantern Flame Flicker */
+        @keyframes lanternFlicker {
+            0%, 100% { opacity: 0.65; transform: scale(1); filter: blur(20px); }
+            20% { opacity: 0.9; transform: scale(1.1); filter: blur(25px); }
+            45% { opacity: 0.55; transform: scale(0.95); filter: blur(18px); }
+            70% { opacity: 0.95; transform: scale(1.15); filter: blur(26px); }
+            85% { opacity: 0.7; transform: scale(1.02); filter: blur(22px); }
+        }
+        .anim-lantern-glow {
+            animation: lanternFlicker 3.2s ease-in-out infinite;
+        }
+
+        /* High-Fidelity Living Chimney Smoke (Pixar / Ghibli Fairytale Aesthetic) */
+        @keyframes chimneyPuffA {
+            0% {
+                transform: translate(0, 0) scale(0.35) rotate(0deg);
+                opacity: 0;
+            }
+            12% {
+                opacity: 0.95;
+                transform: translate(2px, -8px) scale(0.75) rotate(10deg);
+            }
+            40% {
+                opacity: 0.85;
+                transform: translate(10px, -26px) scale(1.6) rotate(25deg);
+            }
+            70% {
+                opacity: 0.5;
+                transform: translate(22px, -50px) scale(2.6) rotate(45deg);
+            }
+            100% {
+                transform: translate(36px, -78px) scale(3.8) rotate(70deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes chimneyPuffB {
+            0% {
+                transform: translate(0, 0) scale(0.3) rotate(0deg);
+                opacity: 0;
+            }
+            15% {
+                opacity: 0.92;
+                transform: translate(-1px, -9px) scale(0.7) rotate(-8deg);
+            }
+            45% {
+                opacity: 0.8;
+                transform: translate(6px, -30px) scale(1.5) rotate(15deg);
+            }
+            75% {
+                opacity: 0.45;
+                transform: translate(16px, -56px) scale(2.7) rotate(35deg);
+            }
+            100% {
+                transform: translate(28px, -84px) scale(4.0) rotate(60deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes chimneyPuffC {
+            0% {
+                transform: translate(0, 0) scale(0.4) rotate(0deg);
+                opacity: 0;
+            }
+            14% {
+                opacity: 0.96;
+                transform: translate(3px, -7px) scale(0.8) rotate(5deg);
+            }
+            42% {
+                opacity: 0.82;
+                transform: translate(12px, -24px) scale(1.65) rotate(20deg);
+            }
+            72% {
+                opacity: 0.48;
+                transform: translate(24px, -48px) scale(2.8) rotate(40deg);
+            }
+            100% {
+                transform: translate(40px, -75px) scale(4.2) rotate(65deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes chimneyEmberDrift {
+            0% { transform: translate(0, 0) scale(0.6); opacity: 0; }
+            20% { opacity: 1; filter: drop-shadow(0 0 6px #F59E0B); }
+            65% { opacity: 0.85; transform: translate(16px, -38px) scale(1); }
+            100% { transform: translate(30px, -70px) scale(0.2); opacity: 0; }
+        }
+
+        .smoke-emitter {
+            position: absolute;
+            top: 32.8%;
+            left: 69.1%;
+            width: 14px;
+            height: 14px;
+            pointer-events: none;
+            z-index: 35;
+        }
+
+        .smoke-puff-wisp {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 18px;
+            height: 18px;
+            border-radius: 50% 60% 45% 55% / 55% 45% 60% 50%;
+            background: radial-gradient(circle at 38% 38%, 
+                rgba(255, 255, 255, 0.98) 0%, 
+                rgba(254, 243, 199, 0.88) 22%, 
+                rgba(224, 231, 255, 0.65) 48%, 
+                rgba(148, 163, 184, 0.3) 72%, 
+                transparent 100%);
+            filter: blur(2.5px);
+            pointer-events: none;
+            will-change: transform, opacity;
+        }
+
+        .smoke-ember {
+            position: absolute;
+            width: 3.5px;
+            height: 3.5px;
+            border-radius: 9999px;
+            background: #FEF08A;
+            box-shadow: 0 0 8px #F59E0B, 0 0 3px #FFFFFF;
+            pointer-events: none;
+            will-change: transform, opacity;
+        }
+
+        .puff-wisp-1 { animation: chimneyPuffA 4.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite; }
+        .puff-wisp-2 { animation: chimneyPuffB 4.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite 0.7s; }
+        .puff-wisp-3 { animation: chimneyPuffC 4.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite 1.4s; }
+        .puff-wisp-4 { animation: chimneyPuffA 4.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite 2.1s; }
+        .puff-wisp-5 { animation: chimneyPuffB 4.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite 2.8s; }
+        .puff-wisp-6 { animation: chimneyPuffC 4.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite 3.5s; }
+
+        .ember-1 { top: 2px; left: 4px; animation: chimneyEmberDrift 3.6s ease-out infinite 0.5s; }
+        .ember-2 { top: 3px; left: 8px; animation: chimneyEmberDrift 4.2s ease-out infinite 2.3s; }
+
+        /* Farmhouse Window Hearth Glow */
+        @keyframes hearthGlowPulse {
+            0%, 100% { opacity: 0.45; transform: scale(1); }
+            50% { opacity: 0.85; transform: scale(1.06); }
+        }
+        .anim-hearth-glow {
+            animation: hearthGlowPulse 3.8s ease-in-out infinite;
+        }
+
+        /* Cinematic Subtle Camera Dolly / Drift */
+        @keyframes cinematicDrift {
+            0%, 100% { transform: scale(1.04) translate(0, 0); }
+            50% { transform: scale(1.08) translate(-3px, -2px); }
+        }
+        .anim-cinematic-bg {
+            animation: cinematicDrift 18s ease-in-out infinite alternate;
+        }
+
+        /* Glowing Garden Spores */
+        @keyframes sporeRise {
+            0% { transform: translate(0, 0) scale(0.4); opacity: 0; }
+            30% { opacity: 0.8; }
+            80% { opacity: 0.6; }
+            100% { transform: translate(10px, -24px) scale(1); opacity: 0; }
+        }
+        .anim-spore {
+            position: absolute;
+            width: 3.5px;
+            height: 3.5px;
+            border-radius: 9999px;
+            pointer-events: none;
+        }
+        .spore-1 { top: 68%; left: 28%; background: #38BDF8; box-shadow: 0 0 6px #38BDF8; animation: sporeRise 3.5s ease-out infinite 0.2s; }
+        .spore-2 { top: 74%; left: 34%; background: #4ADE80; box-shadow: 0 0 6px #4ADE80; animation: sporeRise 4.1s ease-out infinite 1.1s; }
+        .spore-3 { top: 65%; left: 42%; background: #38BDF8; box-shadow: 0 0 6px #38BDF8; animation: sporeRise 3.8s ease-out infinite 1.9s; }
+        .spore-4 { top: 76%; left: 48%; background: #FDE047; box-shadow: 0 0 6px #FDE047; animation: sporeRise 4.5s ease-out infinite 2.5s; }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #FFFFFF 0%, #A0ABC0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-gradient-cyan {
+            background: linear-gradient(135deg, #B8D166 0%, #A1D0C5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Sweatcoin Style Reward Dialog Animations */
+        @keyframes rotateSunburst {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        .sunburst-bg {
+            position: absolute;
+            top: 48%;
+            left: 50%;
+            width: 600px;
+            height: 600px;
+            transform: translate(-50%, -50%);
+            background: repeating-conic-gradient(
+                from 0deg,
+                rgba(255, 255, 255, 0.16) 0deg 11deg,
+                transparent 11deg 22deg
+            );
+            border-radius: 50%;
+            animation: rotateSunburst 40s linear infinite;
+            pointer-events: none;
+            mask-image: radial-gradient(circle, rgba(0,0,0,1) 25%, rgba(0,0,0,0) 72%);
+            -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 25%, rgba(0,0,0,0) 72%);
+        }
+        @keyframes floatReward {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-10px) scale(1.02); }
+        }
+        .anim-float-reward {
+            animation: floatReward 4s ease-in-out infinite;
+        }
+        @keyframes starTwinkle {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.85; }
+            50% { transform: scale(1.22) rotate(18deg); opacity: 1; filter: drop-shadow(0 0 16px rgba(232, 121, 249, 1)); }
+        }
+        .anim-star-twinkle {
+            animation: starTwinkle 2.6s ease-in-out infinite;
+        }
+        @keyframes scratchWiggle {
+            0%, 100% { transform: translateX(0px) rotate(0deg); }
+            20% { transform: translateX(-8px) rotate(-14deg); }
+            50% { transform: translateX(6px) rotate(10deg); }
+            75% { transform: translateX(-4px) rotate(-8deg); }
+        }
+        .anim-hand-scratch {
+            animation: scratchWiggle 2s ease-in-out infinite;
+        }
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.45; transform: scale(1); }
+            50% { opacity: 0.75; transform: scale(1.1); }
+        }
+        .anim-glow-pulse {
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+
+        /* Next-Gen Apple Intelligence Aurora Border */
+        @keyframes borderRotate {
+            0% { --angle: 0deg; }
+            100% { --angle: 360deg; }
+        }
+        @property --angle {
+            syntax: '<angle>';
+            initial-value: 0deg;
+            inherits: false;
+        }
+        .aurora-border {
+            background: linear-gradient(#1B1C17, #1B1C17) padding-box,
+                        conic-gradient(from var(--angle), #B8D166, #A1D0C5, #FBBF24, #C4CAA9, #B8D166) border-box;
+            border: 1.5px solid transparent;
+            animation: borderRotate 6s linear infinite;
+        }
+
+        /* Ambient Waveform Animation */
+        @keyframes wave {
+            0%, 100% { height: 4px; }
+            50% { height: 14px; }
+        }
+        .bar-1 { animation: wave 1.2s ease-in-out infinite 0.1s; }
+        .bar-2 { animation: wave 0.9s ease-in-out infinite 0.25s; }
+        .bar-3 { animation: wave 1.4s ease-in-out infinite 0.4s; }
+        
+        /* Smooth scrolling */
+        .scroll-container {
+            scroll-behavior: smooth;
+        }
+        @keyframes shimmerSweep {
+            0% { transform: translateX(-150%) skewX(-20deg); }
+            100% { transform: translateX(250%) skewX(-20deg); }
+        }
+        @keyframes proShimmer {
+            0%, 25% { transform: translateX(-180%) skewX(-20deg); }
+            55% { transform: translateX(220%) skewX(-20deg); }
+            100% { transform: translateX(220%) skewX(-20deg); }
+        }
+        .anim-pro-shimmer {
+            animation: proShimmer 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); opacity: 0.85; }
+            50% { transform: scale(1.12); opacity: 1; filter: drop-shadow(0 0 10px rgba(255, 153, 0, 0.9)); }
+        }
+        .animate-flame {
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+        
+        /* Entrance Animations (Scroll Reveal Stagger) */
+        @keyframes slideUpFade {
+            0% { opacity: 0; transform: translateY(24px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .animate-slide-up {
+            animation: slideUpFade 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+
+        /* ======================================================== */
+        /* FLAGSHIP MOBILE ENTRANCE CHOREOGRAPHY (LIVING HERO & CARD) */
+        /* ======================================================== */
+        
+        /* 1. HUD Drops in from Top with Spring Ease */
+        @keyframes hudDropIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-34px) scale(0.96);
+            }
+            65% {
+                opacity: 1;
+                transform: translateY(3px) scale(1.01);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        .anim-hud-enter {
+            animation: hudDropIn 0.65s cubic-bezier(0.175, 0.885, 0.32, 1.25) 0.06s both;
+        }
+
+        /* 2. Living Farm Scenery Atmospheric Scale-Reveal */
+        @keyframes sceneryReveal {
+            0% {
+                opacity: 0;
+                transform: scale(1.09) translateY(-6px);
+                filter: brightness(1.28) saturate(1.15);
+            }
+            60% {
+                opacity: 1;
+                filter: brightness(1.08) saturate(1.05);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+                filter: brightness(1) saturate(1);
+            }
+        }
+        .anim-scenery-enter {
+            animation: sceneryReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+            transform-origin: center 40%;
+        }
+
+        /* 3. Lantern Ignition Flare on Entrance */
+        @keyframes lanternIgnition {
+            0% {
+                opacity: 0;
+                transform: scale(0.2);
+                filter: blur(10px);
+            }
+            45% {
+                opacity: 1;
+                transform: scale(1.45);
+                filter: blur(16px);
+            }
+            75% {
+                opacity: 0.85;
+                transform: scale(1.15);
+                filter: blur(20px);
+            }
+            100% {
+                opacity: 0.6;
+                transform: scale(1);
+                filter: blur(24px);
+            }
+        }
+        .anim-lantern-flare {
+            animation: lanternIgnition 1.0s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+            transform-origin: center center;
+        }
+
+        /* 4. Luxury PRO Button Entrance Gleam */
+        @keyframes proEntranceGleam {
+            0% {
+                transform: translateX(-120%) skewX(-20deg);
+                opacity: 0;
+            }
+            30% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(250%) skewX(-20deg);
+                opacity: 0;
+            }
+        }
+        .anim-pro-enter-gleam {
+            animation: proEntranceGleam 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+        }
+
+        /* 5. 3D Pixar Moon Gentle Descent & Halo Bloom */
+        @keyframes moonDescend {
+            0% {
+                opacity: 0;
+                transform: translateY(-28px) scale(0.85);
+            }
+            55% {
+                opacity: 1;
+                transform: translateY(3px) scale(1.03);
+            }
+            80% {
+                transform: translateY(-1px) scale(0.995);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        .anim-moon-enter {
+            animation: moonDescend 0.8s cubic-bezier(0.2, 1, 0.3, 1) 0.05s both;
+            transform-origin: 285px 92px;
+        }
+
+        /* 6. Mascot Lumi Expressive Greeting Spring-Up (Pixar Squash & Stretch) */
+        @keyframes lumiEntranceSpring {
+            0% {
+                opacity: 0;
+                transform: translateY(65px) scale(0.8, 1.25) rotate(4deg);
+            }
+            42% {
+                opacity: 1;
+                transform: translateY(-12px) scale(1.08, 0.94) rotate(-2deg);
+            }
+            68% {
+                transform: translateY(4px) scale(0.97, 1.02) rotate(1deg);
+            }
+            85% {
+                transform: translateY(-1.5px) scale(1.01, 0.99) rotate(-0.3deg);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1, 1) rotate(0deg);
+            }
+        }
+        .anim-lumi-enter {
+            animation: lumiEntranceSpring 0.82s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+            transform-origin: bottom center;
+        }
+
+        /* 7. Speech Bubble Pop with Playful Overshoot */
+        @keyframes bubbleSpringPop {
+            0% {
+                opacity: 0;
+                transform: scale(0.1) translateY(20px) rotate(-14deg);
+            }
+            55% {
+                opacity: 1;
+                transform: scale(1.18) translateY(-4px) rotate(3deg);
+            }
+            80% {
+                transform: scale(0.95) translateY(1px) rotate(-1deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0) rotate(0deg);
+            }
+        }
+        .anim-bubble-enter {
+            animation: bubbleSpringPop 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) 0.38s both;
+            transform-origin: bottom right;
+        }
+
+        /* 8. Assistant Card Physical Lift */
+        @keyframes cardLiftSpring {
+            0% {
+                opacity: 0;
+                transform: translateY(46px) scale(0.95);
+            }
+            65% {
+                opacity: 1;
+                transform: translateY(-3px) scale(1.008);
+            }
+            85% {
+                transform: translateY(1px) scale(0.998);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        .anim-card-enter {
+            animation: cardLiftSpring 0.72s cubic-bezier(0.16, 1, 0.3, 1) 0.16s both;
+        }
+
+        /* 9. Specular Sheen Sweep on Card Top Border */
+        @keyframes specularSweep {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            30% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(250%);
+                opacity: 0;
+            }
+        }
+        .anim-specular-sheen {
+            animation: specularSweep 1.0s cubic-bezier(0.16, 1, 0.3, 1) 0.46s both;
+        }
+
+        /* 10. Inner Card Control Cascades */
+        @keyframes cardItemCascade {
+            0% {
+                opacity: 0;
+                transform: translateY(18px) scale(0.98);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        .anim-inner-1 { animation: cardItemCascade 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.24s both; }
+        .anim-inner-2 { animation: cardItemCascade 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both; }
+        .anim-inner-3 { animation: cardItemCascade 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.40s both; }
+
+        /* 11. Word Discovery Chips Horizontal Deal-In */
+        @keyframes wordChipDealIn {
+            0% {
+                opacity: 0;
+                transform: translateX(36px) scale(0.92);
+            }
+            65% {
+                opacity: 1;
+                transform: translateX(-3px) scale(1.02);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+        }
+        .anim-word-chip-1 { animation: wordChipDealIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.44s both; }
+        .anim-word-chip-2 { animation: wordChipDealIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.50s both; }
+        .anim-word-chip-3 { animation: wordChipDealIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.56s both; }
+
+        /* 12. Floating Bottom Navigation Spring-Up */
+        @keyframes bottomNavSpringUp {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, 50px) scale(0.92);
+            }
+            65% {
+                opacity: 1;
+                transform: translate(-50%, -4px) scale(1.015);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, 0) scale(1);
+            }
+        }
+        .anim-bottom-nav-enter {
+            animation: bottomNavSpringUp 0.65s cubic-bezier(0.175, 0.885, 0.32, 1.2) 0.42s both;
+        }
+
+        /* 13. Replay Toast Indicator */
+        @keyframes toastFadeSlide {
+            0% { opacity: 0; transform: translate(-50%, -12px) scale(0.9); }
+            15% { opacity: 1; transform: translate(-50%, 0) scale(1); }
+            85% { opacity: 1; transform: translate(-50%, 0) scale(1); }
+            100% { opacity: 0; transform: translate(-50%, -12px) scale(0.9); }
+        }
+        .anim-toast {
+            animation: toastFadeSlide 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .anim-hud-enter, .anim-scenery-enter, .anim-lantern-flare, .anim-pro-enter-gleam,
+            .anim-moon-enter, .anim-lumi-enter, .anim-bubble-enter, .anim-card-enter,
+            .anim-specular-sheen, .anim-inner-1, .anim-inner-2, .anim-inner-3,
+            .anim-word-chip-1, .anim-word-chip-2, .anim-word-chip-3, .anim-bottom-nav-enter {
+                animation: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+        /* V2 Save Deck Sheet Choreographed Animations */
+        @keyframes sheetSpringUp {
+            0% {
+                opacity: 0;
+                transform: translateY(100%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-sheet-spring {
+            animation: sheetSpringUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* 3D Cards Fan-Out Entrance */
+        @keyframes fanCardLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(0) translateY(16px) rotate(0deg) scale(0.92);
+            }
+            60% {
+                opacity: 0.8;
+            }
+            100% {
+                opacity: 0.75;
+                transform: translateX(-48px) translateY(0) rotate(-12deg) scale(0.9);
+            }
+        }
+
+        @keyframes fanCardRight {
+            0% {
+                opacity: 0;
+                transform: translateX(0) translateY(16px) rotate(0deg) scale(0.92);
+            }
+            60% {
+                opacity: 0.8;
+            }
+            100% {
+                opacity: 0.75;
+                transform: translateX(48px) translateY(0) rotate(12deg) scale(0.9);
+            }
+        }
+
+        @keyframes fanCardCenter {
+            0% {
+                opacity: 0;
+                transform: scale(0.8) translateY(24px);
+            }
+            70% {
+                transform: scale(1.05) translateY(-3px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @keyframes centerCardFloat {
+            0%, 100% {
+                transform: translateY(0);
+                box-shadow: 0 16px 36px rgba(22, 237, 246, 0.35), 0 0 18px rgba(22, 237, 246, 0.15);
+            }
+            50% {
+                transform: translateY(-5px);
+                box-shadow: 0 22px 48px rgba(22, 237, 246, 0.55), 0 0 28px rgba(22, 237, 246, 0.3);
+            }
+        }
+
+        .anim-fan-left {
+            animation: fanCardLeft 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
+        }
+
+        .anim-fan-right {
+            animation: fanCardRight 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both;
+        }
+
+        .anim-fan-center {
+            animation: fanCardCenter 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) 0.05s both,
+                       centerCardFloat 3.2s ease-in-out 0.65s infinite;
+        }
+
+        /* Holographic Card Foil Sheen Animation */
+        @keyframes holoSheen {
+            0% {
+                transform: translateX(-160%) translateY(-160%) rotate(35deg);
+                opacity: 0;
+            }
+            15% {
+                opacity: 0.65;
+            }
+            45%, 100% {
+                transform: translateX(180%) translateY(180%) rotate(35deg);
+                opacity: 0;
+            }
+        }
+
+        .holo-card-sheen {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .holo-card-sheen::after {
+            content: "";
+            position: absolute;
+            inset: -60%;
+            background: linear-gradient(
+                115deg,
+                transparent 25%,
+                rgba(22, 237, 246, 0.25) 42%,
+                rgba(255, 255, 255, 0.65) 50%,
+                rgba(217, 70, 239, 0.3) 58%,
+                transparent 75%
+            );
+            animation: holoSheen 4.2s ease-in-out 0.8s infinite;
+            pointer-events: none;
+            mix-blend-mode: overlay;
+        }
+
+        /* Ambient Twinkling Floating Sparkles */
+        @keyframes twinkleFloat {
+            0%, 100% {
+                transform: translateY(0) scale(0.8);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translateY(-8px) scale(1.15);
+                opacity: 0.95;
+            }
+        }
+        .anim-twinkle-1 { animation: twinkleFloat 2.4s ease-in-out infinite 0.1s; }
+        .anim-twinkle-2 { animation: twinkleFloat 2.8s ease-in-out infinite 0.6s; }
+        .anim-twinkle-3 { animation: twinkleFloat 2.2s ease-in-out infinite 1.1s; }
+
+        /* Title & Badges Stagger Animations */
+        @keyframes elemFadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes badgePopIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.65);
+            }
+            70% {
+                transform: scale(1.08);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes xpGlowPulse {
+            0%, 100% {
+                box-shadow: 0 0 12px rgba(251, 191, 36, 0.15);
+            }
+            50% {
+                box-shadow: 0 0 22px rgba(251, 191, 36, 0.5);
+                border-color: rgba(251, 191, 36, 0.6);
+            }
+        }
+
+        .anim-fade-up {
+            animation: elemFadeUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
+        }
+
+        .anim-badge-1 {
+            animation: badgePopIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
+        }
+
+        .anim-badge-2 {
+            animation: badgePopIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) 0.38s both,
+                       xpGlowPulse 2s ease-in-out 0.75s infinite;
+        }
+
+        .anim-badge-3 {
+            animation: badgePopIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) 0.46s both;
+        }
+
+        /* Carousel Tile Slide-In */
+        @keyframes carouselTileIn {
+            0% {
+                opacity: 0;
+                transform: translateX(25px) scale(0.92);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+        }
+
+        /* Primary Button Sheen Sweep */
+        @keyframes btnSheenSweep {
+            0% {
+                transform: translateX(-160%) skewX(-20deg);
+            }
+            30%, 100% {
+                transform: translateX(260%) skewX(-20deg);
+            }
+        }
+
+        .anim-btn-glow {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .anim-btn-glow::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 60%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: btnSheenSweep 3.5s ease-in-out 0.8s infinite;
+            pointer-events: none;
+        }
+
+        /* 3D Flip Flashcards */
+        .card-perspective {
+            perspective: 800px;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-style: preserve-3d;
+        }
+        .flip-card.is-flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-face-front, .flip-face-back {
+            position: absolute;
+            inset: 0;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 20px;
+        }
+        .flip-face-back {
+            transform: rotateY(180deg);
+        }
+        @keyframes ripplePing {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            100% { transform: scale(1.4); opacity: 0; }
+        }
+        .animate-ripple {
+            animation: ripplePing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+
+        /* Lively Dictionary Animations */
+        @keyframes equalize {
+            0%, 100% { height: 4px; }
+            50% { height: 14px; }
+        }
+        .equalizer-1 { animation: equalize 0.8s ease-in-out infinite; }
+        .equalizer-2 { animation: equalize 1.2s ease-in-out infinite 0.2s; }
+        .equalizer-3 { animation: equalize 0.7s ease-in-out infinite 0.4s; }
+        .equalizer-4 { animation: equalize 1.0s ease-in-out infinite 0.1s; }
+
+        /* ========================================================
+           PREMIUM PRONUNCIATION AUDIO ANIMATIONS (V2 - Flagship)
+           ======================================================== */
+
+        /* 1. Main Voice (1.0x) Speaker & Broadcasting Soundwaves */
+        @keyframes speakerBassKick {
+            0%, 100% { transform: scale(1); }
+            45% { transform: scale(1.18) translateX(1px); }
+        }
+
+        @keyframes soundWaveArc1 {
+            0% { opacity: 0.2; transform: scale(0.85) translateX(-1px); }
+            50% { opacity: 1; transform: scale(1) translateX(0); }
+            100% { opacity: 0.2; transform: scale(1.15) translateX(1px); }
+        }
+
+        @keyframes soundWaveArc2 {
+            0% { opacity: 0; transform: scale(0.7) translateX(-2px); }
+            35% { opacity: 0.3; }
+            70% { opacity: 1; transform: scale(1) translateX(0); }
+            100% { opacity: 0; transform: scale(1.25) translateX(2px); }
+        }
+
+        .anim-speaker-bass {
+            animation: speakerBassKick 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+            transform-origin: 30% 50%;
+        }
+        .anim-sound-arc-1 {
+            animation: soundWaveArc1 0.8s ease-in-out infinite;
+            transform-origin: left center;
+        }
+        .anim-sound-arc-2 {
+            animation: soundWaveArc2 0.8s ease-in-out infinite 0.25s;
+            transform-origin: left center;
+        }
+
+        /* Fluid Audio Voice Waveform Bars */
+        @keyframes voicePillFlow1 { 0%, 100% { height: 4px; } 50% { height: 14px; } }
+        @keyframes voicePillFlow2 { 0%, 100% { height: 13px; } 50% { height: 5px; } }
+        @keyframes voicePillFlow3 { 0%, 100% { height: 6px; } 50% { height: 15px; } }
+        @keyframes voicePillFlow4 { 0%, 100% { height: 11px; } 50% { height: 4px; } }
+
+        .anim-voice-bar-1 { animation: voicePillFlow1 0.5s ease-in-out infinite alternate; }
+        .anim-voice-bar-2 { animation: voicePillFlow2 0.65s ease-in-out infinite alternate 0.1s; }
+        .anim-voice-bar-3 { animation: voicePillFlow3 0.45s ease-in-out infinite alternate 0.2s; }
+        .anim-voice-bar-4 { animation: voicePillFlow4 0.58s ease-in-out infinite alternate 0.15s; }
+
+        
+        @keyframes globalEq1 { 0%, 100% { height: 8px; } 50% { height: 28px; } }
+        @keyframes globalEq2 { 0%, 100% { height: 24px; } 50% { height: 10px; } }
+        @keyframes globalEq3 { 0%, 100% { height: 12px; } 50% { height: 32px; } }
+        @keyframes globalEq4 { 0%, 100% { height: 28px; } 50% { height: 12px; } }
+
+        .anim-g-bar-1 { animation: globalEq1 0.4s ease-in-out infinite alternate; }
+        .anim-g-bar-2 { animation: globalEq2 0.5s ease-in-out infinite alternate 0.1s; }
+        .anim-g-bar-3 { animation: globalEq3 0.35s ease-in-out infinite alternate 0.2s; }
+        .anim-g-bar-4 { animation: globalEq4 0.45s ease-in-out infinite alternate 0.15s; }
+
+        /* Main Button Ambient Breathing Halo */
+        @keyframes mainVoiceAura {
+            0%, 100% {
+                box-shadow: 0 0 16px rgba(0, 229, 255, 0.45), 0 4px 14px rgba(0, 0, 0, 0.4);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 28px rgba(0, 229, 255, 0.85), 0 0 48px rgba(0, 229, 255, 0.35), 0 6px 20px rgba(0, 0, 0, 0.5);
+                transform: scale(1.035);
+            }
+        }
+        .anim-main-speaking {
+            animation: mainVoiceAura 1.2s ease-in-out infinite !important;
+        }
+
+        /* 2. Slow Voice (0.7x) Turtle Walking Stride & Tempo Metronome */
+        @keyframes turtleStride {
+            0% { transform: translateY(0) translateX(0) rotate(0deg); }
+            25% { transform: translateY(-3px) translateX(2px) rotate(6deg) scale(1.1); }
+            50% { transform: translateY(0) translateX(3px) rotate(-3deg) scale(1.02); }
+            75% { transform: translateY(-2px) translateX(1px) rotate(4deg) scale(1.06); }
+            100% { transform: translateY(0) translateX(0) rotate(0deg); }
+        }
+        .anim-turtle-stride {
+            animation: turtleStride 0.9s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+            display: inline-block;
+        }
+
+        /* Tempo Metronome 3 Golden Pearls */
+        @keyframes tempoBeat {
+            0%, 100% { opacity: 0.25; transform: scale(0.75); }
+            35% { opacity: 1; transform: scale(1.4); filter: drop-shadow(0 0 6px #FBBF24); }
+        }
+        .anim-tempo-1 { animation: tempoBeat 1.05s ease-in-out infinite 0s; }
+        .anim-tempo-2 { animation: tempoBeat 1.05s ease-in-out infinite 0.35s; }
+        .anim-tempo-3 { animation: tempoBeat 1.05s ease-in-out infinite 0.7s; }
+
+        /* Slow Button Ambient Honey Velvet Aura */
+        @keyframes slowVoiceAura {
+            0%, 100% {
+                box-shadow: 0 0 14px rgba(251, 191, 36, 0.35), 0 4px 12px rgba(0, 0, 0, 0.4);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 26px rgba(251, 191, 36, 0.75), 0 0 44px rgba(251, 191, 36, 0.3), 0 6px 18px rgba(0, 0, 0, 0.5);
+                transform: scale(1.035);
+            }
+        }
+        .anim-slow-speaking {
+            animation: slowVoiceAura 1.4s ease-in-out infinite !important;
+        }
+
+        /* Tactile interactive hover state */
+        .btn-voice-hover {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-voice-hover:hover {
+            transform: translateY(-1px) scale(1.025);
+        }
+        .btn-voice-hover:active {
+            transform: scale(0.96);
+        }
+
+        @keyframes laserScan {
+            0% { transform: translateY(-100%); opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { transform: translateY(160%); opacity: 0; }
+        }
+        .animate-laser {
+            animation: laserScan 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+
+        @keyframes spinSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spinSlow 14s linear infinite;
+        }
+
+        @keyframes glowBreathing {
+            0%, 100% { opacity: 0.45; transform: scale(0.97); }
+            50% { opacity: 0.9; transform: scale(1.08); filter: drop-shadow(0 0 16px rgba(0, 229, 255, 0.5)); }
+        }
+        .animate-glow-breath {
+            animation: glowBreathing 3.5s ease-in-out infinite;
+        }
+
+        @keyframes borderFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .animate-border-flow {
+            background-size: 200% 200%;
+            animation: borderFlow 4s ease infinite;
+        }
+    
+        @keyframes arrowBounceX {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(4px); }
+        }
+        .anim-arrow-bounce {
+            animation: arrowBounceX 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+
+        input[type="search"]::-webkit-search-decoration,
+        input[type="search"]::-webkit-search-cancel-button,
+        input[type="search"]::-webkit-search-results-button,
+        input[type="search"]::-webkit-search-results-decoration {
+            -webkit-appearance: none;
+        }
+
+    
+        @keyframes soundWave {
+            0% { transform: scaleY(0.2); }
+            50% { transform: scaleY(1); }
+            100% { transform: scaleY(0.2); }
+        }
+        .anim-wave-1 { animation: soundWave 0.5s ease-in-out infinite 0.0s; transform-origin: bottom; }
+        .anim-wave-2 { animation: soundWave 0.6s ease-in-out infinite 0.1s; transform-origin: bottom; }
+        .anim-wave-3 { animation: soundWave 0.4s ease-in-out infinite 0.2s; transform-origin: bottom; }
+        .anim-wave-4 { animation: soundWave 0.7s ease-in-out infinite 0.3s; transform-origin: bottom; }
+        .anim-wave-5 { animation: soundWave 0.5s ease-in-out infinite 0.4s; transform-origin: bottom; }
+        .anim-wave-6 { animation: soundWave 0.6s ease-in-out infinite 0.5s; transform-origin: bottom; }
+        .anim-wave-7 { animation: soundWave 0.4s ease-in-out infinite 0.1s; transform-origin: bottom; }
+        .anim-wave-8 { animation: soundWave 0.5s ease-in-out infinite 0.2s; transform-origin: bottom; }
+        .anim-wave-9 { animation: soundWave 0.6s ease-in-out infinite 0.3s; transform-origin: bottom; }
+        .anim-wave-10 { animation: soundWave 0.7s ease-in-out infinite 0.4s; transform-origin: bottom; }
+
+    
+        /* --- Holographic Foil Effect for C1/C2 Cards --- */
+        .holographic-overlay {
+            background-image: 
+                linear-gradient(115deg, transparent 20%, rgba(255,255,255,0.4) 30%, transparent 40%),
+                linear-gradient(115deg, rgba(255,0,128,0.3) 0%, rgba(0,255,255,0.3) 33%, rgba(255,255,0,0.3) 66%, rgba(255,0,128,0.3) 100%);
+            background-size: 200% 200%;
+            background-position: var(--pos-x, 50%) var(--pos-y, 50%);
+            mix-blend-mode: color-dodge;
+            z-index: 15;
+            mask-image: radial-gradient(circle at var(--pos-x, 50%) var(--pos-y, 50%), black 10%, transparent 60%);
+            -webkit-mask-image: radial-gradient(circle at var(--pos-x, 50%) var(--pos-y, 50%), black 10%, transparent 60%);
+        }
+        
+        .tilt-reset {
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+        }
+
+    
+        @keyframes chargeGlow {
+            0% {
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+                scale: 1;
+                border-color: rgba(70, 72, 60, 0.4);
+            }
+            100% {
+                box-shadow: 0 0 80px rgba(184, 209, 102, 0.35) inset, 0 0 50px rgba(184, 209, 102, 0.25);
+                scale: 0.94;
+                border-color: rgba(184, 209, 102, 0.8);
+            }
+        }
+        .card-charging-active {
+            animation: chargeGlow 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
+        }
+        .card-charging-reset {
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+            scale: 1 !important;
+            border-color: rgba(70, 72, 60, 0.4) !important;
+        }

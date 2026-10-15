@@ -1,0 +1,294 @@
+/* ======================================================== */
+/* 🗺️ MYSTERY ROADMAP v3.0 (ADAPTIVE RPG & GENRE MATCHMAKING) */
+/* Bổ sung phong cách Sương Mù Bí Ẩn, Thẻ bài Lật Mở 3D &     */
+/* The Crossroads Bottom Sheet Chọn Thể Loại.                */
+/* ======================================================== */
+
+/* --------------------------------------------------------- */
+/* 1. MÀN HÌNH MYSTERY ROADMAP TỰ CHỨA                       */
+/* --------------------------------------------------------- */
+#screenMysteryRoadmap {
+    --rm-screen-bg: var(--m3-surface-container-low, #181914);
+    --rm-hero-scrim-rgb: 24, 25, 20;
+    --rm-paper-opacity: 0.45;
+    --rm-paper-blend: multiply;
+    --rm-paper-filter: none;
+
+    --rm-primary: var(--m3-primary, #B8D166);
+    --rm-on-primary: var(--m3-on-primary, #161F00);
+    --rm-primary-container: var(--m3-primary-container, #2B3400);
+    --rm-on-primary-container: var(--m3-on-primary-container, #D4EE7F);
+
+    --rm-surface: var(--m3-surface, #13140F);
+    --rm-on-surface: var(--m3-on-surface, #E5E3DB);
+    --rm-surface-variant: var(--m3-surface-variant, #46483C);
+    --rm-on-surface-variant: var(--m3-on-surface-variant, #C7C8B8);
+
+    --rm-outline: var(--m3-outline, #46483C);
+    --rm-outline-variant: var(--m3-outline-variant, #2A2B24);
+
+    --rm-card-bg: rgba(32, 33, 28, 0.92);
+    --rm-card-border: rgba(70, 72, 60, 0.65);
+    --rm-card-title: #FFFFFF;
+    --rm-card-desc: #C7C8B8;
+    --rm-card-kicker: #D4EE7F;
+
+    --rm-amber-glow: #FBBF24;
+    background-color: var(--rm-screen-bg);
+    color: var(--rm-on-surface);
+}
+
+/* --------------------------------------------------------- */
+/* 2. HIỆU ỨNG SƯƠNG MÙ BÍ ẨN (FOG OF WAR & MYSTERY NODE)    */
+/* --------------------------------------------------------- */
+.mb-state-mystery {
+    position: relative;
+}
+
+/* Khối thẻ bài bí ẩn với hào quang vàng hổ phách nhịp thở */
+.mb-card-mystery {
+    background: linear-gradient(135deg, rgba(43, 52, 0, 0.85) 0%, rgba(26, 28, 20, 0.95) 50%, rgba(35, 30, 15, 0.9) 100%) !important;
+    border: 2px solid rgba(251, 191, 36, 0.65) !important;
+    box-shadow: 0 0 25px rgba(251, 191, 36, 0.25), inset 0 0 15px rgba(251, 191, 36, 0.15) !important;
+    position: relative;
+    overflow: hidden;
+    animation: mysteryAuraPulse 2.8s ease-in-out infinite;
+    cursor: pointer;
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+}
+
+.mb-card-mystery:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 0 35px rgba(251, 191, 36, 0.45), inset 0 0 20px rgba(251, 191, 36, 0.25) !important;
+    border-color: #FBBF24 !important;
+}
+
+.mb-card-mystery:active {
+    transform: scale(0.97);
+}
+
+@keyframes mysteryAuraPulse {
+    0%, 100% {
+        border-color: rgba(251, 191, 36, 0.5);
+        box-shadow: 0 0 20px rgba(251, 191, 36, 0.2), inset 0 0 10px rgba(251, 191, 36, 0.1);
+    }
+    50% {
+        border-color: rgba(251, 191, 36, 0.95);
+        box-shadow: 0 0 35px rgba(251, 191, 36, 0.45), inset 0 0 20px rgba(251, 191, 36, 0.25);
+    }
+}
+
+/* Hạt bụi ma thuật lượn quanh thẻ bài bí ẩn */
+.mystery-shimmer-sweep {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(251, 191, 36, 0.15) 50%, transparent 100%);
+    transform: translateX(-100%);
+    animation: shimmerSweep 3.5s infinite ease-in-out;
+    pointer-events-none;
+}
+
+@keyframes shimmerSweep {
+    0% { transform: translateX(-150%); }
+    50%, 100% { transform: translateX(150%); }
+}
+
+/* Thumbnail biểu tượng Dấu hỏi Hoàng gia */
+.mb-thumb-mystery {
+    background: radial-gradient(circle at center, rgba(251, 191, 36, 0.3) 0%, rgba(20, 22, 14, 0.9) 70%) !important;
+    border: 1.5px solid rgba(251, 191, 36, 0.5) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.mystery-qmark-icon {
+    font-size: 28px;
+    font-weight: 900;
+    color: #FBBF24;
+    text-shadow: 0 0 15px rgba(251, 191, 36, 0.8), 0 0 30px rgba(251, 191, 36, 0.5);
+    font-family: 'Cinzel', serif;
+    animation: qmarkFloat 2s ease-in-out infinite alternate;
+}
+
+@keyframes qmarkFloat {
+    0% { transform: translateY(1px) scale(0.96); filter: brightness(0.9); }
+    100% { transform: translateY(-2px) scale(1.06); filter: brightness(1.2); }
+}
+
+/* Chấm ray của Node bí ẩn */
+.mb-dot-mystery {
+    background: linear-gradient(135deg, #FBBF24, #D97706) !important;
+    border: 2px solid #FEF3C7 !important;
+    box-shadow: 0 0 18px rgba(251, 191, 36, 0.75) !important;
+    animation: dotPulse 2s infinite ease-in-out;
+}
+
+@keyframes dotPulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 12px rgba(251, 191, 36, 0.6); }
+    50% { transform: scale(1.15); box-shadow: 0 0 24px rgba(251, 191, 36, 0.95); }
+}
+
+/* --------------------------------------------------------- */
+/* 3. HIỆU ỨNG LẬT THẺ BÀI 3D (REVEAL CARD FLIP MOMENT)      */
+/* --------------------------------------------------------- */
+.mb-card-flip-reveal {
+    animation: cardFlip3D 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    transform-style: preserve-3d;
+}
+
+@keyframes cardFlip3D {
+    0% {
+        transform: rotateY(0deg) scale(1);
+        filter: brightness(1);
+    }
+    45% {
+        transform: rotateY(90deg) scale(1.08);
+        filter: brightness(2) drop-shadow(0 0 30px #FBBF24);
+    }
+    55% {
+        transform: rotateY(90deg) scale(1.08);
+        filter: brightness(2) drop-shadow(0 0 30px #B8D166);
+    }
+    100% {
+        transform: rotateY(0deg) scale(1);
+        filter: brightness(1);
+    }
+}
+
+/* --------------------------------------------------------- */
+/* 4. HUY HIỆU ĐỘ TUỔI (CONTENT-DEPENDENT AGE RATING BADGES) */
+/* --------------------------------------------------------- */
+.age-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 2px 7px;
+    border-radius: 9999px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1;
+    border-width: 1px;
+    border-style: solid;
+}
+
+/* 3+ : Đồng thoại / Thiếu nhi */
+.age-badge-3 {
+    background: rgba(184, 209, 102, 0.16);
+    color: #D4EE7F;
+    border-color: rgba(184, 209, 102, 0.45);
+}
+
+/* 10+ : Học sinh / Cơ bản */
+.age-badge-10 {
+    background: rgba(56, 189, 248, 0.16);
+    color: #7DD3FC;
+    border-color: rgba(56, 189, 248, 0.45);
+}
+
+/* 15+ : Đời thường / Du lịch */
+.age-badge-15 {
+    background: rgba(251, 191, 36, 0.16);
+    color: #FCD34D;
+    border-color: rgba(251, 191, 36, 0.45);
+}
+
+/* 18+ : Công sở / Người lớn */
+.age-badge-18 {
+    background: rgba(244, 63, 94, 0.16);
+    color: #FDA4AF;
+    border-color: rgba(244, 63, 94, 0.45);
+}
+
+/* --------------------------------------------------------- */
+/* 5. THE CROSSROADS BOTTOM SHEET (#roadmapGenrePickerSheet)  */
+/* --------------------------------------------------------- */
+#roadmapGenrePickerSheet {
+    position: absolute;
+    inset: 0;
+    z-index: 80;
+    background: rgba(0, 0, 0, 0.72);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: opacity 0.3s ease;
+}
+
+#roadmapGenrePickerSheet.hidden {
+    display: none !important;
+}
+
+#roadmapGenrePickerSheetContent {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    background: #1C1E17;
+    border-top: 1.5px solid rgba(251, 191, 36, 0.4);
+    border-radius: 28px 28px 0 0;
+    box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.85);
+    padding: 16px 20px 28px 20px;
+    animation: sheetSlideUp 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes sheetSlideUp {
+    0% { transform: translateY(100%); }
+    100% { transform: translateY(0); }
+}
+
+/* Thẻ bài thể loại trong Bottom Sheet */
+.genre-choice-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    transition: all 0.22s ease;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+
+.genre-choice-card:hover {
+    background: rgba(184, 209, 102, 0.08);
+    border-color: rgba(184, 209, 102, 0.4);
+    transform: translateY(-1.5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+.genre-choice-card:active {
+    transform: scale(0.98);
+}
+
+.genre-choice-icon-box {
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Special Random / Pandora Card */
+.genre-choice-card-random {
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, rgba(43, 52, 0, 0.2) 100%);
+    border-color: rgba(251, 191, 36, 0.4);
+}
+
+.genre-choice-card-random:hover {
+    border-color: #FBBF24;
+    box-shadow: 0 0 25px rgba(251, 191, 36, 0.25);
+}

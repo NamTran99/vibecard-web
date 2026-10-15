@@ -1,0 +1,2595 @@
+/* ======================================================== */
+/* 🗺️ ROADMAP TIMELINE — M3-07 DARK OLIVE GREEN (ADAPTIVE THEME) */
+/* Bố cục tham chiếu Mobbin (Moonly iOS "Runes").             */
+/* Hỗ trợ 100% 2 Theme: Light (Parchment Giấy Da Cổ) & Dark     */
+/* (Dark Slate Olive Cổ Thư Hắc Ám). Mọi màu chữ, viền, nền     */
+/* đều tuân thủ nghiêm ngặt chuẩn Material Design 3 (M3-07).    */
+/* ======================================================== */
+
+/* ------------------------------------------------------------- */
+/* 1. M3-07 COLOR TOKENS: LIGHT SCHEME (DEFAULT / HTML.LIGHT)    */
+/* ------------------------------------------------------------- */
+#screenParchmentRoadmap {
+    /* Nền chính: Giấy da ấm áp cổ điển */
+    --rm-screen-bg: var(--m3-surface-container-low);
+    --rm-hero-scrim-rgb: 243, 241, 233;
+    --rm-paper-opacity: 0.52;
+    --rm-paper-blend: multiply;
+    --rm-paper-filter: none;
+
+    /* M3-07 Light Tokens */
+    --rm-primary: var(--m3-primary);
+    --rm-on-primary: var(--m3-on-primary);
+    --rm-primary-container: var(--m3-primary-container);
+    --rm-on-primary-container: var(--m3-on-primary-container);
+
+    --rm-secondary: var(--m3-secondary);
+    --rm-on-secondary: var(--m3-on-secondary);
+    --rm-secondary-container: var(--m3-secondary-container);
+    --rm-on-secondary-container: var(--m3-on-secondary-container);
+
+    --rm-tertiary: var(--m3-tertiary);
+    --rm-on-tertiary: var(--m3-on-tertiary);
+    --rm-tertiary-container: var(--m3-tertiary-container);
+    --rm-on-tertiary-container: var(--m3-on-tertiary-container);
+
+    --rm-surface: var(--m3-surface);
+    --rm-on-surface: var(--m3-on-surface);
+    --rm-surface-variant: var(--m3-surface-variant);
+    --rm-on-surface-variant: var(--m3-on-surface-variant);
+
+    --rm-outline: var(--m3-outline);
+    --rm-outline-variant: var(--m3-outline-variant);
+    --rm-cut-ring: var(--m3-surface-container-low);
+
+    /* Header & Bars */
+    --rm-header-bg: rgba(243, 241, 233, 0.94);
+    --rm-header-border: var(--m3-outline-variant);
+    --rm-tab-bg: var(--m3-surface);
+    --rm-tab-hover-bg: var(--m3-surface-container-highest);
+    --rm-tab-locked-bg: var(--m3-surface-container);
+
+    /* Thẻ bài học (Card): Thẻ ngà sáng thanh nhã trên giấy da */
+    --rm-card-bg: var(--m3-surface-container);
+    --rm-card-bg-hover: var(--m3-surface-container-high);
+    --rm-card-border: var(--m3-outline-variant);
+    --rm-card-border-active: var(--m3-primary);
+    --rm-card-title: var(--m3-on-surface);
+    --rm-card-desc: var(--m3-on-surface-variant);
+    --rm-card-kicker: var(--m3-primary);
+    --rm-thumb-bg: var(--m3-surface-container-highest);
+
+    /* Đường ray & Chấm trạng thái */
+    --rm-rail-on: var(--m3-primary);
+    --rm-rail-off: rgba(119, 120, 107, 0.35);
+    --rm-dot-completed: var(--m3-primary);
+    --rm-dot-completed-icon: var(--m3-on-primary);
+    --rm-dot-active-bg: var(--m3-primary-container);
+    --rm-dot-active-border: var(--m3-primary);
+    --rm-dot-locked-bg: var(--m3-surface-variant);
+    --rm-dot-locked-border: var(--m3-outline-variant);
+
+    /* Nhân vật & Bong bóng */
+    --rm-speech-bg: var(--m3-surface-container-highest);
+    --rm-speech-border: var(--m3-outline-variant);
+
+    /* Nextbar & Dialogs */
+    --rm-nextbar-bg: rgba(243, 241, 233, 0.94);
+    --rm-nextbar-border: var(--m3-outline-variant);
+    --rm-dialog-bg: var(--m3-surface);
+    --rm-dialog-border: var(--m3-outline-variant);
+    --rm-dialog-stat-bg: rgba(82, 102, 0, 0.08);
+
+    /* Gamification (Light) */
+    --rm-amber-glow: var(--m3-amber-glow);
+    --rm-amber-container: var(--m3-amber-container);
+    --rm-amber-text: var(--m3-amber-text);
+    --rm-pro-start: var(--m3-amber-glow);
+    --rm-pro-mid: var(--m3-amber-glow);
+    --rm-pro-end: var(--m3-amber-glow);
+    --rm-on-pro: var(--m3-on-surface);
+
+    /* Shadow levels M3 */
+    --rm-elev-1: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 3px 1px rgba(0, 0, 0, 0.06);
+    --rm-elev-2: 0 1px 2px rgba(0, 0, 0, 0.14), 0 2px 6px 2px rgba(0, 0, 0, 0.08);
+    --rm-elev-3: 0 4px 8px 3px rgba(0, 0, 0, 0.10), 0 1px 3px rgba(0, 0, 0, 0.15);
+
+    /* Backward compatibility mapping */
+    --rm-p-primary: var(--rm-primary);
+    --rm-p-on-primary: var(--rm-on-primary);
+    --rm-p-primary-container: var(--rm-primary-container);
+    --rm-p-on-primary-container: var(--rm-on-primary-container);
+    --rm-p-on-surface: var(--rm-on-surface);
+    --rm-p-on-surface-variant: var(--rm-on-surface-variant);
+    --rm-p-surface-variant: var(--rm-surface-variant);
+    --rm-p-surface-container-lowest: var(--rm-speech-bg);
+    --rm-p-outline: var(--rm-outline);
+    --rm-p-outline-variant: var(--rm-outline-variant);
+    --rm-parchment: var(--rm-cut-ring);
+    --rm-surface-container: var(--rm-card-bg);
+    --rm-surface-container-high: var(--rm-card-bg-hover);
+    --rm-glass-bg: var(--rm-nextbar-bg);
+    --rm-glass-border: var(--rm-nextbar-border);
+}
+
+/* ------------------------------------------------------------- */
+/* 2. M3-07 COLOR TOKENS: DARK SCHEME (HTML.DARK)                */
+/* ------------------------------------------------------------- */
+html.dark #screenParchmentRoadmap {
+    /* Nền chính: Dark Slate Olive cổ thư hắc ám */
+    --rm-screen-bg: var(--m3-surface-container-lowest);
+    --rm-hero-scrim-rgb: 13, 14, 11;
+    --rm-paper-opacity: 0.16;
+    --rm-paper-blend: screen;
+    --rm-paper-filter: invert(0.25);
+
+    /* M3-07 Dark Tokens */
+    --rm-primary: var(--m3-primary);
+    --rm-on-primary: var(--m3-on-primary);
+    --rm-primary-container: var(--m3-primary-container);
+    --rm-on-primary-container: var(--m3-on-primary-container);
+
+    --rm-secondary: var(--m3-secondary);
+    --rm-on-secondary: var(--m3-on-secondary);
+    --rm-secondary-container: var(--m3-secondary-container);
+    --rm-on-secondary-container: var(--m3-on-secondary-container);
+
+    --rm-tertiary: var(--m3-tertiary);
+    --rm-on-tertiary: var(--m3-on-tertiary);
+    --rm-tertiary-container: var(--m3-tertiary-container);
+    --rm-on-tertiary-container: var(--m3-on-tertiary-container);
+
+    --rm-surface: var(--m3-surface);
+    --rm-on-surface: var(--m3-on-surface);
+    --rm-surface-variant: var(--m3-surface-variant);
+    --rm-on-surface-variant: var(--m3-on-surface-variant);
+
+    --rm-outline: var(--m3-outline);
+    --rm-outline-variant: var(--m3-outline-variant);
+    --rm-cut-ring: var(--m3-surface-container-lowest);
+
+    /* Header & Bars */
+    --rm-header-bg: rgba(13, 14, 11, 0.90);
+    --rm-header-border: var(--m3-outline-variant);
+    --rm-tab-bg: var(--m3-surface-container);
+    --rm-tab-hover-bg: var(--m3-surface-container-high);
+    --rm-tab-locked-bg: var(--m3-surface-container-low);
+
+    /* Thẻ bài học (Card): surfaceContainer tối sang trọng */
+    --rm-card-bg: var(--m3-surface-container);
+    --rm-card-bg-hover: var(--m3-surface-container-high);
+    --rm-card-border: var(--m3-outline-variant);
+    --rm-card-border-active: var(--m3-primary);
+    --rm-card-title: var(--m3-on-surface);
+    --rm-card-desc: var(--m3-on-surface-variant);
+    --rm-card-kicker: var(--m3-primary);
+    --rm-thumb-bg: var(--m3-surface-container-lowest);
+
+    /* Đường ray & Chấm trạng thái */
+    --rm-rail-on: var(--m3-primary);
+    --rm-rail-off: rgba(144, 146, 131, 0.35);
+    --rm-dot-completed: var(--m3-primary);
+    --rm-dot-completed-icon: var(--m3-on-primary);
+    --rm-dot-active-bg: var(--m3-primary-container);
+    --rm-dot-active-border: var(--m3-primary);
+    --rm-dot-locked-bg: var(--m3-surface-variant);
+    --rm-dot-locked-border: var(--m3-outline-variant);
+
+    /* Nhân vật & Bong bóng */
+    --rm-speech-bg: var(--m3-surface-container-highest);
+    --rm-speech-border: var(--m3-outline-variant);
+
+    /* Nextbar & Dialogs */
+    --rm-nextbar-bg: rgba(32, 33, 28, 0.94);
+    --rm-nextbar-border: var(--m3-outline-variant);
+    --rm-dialog-bg: var(--m3-surface);
+    --rm-dialog-border: var(--m3-outline-variant);
+    --rm-dialog-stat-bg: rgba(184, 209, 102, 0.08);
+
+    /* Backward compatibility mapping */
+    --rm-p-primary: var(--rm-primary);
+    --rm-p-on-primary: var(--rm-on-primary);
+    --rm-p-primary-container: var(--rm-primary-container);
+    --rm-p-on-primary-container: var(--rm-on-primary-container);
+    --rm-p-on-surface: var(--rm-on-surface);
+    --rm-p-on-surface-variant: var(--rm-on-surface-variant);
+    --rm-p-surface-variant: var(--rm-surface-variant);
+    --rm-p-surface-container-lowest: var(--rm-speech-bg);
+    --rm-p-outline: var(--rm-outline);
+    --rm-p-outline-variant: var(--rm-outline-variant);
+    --rm-parchment: var(--rm-cut-ring);
+    --rm-surface-container: var(--rm-card-bg);
+    --rm-surface-container-high: var(--rm-card-bg-hover);
+    --rm-glass-bg: var(--rm-nextbar-bg);
+    --rm-glass-border: var(--rm-nextbar-border);
+}
+
+/* ------------------------------------------------------------- */
+/* 3. ADAPTIVE BACKGROUND & TEXTURE FOR 2 THEMES                 */
+/* ------------------------------------------------------------- */
+#screenParchmentRoadmap.parchment-bg {
+    background-color: var(--rm-screen-bg) !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html.dark #screenParchmentRoadmap.parchment-bg {
+    background-color: var(--rm-screen-bg) !important;
+    background-image: none !important;
+    box-shadow: none !important;
+}
+
+#screenParchmentRoadmap .paper-texture {
+    opacity: var(--rm-paper-opacity) !important;
+    mix-blend-mode: var(--rm-paper-blend) !important;
+    filter: var(--rm-paper-filter) !important;
+    transition: opacity 0.3s ease;
+}
+
+/* ------------------------------------------------------------- */
+/* 4. CINEMATIC FULL-BLEED CHAPTER HERO BANNER (STYLE MOONLY)    */
+/* ------------------------------------------------------------- */
+#roadmapHeroHeader {
+    position: relative;
+    width: 100%;
+    min-height: 350px;
+    flex-shrink: 0;
+    overflow: visible;
+    user-select: none;
+    background: transparent !important;
+}
+
+#roadmapBannerImg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 22%;
+    will-change: transform, opacity, filter;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.38s ease, filter 0.38s ease;
+    /* Double-Feather Mask: Ảnh tự tan biến dần vào nền trước khi chạm đáy */
+    -webkit-mask-image: linear-gradient(to bottom, 
+        rgba(0, 0, 0, 1) 0%, 
+        rgba(0, 0, 0, 1) 32%, 
+        rgba(0, 0, 0, 0.88) 48%, 
+        rgba(0, 0, 0, 0.55) 66%, 
+        rgba(0, 0, 0, 0.18) 84%, 
+        transparent 98%
+    );
+    mask-image: linear-gradient(to bottom, 
+        rgba(0, 0, 0, 1) 0%, 
+        rgba(0, 0, 0, 1) 32%, 
+        rgba(0, 0, 0, 0.88) 48%, 
+        rgba(0, 0, 0, 0.55) 66%, 
+        rgba(0, 0, 0, 0.18) 84%, 
+        transparent 98%
+    );
+}
+
+/* Lớp Vignette đỉnh: Đảm bảo độ tương phản cao cho các nút TopBar */
+#roadmapHeroHeader .hero-vignette-top {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, 
+        rgba(0, 0, 0, 0.65) 0%, 
+        rgba(0, 0, 0, 0.38) 22%, 
+        rgba(0, 0, 0, 0.14) 42%, 
+        transparent 65%
+    );
+    pointer-events: none;
+}
+
+/* Lớp Vignette đáy: Scrim gradient hòa tan 100% tự nhiên vào màu nền giấy da */
+#roadmapHeroHeader .hero-vignette-bottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg,
+        rgba(var(--rm-hero-scrim-rgb), 0) 0%,
+        rgba(var(--rm-hero-scrim-rgb), 0.02) 20%,
+        rgba(var(--rm-hero-scrim-rgb), 0.08) 36%,
+        rgba(var(--rm-hero-scrim-rgb), 0.22) 50%,
+        rgba(var(--rm-hero-scrim-rgb), 0.48) 66%,
+        rgba(var(--rm-hero-scrim-rgb), 0.74) 80%,
+        rgba(var(--rm-hero-scrim-rgb), 0.92) 90%,
+        var(--rm-screen-bg) 96%,
+        var(--rm-screen-bg) 100%
+    );
+}
+
+/* Trạng thái đổi chương mượt mà (Cinema Cross-Fade) */
+#roadmapHeroHeader.is-switching #roadmapBannerImg {
+    opacity: 0.15;
+    transform: scale(1.04);
+    filter: blur(6px);
+}
+
+#roadmapHeroHeader.is-switching .hero-content {
+    opacity: 0;
+    transform: translateY(8px);
+}
+
+#roadmapHeroHeader .hero-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 24px 20px 24px;
+    z-index: 5;
+    max-width: 400px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    transition: opacity 0.38s cubic-bezier(0.16, 1, 0.3, 1) 0.06s, transform 0.38s cubic-bezier(0.16, 1, 0.3, 1) 0.06s;
+}
+
+/* Nút thẻ chương trên Hero Banner (Frosted Glass Jewel Capsule) */
+.roadmap-hero-tag-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 10px 5px 6px;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, rgba(35, 30, 20, 0.72) 0%, rgba(18, 19, 14, 0.85) 100%);
+    border: 1px solid rgba(251, 191, 36, 0.35);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    backdrop-filter: blur(16px) saturate(180%);
+    cursor: pointer;
+    margin-bottom: 8px;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 235, 170, 0.35), inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+    outline: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.roadmap-hero-tag-btn:hover {
+    background: linear-gradient(135deg, rgba(46, 38, 25, 0.85) 0%, rgba(26, 27, 20, 0.95) 100%);
+    border-color: rgba(251, 191, 36, 0.7);
+    transform: translateY(-1.5px);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5), 0 0 16px rgba(251, 191, 36, 0.28), inset 0 1px 1.5px rgba(255, 245, 200, 0.6);
+}
+
+.roadmap-hero-tag-btn:active {
+    transform: scale(0.97);
+}
+
+#roadmapCardTag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    line-height: 1.2;
+}
+
+/* Badge số chương (Golden Fairytale Pill) */
+.roadmap-tag-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 9px 3px 7px;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.22) 0%, rgba(245, 158, 11, 0.28) 100%);
+    border: 1px solid rgba(251, 191, 36, 0.45);
+    color: #FDE68A;
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+.roadmap-tag-sparkle {
+    font-size: 9px;
+    color: #FBBF24;
+    animation: tagSparklePulse 2.5s ease-in-out infinite;
+}
+
+@keyframes tagSparklePulse {
+    0%, 100% { opacity: 0.7; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.15); filter: drop-shadow(0 0 4px #FBBF24); }
+}
+
+/* Tên chương (Thanh lịch, rõ nét, không bị kéo dãn kỳ cục) */
+.roadmap-tag-title {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 0.01em;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.75);
+    white-space: nowrap;
+}
+
+/* Vòng tròn chứa mũi tên dropdown */
+.roadmap-tag-arrow-wrap {
+    width: 22px;
+    height: 22px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.08);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #FBBF24;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.roadmap-hero-tag-btn:hover .roadmap-tag-arrow-wrap {
+    background: rgba(251, 191, 36, 0.25);
+    color: #FDE68A;
+    transform: translateY(1px);
+}
+
+/* Fallback khi #roadmapCardTag nhận text thuần */
+#roadmapCardTag:not(:has(.roadmap-tag-pill)) {
+    font-size: 11.5px;
+    font-weight: 800;
+    color: #FDE68A !important;
+    letter-spacing: 0.04em;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Light Mode Support */
+html.light .roadmap-hero-tag-btn {
+    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(180, 140, 20, 0.35);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.95);
+}
+
+html.light .roadmap-hero-tag-btn:hover {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(180, 140, 20, 0.6);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12), 0 0 10px rgba(217, 119, 6, 0.2);
+}
+
+html.light .roadmap-tag-pill {
+    background: #FEF3C7;
+    border-color: rgba(217, 119, 6, 0.4);
+    color: #78350F;
+}
+
+html.light .roadmap-tag-sparkle {
+    color: #D97706;
+}
+
+html.light .roadmap-tag-title {
+    color: #1B1C17;
+    text-shadow: none;
+}
+
+html.light .roadmap-tag-arrow-wrap {
+    background: rgba(0, 0, 0, 0.05);
+    color: #B45309;
+}
+
+html.light .roadmap-hero-tag-btn:hover .roadmap-tag-arrow-wrap {
+    background: rgba(217, 119, 6, 0.18);
+    color: #78350F;
+}
+
+#roadmapChapterHeading {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1.18;
+    color: var(--m3-on-surface) !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.75);
+}
+
+html.light #roadmapChapterHeading {
+    color: var(--m3-on-surface) !important;
+    text-shadow: none;
+}
+
+#roadmapCardDesc {
+    margin: 4px 0 0;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 12.5px;
+    line-height: 1.4;
+    color: rgba(229, 227, 219, 0.9) !important;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.65);
+    max-width: 320px;
+}
+
+html.light #roadmapCardDesc {
+    color: var(--m3-on-surface-variant) !important;
+    text-shadow: none;
+}
+
+/* ------------------------------------------------------------- */
+/* 5. TOP FLOATING NAVBAR OVER HERO (STYLE MOONLY)               */
+/* ------------------------------------------------------------- */
+#screenParchmentRoadmap #roadmapTopBar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 30;
+    padding: max(env(safe-area-inset-top), 10px) 14px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent !important;
+    border-bottom: 1px solid transparent !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    pointer-events: none;
+    transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease, padding 0.3s ease;
+}
+
+/* Khi cuộn xuống qua Hero: chuyển sang kính mờ sticky hòa nhập với nền */
+#screenParchmentRoadmap #roadmapTopBar.is-scrolled {
+    background: rgba(18, 20, 14, 0.92) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    backdrop-filter: blur(16px) !important;
+    border-bottom: 1px solid rgba(70, 72, 60, 0.4) !important;
+    padding-top: max(env(safe-area-inset-top), 10px) !important;
+    padding-bottom: 8px !important;
+}
+
+html.light #screenParchmentRoadmap #roadmapTopBar.is-scrolled {
+    background: rgba(232, 211, 167, 0.94) !important;
+    border-bottom: 1px solid rgba(119, 120, 107, 0.35) !important;
+}
+
+html.light #screenParchmentRoadmap #roadmapTopBar.is-scrolled #roadmapBackBtn {
+    background: rgba(255, 255, 255, 0.88) !important;
+    color: var(--m3-on-surface) !important;
+    border-color: rgba(119, 120, 107, 0.3) !important;
+}
+
+html.light #screenParchmentRoadmap #roadmapTopBar.is-scrolled #roadmapChapterDropdownBtn {
+    background: rgba(255, 255, 255, 0.88) !important;
+    border-color: rgba(119, 120, 107, 0.3) !important;
+}
+
+html.light #screenParchmentRoadmap #roadmapTopBar.is-scrolled #roadmapHeaderEyebrow {
+    color: var(--m3-on-primary-container) !important;
+}
+
+html.light #screenParchmentRoadmap #roadmapTopBar.is-scrolled #roadmapHeaderTitle {
+    color: var(--m3-on-surface) !important;
+}
+
+#screenParchmentRoadmap #roadmapBackBtn {
+    pointer-events: auto !important;
+}
+
+
+#screenParchmentRoadmap #roadmapBackBtn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.38) !important;
+    color: #FFFFFF !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+
+#screenParchmentRoadmap #roadmapBackBtn:hover {
+    background: rgba(0, 0, 0, 0.55) !important;
+}
+
+/* Nút chọn chương ở TopBar: ẩn ở đầu trang, chỉ hiển thị dạng pill trượt xuống khi cuộn xuống (scroll down) */
+#screenParchmentRoadmap #roadmapChapterDropdownBtn {
+    padding: 4px 14px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.42) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    cursor: pointer;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: translateY(-8px) scale(0.95);
+    transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1), transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.28s, background 0.15s ease, border-color 0.15s ease;
+}
+
+#screenParchmentRoadmap #roadmapTopBar.is-scrolled #roadmapChapterDropdownBtn {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translateY(0) scale(1);
+    background: rgba(0, 0, 0, 0.65) !important;
+    border-color: rgba(255, 255, 255, 0.28) !important;
+}
+
+#screenParchmentRoadmap #roadmapChapterDropdownBtn:hover {
+    background: rgba(0, 0, 0, 0.65) !important;
+    border-color: rgba(255, 255, 255, 0.35) !important;
+}
+
+#screenParchmentRoadmap #roadmapHeaderEyebrow {
+    color: #E0E6C3 !important;
+    font-size: 9.5px;
+    letter-spacing: 0.22em;
+    font-family: 'Cinzel', serif;
+    font-weight: 800;
+}
+
+#screenParchmentRoadmap #roadmapHeaderTitle {
+    color: #FFFFFF !important;
+    font-size: 14.5px;
+    font-weight: 800;
+}
+
+#screenParchmentRoadmap #roadmapHeaderPill {
+    display: none !important;
+}
+
+
+/* 🐾 HUY HIỆU HOÀN THÀNH ĐÍNH GÓC ẢNH THUMBNAIL (Đã ẩn theo yêu cầu người dùng để tránh trùng lặp 2 nút v) */
+.mb-thumb-done-badge {
+    display: none !important;
+}
+#screenParchmentRoadmap .roadmap-ch-tab:hover {
+    background: var(--rm-tab-hover-bg) !important;
+    color: var(--rm-on-surface) !important;
+}
+#screenParchmentRoadmap .roadmap-ch-tab.active {
+    background: var(--rm-primary) !important;
+    color: var(--rm-on-primary) !important;
+    border-color: var(--rm-primary) !important;
+    font-weight: 900;
+}
+#screenParchmentRoadmap .roadmap-ch-tab.is-locked:not(.active) {
+    color: var(--rm-on-surface-variant) !important;
+    background: var(--rm-tab-locked-bg) !important;
+    border-style: dashed !important;
+}
+#screenParchmentRoadmap .roadmap-ch-tab:focus-visible {
+    outline: 2px solid var(--rm-primary);
+    outline-offset: 2px;
+}
+.roadmap-ch-tab.is-locked::after {
+    content: '🔒';
+    margin-left: 6px;
+    font-size: 10px;
+    opacity: 0.8;
+}
+
+/* ------------------------------------------------------------- */
+/* 6. TIMELINE & SECTION STRUCTURE                               */
+/* ------------------------------------------------------------- */
+#scrollAreaRoadmap {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+#scrollAreaRoadmap::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+.mb-timeline {
+    --mb-gap: 12px;
+    --mb-sec-gap: 40px;
+    --mb-rail-w: 34px;
+    position: relative;
+    padding: 6px 0 176px;
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.mb-section {
+    position: relative;
+}
+
+.mb-section + .mb-section {
+    margin-top: var(--mb-sec-gap);
+}
+
+.mb-section + .mb-section::before {
+    content: '';
+    position: absolute;
+    left: calc(var(--mb-rail-w) + 8px);
+    right: 0;
+    top: calc(var(--mb-sec-gap) / -2 - var(--mb-gap) / 2);
+    height: 1px;
+    background: var(--rm-outline-variant);
+}
+
+.mb-row {
+    --mb-dot-r: 9px;
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    gap: 14px;
+    margin-bottom: var(--mb-gap);
+}
+
+.mb-row:last-child {
+    margin-bottom: 0;
+}
+
+.mb-rail {
+    position: relative;
+    width: var(--mb-rail-w);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* ------------------------------------------------------------- */
+/* 6. TRỤC ĐƯỜNG RAY LỘ TRÌNH (ORGANIC PARCHMENT RAIL SPINE)      */
+/* ------------------------------------------------------------- */
+.mb-rail {
+    position: relative;
+    width: var(--mb-rail-w); /* 34px */
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.mb-rail:active {
+    transform: scale(0.95);
+}
+
+/* Đường trục trung tâm kết nối đơn giản, thanh mảnh (Clean 2px Minimalist Spine) */
+.mb-rail::before,
+.mb-rail::after {
+    content: '' !important;
+    position: absolute;
+    left: 50%;
+    width: 2px;
+    margin-left: -1px;
+    border-radius: 999px;
+    z-index: 0;
+    display: none;
+    pointer-events: none;
+    transition: background 0.3s ease, opacity 0.3s ease;
+}
+
+.mb-rail::before {
+    top: 0;
+    height: calc(50% - var(--mb-dot-r));
+    background: repeating-linear-gradient(to bottom, rgba(255, 255, 255, 0.18) 0px, rgba(255, 255, 255, 0.18) 4px, transparent 4px, transparent 8px);
+}
+
+html.light .mb-rail::before {
+    background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 0px, rgba(0, 0, 0, 0.15) 4px, transparent 4px, transparent 8px);
+}
+
+.mb-rail::after {
+    top: calc(50% + var(--mb-dot-r));
+    bottom: calc(var(--mb-gap) * -1);
+    background: repeating-linear-gradient(to bottom, rgba(255, 255, 255, 0.18) 0px, rgba(255, 255, 255, 0.18) 4px, transparent 4px, transparent 8px);
+}
+
+html.light .mb-rail::after {
+    background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 0px, rgba(0, 0, 0, 0.15) 4px, transparent 4px, transparent 8px);
+}
+
+.mb-up .mb-rail::before,
+.mb-down .mb-rail::after {
+    display: block !important;
+}
+
+.mb-down-long .mb-rail::after {
+    bottom: calc((var(--mb-gap) + var(--mb-sec-gap)) * -1);
+}
+
+/* ĐÃ HOÀN THÀNH: ĐƯỜNG TRỤC NÉT LIỀN MÀU XANH DỊU / VÀNG KIM THANH LỊCH, SẠCH SẼ */
+.mb-up-on .mb-rail::before,
+.mb-down-on .mb-rail::after {
+    background: var(--rm-rail-on, #526600) !important;
+    box-shadow: none !important;
+}
+
+html.dark .mb-up-on .mb-rail::before,
+html.dark .mb-down-on .mb-rail::after {
+    background: #B8D166 !important;
+    box-shadow: none !important;
+    opacity: 0.9;
+}
+
+
+/* ------------------------------------------------------------- */
+/* 🐾 DẤU CHÂN CÁO LUMI & ĐƯỜNG MÒN BẢN ĐỒ CỔ TÍCH (TREASURE MAP) */
+/* ------------------------------------------------------------- */
+.mb-rail-paws {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(50% + var(--mb-dot-r));
+    bottom: calc(var(--mb-gap) * -1);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.mb-down-long .mb-rail-paws.is-long {
+    bottom: calc((var(--mb-gap) + var(--mb-sec-gap)) * -1);
+}
+
+/* Đường mòn nét đứt bản đồ cổ (Treasure Map Dotted Trail) */
+.mb-trail-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    margin-left: -1px;
+    background-image: linear-gradient(to bottom, 
+        rgba(255, 255, 255, 0.16) 0%, 
+        rgba(255, 255, 255, 0.16) 4px, 
+        transparent 4px, 
+        transparent 8px
+    );
+    background-size: 2px 8px;
+    opacity: 0.32;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.mb-rail-paws.is-on .mb-trail-line {
+    background-image: linear-gradient(to bottom, 
+        #F6D06E 0%, 
+        #F6D06E 4px, 
+        transparent 4px, 
+        transparent 8px
+    );
+    opacity: 0.65;
+    filter: drop-shadow(0 0 2px rgba(246, 208, 110, 0.45));
+}
+
+html.dark .mb-rail-paws.is-on .mb-trail-line {
+    background-image: linear-gradient(to bottom, 
+        #E2EC7E 0%, 
+        #E2EC7E 4px, 
+        transparent 4px, 
+        transparent 8px
+    );
+    opacity: 0.72;
+    filter: drop-shadow(0 0 2.5px rgba(226, 236, 126, 0.5));
+}
+
+.mb-paw {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 15px;
+    color: var(--rm-outline-variant, var(--m3-on-surface-variant));
+    opacity: 0.28;
+    z-index: 1;
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.35s ease, opacity 0.35s ease, filter 0.35s ease;
+}
+
+.mb-paw svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* 3 Bước chân nhịp nhàng so le: Trái - Phải - Trái */
+.mb-paw-1 {
+    top: 15%;
+    left: calc(50% - 13px);
+    transform: rotate(-12deg);
+}
+
+.mb-paw-2 {
+    top: 48%;
+    left: calc(50% - 1px);
+    transform: rotate(12deg);
+}
+
+.mb-paw-3 {
+    top: 80%;
+    left: calc(50% - 11px);
+    transform: rotate(-10deg);
+}
+
+/* Khoảng cách dài (giữa Vòng 1 và Vòng 2) */
+.mb-rail-paws.is-long .mb-paw-1 {
+    top: 18%;
+}
+.mb-rail-paws.is-long .mb-paw-2 {
+    top: 48%;
+}
+.mb-rail-paws.is-long .mb-paw-3 {
+    top: 78%;
+}
+
+/* BƯỚC CHÂN ĐÃ HOÀN THÀNH: VÀNG ÁNH KIM SẮC NÉT & SÁNG RÕ */
+.mb-rail-paws.is-on .mb-paw {
+    color: #F6D06E;
+    opacity: 1;
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 3px rgba(246, 208, 110, 0.5));
+}
+
+html.dark .mb-rail-paws.is-on .mb-paw {
+    color: #E2EC7E;
+    filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 3.5px rgba(226, 236, 126, 0.6));
+}
+
+/* Bụi sao cổ tích giữa các bước chân */
+.mb-trail-sparkle {
+    position: absolute;
+    font-size: 7px;
+    color: #F6D06E;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 2;
+    transition: opacity 0.3s ease;
+}
+
+.mb-rail-paws.is-on .mb-trail-sparkle {
+    opacity: 0.65;
+    animation: mb-sparkle-drift 2.4s ease-in-out infinite alternate;
+}
+
+.mb-sparkle-1 {
+    top: 32%;
+    left: calc(50% + 5px);
+}
+
+.mb-sparkle-2 {
+    top: 65%;
+    left: calc(50% - 10px);
+    animation-delay: 1.2s !important;
+}
+
+@keyframes mb-sparkle-drift {
+    0% { transform: scale(0.8) rotate(0deg); opacity: 0.4; }
+    50% { transform: scale(1.25) rotate(25deg); opacity: 0.85; filter: drop-shadow(0 0 3px #F6D06E); }
+    100% { transform: scale(0.9) rotate(-15deg); opacity: 0.5; }
+}
+
+/* BƯỚC CHÂN TẠI BÀI ĐANG HỌC: HIỆU ỨNG LUMI BƯỚC ĐI TUẦN TỰ */
+.mb-rail-paws.is-active-stride .mb-paw-1 {
+    animation: mb-paw-step-1 2.1s ease-in-out infinite;
+}
+.mb-rail-paws.is-active-stride .mb-paw-2 {
+    animation: mb-paw-step-2 2.1s ease-in-out infinite;
+    animation-delay: 0.7s;
+}
+.mb-rail-paws.is-active-stride .mb-paw-3 {
+    animation: mb-paw-step-3 2.1s ease-in-out infinite;
+    animation-delay: 1.4s;
+}
+
+@keyframes mb-paw-step-1 {
+    0%, 100% {
+        transform: rotate(-12deg) scale(0.92);
+        color: var(--rm-outline-variant, var(--m3-on-surface-variant));
+        opacity: 0.35;
+        filter: none;
+    }
+    35%, 55% {
+        transform: rotate(-12deg) scale(1.2);
+        color: var(--m3-amber-glow);
+        opacity: 1;
+        filter: drop-shadow(0 0 5px var(--m3-amber-glow));
+    }
+}
+
+@keyframes mb-paw-step-2 {
+    0%, 100% {
+        transform: rotate(12deg) scale(0.92);
+        color: var(--rm-outline-variant, var(--m3-on-surface-variant));
+        opacity: 0.35;
+        filter: none;
+    }
+    35%, 55% {
+        transform: rotate(12deg) scale(1.2);
+        color: var(--m3-amber-glow);
+        opacity: 1;
+        filter: drop-shadow(0 0 5px var(--m3-amber-glow));
+    }
+}
+
+@keyframes mb-paw-step-3 {
+    0%, 100% {
+        transform: rotate(-10deg) scale(0.92);
+        color: var(--rm-outline-variant, var(--m3-on-surface-variant));
+        opacity: 0.35;
+        filter: none;
+    }
+    35%, 55% {
+        transform: rotate(-10deg) scale(1.2);
+        color: var(--m3-amber-glow);
+        opacity: 1;
+        filter: drop-shadow(0 0 5px var(--m3-amber-glow));
+    }
+}
+
+/* KHOẢNH KHẮC MỞ KHÓA BÀI HỌC MỚI: BÀN CHÂN DỒN LỰC BỪNG SÁNG */
+.mb-rail.is-unlocking .mb-rail-paws .mb-paw-1 {
+    animation: mb-paw-unlock-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+.mb-rail.is-unlocking .mb-rail-paws .mb-paw-2 {
+    animation: mb-paw-unlock-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.25s forwards;
+}
+.mb-rail.is-unlocking .mb-rail-paws .mb-paw-3 {
+    animation: mb-paw-unlock-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s forwards;
+}
+
+@keyframes mb-paw-unlock-pop {
+    0%   { transform: scale(0.4); opacity: 0; }
+    70%  { transform: scale(1.35); opacity: 1; color: var(--m3-amber-glow); filter: drop-shadow(0 0 10px var(--m3-amber-glow)); }
+    100% { transform: scale(1); opacity: 1; color: #F6D06E; filter: drop-shadow(0 0 4px rgba(246, 208, 110, 0.6)); }
+}
+
+/* TƯƠNG TÁC HOVER TRÊN RAIL / ROW */
+.mb-row:hover .mb-paw.is-on {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 5px var(--m3-amber-glow));
+}
+
+/* ------------------------------------------------------------- */
+/* 7. CHẤM TRẠNG THÁI BÀI HỌC (DOTS)                             */
+/* ------------------------------------------------------------- */
+.mb-dot {
+    position: relative;
+    z-index: 1;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.mb-dot svg {
+    width: 11px;
+    height: 11px;
+}
+
+.mb-state-completed .mb-dot {
+    background: var(--rm-dot-completed);
+    color: var(--rm-dot-completed-icon);
+    box-shadow: 0 0 0 3px var(--rm-cut-ring);
+}
+
+.mb-state-active .mb-dot {
+    background: var(--rm-dot-active-bg);
+    border: 3px solid var(--rm-dot-active-border);
+    box-shadow: 0 0 0 3px var(--rm-cut-ring), 0 0 0 3px var(--rm-primary);
+    animation: mb-dot-pulse 1.8s ease-out infinite;
+}
+
+.mb-state-locked .mb-dot {
+    width: 14px;
+    height: 14px;
+    background: var(--rm-dot-locked-bg);
+    border: 2px solid var(--rm-dot-locked-border);
+    box-shadow: 0 0 0 3px var(--rm-cut-ring);
+}
+
+.mb-type-chest.mb-state-locked .mb-dot,
+.mb-type-chest.mb-state-active .mb-dot,
+.mb-type-boss.mb-state-locked .mb-dot,
+.mb-type-boss.mb-state-active .mb-dot {
+    background: var(--rm-amber-glow);
+    border-color: var(--rm-on-pro);
+}
+
+@keyframes mb-dot-pulse {
+    0%   { box-shadow: 0 0 0 3px var(--rm-cut-ring), 0 0 0 3px var(--rm-primary); }
+    100% { box-shadow: 0 0 0 3px var(--rm-cut-ring), 0 0 0 12px rgba(82, 102, 0, 0); }
+}
+
+/* ------------------------------------------------------------- */
+/* 8. SECTION HEAD & TIẾN ĐỘ VÒNG                                */
+/* ------------------------------------------------------------- */
+.mb-head-row {
+    --mb-dot-r: 17px;
+}
+
+.mb-section-node {
+    position: relative;
+    z-index: 1;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--rm-primary);
+    color: var(--rm-on-primary);
+    box-shadow: 0 0 0 4px var(--rm-cut-ring), var(--rm-elev-1);
+}
+
+.mb-section-node svg {
+    width: 18px;
+    height: 18px;
+}
+
+.mb-section-node.is-locked {
+    background: var(--rm-surface-variant);
+    color: var(--rm-outline);
+    border: 2px solid var(--rm-outline);
+    box-shadow: 0 0 0 4px var(--rm-cut-ring);
+}
+
+.mb-head {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    min-height: 112px;
+    display: flex;
+    align-items: center;
+}
+
+.mb-head-text {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-right: 118px;
+    min-width: 0;
+}
+
+.mb-head-eyebrow {
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--rm-primary);
+}
+
+.mb-head-title {
+    margin: 0;
+    font-size: 19px;
+    line-height: 1.2;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--rm-on-surface);
+}
+
+.mb-head-meta {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--rm-on-surface-variant);
+}
+
+.mb-segbar {
+    display: flex;
+    gap: 4px;
+    margin-top: 2px;
+}
+
+.mb-segbar span {
+    width: 22px;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--rm-outline-variant);
+    transition: background 0.35s ease;
+}
+
+.mb-segbar span.on {
+    background: var(--rm-primary);
+}
+
+.mb-segbar.is-mastered span.on {
+    background: linear-gradient(135deg, var(--rm-primary) 0%, var(--m3-amber-glow) 100%) !important;
+    box-shadow: 0 0 6px rgba(245, 158, 11, 0.45);
+}
+
+/* ------------------------------------------------------------- */
+/* 9. NHÂN VẬT TÔ MÀU 1/5 & BÓNG THOẠI                           */
+/* ------------------------------------------------------------- */
+.mb-char {
+    position: absolute;
+    right: -2px;
+    bottom: -8px;
+    width: 112px;
+    height: 112px;
+    z-index: 3;
+    cursor: pointer;
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.mb-char:active {
+    transform: scale(0.96);
+}
+
+.mb-char-shadow {
+    position: absolute;
+    left: 50%;
+    bottom: 2px;
+    width: 70px;
+    height: 12px;
+    transform: translateX(-50%);
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.mb-char-gray,
+.mb-char-color {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+    pointer-events: none;
+}
+
+.mb-char-gray {
+    filter: grayscale(100%) opacity(0.42) contrast(1.05) brightness(0.9);
+}
+
+.mb-char.is-waiting .mb-char-gray {
+    filter: grayscale(100%) opacity(0.32) contrast(1.05) brightness(0.9);
+}
+
+.mb-char-color {
+    transition: clip-path 0.8s cubic-bezier(0.34, 1.3, 0.64, 1);
+}
+
+.mb-char-line {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, transparent, var(--rm-primary), var(--rm-on-primary-container), var(--rm-primary), transparent);
+    box-shadow: 0 0 8px var(--rm-primary);
+    pointer-events: none;
+    transition: bottom 0.8s cubic-bezier(0.34, 1.3, 0.64, 1), opacity 0.3s ease;
+    animation: mb-char-shimmer 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes mb-char-shimmer {
+    from { filter: brightness(0.85); }
+    to   { filter: brightness(1.25); }
+}
+
+.mb-char.is-mastered .mb-char-color {
+    filter: drop-shadow(0 0 12px rgba(251, 191, 36, 0.8)) drop-shadow(0 0 4px var(--rm-primary));
+    animation: mb-char-bob 2.6s ease-in-out infinite;
+}
+
+.mb-char.is-mastered::after {
+    content: '🏆';
+    position: absolute;
+    top: -6px;
+    right: 6px;
+    font-size: 18px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.45));
+    animation: mb-trophy-bob 2.4s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 10;
+}
+
+@keyframes mb-trophy-bob {
+    0%   { transform: translateY(0) rotate(-6deg); }
+    100% { transform: translateY(-5px) rotate(6deg); }
+}
+
+@keyframes mb-char-bob {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-4px); }
+}
+
+.mb-char.is-talking .mb-char-color,
+.mb-char.is-talking .mb-char-gray {
+    animation: mb-char-hop 0.55s cubic-bezier(0.34, 1.6, 0.64, 1);
+}
+
+@keyframes mb-char-hop {
+    0%   { transform: translateY(0) scale(1); }
+    40%  { transform: translateY(-10px) scale(1.04, 0.97); }
+    100% { transform: translateY(0) scale(1); }
+}
+
+.mb-char-bubble {
+    position: absolute;
+    right: calc(100% - 14px);
+    bottom: 56%;
+    width: 168px;
+    padding: 8px 11px;
+    border-radius: 16px 16px 4px 16px;
+    background: var(--rm-speech-bg);
+    border: 1px solid var(--rm-speech-border);
+    color: var(--rm-on-surface);
+    font-size: 11.5px;
+    font-weight: 700;
+    line-height: 1.35;
+    box-shadow: var(--rm-elev-2);
+    opacity: 0;
+    transform: translateY(6px) scale(0.92);
+    transform-origin: bottom right;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 5;
+}
+
+.mb-char.is-talking .mb-char-bubble {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* ------------------------------------------------------------- */
+/* 10. THẺ BÀI HỌC (LESSON CARDS)                                */
+/* ------------------------------------------------------------- */
+.mb-card {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    min-height: 88px;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    background: var(--rm-card-bg);
+    border: 1px solid var(--rm-card-border);
+    border-radius: 24px;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: var(--rm-elev-1);
+    transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.mb-card:hover {
+    background: var(--rm-card-bg-hover);
+    box-shadow: var(--rm-elev-2);
+}
+
+.mb-card:active {
+    transform: scale(0.975);
+}
+
+.mb-state-active .mb-card {
+    border-color: var(--rm-card-border-active);
+    box-shadow: 0 0 0 1px var(--rm-card-border-active), var(--rm-elev-2);
+}
+
+.mb-state-locked .mb-card {
+    opacity: 0.76;
+}
+
+.mb-card-body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    padding: 12px 6px 12px 16px;
+}
+
+.mb-card-kicker {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--rm-card-kicker);
+    white-space: nowrap;
+}
+
+/* No stars displayed on lesson kicker */
+
+.mb-card-title {
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.28;
+    font-weight: 700;
+    color: var(--rm-card-title);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.mb-card-cta {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 2px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--rm-primary);
+    color: var(--rm-on-primary);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    transition: all 0.15s ease;
+}
+
+.mb-card-cta.is-review {
+    background: rgba(82, 102, 0, 0.07);
+    border: 1px solid var(--rm-outline);
+    color: var(--rm-primary);
+    font-weight: 800;
+    padding: 3px 9px;
+}
+
+html.dark .mb-card-cta.is-review {
+    background: rgba(184, 209, 102, 0.10);
+    border-color: var(--rm-outline);
+    color: var(--rm-primary);
+}
+
+.mb-card:hover .mb-card-cta.is-review {
+    background: var(--rm-primary);
+    border-color: var(--rm-primary);
+    color: var(--rm-on-primary);
+}
+
+.mb-card-cta svg {
+    width: 9px;
+    height: 9px;
+    fill: currentColor;
+}
+
+.mb-thumb {
+    position: relative;
+    flex-shrink: 0;
+    width: 88px;
+    margin: -1px -1px -1px 0;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 2px solid var(--rm-primary);
+    box-sizing: border-box;
+    background: var(--rm-thumb-bg);
+}
+
+.mb-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.mb-state-locked .mb-thumb {
+    border-color: var(--rm-outline-variant);
+}
+
+.mb-state-locked .mb-thumb img {
+    filter: grayscale(55%) brightness(0.65);
+}
+
+.mb-thumb-badge {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.35);
+    font-size: 18px;
+}
+
+/* Thẻ Rương & Boss */
+.mb-type-chest .mb-thumb {
+    border-color: var(--rm-amber-glow);
+}
+
+.mb-type-chest .mb-card {
+    background: linear-gradient(135deg, var(--rm-amber-container) 0%, var(--rm-card-bg) 80%);
+}
+
+.mb-type-boss .mb-thumb {
+    border-color: var(--rm-pro-mid);
+}
+
+.mb-type-boss .mb-card {
+    background: linear-gradient(135deg, var(--rm-amber-container) 0%, var(--rm-card-bg) 75%);
+}
+
+.mb-type-chest .mb-card-kicker,
+.mb-type-boss .mb-card-kicker {
+    color: var(--rm-amber-text);
+}
+
+.mb-type-chest.mb-state-active .mb-card,
+.mb-type-boss.mb-state-active .mb-card {
+    border-color: var(--rm-amber-glow);
+    box-shadow: 0 0 0 1px var(--rm-amber-glow), var(--rm-elev-2);
+}
+
+.mb-type-chest .mb-card-cta,
+.mb-type-boss .mb-card-cta {
+    background: linear-gradient(135deg, var(--rm-pro-start), var(--rm-pro-mid), var(--rm-pro-end));
+    color: var(--rm-on-pro);
+}
+
+.mb-crown {
+    position: absolute;
+    top: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+}
+
+/* ------------------------------------------------------------- */
+/* 11. THÔNG BÁO CHƯƠNG KHÓA                                     */
+/* ------------------------------------------------------------- */
+.mb-animate-in .mb-row,
+.mb-animate-in .mb-locked-notice {
+    animation: mb-row-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--i, 0) * 40ms);
+}
+
+@keyframes mb-row-in {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.mb-row.is-just-done .mb-card {
+    animation: mb-card-flash 1.2s ease-out;
+}
+
+.mb-row.is-just-done .mb-dot {
+    animation: mb-dot-pop 0.6s cubic-bezier(0.34, 1.8, 0.64, 1);
+}
+
+@keyframes mb-card-flash {
+    0%   { box-shadow: 0 0 0 0 rgba(82, 102, 0, 0), var(--rm-elev-1); }
+    25%  { box-shadow: 0 0 0 4px var(--rm-primary), var(--rm-elev-3); }
+    100% { box-shadow: 0 0 0 0 rgba(82, 102, 0, 0), var(--rm-elev-1); }
+}
+
+@keyframes mb-dot-pop {
+    0%   { transform: scale(0.4); }
+    100% { transform: scale(1); }
+}
+
+.mb-segbar span.pop {
+    animation: mb-seg-pop 0.7s cubic-bezier(0.34, 1.8, 0.64, 1) 0.3s both;
+}
+
+@keyframes mb-seg-pop {
+    0%   { transform: scaleX(0.2); background: var(--rm-primary-container); }
+    60%  { transform: scaleX(1.15); background: var(--rm-primary); }
+    100% { transform: scaleX(1); background: var(--rm-primary); }
+}
+
+.mb-locked-notice {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 22px;
+    padding: 14px;
+    border-radius: 24px;
+    background: var(--rm-card-bg);
+    border: 1px solid var(--rm-card-border);
+    color: var(--rm-on-surface);
+    box-shadow: var(--rm-elev-1);
+}
+
+.mb-locked-icon {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--rm-primary-container);
+    color: var(--rm-primary);
+}
+
+.mb-locked-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+.mb-locked-text {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.mb-locked-text strong {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--rm-on-surface);
+}
+
+.mb-locked-text span {
+    font-size: 11.5px;
+    line-height: 1.4;
+    color: var(--rm-on-surface-variant);
+}
+
+.mb-locked-btn {
+    flex-shrink: 0;
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: none;
+    background: var(--rm-primary);
+    color: var(--rm-on-primary);
+    font-size: 11.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+}
+
+.mb-locked-btn:active {
+    transform: translateY(2px);
+}
+
+/* ------------------------------------------------------------- */
+/* 12. THANH "BÀI TIẾP THEO" GẮN ĐÁY (NEXTBAR)                  */
+/* ------------------------------------------------------------- */
+.mb-nextbar {
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    max-width: 400px;
+    margin: 0 auto;
+    bottom: 20px;
+    z-index: 35;
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    transition: opacity 0.28s ease, transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+}
+
+.mb-nextbar.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.mb-nextbar.is-hidden-scroll {
+    transform: translateY(120%) !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+.mb-nextbar-inner {
+    width: 100%;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+    border: 1px solid var(--rm-nextbar-border);
+    border-radius: 24px;
+    background: var(--rm-nextbar-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.55), 0 4px 12px rgba(0, 0, 0, 0.35);
+    color: var(--rm-on-surface);
+    text-align: left;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.mb-nextbar-inner:hover {
+    background: var(--rm-card-bg-hover);
+}
+
+.mb-nextbar-inner:active {
+    transform: scale(0.985);
+}
+
+/* Integrated Lumi Mascot Button on Left */
+.mb-nextbar-lumi-btn {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: 14px;
+    background: rgba(212, 238, 127, 0.12);
+    border: 1.5px solid var(--rm-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+}
+
+.mb-nextbar-lumi-btn:active {
+    transform: scale(0.92);
+}
+
+.mb-nextbar-lumi-avatar {
+    font-size: 22px;
+    display: block;
+    line-height: 1;
+    transition: transform 0.2s ease;
+}
+
+.mb-nextbar-lumi-btn:hover .mb-nextbar-lumi-avatar {
+    transform: rotate(12deg);
+}
+
+.mb-nextbar-lumi-badge {
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    width: 17px;
+    height: 17px;
+    border-radius: 999px;
+    background: var(--m3-amber-glow, #D97706);
+    color: #12140E;
+    font-size: 10px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid var(--rm-card-bg, #20211C);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.mb-nextbar-thumb {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: 14px;
+    object-fit: cover;
+    border: 1.5px solid var(--rm-primary);
+}
+
+.mb-nextbar-emoji {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: var(--rm-amber-container);
+    font-size: 22px;
+}
+
+.mb-nextbar-text {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.mb-nextbar-kicker {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--rm-primary);
+}
+
+.mb-nextbar-inner.is-done .mb-nextbar-kicker {
+    color: var(--rm-amber-text);
+}
+
+.mb-nextbar-title {
+    font-size: 13.5px;
+    font-weight: 800;
+    color: var(--rm-on-surface);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mb-nextbar-sub {
+    font-size: 10.5px;
+    font-weight: 600;
+    color: var(--rm-on-surface-variant);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mb-nextbar-go {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--rm-primary);
+    color: var(--rm-on-primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.15s ease;
+}
+
+.mb-nextbar-go:active {
+    transform: scale(0.92);
+}
+
+.mb-nextbar-go svg {
+    width: 15px;
+    height: 15px;
+    fill: currentColor;
+}
+
+@media (max-width: 400px) {
+    .mb-nextbar {
+        left: 12px;
+        right: 12px;
+        bottom: 16px;
+    }
+    .mb-nextbar-inner {
+        gap: 8px;
+        padding: 6px 10px;
+    }
+    .mb-nextbar-thumb {
+        width: 40px;
+        height: 40px;
+    }
+    .mb-nextbar-go {
+        width: 38px;
+        height: 38px;
+    }
+    .mb-nextbar-sub {
+        font-size: 9.5px;
+    }
+}
+
+/* ------------------------------------------------------------- */
+/* 13. DIALOG ĂN MỪNG 5/5 BÀI (CELEBRATION)                     */
+/* ------------------------------------------------------------- */
+.mb-celebrate {
+    position: absolute;
+    inset: 0;
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+}
+
+.mb-celebrate-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.mb-celebrate-card {
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+    padding: 28px 22px 22px;
+    border-radius: 28px;
+    background: var(--rm-dialog-bg);
+    border: 1px solid var(--rm-dialog-border);
+    color: var(--rm-on-surface);
+    text-align: center;
+    box-shadow: var(--rm-elev-3);
+    opacity: 0;
+    transform: translateY(24px) scale(0.92);
+    transition: opacity 0.25s ease, transform 0.4s cubic-bezier(0.34, 1.4, 0.64, 1);
+    overflow: hidden;
+}
+
+.mb-celebrate.is-open .mb-celebrate-backdrop { opacity: 1; }
+.mb-celebrate.is-open .mb-celebrate-card { opacity: 1; transform: translateY(0) scale(1); }
+
+.mb-celebrate-glow {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    width: 220px;
+    height: 220px;
+    margin-left: -110px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--rm-primary) 0%, transparent 65%);
+    opacity: 0.35;
+    animation: mb-glow-pulse 2.4s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes mb-glow-pulse {
+    0%, 100% { transform: scale(0.92); opacity: 0.25; }
+    50%      { transform: scale(1.05); opacity: 0.45; }
+}
+
+.mb-celebrate-img {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 14px var(--rm-primary));
+    animation: mb-char-bob 2.6s ease-in-out infinite;
+}
+
+.mb-celebrate-stars {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin: 6px 0 10px;
+    font-size: 22px;
+    color: var(--rm-amber-glow);
+}
+
+.mb-celebrate-stars span {
+    animation: mb-star-in 0.5s cubic-bezier(0.34, 1.8, 0.64, 1) both;
+}
+
+.mb-celebrate-stars span:nth-child(1) { animation-delay: 0.35s; }
+.mb-celebrate-stars span:nth-child(2) { animation-delay: 0.5s; font-size: 28px; }
+.mb-celebrate-stars span:nth-child(3) { animation-delay: 0.65s; }
+
+@keyframes mb-star-in {
+    from { opacity: 0; transform: scale(0.2) rotate(-40deg); }
+    to   { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+.mb-celebrate-kicker {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: var(--rm-primary-container);
+    color: var(--rm-on-primary-container);
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.mb-celebrate-title {
+    margin: 10px 0 8px;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1.25;
+    color: var(--rm-on-surface);
+}
+
+.mb-celebrate-quote {
+    margin: 0 0 18px;
+    font-size: 13px;
+    line-height: 1.45;
+    font-style: italic;
+    color: var(--rm-on-surface-variant);
+}
+
+.mb-celebrate-btn {
+    width: 100%;
+    height: 48px;
+    border: none;
+    border-radius: 999px;
+    background: var(--rm-primary);
+    color: var(--rm-on-primary);
+    font-size: 14.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.1s ease, filter 0.15s ease;
+}
+
+.mb-celebrate-btn:hover {
+    filter: brightness(1.06);
+}
+
+.mb-celebrate-btn:active {
+    transform: translateY(2px);
+}
+
+.mb-celebrate-confetti span {
+    position: absolute;
+    top: -12px;
+    left: calc(6% + var(--c) * 6.5%);
+    width: 7px;
+    height: 11px;
+    border-radius: 2px;
+    background: var(--rm-primary);
+    animation: mb-confetti-fall 2.2s cubic-bezier(0.3, 0.6, 0.5, 1) both;
+    animation-delay: calc(var(--c) * 70ms);
+    pointer-events: none;
+}
+
+.mb-celebrate-confetti span:nth-child(5n + 2) { background: var(--rm-amber-glow); }
+.mb-celebrate-confetti span:nth-child(5n + 3) { background: var(--rm-tertiary); }
+.mb-celebrate-confetti span:nth-child(5n + 4) { background: var(--rm-secondary); }
+.mb-celebrate-confetti span:nth-child(5n + 5) { background: var(--rm-on-primary-container); }
+
+@keyframes mb-confetti-fall {
+    0%   { transform: translateY(0) rotate(0); opacity: 1; }
+    100% { transform: translateY(420px) rotate(540deg); opacity: 0; }
+}
+
+/* ------------------------------------------------------------- */
+/* 14. FOCUS BÀN PHÍM & A11Y                                     */
+/* ------------------------------------------------------------- */
+.mb-card:focus-visible,
+.mb-char:focus-visible {
+    outline: 3px solid var(--rm-primary);
+    outline-offset: 3px;
+}
+
+.mb-nextbar-inner:focus-visible,
+.mb-locked-btn:focus-visible,
+.mb-celebrate-btn:focus-visible {
+    outline: 3px solid var(--rm-primary);
+    outline-offset: 3px;
+}
+
+.mb-card:focus:not(:focus-visible),
+.mb-char:focus:not(:focus-visible) {
+    outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mb-timeline *,
+    .mb-nextbar,
+    .mb-celebrate * {
+        animation: none !important;
+        transition-duration: 0.01ms !important;
+    }
+    #roadmapChapterBanner {
+        transition: none;
+    }
+}
+
+#screenParchmentRoadmap #roadmapLumiFab {
+    background: linear-gradient(135deg, var(--rm-primary-container), var(--rm-primary)) !important;
+    border: 2px solid var(--rm-primary) !important;
+    color: var(--rm-on-primary) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* Rung lắc khi bấm vào bài học đang khóa */
+@keyframes mb-shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-6px); }
+    40%, 80% { transform: translateX(6px); }
+}
+.mb-card.mb-shake {
+    animation: mb-shake 0.38s ease-in-out !important;
+    border-color: var(--rm-error, var(--m3-error)) !important;
+}
+
+/* Bừng sáng khi bài học mới được mở khóa */
+@keyframes mb-node-unlock {
+    0%   { transform: scale(0.96); box-shadow: 0 0 0 0 var(--rm-primary); }
+    50%  { transform: scale(1.02); box-shadow: 0 0 0 6px var(--rm-primary), var(--rm-elev-3); }
+    100% { transform: scale(1); box-shadow: 0 0 0 1px var(--rm-card-border-active), var(--rm-elev-2); }
+}
+.mb-card.is-just-unlocked {
+    animation: mb-node-unlock 1.2s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+/* ------------------------------------------------------------- */
+/* ✨ SINH ĐỘNG: NHÂN VẬT THỞ, LUMI ĐỒNG HÀNH & HIỆU ỨNG 4 CHƯƠNG */
+/* ------------------------------------------------------------- */
+
+/* 1. Nhân vật có nhịp thở tự nhiên */
+@keyframes mb-char-breathe {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50%      { transform: translateY(-3.5px) scale(1.018, 0.985); }
+}
+.mb-char {
+    animation: mb-char-breathe 3.6s ease-in-out infinite;
+}
+.mb-char:hover {
+    filter: drop-shadow(0 4px 12px rgba(82, 102, 0, 0.25));
+}
+
+/* 2. Lumi mini companion đứng trên chấm bài đang học */
+.mb-active-lumi-companion {
+    position: absolute;
+    top: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px;
+    line-height: 1;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
+    animation: mb-lumi-bounce 1.6s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 10;
+}
+.mb-active-lumi-companion::after {
+    content: '🐾';
+    position: absolute;
+    bottom: -4px;
+    right: -7px;
+    font-size: 10px;
+    opacity: 0.85;
+    animation: mb-lumi-paw-sparkle 1.6s ease-in-out infinite alternate;
+}
+@keyframes mb-lumi-paw-sparkle {
+    0%   { transform: scale(0.8) rotate(-12deg); opacity: 0.5; }
+    100% { transform: scale(1.15) rotate(12deg); opacity: 1; filter: drop-shadow(0 0 3px var(--m3-amber-glow)); }
+}
+@keyframes mb-lumi-bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%      { transform: translateX(-50%) translateY(-6px); }
+}
+
+/* 3. Hiệu ứng hạt không khí theo 4 chương (Ambient Canvas) */
+#roadmapAmbientContainer {
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* Mưa rơi chương 1 (Mưa dưới mái hiên) */
+.ambient-rain-drop {
+    position: absolute;
+    width: 1.5px;
+    height: 14px;
+    background: linear-gradient(180deg, transparent, rgba(184, 209, 102, 0.45));
+    border-radius: 1px;
+    animation: ambient-rain-fall linear infinite;
+    pointer-events: none;
+}
+html.light .ambient-rain-drop {
+    background: linear-gradient(180deg, transparent, rgba(82, 102, 0, 0.35));
+}
+@keyframes ambient-rain-fall {
+    0%   { transform: translateY(-30px) rotate(14deg); opacity: 0; }
+    20%  { opacity: 0.7; }
+    100% { transform: translateY(780px) rotate(14deg); opacity: 0; }
+}
+
+/* Đốm sáng hơi nước chương 2 (Chuyến tàu đêm) */
+.ambient-steam-puff {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(251, 191, 36, 0.5) 0%, transparent 70%);
+    animation: ambient-steam-drift ease-in-out infinite alternate;
+    pointer-events: none;
+}
+@keyframes ambient-steam-drift {
+    0%   { transform: translateY(0) scale(0.8); opacity: 0.2; }
+    50%  { opacity: 0.65; }
+    100% { transform: translateY(-40px) scale(1.4); opacity: 0.1; }
+}
+
+/* Sóng cực quang & nốt nhạc chương 3 (Thử thách âm điệu) */
+.ambient-aurora-note {
+    position: absolute;
+    font-size: 13px;
+    color: var(--rm-primary);
+    opacity: 0.45;
+    animation: ambient-aurora-float 4.2s ease-in-out infinite;
+    pointer-events: none;
+}
+@keyframes ambient-aurora-float {
+    0%   { transform: translateY(0) rotate(-10deg); opacity: 0.1; }
+    50%  { transform: translateY(-25px) rotate(10deg); opacity: 0.6; }
+    100% { transform: translateY(-50px) rotate(-5deg); opacity: 0; }
+}
+
+/* Đom đóm chương 4 (Đêm hội đom đóm) */
+.ambient-firefly {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--m3-amber-container);
+    box-shadow: 0 0 8px var(--m3-amber-container), 0 0 14px rgba(253, 224, 71, 0.6);
+    animation: ambient-firefly-glow 2.8s ease-in-out infinite alternate, ambient-firefly-drift 6s ease-in-out infinite;
+    pointer-events: none;
+}
+@keyframes ambient-firefly-glow {
+    0%, 100% { opacity: 0.2; transform: scale(0.7); }
+    50%      { opacity: 0.95; transform: scale(1.2); }
+}
+@keyframes ambient-firefly-drift {
+    0%   { transform: translate(0, 0); }
+    33%  { transform: translate(18px, -15px); }
+    66%  { transform: translate(-12px, -30px); }
+    100% { transform: translate(0, 0); }
+}
+
+/* 4. Tương tác khi di chuột và chạm vào rail */
+.mb-rail {
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.mb-rail:active {
+    transform: scale(0.94);
+}
+
+/* ------------------------------------------------------------- */
+/* 15. M3 CHAPTER PICKER BOTTOM SHEET MODAL (OPTION 2)           */
+/* ------------------------------------------------------------- */
+#roadmapChapterSheet {
+    position: absolute;
+    inset: 0;
+    z-index: 100 !important;
+    background: rgba(0, 0, 0, 0.65) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+}
+
+#roadmapChapterSheet.is-open {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+#roadmapChapterSheetContent {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 430px;
+    margin: 0 auto;
+    background: var(--rm-dialog-bg, var(--m3-surface)) !important;
+    border-top: 1px solid var(--rm-dialog-border, rgba(119, 120, 107, 0.35)) !important;
+    border-radius: 32px 32px 0 0;
+    padding: 16px 20px max(env(safe-area-inset-bottom), 24px);
+    box-shadow: 0 -24px 60px rgba(0, 0, 0, 0.55);
+    transform: translateY(100%);
+    transition: transform 0.32s cubic-bezier(0.32, 1.25, 0.64, 1);
+    box-sizing: border-box;
+}
+
+#roadmapChapterSheet.is-open #roadmapChapterSheetContent {
+    transform: translateY(0);
+}
+
+.mb-sheet-handle {
+    width: 44px;
+    height: 5px;
+    border-radius: 999px;
+    background: var(--rm-outline-variant, var(--m3-on-surface-variant));
+    opacity: 0.7;
+    margin: 0 auto 16px;
+}
+
+/* Chapter Sheet Cards */
+.mb-sheet-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 14px;
+    border-radius: 20px;
+    background: var(--rm-card-bg, var(--m3-surface-container-low));
+    border: 1px solid var(--rm-card-border, rgba(119, 120, 107, 0.35));
+    transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.mb-sheet-card:hover {
+    background: var(--rm-card-bg-hover, var(--m3-on-surface));
+}
+
+.mb-sheet-card:active {
+    transform: scale(0.98);
+}
+
+.mb-sheet-card.is-selected {
+    border: 2px solid var(--rm-primary) !important;
+    background: rgba(82, 102, 0, 0.10) !important;
+    box-shadow: var(--rm-elev-1);
+}
+
+html.dark .mb-sheet-card.is-selected {
+    background: rgba(184, 209, 102, 0.15) !important;
+}
+
+.mb-sheet-card.is-locked {
+    border-style: dashed !important;
+    opacity: 0.65;
+    background: rgba(0, 0, 0, 0.03);
+}
+
+html.dark .mb-sheet-card.is-locked {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.mb-sheet-thumb {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 1.5px solid var(--rm-outline-variant);
+    position: relative;
+    background: var(--rm-thumb-bg);
+}
+
+.mb-sheet-card.is-selected .mb-sheet-thumb {
+    border-color: var(--rm-primary);
+}
+
+.mb-sheet-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.mb-sheet-thumb.is-locked img {
+    filter: grayscale(80%) brightness(0.7);
+}
+
+.mb-sheet-lock-icon {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+/* ------------------------------------------------------------- */
+/* 🎯 MATERIAL DESIGN 3 VOCABULARY GOAL SELECTOR                */
+/* Palette: M3-07 Dark Olive Green (#B8D166) & Amber Glow (#FBBF24) */
+/* ------------------------------------------------------------- */
+.intro-vocab-card {
+    width: 100%;
+    max-width: 336px;
+    margin: 0 auto 20px auto;
+    padding: 13px 15px;
+    border-radius: 20px;
+    background: #F3F1E9;
+    border: 1px solid rgba(199, 200, 184, 0.7);
+    box-shadow: 0 4px 16px rgba(82, 102, 0, 0.06);
+    text-align: left;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-sizing: border-box;
+}
+
+html.dark .intro-vocab-card {
+    background: #20211C;
+    border: 1px solid rgba(70, 72, 60, 0.65);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Header Row: Pure Typographic Hierarchy */
+.intro-vocab-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 11px;
+}
+
+.intro-vocab-title-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.intro-vocab-eyebrow {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #526600;
+    line-height: 1.2;
+}
+
+html.dark .intro-vocab-eyebrow {
+    color: #B8D166;
+}
+
+.intro-vocab-subtitle {
+    font-size: 12px;
+    font-weight: 500;
+    color: #46483C;
+    line-height: 1.35;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+html.dark .intro-vocab-subtitle {
+    color: #C7C8B8;
+}
+
+/* Amber Glow Time Badge (Ghibli Lamp Warmth) */
+.intro-vocab-time-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 9px;
+    border-radius: 9999px;
+    background: #FEF3C7;
+    border: 1px solid rgba(217, 119, 6, 0.35);
+    flex-shrink: 0;
+    font-size: 11px;
+    font-weight: 700;
+    color: #78350F;
+}
+
+html.dark .intro-vocab-time-badge {
+    background: #3D2E0B;
+    border: 1px solid rgba(251, 191, 36, 0.4);
+    color: #FDE68A;
+    box-shadow: 0 2px 8px rgba(251, 191, 36, 0.15);
+}
+
+/* Segmented Control Track: Flawless Flex Row */
+.intro-segmented-bar {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    background: rgba(0, 0, 0, 0.06) !important;
+    border-radius: 14px !important;
+    padding: 3px !important;
+    gap: 2px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+html.dark .intro-segmented-bar {
+    background: #141510 !important;
+    border: 1px solid rgba(70, 72, 60, 0.45) !important;
+}
+
+.intro-segment-btn,
+.intro-vocab-chip {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 7px 2px !important;
+    border: none !important;
+    border-radius: 11px !important;
+    background: transparent !important;
+    color: #5B6146 !important;
+    font-size: 12.5px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    outline: none !important;
+    user-select: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+html.dark .intro-segment-btn,
+html.dark .intro-vocab-chip {
+    color: #C7C8B8 !important;
+}
+
+.intro-segment-btn:hover,
+.intro-vocab-chip:hover {
+    color: #161F00 !important;
+}
+
+html.dark .intro-segment-btn:hover,
+html.dark .intro-vocab-chip:hover {
+    color: #E5E3DB !important;
+}
+
+.intro-segment-btn:active,
+.intro-vocab-chip:active {
+    transform: scale(0.96) !important;
+}
+
+/* Selected Tab: M3 Primary (#B8D166 / #526600) High-Contrast Glow */
+.intro-segment-btn.is-selected,
+.intro-vocab-chip.is-selected {
+    background: #526600 !important;
+    color: #FFFFFF !important;
+    font-weight: 800 !important;
+    box-shadow: 0 3px 10px rgba(82, 102, 0, 0.32) !important;
+}
+
+html.dark .intro-segment-btn.is-selected,
+html.dark .intro-vocab-chip.is-selected {
+    background: #B8D166 !important;
+    color: #161F00 !important;
+    font-weight: 900 !important;
+    box-shadow: 0 4px 16px rgba(184, 209, 102, 0.45), 0 0 12px rgba(184, 209, 102, 0.3) !important;
+}
+
+/* Stepper Micro-Row: Borderless Hairline Separation */
+.intro-vocab-stepper-row {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    margin-top: 9px !important;
+    padding-top: 8px !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+html.dark .intro-vocab-stepper-row {
+    border-top: 1px solid rgba(70, 72, 60, 0.4) !important;
+}
+
+.intro-stepper-caption {
+    font-size: 11.5px !important;
+    font-weight: 600 !important;
+    color: #5B6146 !important;
+}
+
+html.dark .intro-stepper-caption {
+    color: #C7C8B8 !important;
+}
+
+.intro-stepper-pill {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 3px !important;
+    background: rgba(82, 102, 0, 0.08) !important;
+    border: 1px solid rgba(82, 102, 0, 0.18) !important;
+    padding: 2px 4px !important;
+    border-radius: 10px !important;
+}
+
+html.dark .intro-stepper-pill {
+    background: rgba(184, 209, 102, 0.12) !important;
+    border: 1px solid rgba(184, 209, 102, 0.25) !important;
+}
+
+.intro-stepper-btn {
+    width: 24px !important;
+    height: 24px !important;
+    border-radius: 7px !important;
+    border: none !important;
+    background: transparent !important;
+    color: #526600 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: all 0.15s ease !important;
+    outline: none !important;
+    user-select: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+html.dark .intro-stepper-btn {
+    color: #B8D166 !important;
+}
+
+.intro-stepper-btn:hover {
+    background: rgba(82, 102, 0, 0.15) !important;
+    color: #161F00 !important;
+}
+
+html.dark .intro-stepper-btn:hover {
+    background: rgba(184, 209, 102, 0.25) !important;
+    color: #FFFFFF !important;
+}
+
+.intro-stepper-btn:active {
+    transform: scale(0.88) !important;
+}
+
+.intro-stepper-count {
+    font-size: 12px !important;
+    font-weight: 800 !important;
+    color: #1B1C17 !important;
+    min-width: 38px !important;
+    text-align: center !important;
+    letter-spacing: -0.01em !important;
+}
+
+html.dark .intro-stepper-count {
+    color: #E5E3DB !important;
+}
+
+

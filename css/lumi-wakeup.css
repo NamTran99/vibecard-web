@@ -1,0 +1,432 @@
+/* ========================================================
+ * 🦊 LUMI WAKEUP SCREEN STYLING & ANIMATIONS
+ * Deep cinematic dark void, floating mascot, light ray bursts
+ * ======================================================== */
+
+#screenLumiWakeup {
+    background-color: var(--m3-surface-container-lowest) !important;
+    background-image: 
+        radial-gradient(circle at 50% 18%, rgba(82, 102, 0, 0.18) 0%, transparent 60%),
+        radial-gradient(circle at 50% 55%, rgba(13, 14, 11, 0.9) 0%, var(--m3-surface-container-lowest) 100%);
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.95);
+    border-radius: 0 !important; /* Clipped cleanly by parent phone body */
+}
+
+/* Floating mascot container levitation */
+.lumi-levitate {
+    animation: lumiFloatSlow 4.2s ease-in-out infinite;
+    will-change: transform;
+}
+
+@keyframes lumiFloatSlow {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-11px) rotate(0.4deg);
+    }
+}
+
+/* Mascot breathing pulse */
+.lumi-breathing {
+    animation: lumiBreathe 3.6s ease-in-out infinite;
+    will-change: transform;
+}
+
+@keyframes lumiBreathe {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.025);
+    }
+}
+
+/* Stardust floating particles */
+.lumi-floating-star {
+    position: absolute;
+    background: var(--m3-on-surface);
+    border-radius: 50%;
+    opacity: 0.2;
+    pointer-events: none;
+    box-shadow: 0 0 6px rgba(229, 227, 219, 0.8);
+    animation: starTwinkle 3s ease-in-out infinite alternate;
+}
+
+@keyframes starTwinkle {
+    0% {
+        opacity: 0.15;
+        transform: scale(0.8) translateY(0);
+    }
+    50% {
+        opacity: 0.85;
+        transform: scale(1.4) translateY(-4px);
+    }
+    100% {
+        opacity: 0.25;
+        transform: scale(1) translateY(-8px);
+    }
+}
+
+/* Light ray optical burst */
+.lumi-light-burst {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 320px;
+    height: 320px;
+    margin-top: -160px;
+    margin-left: -160px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(184, 209, 102, 0.5) 0%, rgba(251, 191, 36, 0.3) 35%, transparent 70%);
+    filter: blur(28px);
+    pointer-events: none;
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0;
+    z-index: 10;
+}
+
+/* Ambient glow halo behind stone */
+#lumiWakeupAura {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(184, 209, 102, 0.22) 0%, rgba(201, 100, 45, 0.12) 55%, transparent 75%);
+    filter: blur(48px);
+    pointer-events: none;
+    transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 5;
+}
+
+/* Organic feathered mask for images & video to seamlessly blend with dark background */
+.lumi-image-mask {
+    border-radius: 50%;
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, #000000 52%, rgba(0,0,0,0.88) 72%, transparent 96%);
+    mask-image: radial-gradient(circle at 50% 50%, #000000 52%, rgba(0,0,0,0.88) 72%, transparent 96%);
+}
+
+/* When 3D video is active, disable competing CSS levitation & breathing that causes wobbling */
+#screenLumiWakeup.lumi-video-active .lumi-levitate,
+#screenLumiWakeup.lumi-video-active .lumi-breathing {
+    animation: none !important;
+    transform: none !important;
+}
+
+/* Video mode uses the clip's native 17:12 frame: a square crop cut Lumi's ears off */
+#screenLumiWakeup.lumi-video-active .lumi-stage-container {
+    width: 100%;
+    max-width: 372px;
+    height: auto;
+    aspect-ratio: 850 / 600;
+}
+
+#screenLumiWakeup.lumi-video-active .lumi-mascot-box {
+    width: 100%;
+    height: 100%;
+}
+
+.lumi-clip {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    transition: opacity 0.32s ease;
+    /* Feather starts early: the notice take has a golden haze backdrop that otherwise shows as a lit oval rim */
+    -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 42%, rgba(0, 0, 0, 0.5) 68%, transparent 92%);
+    mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 42%, rgba(0, 0, 0, 0.5) 68%, transparent 92%);
+}
+
+.lumi-clip.is-visible {
+    opacity: 1;
+}
+
+/* Hard swap under the flash must not crossfade, otherwise both camera angles ghost together */
+.lumi-clip.is-instant {
+    transition: none;
+}
+
+.lumi-cut-flash {
+    position: absolute;
+    inset: 4% 10%;
+    border-radius: 50%;
+    /* Opaque core only needs to cover Lumi; the clip edges are already feathered out by the mask */
+    background: radial-gradient(circle, rgba(255, 249, 228, 1) 0%, rgba(246, 230, 165, 0.95) 38%, rgba(214, 222, 140, 0.45) 60%, transparent 78%);
+    filter: blur(14px);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+
+/* Peak at 22% of 700ms (~154ms): JS swaps clips at 150ms, while the bloom fully covers Lumi */
+.lumi-cut-flash.is-firing {
+    animation: lumiCutFlash 700ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+@keyframes lumiCutFlash {
+    0% { opacity: 0; transform: scale(0.6); }
+    22% { opacity: 1; transform: scale(1.05); }
+    100% { opacity: 0; transform: scale(1.3); }
+}
+
+/* Atmospheric cavern silhouettes from reference */
+.lumi-cavern-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 140px;
+    background: radial-gradient(ellipse at 50% 0%, rgba(35, 45, 28, 0.3) 0%, transparent 80%);
+    pointer-events: none;
+}
+
+.lumi-cavern-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 180px;
+    background: radial-gradient(ellipse at 50% 100%, rgba(20, 26, 16, 0.45) 0%, transparent 85%);
+    pointer-events: none;
+}
+
+/* Explicit mascot stage & sizing (guarantees perfect render regardless of tailwind build) */
+.lumi-stage-container {
+    position: relative;
+    width: 310px;
+    height: 310px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto 0;
+    z-index: 20;
+}
+
+.lumi-mascot-box {
+    position: relative;
+    width: 295px;
+    height: 295px;
+}
+
+.lumi-mascot-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.lumi-quote-container {
+    width: 100%;
+    max-width: 340px;
+    padding-top: 0.5rem;
+    z-index: 20;
+    transition: all 0.5s ease;
+}
+
+.lumi-quote-title {
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--m3-on-surface);
+    line-height: 1.38;
+    letter-spacing: -0.015em;
+    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+}
+
+.lumi-quote-sub {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--m3-outline);
+    margin-top: 8px;
+    letter-spacing: 0.02em;
+    transition: color 0.5s ease;
+}
+
+.lumi-prompt-cta {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--m3-outline);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+/* Pulsing beacon dot */
+.lumi-pulse-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--m3-primary);
+    margin-right: 9px;
+    box-shadow: 0 0 10px rgba(184, 209, 102, 0.8);
+    animation: dotPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+    0%, 100% {
+        transform: scale(0.9);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1.3);
+        opacity: 1;
+        box-shadow: 0 0 14px rgba(184, 209, 102, 1);
+    }
+}
+
+/* Awake CTA Button */
+.lumi-btn-enter {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 10px 24px;
+    border-radius: 9999px;
+    background-color: var(--m3-primary);
+    color: var(--m3-on-primary-container) !important;
+    font-size: 12.5px;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    box-shadow: 0 6px 22px rgba(184, 209, 102, 0.45), 0 2px 8px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    text-transform: uppercase;
+    border: none;
+}
+
+.lumi-btn-enter:hover {
+    background-color: var(--m3-primary-container);
+    transform: scale(1.03);
+}
+
+.lumi-btn-enter:active {
+    transform: scale(0.96);
+}
+
+/* ========================================================
+ * 🌟 ENHANCED LIVING ANIMATIONS & PHYSICS
+ * Squash & stretch, tap shockwaves, burst sparks, living idle
+ * ======================================================== */
+
+/* Shockwave ring emitted on each wake-up tap */
+.lumi-tap-shockwave {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    margin-top: -30px;
+    margin-left: -30px;
+    border-radius: 50%;
+    border: 2px solid rgba(184, 209, 102, 0.95);
+    background: radial-gradient(circle, rgba(184, 209, 102, 0.4) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 25;
+    animation: lumiShockwaveExpand 0.72s cubic-bezier(0.1, 0.85, 0.25, 1) forwards;
+}
+
+@keyframes lumiShockwaveExpand {
+    0% {
+        transform: scale(0.35);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(4.4);
+        opacity: 0;
+        border-width: 0.5px;
+    }
+}
+
+/* Burst ember spark emitted on tap */
+.lumi-burst-spark {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--m3-primary);
+    box-shadow: 0 0 10px var(--m3-primary), 0 0 18px var(--m3-amber-glow);
+    pointer-events: none;
+    z-index: 26;
+    animation: lumiSparkFly 0.8s cubic-bezier(0.12, 0.8, 0.32, 1) forwards;
+}
+
+@keyframes lumiSparkFly {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--tx, 0px), var(--ty, 0px)) scale(0);
+        opacity: 0;
+    }
+}
+
+/* Physical Squash & Stretch Spring */
+.lumi-squash-bounce {
+    animation: lumiSquashPop 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards !important;
+}
+
+@keyframes lumiSquashPop {
+    0% {
+        transform: scale(1.08, 0.91) translateY(8px);
+    }
+    30% {
+        transform: scale(0.92, 1.12) translateY(-16px);
+    }
+    60% {
+        transform: scale(1.04, 0.97) translateY(4px);
+    }
+    85% {
+        transform: scale(0.99, 1.01) translateY(-2px);
+    }
+    100% {
+        transform: scale(1, 1) translateY(0);
+    }
+}
+
+/* Stage-specific Living Idle Animations */
+.lumi-idle-0 {
+    animation: lumiIdleSleep 4.5s ease-in-out infinite !important;
+}
+@keyframes lumiIdleSleep {
+    0%, 100% { transform: scale(1) translateY(0) rotate(0deg); }
+    50% { transform: scale(1.025, 0.985) translateY(-5px) rotate(-0.3deg); }
+}
+
+.lumi-idle-1 {
+    animation: lumiIdleStir 3.4s ease-in-out infinite !important;
+}
+@keyframes lumiIdleStir {
+    0%, 100% { transform: scale(1) translateY(0) rotate(0.4deg); }
+    35% { transform: scale(1.03, 0.98) translateY(-6px) rotate(-0.5deg); }
+    70% { transform: scale(0.99, 1.015) translateY(-2px) rotate(0.6deg); }
+}
+
+.lumi-idle-2 {
+    animation: lumiIdleStretch 2.8s ease-in-out infinite !important;
+}
+@keyframes lumiIdleStretch {
+    0%, 100% { transform: scale(1) translateY(0) rotate(0deg); }
+    45% { transform: scale(1.04, 1.01) translateY(-10px) rotate(0.8deg); }
+    75% { transform: scale(0.985, 0.99) translateY(-3px) rotate(-0.4deg); }
+}
+
+.lumi-idle-3 {
+    animation: lumiIdleAwake 2.2s ease-in-out infinite !important;
+}
+@keyframes lumiIdleAwake {
+    0%, 100% { transform: scale(1) translateY(0) rotate(0deg); }
+    50% { transform: scale(1.045, 1.035) translateY(-14px) rotate(-0.6deg); }
+}
+
+
+

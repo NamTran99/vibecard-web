@@ -1,0 +1,755 @@
+{
+  "id": "daily_topics_beginner_vi",
+  "language": "vi",
+  "title": "Bản đồ Truyện Sơ cấp",
+  "description": "Bản đồ học qua truyện. Mỗi chương là một vùng đất, mỗi topic là một nhiệm vụ hội thoại hoặc câu chuyện ngắn.",
+  "stages": [
+    {
+      "stage": 1,
+      "title": "Chương 1: Khu rừng ngụ ngôn",
+      "description": "Khám phá ngụ ngôn ngắn, học từ vựng qua câu chuyện và bài học ý nghĩa.",
+      "fromDay": 1,
+      "toDay": 10,
+      "topics": [
+        {
+          "day": 1,
+          "topic": "Chào hỏi I",
+          "scenario": "Hai nhân vật gặp nhau ở hành lang lớp học và bắt đầu một cuộc trò chuyện ngắn trước giờ học.",
+          "topicId": "topic_001"
+        },
+        {
+          "day": 2,
+          "topic": "Chào hỏi II",
+          "scenario": "Hai nhân vật gặp lễ tân ở trung tâm ngoại ngữ và cần chào hỏi lịch sự.",
+          "topicId": "topic_002"
+        },
+        {
+          "day": 3,
+          "topic": "Giới thiệu bản thân I",
+          "scenario": "Hai nhân vật tham gia buổi học đầu tiên và lần lượt giới thiệu bản thân với lớp.",
+          "topicId": "topic_003"
+        },
+        {
+          "day": 4,
+          "topic": "Giới thiệu bản thân II",
+          "scenario": "Hai nhân vật trò chuyện sau giờ học về nơi ở, công việc và thói quen hằng ngày.",
+          "topicId": "topic_004"
+        },
+        {
+          "day": 5,
+          "topic": "Gia đình I",
+          "scenario": "Một nhân vật cho nhân vật còn lại xem ảnh gia đình và giới thiệu từng thành viên.",
+          "topicId": "topic_005"
+        },
+        {
+          "day": 6,
+          "topic": "Gia đình II",
+          "scenario": "Hai nhân vật nói chuyện trong giờ nghỉ về số người trong gia đình và quan hệ giữa họ.",
+          "topicId": "topic_006"
+        },
+        {
+          "day": 7,
+          "topic": "Số đếm I",
+          "scenario": "Hai nhân vật chơi trò đếm đồ vật trong lớp học để luyện số đếm.",
+          "topicId": "topic_007"
+        },
+        {
+          "day": 8,
+          "topic": "Số đếm II",
+          "scenario": "Hai nhân vật cùng điền thông tin cá nhân cho một câu lạc bộ mới.",
+          "topicId": "topic_008"
+        },
+        {
+          "day": 9,
+          "topic": "Thời gian I",
+          "scenario": "Một nhân vật quên đồng hồ và hỏi nhân vật còn lại bây giờ là mấy giờ.",
+          "topicId": "topic_009"
+        },
+        {
+          "day": 10,
+          "topic": "Thời gian II",
+          "scenario": "Hai nhân vật sắp xếp lịch học cho hôm nay, ngày mai và các buổi trong ngày.",
+          "topicId": "topic_010"
+        }
+      ],
+      "stageId": "stage_01",
+      "planetName": "Khu rừng ngụ ngôn",
+      "tone": "Nhanh, gọn, dễ bắt đầu",
+      "color": "#16EDF6",
+      "nodeLabel": "Nhiệm vụ"
+    },
+    {
+      "stage": 2,
+      "title": "Chương 2: Ngôi làng cổ tích",
+      "description": "Luyện các tình huống ăn uống, mua sắm và hỏi giá trong đời sống hằng ngày.",
+      "fromDay": 11,
+      "toDay": 20,
+      "topics": [
+        {
+          "day": 11,
+          "topic": "Mua sắm I",
+          "scenario": "Hai nhân vật ghé vào một cửa hàng nhỏ trước giờ học để mua nước và hỏi giá.",
+          "topicId": "topic_011"
+        },
+        {
+          "day": 12,
+          "topic": "Mua sắm II",
+          "scenario": "Hai nhân vật chọn áo trong cửa hàng và hỏi màu, kích cỡ, số lượng.",
+          "topicId": "topic_012"
+        },
+        {
+          "day": 13,
+          "topic": "Mua sắm III",
+          "scenario": "Hai nhân vật so sánh hai món hàng ở chợ để chọn món phù hợp với túi tiền.",
+          "topicId": "topic_013"
+        },
+        {
+          "day": 14,
+          "topic": "Đồ ăn I",
+          "scenario": "Hai nhân vật vào một quán ăn nhỏ gần trường và gọi món ăn quen thuộc.",
+          "topicId": "topic_014"
+        },
+        {
+          "day": 15,
+          "topic": "Đồ ăn II",
+          "scenario": "Hai nhân vật ăn thử một món mới rồi nói cảm nhận về hương vị.",
+          "topicId": "topic_015"
+        },
+        {
+          "day": 16,
+          "topic": "Đồ uống I",
+          "scenario": "Hai nhân vật vào quán cà phê yên tĩnh và gọi đồ uống đơn giản.",
+          "topicId": "topic_016"
+        },
+        {
+          "day": 17,
+          "topic": "Đồ uống II",
+          "scenario": "Hai nhân vật đứng trước quầy đồ uống đông khách và gọi món theo yêu cầu riêng.",
+          "topicId": "topic_017"
+        },
+        {
+          "day": 18,
+          "topic": "Nhà hàng I",
+          "scenario": "Hai nhân vật ngồi ở nhà hàng, xin thực đơn và gọi món với nhân viên.",
+          "topicId": "topic_018"
+        },
+        {
+          "day": 19,
+          "topic": "Nhà hàng II",
+          "scenario": "Hai nhân vật ăn xong ở nhà hàng rồi xin hóa đơn và chọn cách thanh toán.",
+          "topicId": "topic_019"
+        },
+        {
+          "day": 20,
+          "topic": "Hỏi đường I",
+          "scenario": "Hai nhân vật bị lạc gần trung tâm thành phố và cần hỏi đường đến trạm xe buýt.",
+          "topicId": "topic_020"
+        }
+      ],
+      "stageId": "stage_02",
+      "planetName": "Ngôi làng cổ tích",
+      "tone": "Ấm áp, gần gũi, nhiều tương tác",
+      "color": "#FFB36B",
+      "nodeLabel": "Nhiệm vụ"
+    },
+    {
+      "stage": 3,
+      "title": "Chương 3: Dòng sông thử thách",
+      "description": "Di chuyển trong thành phố, hỏi đường, đi lại và xử lý nơi ở.",
+      "fromDay": 21,
+      "toDay": 30,
+      "topics": [
+        {
+          "day": 21,
+          "topic": "Hỏi đường II",
+          "scenario": "Một nhân vật chỉ đường cho nhân vật còn lại bằng các hướng đi thẳng, rẽ trái, rẽ phải.",
+          "topicId": "topic_021"
+        },
+        {
+          "day": 22,
+          "topic": "Hỏi đường III",
+          "scenario": "Hai nhân vật hỏi đường đến bảo tàng và bàn xem nên đi bộ hay đi xe.",
+          "topicId": "topic_022"
+        },
+        {
+          "day": 23,
+          "topic": "Phương tiện I",
+          "scenario": "Hai nhân vật nhìn bản đồ du lịch và chọn phương tiện phù hợp cho chuyến đi.",
+          "topicId": "topic_023"
+        },
+        {
+          "day": 24,
+          "topic": "Phương tiện II",
+          "scenario": "Hai nhân vật trò chuyện về cách đi đến trường hoặc nơi làm việc hằng ngày.",
+          "topicId": "topic_024"
+        },
+        {
+          "day": 25,
+          "topic": "Taxi",
+          "scenario": "Hai nhân vật lên taxi, nói địa chỉ khách sạn và hỏi giá dự kiến.",
+          "topicId": "topic_025"
+        },
+        {
+          "day": 26,
+          "topic": "Xe buýt",
+          "scenario": "Hai nhân vật đứng ở trạm xe buýt và hỏi tuyến xe, điểm dừng, thời gian xe đến.",
+          "topicId": "topic_026"
+        },
+        {
+          "day": 27,
+          "topic": "Khách sạn I",
+          "scenario": "Hai nhân vật đến khách sạn sau chuyến bay và làm thủ tục nhận phòng.",
+          "topicId": "topic_027"
+        },
+        {
+          "day": 28,
+          "topic": "Khách sạn II",
+          "scenario": "Hai nhân vật ở khách sạn và hỏi wifi, chìa khóa, giờ trả phòng.",
+          "topicId": "topic_028"
+        },
+        {
+          "day": 29,
+          "topic": "Địa điểm thành phố I",
+          "scenario": "Hai nhân vật mới đến thành phố và tìm các địa điểm cần thiết như ngân hàng, bệnh viện, siêu thị.",
+          "topicId": "topic_029"
+        },
+        {
+          "day": 30,
+          "topic": "Địa điểm thành phố II",
+          "scenario": "Hai nhân vật cần đến siêu thị gần nhất và hỏi người dân địa phương đường đi.",
+          "topicId": "topic_030"
+        }
+      ],
+      "stageId": "stage_03",
+      "planetName": "Dòng sông thử thách",
+      "tone": "Thực tế, đời thường, dễ áp dụng",
+      "color": "#6FE7A6",
+      "nodeLabel": "Nhiệm vụ"
+    },
+    {
+      "stage": 4,
+      "title": "Chương 4: Thung lũng can đảm",
+      "description": "Tăng tốc với thời tiết, sở thích, công việc và trường học.",
+      "fromDay": 31,
+      "toDay": 40,
+      "topics": [
+        {
+          "day": 31,
+          "topic": "Thời tiết I",
+          "scenario": "Hai nhân vật nhìn ra ngoài cửa sổ và nói chuyện về thời tiết hôm nay.",
+          "topicId": "topic_031"
+        },
+        {
+          "day": 32,
+          "topic": "Thời tiết II",
+          "scenario": "Hai nhân vật chuẩn bị đi chơi và hỏi dự báo thời tiết để chọn quần áo.",
+          "topicId": "topic_032"
+        },
+        {
+          "day": 33,
+          "topic": "Sở thích I",
+          "scenario": "Hai nhân vật nói chuyện về hoạt động yêu thích sau giờ học.",
+          "topicId": "topic_033"
+        },
+        {
+          "day": 34,
+          "topic": "Sở thích II",
+          "scenario": "Một nhân vật hỏi nhân vật còn lại thích làm gì vào cuối tuần.",
+          "topicId": "topic_034"
+        },
+        {
+          "day": 35,
+          "topic": "Công việc I",
+          "scenario": "Hai nhân vật gặp nhau trong văn phòng mới và nói về nghề nghiệp, nơi làm việc.",
+          "topicId": "topic_035"
+        },
+        {
+          "day": 36,
+          "topic": "Công việc II",
+          "scenario": "Hai nhân vật tham gia một buổi gặp mặt và hỏi công việc của nhau.",
+          "topicId": "topic_036"
+        },
+        {
+          "day": 37,
+          "topic": "Trường học I",
+          "scenario": "Hai nhân vật đến lớp học mới và hỏi về giáo viên, học sinh, môn học.",
+          "topicId": "topic_037"
+        },
+        {
+          "day": 38,
+          "topic": "Trường học II",
+          "scenario": "Hai nhân vật trò chuyện về việc học tiếng Việt ở đâu và vào lúc nào.",
+          "topicId": "topic_038"
+        },
+        {
+          "day": 39,
+          "topic": "Sức khỏe I",
+          "scenario": "Một nhân vật cảm thấy không khỏe trong lớp, còn nhân vật kia hỏi thăm và đề nghị giúp đỡ.",
+          "topicId": "topic_039"
+        },
+        {
+          "day": 40,
+          "topic": "Sức khỏe II",
+          "scenario": "Hai nhân vật đến hiệu thuốc để hỏi thuốc hoặc xin gặp bác sĩ.",
+          "topicId": "topic_040"
+        }
+      ],
+      "stageId": "stage_04",
+      "planetName": "Thung lũng can đảm",
+      "tone": "Năng lượng, chủ động, tự tin nói",
+      "color": "#FF6B6B",
+      "nodeLabel": "Nhiệm vụ"
+    },
+    {
+      "stage": 5,
+      "title": "Chương 5: Chợ phiên kỳ thú",
+      "description": "Mở rộng vốn nói về sức khỏe, cảm xúc, quần áo, màu sắc và nhà cửa.",
+      "fromDay": 41,
+      "toDay": 50,
+      "topics": [
+        {
+          "day": 41,
+          "topic": "Cảm xúc I",
+          "scenario": "Hai nhân vật nói với nhau về cảm xúc sau một ngày dài.",
+          "topicId": "topic_041"
+        },
+        {
+          "day": 42,
+          "topic": "Cảm xúc II",
+          "scenario": "Một nhân vật nhận thấy nhân vật còn lại có vẻ buồn và hỏi thăm nhẹ nhàng.",
+          "topicId": "topic_042"
+        },
+        {
+          "day": 43,
+          "topic": "Quần áo I",
+          "scenario": "Hai nhân vật chuẩn bị đi du lịch và chọn quần áo, giày, phụ kiện.",
+          "topicId": "topic_043"
+        },
+        {
+          "day": 44,
+          "topic": "Quần áo II",
+          "scenario": "Hai nhân vật vào phòng thử đồ và hỏi nhân viên về size, màu, mẫu khác.",
+          "topicId": "topic_044"
+        },
+        {
+          "day": 45,
+          "topic": "Màu sắc I",
+          "scenario": "Hai nhân vật chọn đồ dùng học tập và nói màu mình muốn.",
+          "topicId": "topic_045"
+        },
+        {
+          "day": 46,
+          "topic": "Màu sắc II",
+          "scenario": "Hai nhân vật mua quà sinh nhật và mô tả món đồ bằng màu sắc.",
+          "topicId": "topic_046"
+        },
+        {
+          "day": 47,
+          "topic": "Nhà cửa I",
+          "scenario": "Một nhân vật dẫn nhân vật còn lại đến nhà và giới thiệu phòng khách, bếp, phòng ngủ.",
+          "topicId": "topic_047"
+        },
+        {
+          "day": 48,
+          "topic": "Nhà cửa II",
+          "scenario": "Hai nhân vật gọi điện cho nhau và một người mô tả căn phòng của mình.",
+          "topicId": "topic_048"
+        },
+        {
+          "day": 49,
+          "topic": "Điện thoại I",
+          "scenario": "Hai nhân vật trao đổi số điện thoại sau buổi học.",
+          "topicId": "topic_049"
+        },
+        {
+          "day": 50,
+          "topic": "Điện thoại II",
+          "scenario": "Hai nhân vật cần gọi điện, nhắn tin và hỏi wifi vì điện thoại sắp hết pin.",
+          "topicId": "topic_050"
+        }
+      ],
+      "stageId": "stage_05",
+      "planetName": "Chợ phiên kỳ thú",
+      "tone": "Rộng hơn, nhiều mô tả hơn",
+      "color": "#D9A066",
+      "nodeLabel": "Nhiệm vụ"
+    },
+    {
+      "stage": 6,
+      "title": "Chương 6: Thư viện ánh sao",
+      "description": "Xây lịch trình, hẹn gặp, du lịch và xử lý tình huống khẩn cấp.",
+      "fromDay": 51,
+      "toDay": 60,
+      "topics": [
+        {
+          "day": 51,
+          "topic": "Lịch hẹn I",
+          "scenario": "Một nhân vật rủ nhân vật còn lại đi cà phê và hỏi thời gian rảnh.",
+          "topicId": "topic_051"
+        },
+        {
+          "day": 52,
+          "topic": "Lịch hẹn II",
+          "scenario": "Hai nhân vật phải đổi lịch hẹn vì có việc bận đột xuất.",
+          "topicId": "topic_052"
+        },
+        {
+          "day": 53,
+          "topic": "Hoạt động hằng ngày I",
+          "scenario": "Một nhân vật kể cho nhân vật còn lại những việc thường làm vào buổi sáng.",
+          "topicId": "topic_053"
+        },
+        {
+          "day": 54,
+          "topic": "Hoạt động hằng ngày II",
+          "scenario": "Hai nhân vật kể cho nhau lịch sinh hoạt một ngày bình thường từ sáng đến tối.",
+          "topicId": "topic_054"
+        },
+        {
+          "day": 55,
+          "topic": "Du lịch I",
+          "scenario": "Hai nhân vật chuẩn bị cho một chuyến đi cuối tuần và cùng bàn về nơi muốn đến.",
+          "topicId": "topic_055"
+        },
+        {
+          "day": 56,
+          "topic": "Du lịch II",
+          "scenario": "Hai nhân vật mua vé du lịch và hỏi thông tin hành lý, giờ khởi hành.",
+          "topicId": "topic_056"
+        },
+        {
+          "day": 57,
+          "topic": "Sân bay I",
+          "scenario": "Hai nhân vật đến sân bay và hỏi quầy làm thủ tục, cổng bay, giờ bay.",
+          "topicId": "topic_057"
+        },
+        {
+          "day": 58,
+          "topic": "Sân bay II",
+          "scenario": "Hai nhân vật làm thủ tục ở sân bay và nói về hộ chiếu, vé, hành lý.",
+          "topicId": "topic_058"
+        },
+        {
+          "day": 59,
+          "topic": "Tình huống khẩn cấp I",
+          "scenario": "Hai nhân vật bị lạc ở nơi đông người và cần nhờ người khác giúp đỡ ngay.",
+          "topicId": "topic_059"
+        },
+        {
+          "day": 60,
+          "topic": "Tình huống khẩn cấp II",
+          "scenario": "Một nhân vật bị mất ví khi đi chợ, nhân vật còn lại giúp gọi cảnh sát.",
+          "topicId": "topic_060"
+        }
+      ],
+      "stageId": "stage_06",
+      "planetName": "Thư viện ánh sao",
+      "tone": "Có cấu trúc, rõ kế hoạch",
+      "color": "#E8D47A",
+      "nodeLabel": "Nhiệm vụ"
+    },
+    {
+      "stage": 7,
+      "title": "Chương 7: Cánh cổng bí mật",
+      "description": "Luyện giao tiếp lịch sự, xin phép, nhờ giúp và mô tả người hoặc đồ vật.",
+      "fromDay": 61,
+      "toDay": 70,
+      "topics": [
+        {
+          "day": 61,
+          "topic": "Câu hỏi cơ bản I",
+          "scenario": "Hai nhân vật chơi trò hỏi đáp nhanh bằng các câu ai, cái gì, ở đâu.",
+          "topicId": "topic_061"
+        },
+        {
+          "day": 62,
+          "topic": "Câu hỏi cơ bản II",
+          "scenario": "Hai nhân vật hỏi thông tin về một sự kiện bằng khi nào, bao nhiêu, như thế nào.",
+          "topicId": "topic_062"
+        },
+        {
+          "day": 63,
+          "topic": "Xin lỗi và cảm ơn",
+          "scenario": "Hai nhân vật vô tình va vào nhau trong quán cà phê và nói xin lỗi, cảm ơn.",
+          "topicId": "topic_063"
+        },
+        {
+          "day": 64,
+          "topic": "Xin phép",
+          "scenario": "Một nhân vật muốn mượn bút của nhân vật còn lại trong lớp và xin phép lịch sự.",
+          "topicId": "topic_064"
+        },
+        {
+          "day": 65,
+          "topic": "Đồng ý và từ chối",
+          "scenario": "Một nhân vật được mời đi chơi nhưng cần đồng ý hoặc từ chối nhẹ nhàng.",
+          "topicId": "topic_065"
+        },
+        {
+          "day": 66,
+          "topic": "Yêu cầu giúp đỡ",
+          "scenario": "Một nhân vật nhờ nhân vật còn lại giúp tìm một món đồ trong cửa hàng.",
+          "topicId": "topic_066"
+        },
+        {
+          "day": 67,
+          "topic": "Miêu tả người I",
+          "scenario": "Một nhân vật mô tả một người bạn để nhân vật còn lại nhận ra trong đám đông.",
+          "topicId": "topic_067"
+        },
+        {
+          "day": 68,
+          "topic": "Miêu tả người II",
+          "scenario": "Hai nhân vật kể với nhau về tính cách của một người thân trong gia đình.",
+          "topicId": "topic_068"
+        },
+        {
+          "day": 69,
+          "topic": "Miêu tả đồ vật I",
+          "scenario": "Hai nhân vật tìm đồ thất lạc và mô tả món đồ to, nhỏ, mới, cũ.",
+          "topicId": "topic_069"
+        },
+        {
+          "day": 70,
+          "topic": "Miêu tả đồ vật II",
+          "scenario": "Hai nhân vật nói một món đồ ở đâu, của ai và dùng để làm gì.",
+          "topicId": "topic_070"
+        }
+      ],
+      "stageId": "stage_07",
+      "planetName": "Cánh cổng bí mật",
+      "tone": "Linh hoạt, lịch sự, tự nhiên",
+      "color": "#83E8FF",
+      "nodeLabel": "Nhiệm vụ"
+    },
+    {
+      "stage": 8,
+      "title": "Chương 8: Vương quốc lời kể",
+      "description": "Đi qua các dịch vụ hằng ngày như ngân hàng, bưu điện, siêu thị và chợ.",
+      "fromDay": 71,
+      "toDay": 80,
+      "topics": [
+        {
+          "day": 71,
+          "topic": "Tiền bạc I",
+          "scenario": "Hai nhân vật mua hàng ở cửa hàng và hỏi tổng tiền, cách thanh toán.",
+          "topicId": "topic_071"
+        },
+        {
+          "day": 72,
+          "topic": "Tiền bạc II",
+          "scenario": "Hai nhân vật thanh toán ở quầy và chọn tiền mặt, chuyển khoản hoặc dùng thẻ.",
+          "topicId": "topic_072"
+        },
+        {
+          "day": 73,
+          "topic": "Ngân hàng",
+          "scenario": "Hai nhân vật cần rút tiền ở ATM và hỏi nhân viên ngân hàng thông tin cơ bản.",
+          "topicId": "topic_073"
+        },
+        {
+          "day": 74,
+          "topic": "Bưu điện",
+          "scenario": "Hai nhân vật đến bưu điện để gửi một món quà nhỏ.",
+          "topicId": "topic_074"
+        },
+        {
+          "day": 75,
+          "topic": "Siêu thị I",
+          "scenario": "Hai nhân vật đi siêu thị và hỏi nhân viên khu hàng cần tìm ở đâu.",
+          "topicId": "topic_075"
+        },
+        {
+          "day": 76,
+          "topic": "Siêu thị II",
+          "scenario": "Hai nhân vật đến quầy thanh toán trong siêu thị và hỏi túi, hóa đơn.",
+          "topicId": "topic_076"
+        },
+        {
+          "day": 77,
+          "topic": "Chợ truyền thống",
+          "scenario": "Hai nhân vật đi chợ truyền thống và mua rau, trái cây, thực phẩm.",
+          "topicId": "topic_077"
+        },
+        {
+          "day": 78,
+          "topic": "Nấu ăn",
+          "scenario": "Hai nhân vật nấu bữa tối cùng nhau và nói về nguyên liệu cần chuẩn bị.",
+          "topicId": "topic_078"
+        },
+        {
+          "day": 79,
+          "topic": "Thể thao",
+          "scenario": "Hai nhân vật nói về môn thể thao yêu thích và lịch tập hằng tuần.",
+          "topicId": "topic_079"
+        },
+        {
+          "day": 80,
+          "topic": "Giải trí I",
+          "scenario": "Hai nhân vật trò chuyện về phim, nhạc, sách sau giờ học.",
+          "topicId": "topic_080"
+        }
+      ],
+      "stageId": "stage_08",
+      "planetName": "Vương quốc lời kể",
+      "tone": "Bình tĩnh, rõ ràng, xử lý nhu cầu",
+      "color": "#6B8CFF",
+      "nodeLabel": "Nhiệm vụ"
+    },
+    {
+      "stage": 9,
+      "title": "Chương 9: Đỉnh núi truyền thuyết",
+      "description": "Khám phá giải trí, internet, mạng xã hội và công nghệ cá nhân.",
+      "fromDay": 81,
+      "toDay": 90,
+      "topics": [
+        {
+          "day": 81,
+          "topic": "Giải trí II",
+          "scenario": "Một nhân vật rủ nhân vật còn lại đi xem phim hoặc đi dạo vào buổi tối.",
+          "topicId": "topic_081"
+        },
+        {
+          "day": 82,
+          "topic": "Mạng xã hội",
+          "scenario": "Hai nhân vật nói về việc chụp ảnh, đăng bài và nhắn tin trên mạng xã hội.",
+          "topicId": "topic_082"
+        },
+        {
+          "day": 83,
+          "topic": "Internet",
+          "scenario": "Hai nhân vật vào quán cà phê và cần hỏi mật khẩu wifi vì mạng điện thoại yếu.",
+          "topicId": "topic_083"
+        },
+        {
+          "day": 84,
+          "topic": "Máy tính",
+          "scenario": "Một nhân vật gặp sự cố với máy tính trong lớp, nhân vật còn lại giúp mô tả vấn đề cho giáo viên.",
+          "topicId": "topic_084"
+        },
+        {
+          "day": 85,
+          "topic": "Công nghệ cá nhân",
+          "scenario": "Hai nhân vật chuẩn bị học online và nói về tai nghe, sạc pin, ứng dụng.",
+          "topicId": "topic_085"
+        },
+        {
+          "day": 86,
+          "topic": "Bạn bè I",
+          "scenario": "Một nhân vật giới thiệu nhân vật còn lại với nhóm học mới.",
+          "topicId": "topic_086"
+        },
+        {
+          "day": 87,
+          "topic": "Bạn bè II",
+          "scenario": "Một nhân vật mời nhân vật còn lại đi ăn, đi chơi hoặc học chung sau giờ học.",
+          "topicId": "topic_087"
+        },
+        {
+          "day": 88,
+          "topic": "Hàng xóm",
+          "scenario": "Hai nhân vật gặp hàng xóm trong thang máy và nói vài câu xã giao.",
+          "topicId": "topic_088"
+        },
+        {
+          "day": 89,
+          "topic": "Vật nuôi",
+          "scenario": "Hai nhân vật trò chuyện về vật nuôi trong nhà như chó hoặc mèo.",
+          "topicId": "topic_089"
+        },
+        {
+          "day": 90,
+          "topic": "Cây cối",
+          "scenario": "Hai nhân vật cùng chăm cây ở ban công và nói về tưới cây, trồng cây.",
+          "topicId": "topic_090"
+        }
+      ],
+      "stageId": "stage_09",
+      "planetName": "Đỉnh núi truyền thuyết",
+      "tone": "Hiện đại, tò mò, nhiều chủ đề mới",
+      "color": "#BFA7FF",
+      "nodeLabel": "Nhiệm vụ"
+    },
+    {
+      "stage": 10,
+      "title": "Chương 10: Kho báu cuối hành trình",
+      "description": "Kết nối quan hệ, ngày lễ, kế hoạch, kể chuyện và ôn tập hội thoại.",
+      "fromDay": 91,
+      "toDay": 100,
+      "topics": [
+        {
+          "day": 91,
+          "topic": "Ngày lễ",
+          "scenario": "Hai nhân vật tham gia một ngày lễ và học cách chúc mừng đơn giản.",
+          "topicId": "topic_091"
+        },
+        {
+          "day": 92,
+          "topic": "Sinh nhật",
+          "scenario": "Một nhân vật mời nhân vật còn lại dự sinh nhật và hai người nói về quà, lời chúc.",
+          "topicId": "topic_092"
+        },
+        {
+          "day": 93,
+          "topic": "Cuối tuần",
+          "scenario": "Hai nhân vật hỏi nhau kế hoạch cuối tuần và chia sẻ điều muốn làm.",
+          "topicId": "topic_093"
+        },
+        {
+          "day": 94,
+          "topic": "Kỳ nghỉ",
+          "scenario": "Hai nhân vật nói về kỳ nghỉ ngắn sắp tới.",
+          "topicId": "topic_094"
+        },
+        {
+          "day": 95,
+          "topic": "Quy tắc lịch sự",
+          "scenario": "Hai nhân vật luyện nói lịch sự khi hỏi đường, nhờ giúp, cảm ơn và xin lỗi.",
+          "topicId": "topic_095"
+        },
+        {
+          "day": 96,
+          "topic": "So sánh đơn giản",
+          "scenario": "Hai nhân vật chọn giữa hai món đồ và so sánh lựa chọn nào phù hợp hơn.",
+          "topicId": "topic_096"
+        },
+        {
+          "day": 97,
+          "topic": "Kể chuyện ngắn I",
+          "scenario": "Một nhân vật kể cho nhân vật còn lại một việc đơn giản đã xảy ra hôm qua.",
+          "topicId": "topic_097"
+        },
+        {
+          "day": 98,
+          "topic": "Kể chuyện ngắn II",
+          "scenario": "Một nhân vật kể kế hoạch ngày mai bằng các câu ngắn nối tiếp.",
+          "topicId": "topic_098"
+        },
+        {
+          "day": 99,
+          "topic": "Ôn tập hội thoại I",
+          "scenario": "Hai nhân vật tham gia hội thoại ôn tập gồm chào hỏi, giới thiệu và hỏi thông tin.",
+          "topicId": "topic_099"
+        },
+        {
+          "day": 100,
+          "topic": "Ôn tập hội thoại II",
+          "scenario": "Hai nhân vật tham gia hội thoại tổng hợp khi đi mua sắm, hỏi đường, gọi món và xin giúp đỡ.",
+          "topicId": "topic_100"
+        }
+      ],
+      "stageId": "stage_10",
+      "planetName": "Kho báu cuối hành trình",
+      "tone": "Tổng hợp, hoàn thiện, sẵn sàng bay xa",
+      "color": "#F8F8FF",
+      "nodeLabel": "Nhiệm vụ"
+    }
+  ],
+  "roadmapId": "daily_topics_beginner_vi",
+  "theme": {
+    "type": "story_map",
+    "style": "duolingo_inspired",
+    "unitLabel": "Chương truyện",
+    "nodeLabel": "Nhiệm vụ"
+  }
+}

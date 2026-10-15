@@ -1,0 +1,1655 @@
+/* ========================================================
+ * 🌿 M3-07 DARK OLIVE GREEN CIRCULAR GRID STYLE (TAB 1 TẠO)
+ * 🕹️ 3D TACTILE BUTTON SYSTEM (DUOLINGO / MEMRISE MECHANICAL FEEL)
+ * ======================================================== */
+
+/* ========================================================
+ * 🎴 M3-07 SOFT TACTILE GROUP CARD
+ * ======================================================== */
+.circle-group-card {
+    background: rgba(32, 33, 28, 0.75);
+    border: 1.5px solid rgba(70, 72, 60, 0.45);
+    border-radius: 28px;
+    padding: 18px 12px 16px 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+html.light .circle-group-card {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1.5px solid rgba(227, 228, 211, 0.95);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.circle-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 6px;
+    row-gap: 18px;
+    align-items: start;
+    justify-items: center;
+    width: 100%;
+}
+
+.circle-item-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    width: 100%;
+    max-width: 82px;
+    transition: transform 0.15s ease;
+}
+
+/* ========================================================
+ * 🕹️ PHYSICAL TACTILE BUTTON (EXTRUDED 3D BEVEL & KEYPRESS)
+ * ======================================================== */
+.circle-item-btn {
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: var(--btn-bg, var(--m3-primary));
+    color: var(--btn-color, var(--m3-on-primary-container));
+    box-shadow: 
+        inset 0 3px 0 rgba(255, 255, 255, 0.5),
+        inset 0 -2.5px 0 rgba(0, 0, 0, 0.15),
+        0 5px 0 var(--btn-bevel, #8CA82A),
+        0 9px 16px rgba(0, 0, 0, 0.45);
+    border: none !important;
+    transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+    overflow: visible;
+    will-change: transform, box-shadow;
+}
+
+.circle-item-btn svg {
+    filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.2));
+    transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+    will-change: transform;
+}
+
+/* Hover: Elevated physical 3D lift */
+.circle-item-card:hover .circle-item-btn {
+    transform: translateY(-3px) scale(1.035);
+    box-shadow: 
+        inset 0 3px 0 rgba(255, 255, 255, 0.6),
+        inset 0 -2px 0 rgba(0, 0, 0, 0.12),
+        0 7px 0 var(--btn-bevel, #8CA82A),
+        0 14px 22px rgba(0, 0, 0, 0.5);
+}
+
+.circle-item-card:hover .circle-item-btn svg {
+    transform: scale(1.06);
+}
+
+/* Active: Instant realistic physical depression (touch-down: 60ms) */
+.circle-item-card:active .circle-item-btn {
+    transform: translateY(4px) scale(0.96);
+    box-shadow: 
+        inset 0 1.5px 0 rgba(255, 255, 255, 0.25),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.1),
+        0 1px 0 var(--btn-bevel, #8CA82A),
+        0 3px 6px rgba(0, 0, 0, 0.25);
+    transition: transform 0.06s cubic-bezier(0.1, 0.9, 0.2, 1), box-shadow 0.06s ease-out;
+}
+
+.circle-item-card:active .circle-item-btn svg {
+    transform: scale(0.92);
+    transition: transform 0.06s ease-out;
+}
+
+/* Light Mode Tactile Shadow Adaptation */
+html.light .circle-item-btn {
+    box-shadow: 
+        inset 0 2.5px 0 rgba(255, 255, 255, 0.7),
+        inset 0 -2px 0 rgba(0, 0, 0, 0.08),
+        0 5px 0 var(--btn-bevel, #ABC450),
+        0 8px 14px rgba(60, 70, 20, 0.12);
+}
+
+html.light .circle-item-card:hover .circle-item-btn {
+    transform: translateY(-3px) scale(1.035);
+    box-shadow: 
+        inset 0 3px 0 rgba(255, 255, 255, 0.85),
+        inset 0 -2px 0 rgba(0, 0, 0, 0.08),
+        0 7px 0 var(--btn-bevel, #ABC450),
+        0 13px 20px rgba(60, 70, 20, 0.16);
+}
+
+html.light .circle-item-card:active .circle-item-btn {
+    transform: translateY(4px) scale(0.96);
+    box-shadow: 
+        inset 0 1.5px 0 rgba(255, 255, 255, 0.35),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.08),
+        0 1px 0 var(--btn-bevel, #ABC450),
+        0 3px 6px rgba(60, 70, 20, 0.1);
+    transition: transform 0.06s cubic-bezier(0.1, 0.9, 0.2, 1), box-shadow 0.06s ease-out;
+}
+
+/* ========================================================
+ * 🎨 DEDICATED M3-07 TACTILE COLOR SYSTEM (DARK & LIGHT)
+ * ======================================================== */
+
+/* 1. Core Primary (Tra từ điển, Phòng phát âm / Phát âm IPA) - M3 Primary Olive */
+.circle-bg-primary-olive,
+.circle-bg-comm-primary,
+.circle-bg-mint {
+    --btn-bg: var(--m3-primary);
+    --btn-color: var(--m3-on-primary-container);
+    --btn-bevel: #8CA82A;
+}
+html.light .circle-bg-primary-olive,
+html.light .circle-bg-comm-primary,
+html.light .circle-bg-mint {
+    --btn-bg: #CFE47E;
+    --btn-color: #273700;
+    --btn-bevel: #ABC450;
+}
+
+/* 2. Primary Lime Accent (Từ văn bản) - M3 Primary Lime */
+.circle-bg-primary-lime {
+    --btn-bg: var(--m3-primary-container);
+    --btn-color: var(--m3-on-primary);
+    --btn-bevel: #9EBE32;
+}
+html.light .circle-bg-primary-lime {
+    --btn-bg: #D9EE85;
+    --btn-color: #1A2700;
+    --btn-bevel: #B2D152;
+}
+
+/* 3. Spaced Repetition SRS / Media (Audio / Video, Ôn định kỳ) - M3 Tertiary Teal */
+.circle-bg-tertiary-teal {
+    --btn-bg: #A1D0C5;
+    --btn-color: #033730;
+    --btn-bevel: #6C9990;
+}
+html.light .circle-bg-tertiary-teal {
+    --btn-bg: #B0E4D9;
+    --btn-color: #03362E;
+    --btn-bevel: #7EC7B8;
+}
+
+/* 4. Tertiary Mint / Immerse Teal (Hội thoại Lumi / Video bản xứ) - M3 Tertiary Mint */
+.circle-bg-immerse-teal,
+.circle-bg-pastelblue {
+    --btn-bg: #BDECE1;
+    --btn-color: #00201B;
+    --btn-bevel: #84B4A9;
+}
+html.light .circle-bg-immerse-teal,
+html.light .circle-bg-pastelblue {
+    --btn-bg: #B0E4D9;
+    --btn-color: #03362E;
+    --btn-bevel: #7EC7B8;
+}
+
+/* 5. Error Coral / Priority Alert (Quét ảnh OCR, Từ khó nhớ) - M3 Error Coral */
+.circle-bg-error-coral,
+.circle-bg-slate {
+    --btn-bg: #FFB4A9;
+    --btn-color: #560F0C;
+    --btn-bevel: #C47972;
+}
+html.light .circle-bg-error-coral,
+html.light .circle-bg-slate {
+    --btn-bg: #FFC0B5;
+    --btn-color: #550D0A;
+    --btn-bevel: #F08E80;
+}
+
+/* 6. Secondary Sage (Từ bài học, Ngữ pháp, Luyện nghe thụ động) - M3 Secondary Sage */
+.circle-bg-secondary-sage,
+.circle-bg-immerse-sage,
+.circle-bg-bluegrey {
+    --btn-bg: #C4CAA9;
+    --btn-color: #282E18;
+    --btn-bevel: #8E9570;
+}
+html.light .circle-bg-secondary-sage,
+html.light .circle-bg-immerse-sage,
+html.light .circle-bg-bluegrey {
+    --btn-bg: #D4DCB3;
+    --btn-color: #283015;
+    --btn-bevel: #A6B080;
+}
+
+/* 7. Acoustic Mint-Teal (Giọng nói AI - Thay thế cyan neon) */
+.circle-bg-sky {
+    --btn-bg: #86C5BA;
+    --btn-color: #00362E;
+    --btn-bevel: #5BA89B;
+}
+html.light .circle-bg-sky {
+    --btn-bg: #A3E3D6;
+    --btn-color: #00362E;
+    --btn-bevel: #6BC7B6;
+}
+
+/* 8. Amber Gold (Web & Báo chí, Ôn siêu tốc, Cộng đồng chat / Hội thoại 1-1) - M3 Amber Glow */
+.circle-bg-amber-gold,
+.circle-bg-comm-amber,
+.circle-bg-cyan {
+    --btn-bg: #FBBF24;
+    --btn-color: #421800;
+    --btn-bevel: #C98205;
+}
+html.light .circle-bg-amber-gold,
+html.light .circle-bg-comm-amber,
+html.light .circle-bg-cyan {
+    --btn-bg: #FDD874;
+    --btn-color: #431E00;
+    --btn-bevel: #E3B034;
+}
+
+/* 9. Slate Lavender (Nhập File / Anki - Thay thế tím neon) */
+.circle-bg-violet {
+    --btn-bg: #CBC2DB;
+    --btn-color: #2E283A;
+    --btn-bevel: #9990A8;
+}
+html.light .circle-bg-violet {
+    --btn-bg: #D8CCE8;
+    --btn-color: #2B2338;
+    --btn-bevel: #AA97C4;
+}
+
+/* ========================================================
+ * 🔲 SUNKEN TACTILE RECESS SLOTS (EMPTY CHANNELS)
+ * ======================================================== */
+.circle-slot-empty {
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+    background-color: var(--m3-surface-container, #20211C);
+    border: 1.5px dashed var(--m3-outline-variant, var(--m3-on-surface-variant));
+    box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.45), inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+html.light .circle-slot-empty {
+    background-color: var(--m3-surface-container-high, #ECEAE2);
+    border: 1.5px dashed var(--m3-outline-variant, var(--m3-on-surface-variant));
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* 🕹️ 3D Tactile Notification Badge (M3 Error) */
+.circle-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background-color: var(--m3-error, #FFB4A9);
+    color: var(--m3-on-error, #560F0C);
+    font-size: 11px;
+    font-weight: 900;
+    padding: 1.5px 6.5px;
+    border-radius: 9999px;
+    box-shadow: 0 2px 0 #C47972, 0 3px 8px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    line-height: 1.2;
+    z-index: 10;
+}
+
+html.light .circle-badge {
+    background-color: #FFC0B5;
+    color: #550D0A;
+    box-shadow: 0 2px 0 #F08E80, 0 3px 6px rgba(85, 13, 10, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+/* ========================================================
+ * 🏷️ REFINED M3-07 STATUS & CORNER BADGE SYSTEM (ANTI-CLUTTER)
+ * ======================================================== */
+
+/* 1. Sleek Tonal Micro-Status Capsule */
+.circle-item-status,
+.circle-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 7.5px;
+    border-radius: 9999px;
+    font-size: 9.5px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-top: 4.5px;
+    user-select: none;
+    transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--m3-on-surface-variant);
+}
+
+html.light .circle-item-status,
+html.light .circle-status-pill {
+    background: rgba(0, 0, 0, 0.035);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    color: #5B6146;
+}
+
+/* Status variants */
+.circle-item-status.is-selected,
+.circle-status-pill.status-primary,
+.circle-status-pill.is-selected {
+    background: rgba(184, 209, 102, 0.18) !important;
+    border-color: rgba(184, 209, 102, 0.45) !important;
+    color: var(--m3-primary) !important;
+    box-shadow: 0 0 12px rgba(184, 209, 102, 0.25);
+    transform: scale(1.04);
+}
+html.light .circle-item-status.is-selected,
+html.light .circle-status-pill.status-primary,
+html.light .circle-status-pill.is-selected {
+    background: rgba(82, 102, 0, 0.14) !important;
+    border-color: rgba(82, 102, 0, 0.4) !important;
+    color: #445500 !important;
+    box-shadow: 0 0 10px rgba(82, 102, 0, 0.18);
+}
+
+.circle-item-status.is-ready,
+.circle-status-pill.status-sage {
+    background: rgba(184, 209, 102, 0.09);
+    border-color: rgba(184, 209, 102, 0.2);
+    color: var(--m3-primary-container);
+}
+html.light .circle-item-status.is-ready,
+html.light .circle-status-pill.status-sage {
+    background: rgba(82, 102, 0, 0.07);
+    border-color: rgba(82, 102, 0, 0.16);
+    color: #4C5F00;
+}
+
+.circle-item-status.is-urgent,
+.circle-status-pill.status-urgent {
+    background: rgba(255, 180, 169, 0.14);
+    border-color: rgba(255, 180, 169, 0.32);
+    color: #FFB4A9;
+}
+html.light .circle-item-status.is-urgent,
+html.light .circle-status-pill.status-urgent {
+    background: rgba(186, 27, 27, 0.09);
+    border-color: rgba(186, 27, 27, 0.22);
+    color: #BA1B1B;
+}
+
+.circle-item-status.is-teal,
+.circle-status-pill.status-teal {
+    background: rgba(161, 208, 197, 0.14);
+    border-color: rgba(161, 208, 197, 0.28);
+    color: #A1D0C5;
+}
+html.light .circle-item-status.is-teal,
+html.light .circle-status-pill.status-teal {
+    background: rgba(58, 102, 94, 0.09);
+    border-color: rgba(58, 102, 94, 0.22);
+    color: #274D45;
+}
+
+.circle-item-status.is-amber,
+.circle-status-pill.status-amber {
+    background: rgba(251, 191, 36, 0.14);
+    border-color: rgba(251, 191, 36, 0.3);
+    color: #FBBF24;
+}
+html.light .circle-item-status.is-amber,
+html.light .circle-status-pill.status-amber {
+    background: rgba(217, 119, 6, 0.09);
+    border-color: rgba(217, 119, 6, 0.22);
+    color: #B45309;
+}
+
+.circle-item-status.is-idle,
+.circle-status-pill.status-neutral,
+.circle-status-pill.status-unselected {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.05);
+    color: #8F9283;
+}
+html.light .circle-item-status.is-idle,
+html.light .circle-status-pill.status-neutral,
+html.light .circle-status-pill.status-unselected {
+    background: rgba(0, 0, 0, 0.025);
+    border-color: rgba(0, 0, 0, 0.045);
+    color: #77796C;
+}
+
+/* Status Indicator Dot */
+.status-dot,
+.circle-status-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: currentColor;
+    display: inline-block;
+    flex-shrink: 0;
+}
+.status-dot.hollow {
+    background: transparent;
+    border: 1px solid currentColor;
+}
+.status-dot.pulse {
+    box-shadow: 0 0 6px currentColor;
+    animation: statusPulse 1.5s infinite;
+}
+@keyframes statusPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.35; transform: scale(0.7); }
+}
+
+/* 2. Top-Right Corner Notification Badges on Circle Button */
+.circle-corner-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    padding: 1.5px 6px;
+    border-radius: 9999px;
+    font-size: 9.5px;
+    font-weight: 900;
+    line-height: 1.1;
+    z-index: 15;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.45);
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    pointer-events: none;
+    letter-spacing: -0.01em;
+}
+html.light .circle-corner-badge {
+    border: 1.5px solid var(--m3-on-surface);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+.circle-corner-badge.badge-coral {
+    background: #FFB4A9;
+    color: #560F0C;
+}
+html.light .circle-corner-badge.badge-coral {
+    background: #FFDAD4;
+    color: #680003;
+}
+.circle-corner-badge.badge-teal {
+    background: #A1D0C5;
+    color: #033730;
+}
+html.light .circle-corner-badge.badge-teal {
+    background: #BDECE1;
+    color: #00201B;
+}
+.circle-corner-badge.badge-amber {
+    background: #FBBF24;
+    color: #421800;
+}
+html.light .circle-corner-badge.badge-amber {
+    background: #FDD874;
+    color: #431E00;
+}
+
+/* 3. Bottom-Right Selected Checkmark Pip */
+.circle-corner-check {
+    position: absolute;
+    bottom: -3px;
+    right: -3px;
+    width: 19px;
+    height: 19px;
+    border-radius: 50%;
+    background: var(--m3-primary);
+    color: var(--m3-on-primary-container);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 900;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+    border: 2px solid var(--m3-surface);
+    z-index: 15;
+    animation: cornerCheckPop 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+html.light .circle-corner-check {
+    background: var(--m3-on-primary-container);
+    color: var(--m3-on-surface);
+    border: 2px solid var(--m3-on-surface);
+    box-shadow: 0 2px 5px rgba(82, 102, 0, 0.3);
+}
+@keyframes cornerCheckPop {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* 4. Selected Card Ring & Label Highlight */
+.circle-item-card.is-selected .circle-item-btn {
+    box-shadow: 
+        0 0 0 3px var(--m3-primary, var(--m3-primary)),
+        0 0 18px rgba(184, 209, 102, 0.45),
+        inset 0 3px 0 rgba(255, 255, 255, 0.65),
+        inset 0 -2px 0 rgba(0, 0, 0, 0.15),
+        0 6px 0 var(--btn-bevel, #8CA82A),
+        0 12px 20px rgba(0, 0, 0, 0.5) !important;
+}
+html.light .circle-item-card.is-selected .circle-item-btn {
+    box-shadow: 
+        0 0 0 3px var(--m3-on-primary-container),
+        0 0 16px rgba(82, 102, 0, 0.3),
+        inset 0 3px 0 rgba(255, 255, 255, 0.85),
+        inset 0 -2px 0 rgba(0, 0, 0, 0.08),
+        0 6px 0 var(--btn-bevel, #ABC450),
+        0 10px 18px rgba(60, 70, 20, 0.2) !important;
+}
+
+.circle-item-card.is-selected .circle-item-label {
+    color: var(--m3-primary, var(--m3-primary)) !important;
+    font-weight: 900;
+}
+html.light .circle-item-card.is-selected .circle-item-label {
+    color: var(--m3-on-primary-container) !important;
+    font-weight: 900;
+}
+
+.circle-item-card:hover .circle-item-status,
+.circle-item-card:hover .circle-status-pill {
+    transform: translateY(-1.5px) scale(1.02);
+}
+
+.circle-item-card:active .circle-item-status,
+.circle-item-card:active .circle-status-pill {
+    transform: translateY(2px) scale(0.98);
+}
+
+/* Label below circle */
+.circle-item-label {
+    margin-top: 8px;
+    font-size: 11.5px;
+    font-weight: 700;
+    text-align: center;
+    color: var(--m3-on-surface, var(--m3-on-surface));
+    line-height: 1.25;
+    max-width: 82px;
+    word-break: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: color 0.15s ease;
+    letter-spacing: -0.01em;
+}
+
+html.light .circle-item-label {
+    color: var(--m3-on-surface, var(--m3-surface));
+}
+
+.circle-item-card:hover .circle-item-label {
+    color: var(--m3-primary, var(--m3-primary));
+}
+
+html.light .circle-item-card:hover .circle-item-label {
+    color: var(--m3-primary, var(--m3-on-primary-container));
+}
+
+/* Section Title */
+.circle-section-title {
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--m3-on-surface, var(--m3-on-surface));
+    margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+html.light .circle-section-title {
+    color: var(--m3-on-surface, var(--m3-surface));
+}
+
+/* ========================================================
+ * 🎴 ISOMETRIC BENTO CARDS (M3-07 NEO-TACTILE SYSTEM)
+ * ======================================================== */
+.isometric-card {
+    background-color: #20231D !important;
+    border: 2px solid #383C30 !important;
+    border-radius: 28px !important;
+    box-shadow: 0 4px 0 #12140E, 0 8px 18px rgba(0, 0, 0, 0.45) !important;
+    transition: transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.12s ease, border-color 0.15s ease !important;
+}
+
+.isometric-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--m3-primary) !important;
+    box-shadow: 0 6px 0 #12140E, 0 12px 24px rgba(0, 0, 0, 0.55) !important;
+}
+
+.isometric-card:active {
+    transform: translateY(3px) !important;
+    box-shadow: 0 1px 0 #12140E, 0 3px 6px rgba(0, 0, 0, 0.3) !important;
+}
+
+.isometric-card .card-title {
+    color: var(--m3-on-surface) !important;
+}
+
+.isometric-card .card-sub {
+    color: var(--m3-on-surface-variant) !important;
+}
+
+.popular-badge {
+    background-color: #3D2E0B !important;
+    border: 1px solid rgba(251, 191, 36, 0.4) !important;
+    color: #FDE68A !important;
+}
+
+/* Light Mode Overrides */
+html.light .isometric-card {
+    background-color: var(--m3-on-surface) !important;
+    border: 2px solid #1E231D !important;
+    box-shadow: 0 4px 0 #1E231D, 0 8px 16px rgba(0, 0, 0, 0.08) !important;
+}
+
+html.light .isometric-card:hover {
+    border-color: var(--m3-on-primary-container) !important;
+    box-shadow: 0 6px 0 #1E231D, 0 12px 20px rgba(82, 102, 0, 0.15) !important;
+}
+
+html.light .isometric-card:active {
+    transform: translateY(3px) !important;
+    box-shadow: 0 1px 0 #1E231D, 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+}
+
+html.light .isometric-card .card-title {
+    color: #1E231D !important;
+}
+
+html.light .isometric-card .card-sub {
+    color: #5B6146 !important;
+}
+
+html.light .popular-badge {
+    background-color: #FEF3C7 !important;
+    border: 1px solid #F59E0B !important;
+    color: #92400E !important;
+}
+
+/* ========================================================
+ * 🎬 FLUID PHYSICS-BASED MOTION SYSTEM (TAB 1 TIỆN ÍCH)
+ * ======================================================== */
+
+/* 1. Header Typography Smooth Glide */
+@keyframes createHeaderGlide {
+    0% {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 2. Lumi Mascot Welcome Greeting Spring */
+@keyframes lumiWelcomeSpring {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.9);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(-5px) scale(1.06) rotate(-2deg);
+    }
+    82% {
+        transform: translateY(1.5px) scale(0.99) rotate(1deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+}
+
+/* 3. Group Cards Fluid Staggered Glide */
+@keyframes groupCardGlide {
+    0% {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 4. Circular Buttons Harmonious Wave Lift (No distorted scaling) */
+@keyframes circleItemLift {
+    0% {
+        opacity: 0;
+        transform: translateY(14px) scale(0.93);
+    }
+    72% {
+        opacity: 1;
+        transform: translateY(-2px) scale(1.02);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* 5. Group Category Indicator Dot Pulse-Ping */
+@keyframes categoryDotPing {
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+    60% {
+        transform: scale(1.35);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* 6. Mascot Lumi Floating & Breathing (Continuous Organic Idle) */
+@keyframes lumiBreathing {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-4px) rotate(1deg);
+    }
+}
+
+@keyframes lumiAuraPulse {
+    0%, 100% {
+        transform: scale(0.95);
+        opacity: 0.12;
+    }
+    50% {
+        transform: scale(1.14);
+        opacity: 0.28;
+    }
+}
+
+/* 7. Mascot Interactive Tap Jump (Disney 12-Principles Squash & Stretch) */
+@keyframes lumiTapJump {
+    0% { transform: scale(1) translateY(0) rotate(0deg); }
+    18% { transform: scale(1.08, 0.92) translateY(2px) rotate(0deg); }
+    45% { transform: scale(0.95, 1.08) translateY(-12px) rotate(-6deg); }
+    70% { transform: scale(1.03, 0.97) translateY(2px) rotate(3deg); }
+    85% { transform: scale(0.99, 1.01) translateY(-1px) rotate(-1deg); }
+    100% { transform: scale(1) translateY(0) rotate(0deg); }
+}
+
+/* 8. Notification Badge M3 Subtle Pulse */
+@keyframes badgeNotificationPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 2px 0 #C47972, 0 3px 8px rgba(0, 0, 0, 0.4);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 2px 0 #C47972, 0 4px 12px rgba(255, 180, 169, 0.45);
+    }
+}
+
+html.light .circle-badge {
+    animation: badgeNotificationPulseLight 2.4s ease-in-out infinite;
+}
+
+@keyframes badgeNotificationPulseLight {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 2px 0 #F08E80, 0 3px 6px rgba(85, 13, 10, 0.15);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 2px 0 #F08E80, 0 4px 10px rgba(186, 27, 27, 0.25);
+    }
+}
+
+.lumi-breathing-anim {
+    animation: lumiBreathing 3.6s ease-in-out infinite;
+    transform-origin: bottom center;
+}
+
+.lumi-aura-anim {
+    animation: lumiAuraPulse 3.6s ease-in-out infinite;
+}
+
+.lumi-wiggling {
+    animation: lumiTapJump 0.52s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+.circle-badge {
+    animation: badgeNotificationPulse 2.4s ease-in-out infinite;
+}
+
+/* ======================================================== */
+/* 🎧 AUDIO / VIDEO SCREEN (M3 THEME DUAL-MODE)              */
+/* Step 1: File selection | Step 2: Transcript | Step 3: Flashcard Vocab */
+/* ======================================================== */
+#screenAudioVideo {
+    background-color: #0E100A !important;
+    color: var(--m3-on-surface) !important;
+    z-index: 60 !important;
+}
+
+html.light #screenAudioVideo {
+    background-color: #FEFCF4 !important;
+    color: #1B1D16 !important;
+}
+
+/* Header & Navigation */
+#audioVideoHeaderBar {
+    background-color: rgba(14, 16, 10, 0.88) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+html.light #audioVideoHeaderBar {
+    background-color: rgba(254, 252, 244, 0.88) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border-bottom: 1px solid #CAD2BE !important;
+}
+
+#audioBackButton {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 999px !important;
+    background-color: #20211C !important;
+    border: 1px solid var(--m3-on-surface-variant) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+    color: var(--m3-on-surface) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+html.light #audioBackButton {
+    background-color: #EFF2E5 !important;
+    border: 1px solid #CAD2BE !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06) !important;
+    color: #1B1D16 !important;
+}
+html.light #audioBackButton svg {
+    color: #1B1D16 !important;
+}
+
+#audioScreenTitle {
+    color: var(--m3-primary) !important;
+    font-weight: 900 !important;
+    font-size: 21px !important;
+}
+html.light #audioScreenTitle {
+    color: #384810 !important;
+}
+
+#audioStepPill {
+    background-color: #0A2622 !important;
+    border: 1px solid #005B52 !important;
+    border-radius: 999px !important;
+}
+html.light #audioStepPill {
+    background-color: #E0F4F0 !important;
+    border: 1px solid #7EC7B8 !important;
+}
+#audioStepBadgeText {
+    color: #4EDECA !important;
+    font-weight: 900 !important;
+    font-size: 11.5px !important;
+}
+html.light #audioStepBadgeText {
+    color: #006A60 !important;
+}
+#audioStepTotalText {
+    color: rgba(78, 222, 202, 0.6) !important;
+    font-weight: 700 !important;
+    font-size: 11.5px !important;
+}
+html.light #audioStepTotalText {
+    color: rgba(0, 106, 96, 0.6) !important;
+}
+
+#audioScreenSubtitle {
+    color: #E2E4D8 !important;
+    font-size: 14.5px !important;
+    font-weight: 600 !important;
+}
+html.light #audioScreenSubtitle {
+    color: #383C2D !important;
+}
+
+/* ======================================================== */
+/* 🔘 COMMON M3 BUTTONS (AUDIO FLOW)                        */
+/* ======================================================== */
+.audio-btn-primary {
+    background-color: var(--m3-primary) !important;
+    color: var(--m3-on-primary-container) !important;
+    border-radius: 999px !important;
+    font-weight: 900 !important;
+    box-shadow: 0 4px 20px rgba(184, 209, 102, 0.35) !important;
+    transition: all 0.2s ease !important;
+}
+.audio-btn-primary:hover {
+    background-color: #C4E071 !important;
+}
+.audio-btn-primary svg {
+    color: var(--m3-on-primary-container) !important;
+}
+html.light .audio-btn-primary {
+    background-color: var(--m3-on-primary-container) !important;
+    color: var(--m3-on-surface) !important;
+    box-shadow: 0 4px 18px rgba(82, 102, 0, 0.25) !important;
+}
+html.light .audio-btn-primary:hover {
+    background-color: #3E4E00 !important;
+}
+html.light .audio-btn-primary svg {
+    color: var(--m3-on-surface) !important;
+}
+
+.audio-btn-secondary {
+    background-color: #20231B !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: var(--m3-on-surface) !important;
+    border-radius: 999px !important;
+    font-weight: 700 !important;
+    transition: all 0.2s ease !important;
+}
+.audio-btn-secondary:hover {
+    background-color: #282C22 !important;
+}
+.audio-btn-secondary svg {
+    color: var(--m3-on-surface) !important;
+}
+html.light .audio-btn-secondary {
+    background-color: #E5E9D9 !important;
+    border: 1px solid #BCC4AA !important;
+    color: #283210 !important;
+}
+html.light .audio-btn-secondary:hover {
+    background-color: #DDE2D0 !important;
+}
+html.light .audio-btn-secondary svg {
+    color: #283210 !important;
+}
+
+/* ======================================================== */
+/* 📦 STEP 1: HERO & LOADED STATE                           */
+/* ======================================================== */
+#audioStep1HeroCard {
+    background-color: #161913 !important;
+    border: 1px solid #343A27 !important;
+    border-radius: 26px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
+    transition: all 0.25s ease !important;
+}
+#audioStep1HeroCard:hover {
+    border-color: rgba(184, 209, 102, 0.6) !important;
+}
+html.light #audioStep1HeroCard {
+    background-color: #EFF2E5 !important;
+    border: 1px solid #CAD2BE !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04) !important;
+}
+html.light #audioStep1HeroCard:hover {
+    border-color: rgba(82, 102, 0, 0.6) !important;
+}
+
+#audioHeroIconCircle {
+    width: 76px !important;
+    height: 76px !important;
+    border-radius: 999px !important;
+    background-color: #0E3833 !important;
+    border: 1px solid #16564E !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-bottom: 16px !important;
+}
+html.light #audioHeroIconCircle {
+    background-color: #A1D0C5 !important;
+    border: 1px solid #77B6A9 !important;
+}
+#audioHeroIconCircle svg {
+    color: var(--m3-primary) !important;
+}
+html.light #audioHeroIconCircle svg {
+    color: #003730 !important;
+}
+
+#audioHeroTitle {
+    color: #F3F4ED !important;
+    font-size: 16.5px !important;
+    font-weight: 700 !important;
+}
+html.light #audioHeroTitle {
+    color: #191D13 !important;
+}
+#audioHeroSubtitle {
+    color: #9EA395 !important;
+    font-size: 13px !important;
+}
+html.light #audioHeroSubtitle {
+    color: #5C6255 !important;
+}
+
+/* Loaded Audio File Info Box */
+.audio-loaded-card {
+    background-color: #0F2925 !important;
+    border: 1px solid #166056 !important;
+    border-radius: 18px !important;
+}
+html.light .audio-loaded-card {
+    background-color: #E0F4F0 !important;
+    border: 1px solid #80CBBF !important;
+}
+
+.audio-loaded-icon-box {
+    background-color: #005047 !important;
+    border-radius: 14px !important;
+}
+html.light .audio-loaded-icon-box {
+    background-color: #BDECE1 !important;
+}
+.audio-loaded-icon-box svg {
+    color: #4EDECA !important;
+}
+html.light .audio-loaded-icon-box svg {
+    color: #004D40 !important;
+}
+
+.audio-loaded-name {
+    color: var(--m3-on-surface) !important;
+    font-weight: 700 !important;
+    font-size: 14px !important;
+}
+html.light .audio-loaded-name {
+    color: #102420 !important;
+}
+
+.audio-loaded-badge {
+    background-color: #003831 !important;
+    border: 1px solid #005B50 !important;
+    color: #80F2DF !important;
+    border-radius: 999px !important;
+    font-weight: 700 !important;
+    font-size: 11px !important;
+}
+html.light .audio-loaded-badge {
+    background-color: #BDECE1 !important;
+    border: 1px solid #77B6A9 !important;
+    color: #003730 !important;
+}
+
+.audio-loaded-meta {
+    color: #A1D0C5 !important;
+    font-size: 11.5px !important;
+}
+html.light .audio-loaded-meta {
+    color: #2D5D54 !important;
+}
+
+/* Waveform Box */
+.audio-waveform-box {
+    background-color: rgba(0, 0, 0, 0.35) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 14px !important;
+}
+html.light .audio-waveform-box {
+    background-color: #E5E9DC !important;
+    border: 1px solid #CAD2BE !important;
+}
+
+.audio-waveform-bar {
+    background-color: var(--m3-primary) !important;
+}
+html.light .audio-waveform-bar {
+    background-color: var(--m3-on-primary-container) !important;
+}
+
+.audio-loaded-hint {
+    color: #A6AAA0 !important;
+    font-size: 12px !important;
+}
+html.light .audio-loaded-hint {
+    color: var(--m3-on-surface-variant) !important;
+}
+
+/* Tips Card */
+.audio-tips-card {
+    background-color: #181B15 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 20px !important;
+}
+html.light .audio-tips-card {
+    background-color: #EEF2E5 !important;
+    border: 1px solid #CAD2BE !important;
+}
+.audio-tips-card h4,
+.audio-tips-card .tip-title {
+    color: var(--m3-on-surface) !important;
+    font-weight: 700 !important;
+    font-size: 14px !important;
+}
+html.light .audio-tips-card h4,
+html.light .audio-tips-card .tip-title {
+    color: #283210 !important;
+}
+.audio-tips-card .tip-item-text {
+    color: #C5C9BC !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+}
+html.light .audio-tips-card .tip-item-text {
+    color: #383E2F !important;
+}
+
+.audio-tip-check {
+    width: 17px !important;
+    height: 17px !important;
+    border-radius: 999px !important;
+    background-color: var(--m3-primary) !important;
+    color: var(--m3-on-primary-container) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+}
+html.light .audio-tip-check {
+    background-color: var(--m3-on-primary-container) !important;
+    color: var(--m3-on-surface) !important;
+}
+
+.audio-footer-hint {
+    color: #787D70 !important;
+    font-size: 12.5px !important;
+}
+html.light .audio-footer-hint {
+    color: #5C6255 !important;
+}
+
+/* Floating Entrance Toast (M3 Dual Mode) */
+#entranceToast {
+    z-index: 75 !important;
+}
+html.light #entranceToast {
+    background-color: rgba(239, 242, 229, 0.96) !important;
+    color: var(--m3-on-primary-container) !important;
+    border-color: rgba(82, 102, 0, 0.35) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12) !important;
+}
+html.light #entranceToast span:first-child {
+    background-color: var(--m3-on-primary-container) !important;
+}
+
+/* ======================================================== */
+/* 🎧 STEP 2: MINI PLAYER & TRANSCRIPT BOX                  */
+/* ======================================================== */
+.audio-player-card {
+    background-color: #181B15 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 18px !important;
+}
+html.light .audio-player-card {
+    background-color: #EFF2E5 !important;
+    border: 1px solid #CAD2BE !important;
+}
+
+.audio-play-btn {
+    background-color: var(--m3-primary) !important;
+    color: var(--m3-on-primary-container) !important;
+    border-radius: 999px !important;
+}
+html.light .audio-play-btn {
+    background-color: var(--m3-on-primary-container) !important;
+    color: var(--m3-on-surface) !important;
+}
+
+.audio-track-title {
+    color: var(--m3-on-surface) !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+}
+html.light .audio-track-title {
+    color: #1B1D16 !important;
+}
+
+.audio-track-timer {
+    color: #A1D0C5 !important;
+    font-size: 11px !important;
+}
+html.light .audio-track-timer {
+    color: #386158 !important;
+}
+
+.audio-whisper-badge {
+    background-color: #003831 !important;
+    border: 1px solid #005B50 !important;
+    color: #80F2DF !important;
+    border-radius: 999px !important;
+}
+html.light .audio-whisper-badge {
+    background-color: #BDECE1 !important;
+    border: 1px solid #77B6A9 !important;
+    color: #003730 !important;
+}
+
+.audio-track-bar {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+html.light .audio-track-bar {
+    background-color: #CAD2BE !important;
+}
+.audio-track-progress {
+    background-color: var(--m3-primary) !important;
+}
+html.light .audio-track-progress {
+    background-color: var(--m3-on-primary-container) !important;
+}
+
+/* AI Insight Banner */
+.audio-ai-banner {
+    background: linear-gradient(90deg, #0F2925 0%, #163628 100%) !important;
+    border: 1px solid #166056 !important;
+    border-radius: 18px !important;
+}
+html.light .audio-ai-banner {
+    background: linear-gradient(90deg, #E0F4F0 0%, #EAF7F4 100%) !important;
+    border: 1px solid #8ED1C4 !important;
+}
+
+.audio-ai-banner-text {
+    color: #DCEAE3 !important;
+}
+html.light .audio-ai-banner-text {
+    color: #04322B !important;
+}
+.audio-ai-banner-highlight {
+    color: #80F2DF !important;
+}
+html.light .audio-ai-banner-highlight {
+    color: #005B50 !important;
+    font-weight: 700 !important;
+}
+
+/* Full Transcript Box */
+.audio-transcript-card {
+    background-color: #161913 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 22px !important;
+}
+html.light .audio-transcript-card {
+    background-color: #EFF2E5 !important;
+    border: 1px solid #CAD2BE !important;
+}
+
+.audio-transcript-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+html.light .audio-transcript-header {
+    border-bottom: 1px solid #CAD2BE !important;
+}
+
+.audio-transcript-title {
+    color: #A6AAA0 !important;
+}
+html.light .audio-transcript-title {
+    color: var(--m3-on-surface-variant) !important;
+}
+
+.audio-transcript-hint {
+    color: var(--m3-primary) !important;
+}
+html.light .audio-transcript-hint {
+    color: var(--m3-on-primary-container) !important;
+}
+
+.audio-transcript-content {
+    color: #D6D9CE !important;
+}
+html.light .audio-transcript-content {
+    color: #1B1D16 !important;
+}
+
+.audio-timestamp-pill {
+    background-color: #003831 !important;
+    color: #80F2DF !important;
+    border-radius: 4px !important;
+}
+html.light .audio-timestamp-pill {
+    background-color: #BDECE1 !important;
+    color: #003730 !important;
+}
+
+.transcript-keyword {
+    background-color: rgba(184, 209, 102, 0.15) !important;
+    border: 1px solid rgba(184, 209, 102, 0.3) !important;
+    color: var(--m3-primary) !important;
+    border-radius: 4px !important;
+    transition: background-color 0.15s ease !important;
+}
+.transcript-keyword:hover {
+    background-color: rgba(184, 209, 102, 0.3) !important;
+}
+html.light .transcript-keyword {
+    background-color: rgba(82, 102, 0, 0.14) !important;
+    border: 1px solid rgba(82, 102, 0, 0.32) !important;
+    color: #384810 !important;
+}
+html.light .transcript-keyword:hover {
+    background-color: rgba(82, 102, 0, 0.24) !important;
+}
+
+/* ======================================================== */
+/* 📋 STEP 3: SUMMARY & CANDIDATE FLASHCARD SELECTION       */
+/* ======================================================== */
+.audio-summary-card {
+    background-color: #181B15 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 18px !important;
+}
+html.light .audio-summary-card {
+    background-color: #EFF2E5 !important;
+    border: 1px solid #CAD2BE !important;
+}
+
+.audio-summary-title {
+    color: var(--m3-on-surface) !important;
+    font-weight: 900 !important;
+    font-size: 14px !important;
+}
+html.light .audio-summary-title {
+    color: #1B1D16 !important;
+}
+
+.audio-summary-desc {
+    color: #A6AAA0 !important;
+    font-size: 12px !important;
+}
+html.light .audio-summary-desc {
+    color: var(--m3-on-surface-variant) !important;
+}
+
+.audio-summary-count {
+    color: var(--m3-primary) !important;
+}
+html.light .audio-summary-count {
+    color: var(--m3-on-primary-container) !important;
+}
+
+.audio-summary-btn {
+    background-color: #20231B !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: var(--m3-on-surface) !important;
+    border-radius: 999px !important;
+    transition: all 0.15s ease !important;
+}
+.audio-summary-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+html.light .audio-summary-btn {
+    background-color: #E5E9D9 !important;
+    border: 1px solid #CAD2BE !important;
+    color: #283210 !important;
+}
+html.light .audio-summary-btn:hover {
+    background-color: #DDE2D0 !important;
+}
+
+/* Candidate Word Cards */
+.audio-candidate-card {
+    background-color: #161913 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 18px !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    cursor: pointer !important;
+}
+.audio-candidate-card:hover {
+    border-color: rgba(255, 255, 255, 0.22) !important;
+}
+html.light .audio-candidate-card {
+    background-color: #FEFCF4 !important;
+    border: 1px solid #CAD2BE !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03) !important;
+}
+html.light .audio-candidate-card:hover {
+    border-color: #9EA395 !important;
+}
+
+/* Selected State */
+.audio-candidate-card.is-selected {
+    background-color: #1D2412 !important;
+    border-color: var(--m3-primary) !important;
+    box-shadow: 0 4px 18px rgba(184, 209, 102, 0.18) !important;
+}
+html.light .audio-candidate-card.is-selected {
+    background-color: #F1F8D5 !important;
+    border-color: var(--m3-on-primary-container) !important;
+    box-shadow: 0 4px 14px rgba(82, 102, 0, 0.12) !important;
+}
+
+/* Checkbox */
+.candidate-checkbox {
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 6px !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.15s ease !important;
+    flex-shrink: 0 !important;
+}
+html.light .candidate-checkbox {
+    border-color: var(--m3-on-surface-variant) !important;
+}
+.audio-candidate-card.is-selected .candidate-checkbox {
+    background-color: var(--m3-primary) !important;
+    border-color: var(--m3-primary) !important;
+    color: var(--m3-on-primary-container) !important;
+}
+html.light .audio-candidate-card.is-selected .candidate-checkbox {
+    background-color: var(--m3-on-primary-container) !important;
+    border-color: var(--m3-on-primary-container) !important;
+    color: var(--m3-on-surface) !important;
+}
+
+/* Term & IPA */
+.candidate-term {
+    font-size: 17px !important;
+    font-weight: 900 !important;
+    color: var(--m3-on-surface) !important;
+    letter-spacing: -0.02em !important;
+}
+html.light .candidate-term {
+    color: #1B1D16 !important;
+}
+.audio-candidate-card.is-selected .candidate-term {
+    color: var(--m3-primary) !important;
+}
+html.light .audio-candidate-card.is-selected .candidate-term {
+    color: #354500 !important;
+}
+
+.candidate-ipa {
+    font-size: 12px !important;
+    color: #A6AAA0 !important;
+    font-family: monospace !important;
+}
+html.light .candidate-ipa {
+    color: #5C6255 !important;
+}
+
+/* Level Badge */
+.candidate-level-badge {
+    background-color: #003831 !important;
+    border: 1px solid #005B50 !important;
+    color: #80F2DF !important;
+    border-radius: 999px !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+}
+html.light .candidate-level-badge {
+    background-color: #BDECE1 !important;
+    border: 1px solid #77B6A9 !important;
+    color: #003730 !important;
+}
+
+/* Meaning */
+.candidate-meaning {
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #E5E7DE !important;
+    line-height: 1.4 !important;
+}
+html.light .candidate-meaning {
+    color: #283210 !important;
+}
+
+/* Quote */
+.candidate-quote {
+    font-size: 12px !important;
+    color: #9EA395 !important;
+    font-style: italic !important;
+    border-left: 2px solid rgba(255, 255, 255, 0.1) !important;
+}
+html.light .candidate-quote {
+    color: var(--m3-on-surface-variant) !important;
+    border-left-color: #CAD2BE !important;
+}
+
+/* ========================================================== */
+/* 📖 LESSON INTRODUCTION SCREEN (GIỚI THIỆU BÀI HỌC) STYLING */
+/* 1:1 Mobile Reference Match with Ambient Aura & Dual Dock   */
+/* ========================================================== */
+#screenLessonIntro {
+    background-color: #ECEEE9;
+    color: var(--m3-surface-container);
+    border-radius: 0 !important;
+}
+
+html.dark #screenLessonIntro {
+    background-color: var(--m3-surface) !important;
+    color: var(--m3-on-surface) !important;
+}
+
+#introPlayCtaBtn {
+    background-color: #944217 !important;
+    color: var(--m3-on-surface) !important;
+}
+
+#introPlayCtaBtn:hover {
+    background-color: #803813 !important;
+}
+
+#introAvatarBtn {
+    background-color: #C2C4BE !important;
+    color: var(--m3-on-surface) !important;
+}
+
+html.dark #introAvatarBtn {
+    background-color: #44463E !important;
+    color: var(--m3-on-surface) !important;
+}
+
+#screenLessonIntro svg {
+    color: inherit;
+}
+
+html.dark #screenLessonIntro .gear-btn {
+    color: var(--m3-on-surface) !important;
+}
+
+#screenLessonIntro .gear-btn {
+    color: var(--m3-surface-container);
+}
+
+#introGearBtn svg {
+    stroke: currentColor !important;
+}
+
+
+/* ========================================================
+ * 📜 LIST MODE TOGGLE VIEW (EXPANDED DETAILS)
+ * ======================================================== */
+.circle-item-sub {
+    display: none; /* Hidden by default in grid mode */
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--m3-on-surface-variant);
+    opacity: 0.85;
+    line-height: 1.35;
+    white-space: normal;
+    text-align: left;
+}
+
+.circle-item-text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.create-list-mode .circle-grid-4 {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 2px 4px;
+}
+
+.create-list-mode .circle-item-card {
+    flex-direction: row;
+    align-items: center;
+    max-width: 100%;
+    gap: 16px;
+    background: rgba(36, 37, 31, 0.4);
+    border: 1.5px solid rgba(70, 72, 60, 0.2);
+    padding: 12px 14px;
+    border-radius: 22px;
+    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+html.light .create-list-mode .circle-item-card {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1.5px solid rgba(227, 228, 211, 0.6);
+}
+
+.create-list-mode .circle-item-text-container {
+    align-items: flex-start;
+    flex: 1;
+    gap: 3px;
+}
+
+.create-list-mode .circle-item-label {
+    margin-top: 0;
+    text-align: left;
+    font-size: 15.5px;
+    white-space: normal;
+    width: 100%;
+}
+
+.create-list-mode .circle-item-sub {
+    display: block; /* Show in list mode */
+}
+
+/* Adjust button scale in list mode to fit row perfectly */
+.create-list-mode .circle-item-btn {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px; /* Slightly squarish in list view looks good, or keep 50% */
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.create-list-mode .circle-item-btn svg {
+    width: 26px;
+    height: 26px;
+}

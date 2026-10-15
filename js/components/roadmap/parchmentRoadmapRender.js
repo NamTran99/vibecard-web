@@ -1,0 +1,330 @@
+
+// Escape chuỗi để nhúng an toàn vào onclick="...('...')"
+function roadmapJsArg(str) {
+    return String(str).replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+}
+
+function roadmapAttr(str) {
+    return String(str).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+}
+
+// Quy đổi status trong data thành trạng thái hiển thị.
+// Rương/Trùm có status riêng ('chest'/'boss'): chỉ mở khi bài liền trước đã hoàn thành.
+function resolveRoadmapNodeState(chapter, index) {
+    const node = chapter.nodes[index];
+    if (node.status === 'completed' || node.status === 'active' || node.status === 'locked') {
+        return node.status;
+    }
+    const prev = chapter.nodes[index - 1];
+    return prev && prev.status === 'completed' ? 'active' : 'locked';
+}
+
+function getRoadmapNodeAction(chapter, index) {
+    const node = chapter.nodes[index];
+    const state = resolveRoadmapNodeState(chapter, index);
+    const unlocked = state !== 'locked';
+    if (node.type === 'chest' && unlocked) return 'claimRoadmapBonusChest()';
+    return `handleParchmentNodeClick(${node.num}, '${roadmapJsArg(node.title)}', ${unlocked}, ${chapter.id})`;
+}
+
+// Render 1 thẻ bài học kèm chấm trên đường ray
+function renderRoadmapLessonRow(chapter, index, flags, order) {
+    const node = chapter.nodes[index];
+    const state = resolveRoadmapNodeState(chapter, index);
+    const type = node.type || 'star';
+    const meta = roadmapNodeTypeMeta[type] || roadmapNodeTypeMeta.star;
+    const onClick = getRoadmapNodeAction(chapter, index);
+
+    const kicker = type === 'chest'
+        ? `<span>${meta.label}</span><span>•</span><span>${node.subtitle}</span>`
+        : `<span>${meta.label}</span><span>•</span><span>${meta.minutes} phút</span>`;
+
+    const cta = state === 'active' && type !== 'chest'
+        ? `<span class="mb-card-cta">Tiếp tục ${ROADMAP_ICON_PLAY}</span>`
+        : state === 'active'
+            ? '<span class="mb-card-cta">Nhận thưởng</span>'
+            : state === 'completed' && type !== 'chest'
+                ? '<span class="mb-card-cta is-review">Ôn lại ↺</span>'
+                : state === 'completed' && type === 'chest'
+                    ? '<span class="mb-card-cta is-review">Đã nhận ✓</span>'
+                    : '';
+
+    const badge = state === 'locked' ? '<div class="mb-thumb-badge" aria-hidden="true">🔒</div>' : '';
+    const crown = type === 'boss' ? '<span class="mb-crown" aria-hidden="true">👑</span>' : '';
+    const dotInner = state === 'completed' 
+        ? ROADMAP_ICON_CHECK 
+        : state === 'active'
+            ? '<span class="mb-active-lumi-companion" title="Lumi đang đồng hành cùng bạn!">🦊</span>'
+            : '';
+
+    const stateLabel = { completed: 'đã hoàn thành', active: 'đang học', locked: 'đang khóa' }[state];
+    const justDone = roadmapUiState.justCompletedNum === node.num ? 'is-just-done' : '';
+    const justUnlocked = roadmapUiState.justUnlockedNum === node.num ? 'is-just-unlocked' : '';
+    const railUnlocking = roadmapUiState.justCompletedNum === node.num ? 'is-unlocking' : '';
+
+    const railClasses = [
+        flags.up ? 'mb-up' : '',
+        flags.upOn ? 'mb-up-on' : '',
+        flags.down ? 'mb-down' : '',
+        flags.downOn ? 'mb-down-on' : '',
+        flags.downLong ? 'mb-down-long' : ''
+    ].join(' ');
+
+    const isActive = (state === 'active');
+    const pawsHtml = renderRailPawsHtml(flags.down, flags.downOn, isActive, flags.downLong);
+
+    return `
+        <div class="mb-row ${railClasses} mb-state-${state} mb-type-${type} ${justDone}" style="--i:${order}" ${state === 'active' ? 'data-roadmap-active="1"' : ''}>
+            <div class="mb-rail ${railUnlocking}" onclick="${onClick}" role="button" tabindex="-1" title="${roadmapAttr(`Bài ${node.num}: ${node.title}`)}">
+                <span class="mb-dot">${dotInner}</span>
+                ${pawsHtml}
+            </div>
+            <div class="mb-card ${justUnlocked}" data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}"
+                 aria-label="${roadmapAttr(`Bài ${node.num}: ${node.title}, ${meta.label}, ${stateLabel}`)}"
+                 ${state === 'locked' ? 'aria-disabled="true"' : ''}>
+                <div class="mb-card-body">
+                    <span class="mb-card-kicker">${kicker}</span>
+                    <h4 class="mb-card-title">${node.title}</h4>
+                    ${cta}
+                </div>
+                <div class="mb-thumb">
+                    <img src="${node.img}" alt="" loading="lazy" decoding="async" />
+                    ${badge}${crown}
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// Câu thoại của nhân vật theo tiến độ tô màu
+function getRoadmapCharacterLine(char, completed, started, justDone) {
+    const remaining = ROADMAP_LESSONS_PER_LOOP - completed;
+    if (completed >= ROADMAP_LESSONS_PER_LOOP) return char.quote || 'Cảm ơn bạn đã tô màu cho mình!';
+    if (justDone) return `Tuyệt! Mình vừa có thêm 1/5 màu. Còn ${remaining} bài nữa thôi!`;
+    if (started) return `Còn ${remaining} bài nữa là mình có màu đầy đủ!`;
+    return 'Mình đang đợi bạn ở vòng này…';
+}
+
+// Render 1 section (vòng): node tiêu đề + nhân vật tô màu + 5 thẻ bài học
+function renderRoadmapSection(chapter, loop, characters, orderStart) {
+    const start = loop * ROADMAP_LESSONS_PER_LOOP;
+    const end = start + ROADMAP_LESSONS_PER_LOOP;
+    const sectionNodes = chapter.nodes.slice(start, end);
+    const completed = sectionNodes.filter(n => n.status === 'completed').length;
+    const hasActive = sectionNodes.some((n, i) => resolveRoadmapNodeState(chapter, start + i) === 'active');
+
+    // 1 bài = 20% (1/5) nhân vật
+    const fillPct = Math.min(100, completed * 20);
+    const mastered = fillPct >= 100;
+    const started = completed > 0 || hasActive;
+    const isFirstSection = loop === 0;
+    const isLastSection = end >= chapter.nodes.length;
+
+    // Hiển thị lại mức tô cũ trước, sau đó animate tới mức mới (xem applyRoadmapFillAnimations)
+    const fillKey = `${chapter.id}-${loop}`;
+    const prevPct = roadmapUiState.lastFill[fillKey] ?? 0;
+    const justDoneHere = sectionNodes.some(n => n.num === roadmapUiState.justCompletedNum);
+
+    const titles = roadmapSectionTitles[chapter.id] || [];
+    const sectionTitle = titles[loop] || `Vòng ${loop + 1}`;
+    const char = characters[loop] || characters[0];
+
+    const prevSectionDone = !isFirstSection
+        && chapter.nodes[start - 1] && chapter.nodes[start - 1].status === 'completed';
+
+    const nodeIcon = mastered ? ROADMAP_ICON_CHECK : (started ? ROADMAP_ICON_SPARKLE : ROADMAP_ICON_LOCK);
+    const segments = Array.from({ length: ROADMAP_LESSONS_PER_LOOP }, (_, i) => {
+        const on = i < completed ? 'on' : '';
+        const pop = justDoneHere && i === completed - 1 ? 'pop' : '';
+        return `<span class="${on} ${pop}"></span>`;
+    }).join('');
+
+    const headClasses = [
+        !isFirstSection ? 'mb-up' : '',
+        prevSectionDone ? 'mb-up-on' : '',
+        'mb-down',
+        started ? 'mb-down-on' : ''
+    ].join(' ');
+
+    const line = getRoadmapCharacterLine(char, completed, started, justDoneHere);
+    const showLine = prevPct > 0 && prevPct < 100;
+
+    const headPawsHtml = renderRailPawsHtml(true, started, false, false);
+
+    let html = `
+        <section class="mb-section" data-loop="${loop + 1}">
+            <div class="mb-row mb-head-row ${headClasses}" style="--i:${orderStart}">
+                <div class="mb-rail">
+                    <span class="mb-section-node ${started ? '' : 'is-locked'}">${nodeIcon}</span>
+                    ${headPawsHtml}
+                </div>
+                <div class="mb-head">
+                    <div class="mb-head-text">
+                        <span class="mb-head-eyebrow">Vòng ${loop + 1} • ${ROADMAP_LESSONS_PER_LOOP} bài</span>
+                        <h3 class="mb-head-title">${sectionTitle}</h3>
+                        <div class="mb-segbar ${mastered ? 'is-mastered' : ''}" role="img" aria-label="Đã tô ${completed} trên ${ROADMAP_LESSONS_PER_LOOP}">${segments}</div>
+                        <span class="mb-head-meta">${char.name} · ${mastered ? 'Đã tô hoàn chỉnh 5/5 🏆' : `đã tô ${completed}/${ROADMAP_LESSONS_PER_LOOP}`}</span>
+                    </div>
+                    <div class="mb-char ${mastered ? 'is-mastered' : ''} ${started ? '' : 'is-waiting'}"
+                         role="button" tabindex="0"
+                         aria-label="${roadmapAttr(`${char.name}, đã tô màu ${completed} trên ${ROADMAP_LESSONS_PER_LOOP}`)}"
+                         data-fill-key="${fillKey}" data-fill-target="${fillPct}" data-just-done="${justDoneHere ? 1 : 0}"
+                         onclick="handleCharacterTap(this)">
+                        <div class="mb-char-bubble" role="status">${line}</div>
+                        <div class="mb-char-shadow"></div>
+                        <img class="mb-char-gray" src="${char.img}" alt="" />
+                        <img class="mb-char-color" src="${char.img}" alt="" style="clip-path: inset(${100 - prevPct}% 0 0 0);" />
+                        <div class="mb-char-line" style="bottom: calc(${prevPct}% - 1px); opacity: ${showLine ? 1 : 0};"></div>
+                    </div>
+                </div>
+            </div>
+    `;
+
+    sectionNodes.forEach((node, i) => {
+        const globalIdx = start + i;
+        const isLastInSection = i === sectionNodes.length - 1;
+        const prevCompleted = chapter.nodes[globalIdx - 1] && chapter.nodes[globalIdx - 1].status === 'completed';
+
+        html += renderRoadmapLessonRow(chapter, globalIdx, {
+            up: true,
+            upOn: i === 0 ? started : prevCompleted,
+            down: !(isLastInSection && isLastSection),
+            downOn: node.status === 'completed',
+            downLong: isLastInSection && !isLastSection
+        }, orderStart + 1 + i);
+    });
+
+    html += '</section>';
+    return html;
+}
+
+// Thẻ báo chương khóa: chỉ đường về chương trước thay vì để người dùng bấm vào toàn ổ khóa
+function renderRoadmapLockedNotice(chapter) {
+    const prev = roadmapChaptersData[chapter.id - 1];
+    const prevName = prev ? prev.title : 'chương trước';
+    const backBtn = prev
+        ? `<button type="button" class="mb-locked-btn" onclick="selectRoadmapChapter(${prev.id})">Về chương trước</button>`
+        : '';
+    return `
+        <div class="mb-locked-notice" style="--i:0">
+            <span class="mb-locked-icon" aria-hidden="true">${ROADMAP_ICON_LOCK}</span>
+            <div class="mb-locked-text">
+                <strong>Chương này đang khóa</strong>
+                <span>Hoàn thành "${prevName}" để mở. Các nhân vật bên dưới đang chờ bạn tô màu.</span>
+            </div>
+            ${backBtn}
+        </div>
+    `;
+}
+
+// Render toàn bộ roadmap: 2 section × 5 bài, mỗi section có 1 nhân vật tô màu 1/5
+function renderRoadmapNodes(chapter, opts = {}) {
+    const nodesContainer = document.getElementById('roadmapNodesContainer');
+    if (!nodesContainer) return;
+
+    const characters = chapter.characters || [
+        { name: 'Thần Rừng Lumi', img: 'assets/cards/lumi_avatar_portrait_clean.png' },
+        { name: 'Billy Possum', img: 'assets/cards/billy_possum_crop_test.png' }
+    ];
+
+    const locked = isRoadmapChapterLocked(chapter);
+    const loops = Math.ceil(chapter.nodes.length / ROADMAP_LESSONS_PER_LOOP);
+    let html = `<div class="mb-timeline ${opts.animateIn ? 'mb-animate-in' : ''} ${locked ? 'is-chapter-locked' : ''}">`;
+    if (locked) html += renderRoadmapLockedNotice(chapter);
+    for (let loop = 0; loop < loops; loop++) {
+        html += renderRoadmapSection(chapter, loop, characters, 1 + loop * (ROADMAP_LESSONS_PER_LOOP + 1));
+    }
+    html += '</div>';
+
+    nodesContainer.innerHTML = html;
+    roadmapRaf(() => roadmapRaf(() => applyRoadmapFillAnimations(nodesContainer)));
+}
+
+// Đẩy clip-path từ mức cũ lên mức mới ở frame sau để transition CSS thực sự chạy
+function applyRoadmapFillAnimations(root) {
+    if (!root || typeof root.querySelectorAll !== 'function') return;
+    root.querySelectorAll('.mb-char[data-fill-key]').forEach((el) => {
+        const key = el.getAttribute('data-fill-key');
+        const target = Number(el.getAttribute('data-fill-target')) || 0;
+        const color = el.querySelector('.mb-char-color');
+        const lineEl = el.querySelector('.mb-char-line');
+        if (color) color.style.clipPath = `inset(${100 - target}% 0 0 0)`;
+        if (lineEl) {
+            lineEl.style.bottom = `calc(${target}% - 1px)`;
+            lineEl.style.opacity = target > 0 && target < 100 ? '1' : '0';
+        }
+        roadmapUiState.lastFill[key] = target;
+
+        // Nhân vật tự lên tiếng ngay sau khi được tô thêm
+        if (el.getAttribute('data-just-done') === '1') {
+            setTimeout(() => showRoadmapCharacterBubble(el), 650);
+        }
+    });
+}
+
+// Thanh "Bài tiếp theo" dính đáy màn hình, chừa chỗ cho nút trợ lý 🦊 bên phải
+function renderRoadmapNextBar(chapter) {
+    const screen = document.getElementById('screenParchmentRoadmap');
+    if (!screen || typeof document.createElement !== 'function') return;
+
+    let bar = document.getElementById('roadmapNextBar');
+    if (!bar) {
+        bar = document.createElement('div');
+        bar.id = 'roadmapNextBar';
+        bar.className = 'mb-nextbar';
+        screen.appendChild(bar);
+    }
+
+    if (isRoadmapChapterLocked(chapter)) {
+        bar.classList.remove('is-visible');
+        const floatingLumi = document.getElementById('roadmapLumiFab');
+        if (floatingLumi && floatingLumi.parentElement) floatingLumi.parentElement.classList.remove('hidden');
+        return;
+    }
+
+    const activeIdx = getRoadmapActiveIndex(chapter);
+    if (activeIdx < 0) {
+        const next = roadmapChaptersData[chapter.id + 1];
+        bar.innerHTML = `
+            <button type="button" class="mb-nextbar-inner is-done" ${next ? `onclick="selectRoadmapChapter(${next.id})"` : ''}>
+                <span class="mb-nextbar-emoji" aria-hidden="true">🎉</span>
+                <span class="mb-nextbar-text">
+                    <span class="mb-nextbar-kicker">Hoàn thành chương</span>
+                    <span class="mb-nextbar-title">${next ? `Sang: ${next.title}` : 'Bạn đã đi hết hành trình!'}</span>
+                </span>
+            </button>`;
+        bar.classList.add('is-visible');
+        return;
+    }
+
+    const node = chapter.nodes[activeIdx];
+    const loop = Math.floor(activeIdx / ROADMAP_LESSONS_PER_LOOP);
+    const loopStart = loop * ROADMAP_LESSONS_PER_LOOP;
+    const doneInLoop = chapter.nodes.slice(loopStart, loopStart + ROADMAP_LESSONS_PER_LOOP)
+        .filter(n => n.status === 'completed').length;
+    const remaining = ROADMAP_LESSONS_PER_LOOP - doneInLoop;
+    const char = (chapter.characters || [])[loop] || { name: 'nhân vật' };
+
+    bar.innerHTML = `
+        <div class="mb-nextbar-inner" onclick="${getRoadmapNodeAction(chapter, activeIdx)}">
+            <button type="button" class="mb-nextbar-lumi-btn" onclick="event.stopPropagation(); if(typeof openAITutorChat === 'function') openAITutorChat(); else if(typeof showDictToast === 'function') showDictToast('💬 Trợ lý Lumi sẵn sàng đồng hành cùng bạn!');" title="Trợ lý Lumi">
+                <span class="mb-nextbar-lumi-avatar">🦊</span>
+                <span class="mb-nextbar-lumi-badge">2</span>
+            </button>
+            <div class="mb-nextbar-text">
+                <span class="mb-nextbar-kicker">Tiếp theo · Bài ${node.num}</span>
+                <span class="mb-nextbar-title">${node.title}</span>
+                <span class="mb-nextbar-sub">Còn ${remaining} bài để tô xong ${char.name}</span>
+            </div>
+            <button type="button" class="mb-nextbar-go" aria-label="Học tiếp" onclick="event.stopPropagation(); ${getRoadmapNodeAction(chapter, activeIdx)}">
+                ${ROADMAP_ICON_PLAY}
+            </button>
+        </div>`;
+    bar.classList.add('is-visible');
+
+    // Ẩn Lumi FAB rời rạc khi thanh Tiếp theo đã hợp nhất Lumi mascot
+    const floatingLumi = document.getElementById('roadmapLumiFab');
+    if (floatingLumi && floatingLumi.parentElement) {
+        floatingLumi.parentElement.classList.add('hidden');
+    }
+}

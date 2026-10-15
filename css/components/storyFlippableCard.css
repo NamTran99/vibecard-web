@@ -1,0 +1,272 @@
+/* ==========================================================================
+   🎴 2-SIDED FLIPPABLE FLASHCARD (M3-07 DARK OLIVE GREEN EDITORIAL COLLECTIBLE)
+   - Clean Artwork Squircle (Zero Text Slapped on Art)
+   - 100% M3-07 Semantic Tokens (Seamless Dark & Light Mode)
+   - Anti-Over-Bordering Discipline & 2-Stage 3D Flip Physics
+   ========================================================================== */
+
+.story-flippable-card {
+    position: relative; width: 100%;
+    perspective: 1200px; -webkit-perspective: 1200px;
+    cursor: pointer; user-select: none; -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.story-flippable-face {
+    width: 100%; border-radius: 24px;
+    overflow: hidden; position: relative;
+    display: flex; flex-direction: column; justify-content: space-between;
+    backface-visibility: hidden; -webkit-backface-visibility: hidden;
+    transform-origin: center center; will-change: transform, opacity;
+    background: var(--m3-surface-container-high);
+    border: 1px solid var(--m3-outline-variant);
+    padding: 16px 16px 14px 16px;
+    color: var(--m3-on-surface);
+    box-shadow: 0 10px 26px -8px rgba(0, 0, 0, 0.22);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.story-flippable-face::before {
+    content: ""; position: absolute; inset: 0 0 auto 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--m3-primary), transparent);
+    opacity: 0.45; pointer-events: none;
+}
+
+.story-flippable-card.just-added .story-flippable-face {
+    border-color: var(--m3-primary);
+    box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.26), 0 0 0 1px var(--m3-primary);
+}
+
+.story-flippable-back {
+    background: var(--m3-surface-container-high);
+    border-color: var(--m3-primary);
+}
+
+/* 1. Top Meta Header Row */
+.story-flip-header {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 8px; width: 100%; margin-bottom: 12px;
+}
+
+.story-flip-badge-group { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; min-width: 0; }
+
+.story-flip-level-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 10px; border-radius: 9999px;
+    font-size: 11px; font-weight: 800; letter-spacing: 0.02em;
+    background: var(--m3-surface-container-highest);
+    color: var(--m3-on-surface-variant);
+    max-width: 215px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+.story-flip-badge-dot {
+    width: 6px; height: 6px; border-radius: 9999px;
+    background: var(--m3-primary); flex-shrink: 0;
+}
+
+.story-flip-new-badge {
+    display: inline-flex; align-items: center; padding: 3.5px 9px;
+    border-radius: 9999px; font-size: 10.5px; font-weight: 800;
+    background: var(--m3-amber-container); color: var(--m3-amber-text);
+}
+
+.story-flip-meaning-label {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11px; font-weight: 800; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--m3-primary);
+}
+
+.story-flip-header-right { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+
+.story-flip-counter {
+    font-size: 12px; font-weight: 800;
+    color: var(--m3-on-surface-variant);
+    padding: 2px 6px; border-radius: 8px;
+}
+
+.story-flip-icon-btn {
+    width: 30px; height: 30px; border-radius: 9999px; border: none;
+    background: var(--m3-surface-container-highest);
+    color: var(--m3-on-surface-variant);
+    font-size: 12px; font-weight: 800;
+    display: inline-flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+.story-flip-icon-btn:hover, .story-flip-icon-btn:active {
+    background: var(--m3-error-container); color: var(--m3-on-error-container); transform: scale(0.92);
+}
+
+/* 2. Front Hero Row: Clean Squircle Artwork + Term + Inline Audio/POS */
+.story-flip-hero-row {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 13px;
+}
+
+.story-flip-art-thumb {
+    width: 74px; height: 74px; border-radius: 18px;
+    overflow: hidden; flex-shrink: 0;
+    background: var(--m3-surface-container-highest);
+    border: 1px solid var(--m3-outline-variant);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+}
+
+.story-flip-art-thumb img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+}
+
+.story-flip-hero-meta {
+    flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 7px;
+}
+
+.story-flip-front-term {
+    font-size: 24px; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em;
+    color: var(--m3-on-surface); word-break: break-word;
+}
+
+.story-flip-sub-row {
+    display: flex; align-items: center; flex-wrap: wrap; gap: 6px;
+}
+
+.story-flip-pos-chip {
+    display: inline-flex; align-items: center;
+    padding: 3.5px 10px; border-radius: 9999px;
+    font-size: 11px; font-weight: 800;
+    background: var(--m3-secondary-container);
+    color: var(--m3-on-secondary-container);
+}
+
+.story-flip-audio-pill {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 4px 11px; border-radius: 9999px; border: none;
+    background: var(--m3-primary-container);
+    color: var(--m3-on-primary-container);
+    font-size: 12px; font-weight: 800;
+    cursor: pointer; transition: transform 0.15s ease, filter 0.15s ease;
+}
+.story-flip-audio-pill:active { transform: scale(0.93); filter: brightness(0.95); }
+
+/* 3. Front Editorial Quote Box (No Square Brackets, Warm Book Typography) */
+.story-flip-prompt-box {
+    position: relative; width: 100%;
+    padding: 12px 14px 12px 15px;
+    border-radius: 16px;
+    background: var(--m3-surface-container);
+    border-left: 3.5px solid var(--m3-primary);
+    overflow: hidden;
+}
+
+.story-flip-prompt-quote {
+    position: absolute; top: -6px; right: 10px;
+    font-family: Georgia, serif; font-size: 44px; font-weight: 900;
+    color: var(--m3-on-surface); opacity: 0.06; line-height: 1; pointer-events: none;
+}
+
+.story-flip-prompt-text {
+    position: relative; z-index: 1; margin: 0;
+    font-family: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
+    font-size: 16.5px; font-weight: 600; font-style: italic;
+    line-height: 1.45; color: var(--m3-on-surface);
+}
+
+.story-flip-prompt-hl {
+    font-style: normal; font-weight: 800;
+    color: var(--m3-on-primary-container);
+    background: var(--m3-primary-container);
+    padding: 1px 7px; border-radius: 6px;
+    border-bottom: 1.5px solid var(--m3-primary);
+    -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+
+/* 4. Bottom Flip Hint Footer */
+.story-flip-footer {
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 12px; padding-top: 2px;
+}
+
+.story-flip-hint-pill {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 11px; font-weight: 800; letter-spacing: 0.04em;
+    color: var(--m3-on-surface-variant); opacity: 0.82;
+}
+
+/* 5. Back Face Layout & Meaning Hierarchy */
+.story-flip-back-main { display: flex; flex-direction: column; gap: 6px; }
+
+.story-flip-back-term-row {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 8px; flex-wrap: wrap;
+}
+
+.story-flip-back-term {
+    font-size: 21px; font-weight: 900; color: var(--m3-on-surface); line-height: 1.2;
+}
+
+.story-flip-back-meaning {
+    font-size: 19px; font-weight: 800; line-height: 1.32;
+    color: var(--m3-on-surface); margin: 2px 0 4px 0;
+}
+
+.story-flip-back-meaning-primary { color: var(--m3-primary); font-weight: 900; }
+.story-flip-back-meaning-rest { color: var(--m3-on-surface); font-weight: 700; }
+
+/* 6. Back Face Unified Segmented Control Tabs (Zero Nested Borders) */
+.story-flip-tabs-bar {
+    display: flex; align-items: center; gap: 4px; padding: 4px;
+    border-radius: 13px; background: var(--m3-surface-container);
+}
+
+.story-flip-tab-btn {
+    flex: 1; padding: 6.5px 8px; border-radius: 9px; border: none;
+    font-size: 12px; font-weight: 700;
+    color: var(--m3-on-surface-variant); background: transparent;
+    cursor: pointer; transition: all 0.16s ease; text-align: center;
+}
+
+.story-flip-tab-btn.active {
+    background: var(--m3-primary); color: var(--m3-on-primary); font-weight: 800;
+}
+
+.story-flip-tab-panel {
+    margin-top: 4px; padding: 12px 14px; border-radius: 16px;
+    background: var(--m3-surface-container);
+    border-left: 3px solid var(--m3-amber-glow);
+    min-height: 82px; display: flex; flex-direction: column; justify-content: center;
+}
+
+.story-flip-back-ex-wrap {
+    display: flex; flex-direction: column; gap: 4px; cursor: pointer;
+}
+
+.story-flip-back-ex-en {
+    margin: 0; font-family: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
+    font-size: 16px; font-weight: 600; font-style: italic;
+    line-height: 1.42; color: var(--m3-on-surface);
+}
+
+.story-flip-back-ex-vi {
+    margin: 0; font-size: 13px; font-weight: 600;
+    line-height: 1.38; color: var(--m3-on-surface-variant);
+}
+
+.story-flip-back-ex-toggle {
+    font-size: 10.5px; font-weight: 800; color: var(--m3-primary); margin-top: 2px;
+}
+
+.story-flip-usage-text {
+    margin: 0; font-size: 13px; font-weight: 600;
+    line-height: 1.45; color: var(--m3-on-surface);
+}
+
+.story-flip-synonym-wrap {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+}
+
+.story-flip-synonym-pill {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 5px 11px; border-radius: 9999px; border: none;
+    background: var(--m3-secondary-container);
+    color: var(--m3-on-secondary-container);
+    font-size: 12px; font-weight: 800; cursor: pointer;
+    transition: transform 0.14s ease;
+}
+.story-flip-synonym-pill:active { transform: scale(0.94); }

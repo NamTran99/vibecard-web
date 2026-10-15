@@ -1,0 +1,804 @@
+/* ========================================================
+ * 🌿 M3-07 DARK OLIVE GREEN THEME TOKENS
+ * ======================================================== */
+
+/* ======================================================== */
+        /* 🌿 M3-07 DARK OLIVE GREEN THEME TOKENS (RULE M3 SPEC)    */
+        /* ======================================================== */
+        :root, html.dark {
+            /* Dark Mode Tokens (M3-07 Dark Olive Green Default) */
+            --m3-primary: #B8D166;
+            --m3-on-primary: #283500;
+            --m3-primary-container: #3C4D00;
+            --m3-on-primary-container: #D4EE7F;
+            --m3-secondary: #C4CAA9;
+            --m3-on-secondary: #2E331C;
+            --m3-secondary-container: #444930;
+            --m3-on-secondary-container: #E0E6C3;
+            --m3-tertiary: #A1D0C5;
+            --m3-on-tertiary: #033730;
+            --m3-tertiary-container: #214E46;
+            --m3-on-tertiary-container: #BDECE1;
+            --m3-error: #FFB4A9;
+            --m3-on-error: #680003;
+            --m3-error-container: #930006;
+            --m3-on-error-container: #FFDAD4;
+            --m3-background: #1B1C17;
+            --m3-on-background: #E5E3DB;
+            --m3-surface: #1B1C17;
+            --m3-on-surface: #E5E3DB;
+            --m3-surface-variant: #46483C;
+            --m3-on-surface-variant: #C7C8B8;
+            --m3-outline: #909283;
+            --m3-outline-variant: #46483C;
+            --m3-inverse-surface: #E5E3DB;
+            --m3-inverse-on-surface: #30312B;
+            --m3-inverse-primary: #526600;
+            --m3-surface-dim: #0D0E0B;
+            --m3-surface-bright: #3B3C36;
+            --m3-surface-container-lowest: #0D0E0B;
+            --m3-surface-container-low: #1B1C17;
+            --m3-surface-container: #20211C;
+            --m3-surface-container-high: #252621;
+            --m3-surface-container-highest: #30312B;
+            --m3-scrim: #000000;
+            --m3-shadow: #000000;
+            --m3-amber-glow: #FBBF24;
+            --m3-amber-container: #3D2E0B;
+            --m3-amber-text: #FDE68A;
+            --m3-screen-bg: #0D0E0B;
+            --m3-glass-bg: rgba(32, 33, 28, 0.75);
+            --m3-glass-border: rgba(70, 72, 60, 0.45);
+
+            /* 🧭 M3-07 Dark Olive Green Floating Dock Tokens */
+            --dock-bg: rgba(27, 28, 23, 0.92);
+            --dock-border: rgba(70, 72, 60, 0.6);
+            --dock-shadow: 0 12px 36px rgba(0, 0, 0, 0.45), 0 2px 8px rgba(0, 0, 0, 0.2);
+            --dock-thumb-bg: var(--m3-primary-container);
+            --dock-thumb-border: rgba(184, 209, 102, 0.25);
+            --dock-thumb-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+            --dock-icon-active: var(--m3-on-primary-container);
+            --dock-icon-inactive: var(--m3-on-surface-variant);
+        }
+
+        html.light {
+            /* Light Mode Tokens (M3-07 Dark Olive Green - Light Spec) */
+            --m3-primary: #526600;
+            --m3-on-primary: #FFFFFF;
+            --m3-primary-container: #D4EE7F;
+            --m3-on-primary-container: #161F00;
+            --m3-secondary: #5B6146;
+            --m3-on-secondary: #FFFFFF;
+            --m3-secondary-container: #E0E6C3;
+            --m3-on-secondary-container: #191D08;
+            --m3-tertiary: #3A665E;
+            --m3-on-tertiary: #FFFFFF;
+            --m3-tertiary-container: #BDECE1;
+            --m3-on-tertiary-container: #00201B;
+            --m3-error: #BA1B1B;
+            --m3-on-error: #FFFFFF;
+            --m3-error-container: #FFDAD4;
+            --m3-on-error-container: #410001;
+            --m3-background: #FEFCF4;
+            --m3-on-background: #1B1C17;
+            --m3-surface: #FEFCF4;
+            --m3-on-surface: #1B1C17;
+            --m3-surface-variant: #E3E4D3;
+            --m3-on-surface-variant: #46483C;
+            --m3-outline: #77786B;
+            --m3-outline-variant: #C7C8B8;
+            --m3-inverse-surface: #30312B;
+            --m3-inverse-on-surface: #F3F1E9;
+            --m3-inverse-primary: #B8D166;
+            --m3-surface-dim: #D6D5CD;
+            --m3-surface-bright: #FEFCF4;
+            --m3-surface-container-lowest: #FFFFFF;
+            --m3-surface-container-low: #F3F1E9;
+            --m3-surface-container: #F3F1E9;
+            --m3-surface-container-high: #ECEAE2;
+            --m3-surface-container-highest: #E5E3DB;
+            --m3-scrim: #000000;
+            --m3-shadow: #000000;
+            --m3-amber-glow: #D97706;
+            --m3-amber-container: #FEF3C7;
+            --m3-amber-text: #78350F;
+            --m3-screen-bg: #FEFCF4;
+            --m3-glass-bg: rgba(243, 241, 233, 0.9);
+            --m3-glass-border: rgba(199, 200, 184, 0.65);
+
+            /* 🧭 M3-07 Dark Olive Green Floating Dock Tokens (Light Mode) */
+            --dock-bg: rgba(243, 241, 233, 0.94);
+            --dock-border: rgba(199, 200, 184, 0.85);
+            --dock-shadow: 0 10px 28px rgba(27, 28, 23, 0.1), 0 2px 6px rgba(27, 28, 23, 0.04);
+            --dock-thumb-bg: var(--m3-primary-container);
+            --dock-thumb-border: rgba(82, 102, 0, 0.18);
+            --dock-thumb-shadow: 0 3px 12px rgba(82, 102, 0, 0.2);
+            --dock-icon-active: var(--m3-on-primary-container);
+            --dock-icon-inactive: var(--m3-on-surface-variant);
+        }
+
+        /* ------------------------------------------------------------- */
+        /* LIGHT MODE ADAPTATION FOR PROTOTYPE ELEMENTS                 */
+        /* ------------------------------------------------------------- */
+        html.light body {
+            background-color: var(--m3-screen-bg) !important;
+            color: var(--m3-on-surface) !important;
+            border-color: var(--m3-outline-variant) !important;
+            box-shadow: 0 20px 60px rgba(82, 102, 0, 0.12), 0 4px 16px rgba(0,0,0,0.06) !important;
+        }
+
+        /* Semantic Class Overrides in Light Mode */
+        html.light .bg-surfaceContainerLow { background-color: var(--m3-surface-container-low) !important; }
+        html.light .bg-surfaceContainer { background-color: var(--m3-surface-container) !important; }
+        html.light .bg-surfaceContainerHigh { background-color: var(--m3-surface-container-high) !important; }
+        html.light .bg-surfaceContainerHighest { background-color: var(--m3-surface-container-highest) !important; }
+        html.light .bg-surface { background-color: var(--m3-surface) !important; }
+        html.light .bg-appBg, html.light .bg-screenBg { background-color: var(--m3-screen-bg) !important; }
+        html.light .bg-primary { background-color: var(--m3-primary) !important; }
+        html.light .bg-primaryContainer { background-color: var(--m3-primary-container) !important; }
+        html.light .bg-secondaryContainer { background-color: var(--m3-secondary-container) !important; }
+        html.light .bg-tertiaryContainer { background-color: var(--m3-tertiary-container) !important; }
+        html.light .bg-amberContainer { background-color: var(--m3-amber-container) !important; }
+
+        html.light .text-textPrimary, html.light .text-textMain { color: var(--m3-on-surface) !important; }
+        html.light .text-textSecondary { color: var(--m3-on-surface-variant) !important; }
+        html.light .text-textTertiary, html.light .text-textMuted { color: var(--m3-outline) !important; }
+        html.light .text-primary { color: var(--m3-primary) !important; }
+        html.light .text-onPrimary { color: var(--m3-on-primary) !important; }
+        html.light .text-onPrimaryContainer { color: var(--m3-on-primary-container) !important; }
+        html.light .text-amberText { color: var(--m3-amber-text) !important; }
+        html.light .text-amberGlow { color: var(--m3-amber-glow) !important; }
+        html.light .border-outlineVariant { border-color: var(--m3-outline-variant) !important; }
+        html.light .border-outline { border-color: var(--m3-outline) !important; }
+
+        /* Hardcoded Hex Utility Classes Mapping in Light Mode */
+        html.light .bg-\[\#0D0E0B\] { background-color: var(--m3-surface-container-lowest) !important; }
+        html.light .bg-\[\#1B1C17\] { background-color: var(--m3-surface-container-low) !important; }
+        html.light .bg-\[\#20211C\] { background-color: var(--m3-surface-container) !important; }
+        html.light .bg-\[\#252621\] { background-color: var(--m3-surface-container-high) !important; }
+        html.light .bg-\[\#30312B\] { background-color: var(--m3-surface-container-highest) !important; }
+        html.light .bg-\[\#141610\], html.light .bg-\[\#1F201A\], html.light .bg-\[\#2B2D24\] { background-color: var(--m3-surface-container-low) !important; }
+
+        html.light .bg-\[\#3C4D00\] { background-color: var(--m3-primary-container) !important; }
+        html.light .bg-\[\#B8D166\] { background-color: var(--m3-primary) !important; }
+        html.light .bg-\[\#444930\] { background-color: var(--m3-secondary-container) !important; }
+        html.light .bg-\[\#214E46\] { background-color: var(--m3-tertiary-container) !important; }
+        html.light .bg-\[\#3D2E0B\] { background-color: var(--m3-amber-container) !important; }
+        html.light .bg-\[\#930006\] { background-color: var(--m3-error-container) !important; }
+
+        html.light .text-\[\#E5E3DB\], html.light .text-\[\#E4E3DB\] { color: var(--m3-on-surface) !important; }
+        html.light .text-\[\#C7C8B8\], html.light .text-\[\#C6C8B8\] { color: var(--m3-on-surface-variant) !important; }
+        html.light .text-\[\#909283\] { color: var(--m3-outline) !important; }
+        html.light .text-\[\#D4EE7F\] { color: var(--m3-on-primary-container) !important; }
+        html.light .text-\[\#B8D166\] { color: var(--m3-primary) !important; }
+        html.light .text-\[\#283500\] { color: var(--m3-on-primary) !important; }
+        html.light .text-\[\#E0E6C3\] { color: var(--m3-on-secondary-container) !important; }
+        html.light .text-\[\#BDECE1\] { color: var(--m3-on-tertiary-container) !important; }
+        html.light .text-\[\#A1D0C5\] { color: var(--m3-tertiary) !important; }
+        html.light .text-\[\#FDE68A\] { color: var(--m3-amber-text) !important; }
+        html.light .text-\[\#FBBF24\] { color: var(--m3-amber-glow) !important; }
+        html.light .text-\[\#FFB4A9\] { color: var(--m3-error) !important; }
+        html.light .text-\[\#FFDAD4\] { color: var(--m3-on-error-container) !important; }
+
+        html.light .border-\[\#46483C\] { border-color: var(--m3-outline-variant) !important; }
+        html.light .border-\[\#B8D166\] { border-color: var(--m3-primary) !important; }
+        html.light .border-\[\#A1D0C5\] { border-color: var(--m3-tertiary) !important; }
+        html.light .border-\[\#FBBF24\] { border-color: var(--m3-amber-glow) !important; }
+        html.light .border-\[\#C4CAA9\] { border-color: var(--m3-secondary) !important; }
+
+        /* Word Discovery Shelf Tactile Cards in Light Mode */
+        html.light [class*="group/card"] {
+            background-color: var(--m3-surface-container-low) !important;
+            border-color: var(--m3-outline-variant) !important;
+            box-shadow: 0 4px 16px rgba(85, 101, 21, 0.08) !important;
+        }
+        html.light [class*="group/card"]:hover {
+            background-color: var(--m3-surface-container) !important;
+            box-shadow: 0 8px 24px rgba(85, 101, 21, 0.14) !important;
+        }
+
+        /* Solid Top Action Button (Language Selector) */
+        html.light #topLangSelectorBtn {
+            background-color: var(--m3-surface-container) !important;
+            border-color: var(--m3-outline-variant) !important;
+            color: var(--m3-on-surface) !important;
+            box-shadow: 0 4px 14px rgba(85, 101, 21, 0.08) !important;
+        }
+
+        /* Desktop Floating Controls Outside Phone Mockup */
+        html.light #topThemeToggleBtn,
+        html.light #floatingReplayBtn,
+        html.light #externalViewModeToggle {
+            background-color: #FFFFFF !important;
+            border-color: #D6D8C0 !important;
+            color: #1B1C17 !important;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1) !important;
+        }
+        html.light #topThemeToggleBtn {
+            color: #1B1C17 !important;
+        }
+        html.light #floatingReplayBtn {
+            color: #5B6146 !important;
+        }
+        html.light #externalViewModeToggle span {
+            color: #5B6146 !important;
+        }
+        html.light #externalViewModeToggle > div {
+            background-color: #F4F3EA !important;
+            border-color: #D6D8C0 !important;
+        }
+        html.light #topLangCode {
+            color: var(--m3-on-surface) !important;
+        }
+
+        /* Top Status HUD Typography & Scrim Protection (Hero Scenery is always night sky) */
+        #topStatusHUD #topGreetingText,
+        html.light #topStatusHUD #topGreetingText {
+            color: #D4EE7F !important;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9) !important;
+        }
+        #topStatusHUD #topUserNameText,
+        html.light #topStatusHUD #topUserNameText {
+            color: #FFFFFF !important;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95), 0 1px 2px rgba(0, 0, 0, 0.9) !important;
+        }
+
+        /* Ambient contrast scrim on top hero banner - keep dark so starry sky stays vibrant */
+        #heroTopScrim,
+        html.light #heroTopScrim {
+            background: linear-gradient(180deg, rgba(11, 19, 30, 0.75) 0%, rgba(11, 19, 30, 0.35) 60%, rgba(11, 19, 30, 0) 100%) !important;
+        }
+
+        /* Speech bubble of Lumi mascot on hero */
+        html.light #lumiSpeechBubble {
+            background-color: rgba(254, 252, 244, 0.96) !important;
+            color: #78350F !important;
+            border-color: rgba(217, 119, 6, 0.4) !important;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+        }
+
+        /* Full Dictionary Screen in Light Mode (M3-07 Palette) */
+        html.light #screenDictionary {
+            background-color: var(--m3-screen-bg) !important;
+            color: var(--m3-on-surface) !important;
+        }
+
+        /* Dictionary Screen - 3-Part Background Surface Hierarchy */
+        /* Part 1: Top Header Bar */
+        #dictHeaderTopBar {
+            background-color: #191B16;
+            border-bottom: 1px solid #36392E;
+            box-shadow: none !important;
+        }
+        #dictHeaderTopBar button,
+        #dictHeaderTopBar [class*="shadow"] {
+            box-shadow: none !important;
+        }
+        html.light #dictHeaderTopBar {
+            background-color: #FFFFFF !important;
+            border-bottom: 1px solid #E8E5DA !important;
+            box-shadow: none !important;
+        }
+        html.light #dictHeaderTopBar button {
+            box-shadow: none !important;
+        }
+        html.light #dictHeaderTopBar [class*="drop-shadow"],
+        html.light #dictHeaderTopBar .drop-shadow {
+            filter: none !important;
+            text-shadow: none !important;
+        }
+
+        /* Part 2: Segmented Mode Switcher (Tab Strip) */
+        #dictTabStripBar {
+            background-color: #23251E;
+            border-bottom: 1px solid #36392E;
+        }
+        html.light #dictTabStripBar {
+            background-color: #F0EDE2 !important;
+            border-bottom: 1px solid #DDD9CC !important;
+        }
+
+        /* Part 3: Search Area & Dictionary Canvas */
+        #dictSearchArea,
+        #screenDictionary {
+            background-color: #141611;
+        }
+        html.light #dictSearchArea,
+        html.light #screenDictionary {
+            background-color: #FAF8F2 !important;
+        }
+
+        /* Header Buttons & Language Pill */
+        html.light #screenDictionary button.bg-\[\#20211C\],
+        html.light #screenDictionary button.bg-\[\#1B1C17\],
+        html.light #screenDictionary .bg-\[\#1B1C17\],
+        html.light #screenDictionary .bg-\[\#20211C\],
+        html.light #screenDictionary .bg-\[\#252621\] {
+            background-color: var(--m3-surface-container) !important;
+            border-color: var(--m3-outline-variant) !important;
+            color: var(--m3-on-surface) !important;
+        }
+
+        /* Tab Strip Buttons */
+        html.light #dictModeTabLookup {
+            color: var(--m3-on-surface) !important;
+        }
+        html.light #dictModeTabList {
+            color: var(--m3-outline) !important;
+        }
+        html.light #dictModeTabList:hover {
+            color: var(--m3-on-surface) !important;
+        }
+        html.light #dictListCountBadge {
+            background-color: var(--m3-primary-container) !important;
+            border-color: var(--m3-primary) !important;
+            color: var(--m3-on-primary-container) !important;
+        }
+
+        /* Search input & clear */
+        html.light #fullDictSearchInput {
+            color: var(--m3-on-surface) !important;
+        }
+        html.light #fullDictSearchInput::placeholder {
+            color: var(--m3-outline) !important;
+        }
+
+        /* Autocomplete dropdown in Light Mode */
+        html.light #autocompleteDropdown {
+            background-color: var(--m3-surface) !important;
+            border-color: var(--m3-outline-variant) !important;
+        }
+
+        /* Bottom Action Bar in Light Mode */
+        html.light #dictLookupBottomBar,
+        html.light #dictListBottomBar {
+            background-color: rgba(251, 249, 240, 0.96) !important;
+            border-top-color: var(--m3-outline-variant) !important;
+            box-shadow: 0 -8px 28px rgba(85, 101, 21, 0.1) !important;
+        }
+
+        html.light #smartStagingLabel {
+            color: var(--m3-outline) !important;
+        }
+
+        /* Staged chips in bottom bar */
+        html.light #smartStagedChips span {
+            background-color: var(--m3-surface-container-high) !important;
+            border-color: var(--m3-outline-variant) !important;
+            color: var(--m3-on-surface) !important;
+        }
+
+        /* Left Add/Xem DS Button */
+        html.light #btnAddToStagedList {
+            background-color: var(--m3-surface-container-high) !important;
+            border-color: var(--m3-outline-variant) !important;
+            border-bottom-color: var(--m3-surface-container-highest) !important;
+            color: var(--m3-on-surface) !important;
+            box-shadow: 0 4px 12px rgba(85, 101, 21, 0.08) !important;
+        }
+
+        /* Right Primary "Lưu thẻ vừa tạo" Button */
+        html.light #btnInstantCreateFlashcard {
+            background-color: var(--m3-primary) !important;
+            border-color: var(--m3-primary) !important;
+            border-bottom-color: var(--m3-primary-container) !important;
+            color: var(--m3-on-primary) !important;
+            box-shadow: 0 6px 20px rgba(85, 101, 21, 0.3) !important;
+        }
+
+        /* ------------------------------------------------------------- */
+        /* M3 SEMANTIC CHIPS: SYNONYMS & ANTONYMS                        */
+        /* ------------------------------------------------------------- */
+        /* Dark Mode Default */
+        .m3-chip-synonym {
+            background-color: rgba(33, 78, 70, 0.6);
+            border: 1px solid rgba(161, 208, 197, 0.35);
+            color: #BDECE1;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+        }
+        .m3-chip-synonym:hover {
+            background-color: #214E46;
+            border-color: rgba(161, 208, 197, 0.55);
+        }
+        .m3-chip-synonym .syn-word {
+            color: #BDECE1;
+            font-weight: 700;
+        }
+        .m3-chip-synonym .syn-vi {
+            color: rgba(161, 208, 197, 0.85);
+            font-weight: 400;
+        }
+
+        .m3-chip-antonym {
+            background-color: rgba(147, 0, 6, 0.35);
+            border: 1px solid rgba(255, 180, 169, 0.35);
+            color: #FFDAD4;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+        }
+        .m3-chip-antonym:hover {
+            background-color: rgba(147, 0, 6, 0.55);
+            border-color: rgba(255, 180, 169, 0.55);
+        }
+        .m3-chip-antonym .ant-word {
+            color: #FFDAD4;
+            font-weight: 700;
+        }
+        .m3-chip-antonym .ant-vi {
+            color: rgba(255, 218, 212, 0.85);
+            font-weight: 400;
+        }
+
+        /* Light Mode High-Contrast Adaptation for Synonyms & Antonyms */
+        html.light .m3-chip-synonym,
+        html.light .bg-\[\#214E46\]\/60 {
+            background-color: #E0F2EE !important;
+            border: 1px solid #A3D8CD !important;
+            color: #0B3830 !important;
+            box-shadow: 0 2px 8px rgba(11, 56, 48, 0.08) !important;
+        }
+        html.light .m3-chip-synonym:hover,
+        html.light .hover\:bg-\[\#214E46\]:hover {
+            background-color: #D2EFE7 !important;
+            border-color: #7BC5B6 !important;
+        }
+        html.light .m3-chip-synonym .syn-word,
+        html.light .bg-\[\#214E46\]\/60 > span:first-child {
+            color: #0B3830 !important;
+            font-weight: 700 !important;
+        }
+        html.light .m3-chip-synonym .syn-vi,
+        html.light .text-\[\#A1D0C5\]\/70 {
+            color: #235E53 !important;
+            font-weight: 500 !important;
+        }
+
+        html.light .m3-chip-antonym,
+        html.light .bg-\[\#930006\]\/30 {
+            background-color: #FDE8E5 !important;
+            border: 1px solid #F5C2BA !important;
+            color: #680003 !important;
+            box-shadow: 0 2px 8px rgba(104, 0, 3, 0.08) !important;
+        }
+        html.light .m3-chip-antonym:hover,
+        html.light .hover\:bg-\[\#930006\]\/50:hover {
+            background-color: #FCDCD6 !important;
+            border-color: #EDA196 !important;
+        }
+        html.light .m3-chip-antonym .ant-word,
+        html.light .bg-\[\#930006\]\/30 > span:first-child {
+            color: #680003 !important;
+            font-weight: 700 !important;
+        }
+        html.light .m3-chip-antonym .ant-vi,
+        html.light .text-\[\#FFDAD4\]\/70 {
+            color: #8A2124 !important;
+            font-weight: 500 !important;
+        }
+
+        html.light #synonymsSectionTitle {
+            color: #1E564C !important;
+        }
+        html.light #antonymsSectionTitle {
+            color: #A31D1D !important;
+        }
+        html.light #synonymsSectionDivider {
+            border-color: #E2DFD4 !important;
+        }
+
+        /* Lumi Memory Hack Card in Light Mode */
+        html.light .bg-\[\#3D2E0B\]\/50 {
+            background-color: var(--m3-amber-container) !important;
+            border-color: rgba(217, 119, 6, 0.3) !important;
+            box-shadow: 0 2px 8px rgba(120, 53, 15, 0.06) !important;
+        }
+        html.light .bg-\[\#3D2E0B\]\/50 span,
+        html.light .bg-\[\#3D2E0B\]\/50 .text-\[\#FDE68A\] {
+            color: var(--m3-amber-text) !important;
+        }
+        html.light .bg-\[\#3D2E0B\]\/50 p,
+        html.light .bg-\[\#3D2E0B\]\/50 #lumiMemoryHack {
+            color: var(--m3-on-surface) !important;
+        }
+
+        /* Reward Modal in Light Mode */
+        html.light #flashcardCreatedModal {
+            background: linear-gradient(180deg, rgba(251,249,240,0.98) 0%, rgba(245,244,235,0.98) 50%, rgba(239,239,229,0.98) 100%) !important;
+            color: var(--m3-on-surface) !important;
+        }
+        html.light #rewardModalTitle {
+            color: var(--m3-on-surface) !important;
+            text-shadow: none !important;
+        }
+        /* ------------------------------------------------------------- */
+        /* WORD DISCOVERY TICKET 3D (Tactile Discovery Shelf)            */
+        /* ------------------------------------------------------------- */
+        .discovery-ticket-card {
+            background-color: #1B1C17;
+            border: 1px solid #46483C;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+            transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+        }
+        .discovery-ticket-card:active {
+            transform: translateY(2px);
+        }
+        .discovery-ticket-card .disc-title {
+            color: #FFFFFF;
+        }
+        .discovery-ticket-card .disc-ipa {
+            color: #909283;
+        }
+        .discovery-ticket-card .disc-meaning {
+            color: #C7C8B8;
+        }
+        .discovery-ticket-card .disc-dashed {
+            border-color: rgba(70, 72, 60, 0.7);
+        }
+        .discovery-ticket-card .disc-audio-btn {
+            background-color: #252621;
+            border-color: #46483C;
+            color: #C7C8B8;
+        }
+
+        /* Light Mode Overrides for Discovery Ticket Card */
+        html.light .discovery-ticket-card {
+            background-color: #FFFFFF !important;
+            border-color: #E3E0D4 !important;
+            box-shadow: 0 6px 20px rgba(82, 102, 0, 0.08), 0 2px 6px rgba(0,0,0,0.04) !important;
+        }
+        html.light .discovery-ticket-card .disc-title {
+            color: #1B1C17 !important;
+        }
+        html.light .discovery-ticket-card .disc-ipa {
+            color: #77786B !important;
+        }
+        html.light .discovery-ticket-card .disc-meaning {
+            color: #36382E !important;
+        }
+        html.light .discovery-ticket-card .disc-dashed {
+            border-color: #DDD9CC !important;
+        }
+        html.light .discovery-ticket-card .disc-audio-btn {
+            background-color: #F3F0E6 !important;
+            border-color: #DDD9CC !important;
+            color: #46483C !important;
+        }
+
+        /* Header bands light mode */
+        html.light .disc-band-primary {
+            background: linear-gradient(90deg, #E6F4B7 0%, #F1F9D4 60%, transparent 100%) !important;
+            border-bottom-color: rgba(184, 209, 102, 0.4) !important;
+        }
+        html.light .disc-band-primary .disc-badge {
+            background-color: #526600 !important;
+            color: #FFFFFF !important;
+            border-color: #526600 !important;
+        }
+
+        html.light .disc-band-amber {
+            background: linear-gradient(90deg, #FDE8B5 0%, #FEF1D4 60%, transparent 100%) !important;
+            border-bottom-color: rgba(245, 158, 11, 0.4) !important;
+        }
+        html.light .disc-band-amber .disc-badge {
+            background-color: #854D0E !important;
+            color: #FFFFFF !important;
+            border-color: #854D0E !important;
+        }
+
+        html.light .disc-band-tertiary {
+            background: linear-gradient(90deg, #D1ECE6 0%, #E2F5F1 60%, transparent 100%) !important;
+            border-bottom-color: rgba(161, 208, 197, 0.4) !important;
+        }
+        html.light .disc-band-tertiary .disc-badge {
+            background-color: #2D5850 !important;
+            color: #FFFFFF !important;
+            border-color: #2D5850 !important;
+        }
+
+        html.light .disc-band-purple {
+            background: linear-gradient(90deg, #EFE6FD 0%, #F6F0FE 60%, transparent 100%) !important;
+            border-bottom-color: rgba(208, 188, 255, 0.4) !important;
+        }
+        html.light .disc-band-purple .disc-badge {
+            background-color: #5B3C9B !important;
+            color: #FFFFFF !important;
+            border-color: #5B3C9B !important;
+        }
+
+        html.light .disc-xp-chip {
+            background-color: #FEF3C7 !important;
+            color: #92400E !important;
+            border-color: #FCD34D !important;
+        }
+
+        /* Lumi Chat Modal in Light Mode */
+        html.light #lumiChatModal > div {
+            background-color: var(--m3-surface-container-low) !important;
+            border-color: var(--m3-outline-variant) !important;
+            color: var(--m3-on-surface) !important;
+        }
+        html.light #lumiChatModal h3 {
+            color: var(--m3-on-surface) !important;
+        }
+
+        /* Ambient aurora and scrim adjustments */
+        html.light .animate-aurora-1 { opacity: 0.18; }
+        html.light .animate-aurora-2 { opacity: 0.18; }
+        html.light #farmHeroScenery img {
+            filter: brightness(1.1) contrast(1.02) saturate(1.08);
+        }
+
+        /* Tactile Search Bar in Light Mode */
+        html.light .tactile-search-bar {
+            background-color: var(--m3-surface-container) !important;
+            border-color: var(--m3-outline-variant) !important;
+            border-bottom: 3.5px solid var(--m3-surface-container-highest) !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+        }
+        html.light .tactile-search-bar:focus-within,
+        html.light .tactile-search-bar.is-focused {
+            background-color: #FFFFFF !important;
+            border-color: #526600 !important;
+            border-bottom: 3.5px solid #3C4D00 !important;
+            box-shadow: 0 4px 16px rgba(82, 102, 0, 0.12) !important;
+        }
+        html.light .tactile-search-bar .search-glyph {
+            color: var(--m3-outline) !important;
+        }
+        html.light .tactile-search-bar:focus-within .search-glyph,
+        html.light .tactile-search-bar.is-focused .search-glyph {
+            color: var(--m3-primary) !important;
+        }
+        html.light .tactile-search-bar input {
+            color: var(--m3-on-surface) !important;
+        }
+        html.light .tactile-search-bar input::placeholder {
+            color: var(--m3-on-surface-variant) !important;
+        }
+        html.light .tactile-search-bar .tactile-action-btn {
+            background-color: var(--m3-surface-container-high) !important;
+            color: var(--m3-outline) !important;
+            border: 1px solid var(--m3-outline-variant) !important;
+            border-bottom: 2px solid var(--m3-surface-container-highest) !important;
+            box-shadow: none !important;
+        }
+        html.light .tactile-search-bar .tactile-action-btn:hover,
+        html.light .tactile-search-bar .tactile-action-btn:active,
+        html.light .tactile-search-bar .tactile-action-btn.has-query {
+            background-color: var(--m3-primary) !important;
+            color: var(--m3-on-primary) !important;
+            border-color: var(--m3-primary) !important;
+            border-bottom: 2.5px solid #3C4D00 !important;
+            box-shadow: 0 2px 8px rgba(82, 102, 0, 0.25) !important;
+        }
+
+        /* Friendly Lumi Greeting Card in Light Mode */
+        html.light #dictLumiGreetingCard {
+            background: #FFFFFF !important;
+            border: 1px solid #E3E0D4 !important;
+            box-shadow: 0 4px 20px rgba(82, 102, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+        }
+        html.light #dictLumiGreetingCard h3 {
+            color: #1B1C17 !important;
+        }
+        html.light #dictLumiGreetingCard p {
+            color: #5B6146 !important;
+        }
+        html.light #dictLumiGreetingCard .lumi-avatar-box {
+            background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%) !important;
+            border-color: rgba(217, 119, 6, 0.35) !important;
+            box-shadow: 0 2px 8px rgba(217, 119, 6, 0.12) !important;
+        }
+        html.light #dictLumiGreetingCard .lumi-assistant-tag {
+            background-color: #FEF3C7 !important;
+            color: #92400E !important;
+            border-color: #FCD34D !important;
+        }
+        html.light #dictLumiGreetingCard .lumi-tip-badge {
+            background-color: rgba(245, 158, 11, 0.15) !important;
+            color: #B45309 !important;
+            border-color: rgba(245, 158, 11, 0.3) !important;
+        }
+        html.light #dictLumiGreetingCard .lumi-tip-footer {
+            border-color: rgba(0, 0, 0, 0.08) !important;
+        }
+        html.light #dictLumiGreetingCard .lumi-tip-dismiss-btn {
+            color: #5B6146 !important;
+        }
+        html.light #dictLumiGreetingCard .lumi-tip-dismiss-btn:hover {
+            color: #1B1C17 !important;
+            background: rgba(0, 0, 0, 0.05) !important;
+        }
+        html.light #dictLumiGreetingCard .lumi-tip-ok-btn {
+            background: #526600 !important;
+            color: #FFFFFF !important;
+        }
+        html.light #dictLumiGreetingCard .lumi-tip-close-icon {
+            color: #76786B !important;
+        }
+        html.light #dictLumiGreetingCard .lumi-tip-close-icon:hover {
+            color: #1B1C17 !important;
+            background: rgba(0, 0, 0, 0.06) !important;
+        }
+
+        /* Dictionary Tab Strip Indicator in Light Mode */
+        html.light #dictModeTabLookup span.rounded-full {
+            background-color: var(--m3-primary) !important;
+            box-shadow: none !important;
+        }
+        html.light #dictModeTabLookup > div {
+            background: var(--m3-primary) !important;
+            box-shadow: none !important;
+        }
+
+        /* Physical Storybook in Light Mode */
+        html.light .storybook-container {
+            background-color: #EAE8DF !important;
+            border-color: var(--m3-outline-variant) !important;
+            box-shadow: 0 16px 36px rgba(82, 102, 0, 0.12) !important;
+        }
+        html.light .storybook-container .book-page .h-full {
+            background: linear-gradient(180deg, #FAF8F0 0%, #F3F1E9 100%) !important;
+            border-color: rgba(180, 83, 9, 0.25) !important;
+            box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.04) !important;
+        }
+        html.light .glass-panel {
+            background: var(--m3-glass-bg) !important;
+            border-color: var(--m3-glass-border) !important;
+        }
+
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            background-color: var(--m3-screen-bg);
+            color: var(--m3-on-surface);
+            font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        @keyframes shimmerWave {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(200%); }
+        }
+        .shimmer-wave-container {
+            position: relative;
+            overflow: hidden;
+        }
+        .shimmer-wave-container::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+            animation: shimmerWave 1.8s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        /* Tactile button press & pulsing dots */
+        .btn-tactile:active {
+            transform: scale(0.97) translateY(1px);
+        }
+        @keyframes pulseDot {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.4); opacity: 0.6; }
+        }
+        .anim-pulse-dot {
+            animation: pulseDot 2s ease-in-out infinite;
+        }
+
+        /* Create Screen Staggered Cascade Animation (matching Android DecelerateInterpolator) */
+        @keyframes createItemCascade {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .anim-create-item {
+            animation: createItemCascade 0.4s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+        }

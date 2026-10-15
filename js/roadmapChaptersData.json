@@ -1,0 +1,3072 @@
+[
+  {
+    "id": 0,
+    "chapterTag": "CHƯƠNG 1 • KHU RỪNG NGỤ NGÔN",
+    "title": "Khu rừng ngụ ngôn",
+    "progressText": "2/10 bài · 20%",
+    "desc": "Khám phá ngụ ngôn ngắn, học từ vựng qua câu chuyện và bài học ý nghĩa.",
+    "image": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/roadmap_stage_01_background?v=20260804-mobile-webp",
+    "activeNodeIndex": 2,
+    "characters": [
+      {
+        "loop": 1,
+        "name": "Thần Rừng Lumi",
+        "role": "Người Dẫn Lối Vòng 1",
+        "img": "assets/cards/lumi_avatar_portrait_clean.png",
+        "quote": "Tô sáng từng vạch màu để đánh thức phép thuật rừng sâu!"
+      },
+      {
+        "loop": 2,
+        "name": "Billy Possum",
+        "role": "Bạn Đồng Hành Vòng 2",
+        "img": "assets/cards/billy_possum_crop_test.png",
+        "quote": "Cố lên! Vòng 2 sẽ mở ra câu chuyện huyền ảo!"
+      }
+    ],
+    "nodes": [
+      {
+        "num": 1,
+        "day": 1,
+        "topicId": "topic_001",
+        "title": "Cơn Mưa Tình Cờ",
+        "subtitle": "Bắt chuyện tự nhiên và đề xuất hỗ trợ khi gặp người lạ dưới mái hiên",
+        "type": "star",
+        "status": "completed",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_001_background?v=2026-08-04T12%3A14%3A50.270Z",
+        "scenario": "Một cơn mưa rào đổ xuống đột ngột khiến Minh và Lan phải cùng trú tạm dưới mái hiên tối tăm của một nhà hát trung tâm thành phố.",
+        "purpose": "[15+ • Đời thường] Bắt chuyện tự nhiên và đề xuất hỗ trợ khi gặp người lạ dưới mái hiên",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "15+",
+        "tags": {
+          "age": "15+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "adventurous"
+        },
+        "display_badges": [
+          "15+",
+          "Đời thường",
+          "Du lịch",
+          "Linh hoạt"
+        ]
+      },
+      {
+        "num": 2,
+        "day": 2,
+        "topicId": "topic_002",
+        "title": "Chiếc Thẻ Nhầm Tên",
+        "subtitle": "Xác nhận danh tính, xử lý nhầm lẫn nhạy cảm và phối hợp khi thời gian gấp",
+        "type": "video",
+        "status": "completed",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_002_background?v=2026-08-04T12%3A14%3A50.260Z",
+        "scenario": "Sảnh đăng ký của một hội nghị công nghệ quốc tế ngay trước bài khai mạc.",
+        "purpose": "[18+ • Công sở] Xác nhận danh tính, xử lý nhầm lẫn nhạy cảm và phối hợp khi thời gian gấp",
+        "lessonType": "dialogue",
+        "genre": "dialogue_work",
+        "ageRating": "18+",
+        "tags": {
+          "age": "18+",
+          "genre": "dialogue_work",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "witty"
+        },
+        "display_badges": [
+          "18+",
+          "Công sở",
+          "Hợp tác",
+          "Thực chiến"
+        ]
+      },
+      {
+        "num": 3,
+        "day": 3,
+        "topicId": "topic_003",
+        "title": "Ngụ ngôn: Rùa và Thỏ",
+        "subtitle": "Đọc ngụ ngôn Aesop: Bài học về lòng kiên trì và bước đi đều đặn quan trọng hơn khoe khoang",
+        "type": "book",
+        "status": "active",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/admin/story-images/codex-realistic/lesson_003_key_art.webp?v=2026-08-04T12%3A14%3A50.358Z",
+        "scenario": "Một lời thách thức bất ngờ giữa thung lũng mùa xuân đã châm ngòi cho cuộc đua vô tiền khoáng hậu giữa chú Thỏ kiêu ngạo và chú Rùa điềm tĩnh. Liệu sự bứt phá thần tốc hay từng bước chân kiên trì vững chãi sẽ làm chủ con đường hướng về cây sồi cổ thụ?",
+        "purpose": "[3+ • Ngụ ngôn] Đọc ngụ ngôn Aesop: Bài học về lòng kiên trì và bước đi đều đặn quan trọng hơn khoe khoang",
+        "lessonType": "story",
+        "genre": "fable",
+        "ageRating": "3+",
+        "tags": {
+          "age": "3+",
+          "genre": "fable",
+          "origin": "western",
+          "moral": "persistence",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "3+",
+          "Ngụ ngôn Aesop",
+          "Kiên trì",
+          "Ấm áp"
+        ]
+      },
+      {
+        "num": 4,
+        "day": 4,
+        "topicId": "topic_004",
+        "title": "Tàu Trễ",
+        "subtitle": "Ứng phó sự cố hoãn chuyến tàu đêm và trao đổi chuyên môn trong tình huống trớ trêu",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/audio/lesson_004/lesson_004_chuyen_tau_nua_dem_lofi_vi.jpg",
+        "scenario": "Quán cà phê sát sân ga vào một tối muộn, khi chuyến tàu cuối cùng báo hoãn vô thời hạn do mưa bão.",
+        "purpose": "[15+ • Đời thường] Ứng phó sự cố hoãn chuyến tàu đêm và trao đổi chuyên môn trong tình huống trớ trêu",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "15+",
+        "tags": {
+          "age": "15+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "adventurous"
+        },
+        "display_badges": [
+          "15+",
+          "Đời thường",
+          "Du lịch",
+          "Linh hoạt"
+        ]
+      },
+      {
+        "num": 5,
+        "day": 5,
+        "topicId": "topic_005",
+        "title": "Ảnh Cũ",
+        "subtitle": "Mô tả ký ức, gợi nhắc quá khứ gia đình và trao trả món đồ thất lạc",
+        "type": "chest",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_005_background?v=2026-08-04T12%3A14%3A52.239Z",
+        "scenario": "Góc khuất tĩnh lặng của một quán cà phê hoài cổ, nơi những câu chuyện cũ dễ dàng được gợi lại.",
+        "purpose": "[10+ • Kỷ niệm] Mô tả ký ức, gợi nhắc quá khứ gia đình và trao trả món đồ thất lạc",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "10+",
+        "tags": {
+          "age": "10+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "kindness",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "10+",
+          "Rương báu 🎁",
+          "Gắn kết",
+          "Ấm áp"
+        ]
+      },
+      {
+        "num": 6,
+        "day": 6,
+        "topicId": "topic_006",
+        "title": "Ngụ ngôn: Quạ và Bình Nước",
+        "subtitle": "Đọc ngụ ngôn Aesop: Bình tĩnh quan sát và dùng trí thông minh để giải quyết khó khăn",
+        "type": "book",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/admin/story-images/codex-realistic/lesson_006_key_art.webp?v=2026-08-04T12%3A14%3A52.312Z",
+        "scenario": "Giữa mùa hè rát bỏng, một chú Quạ kiệt sức may mắn tìm thấy chiếc bình gốm chứa vệt nước mát lành ở tận đáy sâu. Tuy nhiên, cổ bình quá hẹp khiến giọt nước cứu rỗi ấy trở thành một thử thách nghiệt ngã ngay trước mắt.",
+        "purpose": "[3+ • Ngụ ngôn] Đọc ngụ ngôn Aesop: Bình tĩnh quan sát và dùng trí thông minh để giải quyết khó khăn",
+        "lessonType": "story",
+        "genre": "fable",
+        "ageRating": "3+",
+        "tags": {
+          "age": "3+",
+          "genre": "fable",
+          "origin": "western",
+          "moral": "wisdom",
+          "mood": "witty"
+        },
+        "display_badges": [
+          "3+",
+          "Ngụ ngôn Aesop",
+          "Trí tuệ",
+          "Bình tĩnh"
+        ]
+      },
+      {
+        "num": 7,
+        "day": 7,
+        "topicId": "topic_007",
+        "title": "Sai Hóa Đơn",
+        "subtitle": "Nhã nhặn đối chiếu và xử lý sai lệch hóa đơn thanh toán trước giờ đóng cửa",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_007_background?v=2026-08-04T12%3A14%3A53.191Z",
+        "scenario": "Khu thanh toán đông đúc của một cửa hàng đồ lưu niệm thủ công trước giờ đóng cửa.",
+        "purpose": "[18+ • Công sở] Nhã nhặn đối chiếu và xử lý sai lệch hóa đơn thanh toán trước giờ đóng cửa",
+        "lessonType": "dialogue",
+        "genre": "dialogue_work",
+        "ageRating": "18+",
+        "tags": {
+          "age": "18+",
+          "genre": "dialogue_work",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "witty"
+        },
+        "display_badges": [
+          "18+",
+          "Công sở",
+          "Hợp tác",
+          "Thực chiến"
+        ]
+      },
+      {
+        "num": 8,
+        "day": 8,
+        "topicId": "topic_008",
+        "title": "Lộn Bàn Ăn",
+        "subtitle": "Khéo léo xử lý tình huống ngồi nhầm bàn ăn đã đặt trước trong giờ cao điểm",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_008_background?v=2026-08-04T12%3A14%3A53.366Z",
+        "scenario": "Khu vực đón khách tấp nập của một nhà hàng nổi tiếng vào tối thứ sáu.",
+        "purpose": "[15+ • Đời thường] Khéo léo xử lý tình huống ngồi nhầm bàn ăn đã đặt trước trong giờ cao điểm",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "15+",
+        "tags": {
+          "age": "15+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "adventurous"
+        },
+        "display_badges": [
+          "15+",
+          "Đời thường",
+          "Du lịch",
+          "Linh hoạt"
+        ]
+      },
+      {
+        "num": 9,
+        "day": 9,
+        "topicId": "topic_009",
+        "title": "Ngụ ngôn: Cậu Bé Chăn Cừu",
+        "subtitle": "Đọc ngụ ngôn Aesop: Bài học sâu sắc về sự trung thực và cái giá của sự dối trá",
+        "type": "book",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/admin/story-images/codex-realistic/lesson_009_key_art.webp?v=2026-08-04T12%3A14%3A53.216Z",
+        "scenario": "Để đập tan sự nhàm chán trên sườn đồi vắng, cậu bé chăn cừu đã tạo nên một trò đùa tai hại bằng tiếng kêu cứu giả khiến cả làng náo loạn. Nhưng khi hiểm họa thực sự từ cánh rừng rậm rạp tìm đến, sự tin tưởng vốn có giờ chỉ còn là một khoảng trống câm lặng.",
+        "purpose": "[3+ • Ngụ ngôn] Đọc ngụ ngôn Aesop: Bài học sâu sắc về sự trung thực và cái giá của sự dối trá",
+        "lessonType": "story",
+        "genre": "fable",
+        "ageRating": "3+",
+        "tags": {
+          "age": "3+",
+          "genre": "fable",
+          "origin": "western",
+          "moral": "honesty",
+          "mood": "touching"
+        },
+        "display_badges": [
+          "3+",
+          "Ngụ ngôn Aesop",
+          "Trung thực",
+          "Bài học sâu sắc"
+        ]
+      },
+      {
+        "num": 10,
+        "day": 10,
+        "topicId": "topic_010",
+        "title": "Trước Giờ Lên Sóng",
+        "subtitle": "Chung kết Vòng 1: Phối hợp khẩn trương và vượt qua áp lực trước giờ lên sóng trực tiếp",
+        "type": "boss",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_010_background?v=2026-08-04T12%3A14%3A53.824Z",
+        "scenario": "Phòng hậu trường ngột ngạt của một buổi livestream gây quỹ từ thiện căng thẳng.",
+        "purpose": "[18+ • Công sở] Chung kết Vòng 1: Phối hợp khẩn trương và vượt qua áp lực trước giờ lên sóng trực tiếp",
+        "lessonType": "dialogue",
+        "genre": "dialogue_work",
+        "ageRating": "18+",
+        "tags": {
+          "age": "18+",
+          "genre": "dialogue_work",
+          "origin": "vietnam",
+          "moral": "courage",
+          "mood": "adventurous"
+        },
+        "display_badges": [
+          "18+",
+          "Chung kết 👑",
+          "Thử thách",
+          "Kịch tính"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "chapterTag": "CHƯƠNG 2 • NGÔI LÀNG CỔ TÍCH",
+    "title": "Ngôi làng cổ tích",
+    "progressText": "0/10 bài (Khóa)",
+    "desc": "Luyện các tình huống ăn uống, mua sắm và hỏi giá trong đời sống hằng ngày.",
+    "image": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/roadmap_stage_02_background?v=20260804-mobile-webp",
+    "activeNodeIndex": -1,
+    "characters": [
+      {
+        "loop": 1,
+        "name": "Bác Soát Vé Lumi",
+        "role": "Người Dẫn Lối Vòng 1",
+        "img": "assets/cards/lumi_avatar_portrait_clean.png",
+        "quote": "Vé tàu đêm đang chờ kiểm tra!"
+      },
+      {
+        "loop": 2,
+        "name": "Billy Bụi Đời",
+        "role": "Bạn Đồng Hành Vòng 2",
+        "img": "assets/cards/billy_possum_crop_test.png",
+        "quote": "Toa tàu số 7 sắp khởi hành!"
+      }
+    ],
+    "nodes": [
+      {
+        "num": 1,
+        "day": 11,
+        "topicId": "topic_011",
+        "title": "Mua Quà Gấp",
+        "subtitle": "Chọn quà lưu niệm gấp rút và trao đổi giá cả lịch sự",
+        "type": "star",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_011_background?v=2026-08-04T12%3A14%3A55.418Z",
+        "scenario": "Góc quầy thời trang đang đông đúc hỗn loạn vào dịp giảm giá cuối mùa.",
+        "purpose": "[10+ • Đời thường] Chọn quà lưu niệm gấp rút và trao đổi giá cả lịch sự",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "10+",
+        "tags": {
+          "age": "10+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "kindness",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "10+",
+          "Kỷ niệm",
+          "Tình bạn",
+          "Ấm áp"
+        ]
+      },
+      {
+        "num": 2,
+        "day": 12,
+        "topicId": "topic_012",
+        "title": "Ngụ ngôn: Sư Tử và Chuột Nhắt",
+        "subtitle": "Đọc ngụ ngôn Aesop: Bạn nhỏ làm việc lớn, lòng tốt luôn được đền đáp xứng đáng",
+        "type": "book",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/admin/story-images/codex-realistic/lesson_012_key_art.webp?v=2026-08-04T12%3A14%3A55.483Z",
+        "scenario": "Một tình huống trớ trêu đã khiến chú Chuột Nhắt bé nhỏ đối mặt với cơn thịnh nộ của chúa tể Sư Tử giữa rừng già thâm u. Khi sinh mạng nhỏ bé mong manh thoát chết nhờ một lòng trắc ẩn bất ngờ, liệu lời hứa báo đáp tưởng chừng hoang đường đó có thể trở thành sự thật?",
+        "purpose": "[3+ • Ngụ ngôn] Đọc ngụ ngôn Aesop: Bạn nhỏ làm việc lớn, lòng tốt luôn được đền đáp xứng đáng",
+        "lessonType": "story",
+        "genre": "fable",
+        "ageRating": "3+",
+        "tags": {
+          "age": "3+",
+          "genre": "fable",
+          "origin": "western",
+          "moral": "kindness",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "3+",
+          "Ngụ ngôn Aesop",
+          "Biết ơn",
+          "Tình bạn"
+        ]
+      },
+      {
+        "num": 3,
+        "day": 13,
+        "topicId": "topic_013",
+        "title": "Món Quà Dưới Mưa",
+        "subtitle": "Trao gửi món quà dưới mưa và chia sẻ tình cảm chân thành",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_013_background?v=2026-08-04T12%3A14%3A55.900Z",
+        "scenario": "Một góc chợ đồ thủ công cũ chìm trong tiếng mưa rả rích khi các sạp hàng bắt đầu hạ bạt.",
+        "purpose": "[10+ • Kỷ niệm] Trao gửi món quà dưới mưa và chia sẻ tình cảm chân thành",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "10+",
+        "tags": {
+          "age": "10+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "kindness",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "10+",
+          "Kỷ niệm",
+          "Tình bạn",
+          "Ấm áp"
+        ]
+      },
+      {
+        "num": 4,
+        "day": 14,
+        "topicId": "topic_014",
+        "title": "Bát Mì Lạc",
+        "subtitle": "Xử lý sự cố nhận nhầm món ăn tại quán ăn đông đúc",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_014_background?v=2026-08-04T12%3A14%3A55.958Z",
+        "scenario": "Một quán mì gia truyền nhỏ chật kín khách vào giữa khung giờ ăn trưa oi ả.",
+        "purpose": "[15+ • Đời thường] Xử lý sự cố nhận nhầm món ăn tại quán ăn đông đúc",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "15+",
+        "tags": {
+          "age": "15+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "15+",
+          "Đời thường",
+          "Giao tiếp",
+          "Gần gũi"
+        ]
+      },
+      {
+        "num": 5,
+        "day": 15,
+        "topicId": "topic_015",
+        "title": "Ngụ ngôn: Cáo và Chùm Nho",
+        "subtitle": "Đọc ngụ ngôn Aesop: Nhận diện thói quen tự biện minh khi không đạt được điều mong muốn",
+        "type": "chest",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/admin/story-images/codex-realistic/lesson_015_key_art.webp?v=2026-08-04T12%3A14%3A56.002Z",
+        "scenario": "Một chùm nho tím mọng quyến rũ giữa khu vườn mùa thu đã đánh thức cơn thèm thuồng tột cùng của chú Cáo đang đói lả. Thế nhưng, khoảng cách nghiệt ngã trên giàn cao đẩy lòng kiêu hãnh của chú vào một cuộc thử thách vô cùng dai dẳng.",
+        "purpose": "[3+ • Ngụ ngôn] Đọc ngụ ngôn Aesop: Nhận diện thói quen tự biện minh khi không đạt được điều mong muốn",
+        "lessonType": "story",
+        "genre": "fable",
+        "ageRating": "3+",
+        "tags": {
+          "age": "3+",
+          "genre": "fable",
+          "origin": "western",
+          "moral": "anti_greed",
+          "mood": "witty"
+        },
+        "display_badges": [
+          "3+",
+          "Ngụ ngôn Aesop",
+          "Tự biết mình",
+          "Hóm hỉnh"
+        ]
+      },
+      {
+        "num": 6,
+        "day": 16,
+        "topicId": "topic_016",
+        "title": "Ly Cà Phê Nhầm",
+        "subtitle": "Lịch sự thông báo nhầm vị đồ uống và yêu cầu đổi lại ly cà phê phù hợp",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_016_background?v=2026-08-04T12%3A14%3A56.523Z",
+        "scenario": "Quầy bar chen chúc người vào sáng thứ hai đầu tuần tại một quán cà phê văn phòng.",
+        "purpose": "[15+ • Đời thường] Lịch sự thông báo nhầm vị đồ uống và yêu cầu đổi lại ly cà phê phù hợp",
+        "lessonType": "dialogue",
+        "genre": "dialogue_work",
+        "ageRating": "18+",
+        "tags": {
+          "age": "18+",
+          "genre": "dialogue_work",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "witty"
+        },
+        "display_badges": [
+          "18+",
+          "Công sở",
+          "Hợp tác",
+          "Thực chiến"
+        ]
+      },
+      {
+        "num": 7,
+        "day": 17,
+        "topicId": "topic_017",
+        "title": "Gọi Nhầm Đồ",
+        "subtitle": "Giao tiếp hòa nhã khi nhân viên phục vụ ghi nhầm thực đơn",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_017_background?v=2026-08-04T12%3A14%3A56.546Z",
+        "scenario": "Quầy nước dưới sảnh tòa nhà văn phòng cao cấp, ngay trước giờ Lan bước vào vòng phỏng vấn quan trọng.",
+        "purpose": "[10+ • Đời thường] Giao tiếp hòa nhã khi nhân viên phục vụ ghi nhầm thực đơn",
+        "lessonType": "dialogue",
+        "genre": "dialogue_work",
+        "ageRating": "18+",
+        "tags": {
+          "age": "18+",
+          "genre": "dialogue_work",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "witty"
+        },
+        "display_badges": [
+          "18+",
+          "Công sở",
+          "Hợp tác",
+          "Thực chiến"
+        ]
+      },
+      {
+        "num": 8,
+        "day": 18,
+        "topicId": "topic_018",
+        "title": "Cổ tích: Cô Bé Quàng Khăn Đỏ",
+        "subtitle": "Đọc Cổ tích Grimm: Bài học vâng lời cha mẹ và luôn cảnh giác trước người lạ",
+        "type": "book",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/admin/story-images/codex-realistic/lesson_018_key_art.webp?v=2026-08-04T12%3A14%3A56.758Z",
+        "scenario": "Với chiếc giỏ bánh thơm phức và tấm khăn trùm đỏ rực, cô bé hồ hởi lên đường thăm bà ngoại mà không hề hay biết về cạm bẫy đang rình rập. Một cuộc gặp gỡ tình cờ giữa lối mòn ngập tràn hoa dại đã đẩy chuyến đi bình yên vào một chuỗi biến cố vô cùng nguy hiểm.",
+        "purpose": "[3+ • Ngụ ngôn] Đọc Cổ tích Grimm: Bài học vâng lời cha mẹ và luôn cảnh giác trước người lạ",
+        "lessonType": "story",
+        "genre": "fairy_tale",
+        "ageRating": "3+",
+        "tags": {
+          "age": "3+",
+          "genre": "fairy_tale",
+          "origin": "western",
+          "moral": "wisdom",
+          "mood": "adventurous"
+        },
+        "display_badges": [
+          "3+",
+          "Cổ tích Grimm",
+          "Cảnh giác",
+          "Gia đình"
+        ]
+      },
+      {
+        "num": 9,
+        "day": 19,
+        "topicId": "topic_019",
+        "title": "Sai Tiền Ăn",
+        "subtitle": "Đối chiếu số tiền thừa và làm rõ khoản phụ phí bữa ăn một cách văn minh",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_019_background?v=2026-08-04T12%3A14%3A57.324Z",
+        "scenario": "Góc bàn tĩnh lặng của một nhà hàng ấm cúng vào thời điểm thực khách bắt đầu thưa dần.",
+        "purpose": "[15+ • Đời thường] Đối chiếu số tiền thừa và làm rõ khoản phụ phí bữa ăn một cách văn minh",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "15+",
+        "tags": {
+          "age": "15+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "15+",
+          "Đời thường",
+          "Giao tiếp",
+          "Gần gũi"
+        ]
+      },
+      {
+        "num": 10,
+        "day": 20,
+        "topicId": "topic_020",
+        "title": "Lạc Sau Trạm Xe",
+        "subtitle": "Chung kết Vòng 2: Xử lý tình huống lạc đường sau bến xe bus và tìm đường về an toàn",
+        "type": "boss",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_020_background?v=2026-08-04T12%3A14%3A57.552Z",
+        "scenario": "Góc phố cũ kỹ ngay sau trạm xe trung tâm vào một chiều chập tối khi tín hiệu điện thoại chập chờn.",
+        "purpose": "[15+ • Đời thường] Chung kết Vòng 2: Xử lý tình huống lạc đường sau bến xe bus và tìm đường về an toàn",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "15+",
+        "tags": {
+          "age": "15+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "courage",
+          "mood": "adventurous"
+        },
+        "display_badges": [
+          "15+",
+          "Chung kết 👑",
+          "Thử thách",
+          "Kịch tính"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "chapterTag": "CHƯƠNG 3 • DÒNG SÔNG THỬ THÁCH",
+    "title": "Dòng sông thử thách",
+    "progressText": "0/10 bài (Khóa)",
+    "desc": "Di chuyển trong thành phố, hỏi đường, đi lại và xử lý nơi ở.",
+    "image": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/roadmap_stage_03_background?v=20260804-mobile-webp",
+    "activeNodeIndex": -1,
+    "characters": [
+      {
+        "loop": 1,
+        "name": "Lumi Ca Sĩ",
+        "role": "Dẫn Dắt Vòng 1",
+        "img": "assets/cards/lumi_avatar_portrait_clean.png",
+        "quote": "Cất cao tiếng hát theo giai điệu cực quang!"
+      },
+      {
+        "loop": 2,
+        "name": "Billy Nhạc Trưởng",
+        "role": "Chỉ Huy Vòng 2",
+        "img": "assets/cards/billy_possum_crop_test.png",
+        "quote": "Cầm trịch sân khấu âm điệu đỉnh cao!"
+      }
+    ],
+    "nodes": [
+      {
+        "num": 1,
+        "day": 21,
+        "topicId": "topic_021",
+        "title": "Cổ tích: Ba Chú Heo Con",
+        "subtitle": "Đọc Cổ tích: Bài học về sự kiên cố, chuẩn bị chu đáo trước mọi giông bão cuộc đời",
+        "type": "book",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/admin/story-images/codex-realistic/lesson_021_key_art.webp?v=2026-08-04T12%3A14%3A57.611Z",
+        "scenario": "Quyết định tự dựng xây tổ ấm trên sườn đồi lộng gió đã phản chiếu rõ nét sự khác biệt giữa ba anh em nhà heo: hai người anh chọn sự nhanh gọn để giải trí, còn người em út lại tỉ mẩn từng viên gạch đỏ. Khi bóng tối buông xuống cùng sự xuất hiện của con sói già hung tợn, những nỗ lực ấy lập tức đối mặt với một thử thách sinh tồn nghiệt ngã.",
+        "purpose": "[3+ • Ngụ ngôn] Đọc Cổ tích: Bài học về sự kiên cố, chuẩn bị chu đáo trước mọi giông bão cuộc đời",
+        "lessonType": "story",
+        "genre": "fairy_tale",
+        "ageRating": "3+",
+        "tags": {
+          "age": "3+",
+          "genre": "fairy_tale",
+          "origin": "western",
+          "moral": "persistence",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "3+",
+          "Cổ tích Châu Âu",
+          "Chăm chỉ",
+          "Vững vàng"
+        ]
+      },
+      {
+        "num": 2,
+        "day": 22,
+        "topicId": "topic_022",
+        "title": "Tới Bảo Tàng",
+        "subtitle": "Hỏi thông tin vé, lịch mở cửa và quy định tham quan tại bảo tàng nghệ thuật",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_022_background?v=2026-08-04T12%3A14%3A58.008Z",
+        "scenario": "Góc phố tấp nập khách du lịch đổ về gần cây cầu đi bộ lịch sử vào buổi chiều muộn.",
+        "purpose": "[10+ • Đời thường] Hỏi thông tin vé, lịch mở cửa và quy định tham quan tại bảo tàng nghệ thuật",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "15+",
+        "tags": {
+          "age": "15+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "15+",
+          "Đời thường",
+          "Giao tiếp",
+          "Gần gũi"
+        ]
+      },
+      {
+        "num": 3,
+        "day": 23,
+        "topicId": "topic_023",
+        "title": "Chọn Cách Đi",
+        "subtitle": "Thảo luận và lựa chọn phương tiện di chuyển tối ưu giữa tàu ngầm, taxi và xe bus",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_023_background?v=2026-08-04T12%3A14%3A58.189Z",
+        "scenario": "Khu vực sảnh chờ khách sạn vào buổi sáng sớm, trước khi bắt đầu lịch trình khám phá thành phố.",
+        "purpose": "[15+ • Đời thường] Thảo luận và lựa chọn phương tiện di chuyển tối ưu giữa tàu ngầm, taxi và xe bus",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "15+",
+        "tags": {
+          "age": "15+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "adventurous"
+        },
+        "display_badges": [
+          "15+",
+          "Đời thường",
+          "Du lịch",
+          "Linh hoạt"
+        ]
+      },
+      {
+        "num": 4,
+        "day": 24,
+        "topicId": "topic_024",
+        "title": "Cổ tích: Hansel và Gretel",
+        "subtitle": "Đọc Cổ tích Grimm: Lòng dũng cảm và trí thông minh giúp vượt qua hiểm nguy",
+        "type": "book",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/admin/story-images/codex-realistic/lesson_024_key_art.webp?v=2026-08-04T12%3A14%3A58.203Z",
+        "scenario": "Lạc lối giữa rừng sâu u tối khi những vệt bánh mì dẫn đường hoàn toàn biến mất, hai anh em Hansel và Gretel vô tình tìm thấy một ngôi nhà làm bằng bánh kẹo ngọt ngào. Thế nhưng, đằng sau hương thơm quyến rũ ấy lại là một cạm bẫy hãi hùng đang đợi sẵn.",
+        "purpose": "[10+ • Cổ tích] Đọc Cổ tích Grimm: Lòng dũng cảm và trí thông minh giúp vượt qua hiểm nguy",
+        "lessonType": "story",
+        "genre": "fairy_tale",
+        "ageRating": "10+",
+        "tags": {
+          "age": "10+",
+          "genre": "fairy_tale",
+          "origin": "western",
+          "moral": "family_filial",
+          "mood": "adventurous"
+        },
+        "display_badges": [
+          "10+",
+          "Cổ tích Grimm",
+          "Đoàn kết",
+          "Mưu trí"
+        ]
+      },
+      {
+        "num": 5,
+        "day": 25,
+        "topicId": "topic_025",
+        "title": "Taxi Lạc Hướng",
+        "subtitle": "Trao đổi hướng dẫn tài xế taxi khi đi nhầm lộ trình quy định",
+        "type": "chest",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_025_background?v=2026-08-04T12%3A14%3A58.720Z",
+        "scenario": "Hàng ghế sau của một chiếc xe công nghệ lao vút qua làn đường cao tốc mờ ánh đèn đường vào tối muộn.",
+        "purpose": "[15+ • Đời thường] Trao đổi hướng dẫn tài xế taxi khi đi nhầm lộ trình quy định",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "10+",
+        "tags": {
+          "age": "10+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "kindness",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "10+",
+          "Rương báu 🎁",
+          "Gắn kết",
+          "Ấm áp"
+        ]
+      },
+      {
+        "num": 6,
+        "day": 26,
+        "topicId": "topic_026",
+        "title": "Trạm Xe Mưa",
+        "subtitle": "Chia sẻ chỗ trú và chiếc ô cùng hành khách chờ xe dưới mưa lớn",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_026_background?v=2026-08-04T12%3A14%3A58.735Z",
+        "scenario": "Một trạm chờ xe buýt ngoài trời hiu hắt khi những hạt mưa chiều bỗng trút xuống nặng hạt.",
+        "purpose": "[10+ • Đời thường] Chia sẻ chỗ trú và chiếc ô cùng hành khách chờ xe dưới mưa lớn",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "15+",
+        "tags": {
+          "age": "15+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "adventurous"
+        },
+        "display_badges": [
+          "15+",
+          "Đời thường",
+          "Du lịch",
+          "Linh hoạt"
+        ]
+      },
+      {
+        "num": 7,
+        "day": 27,
+        "topicId": "topic_027",
+        "title": "Cổ tích: Cô Bé Lọ Lem",
+        "subtitle": "Đọc Cổ tích Perrault: Trái tim nhân hậu và lòng vị tha sẽ luôn tìm thấy hạnh phúc",
+        "type": "book",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/admin/story-images/codex-realistic/lesson_027_key_art.webp?v=2026-08-04T12%3A14%3A58.735Z",
+        "scenario": "Chịu đựng sự hà khắc của người mẹ kế cùng hai cô chị ích kỷ, Lọ Lem vẫn gìn giữ sự dịu dàng và một ước mơ cháy bỏng trong góc bếp tối tăm. Khi phép màu bất ngờ mở ra cánh cửa đến đêm dạ hội hoàng gia, cô phải chạy đua với thời gian trước khi tất cả biến mất.",
+        "purpose": "[3+ • Cổ tích] Đọc Cổ tích Perrault: Trái tim nhân hậu và lòng vị tha sẽ luôn tìm thấy hạnh phúc",
+        "lessonType": "story",
+        "genre": "fairy_tale",
+        "ageRating": "3+",
+        "tags": {
+          "age": "3+",
+          "genre": "fairy_tale",
+          "origin": "western",
+          "moral": "kindness",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "3+",
+          "Cổ tích Grimm",
+          "Nhân hậu",
+          "Kỳ diệu"
+        ]
+      },
+      {
+        "num": 8,
+        "day": 28,
+        "topicId": "topic_028",
+        "title": "Phòng Không Như Ảnh",
+        "subtitle": "Lịch thiệp khiếu nại phòng khách sạn không khớp với hình ảnh quảng cáo trực tuyến",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_028_background?v=2026-08-04T12%3A14%3A59.298Z",
+        "scenario": "Khu vực hành lang và quầy lễ tân khách sạn mờ ánh đèn sau một chặng bay dài mệt mỏi.",
+        "purpose": "[18+ • Đời thường] Lịch thiệp khiếu nại phòng khách sạn không khớp với hình ảnh quảng cáo trực tuyến",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "15+",
+        "tags": {
+          "age": "15+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "adventurous"
+        },
+        "display_badges": [
+          "15+",
+          "Đời thường",
+          "Du lịch",
+          "Linh hoạt"
+        ]
+      },
+      {
+        "num": 9,
+        "day": 29,
+        "topicId": "topic_029",
+        "title": "Tìm Hiệu Thuốc",
+        "subtitle": "Mô tả triệu chứng sức khỏe thông thường và mua thuốc giảm đau khẩn cấp",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_029_background?v=2026-08-04T12%3A14%3A59.576Z",
+        "scenario": "Góc quảng trường trung tâm tấp người qua lại vào buổi chiều khi gió bắt đầu thổi mạnh.",
+        "purpose": "[15+ • Đời thường] Mô tả triệu chứng sức khỏe thông thường và mua thuốc giảm đau khẩn cấp",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "15+",
+        "tags": {
+          "age": "15+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "15+",
+          "Đời thường",
+          "Giao tiếp",
+          "Gần gũi"
+        ]
+      },
+      {
+        "num": 10,
+        "day": 30,
+        "topicId": "topic_030",
+        "title": "Cổ tích: Nàng Bạch Tuyết",
+        "subtitle": "Chung kết Vòng 3: Tình bạn trong sáng và sự che chở của bảy chú lùn nhân hậu",
+        "type": "boss",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/admin/story-images/codex-realistic/lesson_030_key_art.webp?v=2026-08-04T12%3A14%3A59.680Z",
+        "scenario": "Nỗi đố kỵ điên cuồng của vị Hoàng hậu đã tước đi cuộc sống yên bình của Nàng Bạch Tuyết, buộc nàng phải bỏ trốn vào sâu trong khu rừng âm u và nương náu cùng bảy người thợ mỏ. Dù tìm thấy một mái ấm nhỏ giữa muôn vàn cạm bẫy, liệu lòng tin ngây thơ của nàng có đủ vững vàng trước những thủ đoạn hiểm ác liên tục rình rập?",
+        "purpose": "[3+ • Cổ tích] Chung kết Vòng 3: Tình bạn trong sáng và sự che chở của bảy chú lùn nhân hậu",
+        "lessonType": "story",
+        "genre": "fairy_tale",
+        "ageRating": "3+",
+        "tags": {
+          "age": "3+",
+          "genre": "fairy_tale",
+          "origin": "western",
+          "moral": "kindness",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "3+",
+          "Cổ tích Grimm",
+          "Trong sáng",
+          "Phép màu"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "chapterTag": "CHƯƠNG 4 • THUNG LŨNG CAN ĐẢM",
+    "title": "Thung lũng can đảm",
+    "progressText": "0/10 bài (Khóa)",
+    "desc": "Tăng tốc với thời tiết, sở thích, công việc và trường học.",
+    "image": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/roadmap_stage_04_background?v=20260804-mobile-webp",
+    "activeNodeIndex": -1,
+    "characters": [
+      {
+        "loop": 1,
+        "name": "Lumi Nông Dân",
+        "role": "Hướng Dẫn Vòng 1",
+        "img": "assets/cards/lumi_avatar_portrait_clean.png",
+        "quote": "Mỗi hạt giống từ vựng nở thành bông hoa trí tuệ!"
+      },
+      {
+        "loop": 2,
+        "name": "Billy Bắt Đom Đóm",
+        "role": "Bạn Đồng Hành Vòng 2",
+        "img": "assets/cards/billy_possum_crop_test.png",
+        "quote": "Hãy gom thật nhiều ánh sáng cho đêm hội!"
+      }
+    ],
+    "nodes": [
+      {
+        "num": 1,
+        "day": 31,
+        "topicId": "topic_031",
+        "title": "Bức Tường Kính",
+        "subtitle": "Thích nghi và trao đổi lịch sự trong môi trường văn phòng vách kính mở",
+        "type": "star",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_031_background?v=2026-08-04T12%3A15%3A00.229Z",
+        "scenario": "Khu vực pantry của một văn phòng công nghệ cao lúc 3 giờ chiều, nơi hai đồng nghiệp tình cờ đứng cạnh máy pha cà phê.",
+        "purpose": "[18+ • Công sở] Thích nghi và trao đổi lịch sự trong môi trường văn phòng vách kính mở",
+        "lessonType": "dialogue",
+        "genre": "dialogue_work",
+        "ageRating": "18+",
+        "tags": {
+          "age": "18+",
+          "genre": "dialogue_work",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "witty"
+        },
+        "display_badges": [
+          "18+",
+          "Công sở",
+          "Hợp tác",
+          "Thực chiến"
+        ]
+      },
+      {
+        "num": 2,
+        "day": 32,
+        "topicId": "topic_032",
+        "title": "Phút Chót",
+        "subtitle": "Thương lượng điều chỉnh tiến độ và phối hợp nhóm xử lý công việc phút chót",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_032_background?v=2026-08-04T12%3A15%3A00.238Z",
+        "scenario": "Phòng khách căn hộ chung cư của Minh vào một chiều chủ nhật ngột ngạt, ngay trước giờ ra sân bay cho chuyến đi dài ngày.",
+        "purpose": "[18+ • Công sở] Thương lượng điều chỉnh tiến độ và phối hợp nhóm xử lý công việc phút chót",
+        "lessonType": "dialogue",
+        "genre": "dialogue_work",
+        "ageRating": "18+",
+        "tags": {
+          "age": "18+",
+          "genre": "dialogue_work",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "witty"
+        },
+        "display_badges": [
+          "18+",
+          "Công sở",
+          "Hợp tác",
+          "Thực chiến"
+        ]
+      },
+      {
+        "num": 3,
+        "day": 33,
+        "topicId": "topic_033",
+        "title": "Cổ tích: Vịt Con Xấu Xí",
+        "subtitle": "Đọc Truyện Andersen: Tin tưởng vào giá trị bản thân, vẻ đẹp thực sự cần thời gian trưởng thành",
+        "type": "book",
+        "status": "locked",
+        "img": "assets/cards/lumi_rain_coffee_eaves.jpg",
+        "scenario": "Khác biệt hoàn toàn với những người anh em lông vàng óng ả, chú chim non xám xịt và thô kệch phải chịu đựng sự gièm pha cùng nỗi cô đơn tủi nhục ngay từ khi lọt lòng. Quyết định rời bỏ nông trại để dấn thân vào chốn hoang vu lạnh lẽo, liệu chú có tìm thấy chốn dung thân cho riêng mình?",
+        "purpose": "[3+ • Ngụ ngôn] Đọc Truyện Andersen: Tin tưởng vào giá trị bản thân, vẻ đẹp thực sự cần thời gian trưởng thành",
+        "lessonType": "story",
+        "genre": "fairy_tale",
+        "ageRating": "3+",
+        "tags": {
+          "age": "3+",
+          "genre": "fairy_tale",
+          "origin": "western",
+          "moral": "persistence",
+          "mood": "touching"
+        },
+        "display_badges": [
+          "3+",
+          "Cổ tích Andersen",
+          "Tự tin",
+          "Tỏa sáng"
+        ]
+      },
+      {
+        "num": 4,
+        "day": 34,
+        "topicId": "topic_034",
+        "title": "Sau Giờ Làm",
+        "subtitle": "Rủ đồng nghiệp trò chuyện nhẹ nhàng sau giờ làm để giải tỏa áp lực",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_034_background?v=2026-08-04T12%3A15%3A00.669Z",
+        "scenario": "Góc ban công ngập ánh đèn thành phố của một tòa chung cư vào tối thứ Sáu, nơi Minh và Lan đang nhâm nhi đồ uống.",
+        "purpose": "[15+ • Kỷ niệm] Rủ đồng nghiệp trò chuyện nhẹ nhàng sau giờ làm để giải tỏa áp lực",
+        "lessonType": "dialogue",
+        "genre": "dialogue_work",
+        "ageRating": "18+",
+        "tags": {
+          "age": "18+",
+          "genre": "dialogue_work",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "witty"
+        },
+        "display_badges": [
+          "18+",
+          "Công sở",
+          "Hợp tác",
+          "Thực chiến"
+        ]
+      },
+      {
+        "num": 5,
+        "day": 35,
+        "topicId": "topic_035",
+        "title": "Ngày Thử Việc",
+        "subtitle": "Bắt nhịp môi trường công sở, làm quen quy trình và đồng nghiệp ngày đầu nhận việc",
+        "type": "chest",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_035_background?v=2026-08-04T12%3A15%3A00.718Z",
+        "scenario": "Khu vực hành lang sát phòng họp kính của một tập đoàn công nghệ lớn vào sáng thứ Hai, ngay trước buổi định hướng nhân sự.",
+        "purpose": "[18+ • Công sở] Bắt nhịp môi trường công sở, làm quen quy trình và đồng nghiệp ngày đầu nhận việc",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "10+",
+        "tags": {
+          "age": "10+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "kindness",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "10+",
+          "Rương báu 🎁",
+          "Gắn kết",
+          "Ấm áp"
+        ]
+      },
+      {
+        "num": 6,
+        "day": 36,
+        "topicId": "topic_036",
+        "title": "Cổ tích: Cô Bé Bán Diêm",
+        "subtitle": "Đọc Truyện Andersen: Tình yêu thương, sự sẻ chia và lòng trắc ẩn với những mảnh đời bất hạnh",
+        "type": "book",
+        "status": "locked",
+        "img": "assets/cards/lumi_train_station_night.jpg",
+        "scenario": "Lang thang trên những con phố lạnh buốt giữa đêm giao thừa, cô bé bán diêm đơn độc chống chọi với cái đói và cái rét cắt da bằng những bao diêm chưa ai mua giúp. Trong góc tường tối tăm, từng que diêm nhỏ nhoi được quẹt lên như mở ra những thế giới kỳ diệu, liệu có đủ sức sưởi ấm cho sinh mệnh mong manh ấy?",
+        "purpose": "[10+ • Cổ tích] Đọc Truyện Andersen: Tình yêu thương, sự sẻ chia và lòng trắc ẩn với những mảnh đời bất hạnh",
+        "lessonType": "story",
+        "genre": "fairy_tale",
+        "ageRating": "10+",
+        "tags": {
+          "age": "10+",
+          "genre": "fairy_tale",
+          "origin": "western",
+          "moral": "kindness",
+          "mood": "touching"
+        },
+        "display_badges": [
+          "10+",
+          "Cổ tích Andersen",
+          "Lòng trắc ẩn",
+          "Xúc động"
+        ]
+      },
+      {
+        "num": 7,
+        "day": 37,
+        "topicId": "topic_037",
+        "title": "Bàn Cuối Lớp",
+        "subtitle": "Làm quen bạn cùng lớp ở bàn cuối và chia sẻ tài liệu ôn thi",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_037_background?v=2026-08-04T12%3A15%3A01.372Z",
+        "scenario": "Phòng học buổi tối của một trung tâm ngoại ngữ chuyên sâu, không gian yên tĩnh với những dãy bàn dài dưới ánh đèn vàng.",
+        "purpose": "[10+ • Đời thường] Làm quen bạn cùng lớp ở bàn cuối và chia sẻ tài liệu ôn thi",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "15+",
+        "tags": {
+          "age": "15+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "15+",
+          "Đời thường",
+          "Giao tiếp",
+          "Gần gũi"
+        ]
+      },
+      {
+        "num": 8,
+        "day": 38,
+        "topicId": "topic_038",
+        "title": "Lịch Bị Chốt",
+        "subtitle": "Khéo léo xử lý tình huống xung đột lịch trình và đề xuất dời giờ họp phù hợp",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_038_background?v=2026-08-04T12%3A15%3A01.457Z",
+        "scenario": "Góc khuất của một quán cà phê sách tối muộn, nơi ánh đèn bàn hắt xuống những cuốn sổ tay chi chít chữ.",
+        "purpose": "[18+ • Công sở] Khéo léo xử lý tình huống xung đột lịch trình và đề xuất dời giờ họp phù hợp",
+        "lessonType": "dialogue",
+        "genre": "dialogue_work",
+        "ageRating": "18+",
+        "tags": {
+          "age": "18+",
+          "genre": "dialogue_work",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "witty"
+        },
+        "display_badges": [
+          "18+",
+          "Công sở",
+          "Hợp tác",
+          "Thực chiến"
+        ]
+      },
+      {
+        "num": 9,
+        "day": 39,
+        "topicId": "topic_039",
+        "title": "Cổ tích: Hoàng Tử Ếch",
+        "subtitle": "Đọc Cổ tích Grimm: Tầm quan trọng của việc giữ trọn lời hứa và không đánh giá qua vẻ bề ngoài",
+        "type": "book",
+        "status": "locked",
+        "img": "assets/cards/lumi_progress_celebration.jpg",
+        "scenario": "Đánh rơi quả bóng vàng yêu thích xuống chiếc giếng cổ sâu hoắm, nàng công chúa vội vã hứa hẹn với một chú ếch xù xì để lấy lại món đồ chơi. Khi sinh vật nhớp nháp ấy tìm đến tận hoàng cung đòi thực hiện lời thề, công chúa sẽ phải đối mặt ra sao giữa sự ghê tởm cá nhân và danh dự của một vương nữ?",
+        "purpose": "[3+ • Ngụ ngôn] Đọc Cổ tích Grimm: Tầm quan trọng của việc giữ trọn lời hứa và không đánh giá qua vẻ bề ngoài",
+        "lessonType": "story",
+        "genre": "fairy_tale",
+        "ageRating": "3+",
+        "tags": {
+          "age": "3+",
+          "genre": "fairy_tale",
+          "origin": "western",
+          "moral": "honesty",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "3+",
+          "Cổ tích Grimm",
+          "Giữ lời hứa",
+          "Bao dung"
+        ]
+      },
+      {
+        "num": 10,
+        "day": 40,
+        "topicId": "topic_040",
+        "title": "Sốt Ngoài Giờ",
+        "subtitle": "Chung kết Vòng 4: Báo cáo tình hình sức khỏe khẩn và xin phép vắng mặt trong buổi gặp quan trọng",
+        "type": "boss",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_040_background?v=2026-08-04T12%3A15%3A01.885Z",
+        "scenario": "Khu vực chờ sáng đèn của một hiệu thuốc tây mở 24/7 góc phố, nơi những cơn gió lạnh đầu hôm thổi thốc qua cửa kính.",
+        "purpose": "[15+ • Đời thường] Chung kết Vòng 4: Báo cáo tình hình sức khỏe khẩn và xin phép vắng mặt trong buổi gặp quan trọng",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "15+",
+        "tags": {
+          "age": "15+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "courage",
+          "mood": "adventurous"
+        },
+        "display_badges": [
+          "15+",
+          "Chung kết 👑",
+          "Thử thách",
+          "Kịch tính"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "chapterTag": "CHƯƠNG 5 • CHỢ PHIÊN KỲ THÚ",
+    "title": "Chợ phiên kỳ thú",
+    "progressText": "0/10 bài (Khóa)",
+    "desc": "Mở rộng vốn nói về sức khỏe, cảm xúc, quần áo, màu sắc và nhà cửa.",
+    "image": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/roadmap_stage_05_background?v=20260804-mobile-webp",
+    "activeNodeIndex": -1,
+    "characters": [
+      {
+        "loop": 1,
+        "name": "Thần Rừng Lumi",
+        "role": "Người Dẫn Lối Vòng 1",
+        "img": "assets/cards/lumi_avatar_portrait_clean.png",
+        "quote": "Tô sáng từng vạch màu để đánh thức phép thuật rừng sâu!"
+      },
+      {
+        "loop": 2,
+        "name": "Billy Possum",
+        "role": "Bạn Đồng Hành Vòng 2",
+        "img": "assets/cards/billy_possum_crop_test.png",
+        "quote": "Cố lên! Vòng 2 sẽ mở ra câu chuyện huyền ảo!"
+      }
+    ],
+    "nodes": [
+      {
+        "num": 1,
+        "day": 41,
+        "topicId": "topic_041",
+        "title": "Sau Cơn Giông",
+        "subtitle": "Hỏi thăm an toàn của bạn bè và dọn dẹp khắc phục sự cố sau cơn giông",
+        "type": "star",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_041_background?v=2026-08-04T12%3A15%3A01.957Z",
+        "scenario": "Góc hiên vắng lặng của văn phòng vào tối muộn, nơi ánh đèn đường hắt qua khung kính mờ ảo.",
+        "purpose": "[15+ • Đời thường] Hỏi thăm an toàn của bạn bè và dọn dẹp khắc phục sự cố sau cơn giông",
+        "lessonType": "dialogue",
+        "genre": "dialogue_work",
+        "ageRating": "18+",
+        "tags": {
+          "age": "18+",
+          "genre": "dialogue_work",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "witty"
+        },
+        "display_badges": [
+          "18+",
+          "Công sở",
+          "Hợp tác",
+          "Thực chiến"
+        ]
+      },
+      {
+        "num": 2,
+        "day": 42,
+        "topicId": "topic_042",
+        "title": "Cổ tích: Người Đẹp Ngủ Trong Rừng",
+        "subtitle": "Đọc Cổ tích Perrault: Niềm tin vào những điều kỳ diệu và sức mạnh của tình yêu chân thành",
+        "type": "book",
+        "status": "locked",
+        "img": "assets/cards/lumi_review_flashcards.jpg",
+        "scenario": "Một lời nguyền tàn nhẫn đã biến ngày vui mừng của công chúa thành thảm họa, đẩy nàng cùng toàn bộ hoàng cung vào giấc ngủ kéo dài trăm năm sau những bức tường gai nhọn. Liệu dòng chảy thời gian và lòng can đảm của người đến sau có đủ sức lay động một vương quốc đã ngủ vùi qua cả thế kỷ?",
+        "purpose": "[3+ • Cổ tích] Đọc Cổ tích Perrault: Niềm tin vào những điều kỳ diệu và sức mạnh của tình yêu chân thành",
+        "lessonType": "story",
+        "genre": "fairy_tale",
+        "ageRating": "3+",
+        "tags": {
+          "age": "3+",
+          "genre": "fairy_tale",
+          "origin": "western",
+          "moral": "courage",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "3+",
+          "Cổ tích Châu Âu",
+          "Niềm hy vọng",
+          "Phép màu"
+        ]
+      },
+      {
+        "num": 3,
+        "day": 43,
+        "topicId": "topic_043",
+        "title": "Chọn Đồ Gấp",
+        "subtitle": "Tham khảo ý kiến bạn bè khi cần chọn trang phục gấp cho một buổi tiệc",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_043_background?v=2026-08-04T12%3A15%3A02.383Z",
+        "scenario": "Căn phòng khách ngổn ngang quần áo và vali mở tung vào nửa đêm trước chuyến đi chơi xa cuối tuần.",
+        "purpose": "[15+ • Đời thường] Tham khảo ý kiến bạn bè khi cần chọn trang phục gấp cho một buổi tiệc",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "15+",
+        "tags": {
+          "age": "15+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "15+",
+          "Đời thường",
+          "Giao tiếp",
+          "Gần gũi"
+        ]
+      },
+      {
+        "num": 4,
+        "day": 44,
+        "topicId": "topic_044",
+        "title": "Thử Áo Gặp Khách",
+        "subtitle": "Ứng xử nhã nhặn khi tình cờ gặp đối tác kinh doanh tại cửa hàng thời trang",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_044_background?v=2026-08-04T12%3A15%3A02.748Z",
+        "scenario": "Bên trong căn phòng thử đồ ngập ánh đèn vàng ấm áp của một cửa hàng thời trang cao cấp.",
+        "purpose": "[18+ • Công sở] Ứng xử nhã nhặn khi tình cờ gặp đối tác kinh doanh tại cửa hàng thời trang",
+        "lessonType": "dialogue",
+        "genre": "dialogue_work",
+        "ageRating": "18+",
+        "tags": {
+          "age": "18+",
+          "genre": "dialogue_work",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "witty"
+        },
+        "display_badges": [
+          "18+",
+          "Công sở",
+          "Hợp tác",
+          "Thực chiến"
+        ]
+      },
+      {
+        "num": 5,
+        "day": 45,
+        "topicId": "topic_045",
+        "title": "Cổ tích: Aladdin và Cây Đèn Thần",
+        "subtitle": "Đọc Nghìn lẻ một đêm: Lòng dũng cảm, trí thông minh và bài học làm chủ ước muốn bản thân",
+        "type": "chest",
+        "status": "locked",
+        "img": "assets/cards/reward_gift_box.jpg",
+        "scenario": "Nổi lên từ khu chợ nghèo tấp nập, chàng trai trẻ Aladdin bị cuốn vào một cạm bẫy hiểm ác khi kẻ lạ mặt dẫn cậu đến gian phòng cất giấu chiếc đèn dầu cổ xưa. Sự xuất hiện của một vị thần mang quyền năng vô hạn đã thay đổi hoàn toàn số phận của Aladdin, nhưng cũng kéo cậu vào cuộc đối đầu khốc liệt khi thế lực tăm tối quay trở lại.",
+        "purpose": "[10+ • Cổ tích] Đọc Nghìn lẻ một đêm: Lòng dũng cảm, trí thông minh và bài học làm chủ ước muốn bản thân",
+        "lessonType": "story",
+        "genre": "fairy_tale",
+        "ageRating": "10+",
+        "tags": {
+          "age": "10+",
+          "genre": "fairy_tale",
+          "origin": "arabian",
+          "moral": "courage",
+          "mood": "adventurous"
+        },
+        "display_badges": [
+          "10+",
+          "Nghìn Lẻ Một Đêm",
+          "Dũng cảm",
+          "Phiêu lưu"
+        ]
+      },
+      {
+        "num": 6,
+        "day": 46,
+        "topicId": "topic_046",
+        "title": "Màu Quà Sinh Nhật",
+        "subtitle": "Chọn màu sắc và quà sinh nhật tinh tế dựa trên tính cách của bạn thân",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_046_background?v=2026-08-04T12%3A15%3A03.226Z",
+        "scenario": "Góc trưng bày quà tặng lấp lánh ánh đèn của một cửa hàng lưu niệm sang trọng vào tối cuối tuần.",
+        "purpose": "[10+ • Kỷ niệm] Chọn màu sắc và quà sinh nhật tinh tế dựa trên tính cách của bạn thân",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "10+",
+        "tags": {
+          "age": "10+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "kindness",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "10+",
+          "Kỷ niệm",
+          "Tình bạn",
+          "Ấm áp"
+        ]
+      },
+      {
+        "num": 7,
+        "day": 47,
+        "topicId": "topic_047",
+        "title": "Căn Hộ Mới",
+        "subtitle": "Trao đổi với chủ nhà về tiện ích, chi phí dịch vụ và quy định căn hộ mới thuê",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_047_background?v=2026-08-04T12%3A15%3A03.334Z",
+        "scenario": "Bên trong căn hộ chung cư gọn gàng ngập tràn ánh nắng chiều rọi qua khung cửa kính.",
+        "purpose": "[18+ • Đời thường] Trao đổi với chủ nhà về tiện ích, chi phí dịch vụ và quy định căn hộ mới thuê",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "15+",
+        "tags": {
+          "age": "15+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "adventurous"
+        },
+        "display_badges": [
+          "15+",
+          "Đời thường",
+          "Du lịch",
+          "Linh hoạt"
+        ]
+      },
+      {
+        "num": 8,
+        "day": 48,
+        "topicId": "topic_048",
+        "title": "Cổ tích: Ali Baba và Bốn Mươi Tên Cướp",
+        "subtitle": "Đọc Nghìn lẻ một đêm: Sự mưu trí, bình tĩnh đối phó với kẻ xấu để bảo vệ gia đình",
+        "type": "book",
+        "status": "locked",
+        "img": "assets/cards/lumi_farmer_night.png",
+        "scenario": "Tình cờ phát hiện ra hang đá cất giấu kho báu vô tận cùng câu thần chú bí mật của bốn mươi tên cướp tàn bạo, cuộc đời của người đốn củi nghèo Ali Baba lập tức bị đảo lộn. Khi sự việc bị rò rỉ, hiểm họa sát thân âm thầm tìm đến tận nhà, đẩy gia đình anh vào một cuộc đối đầu nghẹt thở.",
+        "purpose": "[10+ • Cổ tích] Đọc Nghìn lẻ một đêm: Sự mưu trí, bình tĩnh đối phó với kẻ xấu để bảo vệ gia đình",
+        "lessonType": "story",
+        "genre": "fairy_tale",
+        "ageRating": "10+",
+        "tags": {
+          "age": "10+",
+          "genre": "fairy_tale",
+          "origin": "arabian",
+          "moral": "wisdom",
+          "mood": "adventurous"
+        },
+        "display_badges": [
+          "10+",
+          "Nghìn Lẻ Một Đêm",
+          "Mưu trí",
+          "Công lý"
+        ]
+      },
+      {
+        "num": 9,
+        "day": 49,
+        "topicId": "topic_049",
+        "title": "Đổi Số Điện Thoại",
+        "subtitle": "Thực hiện thủ tục đổi sim thẻ và cập nhật số điện thoại liên lạc mới",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_049_background?v=2026-08-04T12%3A15%3A03.722Z",
+        "scenario": "Góc bàn cà phê nhỏ ngập ánh đèn vàng ấm áp sau giờ tan học tối muộn.",
+        "purpose": "[15+ • Đời thường] Thực hiện thủ tục đổi sim thẻ và cập nhật số điện thoại liên lạc mới",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "15+",
+        "tags": {
+          "age": "15+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "adventurous"
+        },
+        "display_badges": [
+          "15+",
+          "Đời thường",
+          "Du lịch",
+          "Linh hoạt"
+        ]
+      },
+      {
+        "num": 10,
+        "day": 50,
+        "topicId": "topic_050",
+        "title": "Sập Nguồn",
+        "subtitle": "Chung kết Vòng 5: Mượn sạc điện thoại dự phòng và xử lý tình huống mất liên lạc khẩn cấp",
+        "type": "boss",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_050_background?v=2026-08-04T12%3A15%3A04.012Z",
+        "scenario": "Góc sảnh chờ tấp nập của một tòa nhà văn phòng vào buổi chiều muộn.",
+        "purpose": "[15+ • Đời thường] Chung kết Vòng 5: Mượn sạc điện thoại dự phòng và xử lý tình huống mất liên lạc khẩn cấp",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "15+",
+        "tags": {
+          "age": "15+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "courage",
+          "mood": "adventurous"
+        },
+        "display_badges": [
+          "15+",
+          "Chung kết 👑",
+          "Thử thách",
+          "Kịch tính"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "chapterTag": "CHƯƠNG 6 • THƯ VIỆN ÁNH SAO",
+    "title": "Thư viện ánh sao",
+    "progressText": "0/10 bài (Khóa)",
+    "desc": "Xây lịch trình, hẹn gặp, du lịch và xử lý tình huống khẩn cấp.",
+    "image": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/roadmap_stage_06_background?v=20260804-mobile-webp",
+    "activeNodeIndex": -1,
+    "characters": [
+      {
+        "loop": 1,
+        "name": "Bác Soát Vé Lumi",
+        "role": "Người Dẫn Lối Vòng 1",
+        "img": "assets/cards/lumi_avatar_portrait_clean.png",
+        "quote": "Vé tàu đêm đang chờ kiểm tra!"
+      },
+      {
+        "loop": 2,
+        "name": "Billy Bụi Đời",
+        "role": "Bạn Đồng Hành Vòng 2",
+        "img": "assets/cards/billy_possum_crop_test.png",
+        "quote": "Toa tàu số 7 sắp khởi hành!"
+      }
+    ],
+    "nodes": [
+      {
+        "num": 1,
+        "day": 51,
+        "topicId": "topic_051",
+        "title": "Cổ tích: Người Đánh Cá và Con Cá Vàng",
+        "subtitle": "Đọc Cổ tích Puskin: Bài học sâu sắc về lòng tham không đáy và cái kết của sự ích kỷ",
+        "type": "book",
+        "status": "locked",
+        "img": "assets/cards/lumi_farmer_strawhat.jpg",
+        "scenario": "Một ngày ra khơi bình lặng, ông lão đánh cá nghèo khổ tình cờ bắt được con cá vàng biết nói và phóng sinh cho nó mà không đòi hỏi đền đáp. Thế nhưng, câu chuyện về phép màu nhanh chóng đánh thức lòng tham vô đáy của người vợ già, kéo cuộc sống của họ vào những đòi hỏi ngày một leo thang.",
+        "purpose": "[3+ • Ngụ ngôn] Đọc Cổ tích Puskin: Bài học sâu sắc về lòng tham không đáy và cái kết của sự ích kỷ",
+        "lessonType": "story",
+        "genre": "folk_tale",
+        "ageRating": "3+",
+        "tags": {
+          "age": "3+",
+          "genre": "folk_tale",
+          "origin": "russia",
+          "moral": "anti_greed",
+          "mood": "witty"
+        },
+        "display_badges": [
+          "3+",
+          "Cổ tích Nga",
+          "Chống tham lam",
+          "Biết đủ"
+        ]
+      },
+      {
+        "num": 2,
+        "day": 52,
+        "topicId": "topic_052",
+        "title": "Đổi Lịch Hẹn",
+        "subtitle": "Thương lượng dời lịch hẹn gặp đối tác một cách chuyên nghiệp và tôn trọng",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_052_background?v=2026-08-04T12%3A15%3A04.545Z",
+        "scenario": "Góc bàn làm việc ngổn ngang giấy tờ trong văn phòng công ty vào một chiều bận rộn.",
+        "purpose": "[18+ • Công sở] Thương lượng dời lịch hẹn gặp đối tác một cách chuyên nghiệp và tôn trọng",
+        "lessonType": "dialogue",
+        "genre": "dialogue_work",
+        "ageRating": "18+",
+        "tags": {
+          "age": "18+",
+          "genre": "dialogue_work",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "witty"
+        },
+        "display_badges": [
+          "18+",
+          "Công sở",
+          "Hợp tác",
+          "Thực chiến"
+        ]
+      },
+      {
+        "num": 3,
+        "day": 53,
+        "topicId": "topic_053",
+        "title": "Sáng Bận Rộn",
+        "subtitle": "Sắp xếp thứ tự ưu tiên các đầu việc quan trọng trong một buổi sáng gấp gáp",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_053_background?v=2026-08-04T12%3A15%3A04.641Z",
+        "scenario": "Góc quán cà phê nhỏ ngập tràn ánh nắng ban mai với hương thơm cà phê lan tỏa.",
+        "purpose": "[18+ • Công sở] Sắp xếp thứ tự ưu tiên các đầu việc quan trọng trong một buổi sáng gấp gáp",
+        "lessonType": "dialogue",
+        "genre": "dialogue_work",
+        "ageRating": "18+",
+        "tags": {
+          "age": "18+",
+          "genre": "dialogue_work",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "witty"
+        },
+        "display_badges": [
+          "18+",
+          "Công sở",
+          "Hợp tác",
+          "Thực chiến"
+        ]
+      },
+      {
+        "num": 4,
+        "day": 54,
+        "topicId": "topic_054",
+        "title": "Cổ tích: Momotaro Cậu Bé Quả Đào",
+        "subtitle": "Đọc Cổ tích Nhật Bản: Tinh thần hiệp nghĩa, kết bạn đồng hành trừ gian diệt ác",
+        "type": "book",
+        "status": "locked",
+        "img": "assets/cards/lumi_melody_arena.jpg",
+        "scenario": "Sinh ra từ một quả đào kỳ lạ trôi trên sông, Momotaro lớn lên thành một thiếu niên có sức mạnh phi thường cùng trái tim quả cảm. Khi xóm làng bị lũ quỷ từ hòn đảo xa xôi quấy phá, cậu lên đường quyết tâm tìm lại bình yên, kéo theo những người bạn đồng hành không ai ngờ tới.",
+        "purpose": "[3+ • Ngụ ngôn] Đọc Cổ tích Nhật Bản: Tinh thần hiệp nghĩa, kết bạn đồng hành trừ gian diệt ác",
+        "lessonType": "story",
+        "genre": "folk_tale",
+        "ageRating": "10+",
+        "tags": {
+          "age": "10+",
+          "genre": "folk_tale",
+          "origin": "japan",
+          "moral": "courage",
+          "mood": "adventurous"
+        },
+        "display_badges": [
+          "10+",
+          "Cổ tích Nhật Bản",
+          "Dũng cảm",
+          "Tình bạn"
+        ]
+      },
+      {
+        "num": 5,
+        "day": 55,
+        "topicId": "topic_055",
+        "title": "Kèo Du Lịch",
+        "subtitle": "Lập kế hoạch du lịch tự túc cùng nhóm bạn và phân bổ ngân sách hợp lý",
+        "type": "chest",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_055_background?v=2026-08-04T12%3A15%3A05.078Z",
+        "scenario": "Góc phòng làm việc ngổn ngang giấy tờ vào chiều thứ Sáu khi tuần làm việc sắp khép lại.",
+        "purpose": "[15+ • Đời thường] Lập kế hoạch du lịch tự túc cùng nhóm bạn và phân bổ ngân sách hợp lý",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "10+",
+        "tags": {
+          "age": "10+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "kindness",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "10+",
+          "Rương báu 🎁",
+          "Gắn kết",
+          "Ấm áp"
+        ]
+      },
+      {
+        "num": 6,
+        "day": 56,
+        "topicId": "topic_056",
+        "title": "Check-in Hú Vía",
+        "subtitle": "Vội vã làm thủ tục check-in sân bay sát giờ đóng cửa và xin hỗ trợ ưu tiên",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_056_background?v=2026-08-04T12%3A15%3A05.146Z",
+        "scenario": "Khu vực sảnh chờ mua vé và làm thủ tục tấp nập khách qua lại tại nhà ga.",
+        "purpose": "[15+ • Đời thường] Vội vã làm thủ tục check-in sân bay sát giờ đóng cửa và xin hỗ trợ ưu tiên",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "15+",
+        "tags": {
+          "age": "15+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "adventurous"
+        },
+        "display_badges": [
+          "15+",
+          "Đời thường",
+          "Du lịch",
+          "Linh hoạt"
+        ]
+      },
+      {
+        "num": 7,
+        "day": 57,
+        "topicId": "topic_057",
+        "title": "Cổ tích: Ông Lão Làm Hoa Nở",
+        "subtitle": "Đọc Cổ tích Nhật Bản: Lòng nhân từ, yêu thương động vật luôn nhận được phước lành",
+        "type": "book",
+        "status": "locked",
+        "img": "assets/cards/pixar_night_farm_scenery.jpg",
+        "scenario": "Sống đạm bạc bên chú chó trắng trung thành, vợ chồng ông lão tốt bụng vô tình khám phá ra kho báu nhờ sự giúp đỡ của người bạn bốn chân. Thế nhưng, sự biến mất thảm thương của người bạn nhỏ dưới tay gã hàng xóm tàn ác lại mở ra chuỗi sự kiện kỳ diệu, khiến những nắm tro tàn cũng bừng lên sức sống.",
+        "purpose": "[3+ • Ngụ ngôn] Đọc Cổ tích Nhật Bản: Lòng nhân từ, yêu thương động vật luôn nhận được phước lành",
+        "lessonType": "story",
+        "genre": "folk_tale",
+        "ageRating": "3+",
+        "tags": {
+          "age": "3+",
+          "genre": "folk_tale",
+          "origin": "japan",
+          "moral": "kindness",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "3+",
+          "Cổ tích Nhật Bản",
+          "Ở hiền gặp lành",
+          "Ấm áp"
+        ]
+      },
+      {
+        "num": 8,
+        "day": 58,
+        "topicId": "topic_058",
+        "title": "Sự Cố Hộ Chiếu",
+        "subtitle": "Trình bày sự cố thất lạc giấy tờ tùy thân tại quầy thủ tục xuất nhập cảnh",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_058_background?v=2026-08-04T12%3A15%3A05.653Z",
+        "scenario": "Khu vực quầy làm thủ tục quốc tế tấp nập người qua lại tại sân bay vào giờ cao điểm.",
+        "purpose": "[18+ • Đời thường] Trình bày sự cố thất lạc giấy tờ tùy thân tại quầy thủ tục xuất nhập cảnh",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "15+",
+        "tags": {
+          "age": "15+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "adventurous"
+        },
+        "display_badges": [
+          "15+",
+          "Đời thường",
+          "Du lịch",
+          "Linh hoạt"
+        ]
+      },
+      {
+        "num": 9,
+        "day": 59,
+        "topicId": "topic_059",
+        "title": "Lạc Giữa Đám Đông",
+        "subtitle": "Xác định vị trí và tìm lại người thân khi bị lạc giữa quảng trường đông đúc",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_059_background?v=2026-08-04T12%3A15%3A05.734Z",
+        "scenario": "Khu vực sảnh trung tâm thương mại ngợp bóng người qua lại vào dịp nghỉ lễ tấp nập.",
+        "purpose": "[10+ • Đời thường] Xác định vị trí và tìm lại người thân khi bị lạc giữa quảng trường đông đúc",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "15+",
+        "tags": {
+          "age": "15+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "15+",
+          "Đời thường",
+          "Giao tiếp",
+          "Gần gũi"
+        ]
+      },
+      {
+        "num": 10,
+        "day": 60,
+        "topicId": "topic_060",
+        "title": "Cổ tích: Nàng Tiên Hạc",
+        "subtitle": "Chung kết Vòng 6: Câu chuyện cảm động về nàng tiên hạc đền ơn và bài học giữ bí mật",
+        "type": "boss",
+        "status": "locked",
+        "img": "assets/cards/deck_box_cover.jpg",
+        "scenario": "Cứu một con hạc trắng thoát khỏi bẫy thép trong đêm bão tuyết, người thợ dệt nghèo không ngờ sự xuất hiện của một thiếu nữ bí ẩn sau đó lại đổi thay toàn bộ cuộc đời anh. Tuy nhiên, khi tấm lụa kỳ diệu mang tới sự giàu sang, lòng tham và sự tò mò dần đẩy lời thề năm xưa vào bờ vực tan vỡ.",
+        "purpose": "[10+ • Cổ tích] Chung kết Vòng 6: Câu chuyện cảm động về nàng tiên hạc đền ơn và bài học giữ bí mật",
+        "lessonType": "story",
+        "genre": "folk_tale",
+        "ageRating": "10+",
+        "tags": {
+          "age": "10+",
+          "genre": "folk_tale",
+          "origin": "japan",
+          "moral": "kindness",
+          "mood": "touching"
+        },
+        "display_badges": [
+          "10+",
+          "Cổ tích Nhật Bản",
+          "Báo ân",
+          "Sâu lắng"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "chapterTag": "CHƯƠNG 7 • CÁNH CỔNG BÍ MẬT",
+    "title": "Cánh cổng bí mật",
+    "progressText": "0/10 bài (Khóa)",
+    "desc": "Luyện giao tiếp lịch sự, xin phép, nhờ giúp và mô tả người hoặc đồ vật.",
+    "image": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/roadmap_stage_07_background?v=20260804-mobile-webp",
+    "activeNodeIndex": -1,
+    "characters": [
+      {
+        "loop": 1,
+        "name": "Lumi Ca Sĩ",
+        "role": "Dẫn Dắt Vòng 1",
+        "img": "assets/cards/lumi_avatar_portrait_clean.png",
+        "quote": "Cất cao tiếng hát theo giai điệu cực quang!"
+      },
+      {
+        "loop": 2,
+        "name": "Billy Nhạc Trưởng",
+        "role": "Chỉ Huy Vòng 2",
+        "img": "assets/cards/billy_possum_crop_test.png",
+        "quote": "Cầm trịch sân khấu âm điệu đỉnh cao!"
+      }
+    ],
+    "nodes": [
+      {
+        "num": 1,
+        "day": 61,
+        "topicId": "topic_061",
+        "title": "Hỏi Đáp Nhanh",
+        "subtitle": "Luyện phản xạ trả lời ngắn gọn, tự tin các câu hỏi tình huống thực tế",
+        "type": "star",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_061_background?v=2026-08-04T12%3A15%3A06.268Z",
+        "scenario": "Góc quán cà phê yên tĩnh vào một buổi chiều rảnh rỗi khi cả hai đang tìm cách giết thời gian.",
+        "purpose": "[18+ • Công sở] Luyện phản xạ trả lời ngắn gọn, tự tin các câu hỏi tình huống thực tế",
+        "lessonType": "dialogue",
+        "genre": "dialogue_work",
+        "ageRating": "18+",
+        "tags": {
+          "age": "18+",
+          "genre": "dialogue_work",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "witty"
+        },
+        "display_badges": [
+          "18+",
+          "Công sở",
+          "Hợp tác",
+          "Thực chiến"
+        ]
+      },
+      {
+        "num": 2,
+        "day": 62,
+        "topicId": "topic_062",
+        "title": "Truy Lịch Sự Kiện",
+        "subtitle": "Tra cứu và xác nhận lại thời gian biểu của một hội chợ triển lãm văn hóa",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_062_background?v=2026-08-04T12%3A15%3A06.361Z",
+        "scenario": "Góc làm việc bận rộn vào buổi sáng khi lịch trình sự kiện sắp diễn ra bị đảo lộn hoàn toàn.",
+        "purpose": "[15+ • Đời thường] Tra cứu và xác nhận lại thời gian biểu của một hội chợ triển lãm văn hóa",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "15+",
+        "tags": {
+          "age": "15+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "adventurous"
+        },
+        "display_badges": [
+          "15+",
+          "Đời thường",
+          "Du lịch",
+          "Linh hoạt"
+        ]
+      },
+      {
+        "num": 3,
+        "day": 63,
+        "topicId": "topic_063",
+        "title": "Cổ tích: Mulan Thay Cha Ra Trận",
+        "subtitle": "Đọc Truyền thuyết Mulan: Lòng hiếu thảo vô bờ và ý chí kiên cường bảo vệ non sông",
+        "type": "book",
+        "status": "locked",
+        "img": "assets/cards/lumi_rain_coffee_eaves.jpg",
+        "scenario": "Khi lệnh tòng quân khẩn cấp giội xuống ngôi làng nhỏ, Mulan đành bí mật cải trang thành nam giới để thay cho người cha già yếu ra sa trường. Giữa chốn biên thùy khắc nghiệt, cô không chỉ đối mặt với nguy cơ bị lộ thân phận mà còn phải sinh tồn giữa những trận chiến tàn khốc.",
+        "purpose": "[10+ • Cổ tích] Đọc Truyền thuyết Mulan: Lòng hiếu thảo vô bờ và ý chí kiên cường bảo vệ non sông",
+        "lessonType": "story",
+        "genre": "myth_legend",
+        "ageRating": "10+",
+        "tags": {
+          "age": "10+",
+          "genre": "myth_legend",
+          "origin": "china",
+          "moral": "family_filial",
+          "mood": "adventurous"
+        },
+        "display_badges": [
+          "10+",
+          "Truyền thuyết Á Đông",
+          "Hiếu thảo",
+          "Quả cảm"
+        ]
+      },
+      {
+        "num": 4,
+        "day": 64,
+        "topicId": "topic_064",
+        "title": "Xin Nghỉ Sớm",
+        "subtitle": "Trình bày lý do chính đáng và bàn giao công việc khi cần xin phép về sớm",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_064_background?v=2026-08-04T12%3A15%3A06.857Z",
+        "scenario": "Văn phòng làm việc căng thẳng vào buổi chiều khi khối lượng công việc đang dồn ứ trước giờ chốt sổ.",
+        "purpose": "[18+ • Công sở] Trình bày lý do chính đáng và bàn giao công việc khi cần xin phép về sớm",
+        "lessonType": "dialogue",
+        "genre": "dialogue_work",
+        "ageRating": "18+",
+        "tags": {
+          "age": "18+",
+          "genre": "dialogue_work",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "witty"
+        },
+        "display_badges": [
+          "18+",
+          "Công sở",
+          "Hợp tác",
+          "Thực chiến"
+        ]
+      },
+      {
+        "num": 5,
+        "day": 65,
+        "topicId": "topic_065",
+        "title": "Lời Mời Khó Xử",
+        "subtitle": "Khéo léo từ chối một lời mời tiệc xã giao mà vẫn giữ được thiện cảm tốt đẹp",
+        "type": "chest",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_065_background?v=2026-08-04T12%3A15%3A07.034Z",
+        "scenario": "Góc bàn làm việc vào tối muộn khi mọi người đã chuẩn bị ra về sau giờ tan sở.",
+        "purpose": "[18+ • Công sở] Khéo léo từ chối một lời mời tiệc xã giao mà vẫn giữ được thiện cảm tốt đẹp",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "10+",
+        "tags": {
+          "age": "10+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "kindness",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "10+",
+          "Rương báu 🎁",
+          "Gắn kết",
+          "Ấm áp"
+        ]
+      },
+      {
+        "num": 6,
+        "day": 66,
+        "topicId": "topic_066",
+        "title": "Cổ tích: Tấm Thảm Bay",
+        "subtitle": "Đọc Nghìn lẻ một đêm: Khám phá những miền đất kỳ bí trên tấm thảm bay huyền thoại",
+        "type": "book",
+        "status": "locked",
+        "img": "assets/cards/lumi_train_station_night.jpg",
+        "scenario": "Gom hết tiền tiết kiệm mua lại tấm thảm cũ sờn từ người lạ, chàng thợ vá Karim không ngờ mình vừa sở hữu một báu vật biết bay chỉ phục vụ những ước nguyện không vị kỷ. Sự xuất hiện của món quà kỳ diệu lập tức thu hút ánh mắt thèm khát của vị quan tham bạo ngược, kéo chàng vào hiểm nguy.",
+        "purpose": "[10+ • Cổ tích] Đọc Nghìn lẻ một đêm: Khám phá những miền đất kỳ bí trên tấm thảm bay huyền thoại",
+        "lessonType": "story",
+        "genre": "fairy_tale",
+        "ageRating": "10+",
+        "tags": {
+          "age": "10+",
+          "genre": "fairy_tale",
+          "origin": "arabian",
+          "moral": "courage",
+          "mood": "adventurous"
+        },
+        "display_badges": [
+          "10+",
+          "Nghìn Lẻ Một Đêm",
+          "Kỳ ảo",
+          "Khám phá"
+        ]
+      },
+      {
+        "num": 7,
+        "day": 67,
+        "topicId": "topic_067",
+        "title": "Tìm Người Quen",
+        "subtitle": "Hỏi thăm thông tin để tìm lại người bạn thân lâu năm tại sự kiện cộng đồng",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_067_background?v=2026-08-04T12%3A15%3A07.768Z",
+        "scenario": "Quán cà phê sân bay tấp nập người qua lại vào một buổi chiều chuẩn bị cho chuyến công tác.",
+        "purpose": "[15+ • Kỷ niệm] Hỏi thăm thông tin để tìm lại người bạn thân lâu năm tại sự kiện cộng đồng",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "10+",
+        "tags": {
+          "age": "10+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "kindness",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "10+",
+          "Kỷ niệm",
+          "Tình bạn",
+          "Ấm áp"
+        ]
+      },
+      {
+        "num": 8,
+        "day": 68,
+        "topicId": "topic_068",
+        "title": "Kể Về Sếp",
+        "subtitle": "Trao đổi thẳng thắn và tôn trọng về phong cách làm việc với cấp trên",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_068_background?v=2026-08-04T12%3A15%3A07.810Z",
+        "scenario": "Góc pantry của văn phòng vào giờ nghỉ trưa yên tĩnh khi mọi người đang tranh thủ thưởng thức cà phê.",
+        "purpose": "[18+ • Công sở] Trao đổi thẳng thắn và tôn trọng về phong cách làm việc với cấp trên",
+        "lessonType": "dialogue",
+        "genre": "dialogue_work",
+        "ageRating": "18+",
+        "tags": {
+          "age": "18+",
+          "genre": "dialogue_work",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "witty"
+        },
+        "display_badges": [
+          "18+",
+          "Công sở",
+          "Hợp tác",
+          "Thực chiến"
+        ]
+      },
+      {
+        "num": 9,
+        "day": 69,
+        "topicId": "topic_069",
+        "title": "Cổ tích: Panchatantra: Khỉ và Cá Sấu",
+        "subtitle": "Đọc Ngụ ngôn Ấn Độ: Trí khôn nhanh nhạy giúp thoát khỏi cạm bẫy hiểm ác",
+        "type": "book",
+        "status": "locked",
+        "img": "assets/cards/lumi_progress_celebration.jpg",
+        "scenario": "Bên bờ sông yên bình, chú Khỉ lanh lợi và anh Cá Sấu từng có một tình bạn thắm thiết qua những quả mận chín ngọt mỗi ngày. Thế nhưng, mưu đồ tàn nhẫn của người vợ Cá Sấu đã biến một lời mời dự tiệc thành cái bẫy chết người ngay giữa dòng nước xiết.",
+        "purpose": "[3+ • Ngụ ngôn] Đọc Ngụ ngôn Ấn Độ: Trí khôn nhanh nhạy giúp thoát khỏi cạm bẫy hiểm ác",
+        "lessonType": "story",
+        "genre": "fable",
+        "ageRating": "3+",
+        "tags": {
+          "age": "3+",
+          "genre": "fable",
+          "origin": "india",
+          "moral": "wisdom",
+          "mood": "witty"
+        },
+        "display_badges": [
+          "3+",
+          "Ngụ ngôn Ấn Độ",
+          "Nhanh trí",
+          "Bình tĩnh"
+        ]
+      },
+      {
+        "num": 10,
+        "day": 70,
+        "topicId": "topic_070",
+        "title": "Tìm Chủ Nhân",
+        "subtitle": "Chung kết Vòng 7: Báo cáo với bảo vệ và tìm trả chiếc ví rơi cho đúng chủ nhân",
+        "type": "boss",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_070_background?v=2026-08-04T12%3A15%3A08.298Z",
+        "scenario": "Góc phòng lưu trữ tài liệu của công ty vào buổi chiều muộn khi mọi người đã về gần hết.",
+        "purpose": "[10+ • Đời thường] Chung kết Vòng 7: Báo cáo với bảo vệ và tìm trả chiếc ví rơi cho đúng chủ nhân",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "15+",
+        "tags": {
+          "age": "15+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "courage",
+          "mood": "adventurous"
+        },
+        "display_badges": [
+          "15+",
+          "Chung kết 👑",
+          "Thử thách",
+          "Kịch tính"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "chapterTag": "CHƯƠNG 8 • VƯƠNG QUỐC LỜI KỂ",
+    "title": "Vương quốc lời kể",
+    "progressText": "0/10 bài (Khóa)",
+    "desc": "Đi qua các dịch vụ hằng ngày như ngân hàng, bưu điện, siêu thị và chợ.",
+    "image": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/roadmap_stage_08_background?v=20260804-mobile-webp",
+    "activeNodeIndex": -1,
+    "characters": [
+      {
+        "loop": 1,
+        "name": "Lumi Nông Dân",
+        "role": "Hướng Dẫn Vòng 1",
+        "img": "assets/cards/lumi_avatar_portrait_clean.png",
+        "quote": "Mỗi hạt giống từ vựng nở thành bông hoa trí tuệ!"
+      },
+      {
+        "loop": 2,
+        "name": "Billy Bắt Đom Đóm",
+        "role": "Bạn Đồng Hành Vòng 2",
+        "img": "assets/cards/billy_possum_crop_test.png",
+        "quote": "Hãy gom thật nhiều ánh sáng cho đêm hội!"
+      }
+    ],
+    "nodes": [
+      {
+        "num": 1,
+        "day": 71,
+        "topicId": "topic_071",
+        "title": "Chia Tiền Ăn",
+        "subtitle": "Tính toán và phân chia chi phí bữa ăn nhóm một cách vui vẻ, minh bạch",
+        "type": "star",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_071_background?v=2026-08-04T12%3A15%3A08.326Z",
+        "scenario": "Quầy thu ngân của một nhà hàng sang trọng sau buổi tiệc sinh nhật đông người.",
+        "purpose": "[15+ • Đời thường] Tính toán và phân chia chi phí bữa ăn nhóm một cách vui vẻ, minh bạch",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "10+",
+        "tags": {
+          "age": "10+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "kindness",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "10+",
+          "Kỷ niệm",
+          "Tình bạn",
+          "Ấm áp"
+        ]
+      },
+      {
+        "num": 2,
+        "day": 72,
+        "topicId": "topic_072",
+        "title": "Cổ tích: Panchatantra: Bốn Người Bạn",
+        "subtitle": "Đọc Ngụ ngôn Ấn Độ: Sức mạnh của sự đoàn kết giúp vượt qua mọi hiểm nguy",
+        "type": "book",
+        "status": "locked",
+        "img": "assets/cards/lumi_review_flashcards.jpg",
+        "scenario": "Trong khu rừng tĩnh lặng, bốn người bạn gồm Chuột, Quạ, Rùa và Hươu luôn duy trì một tình bạn gắn kết dù sở hữu bản tính hoàn toàn khác biệt. Khi hiểm họa từ tay thợ săn đột ngột ập đến bẫy mất đồng đội, họ phải hợp lực và tận dụng thế mạnh riêng để đối mặt với thử thách sinh tồn khốc liệt.",
+        "purpose": "[3+ • Ngụ ngôn] Đọc Ngụ ngôn Ấn Độ: Sức mạnh của sự đoàn kết giúp vượt qua mọi hiểm nguy",
+        "lessonType": "story",
+        "genre": "fable",
+        "ageRating": "3+",
+        "tags": {
+          "age": "3+",
+          "genre": "fable",
+          "origin": "india",
+          "moral": "collaboration",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "3+",
+          "Ngụ ngôn Ấn Độ",
+          "Đoàn kết",
+          "Bạn hữu"
+        ]
+      },
+      {
+        "num": 3,
+        "day": 73,
+        "topicId": "topic_073",
+        "title": "Thẻ Bị Nuốt",
+        "subtitle": "Báo cáo sự cố thẻ ngân hàng bị nuốt tại cây ATM và yêu cầu hỗ trợ hoàn trả",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_073_background?v=2026-08-04T12%3A15%3A08.741Z",
+        "scenario": "Khu vực máy ATM và phòng giao dịch ngân hàng vào giờ cao điểm buổi chiều.",
+        "purpose": "[18+ • Đời thường] Báo cáo sự cố thẻ ngân hàng bị nuốt tại cây ATM và yêu cầu hỗ trợ hoàn trả",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "15+",
+        "tags": {
+          "age": "15+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "15+",
+          "Đời thường",
+          "Giao tiếp",
+          "Gần gũi"
+        ]
+      },
+      {
+        "num": 4,
+        "day": 74,
+        "topicId": "topic_074",
+        "title": "Kiện Hàng Lạc",
+        "subtitle": "Truy tìm mã vận đơn và làm thủ tục khiếu nại kiện hàng giao nhầm địa chỉ",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_074_background?v=2026-08-04T12%3A15%3A08.758Z",
+        "scenario": "Quầy dịch vụ khách hàng tại một bưu cục trung tâm vào giờ cao điểm buổi chiều đông đúc.",
+        "purpose": "[15+ • Đời thường] Truy tìm mã vận đơn và làm thủ tục khiếu nại kiện hàng giao nhầm địa chỉ",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "15+",
+        "tags": {
+          "age": "15+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "15+",
+          "Đời thường",
+          "Giao tiếp",
+          "Gần gũi"
+        ]
+      },
+      {
+        "num": 5,
+        "day": 75,
+        "topicId": "topic_075",
+        "title": "Cổ tích: Người Thổi Sáo Thành Hamelin",
+        "subtitle": "Đọc Cổ tích Đức: Bài học cảnh tỉnh đắt giá về việc bội ước và coi thường chữ tín",
+        "type": "chest",
+        "status": "locked",
+        "img": "assets/cards/reward_gift_box.jpg",
+        "scenario": "Thành Hamelin rơi vào hoảng loạn khi bầy chuột tàn phá khắp nơi, buộc chính quyền phải nhờ cậy người thổi sáo kỳ lạ với lời hứa trả thù lao hậu hĩnh. Tuy nhiên, sự bội ước của những kẻ cầm quyền khi thảm họa qua đi đã kéo toàn bộ thị trấn vào một bi kịch mới tàn khốc hơn.",
+        "purpose": "[10+ • Cổ tích] Đọc Cổ tích Đức: Bài học cảnh tỉnh đắt giá về việc bội ước và coi thường chữ tín",
+        "lessonType": "story",
+        "genre": "folk_tale",
+        "ageRating": "10+",
+        "tags": {
+          "age": "10+",
+          "genre": "folk_tale",
+          "origin": "western",
+          "moral": "honesty",
+          "mood": "touching"
+        },
+        "display_badges": [
+          "10+",
+          "Cổ tích Đức",
+          "Giữ chữ tín",
+          "Nhân quả"
+        ]
+      },
+      {
+        "num": 6,
+        "day": 76,
+        "topicId": "topic_076",
+        "title": "Hóa Đơn Siêu Thị",
+        "subtitle": "Kiểm tra lại giá khuyến mãi và yêu cầu thu ngân chỉnh sửa hóa đơn siêu thị",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_076_background?v=2026-08-04T12%3A15%3A09.477Z",
+        "scenario": "Khu vực quầy thu ngân của một đại siêu thị sầm uất vào tối cuối tuần.",
+        "purpose": "[15+ • Đời thường] Kiểm tra lại giá khuyến mãi và yêu cầu thu ngân chỉnh sửa hóa đơn siêu thị",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "15+",
+        "tags": {
+          "age": "15+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "adventurous"
+        },
+        "display_badges": [
+          "15+",
+          "Đời thường",
+          "Du lịch",
+          "Linh hoạt"
+        ]
+      },
+      {
+        "num": 7,
+        "day": 77,
+        "topicId": "topic_077",
+        "title": "Mặc Cả Ở Chợ",
+        "subtitle": "Nghệ thuật thương lượng giá cả khéo léo và vui vẻ tại khu chợ bản địa",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_077_background?v=2026-08-04T12%3A15%3A09.770Z",
+        "scenario": "Khu chợ truyền thống tấp nập người qua lại vào buổi sáng sớm.",
+        "purpose": "[15+ • Đời thường] Nghệ thuật thương lượng giá cả khéo léo và vui vẻ tại khu chợ bản địa",
+        "lessonType": "dialogue",
+        "genre": "dialogue_work",
+        "ageRating": "18+",
+        "tags": {
+          "age": "18+",
+          "genre": "dialogue_work",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "witty"
+        },
+        "display_badges": [
+          "18+",
+          "Công sở",
+          "Hợp tác",
+          "Thực chiến"
+        ]
+      },
+      {
+        "num": 8,
+        "day": 78,
+        "topicId": "topic_078",
+        "title": "Cổ tích: Jack và Cây Đậu Thần",
+        "subtitle": "Đọc Cổ tích Nước Anh: Lòng quả cảm phiêu lưu lên lâu đài trên chín tầng mây",
+        "type": "book",
+        "status": "locked",
+        "img": "assets/cards/lumi_farmer_night.png",
+        "scenario": "Đổi lấy vài hạt đậu kỳ lạ để cứu gia đình khỏi cảnh túng thiếu, cậu bé Jack vô tình mở ra con đường vươn thẳng lên tận chín tầng mây. Sự tò mò đã dẫn bước cậu tới tòa lâu đài trên không, nơi ngự trị của một gã khổng lồ hung tàn cùng những báu vật vô giá.",
+        "purpose": "[3+ • Ngụ ngôn] Đọc Cổ tích Nước Anh: Lòng quả cảm phiêu lưu lên lâu đài trên chín tầng mây",
+        "lessonType": "story",
+        "genre": "fairy_tale",
+        "ageRating": "10+",
+        "tags": {
+          "age": "10+",
+          "genre": "fairy_tale",
+          "origin": "western",
+          "moral": "courage",
+          "mood": "adventurous"
+        },
+        "display_badges": [
+          "10+",
+          "Cổ tích Anh",
+          "Phiêu lưu",
+          "Bất ngờ"
+        ]
+      },
+      {
+        "num": 9,
+        "day": 79,
+        "topicId": "topic_079",
+        "title": "Thử Chạy Bộ",
+        "subtitle": "Rủ bạn bè cùng tham gia chạy bộ buổi sáng và trao đổi về lịch tập luyện",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_079_background?v=2026-08-04T12%3A15%3A10.206Z",
+        "scenario": "Khu công viên cây xanh thoáng đãng vào một buổi sáng sớm cuối tuần.",
+        "purpose": "[10+ • Đời thường] Rủ bạn bè cùng tham gia chạy bộ buổi sáng và trao đổi về lịch tập luyện",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "15+",
+        "tags": {
+          "age": "15+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "adventurous"
+        },
+        "display_badges": [
+          "15+",
+          "Đời thường",
+          "Du lịch",
+          "Linh hoạt"
+        ]
+      },
+      {
+        "num": 10,
+        "day": 80,
+        "topicId": "topic_080",
+        "title": "Cãi Về Phim",
+        "subtitle": "Chung kết Vòng 8: Tranh luận sôi nổi và tôn trọng sở thích điện ảnh khác biệt của bạn bè",
+        "type": "boss",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_080_background?v=2026-08-04T12%3A15%3A10.350Z",
+        "scenario": "Phòng khách căn hộ vào một tối cuối tuần khi cả hai đang lướt mạng giải trí.",
+        "purpose": "[15+ • Kỷ niệm] Chung kết Vòng 8: Tranh luận sôi nổi và tôn trọng sở thích điện ảnh khác biệt của bạn bè",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "15+",
+        "tags": {
+          "age": "15+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "courage",
+          "mood": "adventurous"
+        },
+        "display_badges": [
+          "15+",
+          "Chung kết 👑",
+          "Thử thách",
+          "Kịch tính"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "chapterTag": "CHƯƠNG 9 • ĐỈNH NÚI TRUYỀN THUYẾT",
+    "title": "Đỉnh núi truyền thuyết",
+    "progressText": "0/10 bài (Khóa)",
+    "desc": "Khám phá giải trí, internet, mạng xã hội và công nghệ cá nhân.",
+    "image": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/roadmap_stage_09_background?v=20260804-mobile-webp",
+    "activeNodeIndex": -1,
+    "characters": [
+      {
+        "loop": 1,
+        "name": "Thần Rừng Lumi",
+        "role": "Người Dẫn Lối Vòng 1",
+        "img": "assets/cards/lumi_avatar_portrait_clean.png",
+        "quote": "Tô sáng từng vạch màu để đánh thức phép thuật rừng sâu!"
+      },
+      {
+        "loop": 2,
+        "name": "Billy Possum",
+        "role": "Bạn Đồng Hành Vòng 2",
+        "img": "assets/cards/billy_possum_crop_test.png",
+        "quote": "Cố lên! Vòng 2 sẽ mở ra câu chuyện huyền ảo!"
+      }
+    ],
+    "nodes": [
+      {
+        "num": 1,
+        "day": 81,
+        "topicId": "topic_081",
+        "title": "Cổ tích: Puss in Boots: Chú Mèo Đi Hia",
+        "subtitle": "Đọc Cổ tích Perrault: Sự mưu lược, trung thành của chú mèo thông minh giúp chủ nhân thành công",
+        "type": "book",
+        "status": "locked",
+        "img": "assets/cards/lumi_farmer_strawhat.jpg",
+        "scenario": "Nhận được phần thừa kế duy nhất là một chú mèo nhỏ, người con út nghèo khổ chìm trong thất vọng mà không hay biết người bạn nhỏ đang ấp ủ một kế hoạch vô cùng táo bạo. Chỉ với một đôi hia da và trí khôn vô song, chú mèo dấn thân vào chuỗi mưu mẹo liều lĩnh nhằm xoay chuyển hoàn toàn số phận của chủ nhân.",
+        "purpose": "[3+ • Ngụ ngôn] Đọc Cổ tích Perrault: Sự mưu lược, trung thành của chú mèo thông minh giúp chủ nhân thành công",
+        "lessonType": "story",
+        "genre": "fairy_tale",
+        "ageRating": "3+",
+        "tags": {
+          "age": "3+",
+          "genre": "fairy_tale",
+          "origin": "western",
+          "moral": "wisdom",
+          "mood": "witty"
+        },
+        "display_badges": [
+          "3+",
+          "Cổ tích Pháp",
+          "Thông minh",
+          "Hài hước"
+        ]
+      },
+      {
+        "num": 2,
+        "day": 82,
+        "topicId": "topic_082",
+        "title": "Ảnh Sống Ảo",
+        "subtitle": "Nhờ người lạ chụp ảnh hộ và hướng dẫn góc chụp đẹp tại danh lam thắng cảnh",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_082_background?v=2026-08-04T12%3A15%3A10.852Z",
+        "scenario": "Quán cà phê bệt góc phố vào một chiều cuối tuần tấp nập.",
+        "purpose": "[10+ • Đời thường] Nhờ người lạ chụp ảnh hộ và hướng dẫn góc chụp đẹp tại danh lam thắng cảnh",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "15+",
+        "tags": {
+          "age": "15+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "15+",
+          "Đời thường",
+          "Giao tiếp",
+          "Gần gũi"
+        ]
+      },
+      {
+        "num": 3,
+        "day": 83,
+        "topicId": "topic_083",
+        "title": "Sập Mạng Cafe",
+        "subtitle": "Báo cáo sự cố gián đoạn kết nối internet wifi và xin mật khẩu mạng dự phòng",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_083_background?v=2026-08-04T12%3A15%3A12.308Z",
+        "scenario": "Một quán cà phê làm việc yên tĩnh vào giữa buổi chiều.",
+        "purpose": "[15+ • Đời thường] Báo cáo sự cố gián đoạn kết nối internet wifi và xin mật khẩu mạng dự phòng",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "15+",
+        "tags": {
+          "age": "15+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "adventurous"
+        },
+        "display_badges": [
+          "15+",
+          "Đời thường",
+          "Du lịch",
+          "Linh hoạt"
+        ]
+      },
+      {
+        "num": 4,
+        "day": 84,
+        "topicId": "topic_084",
+        "title": "Cổ tích: Cây Tre Trăm Đốt",
+        "subtitle": "Đọc Cổ tích Việt Nam: Người nghèo khó, chăm chỉ thật thà sẽ được bụt ban phép màu chiến thắng bất công",
+        "type": "book",
+        "status": "locked",
+        "img": "assets/cards/lumi_melody_arena.jpg",
+        "scenario": "Hiền lành và chăm chỉ, anh Khoai dốc hết sức làm thuê cho nhà phú ông với niềm tin vào lời hứa gả con gái út sau ba năm miệt mài. Đến ngày hẹn, kẻ tham lam lật lọng, đặt ra điều kiện bất khả thi là một cây tre tròn một trăm đốt nhằm đẩy chàng vào chốn rừng sâu khốc liệt.",
+        "purpose": "[3+ • Cổ tích] Đọc Cổ tích Việt Nam: Người nghèo khó, chăm chỉ thật thà sẽ được bụt ban phép màu chiến thắng bất công",
+        "lessonType": "story",
+        "genre": "folk_tale",
+        "ageRating": "10+",
+        "tags": {
+          "age": "10+",
+          "genre": "folk_tale",
+          "origin": "vietnam",
+          "moral": "persistence",
+          "mood": "witty"
+        },
+        "display_badges": [
+          "10+",
+          "Cổ tích Việt Nam",
+          "Chăm chỉ",
+          "Chính nghĩa"
+        ]
+      },
+      {
+        "num": 5,
+        "day": 85,
+        "topicId": "topic_085",
+        "title": "Tai Nghe Hết Pin",
+        "subtitle": "Xử lý tình huống thiết bị công nghệ hết pin và mượn phụ kiện sạc trên tàu điện",
+        "type": "chest",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_085_background?v=2026-08-04T12%3A15%3A13.025Z",
+        "scenario": "Góc làm việc tại nhà ngay trước giờ họp trực tuyến quan trọng với đối tác quốc tế.",
+        "purpose": "[15+ • Đời thường] Xử lý tình huống thiết bị công nghệ hết pin và mượn phụ kiện sạc trên tàu điện",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "10+",
+        "tags": {
+          "age": "10+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "kindness",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "10+",
+          "Rương báu 🎁",
+          "Gắn kết",
+          "Ấm áp"
+        ]
+      },
+      {
+        "num": 6,
+        "day": 86,
+        "topicId": "topic_086",
+        "title": "Hiểu Lầm Bạn Mới",
+        "subtitle": "Chân thành trò chuyện để xóa bỏ hiểu lầm không đáng có với người bạn mới",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_086_background?v=2026-08-04T12%3A15%3A13.783Z",
+        "scenario": "Phòng họp chung của câu lạc bộ học tập vào tối thứ sáu.",
+        "purpose": "[15+ • Kỷ niệm] Chân thành trò chuyện để xóa bỏ hiểu lầm không đáng có với người bạn mới",
+        "lessonType": "dialogue",
+        "genre": "dialogue_work",
+        "ageRating": "18+",
+        "tags": {
+          "age": "18+",
+          "genre": "dialogue_work",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "witty"
+        },
+        "display_badges": [
+          "18+",
+          "Công sở",
+          "Hợp tác",
+          "Thực chiến"
+        ]
+      },
+      {
+        "num": 7,
+        "day": 87,
+        "topicId": "topic_087",
+        "title": "Cổ tích: Sự Tích Trầu Cau",
+        "subtitle": "Đọc Cổ tích Việt Nam: Biểu tượng thiêng liêng về tình anh em ruột thịt và nghĩa vợ chồng son sắt",
+        "type": "book",
+        "status": "locked",
+        "img": "assets/cards/pixar_night_farm_scenery.jpg",
+        "scenario": "Hai anh em sinh đôi giống nhau như đúc từng gắn bó khăng khít, nhưng sự xuất hiện của người vợ trẻ cùng một hiểu lầm tai hại đã vô tình dựng lên khoảng cách giữa họ. Nỗi u uất và nghi ngại âm thầm đè nặng lên mái nhà tranh, kéo cả ba vào một vòng xoáy trớ trêu của lòng trung thành và sự hối hận.",
+        "purpose": "[10+ • Cổ tích] Đọc Cổ tích Việt Nam: Biểu tượng thiêng liêng về tình anh em ruột thịt và nghĩa vợ chồng son sắt",
+        "lessonType": "story",
+        "genre": "myth_legend",
+        "ageRating": "15+",
+        "tags": {
+          "age": "15+",
+          "genre": "myth_legend",
+          "origin": "vietnam",
+          "moral": "family_filial",
+          "mood": "touching"
+        },
+        "display_badges": [
+          "15+",
+          "Truyền thuyết Việt Nam",
+          "Tình anh em",
+          "Thủy chung"
+        ]
+      },
+      {
+        "num": 8,
+        "day": 88,
+        "topicId": "topic_088",
+        "title": "Hàng Xóm Ồn",
+        "subtitle": "Góp ý nhã nhặn với hàng xóm về việc giữ trật tự chung trong giờ nghỉ ngơi",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_088_background?v=2026-08-04T12%3A15%3A18.465Z",
+        "scenario": "Khu vực hành lang chung của tòa chung cư vào một đêm muộn.",
+        "purpose": "[18+ • Đời thường] Góp ý nhã nhặn với hàng xóm về việc giữ trật tự chung trong giờ nghỉ ngơi",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "15+",
+        "tags": {
+          "age": "15+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "15+",
+          "Đời thường",
+          "Giao tiếp",
+          "Gần gũi"
+        ]
+      },
+      {
+        "num": 9,
+        "day": 89,
+        "topicId": "topic_089",
+        "title": "Mèo Nghịch",
+        "subtitle": "Kể về trò nghịch ngợm đáng yêu của thú cưng và học từ vựng về chăm sóc động vật",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_089_background?v=2026-08-04T12%3A15%3A21.870Z",
+        "scenario": "Phòng khách căn hộ chung cư vào một buổi tối cuối tuần.",
+        "purpose": "[3+ • Ngụ ngôn] Kể về trò nghịch ngợm đáng yêu của thú cưng và học từ vựng về chăm sóc động vật",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "3+",
+        "tags": {
+          "age": "3+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "kindness",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "3+",
+          "Kỷ niệm",
+          "Tình bạn",
+          "Ấm áp"
+        ]
+      },
+      {
+        "num": 10,
+        "day": 90,
+        "topicId": "topic_090",
+        "title": "Cổ tích: Thạch Sanh",
+        "subtitle": "Chung kết Vòng 9: Chàng dũng sĩ diệt chằn tinh, tiếng đàn hòa bình cảm hóa quân thù",
+        "type": "boss",
+        "status": "locked",
+        "img": "assets/cards/deck_box_cover.jpg",
+        "scenario": "Mồ côi và sống cô độc dưới gốc đa cổ thụ, chàng tiều phu Thạch Sanh thật thà không hề hay biết bản thân trở thành mục tiêu lợi dụng của gã gian hùng Lý Thông. Liên tục bị đẩy vào những hiểm nguy cận kề cái chết và bị tước đoạt công trạng, chàng phải đối mặt với muôn vàn lọc lừa để bảo vệ lẽ phải.",
+        "purpose": "[10+ • Cổ tích] Chung kết Vòng 9: Chàng dũng sĩ diệt chằn tinh, tiếng đàn hòa bình cảm hóa quân thù",
+        "lessonType": "story",
+        "genre": "myth_legend",
+        "ageRating": "10+",
+        "tags": {
+          "age": "10+",
+          "genre": "myth_legend",
+          "origin": "vietnam",
+          "moral": "courage",
+          "mood": "adventurous"
+        },
+        "display_badges": [
+          "10+",
+          "Cổ tích Việt Nam",
+          "Trượng nghĩa",
+          "Dũng cảm"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "chapterTag": "CHƯƠNG 10 • KHO BÁU CUỐI HÀNH TRÌNH",
+    "title": "Kho báu cuối hành trình",
+    "progressText": "0/10 bài (Khóa)",
+    "desc": "Kết nối quan hệ, ngày lễ, kế hoạch, kể chuyện và ôn tập hội thoại.",
+    "image": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/roadmap_stage_10_background?v=20260804-mobile-webp",
+    "activeNodeIndex": -1,
+    "characters": [
+      {
+        "loop": 1,
+        "name": "Bác Soát Vé Lumi",
+        "role": "Người Dẫn Lối Vòng 1",
+        "img": "assets/cards/lumi_avatar_portrait_clean.png",
+        "quote": "Vé tàu đêm đang chờ kiểm tra!"
+      },
+      {
+        "loop": 2,
+        "name": "Billy Bụi Đời",
+        "role": "Bạn Đồng Hành Vòng 2",
+        "img": "assets/cards/billy_possum_crop_test.png",
+        "quote": "Toa tàu số 7 sắp khởi hành!"
+      }
+    ],
+    "nodes": [
+      {
+        "num": 1,
+        "day": 91,
+        "topicId": "topic_091",
+        "title": "Quà Đêm Giao Thừa",
+        "subtitle": "Trao gửi món quà ý nghĩa và lời chúc tốt đẹp vào đêm giao thừa sum họp",
+        "type": "star",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_091_background?v=2026-08-04T12%3A15%3A22.831Z",
+        "scenario": "Phòng khách trang hoàng lộng lẫy vào đêm giao thừa Tết Nguyên Đán.",
+        "purpose": "[10+ • Kỷ niệm] Trao gửi món quà ý nghĩa và lời chúc tốt đẹp vào đêm giao thừa sum họp",
+        "lessonType": "dialogue",
+        "genre": "dialogue_work",
+        "ageRating": "18+",
+        "tags": {
+          "age": "18+",
+          "genre": "dialogue_work",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "witty"
+        },
+        "display_badges": [
+          "18+",
+          "Công sở",
+          "Hợp tác",
+          "Thực chiến"
+        ]
+      },
+      {
+        "num": 2,
+        "day": 92,
+        "topicId": "topic_092",
+        "title": "Bánh Sinh Nhật",
+        "subtitle": "Lên ý tưởng trang trí và đặt bánh kem đặc biệt cho bữa tiệc sinh nhật người thân",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_092_background?v=2026-08-04T12%3A15%3A23.338Z",
+        "scenario": "Không gian bếp ấm cúng của căn hộ vào tối ngày sinh nhật.",
+        "purpose": "[10+ • Kỷ niệm] Lên ý tưởng trang trí và đặt bánh kem đặc biệt cho bữa tiệc sinh nhật người thân",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "10+",
+        "tags": {
+          "age": "10+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "kindness",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "10+",
+          "Kỷ niệm",
+          "Tình bạn",
+          "Ấm áp"
+        ]
+      },
+      {
+        "num": 3,
+        "day": 93,
+        "topicId": "topic_093",
+        "title": "Cổ tích: Sơn Tinh Thủy Tinh",
+        "subtitle": "Đọc Truyền thuyết Việt Nam: Ý chí kiên cường chống chọi thiên tai, mở mang bờ cõi",
+        "type": "book",
+        "status": "locked",
+        "img": "assets/cards/lumi_rain_coffee_eaves.jpg",
+        "scenario": "Để chọn hiền rể cho công chúa Mỵ Nương, Vua Hùng đặt ra thử thách sính lễ tốn nhiều công sức giữa Sơn Tinh và Thủy Tinh. Sự chậm chân của thần biển đã châm ngòi cho một cơn thịnh nộ dữ dội, kéo cả vùng châu thổ vào cuộc chiến sinh tồn giữa dời núi lấp biển và dâng nước cuồng phong.",
+        "purpose": "[10+ • Cổ tích] Đọc Truyền thuyết Việt Nam: Ý chí kiên cường chống chọi thiên tai, mở mang bờ cõi",
+        "lessonType": "story",
+        "genre": "myth_legend",
+        "ageRating": "10+",
+        "tags": {
+          "age": "10+",
+          "genre": "myth_legend",
+          "origin": "vietnam",
+          "moral": "courage",
+          "mood": "adventurous"
+        },
+        "display_badges": [
+          "10+",
+          "Thần thoại Việt Nam",
+          "Sức mạnh tự nhiên",
+          "Kỳ vĩ"
+        ]
+      },
+      {
+        "num": 4,
+        "day": 94,
+        "topicId": "topic_094",
+        "title": "Lịch Kỳ Nghỉ",
+        "subtitle": "Lên kế hoạch nghỉ phép dài ngày và bàn giao công việc chu toàn cho đồng nghiệp",
+        "type": "video",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_094_background?v=2026-08-04T12%3A15%3A24.412Z",
+        "scenario": "Phòng khách nhà chung vào một buổi tối cuối tuần khi đang bàn về chuyến du lịch sắp tới.",
+        "purpose": "[18+ • Công sở] Lên kế hoạch nghỉ phép dài ngày và bàn giao công việc chu toàn cho đồng nghiệp",
+        "lessonType": "dialogue",
+        "genre": "dialogue_work",
+        "ageRating": "18+",
+        "tags": {
+          "age": "18+",
+          "genre": "dialogue_work",
+          "origin": "vietnam",
+          "moral": "collaboration",
+          "mood": "witty"
+        },
+        "display_badges": [
+          "18+",
+          "Công sở",
+          "Hợp tác",
+          "Thực chiến"
+        ]
+      },
+      {
+        "num": 5,
+        "day": 95,
+        "topicId": "topic_095",
+        "title": "Quy Tắc Ứng Xử",
+        "subtitle": "Thảo luận và tuân thủ các quy tắc ứng xử văn minh trong môi trường đa quốc gia",
+        "type": "chest",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_095_background?v=2026-08-04T12%3A15%3A24.415Z",
+        "scenario": "Phòng làm việc của văn phòng vào cuối giờ chiều sau một buổi họp quan trọng.",
+        "purpose": "[18+ • Công sở] Thảo luận và tuân thủ các quy tắc ứng xử văn minh trong môi trường đa quốc gia",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "10+",
+        "tags": {
+          "age": "10+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "kindness",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "10+",
+          "Rương báu 🎁",
+          "Gắn kết",
+          "Ấm áp"
+        ]
+      },
+      {
+        "num": 6,
+        "day": 96,
+        "topicId": "topic_096",
+        "title": "Cổ tích: Anansi và Hũ Trí Khôn",
+        "subtitle": "Đọc Cổ tích Châu Phi: Trí tuệ thuộc về toàn nhân loại, giữ khư khư cho riêng mình là sai lầm",
+        "type": "book",
+        "status": "locked",
+        "img": "assets/cards/lumi_train_station_night.jpg",
+        "scenario": "Nổi tiếng tinh ranh nhưng tham lam, chú nhện Anansi quyết tâm thu gom toàn bộ trí khôn trên cõi đời rồi nhốt chặt vào một chiếc hũ đất nung. Mục đích độc chiếm sự thông thái của gã bỗng gặp trở ngại lớn khi gã đối mặt với việc giấu chiếc hũ cồng kềnh lên đỉnh cây cao.",
+        "purpose": "[3+ • Ngụ ngôn] Đọc Cổ tích Châu Phi: Trí tuệ thuộc về toàn nhân loại, giữ khư khư cho riêng mình là sai lầm",
+        "lessonType": "story",
+        "genre": "fable",
+        "ageRating": "3+",
+        "tags": {
+          "age": "3+",
+          "genre": "fable",
+          "origin": "africa",
+          "moral": "wisdom",
+          "mood": "witty"
+        },
+        "display_badges": [
+          "3+",
+          "Dân gian Châu Phi",
+          "Khiêm tốn",
+          "Hóm hỉnh"
+        ]
+      },
+      {
+        "num": 7,
+        "day": 97,
+        "topicId": "topic_097",
+        "title": "Cổ tích: Người Thợ Đóng Giày và Những Chú Lùn",
+        "subtitle": "Đọc Cổ tích Grimm: Lòng tốt âm thầm được đền đáp bằng sự trợ giúp kỳ diệu",
+        "type": "book",
+        "status": "locked",
+        "img": "assets/cards/pixar_night_farm_scenery.jpg",
+        "scenario": "Nghèo xơ xác đến mức chỉ còn đủ da cho một đôi giày cuối cùng, vợ chồng người thợ già đành đặt cược hy vọng vào buổi sáng hôm sau. Thế nhưng, khi bình minh vừa hé rạng, sự xuất hiện của những sản phẩm tinh xảo một cách bí ẩn đã hoàn toàn đảo ngược cuộc sống túng thiếu của họ.",
+        "purpose": "[3+ • Ngụ ngôn] Đọc Cổ tích Grimm: Lòng tốt âm thầm được đền đáp bằng sự trợ giúp kỳ diệu",
+        "lessonType": "story",
+        "genre": "fairy_tale",
+        "ageRating": "3+",
+        "tags": {
+          "age": "3+",
+          "genre": "fairy_tale",
+          "origin": "western",
+          "moral": "kindness",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "3+",
+          "Cổ tích Grimm",
+          "Cần cù",
+          "Ơn nghĩa"
+        ]
+      },
+      {
+        "num": 8,
+        "day": 98,
+        "topicId": "topic_098",
+        "title": "Cổ tích: Chiếc Nồi Cháo Thần",
+        "subtitle": "Đọc Cổ tích Grimm: Phép màu của sự no ấm và bài học ghi nhớ lời hướng dẫn",
+        "type": "book",
+        "status": "locked",
+        "img": "assets/cards/lumi_farmer_night.png",
+        "scenario": "Được tặng một chiếc nồi đất thần kỳ nhờ tấm lòng nhân hậu, cô bé nghèo cùng mẹ không còn phải chịu đựng những ngày tháng đói rét. Biến cố xảy ra khi người mẹ tự mình đọc thần chú nấu cháo nhưng lại quên mất câu lệnh dừng, khiến dòng cháo tràn qua gian bếp rồi tràn ngập cả làng.",
+        "purpose": "[3+ • Ngụ ngôn] Đọc Cổ tích Grimm: Phép màu của sự no ấm và bài học ghi nhớ lời hướng dẫn",
+        "lessonType": "story",
+        "genre": "fairy_tale",
+        "ageRating": "3+",
+        "tags": {
+          "age": "3+",
+          "genre": "fairy_tale",
+          "origin": "western",
+          "moral": "kindness",
+          "mood": "cozy"
+        },
+        "display_badges": [
+          "3+",
+          "Cổ tích Grimm",
+          "Lòng nhân hậu",
+          "No ấm"
+        ]
+      },
+      {
+        "num": 9,
+        "day": 99,
+        "topicId": "topic_099",
+        "title": "Cổ tích: Bộ Quần Áo Mới Của Hoàng Đế",
+        "subtitle": "Đọc Truyện Andersen: Sự mù quáng trước thói nịnh hót và sự dũng cảm của đứa trẻ nói lên sự thật",
+        "type": "book",
+        "status": "locked",
+        "img": "assets/cards/lumi_progress_celebration.jpg",
+        "scenario": "Nổi tiếng với niềm say mê hoàng bào vượt xa nỗi lo triều chính, vị hoàng đế dễ dàng mắc bẫy hai kẻ lừa đảo tự xưng biết dệt loại vải vô hình với kẻ ngu ngốc. Lòng kiêu hãnh cùng nỗi sợ bị coi là yếu kém đã cuốn cả triều đình lẫn người dân vào một vương quốc dối trá.",
+        "purpose": "[10+ • Cổ tích] Đọc Truyện Andersen: Sự mù quáng trước thói nịnh hót và sự dũng cảm của đứa trẻ nói lên sự thật",
+        "lessonType": "story",
+        "genre": "fairy_tale",
+        "ageRating": "10+",
+        "tags": {
+          "age": "10+",
+          "genre": "fairy_tale",
+          "origin": "western",
+          "moral": "honesty",
+          "mood": "witty"
+        },
+        "display_badges": [
+          "10+",
+          "Cổ tích Andersen",
+          "Sự thật",
+          "Dũng khí trẻ thơ"
+        ]
+      },
+      {
+        "num": 10,
+        "day": 100,
+        "topicId": "topic_100",
+        "title": "Bữa Tối Kỷ Niệm",
+        "subtitle": "Đại Chung Kết 100 Ngày: Bữa tối ấm cúng tri ân bạn bè và nhìn lại hành trình trưởng thành kỳ diệu",
+        "type": "boss",
+        "status": "locked",
+        "img": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/lesson_100_background?v=2026-08-04T12%3A15%3A31.365Z",
+        "scenario": "Không gian sang trọng nhưng đầy áp lực của một nhà hàng cao cấp ở trung tâm thành phố vào tối kỷ niệm.",
+        "purpose": "[15+ • Kỷ niệm] Đại Chung Kết 100 Ngày: Bữa tối ấm cúng tri ân bạn bè và nhìn lại hành trình trưởng thành kỳ diệu",
+        "lessonType": "dialogue",
+        "genre": "dialogue_daily",
+        "ageRating": "15+",
+        "tags": {
+          "age": "15+",
+          "genre": "dialogue_daily",
+          "origin": "vietnam",
+          "moral": "courage",
+          "mood": "adventurous"
+        },
+        "display_badges": [
+          "15+",
+          "Chung kết 👑",
+          "Thử thách",
+          "Kịch tính"
+        ]
+      }
+    ]
+  }
+]

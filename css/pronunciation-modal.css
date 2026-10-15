@@ -1,0 +1,523 @@
+/* ======================================================== */
+/* 🎙️ PRONUNCIATION ASSESSMENT STUDIO — M3-07 DARK OLIVE    */
+/* Dual AI Engine: Azure Speech S0 & SpeechAce / Conversaflex */
+/* ======================================================== */
+
+#screenPronunciation {
+    --pr-primary: var(--m3-on-primary-container);
+    --pr-on-primary: var(--m3-on-surface);
+    --pr-primary-container: var(--m3-primary-container);
+    --pr-on-primary-container: var(--m3-on-primary);
+    --pr-surface: var(--m3-surface-container-low);
+    --pr-on-surface: var(--m3-surface);
+    --pr-surface-card: var(--m3-on-surface);
+    --pr-border: rgba(119, 120, 107, 0.28);
+    --pr-score-good: var(--m3-primary);
+    --pr-score-warn: var(--m3-amber-glow);
+    --pr-score-bad: var(--m3-error);
+    background-color: var(--m3-surface);
+    color: var(--m3-on-surface);
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
+}
+
+html.dark #screenPronunciation {
+    --pr-primary: var(--m3-primary);
+    --pr-on-primary: var(--m3-on-primary-container);
+    --pr-primary-container: var(--m3-primary-container);
+    --pr-on-primary-container: var(--m3-primary-container);
+    --pr-surface: var(--m3-surface-container-lowest);
+    --pr-on-surface: var(--m3-on-surface);
+    --pr-surface-card: var(--m3-surface);
+    --pr-border: rgba(119, 120, 107, 0.35);
+    --pr-score-good: var(--m3-primary-container);
+    --pr-score-warn: var(--m3-amber-glow);
+    --pr-score-bad: var(--m3-error);
+    background-color: var(--m3-surface-container-lowest);
+    color: var(--m3-on-surface);
+}
+
+/* 1. Header Bar */
+#screenPronunciation .pr-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: max(env(safe-area-inset-top), 42px) 18px 12px;
+    background: rgba(250, 248, 240, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--pr-border);
+    position: sticky;
+    top: 0;
+    z-index: 30;
+}
+
+html.dark #screenPronunciation .pr-header {
+    background: rgba(18, 20, 14, 0.88);
+}
+
+/* 2. Engine Switcher Toggle */
+.pr-engine-toggle {
+    display: flex;
+    align-items: center;
+    background: rgba(82, 102, 0, 0.08);
+    border: 1px solid var(--pr-border);
+    border-radius: 999px;
+    padding: 3px;
+    gap: 2px;
+}
+
+html.dark .pr-engine-toggle {
+    background: rgba(184, 209, 102, 0.1);
+}
+
+.pr-engine-btn {
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--pr-on-surface);
+    opacity: 0.7;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    background: transparent;
+}
+
+.pr-engine-btn.is-active {
+    background: var(--pr-primary);
+    color: var(--pr-on-primary);
+    opacity: 1;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* 3. Word Chips Horizontal Scroller */
+.pr-chip-scroll {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 12px 18px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+.pr-chip-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.pr-chip {
+    flex-shrink: 0;
+    padding: 7px 14px;
+    border-radius: 16px;
+    border: 1px solid var(--pr-border);
+    background: var(--pr-surface-card);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--pr-on-surface);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.pr-chip:hover {
+    border-color: var(--pr-primary);
+    transform: translateY(-1px);
+}
+
+.pr-chip.is-active {
+    background: var(--pr-primary-container);
+    color: var(--pr-on-primary-container);
+    border-color: var(--pr-primary);
+    box-shadow: 0 2px 8px rgba(82, 102, 0, 0.2);
+}
+
+/* 4. Target Card (Hero Word Presentation) */
+.pr-target-card {
+    background: var(--pr-surface-card);
+    border: 1px solid var(--pr-border);
+    border-radius: 24px;
+    padding: 22px 20px;
+    margin: 0 18px 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+    position: relative;
+    overflow: hidden;
+}
+
+html.dark .pr-target-card {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+.pr-target-word {
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: var(--pr-on-surface);
+}
+
+.pr-target-ipa {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--pr-primary);
+    margin-top: 4px;
+    font-weight: 600;
+}
+
+.pr-target-meaning {
+    font-size: 13.5px;
+    color: var(--pr-on-surface);
+    opacity: 0.8;
+    margin-top: 8px;
+    line-height: 1.45;
+}
+
+/* 5. Giant Mic & Recording Station */
+.pr-mic-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 18px 0 14px;
+}
+
+.pr-mic-button {
+    width: 82px;
+    height: 82px;
+    border-radius: 50%;
+    background: var(--pr-primary);
+    color: var(--pr-on-primary);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 6px 24px rgba(82, 102, 0, 0.35);
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.pr-mic-button:hover {
+    transform: scale(1.06);
+    box-shadow: 0 8px 30px rgba(82, 102, 0, 0.45);
+}
+
+.pr-mic-button:active {
+    transform: scale(0.92);
+}
+
+/* Recording State Waves */
+.pr-mic-button.is-recording {
+    background: var(--m3-error) !important;
+    animation: pr-pulse-glow 1.4s ease-in-out infinite alternate;
+}
+
+@keyframes pr-pulse-glow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.5), 0 0 0 8px rgba(220, 38, 38, 0.25);
+    }
+    100% {
+        box-shadow: 0 0 0 12px rgba(220, 38, 38, 0.35), 0 0 0 24px rgba(220, 38, 38, 0);
+    }
+}
+
+/* Live Audio Waveform (8 bars) */
+.pr-wave-container {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 32px;
+    margin-top: 12px;
+}
+
+.pr-wave-bar {
+    width: 4px;
+    height: 8px;
+    background: var(--pr-primary);
+    border-radius: 999px;
+    transition: height 0.15s ease;
+}
+
+.pr-wave-container.is-active .pr-wave-bar {
+    animation: pr-wave-jump 0.8s ease-in-out infinite alternate;
+}
+
+.pr-wave-container.is-active .pr-wave-bar:nth-child(1) { animation-delay: 0.1s; }
+.pr-wave-container.is-active .pr-wave-bar:nth-child(2) { animation-delay: 0.3s; }
+.pr-wave-container.is-active .pr-wave-bar:nth-child(3) { animation-delay: 0.2s; }
+.pr-wave-container.is-active .pr-wave-bar:nth-child(4) { animation-delay: 0.4s; }
+.pr-wave-container.is-active .pr-wave-bar:nth-child(5) { animation-delay: 0.15s; }
+.pr-wave-container.is-active .pr-wave-bar:nth-child(6) { animation-delay: 0.35s; }
+.pr-wave-container.is-active .pr-wave-bar:nth-child(7) { animation-delay: 0.25s; }
+.pr-wave-container.is-active .pr-wave-bar:nth-child(8) { animation-delay: 0.45s; }
+
+@keyframes pr-wave-jump {
+    0% { height: 6px; }
+    100% { height: 28px; }
+}
+
+/* 6. Assessment Results Card */
+.pr-results-card {
+    background: var(--pr-surface-card);
+    border: 1px solid var(--pr-border);
+    border-radius: 24px;
+    padding: 20px;
+    margin: 0 18px 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    animation: pr-slide-up 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes pr-slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Overall Radial Score Gauge */
+.pr-radial-gauge {
+    position: relative;
+    width: 104px;
+    height: 104px;
+    flex-shrink: 0;
+}
+
+.pr-radial-svg {
+    transform: rotate(-90deg);
+    width: 100%;
+    height: 100%;
+}
+
+.pr-radial-bg {
+    fill: none;
+    stroke: rgba(119, 120, 107, 0.18);
+    stroke-width: 8;
+}
+
+.pr-radial-fill {
+    fill: none;
+    stroke: var(--pr-primary);
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 264;
+    stroke-dashoffset: 264;
+    transition: stroke-dashoffset 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pr-radial-score-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+/* 4-Dimensions Grid (Accuracy, Fluency, Completeness, Prosody) */
+.pr-dim-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.pr-dim-item {
+    background: rgba(82, 102, 0, 0.05);
+    border: 1px solid var(--pr-border);
+    border-radius: 14px;
+    padding: 10px 12px;
+}
+
+html.dark .pr-dim-item {
+    background: rgba(184, 209, 102, 0.06);
+}
+
+.pr-dim-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--pr-on-surface);
+    opacity: 0.75;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.pr-dim-val {
+    font-size: 17px;
+    font-weight: 900;
+    color: var(--pr-on-surface);
+    margin-top: 2px;
+}
+
+.pr-progress-track {
+    width: 100%;
+    height: 5px;
+    border-radius: 999px;
+    background: rgba(119, 120, 107, 0.2);
+    margin-top: 6px;
+    overflow: hidden;
+}
+
+.pr-progress-bar {
+    height: 100%;
+    border-radius: 999px;
+    background: var(--pr-primary);
+    transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 7. Phoneme Breakdown Chips (IPA Granularity) */
+.pr-phoneme-container {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--pr-border);
+}
+
+.pr-phoneme-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.pr-phoneme-pill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--pr-surface);
+    border: 1.5px solid var(--pr-border);
+    border-radius: 12px;
+    padding: 6px 10px;
+    min-width: 42px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.pr-phoneme-pill:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.pr-phoneme-pill.is-good {
+    border-color: var(--pr-score-good);
+}
+.pr-phoneme-pill.is-good .pr-ph-score {
+    color: var(--pr-score-good);
+}
+
+.pr-phoneme-pill.is-warn {
+    border-color: var(--pr-score-warn);
+    background: rgba(217, 119, 6, 0.06);
+}
+.pr-phoneme-pill.is-warn .pr-ph-score {
+    color: var(--pr-score-warn);
+}
+
+.pr-phoneme-pill.is-bad {
+    border-color: var(--pr-score-bad);
+    background: rgba(220, 38, 38, 0.08);
+}
+.pr-phoneme-pill.is-bad .pr-ph-score {
+    color: var(--pr-score-bad);
+}
+
+.pr-ph-symbol {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.pr-ph-score {
+    font-size: 10.5px;
+    font-weight: 800;
+    margin-top: 1px;
+}
+
+/* 8. Vietnamese Mispronunciation Box (SpeechAce sound_most_like) */
+.pr-coach-box {
+    margin-top: 16px;
+    padding: 14px 16px;
+    border-radius: 18px;
+    background: rgba(245, 158, 11, 0.08);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+html.dark .pr-coach-box {
+    background: rgba(245, 158, 11, 0.12);
+    border-color: rgba(245, 158, 11, 0.45);
+}
+
+.pr-coach-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: contain;
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.2));
+}
+
+.pr-coach-text {
+    font-size: 12.5px;
+    line-height: 1.45;
+    color: var(--pr-on-surface);
+}
+
+/* 9. Bottom Actions */
+.pr-action-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.pr-btn-outline {
+    flex: 1;
+    height: 46px;
+    border-radius: 14px;
+    border: 1px solid var(--pr-border);
+    background: transparent;
+    color: var(--pr-on-surface);
+    font-size: 13.5px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.pr-btn-outline:active {
+    transform: scale(0.97);
+    background: rgba(119, 120, 107, 0.12);
+}
+
+.pr-btn-primary {
+    flex: 1.2;
+    height: 46px;
+    border-radius: 14px;
+    border: none;
+    background: var(--pr-primary);
+    color: var(--pr-on-primary);
+    font-size: 13.5px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(82, 102, 0, 0.25);
+    transition: all 0.2s ease;
+}
+
+.pr-btn-primary:active {
+    transform: scale(0.97);
+}
