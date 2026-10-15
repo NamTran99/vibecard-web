@@ -211,18 +211,9 @@
         const useSentenceVi = Boolean(isFullSentence && matched.translation && matched.translation.trim());
         const cleanIpa = (!isPhrase && resolved.ipa && resolved.ipa !== "/.../") ? resolved.ipa : "";
         state.activePopupWord = { tokenIndex: draft[0].index, tokenIndices: draft.map(t => t.index), word: combinedTerm, isPhrase, isFullSentence, wordCount: draft.length, ipa: cleanIpa, pos: isFullSentence ? "CÂU TRUYỆN" : (isPhrase ? "CỤM / CÂU" : (resolved.pos || "TỪ VỰNG")), meaning: useSentenceVi ? matched.translation.trim() : ((resolved.needsLiveTranslate && isPhrase) ? "Đang dịch..." : (resolved.meaning || "")), needsLiveTranslate: useSentenceVi ? false : Boolean(resolved.needsLiveTranslate), sentenceIdx: sIdx, sentenceEn: matched.text, sentenceVi: matched.translation };
-        window.StoryReaderUI.refreshParagraphHighlights(); renderPopupWordStrip(draft, sentTokens);
+        window.StoryReaderUI.refreshParagraphHighlights();
         showStoryWordActionPopupAtElement(targetEl, state.activePopupWord, bridgedTargetTerm);
         if (state.activePopupWord.needsLiveTranslate) enrichPopupWordLive(state.activePopupWord);
-    }
-
-    function renderPopupWordStrip(draft, sentTokens) {
-        const stripEl = document.getElementById('storyActionPopupWordStrip'), allTokens = (window.StoryReaderState && window.StoryReaderState.currentPartTokens) || [];
-        if (!stripEl || !draft || !draft.length || !allTokens.length) { if (stripEl) stripEl.innerHTML = ""; return; }
-        const minIdx = draft[0].index, maxIdx = draft[draft.length - 1].index, sIdx = draft[0].sentenceIdx, tokens = sentTokens || allTokens.filter(t => t.sentenceIdx === sIdx);
-        const chips = tokens.map(t => `<button type="button" onclick="onStoryWordTap(event, ${t.index}, '${encodeURIComponent(t.value)}', ${t.sentenceIdx}, true)" class="story-strip-chip ${(t.index >= minIdx && t.index <= maxIdx) ? 'in-phrase' : ''}">${(t.index >= minIdx && t.index <= maxIdx) ? '' : '<span class="strip-plus">+</span>'}${t.value}</button>`);
-        if (tokens.length > 1 && draft.length < tokens.length) chips.push(`<button type="button" onclick="selectEntireStorySentenceFromPopup()" class="story-strip-chip is-select-all-chip">Chọn cả câu (${tokens.length})</button>`);
-        stripEl.innerHTML = chips.join('');
     }
 
     async function enrichPopupWordLive(popupItem) {
