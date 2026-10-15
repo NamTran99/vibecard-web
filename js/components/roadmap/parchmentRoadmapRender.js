@@ -222,10 +222,17 @@ function renderRoadmapNodes(chapter, opts = {}) {
     const nodesContainer = document.getElementById('roadmapNodesContainer');
     if (!nodesContainer) return;
 
-    const characters = chapter.characters || [
-        { name: 'Thần Rừng Lumi', img: 'assets/cards/lumi_avatar_portrait_clean.png' },
-        { name: 'Billy Possum', img: 'assets/cards/billy_possum_crop_test.png' }
+    const rawCharacters = chapter.characters || [
+        { name: 'Thần Rừng Lumi', img: 'assets/create/lumi_fox.png' },
+        { name: 'Lumi Nhà Thám Hiểm', img: 'assets/library/lumi_reading_fox.webp' }
     ];
+    const characters = rawCharacters.map((c, idx) => {
+        const isLegacyImg = !c.img || c.img.includes('lumi_avatar_portrait_clean') || c.img.includes('billy_possum_crop_test');
+        return Object.assign({}, c, {
+            name: (c.name === 'Billy Possum') ? 'Lumi Nhà Thám Hiểm' : (c.name || 'Thần Rừng Lumi'),
+            img: isLegacyImg ? (idx % 2 === 0 ? 'assets/create/lumi_fox.png' : 'assets/library/lumi_reading_fox.webp') : c.img
+        });
+    });
 
     const locked = isRoadmapChapterLocked(chapter);
     const loops = Math.ceil(chapter.nodes.length / ROADMAP_LESSONS_PER_LOOP);

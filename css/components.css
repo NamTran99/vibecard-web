@@ -211,9 +211,13 @@
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cinzel:wght@700;900&display=swap');
 
         .parchment-bg {
-            background-color: var(--m3-primary-container) !important;
+            background-color: var(--m3-surface-container-low) !important;
             background-image: none !important;
             box-shadow: none !important;
+        }
+
+        html.dark .parchment-bg {
+            background-color: var(--m3-surface-container-lowest) !important;
         }
 
         .paper-texture {

@@ -53,8 +53,8 @@
     </script>
     <link rel="stylesheet" href="css/m3-tokens.css?v=20261009_exact">
     <link rel="stylesheet" href="css/animations.css?v=20261009_exact">
-    <link rel="stylesheet" href="css/components.css?v=20261013_flashcard_android_1to1">
-    <link rel="stylesheet" href="css/roadmap-timeline.css?v=20261013_m3_warmth">
+    <link rel="stylesheet" href="css/components.css?v=20261015_m3_v45">
+    <link rel="stylesheet" href="css/roadmap-timeline.css?v=20261015_m3_v45">
     <link rel="stylesheet" href="css/create-circle.css?v=20261012_m3_audit_clean">
     <link rel="stylesheet" href="css/lumi-wakeup.css?v=20261010_wakeup">
     <link rel="stylesheet" href="css/pronunciation-modal.css?v=20261012_v1">
@@ -63,7 +63,7 @@
     <link rel="stylesheet" href="css/components/storyWordLookup.css?v=20261015_m3_v43">
     <link rel="stylesheet" href="css/components/storyFlippableCard.css?v=20261015_m3_v42">
     <link rel="stylesheet" href="css/components/bottomNav.css?v=20261012_pill">
-    <link rel="stylesheet" href="css/roadmap-mystery.css?v=20261013_mystery_v1">
+    <link rel="stylesheet" href="css/roadmap-mystery.css?v=20261015_m3_v45">
 </head>
 <body class="h-[820px] w-full max-w-[420px] mx-auto relative overflow-hidden bg-appBg border border-white/10 shadow-[0_30px_100px_rgba(0,0,0,0.9)] rounded-[48px] mt-3 sm:mt-5 mb-6 flex flex-col">
     
@@ -1929,20 +1929,20 @@
         <!-- Top Floating Header Navigation Bar -->
         <div id="mysteryRoadmapTopBar" class="absolute top-0 left-0 right-0 z-30 flex items-center justify-between px-3.5 pt-2.5 sm:pt-2.5 pb-2 pointer-events-none transition-all duration-300">
             <!-- Back Button -->
-            <button id="mysteryRoadmapBackBtn" onclick="closeMysteryRoadmap()" class="w-10 h-10 rounded-full flex items-center justify-center active:scale-90 transition-all shadow-sm cursor-pointer shrink-0 pointer-events-auto bg-black/40 text-white/90 border border-white/10" title="Quay lại Trang chủ">
+            <button id="mysteryRoadmapBackBtn" onclick="closeMysteryRoadmap()" class="w-10 h-10 rounded-full flex items-center justify-center active:scale-90 transition-all shadow-sm cursor-pointer shrink-0 pointer-events-auto" title="Quay lại Trang chủ">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
                 </svg>
             </button>
             
-            <!-- Center Title -->
-            <div class="flex flex-col items-center max-w-[200px] pointer-events-auto">
-                <span class="text-[#FBBF24] text-[10px] tracking-[0.25em] uppercase font-black" style="font-family: 'Cinzel', serif;">CHƯƠNG 1 • RPG MODE</span>
-                <h1 class="text-[15px] sm:text-[16px] font-black text-white tracking-wide truncate border-none pb-0 drop-shadow-none" style="font-family: 'Playfair Display', serif;">Khu Rừng Bí Ẩn</h1>
+            <!-- Center Title Pill (Hidden at top of hero, slides in when scrolled) -->
+            <div id="mysteryRoadmapTitlePill" class="flex flex-col items-center px-3 py-1 rounded-2xl max-w-[210px] sm:max-w-[260px]">
+                <span id="mysteryHeaderEyebrow" class="text-[var(--m3-primary)] text-[10px] tracking-[0.22em] uppercase font-black" style="font-family: 'Cinzel', serif;">CHƯƠNG 1 • RPG</span>
+                <h1 id="mysteryHeaderTitle" class="text-[15px] sm:text-[16px] font-black text-[var(--m3-on-surface)] tracking-wide truncate border-none pb-0 drop-shadow-none" style="font-family: 'Playfair Display', serif;">Khu Rừng Bí Ẩn</h1>
             </div>
 
             <!-- Switcher back to Classic Roadmap -->
-            <button type="button" onclick="switchToClassicRoadmap()" class="pointer-events-auto px-2.5 py-1 rounded-full bg-white/10 hover:bg-white/15 border border-white/20 text-white/90 text-[11px] font-bold flex items-center gap-1 active:scale-95 transition-all cursor-pointer shadow-sm shrink-0" title="Quay về bản lộ trình truyền thống">
+            <button type="button" onclick="switchToClassicRoadmap()" class="pointer-events-auto px-2.5 py-1 rounded-full bg-black/40 hover:bg-black/55 border border-white/25 text-white text-[11px] font-bold flex items-center gap-1 active:scale-95 transition-all cursor-pointer shadow-sm shrink-0 backdrop-blur-md" title="Quay về bản lộ trình truyền thống">
                 <span>‹ Bản Cũ</span>
             </button>
         </div>
@@ -1957,15 +1957,15 @@
                 <div class="hero-content">
                     <div class="roadmap-hero-tag-btn">
                         <span id="mysteryRoadmapCardTag">
-                            <span class="roadmap-tag-pill" style="border-color: #FBBF24; color: #FEF3C7; background: rgba(251,191,36,0.2);">
+                            <span class="roadmap-tag-pill">
                                 <span class="roadmap-tag-sparkle">🎲</span>
                                 <span>THÁM HIỂM RPG</span>
                             </span>
                             <span class="roadmap-tag-title">Khu Rừng Ngụ Ngôn</span>
                         </span>
                     </div>
-                    <h2>Khu Rừng Bí Ẩn v3.0</h2>
-                    <p>Khám phá chặng đường qua các ngã rẽ thể loại độc đáo. Dấu hỏi bí ẩn đón chờ quyết định của bạn.</p>
+                    <h2 id="mysteryRoadmapChapterHeading">Khu Rừng Bí Ẩn</h2>
+                    <p id="mysteryRoadmapCardDesc">Khám phá chặng đường qua các ngã rẽ thể loại độc đáo. Dấu hỏi bí ẩn đón chờ quyết định của bạn.</p>
                 </div>
             </header>
 
@@ -1979,19 +1979,19 @@
         <div id="roadmapGenrePickerSheet" class="hidden" onclick="if(event.target === this) closeRoadmapGenrePickerSheet()">
             <div id="roadmapGenrePickerSheetContent">
                 <!-- Drag Handle -->
-                <div class="w-10 h-1 bg-white/20 rounded-full mx-auto mb-3"></div>
+                <div class="mb-sheet-handle"></div>
                 
                 <!-- Sheet Header -->
-                <div class="flex items-center justify-between mb-3 pb-2 border-b border-white/10">
+                <div class="flex items-center justify-between mb-3 pb-2 border-b border-[var(--rm-outline-variant)]">
                     <div>
-                        <span class="text-[10px] uppercase tracking-[0.25em] font-extrabold text-[#FBBF24] block" style="font-family: 'Cinzel', serif;">NGÃ RẼ ĐỊNH MỆNH • CHỌN THỂ LOẠI</span>
-                        <h3 class="text-[17px] font-black text-white" style="font-family: 'Playfair Display', serif;">Bạn Muốn Khám Phá Thể Loại Gì?</h3>
+                        <span class="text-[10px] uppercase tracking-[0.22em] font-extrabold text-[var(--rm-primary)] block" style="font-family: 'Cinzel', serif;">NGÃ RẼ ĐỊNH MỆNH • CHỌN THỂ LOẠI</span>
+                        <h3 class="text-[17px] font-black text-[var(--rm-on-surface)]" style="font-family: 'Playfair Display', serif;">Bạn Muốn Khám Phá Thể Loại Gì?</h3>
                     </div>
-                    <button type="button" onclick="closeRoadmapGenrePickerSheet()" class="w-8 h-8 rounded-full bg-white/10 text-white/80 flex items-center justify-center hover:bg-white/20 active:scale-90 transition-all cursor-pointer">
+                    <button type="button" onclick="closeRoadmapGenrePickerSheet()" class="w-8 h-8 rounded-full bg-black/5 dark:bg-white/10 text-[var(--rm-on-surface)] flex items-center justify-center hover:bg-black/10 dark:hover:bg-white/20 active:scale-90 transition-all cursor-pointer">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
                     </button>
                 </div>
-                <p class="text-[12px] text-white/60 mb-3 leading-relaxed">
+                <p class="text-[12px] text-[var(--rm-on-surface-variant)] mb-3 leading-relaxed">
                     Mỗi lựa chọn sẽ dẫn bạn đến một câu chuyện với từ vựng, ngữ cảnh và bài học hoàn toàn khác biệt.
                 </p>
 
@@ -5227,10 +5227,11 @@
     <script src="js/components/roadmap/parchmentRoadmapCoreUI.js"></script>
     <script src="js/components/roadmap/parchmentRoadmapSheet.js?v=20261013_jewel_tag"></script>
     <script src="js/components/roadmap/parchmentRoadmapDetails.js?v=20261014_v10"></script>
-    <script src="js/components/roadmap/parchmentRoadmapRender.js?v=20261014_v10"></script>
+    <script src="js/components/roadmap/parchmentRoadmapRender.js?v=20261015_m3_v45"></script>
     <script src="js/components/roadmap/parchmentRoadmapActions.js?v=20261014_v10"></script>
     <script src="js/components/roadmap/parchmentRoadmapLogic.js?v=20261014_v10"></script>
-    <script src="js/components/roadmap/mysteryRoadmap.js?v=20261014_v10"></script>
+    <script src="js/components/roadmap/mysteryRoadmapData.js?v=20261015_m3_v45"></script>
+    <script src="js/components/roadmap/mysteryRoadmap.js?v=20261015_m3_v45"></script>
     <script src="js/data/audioCandidateWords.js"></script>
     <script src="js/components/audioVideo/audioPlayer.js"></script>
     <script src="js/components/audioVideo/audioCandidateList.js"></script>
