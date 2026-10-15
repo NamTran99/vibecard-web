@@ -212,10 +212,10 @@
 
 .story-flip-tab-panel {
     position: relative;
-    margin-top: 2px; padding: 10px 26px 10px 14px; border-radius: 16px;
+    margin-top: 2px; padding: 11px 28px 11px 14px; border-radius: 16px;
     background: var(--m3-surface-container);
-    height: 82px; overflow-y: auto;
-    display: flex; flex-direction: column; justify-content: center;
+    min-height: 92px;
+    display: flex; flex-direction: column; justify-content: flex-start;
 }
 
 .story-flip-corner-icon {
@@ -225,7 +225,7 @@
 }
 
 .story-flip-back-ex-wrap {
-    display: flex; flex-direction: column; gap: 4px; cursor: pointer;
+    display: flex; flex-direction: column; gap: 4px;
 }
 
 .story-flip-back-ex-en {

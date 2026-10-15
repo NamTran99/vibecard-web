@@ -162,10 +162,9 @@
             return `<div class="story-flip-synonym-wrap">${(card.synonyms || []).map(syn => `<button type="button" onclick="event.stopPropagation(); speakAddedStoryCard('${encodeURIComponent(syn)}')" class="story-flip-synonym-pill"><svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg><span>${escapeHtml(syn)}</span></button>`).join('')}</div>${cornerFlip}`;
         }
         const highlightedEx = highlightTermInSentence(card.example, card.term);
-        return `<div class="story-flip-back-ex-wrap" onclick="event.stopPropagation(); toggleStorySavedCardExTranslation('${encTerm}')">
+        return `<div class="story-flip-back-ex-wrap">
                 <p class="story-flip-back-ex-en">“${highlightedEx}”</p>
-                ${st.showExTr && card.exampleTr ? `<p class="story-flip-back-ex-vi">${escapeHtml(card.exampleTr)}</p>` : ''}
-                ${card.exampleTr ? `<span class="story-flip-back-ex-toggle">${st.showExTr ? 'Ẩn bản dịch ▲' : 'Xem bản dịch ▼'}</span>` : ''}
+                ${card.exampleTr ? `<p class="story-flip-back-ex-vi">${escapeHtml(card.exampleTr)}</p>` : ''}
             </div>${cornerFlip}`;
     }
 
@@ -225,7 +224,7 @@
                         <button type="button" onclick="event.stopPropagation(); switchStorySavedCardTab('${encTerm}', 'usage', ${idx})" class="story-flip-tab-btn ${st.activeTab === 'usage' ? 'active' : ''}">Ghi chú</button>
                         <button type="button" onclick="event.stopPropagation(); switchStorySavedCardTab('${encTerm}', 'synonym', ${idx})" class="story-flip-tab-btn ${st.activeTab === 'synonym' ? 'active' : ''}">Đồng nghĩa</button>
                     </div>
-                    <div id="storySavedCardTabPanel_${idx}" class="story-flip-tab-panel" onclick="event.stopPropagation()">${renderBackTabInnerHTML(card, st, encTerm)}</div>
+                    <div id="storySavedCardTabPanel_${idx}" class="story-flip-tab-panel">${renderBackTabInnerHTML(card, st, encTerm)}</div>
                 </div>
             </div>
         </div>`;
