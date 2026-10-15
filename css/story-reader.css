@@ -129,26 +129,6 @@
     background: linear-gradient(180deg, rgba(10, 12, 8, 0) 86%, var(--m3-surface) 100%);
 }
 
-/* Cinema Scene Caption Pill (Synced with Topbar HUD — Auto-hides for 100% Clean Art) */
-.story-hero-caption-pill {
-    position: absolute; left: 14px; bottom: 26px; z-index: 12;
-    height: 23px; padding: 0 9px; border-radius: 9999px;
-    background: rgba(18, 20, 15, 0.58);
-    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    color: #F4F5EB; font-size: 10.5px; font-weight: 700; letter-spacing: 0.01em;
-    display: inline-flex; align-items: center; gap: 5px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16);
-    transition: opacity 0.28s cubic-bezier(0.22, 1, 0.36, 1), transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.story-hero-header.story-header-auto-hidden ~ .story-hero-frame .story-hero-caption-pill {
-    opacity: 0; transform: translateY(8px); pointer-events: none;
-}
-.story-hero-caption-dot {
-    width: 5.5px; height: 5.5px; border-radius: 9999px;
-    background: var(--m3-amber-glow); flex-shrink: 0;
-}
-
 /* Inline Ghost Tools (Speaker & Translate in Meta Row - Zero Art Obstruction) */
 .story-inline-tools { display: inline-flex; align-items: center; gap: 4px; flex-shrink: 0; }
 .story-inline-tool-btn {
