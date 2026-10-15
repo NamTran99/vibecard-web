@@ -116,3 +116,43 @@
 .anim-arrow-bounce {
   animation: arrowNudgeUp 1.1s ease-in-out infinite;
 }
+
+@keyframes cardRevealUp {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes checkRingPop {
+  0% { transform: scale(0.6); }
+  65% { transform: scale(1.16); }
+  100% { transform: scale(1); }
+}
+
+@keyframes forgeProgressFill {
+  0% { width: 12%; }
+  50% { width: 68%; }
+  100% { width: 100%; }
+}
+
+.lang-bento-card,
+.tactile-option-card,
+.artifact-bento-item,
+.crossroads-card {
+  animation: cardRevealUp 0.34s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+.lang-bento-card:nth-child(1), .tactile-option-card:nth-child(1), .artifact-bento-item:nth-child(1) { animation-delay: 0.02s; }
+.lang-bento-card:nth-child(2), .tactile-option-card:nth-child(2), .artifact-bento-item:nth-child(2) { animation-delay: 0.05s; }
+.lang-bento-card:nth-child(3), .tactile-option-card:nth-child(3), .artifact-bento-item:nth-child(3) { animation-delay: 0.08s; }
+.lang-bento-card:nth-child(4), .tactile-option-card:nth-child(4) { animation-delay: 0.11s; }
+.lang-bento-card:nth-child(5), .tactile-option-card:nth-child(5) { animation-delay: 0.14s; }
+.lang-bento-card:nth-child(6) { animation-delay: 0.17s; }
+.lang-bento-card:nth-child(7) { animation-delay: 0.20s; }
+.lang-bento-card:nth-child(8) { animation-delay: 0.23s; }
+

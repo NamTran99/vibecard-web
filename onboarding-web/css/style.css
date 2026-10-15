@@ -42,25 +42,31 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-image:
+      radial-gradient(circle at 50% 18%, rgba(184, 209, 102, 0.11) 0%, transparent 52%),
+      radial-gradient(circle at 50% 88%, rgba(251, 191, 36, 0.08) 0%, transparent 48%);
   }
   .phone-shell {
-    height: min(844px, 94dvh);
+    height: min(852px, 94dvh);
     border-radius: 48px;
-    border: 1px solid var(--m3-outline-variant);
-    box-shadow: 0 32px 100px rgba(0, 0, 0, 0.78);
+    border: 1.5px solid var(--vc-glass-border);
+    box-shadow:
+      0 32px 90px -12px rgba(0, 0, 0, 0.78),
+      0 0 0 6px rgba(255, 255, 255, 0.025),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12);
   }
 }
 
 /* Ambient Aurora & Firefly Layer */
 .ambient-aurora-top {
   position: absolute;
-  top: -8%;
-  left: -12%;
-  width: 72%;
-  height: 32%;
+  top: -10%;
+  left: -14%;
+  width: 78%;
+  height: 36%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(184, 209, 102, 0.12), transparent 70%);
-  filter: blur(45px);
+  background: radial-gradient(circle, rgba(184, 209, 102, 0.15), transparent 70%);
+  filter: blur(44px);
   pointer-events: none;
   z-index: 1;
 }
@@ -68,11 +74,11 @@ html, body {
   position: absolute;
   bottom: -6%;
   right: -14%;
-  width: 68%;
-  height: 30%;
+  width: 72%;
+  height: 32%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(251, 191, 36, 0.09), transparent 70%);
-  filter: blur(50px);
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.11), transparent 70%);
+  filter: blur(48px);
   pointer-events: none;
   z-index: 1;
 }
@@ -89,11 +95,7 @@ html, body {
   font-weight: 700;
   color: var(--m3-on-surface);
 }
-.status-icons {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
+.status-icons { display: flex; align-items: center; gap: 6px; }
 
 /* 1. Cinematic Night Farm Splash Screen (Screen 1 of 24) */
 .splash-screen {
@@ -108,15 +110,11 @@ html, body {
   padding: 76px 24px 48px;
   transition: opacity 0.55s ease, visibility 0.55s ease;
 }
-.splash-screen.is-hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
+.splash-screen.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 .splash-mascot-wrap {
   position: relative;
-  width: 164px;
-  height: 164px;
+  width: 168px;
+  height: 168px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -132,27 +130,25 @@ html, body {
 }
 .splash-glow {
   position: absolute;
-  inset: -26px;
+  inset: -28px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(251, 191, 36, 0.36) 0%, rgba(184, 209, 102, 0.18) 45%, transparent 72%);
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.38) 0%, rgba(184, 209, 102, 0.2) 45%, transparent 72%);
   animation: lanternAuraPulse 3s ease-in-out infinite;
 }
-.splash-brand-group {
-  text-align: center;
-}
+.splash-brand-group { text-align: center; }
 .splash-eyebrow {
   font-size: 10.5px;
   font-weight: 800;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: #FDE68A;
-  opacity: 0.85;
+  opacity: 0.88;
   margin-bottom: 4px;
 }
 .splash-brand {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 34px;
+  font-size: 35px;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: #ECEAE2;
@@ -173,7 +169,8 @@ html, body {
   height: 36px;
   border-radius: 50%;
   border: 1px solid var(--m3-outline-variant);
-  background: var(--m3-surface-container-low);
+  background: var(--vc-card-grad);
+  box-shadow: var(--vc-card-shadow);
   color: var(--m3-on-surface-variant);
   display: flex;
   align-items: center;
@@ -181,17 +178,13 @@ html, body {
   cursor: pointer;
   flex-shrink: 0;
   font-size: 15px;
-  transition: transform 0.14s ease, background-color 0.2s ease, color 0.2s ease;
+  transition: transform 0.14s ease, border-color 0.2s ease, color 0.2s ease;
 }
-.icon-nav-btn:active {
-  transform: scale(0.92);
-}
-.icon-nav-btn.is-invisible {
-  opacity: 0;
-  pointer-events: none;
-}
+.icon-nav-btn:hover { border-color: var(--vc-glass-border); color: var(--m3-on-surface); }
+.icon-nav-btn:active { transform: scale(0.92); }
+.icon-nav-btn.is-invisible { opacity: 0; pointer-events: none; }
 
-/* Bespoke Constellation Thread (Replaces Duolingo thick tube) */
+/* Bespoke Constellation Thread */
 .progress-bar-wrap {
   flex: 1;
   display: flex;
@@ -199,10 +192,7 @@ html, body {
   gap: 5px;
   transition: opacity 0.25s ease;
 }
-.progress-bar-wrap.is-hidden {
-  opacity: 0;
-  pointer-events: none;
-}
+.progress-bar-wrap.is-hidden { opacity: 0; pointer-events: none; }
 .progress-chapter-row {
   display: flex;
   align-items: center;
@@ -215,11 +205,12 @@ html, body {
 }
 .progress-thread-track {
   width: 100%;
-  height: 4px;
+  height: 5px;
   background-color: var(--m3-surface-container-highest);
   border-radius: 999px;
   position: relative;
   overflow: visible;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 .progress-bar-fill {
   height: 100%;
@@ -227,6 +218,7 @@ html, body {
   background: linear-gradient(90deg, var(--m3-primary) 0%, var(--vc-amber-glow) 100%);
   border-radius: 999px;
   position: relative;
+  box-shadow: 0 0 12px rgba(184, 209, 102, 0.35);
   transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .progress-bar-fill::after {
@@ -235,24 +227,28 @@ html, body {
   right: -4px;
   top: 50%;
   transform: translateY(-50%);
-  width: 9px;
-  height: 9px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background-color: var(--vc-amber-glow);
+  background-color: #FFFBEB;
+  border: 2px solid var(--vc-amber-glow);
   box-shadow: 0 0 10px var(--vc-amber-glow);
 }
 
 .step-badge-pill {
   font-size: 11px;
   font-weight: 800;
-  padding: 5px 10px;
+  padding: 5px 11px;
   border-radius: 999px;
-  border: 1px solid var(--m3-outline-variant);
-  background: var(--m3-surface-container-low);
-  color: var(--m3-on-surface-variant);
+  border: 1px solid var(--vc-glass-border);
+  background: var(--vc-card-grad);
+  box-shadow: var(--vc-card-shadow);
+  color: var(--m3-primary);
   cursor: pointer;
   flex-shrink: 0;
+  transition: transform 0.14s ease, border-color 0.2s ease;
 }
+.step-badge-pill:active { transform: scale(0.95); }
 
 /* 3. Main Step Viewport */
 .stage-viewport {
@@ -261,26 +257,25 @@ html, body {
   z-index: 10;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 6px 20px 18px;
+  padding: 4px 18px 16px;
   display: flex;
   flex-direction: column;
 }
-.stage-viewport::-webkit-scrollbar {
-  display: none;
-}
+.stage-viewport::-webkit-scrollbar { display: none; }
 
-/* 4. Editorial Storyteller Whisper Card (Replaces Duolingo Comic Bubbles!) */
+/* 4. Editorial Storyteller Whisper Card */
 .lumi-whisper-header {
   display: flex;
-  align-items: stretch;
-  gap: 12px;
+  align-items: center;
+  gap: 13px;
   padding: 13px 15px;
-  border-radius: 22px;
+  border-radius: 24px;
   background: var(--vc-glass-bg);
-  border: 1px solid var(--m3-outline-variant);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  margin-bottom: 16px;
+  border: 1px solid var(--vc-glass-border);
+  box-shadow: var(--vc-card-shadow);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  margin-bottom: 14px;
   flex-shrink: 0;
   position: relative;
   overflow: hidden;
@@ -291,20 +286,22 @@ html, body {
   left: 0;
   top: 12px;
   bottom: 12px;
-  width: 3px;
+  width: 3.5px;
   border-radius: 0 4px 4px 0;
-  background: var(--vc-amber-glow);
+  background: linear-gradient(180deg, var(--vc-amber-glow), var(--m3-primary));
 }
 .lumi-lantern-avatar {
-  width: 60px;
-  height: 60px;
+  width: 58px;
+  height: 58px;
   border-radius: 18px;
-  background: radial-gradient(circle at 50% 60%, var(--vc-amber-soft), var(--m3-surface-container-high));
+  background: radial-gradient(circle at 50% 55%, var(--vc-amber-soft), var(--m3-surface-container-high));
+  border: 1px solid var(--vc-glass-border);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   position: relative;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 .lumi-lantern-avatar img {
   width: 92%;
@@ -312,30 +309,23 @@ html, body {
   object-fit: contain;
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35));
 }
-.lumi-whisper-body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-width: 0;
-}
+.lumi-whisper-body { flex: 1; display: flex; flex-direction: column; justify-content: center; min-width: 0; }
 .lumi-whisper-kicker {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 10px;
+  gap: 5px;
+  font-size: 9.5px;
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.13em;
   text-transform: uppercase;
   color: var(--vc-amber-glow);
-  margin-bottom: 4px;
+  margin-bottom: 3px;
 }
 .lumi-whisper-text {
   font-family: var(--font-display);
-  font-style: normal;
-  font-size: 15.5px;
+  font-size: 15px;
   font-weight: 700;
-  line-height: 1.42;
+  line-height: 1.4;
   color: var(--m3-on-surface);
 }
 .lumi-whisper-text b,
@@ -343,3 +333,4 @@ html, body {
   font-weight: 800;
   color: var(--m3-primary);
 }
+

@@ -42,26 +42,30 @@ html.dark {
   --vc-amber-text: #FDE68A;
 
   /* Frosted Editorial Glass & Selected States */
-  --vc-glass-bg: rgba(27, 28, 23, 0.78);
-  --vc-glass-border: rgba(184, 209, 102, 0.22);
-  --vc-selected-bg: rgba(184, 209, 102, 0.13);
+  --vc-glass-bg: rgba(24, 26, 20, 0.84);
+  --vc-glass-border: rgba(184, 209, 102, 0.24);
+  --vc-selected-bg: linear-gradient(135deg, rgba(184, 209, 102, 0.17) 0%, rgba(56, 72, 0, 0.42) 100%);
   --vc-selected-border: #B8D166;
-  --vc-disabled-bg: #262821;
+  --vc-card-grad: linear-gradient(165deg, rgba(38, 40, 34, 0.92) 0%, rgba(24, 26, 20, 0.96) 100%);
+  --vc-card-hover-grad: linear-gradient(165deg, rgba(46, 49, 41, 0.96) 0%, rgba(30, 32, 25, 0.98) 100%);
+  --vc-card-shadow: 0 10px 28px -8px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  --vc-selected-shadow: 0 12px 30px -6px rgba(184, 209, 102, 0.22), inset 0 1px 0 rgba(215, 240, 132, 0.28);
+  --vc-disabled-bg: #23251E;
   --vc-disabled-text: #65675B;
 }
 
 html.light {
   /* Warm Ancient Parchment Surfaces */
-  --m3-app-bg: #E2DFD5;
-  --m3-surface-dim: #D6D5CD;
+  --m3-app-bg: #DFDCD0;
+  --m3-surface-dim: #D4D0C4;
   --m3-surface: #FAF7EE;
-  --m3-surface-container-low: #F3F0E6;
-  --m3-surface-container: #ECE9DE;
-  --m3-surface-container-high: #E5E1D5;
-  --m3-surface-container-highest: #DDD9CC;
+  --m3-surface-container-low: #F4F0E4;
+  --m3-surface-container: #EDE9DD;
+  --m3-surface-container-high: #E5E0D2;
+  --m3-surface-container-highest: #DCD6C6;
 
   /* Primary Olive & Sage Accents */
-  --m3-primary: #4B5E00;
+  --m3-primary: #485B00;
   --m3-on-primary: #FFFFFF;
   --m3-primary-container: #D4EE7F;
   --m3-on-primary-container: #161F00;
@@ -88,10 +92,14 @@ html.light {
   --vc-amber-text: #78350F;
 
   /* Frosted Editorial Glass & Selected States */
-  --vc-glass-bg: rgba(243, 240, 230, 0.88);
+  --vc-glass-bg: rgba(246, 243, 233, 0.92);
   --vc-glass-border: rgba(75, 94, 0, 0.22);
-  --vc-selected-bg: rgba(212, 238, 127, 0.55);
-  --vc-selected-border: #4B5E00;
+  --vc-selected-bg: linear-gradient(135deg, rgba(212, 238, 127, 0.65) 0%, rgba(224, 230, 195, 0.85) 100%);
+  --vc-selected-border: #485B00;
+  --vc-card-grad: linear-gradient(165deg, #FFFFFF 0%, #F3EFE2 100%);
+  --vc-card-hover-grad: linear-gradient(165deg, #FFFFFF 0%, #ECE7D7 100%);
+  --vc-card-shadow: 0 8px 22px -6px rgba(42, 40, 30, 0.09), inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  --vc-selected-shadow: 0 10px 26px -6px rgba(72, 91, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.9);
   --vc-disabled-bg: #E2DFD3;
   --vc-disabled-text: #959689;
 }
