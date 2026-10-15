@@ -1,42 +1,17 @@
-/* ==========================================================================
-   🎯 STORY TARGET WORD CLASSIFICATION CARD & HIGHLIGHT CAPSULES
-   1:1 Replica from Android Native MainActivityDialogueTargetWord.kt
-   Separated according to SRP (< 350 lines/file rule)
-   ========================================================================== */
-
-/* Vocabulary Highlight Target Word (M3 Soft Olive / Amber / Tertiary States) */
+/* 🎯 STORY TARGET WORD CLASSIFICATION CARD & HIGHLIGHT CAPSULES (< 350 lines SRP) */
 .story-target-word-hl {
-    color: var(--m3-primary) !important;
-    font-weight: 700 !important;
-    cursor: pointer !important;
-    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    display: inline !important;
-    text-decoration: none !important;
-    border-radius: 6px;
-    padding: 1px 6px;
-    margin: 0 1px;
-    background-color: rgba(82, 102, 0, 0.12);
-    border-bottom: 1.5px solid var(--m3-primary);
-    -webkit-box-decoration-break: clone;
-    box-decoration-break: clone;
+    color: var(--m3-primary) !important; font-weight: 700 !important; cursor: pointer !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important; display: inline !important;
+    text-decoration: none !important; border-radius: 6px; padding: 1px 6px; margin: 0 1px;
+    background-color: rgba(82, 102, 0, 0.12); border-bottom: 1.5px solid var(--m3-primary);
+    -webkit-box-decoration-break: clone; box-decoration-break: clone;
 }
-html:not(.light) .story-target-word-hl {
-    color: var(--m3-on-primary-container) !important;
-    background-color: var(--m3-primary-container);
-}
-
-.story-target-word-hl:hover {
-    background-color: var(--m3-primary);
-    color: var(--m3-on-primary) !important;
-}
-
+html:not(.light) .story-target-word-hl { color: var(--m3-on-primary-container) !important; background-color: var(--m3-primary-container); }
+.story-target-word-hl:hover { background-color: var(--m3-primary); color: var(--m3-on-primary) !important; }
 .story-target-word-hl:active { transform: scale(0.96); }
-
 .story-target-word-hl.hl-active {
-    background: var(--m3-primary) !important;
-    color: var(--m3-on-primary) !important;
-    box-shadow: 0 0 0 1.5px var(--m3-primary);
-    border-bottom-color: transparent;
+    background: var(--m3-primary) !important; color: var(--m3-on-primary) !important;
+    box-shadow: 0 0 0 1.5px var(--m3-primary); border-bottom-color: transparent;
 }
 
 .story-target-word-hl.hl-flashcard,
