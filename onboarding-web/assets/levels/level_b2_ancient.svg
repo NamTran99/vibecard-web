@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <radialGradient id="bgB2" cx="50%" cy="48%" r="58%">
+      <stop offset="0%" stop-color="#574312" />
+      <stop offset="55%" stop-color="#27340E" />
+      <stop offset="100%" stop-color="#141A08" />
+    </radialGradient>
+    <linearGradient id="ancientCrown" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FEF08A" />
+      <stop offset="45%" stop-color="#B8D166" />
+      <stop offset="100%" stop-color="#526600" />
+    </linearGradient>
+  </defs>
+
+  <!-- Ornate Golden-Olive Medallion Frame -->
+  <circle cx="50" cy="50" r="46" fill="url(#bgB2)" stroke="#FBBF24" stroke-width="2.5" stroke-opacity="0.85" />
+  <circle cx="50" cy="50" r="42" fill="none" stroke="#FDE68A" stroke-width="1.1" stroke-dasharray="5 3" stroke-opacity="0.55" />
+
+  <!-- Ancient Golden Halo -->
+  <circle cx="50" cy="42" r="28" fill="#FBBF24" opacity="0.16" />
+
+  <!-- Gnarled Ancient Spirit Oak Roots & Trunk -->
+  <path d="M 22 82 Q 50 73, 78 82 Q 66 89, 50 90 Q 34 89, 22 82 Z" fill="#4E3822" stroke="#2D1E10" stroke-width="2" />
+  <path d="M 35 83 Q 44 72, 44 52 L 56 52 Q 56 72, 65 83 Q 56 80, 50 83 Q 44 80, 35 83 Z" fill="#9C6B3B" stroke="#4A3219" stroke-width="2.2" stroke-linejoin="round" />
+
+  <!-- Grand Ancient Spirit Tree Crown -->
+  <circle cx="30" cy="45" r="14" fill="#688219" stroke="#243000" stroke-width="2" />
+  <circle cx="70" cy="45" r="14" fill="#688219" stroke="#243000" stroke-width="2" />
+  <circle cx="39" cy="32" r="15" fill="#9BB839" stroke="#243000" stroke-width="2" />
+  <circle cx="61" cy="32" r="15" fill="#9BB839" stroke="#243000" stroke-width="2" />
+  <circle cx="50" cy="36" r="19" fill="url(#ancientCrown)" stroke="#243000" stroke-width="2.2" />
+
+  <!-- Hanging Glowing Ghibli Lanterns on Left & Right Branches -->
+  <line x1="28" y1="54" x2="28" y2="63" stroke="#FDE68A" stroke-width="1.5" />
+  <circle cx="28" cy="65" r="4" fill="#FBBF24" stroke="#78350F" stroke-width="1.3" />
+  <line x1="72" y1="54" x2="72" y2="63" stroke="#FDE68A" stroke-width="1.5" />
+  <circle cx="72" cy="65" r="4" fill="#FBBF24" stroke="#78350F" stroke-width="1.3" />
+
+  <!-- Spirit Star Crown at Top -->
+  <path d="M 50 13 Q 50 20, 57 20 Q 50 20, 50 27 Q 50 20, 43 20 Q 50 20, 50 13 Z" fill="#FEF08A" />
+</svg>

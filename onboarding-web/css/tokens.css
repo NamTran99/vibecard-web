@@ -1,0 +1,105 @@
+/* ==========================================================================
+   🌿 MINDCARD / VIBECARD BESPOKE DESIGN TOKENS (M3-07 & GHIBLI NIGHT FARM)
+   Zero Duolingo 3D toy lips — Pure M3 Tonal Elevation & Editorial Warmth
+   ========================================================================== */
+
+:root,
+html.dark {
+  /* Root Canvas & Tonal Surfaces */
+  --m3-app-bg: #080906;
+  --m3-surface-dim: #0D0E0B;
+  --m3-surface: #141510;
+  --m3-surface-container-low: #1B1C17;
+  --m3-surface-container: #20211C;
+  --m3-surface-container-high: #262822;
+  --m3-surface-container-highest: #30322B;
+
+  /* Primary Olive & Sage Accents */
+  --m3-primary: #B8D166;
+  --m3-on-primary: #212C00;
+  --m3-primary-container: #384800;
+  --m3-on-primary-container: #D7F084;
+
+  /* Secondary & Tertiary */
+  --m3-secondary: #C4CAA9;
+  --m3-secondary-container: #444930;
+  --m3-on-secondary-container: #E0E6C3;
+  --m3-tertiary: #A1D0C5;
+  --m3-tertiary-container: #214E46;
+  --m3-on-tertiary-container: #BDECE1;
+
+  /* Typography & Outlines */
+  --m3-on-surface: #ECEAE2;
+  --m3-on-surface-variant: #C7C8B8;
+  --m3-outline: #8E9080;
+  --m3-outline-variant: rgba(199, 200, 184, 0.14);
+  --m3-hairline: rgba(255, 255, 255, 0.065);
+
+  /* Ghibli Lantern & Fairytale Warmth Accents */
+  --vc-amber-glow: #FBBF24;
+  --vc-amber-soft: rgba(251, 191, 36, 0.16);
+  --vc-amber-container: #382909;
+  --vc-amber-text: #FDE68A;
+
+  /* Frosted Editorial Glass & Selected States */
+  --vc-glass-bg: rgba(27, 28, 23, 0.78);
+  --vc-glass-border: rgba(184, 209, 102, 0.22);
+  --vc-selected-bg: rgba(184, 209, 102, 0.13);
+  --vc-selected-border: #B8D166;
+  --vc-disabled-bg: #262821;
+  --vc-disabled-text: #65675B;
+}
+
+html.light {
+  /* Warm Ancient Parchment Surfaces */
+  --m3-app-bg: #E2DFD5;
+  --m3-surface-dim: #D6D5CD;
+  --m3-surface: #FAF7EE;
+  --m3-surface-container-low: #F3F0E6;
+  --m3-surface-container: #ECE9DE;
+  --m3-surface-container-high: #E5E1D5;
+  --m3-surface-container-highest: #DDD9CC;
+
+  /* Primary Olive & Sage Accents */
+  --m3-primary: #4B5E00;
+  --m3-on-primary: #FFFFFF;
+  --m3-primary-container: #D4EE7F;
+  --m3-on-primary-container: #161F00;
+
+  /* Secondary & Tertiary */
+  --m3-secondary: #5B6146;
+  --m3-secondary-container: #E0E6C3;
+  --m3-on-secondary-container: #191D08;
+  --m3-tertiary: #3A665E;
+  --m3-tertiary-container: #BDECE1;
+  --m3-on-tertiary-container: #00201B;
+
+  /* Typography & Outlines */
+  --m3-on-surface: #1B1C17;
+  --m3-on-surface-variant: #4A4C40;
+  --m3-outline: #77786B;
+  --m3-outline-variant: rgba(74, 76, 64, 0.16);
+  --m3-hairline: rgba(27, 28, 23, 0.08);
+
+  /* Ghibli Lantern & Fairytale Warmth Accents */
+  --vc-amber-glow: #D97706;
+  --vc-amber-soft: rgba(217, 119, 6, 0.12);
+  --vc-amber-container: #FEF3C7;
+  --vc-amber-text: #78350F;
+
+  /* Frosted Editorial Glass & Selected States */
+  --vc-glass-bg: rgba(243, 240, 230, 0.88);
+  --vc-glass-border: rgba(75, 94, 0, 0.22);
+  --vc-selected-bg: rgba(212, 238, 127, 0.55);
+  --vc-selected-border: #4B5E00;
+  --vc-disabled-bg: #E2DFD3;
+  --vc-disabled-text: #959689;
+}
+
+:root {
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --safe-top: env(safe-area-inset-top, 14px);
+  --safe-bottom: env(safe-area-inset-bottom, 16px);
+}

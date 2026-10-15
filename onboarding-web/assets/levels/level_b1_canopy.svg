@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <radialGradient id="bgB1" cx="50%" cy="52%" r="58%">
+      <stop offset="0%" stop-color="#445918" />
+      <stop offset="65%" stop-color="#1E270C" />
+      <stop offset="100%" stop-color="#141A08" />
+    </radialGradient>
+    <linearGradient id="canopyTop" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E5F993" />
+      <stop offset="55%" stop-color="#A6C442" />
+      <stop offset="100%" stop-color="#5E7511" />
+    </linearGradient>
+  </defs>
+
+  <!-- Medallion Frame -->
+  <circle cx="50" cy="50" r="46" fill="url(#bgB1)" stroke="#B8D166" stroke-width="2.4" stroke-opacity="0.72" />
+  <circle cx="50" cy="50" r="42" fill="none" stroke="#FBBF24" stroke-width="1" stroke-dasharray="4 3" stroke-opacity="0.4" />
+
+  <!-- Ground Meadow Arc -->
+  <path d="M 24 80 Q 50 72, 76 80 Q 64 88, 50 89 Q 36 88, 24 80 Z" fill="#465915" stroke="#283500" stroke-width="2" />
+
+  <!-- Sturdy Woodland Trunk & Branches -->
+  <path d="M 43 81 Q 47 68, 46 52 L 54 52 Q 53 68, 57 81 Z" fill="#8C6239" stroke="#4A3219" stroke-width="2.2" stroke-linejoin="round" />
+  <path d="M 50 60 L 39 50 M 50 58 L 61 49" fill="none" stroke="#8C6239" stroke-width="3.2" stroke-linecap="round" />
+
+  <!-- Layered Lush Olive Canopy -->
+  <circle cx="34" cy="48" r="14" fill="#738F1D" stroke="#243000" stroke-width="2" />
+  <circle cx="66" cy="48" r="14" fill="#738F1D" stroke="#243000" stroke-width="2" />
+  <circle cx="50" cy="36" r="18" fill="url(#canopyTop)" stroke="#243000" stroke-width="2.2" />
+  <circle cx="42" cy="46" r="12" fill="#B8D166" opacity="0.88" />
+  <circle cx="58" cy="46" r="12" fill="#9BB839" opacity="0.88" />
+
+  <!-- Golden Harvest Fruits -->
+  <circle cx="37" cy="46" r="3.4" fill="#FBBF24" stroke="#78350F" stroke-width="1.2" />
+  <circle cx="52" cy="31" r="3.4" fill="#FBBF24" stroke="#78350F" stroke-width="1.2" />
+  <circle cx="63" cy="47" r="3.4" fill="#FBBF24" stroke="#78350F" stroke-width="1.2" />
+</svg>

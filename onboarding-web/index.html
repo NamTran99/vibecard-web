@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>VibeCard — Khởi Hành Khu Rừng Cổ Thư Cùng Cáo Lumi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+  <main class="phone-shell" id="onboardingAppShell">
+    <!-- Ambient Aurora Background Glows -->
+    <div class="ambient-aurora-top"></div>
+    <div class="ambient-aurora-bottom"></div>
+
+    <!-- Screen 1 of 24: Night Farm Lantern Splash Screen -->
+    <div id="splashOverlay" class="splash-screen">
+      <div class="splash-mascot-wrap anim-mascot-float">
+        <div class="splash-glow"></div>
+        <img src="../assets/cards/lumi_farmer_night.png" alt="Lumi Night Farmer" />
+      </div>
+      <div class="splash-brand-group">
+        <div class="splash-eyebrow">✦ KHU RỪNG CỔ THƯ & AI</div>
+        <div class="splash-brand">VibeCard</div>
+      </div>
+    </div>
+
+    <!-- iOS/Android Status Bar -->
+    <header class="status-bar" aria-hidden="true">
+      <span>9:41</span>
+      <div class="status-icons">
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="currentColor">
+          <rect x="0" y="8" width="2.5" height="4" rx="0.8"/>
+          <rect x="4" y="6" width="2.5" height="6" rx="0.8"/>
+          <rect x="8" y="3" width="2.5" height="9" rx="0.8"/>
+          <rect x="12" y="0" width="2.5" height="12" rx="0.8"/>
+        </svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="currentColor">
+          <path d="M8 9.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm-3.6-2.1a5.2 5.2 0 017.2 0l1.1-1.1a6.8 6.8 0 00-9.4 0l1.1 1.1zm-2.5-2.5a8.8 8.8 0 0112.2 0l1.1-1.1a10.4 10.4 0 00-14.4 0l1.1 1.1z"/>
+        </svg>
+        <svg width="22" height="12" viewBox="0 0 22 12" fill="currentColor">
+          <rect x="0.5" y="1" width="18" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.2"/>
+          <rect x="2.5" y="3" width="14" height="6" rx="1.2"/>
+          <path d="M20 4v4a1.5 1.5 0 000-4z"/>
+        </svg>
+      </div>
+    </header>
+
+    <!-- Top Navigation Bar: Back Button + Constellation Story Thread + Quick Inspector -->
+    <nav class="top-nav-bar" aria-label="Điều hướng Onboarding">
+      <button id="navBackBtn" type="button" class="icon-nav-btn is-invisible" onclick="handlePrevStep()" aria-label="Quay lại">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+
+      <div id="progressBarWrap" class="progress-bar-wrap is-hidden" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-chapter-row">
+          <span>✦ SỢI CHỈ HÀNH TRÌNH</span>
+          <span id="progressPercentLabel">0%</span>
+        </div>
+        <div class="progress-thread-track">
+          <div id="progressBarFill" class="progress-bar-fill"></div>
+        </div>
+      </div>
+
+      <button id="stepInspectorBadge" type="button" class="step-badge-pill" onclick="openQuickStepJumper()" title="Chuyển nhanh màn hình kiểm thử">
+        1/15
+      </button>
+
+      <button id="themeToggleBtn" type="button" class="icon-nav-btn" onclick="toggleThemeMode()" aria-label="Đổi giao diện Sáng/Tối">
+        ☀️
+      </button>
+    </nav>
+
+    <!-- Dynamic Stage Viewport (Renders all 24 Flow States in Bespoke VibeCard Style) -->
+    <section id="stageViewport" class="stage-viewport" aria-live="polite"></section>
+
+    <!-- Sticky Bottom M3 Pill Action Zone -->
+    <footer id="bottomCtaBar" class="bottom-cta-bar">
+      <button id="primaryCtaBtn" type="button" class="tactile-cta-btn" onclick="handleNextStep()">
+        Bước vào khu rừng VibeCard →
+      </button>
+      <button id="secondaryCtaBtn" type="button" class="secondary-outline-btn" onclick="window.location.href='../index.html'">
+        Tôi đã có tài khoản học viên
+      </button>
+    </footer>
+
+    <!-- Quick Step Jumper Bottom Sheet -->
+    <div id="stepJumperModal"
+         style="display:none;position:absolute;inset:0;z-index:200;background:rgba(0,0,0,0.68);backdrop-filter:blur(6px);align-items:flex-end;justify-content:center;"
+         onclick="if(event.target===this)closeQuickStepJumper()">
+      <div style="width:100%;max-height:78%;background:var(--m3-surface-container-low);border-top-left-radius:26px;border-top-right-radius:26px;border-top:1px solid var(--m3-outline-variant);padding:16px 16px 26px;display:flex;flex-direction:column;gap:12px;">
+        <div style="width:40px;height:4px;border-radius:999px;background:var(--m3-outline-variant);margin:0 auto 2px;"></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <span style="font-size:13px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:var(--m3-primary);">
+            ✦ Chuyển nhanh màn hình (24 States)
+          </span>
+          <button type="button" onclick="closeQuickStepJumper()" style="background:none;border:none;color:var(--m3-on-surface-variant);font-size:18px;font-weight:800;cursor:pointer;">✕</button>
+        </div>
+        <div id="stepJumperList" style="overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding-right:4px;"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/soundEffects.js"></script>
+  <script src="js/onboardingData.js"></script>
+  <script src="js/onboardingState.js"></script>
+  <script src="js/onboardingTemplates.js"></script>
+  <script src="js/onboardingController.js"></script>
+</body>
+</html>

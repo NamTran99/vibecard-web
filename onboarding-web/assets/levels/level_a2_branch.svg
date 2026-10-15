@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <radialGradient id="bgA2" cx="50%" cy="55%" r="58%">
+      <stop offset="0%" stop-color="#3E5216" />
+      <stop offset="65%" stop-color="#1E270C" />
+      <stop offset="100%" stop-color="#141A08" />
+    </radialGradient>
+    <linearGradient id="branchLeaf" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E5F993" />
+      <stop offset="100%" stop-color="#76911E" />
+    </linearGradient>
+  </defs>
+
+  <!-- Medallion Frame -->
+  <circle cx="50" cy="50" r="46" fill="url(#bgA2)" stroke="#B8D166" stroke-width="2.2" stroke-opacity="0.65" />
+  <circle cx="50" cy="50" r="42" fill="none" stroke="#B8D166" stroke-width="0.9" stroke-dasharray="4 3" stroke-opacity="0.35" />
+
+  <!-- Graceful Sapling Branch -->
+  <path d="M 24 76 Q 42 56, 72 28" fill="none" stroke="#9C7349" stroke-width="4.8" stroke-linecap="round" />
+  <path d="M 44 56 Q 56 58, 66 52" fill="none" stroke="#9C7349" stroke-width="3.2" stroke-linecap="round" />
+
+  <!-- 5 Layered Olive-Lime Leaves -->
+  <path d="M 36 62 C 23 60, 18 47, 23 39 C 33 40, 38 50, 36 62 Z" fill="url(#branchLeaf)" stroke="#243000" stroke-width="2" stroke-linejoin="round" />
+  <path d="M 50 47 C 37 44, 33 31, 39 22 C 49 24, 53 35, 50 47 Z" fill="url(#branchLeaf)" stroke="#243000" stroke-width="2" stroke-linejoin="round" />
+  <path d="M 60 55 C 68 64, 80 61, 83 51 C 75 45, 65 47, 60 55 Z" fill="#B8D166" stroke="#243000" stroke-width="2" stroke-linejoin="round" />
+  <path d="M 55 43 C 66 47, 78 41, 79 30 C 69 27, 59 33, 55 43 Z" fill="url(#branchLeaf)" stroke="#243000" stroke-width="2" stroke-linejoin="round" />
+  <path d="M 67 32 C 66 21, 74 15, 82 18 C 81 27, 74 33, 67 32 Z" fill="#E5F993" stroke="#243000" stroke-width="2" stroke-linejoin="round" />
+
+  <!-- Glowing Amber Flower Bud -->
+  <circle cx="67" cy="51" r="4.5" fill="#FBBF24" stroke="#78350F" stroke-width="1.6" />
+  <circle cx="28" cy="28" r="2.2" fill="#FDE68A" />
+</svg>

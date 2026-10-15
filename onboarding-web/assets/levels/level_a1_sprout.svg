@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <radialGradient id="bgA1" cx="50%" cy="60%" r="58%">
+      <stop offset="0%" stop-color="#3B4D14" />
+      <stop offset="65%" stop-color="#1E270C" />
+      <stop offset="100%" stop-color="#141A08" />
+    </radialGradient>
+    <linearGradient id="leafLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E5F993" />
+      <stop offset="100%" stop-color="#84A329" />
+    </linearGradient>
+    <linearGradient id="leafRight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4EE7F" />
+      <stop offset="100%" stop-color="#5E7511" />
+    </linearGradient>
+  </defs>
+
+  <!-- Medallion Frame -->
+  <circle cx="50" cy="50" r="46" fill="url(#bgA1)" stroke="#B8D166" stroke-width="2.2" stroke-opacity="0.6" />
+  <circle cx="50" cy="50" r="42" fill="none" stroke="#D4EE7F" stroke-width="0.9" stroke-dasharray="3 3" stroke-opacity="0.32" />
+
+  <!-- Mossy Soil Mound -->
+  <path d="M 23 78 Q 50 68, 77 78 Q 67 88, 50 89 Q 33 88, 23 78 Z" fill="#3D2E1E" stroke="#6E8524" stroke-width="2" stroke-linecap="round" />
+
+  <!-- Organic Tender Stem -->
+  <path d="M 50 75 Q 48 58, 51 42" fill="none" stroke="#B8D166" stroke-width="4.2" stroke-linecap="round" />
+
+  <!-- Left Cotyledon Leaf -->
+  <path d="M 50 51 C 34 51, 22 40, 25 29 C 36 27, 48 36, 50 51 Z" fill="url(#leafLeft)" stroke="#283500" stroke-width="2.2" stroke-linejoin="round" />
+  <path d="M 48 49 Q 37 42, 31 34" fill="none" stroke="#283500" stroke-width="1.6" stroke-linecap="round" opacity="0.65" />
+
+  <!-- Right Cotyledon Leaf -->
+  <path d="M 51 45 C 65 44, 76 34, 74 23 C 62 21, 52 31, 51 45 Z" fill="url(#leafRight)" stroke="#283500" stroke-width="2.2" stroke-linejoin="round" />
+  <path d="M 53 43 Q 62 36, 68 28" fill="none" stroke="#283500" stroke-width="1.6" stroke-linecap="round" opacity="0.65" />
+
+  <!-- Golden Dewdrop & Firefly Spark -->
+  <circle cx="67" cy="48" r="3" fill="#FBBF24" />
+  <circle cx="31" cy="56" r="2" fill="#FDE68A" opacity="0.85" />
+</svg>
