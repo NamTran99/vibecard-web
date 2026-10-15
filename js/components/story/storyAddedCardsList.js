@@ -16,8 +16,9 @@
     const cardFlipStates = {}; // key -> { showingBack, flipInProgress, activeTab, showExTr }
 
     const POS_VI_MAP = {
-        VERB: 'VERB • Động từ', NOUN: 'NOUN • Danh từ', ADJ: 'ADJ • Tính từ',
-        ADV: 'ADV • Trạng từ', PHRASE: 'PHRASE • Cụm từ', 'CỤM TỪ': 'PHRASE • Cụm từ', 'TỪ VỰNG': 'WORD • Từ vựng'
+        VERB: 'Động từ', NOUN: 'Danh từ', ADJ: 'Tính từ', ADJECTIVE: 'Tính từ',
+        ADV: 'Trạng từ', ADVERB: 'Trạng từ', PHRASE: 'Cụm từ', 'CỤM TỪ': 'Cụm từ',
+        'TỪ VỰNG': 'Từ vựng', PREPOSITION: 'Giới từ', ARTICLE: 'Mạo từ', 'MẠO TỪ XÁC ĐỊNH': 'Mạo từ', 'MẠO TỪ BẤT ĐỊNH': 'Mạo từ'
     };
 
     const DEFAULT_SYNONYMS = {
@@ -165,46 +166,37 @@
 
     function buildAddedCardItemHTML(card, idx, total, isJustAdded) {
         const termKey = card.term.toLowerCase(), st = getCardState(termKey), encTerm = encodeURIComponent(card.term);
-        const posLabel = POS_VI_MAP[String(card.pos || '').toUpperCase()] || card.pos || 'WORD';
+        const posLabel = POS_VI_MAP[String(card.pos || '').toUpperCase()] || card.pos || 'Từ vựng';
         const hasIpa = Boolean(card.phonetic && card.phonetic !== '/.../');
 
         return `<div id="storySavedFlipCard_${idx}" data-term-key="${escapeHtml(termKey)}" class="story-flippable-card ${isJustAdded ? 'just-added' : ''}" onclick="flipStorySavedCard(${idx}, '${encTerm}')">
             <div class="story-flippable-face story-flippable-front" style="display: ${st.showingBack ? 'none' : 'flex'}; transform: rotateY(0deg); opacity: 1;">
                 <div class="story-flip-header">
                     <div class="story-flip-badge-group">
+                        <span class="story-flip-counter">${idx + 1} / ${total}</span>
                         ${isJustAdded ? '<span class="story-flip-new-badge">Mới thêm</span>' : ''}
                     </div>
                     <div class="story-flip-header-right">
-                        <span class="story-flip-counter">${idx + 1} / ${total}</span>
                         <button type="button" onclick="event.stopPropagation(); removeAddedStoryCard('${encTerm}')" class="story-flip-icon-btn" title="Xoá khỏi bộ thẻ" aria-label="Xoá thẻ">✕</button>
                     </div>
                 </div>
 
-                <div class="story-flip-hero-row">
-                    <div class="story-flip-art-thumb">
-                        <img src="${escapeHtml(card.imageUrl)}" alt="${escapeHtml(card.term)}" onerror="this.src='assets/cards/lumi_farmer_strawhat.jpg'" />
-                    </div>
-                    <div class="story-flip-hero-meta">
-                        <div class="story-flip-front-term">${escapeHtml(card.term)}</div>
-                        <div class="story-flip-sub-row">
-                            <span class="story-flip-pos-chip">${escapeHtml(posLabel)}</span>
-                            <button type="button" onclick="event.stopPropagation(); speakAddedStoryCard('${encTerm}')" class="story-flip-audio-pill" title="Nghe phát âm">
-                                <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
-                                <span>${hasIpa ? escapeHtml(card.phonetic) : 'Nghe'}</span>
-                            </button>
-                        </div>
+                <div class="story-flip-hero-minimal">
+                    <div class="story-flip-front-term">${escapeHtml(card.term)}</div>
+                    <div class="story-flip-sub-row">
+                        <span class="story-flip-pos-chip">${escapeHtml(posLabel)}</span>
+                        <button type="button" onclick="event.stopPropagation(); speakAddedStoryCard('${encTerm}')" class="story-flip-audio-pill" title="Nghe phát âm">
+                            <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                            <span>${hasIpa ? escapeHtml(card.phonetic) : 'Phát âm'}</span>
+                        </button>
                     </div>
                 </div>
 
-                <div class="story-flip-prompt-box">
-                    <span class="story-flip-prompt-quote">“</span>
-                    <p class="story-flip-prompt-text">${highlightTermInSentence(card.example, card.term)}</p>
-                </div>
-
-                <div class="story-flip-footer">
+                <div class="story-flip-quote-minimal">
+                    <p class="story-flip-prompt-text">“${highlightTermInSentence(card.example, card.term)}”</p>
                     <span class="story-flip-hint-pill">
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-                        <span>Chạm thẻ để lật mặt sau</span>
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                        <span>${idx === 0 ? 'Chạm để lật' : 'Lật'}</span>
                     </span>
                 </div>
             </div>

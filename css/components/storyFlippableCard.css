@@ -79,114 +79,90 @@
 .story-flip-header-right { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
 
 .story-flip-counter {
-    font-size: 12px; font-weight: 800;
-    color: var(--m3-on-surface-variant);
-    padding: 2px 6px; border-radius: 8px;
+    font-size: 11.5px; font-weight: 800; letter-spacing: 0.03em;
+    color: var(--m3-on-surface-variant); opacity: 0.72;
 }
 
 .story-flip-icon-btn {
-    width: 30px; height: 30px; border-radius: 9999px; border: none;
-    background: var(--m3-surface-container-highest);
-    color: var(--m3-on-surface-variant);
-    font-size: 12px; font-weight: 800;
+    width: 28px; height: 28px; border-radius: 9999px; border: 1px solid var(--m3-outline-variant);
+    background: transparent; color: var(--m3-on-surface-variant); opacity: 0.75;
+    font-size: 11px; font-weight: 800;
     display: inline-flex; align-items: center; justify-content: center;
-    cursor: pointer; transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+    cursor: pointer; transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease, opacity 0.15s ease;
 }
 .story-flip-icon-btn:hover, .story-flip-icon-btn:active {
-    background: var(--m3-error-container); color: var(--m3-on-error-container); transform: scale(0.92);
+    opacity: 1; background: var(--m3-error-container); color: var(--m3-on-error-container); border-color: var(--m3-error); transform: scale(0.92);
 }
 
-/* 2. Front Hero Row: Clean Squircle Artwork + Term + Inline Audio/POS */
-.story-flip-hero-row {
-    display: flex; align-items: center; gap: 14px;
-    margin-bottom: 13px;
-}
-
-.story-flip-art-thumb {
-    width: 74px; height: 74px; border-radius: 18px;
-    overflow: hidden; flex-shrink: 0;
-    background: var(--m3-surface-container-highest);
-    border: 1px solid var(--m3-outline-variant);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
-}
-
-.story-flip-art-thumb img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
-}
-
-.story-flip-hero-meta {
-    flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 7px;
+/* 2. Minimalist Typography-First Front Hero */
+.story-flip-hero-minimal {
+    display: flex; flex-direction: column; align-items: flex-start; gap: 8px;
+    padding: 4px 2px 14px 2px;
 }
 
 .story-flip-front-term {
-    font-size: 24px; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em;
+    font-size: 26px; font-weight: 900; line-height: 1.15; letter-spacing: -0.025em;
     color: var(--m3-on-surface); word-break: break-word;
 }
 
 .story-flip-sub-row {
-    display: flex; align-items: center; flex-wrap: wrap; gap: 6px;
+    display: flex; align-items: center; flex-wrap: wrap; gap: 7px;
 }
 
 .story-flip-pos-chip {
     display: inline-flex; align-items: center;
-    padding: 3.5px 10px; border-radius: 9999px;
+    padding: 3px 10px; border-radius: 9999px;
     font-size: 11px; font-weight: 800;
-    background: var(--m3-secondary-container);
-    color: var(--m3-on-secondary-container);
+    background: var(--m3-surface-container);
+    border: 1px solid var(--m3-outline-variant);
+    color: var(--m3-on-surface-variant);
 }
 
 .story-flip-audio-pill {
     display: inline-flex; align-items: center; gap: 5px;
-    padding: 4px 11px; border-radius: 9999px; border: none;
-    background: var(--m3-primary-container);
-    color: var(--m3-on-primary-container);
-    font-size: 12px; font-weight: 800;
-    cursor: pointer; transition: transform 0.15s ease, filter 0.15s ease;
-}
-.story-flip-audio-pill:active { transform: scale(0.93); filter: brightness(0.95); }
-
-/* 3. Front Editorial Quote Box (No Square Brackets, Warm Book Typography) */
-.story-flip-prompt-box {
-    position: relative; width: 100%;
-    padding: 12px 14px 12px 15px;
-    border-radius: 16px;
+    padding: 3.5px 11px; border-radius: 9999px;
+    border: 1px solid var(--m3-outline-variant);
     background: var(--m3-surface-container);
-    border-left: 3.5px solid var(--m3-primary);
-    overflow: hidden;
+    color: #486600;
+    font-size: 12px; font-weight: 700;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    cursor: pointer; transition: transform 0.15s ease, border-color 0.15s ease;
 }
+.story-flip-audio-pill:active { transform: scale(0.94); border-color: #486600; }
 
-.story-flip-prompt-quote {
-    position: absolute; top: -6px; right: 10px;
-    font-family: Georgia, serif; font-size: 44px; font-weight: 900;
-    color: var(--m3-on-surface); opacity: 0.06; line-height: 1; pointer-events: none;
+/* 3. Minimalist Unboxed Context Quote + Inline Flip Hint */
+.story-flip-quote-minimal {
+    width: 100%; padding-top: 12px;
+    border-top: 1px dashed var(--m3-outline-variant);
+    display: flex; flex-direction: column; gap: 8px;
 }
 
 .story-flip-prompt-text {
-    position: relative; z-index: 1; margin: 0;
+    margin: 0;
     font-family: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
-    font-size: 16.5px; font-weight: 600; font-style: italic;
-    line-height: 1.45; color: var(--m3-on-surface);
+    font-size: 16.5px; font-weight: 500; font-style: italic;
+    line-height: 1.48; color: var(--m3-on-surface-variant);
 }
 
 .story-flip-prompt-hl {
     font-style: normal; font-weight: 800;
-    color: var(--m3-on-primary-container);
-    background: var(--m3-primary-container);
-    padding: 1px 7px; border-radius: 6px;
-    border-bottom: 1.5px solid var(--m3-primary);
-    -webkit-box-decoration-break: clone; box-decoration-break: clone;
+    color: #486600;
+    background: transparent;
+    padding: 0 2px;
+    border-bottom: 1.5px solid rgba(72, 102, 0, 0.45);
 }
 
 /* 4. Bottom Flip Hint Footer */
 .story-flip-footer {
-    display: flex; align-items: center; justify-content: center;
-    margin-top: 12px; padding-top: 2px;
+    display: flex; align-items: center; justify-content: flex-end;
+    margin-top: 10px; padding-top: 2px;
 }
 
 .story-flip-hint-pill {
-    display: inline-flex; align-items: center; gap: 5px;
-    font-size: 11px; font-weight: 800; letter-spacing: 0.04em;
-    color: var(--m3-on-surface-variant); opacity: 0.82;
+    align-self: flex-end;
+    display: inline-flex; align-items: center; gap: 4.5px;
+    font-size: 10.5px; font-weight: 700; letter-spacing: 0.03em;
+    color: var(--m3-on-surface-variant); opacity: 0.68;
 }
 
 /* 5. Back Face Layout & Meaning Hierarchy */
