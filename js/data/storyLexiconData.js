@@ -11,16 +11,16 @@
     window.BUILTIN_STORY_LEXICON = {
         "the": {
             ipa: "/ðə/", pos: "MẠO TỪ XÁC ĐỊNH",
-            meaning: "Cái, con, vùng, ánh (mạo từ xác định)",
+            meaning: "Cái, con, vùng, ánh (xác định)",
             explanation: "Đi trong cụm «the valley» (thung lũng ấy) và «the warm sunlight» (ánh nắng ấm áp) để chỉ sự vật cụ thể trong bối cảnh câu chuyện.",
             dictMeanings: [
-                { meaning: "Cái, con, người, vật ấy (đã xác định)", pos: "MẠO TỪ", sense: "Dùng trước danh từ chỉ đối tượng đã được người đọc và người kể biết rõ." },
-                { meaning: "Nhất, càng... càng (dùng với so sánh)", pos: "PHÓ TỪ", sense: "Dùng trước tính từ/trạng từ so sánh hơn hoặc so sánh nhất (ví dụ: the best)." }
+                { meaning: "Cái, con, người, vật ấy", pos: "MẠO TỪ", sense: "Dùng trước danh từ chỉ đối tượng đã được người đọc và người kể biết rõ." },
+                { meaning: "Nhất, càng... càng (so sánh)", pos: "PHÓ TỪ", sense: "Dùng trước tính từ/trạng từ so sánh hơn hoặc so sánh nhất (ví dụ: the best)." }
             ]
         },
         "on": {
             ipa: "/ɒn/", pos: "GIỚI TỪ",
-            meaning: "Vào (một buổi sáng / ngày cụ thể)",
+            meaning: "Vào (buổi sáng / ngày cụ thể)",
             explanation: "Đi trong cụm «On a beautiful morning» để chỉ mốc thời gian vào một buổi sáng đẹp trời.",
             dictMeanings: [
                 { meaning: "Vào (ngày, buổi cụ thể)", pos: "GIỚI TỪ", sense: "Dùng chỉ thời điểm các buổi hoặc ngày đặc biệt (On a beautiful morning, On Sunday)." },
@@ -29,7 +29,7 @@
         },
         "a": {
             ipa: "/ə/", pos: "MẠO TỪ BẤT ĐỊNH",
-            meaning: "Một (mạo từ bất định)",
+            meaning: "Một (chưa xác định)",
             explanation: "Đi trong cụm «a beautiful morning» để giới thiệu một buổi sáng đẹp trời lần đầu được nhắc tới.",
             dictMeanings: [
                 { meaning: "Một (bất kỳ, chưa xác định)", pos: "MẠO TỪ", sense: "Dùng trước danh từ đếm được số ít bắt đầu bằng phụ âm." }

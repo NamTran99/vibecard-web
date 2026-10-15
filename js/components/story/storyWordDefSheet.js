@@ -231,9 +231,7 @@
     function updateSaveButtonLabel(session) {
         const btnLabel = document.getElementById('storyDefSaveBtnLabel');
         if (!btnLabel || !session) return;
-        const chosen = getActiveSelectedMeaning(session);
-        const shortMeaning = chosen.length > 26 ? chosen.slice(0, 25) + '…' : chosen;
-        btnLabel.textContent = shortMeaning ? `+ Lưu thẻ · «${shortMeaning}»` : `+ Lưu vào Flashcard`;
+        btnLabel.textContent = '+ Lưu vào Flashcard';
     }
 
     window.onStoryDefCustomInput = function (val) {
