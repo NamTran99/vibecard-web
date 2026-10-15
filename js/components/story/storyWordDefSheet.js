@@ -140,12 +140,7 @@
         const sentences = (typeof window.getStoryPartSentences === 'function') ? window.getStoryPartSentences(currentPart) : [];
         const matchedSentence = sentences[sentenceIdx] || sentences[0] || { text: currentPart.contentEn || "", translation: currentPart.contentVi || "" };
         const resolved = resolveLexiconEntry(rawTerm, matchedSentence.text, matchedSentence.translation);
-        activeLookupSession = {
-            term: rawTerm, ipa: resolved.ipa, pos: resolved.pos, meaning: resolved.meaning,
-            explanation: resolved.explanation, dictMeanings: resolved.dictMeanings || [],
-            sentenceIdx, sentenceEn: matchedSentence.text, sentenceVi: matchedSentence.translation,
-            tokenIndices, selectedOptionKey: 'lumi', customMeaning: '', needsLiveTranslate: Boolean(resolved.needsLiveTranslate)
-        };
+        activeLookupSession = { term: rawTerm, ipa: resolved.ipa, pos: resolved.pos, meaning: resolved.meaning, explanation: resolved.explanation, dictMeanings: resolved.dictMeanings || [], sentenceIdx, sentenceEn: matchedSentence.text, sentenceVi: matchedSentence.translation, tokenIndices, selectedOptionKey: 'lumi', customMeaning: '', needsLiveTranslate: Boolean(resolved.needsLiveTranslate) };
         renderWordDefinitionSheetUI(activeLookupSession);
         const modal = document.getElementById('storyWordDefinitionModal');
         if (modal) { modal.classList.remove('hidden'); modal.style.display = 'flex'; }
@@ -156,8 +151,7 @@
         if (!session) return "";
         if (session.selectedOptionKey === 'custom' && session.customMeaning.trim()) return session.customMeaning.trim();
         if (session.selectedOptionKey && session.selectedOptionKey.startsWith('dict_')) {
-            const idx = parseInt(session.selectedOptionKey.replace('dict_', ''), 10);
-            const dItem = (session.dictMeanings || [])[idx];
+            const dItem = (session.dictMeanings || [])[parseInt(session.selectedOptionKey.replace('dict_', ''), 10)];
             if (dItem) return dItem.meaning;
         }
         return session.meaning || "";
