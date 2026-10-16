@@ -60,7 +60,7 @@
     <link rel="stylesheet" href="css/pronunciation-modal.css?v=20261012_v1">
     <link rel="stylesheet" href="css/story-reader.css?v=20261015_m3_v41">
     <link rel="stylesheet" href="css/components/storyTargetCard.css?v=20261015_m3_v37">
-    <link rel="stylesheet" href="css/components/storyWordLookup.css?v=20261015_m3_v43">
+    <link rel="stylesheet" href="css/components/storyWordLookup.css?v=20261016_ctx_v2">
     <link rel="stylesheet" href="css/components/storyFlippableCard.css?v=20261015_m3_v42">
     <link rel="stylesheet" href="css/components/bottomNav.css?v=20261012_pill">
     <link rel="stylesheet" href="css/roadmap-mystery.css?v=20261016_cyor_v3">
@@ -2863,32 +2863,29 @@
                     <div class="story-def-context-card">
                         <div class="story-def-context-head">
                             <span class="story-def-section-header !mb-0">
-                                <svg class="story-def-line-icon is-olive" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                <svg class="story-def-line-icon is-olive" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
                                     <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
                                     <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
                                 </svg>
-                                <span>NGỮ CẢNH & CÁCH DÙNG TRONG CÂU</span>
+                                <span>NGỮ CẢNH TRONG TRUYỆN</span>
                             </span>
-                            <button type="button" onclick="speakStoryDefContextSentence()" class="story-def-ctx-tts-btn">
-                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
-                                    <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
-                                </svg>
-                                <span>Nghe câu</span>
-                            </button>
                         </div>
-                        <div id="storyDefSheetContextEn" class="story-def-ctx-en"></div>
-                        <div id="storyDefSheetContextVi" class="story-def-ctx-vi"></div>
+                        <div class="story-def-quote-block" onclick="speakStoryDefContextSentence()" title="Chạm để nghe câu">
+                            <div id="storyDefSheetContextEn" class="story-def-ctx-en"></div>
+                            <div id="storyDefSheetContextVi" class="story-def-ctx-vi"></div>
+                        </div>
                         <div class="story-def-usage-note">
-                            <span class="story-def-usage-badge">
-                                <svg class="story-def-line-icon is-amber" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                            <div class="story-def-usage-icon">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
                                     <path d="M9 18h6"/>
                                     <path d="M10 22h4"/>
                                     <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/>
                                 </svg>
-                                <span>Cách dùng trong câu</span>
-                            </span>
-                            <span id="storyDefSheetUsageText" class="story-def-usage-body"></span>
+                            </div>
+                            <div class="story-def-usage-content">
+                                <span class="story-def-usage-label">Cách dùng:</span>
+                                <span id="storyDefSheetUsageText" class="story-def-usage-body"></span>
+                            </div>
                         </div>
                     </div>
 
