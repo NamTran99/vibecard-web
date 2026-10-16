@@ -92,14 +92,16 @@ function renderRoadmapLessonRow(chapter, index, flags, order) {
     const displayTitle = customStory ? customStory.title : node.title;
     const displayImg = customStory ? customStory.img : node.img;
     const gMeta = (window.GENRE_META && customStory && window.GENRE_META[customStory.genre]) || null;
-    const dMeta = (window.DIFFICULTY_META && customStory && window.DIFFICULTY_META[customStory.difficulty]) || { badgeCls: 'age-badge-15' };
+    const dMeta = (typeof window.resolveRoadmapDifficulty === 'function')
+        ? window.resolveRoadmapDifficulty(node, customStory)
+        : ((window.DIFFICULTY_META && customStory && window.DIFFICULTY_META[customStory.difficulty]) || { short: 'Độ khó: Vừa', badgeCls: 'age-badge-15' });
     const kicker = type === 'chest'
         ? `<span>🎁 ${node.subtitle || '+150 XP'}</span>`
         : type === 'boss'
             ? `<span>👑 ${meta.minutes} phút</span>`
             : customStory
-                ? `<span class="age-badge ${dMeta.badgeCls}">${customStory.age}</span><span>${gMeta ? `${gMeta.name} · ${customStory.duration}` : customStory.duration}</span>`
-                : `<span>${meta.minutes} phút</span>`;
+                ? `<span class="age-badge ${dMeta.badgeCls}">${dMeta.short}</span><span>${gMeta ? `${gMeta.name} · ${customStory.duration}` : customStory.duration}</span>`
+                : `<span class="age-badge ${dMeta.badgeCls}">${dMeta.short}</span><span>${meta.minutes} phút</span>`;
 
     const switchBtn = (state === 'active' && !isSpecial && customStory)
         ? `<button type="button" onclick="event.stopPropagation(); openRoadmapGenrePickerSheet(${node.num}, ${chapter.id || 0}, 'classic')" class="text-[10.5px] font-bold hover:underline" style="color: var(--rm-amber-text, #D97706);">Đổi ↺</button>`

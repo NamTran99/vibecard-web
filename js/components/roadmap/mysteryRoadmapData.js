@@ -15,11 +15,22 @@
     };
 
     const DIFFICULTY_META = {
-        all:    { id: 'all',    label: 'Mọi mức', short: 'Tất cả', dotCls: 'diff-dot-all',  badgeCls: 'age-badge-15' },
-        easy:   { id: 'easy',   label: 'Dễ · 3p',  short: 'Cơ bản', dotCls: 'diff-dot-easy', badgeCls: 'age-badge-3'  },
-        medium: { id: 'medium', label: 'Vừa · 5p', short: 'Vừa sức', dotCls: 'diff-dot-med',  badgeCls: 'age-badge-15' },
-        hard:   { id: 'hard',   label: 'Khó · 7p', short: 'Nâng cao', dotCls: 'diff-dot-hard', badgeCls: 'age-badge-18' }
+        all:    { id: 'all',    label: 'Mọi mức', short: 'Tất cả',      dotCls: 'diff-dot-all',  badgeCls: 'age-badge-15' },
+        easy:   { id: 'easy',   label: 'Dễ · 3p',  short: 'Độ khó: Dễ',  dotCls: 'diff-dot-easy', badgeCls: 'age-badge-3'  },
+        medium: { id: 'medium', label: 'Vừa · 5p', short: 'Độ khó: Vừa', dotCls: 'diff-dot-med',  badgeCls: 'age-badge-15' },
+        hard:   { id: 'hard',   label: 'Khó · 7p', short: 'Độ khó: Khó', dotCls: 'diff-dot-hard', badgeCls: 'age-badge-18' }
     };
+
+    function resolveRoadmapDifficulty(node, story) {
+        const raw = String((story && (story.difficulty || story.age)) || (node && ((node.tags && node.tags.age) || (node.display_badges && node.display_badges[0]))) || '').toLowerCase();
+        if (raw.includes('easy') || raw.includes('dễ') || raw.includes('cơ bản') || raw === '3+' || raw === '10+' || (node && node.type === 'book')) {
+            return DIFFICULTY_META.easy;
+        }
+        if (raw.includes('hard') || raw.includes('khó') || raw.includes('nâng cao') || raw === '18+') {
+            return DIFFICULTY_META.hard;
+        }
+        return DIFFICULTY_META.medium;
+    }
 
     const FALLBACK_STORIES = [
         {
@@ -28,7 +39,7 @@
             subtitle: 'Bài học về sự kiên trì',
             genre: 'fable',
             difficulty: 'easy',
-            age: 'Cơ bản',
+            age: 'Độ khó: Dễ',
             duration: '3 phút',
             img: 'assets/cards/lumi_farmer_strawhat.jpg',
             scenario: 'Cuộc đua vô tiền khoáng hậu giữa chú Thỏ kiêu ngạo và chú Rùa điềm tĩnh tại thung lũng mùa xuân.'
@@ -39,7 +50,7 @@
             subtitle: 'Sự thông minh và kiên nhẫn',
             genre: 'fable',
             difficulty: 'easy',
-            age: 'Cơ bản',
+            age: 'Độ khó: Dễ',
             duration: '3 phút',
             img: 'assets/cards/lumi_melody_arena.jpg',
             scenario: 'Chú Quạ khát nước khéo léo dùng sỏi để nâng mực nước trong chiếc bình sâu đáy.'
@@ -50,7 +61,7 @@
             subtitle: 'Giá trị của sự trung thực',
             genre: 'fable',
             difficulty: 'easy',
-            age: 'Cơ bản',
+            age: 'Độ khó: Dễ',
             duration: '4 phút',
             img: 'assets/cards/lumi_review_flashcards.jpg',
             scenario: 'Những ngày chăn cừu trên đồi cỏ và bài học sâu sắc về lòng tin.'
@@ -61,7 +72,7 @@
             subtitle: 'Quán cà phê góc phố Tokyo',
             genre: 'travel_daily',
             difficulty: 'medium',
-            age: 'Vừa sức',
+            age: 'Độ khó: Vừa',
             duration: '5 phút',
             img: 'assets/cards/lumi_rain_coffee_eaves.jpg',
             scenario: 'Trú mưa bên hiên quán nhỏ & gọi một ly latte ấm nóng.'
@@ -72,7 +83,7 @@
             subtitle: 'Sân ga mù sương 00:00',
             genre: 'travel_daily',
             difficulty: 'medium',
-            age: 'Vừa sức',
+            age: 'Độ khó: Vừa',
             duration: '5 phút',
             img: 'assets/cards/lumi_train_station_night.jpg',
             scenario: 'Hơi nước rít lên tại Ke ga số 1 khi đồng hồ điểm qua nửa đêm.'
@@ -83,7 +94,7 @@
             subtitle: 'Ẩm thực đêm & hỏi đường',
             genre: 'travel_daily',
             difficulty: 'medium',
-            age: 'Vừa sức',
+            age: 'Độ khó: Vừa',
             duration: '5 phút',
             img: 'assets/cards/pixar_night_farm_scenery.jpg',
             scenario: 'Gọi món đặc sản địa phương và trò chuyện cùng đầu bếp bản xứ.'
@@ -94,7 +105,7 @@
             subtitle: 'Sảnh hội nghị AI quốc tế',
             genre: 'pro_business',
             difficulty: 'hard',
-            age: 'Nâng cao',
+            age: 'Độ khó: Khó',
             duration: '6 phút',
             img: 'assets/cards/lumi_review_flashcards.jpg',
             scenario: 'Xử lý tình huống nhầm lẫn thông tin đại biểu lịch thiệp trước giờ khai mạc.'
@@ -105,7 +116,7 @@
             subtitle: 'Ký kết thương vụ chiến lược',
             genre: 'pro_business',
             difficulty: 'hard',
-            age: 'Nâng cao',
+            age: 'Độ khó: Khó',
             duration: '7 phút',
             img: 'assets/cards/lumi_progress_celebration.jpg',
             scenario: 'Thương thảo điều khoản hợp đồng gấp trước thời hạn đóng phiên.'
@@ -116,7 +127,7 @@
             subtitle: 'Bí mật dưới ánh trăng',
             genre: 'mystery',
             difficulty: 'hard',
-            age: 'Nâng cao',
+            age: 'Độ khó: Khó',
             duration: '7 phút',
             img: 'assets/cards/lumi_farmer_night.png',
             scenario: 'Giải mã những dòng chữ cổ để lại trong căn gác mái đầy bụi thời gian.'
@@ -303,6 +314,7 @@
 
     window.GENRE_META = GENRE_META;
     window.DIFFICULTY_META = DIFFICULTY_META;
+    window.resolveRoadmapDifficulty = resolveRoadmapDifficulty;
     window.getFullStoryPool = getFullStoryPool;
     window.getFilteredStories = getFilteredStories;
     window.setStoryFilter = setStoryFilter;
