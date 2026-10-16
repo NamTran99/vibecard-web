@@ -18,6 +18,9 @@ function getRoadmapNodeAction(chapter, index) {
     const state = resolveRoadmapNodeState(chapter, index);
     const unlocked = state !== 'locked';
     if (node.type === 'chest' && unlocked) return 'claimRoadmapBonusChest()';
+    if ((node.type === 'chest' || node.type === 'boss') && !unlocked) {
+        return `openRoadmapMilestonePreview('${node.type}', ${node.num}, ${chapter.id || 0})`;
+    }
     const isDeckMode = (typeof window.isRoadmapSlotInDeckMode === 'function')
         && window.isRoadmapSlotInDeckMode(chapter.id || 0, node.num);
     const assigned = (typeof window.getAssignedRoadmapStory === 'function')
@@ -112,12 +115,13 @@ function renderRoadmapLessonRow(chapter, index, flags, order) {
 
     // ② THẺ ĐANG HỌC — HERO BOOK CARD (Sách 3D mở rộng + Học ngay + Đổi truyện / Úp bài)
     if (state === 'active' && !isSpecial) {
+        const flipCls = (window.__justRevealedSlot === `${chapter.id || 0}_${node.num}`) ? 'is-flip-reveal' : '';
         return `
             <div class="mb-row ${railClasses} mb-state-active mb-type-${type} ${justDone}" style="--i:${order}" data-roadmap-active="1">
                 <div class="mb-rail ${railUnlocking}" onclick="${onClick}" role="button" tabindex="-1">
                     <span class="mb-dot mb-dot-lumi-token"><img src="assets/create/lumi_fox.png" alt="Lumi" class="mb-dot-lumi-avatar" /></span>${pawsHtml}
                 </div>
-                <div class="mb-card mb-card-active-hero ${justUnlocked}" data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}">
+                <div class="mb-card mb-card-active-hero ${justUnlocked} ${flipCls}" data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}">
                     <div class="mb-card-body">
                         <div class="flex items-center justify-between gap-1">
                             <div class="flex items-center gap-1.5"><span class="age-badge ${dMeta.badgeCls}">${dMeta.short}</span><span class="mb-card-kicker text-[10.5px]">${gMeta ? `${gMeta.name} · ${durationStr}` : durationStr}</span></div>

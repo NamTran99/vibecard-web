@@ -108,11 +108,16 @@ function handleCharacterTap(el) {
 }
 
 // Màn ăn mừng khi 1 nhân vật được tô đủ 5/5
+function getActiveRoadmapScreen() {
+    const mys = document.getElementById('screenMysteryRoadmap');
+    if (mys && !mys.classList.contains('hidden')) return mys;
+    return document.getElementById('screenParchmentRoadmap') || document.body;
+}
+
 function showRoadmapCelebration(chapter, loop) {
-    const screen = document.getElementById('screenParchmentRoadmap');
+    const screen = getActiveRoadmapScreen();
     if (!screen || typeof document.createElement !== 'function') return;
-    const char = (chapter.characters || [])[loop];
-    if (!char) return;
+    const char = (chapter.characters || [])[loop] || { name: 'Thần Rừng Lumi', img: 'assets/create/lumi_fox.png' };
 
     closeRoadmapCelebration();
     const overlay = document.createElement('div');
@@ -120,10 +125,8 @@ function showRoadmapCelebration(chapter, loop) {
     overlay.className = 'mb-celebrate';
     overlay.setAttribute('role', 'dialog');
     overlay.setAttribute('aria-modal', 'true');
-    overlay.setAttribute('aria-label', `${char.name} đã được tô màu hoàn chỉnh`);
 
-    const confetti = Array.from({ length: 14 }, (_, i) =>
-        `<span style="--c:${i}"></span>`).join('');
+    const confetti = Array.from({ length: 14 }, (_, i) => `<span style="--c:${i}"></span>`).join('');
     const hasNextLoop = (loop + 1) * ROADMAP_LESSONS_PER_LOOP < chapter.nodes.length;
 
     overlay.innerHTML = `
@@ -133,18 +136,54 @@ function showRoadmapCelebration(chapter, loop) {
             <div class="mb-celebrate-glow" aria-hidden="true"></div>
             <img class="mb-celebrate-img" src="${char.img}" alt="${char.name}" />
             <div class="mb-celebrate-badge my-2 text-3xl" aria-hidden="true">🏆 ✨</div>
-            <span class="mb-celebrate-kicker">Vòng ${loop + 1} hoàn thành</span>
-            <h3 class="mb-celebrate-title">${char.name} đã có màu đầy đủ!</h3>
-            <p class="mb-celebrate-quote">“${char.quote || 'Cảm ơn bạn đã đồng hành cùng mình!'}”</p>
+            <span class="mb-celebrate-kicker">Vòng ${loop + 1} hoàn thành · +150 XP</span>
+            <h3 class="mb-celebrate-title">${char.name} đã thức tỉnh 100%!</h3>
+            <p class="mb-celebrate-quote">“${char.quote || 'Cảm ơn bạn đã đánh thức trọn vẹn sắc màu cho mình!'}”</p>
             <button type="button" class="mb-celebrate-btn" onclick="closeRoadmapCelebration(${hasNextLoop ? loop + 2 : 0})">
                 ${hasNextLoop ? 'Sang vòng tiếp theo' : 'Tiếp tục hành trình'}
             </button>
         </div>`;
     screen.appendChild(overlay);
     roadmapRaf(() => overlay.classList.add('is-open'));
-    const btn = overlay.querySelector('.mb-celebrate-btn');
-    if (btn && btn.focus) setTimeout(() => btn.focus(), 300);
 }
+
+function openRoadmapMilestonePreview(type = 'chest', nodeNum = 5, chapterId = 0) {
+    const screen = getActiveRoadmapScreen();
+    if (!screen) return;
+    closeRoadmapCelebration();
+    const isBoss = type === 'boss';
+    const img = isBoss ? 'assets/cards/lumi_progress_celebration.jpg' : 'assets/cards/reward_gift_box.jpg';
+    const badge = isBoss ? '👑 TRÙM CUỐI CHƯƠNG · +300 XP' : '🎁 RƯƠNG KHO BÁU VÒNG 1 · +150 XP';
+    const title = isBoss ? 'Thử Thách Trùm Cuối Chương' : 'Rương Kho Báu Thần Rừng Lumi';
+    const desc = isBoss
+        ? 'Hoàn thành Chặng 9 để mở khóa trận chiến ôn tập tổng hợp, đánh thức 100% Lumi Nhà Thám Hiểm và nhận +300 XP!'
+        : 'Hoàn thành đủ các bài trong Vòng 1 để Lumi sáng rực 100% sắc màu và mở khóa Rương Kho Báu +150 XP!';
+
+    const overlay = document.createElement('div');
+    overlay.id = 'roadmapCelebration';
+    overlay.className = 'mb-celebrate';
+    overlay.setAttribute('role', 'dialog');
+    overlay.innerHTML = `
+        <div class="mb-celebrate-backdrop" onclick="closeRoadmapCelebration()"></div>
+        <div class="mb-celebrate-card">
+            <div class="mb-celebrate-glow" aria-hidden="true"></div>
+            <img class="mb-celebrate-img rounded-2xl border-2 border-amber-400/60 shadow-lg" src="${img}" alt="" />
+            <span class="rm-milestone-badge my-2">${badge}</span>
+            <h3 class="mb-celebrate-title">${title}</h3>
+            <p class="mb-celebrate-quote">${desc}</p>
+            <div class="flex flex-col gap-2 w-full mt-2">
+                <button type="button" class="mb-celebrate-btn" onclick="closeRoadmapCelebration(); if(typeof advanceRoadmapProgress==='function') advanceRoadmapProgress(${chapterId || 0});">
+                    ⚡ Học nhanh +1 bài (+20% Lumi)
+                </button>
+                <button type="button" class=" py-2 px-4 rounded-full text-xs font-bold text-[var(--rm-on-surface-variant)] hover:text-[var(--rm-on-surface)]" onclick="closeRoadmapCelebration()">
+                    Đóng
+                </button>
+            </div>
+        </div>`;
+    screen.appendChild(overlay);
+    roadmapRaf(() => overlay.classList.add('is-open'));
+}
+window.openRoadmapMilestonePreview = openRoadmapMilestonePreview;
 
 function closeRoadmapCelebration(goToLoop = 0) {
     const overlay = typeof document.getElementById === 'function' && document.getElementById('roadmapCelebration');

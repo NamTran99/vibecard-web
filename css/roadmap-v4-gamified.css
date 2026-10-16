@@ -93,7 +93,7 @@ html.light .mb-state-active .mb-dot.mb-dot-lumi-token {
 .mb-card.mb-card-completed-strip {
     min-height: 54px !important; border-radius: 999px !important;
     background: rgba(184, 209, 102, 0.06) !important; border: 1px solid rgba(184, 209, 102, 0.22) !important;
-    align-items: center !important; padding: 5px 14px 5px 7px !important; gap: 10px;
+    align-items: center !important; justify-content: flex-start !important; padding: 5px 14px 5px 7px !important; gap: 10px;
 }
 html.light .mb-card.mb-card-completed-strip { background: rgba(82, 102, 0, 0.05) !important; border-color: rgba(82, 102, 0, 0.20) !important; }
 .mb-thumb.mb-thumb-compact {
@@ -120,6 +120,15 @@ html.light .mb-card.mb-card-completed-strip { background: rgba(82, 102, 0, 0.05)
     border: 1.5px solid var(--rm-primary) !important;
     box-shadow: 0 10px 26px -6px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(184, 209, 102, 0.28) !important;
     align-items: center !important; padding-right: 10px;
+}
+.mb-card.mb-card-active-hero.is-flip-reveal {
+    animation: rm-hero-card-flip 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+    transform-origin: center center;
+}
+@keyframes rm-hero-card-flip {
+    0% { transform: perspective(900px) rotateX(68deg) scale(0.92); opacity: 0.25; filter: brightness(1.35); }
+    60% { transform: perspective(900px) rotateX(-6deg) scale(1.02); opacity: 1; }
+    100% { transform: perspective(900px) rotateX(0deg) scale(1); opacity: 1; filter: brightness(1); }
 }
 html.light .mb-card.mb-card-active-hero {
     background: linear-gradient(135deg, #FFFFFF 0%, #F7F6EE 65%, #FEF9C3 100%) !important;

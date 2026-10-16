@@ -6,6 +6,7 @@ function openRoadmapChapterSheet() {
     const sheet = document.getElementById('roadmapChapterSheet');
     const chevron = document.getElementById('roadmapDropdownChevron');
     if (!sheet) return;
+    if (sheet.parentElement !== document.body) document.body.appendChild(sheet);
 
     sheet.classList.remove('hidden');
     void sheet.offsetWidth;
@@ -105,16 +106,23 @@ function selectRoadmapChapter(idx, opts = {}) {
     const switching = idx !== currentRoadmapChapterIdx;
     currentRoadmapChapterIdx = idx;
     const ch = roadmapChaptersData[idx];
+    const progChipText = `${getRoadmapCompletedCount(ch)}/${(ch.nodes || []).length} chặng`;
 
-    // 1. Single-Row Dropdown Header (Option 2)
-    const eyebrowEl = document.getElementById('roadmapHeaderEyebrow');
-    const titleEl = document.getElementById('roadmapHeaderTitle');
+    // 1. Single-Row Dropdown Header (Đồng bộ cả 2 màn hình Roadmap)
+    ['roadmapHeaderEyebrow', 'mysteryHeaderEyebrow'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.innerText = `CHƯƠNG ${idx + 1}`;
+    });
+    ['roadmapHeaderTitle', 'mysteryHeaderTitle'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.innerText = ch.title;
+    });
+    ['roadmapHeroProgressChip', 'mysteryHeroProgressChip'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.innerText = progChipText;
+    });
     const progressEl = document.getElementById('roadmapProgressText');
-    const heroProgChip = document.getElementById('roadmapHeroProgressChip');
-    if (eyebrowEl) eyebrowEl.innerText = `CHƯƠNG ${idx + 1}`;
-    if (titleEl) titleEl.innerText = ch.title;
     if (progressEl) progressEl.innerText = getRoadmapProgressLabel(ch);
-    if (heroProgChip) heroProgChip.innerText = `${getRoadmapCompletedCount(ch)}/${(ch.nodes || []).length} chặng`;
 
     // 2. Tabs: giữ tương thích nếu cần
     for (let i = 0; i < roadmapChaptersData.length; i++) {
@@ -122,56 +130,46 @@ function selectRoadmapChapter(idx, opts = {}) {
         if (!tab) continue;
         const lockedCls = isRoadmapChapterLocked(roadmapChaptersData[i]) ? ' is-locked' : '';
         if (i === idx) {
-            tab.className = "roadmap-ch-tab active px-3.5 py-1.5 rounded-full text-xs font-black shrink-0 transition-all cursor-pointer font-['Cinzel'] tracking-wide" + lockedCls;
+            tab.className = "roadmap-ch-tab active px-3.5 py-1.5 rounded-full text-xs font-black shrink-0 transition-all cursor-pointer tracking-wide" + lockedCls;
             tab.setAttribute && tab.setAttribute('aria-current', 'true');
         } else {
-            tab.className = "roadmap-ch-tab px-3.5 py-1.5 rounded-full text-xs font-bold shrink-0 transition-all cursor-pointer font-['Cinzel'] tracking-wide" + lockedCls;
+            tab.className = "roadmap-ch-tab px-3.5 py-1.5 rounded-full text-xs font-bold shrink-0 transition-all cursor-pointer tracking-wide" + lockedCls;
             tab.removeAttribute && tab.removeAttribute('aria-current');
         }
     }
 
-    // Helper format tag chương sang dạng huy hiệu ngọc Fairytale
     function formatHeroTagHtml(chObj, chIdx) {
         if (!chObj) return '';
         const chNum = (typeof chIdx === 'number') ? (chIdx + 1) : ((typeof chObj.id === 'number') ? chObj.id + 1 : 1);
-        return `
-            <span class="roadmap-tag-pill">
-                <span class="roadmap-tag-sparkle">✦</span>
-                <span>CHƯƠNG ${chNum}</span>
-            </span>
-        `;
+        return `<span class="roadmap-tag-pill"><span class="roadmap-tag-sparkle">✦</span><span>CHƯƠNG ${chNum}</span></span>`;
     }
 
-    // 3. Banner chương (Hiệu ứng cross-fade mượt mà khi đổi chương)
-    const heroHeader = document.getElementById('roadmapHeroHeader');
-    const bannerImg = document.getElementById('roadmapBannerImg');
-    const cardTag = document.getElementById('roadmapCardTag');
-    const chapterHeading = document.getElementById('roadmapChapterHeading');
-    const cardDesc = document.getElementById('roadmapCardDesc');
-
-    if (switching && heroHeader && bannerImg) {
-        heroHeader.classList.add('is-switching');
-        const imgPreload = new Image();
+    // 3. Banner chương (Đồng bộ cả #roadmapHeroHeader và #mysteryRoadmapHeroHeader)
+    const applyHeroSwap = (headerId, imgId, tagId, headingId, descId) => {
+        const heroHeader = document.getElementById(headerId);
+        const bannerImg = document.getElementById(imgId);
+        const cardTag = document.getElementById(tagId);
+        const chapterHeading = document.getElementById(headingId);
+        const cardDesc = document.getElementById(descId);
         const finishSwap = () => {
             if (bannerImg) bannerImg.src = ch.image;
             if (cardTag) cardTag.innerHTML = formatHeroTagHtml(ch, idx);
             if (chapterHeading) chapterHeading.innerText = ch.title;
             if (cardDesc) cardDesc.innerText = ch.desc;
-            requestAnimationFrame(() => {
-                setTimeout(() => {
-                    heroHeader.classList.remove('is-switching');
-                }, 50);
-            });
+            if (heroHeader) requestAnimationFrame(() => setTimeout(() => heroHeader.classList.remove('is-switching'), 50));
         };
-        imgPreload.onload = finishSwap;
-        imgPreload.onerror = finishSwap;
-        imgPreload.src = ch.image;
-    } else {
-        if (bannerImg) bannerImg.src = ch.image;
-        if (cardTag) cardTag.innerHTML = formatHeroTagHtml(ch, idx);
-        if (chapterHeading) chapterHeading.innerText = ch.title;
-        if (cardDesc) cardDesc.innerText = ch.desc;
-    }
+        if (switching && heroHeader && bannerImg) {
+            heroHeader.classList.add('is-switching');
+            const imgPreload = new Image();
+            imgPreload.onload = finishSwap;
+            imgPreload.onerror = finishSwap;
+            imgPreload.src = ch.image;
+        } else {
+            finishSwap();
+        }
+    };
+    applyHeroSwap('roadmapHeroHeader', 'roadmapBannerImg', 'roadmapCardTag', 'roadmapChapterHeading', 'roadmapCardDesc');
+    applyHeroSwap('mysteryRoadmapHeroHeader', 'mysteryRoadmapBannerImg', 'mysteryRoadmapCardTag', 'mysteryRoadmapChapterHeading', 'mysteryRoadmapCardDesc');
 
     // 4. Cập nhật sheet nếu đang mở
     const sheet = document.getElementById('roadmapChapterSheet');
@@ -179,9 +177,12 @@ function selectRoadmapChapter(idx, opts = {}) {
         renderRoadmapChapterSheetList();
     }
 
-    // 5. Timeline + thanh "Bài tiếp theo"
+    // 5. Timeline + thanh "Bài tiếp theo" trên cả 2 màn hình
     renderRoadmapNodes(ch, { animateIn: opts.animateIn || switching });
     renderRoadmapNextBar(ch);
     renderRoadmapAmbientEffects(idx);
+    if (typeof window.renderMysteryRoadmapTimeline === 'function') {
+        window.renderMysteryRoadmapTimeline(idx);
+    }
     if (!opts.keepScroll) scrollRoadmapToActive(false);
 }
