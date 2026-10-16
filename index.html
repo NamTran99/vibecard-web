@@ -60,7 +60,7 @@
     <link rel="stylesheet" href="css/pronunciation-modal.css?v=20261012_v1">
     <link rel="stylesheet" href="css/story-reader.css?v=20261015_m3_v41">
     <link rel="stylesheet" href="css/components/storyTargetCard.css?v=20261015_m3_v37">
-    <link rel="stylesheet" href="css/components/storyWordLookup.css?v=20261016_ctx_v3">
+    <link rel="stylesheet" href="css/components/storyWordLookup.css?v=20261016_ctx_v4">
     <link rel="stylesheet" href="css/components/storyFlippableCard.css?v=20261015_m3_v42">
     <link rel="stylesheet" href="css/components/bottomNav.css?v=20261012_pill">
     <link rel="stylesheet" href="css/roadmap-mystery.css?v=20261016_cyor_v3">
@@ -2835,16 +2835,16 @@
             <div class="story-word-def-sheet" onclick="event.stopPropagation()">
                 <div class="story-sheet-handle mb-2.5"></div>
 
-                <!-- 1. Top Identity Bar: Word + POS on row 1, Audio IPA on row 2 + Close -->
+                <!-- 1. Top Identity Bar: Word + POS on row 1, clean inline Audio + IPA on row 2 -->
                 <div class="story-def-header-row">
-                    <div class="min-w-0 flex-1 flex flex-col items-start gap-2">
+                    <div class="min-w-0 flex-1 flex flex-col items-start gap-1">
                         <div class="flex items-center gap-2.5 flex-wrap">
                             <span id="storyDefSheetWord" class="story-def-word-title">intentionally</span>
                             <span id="storyDefHeaderPos" class="story-def-pos-tag">TRẠNG TỪ</span>
                         </div>
                         <button onclick="speakStoryLookupWord()" class="story-def-tts-pill" title="Phát âm từ">
                             <span class="story-def-tts-icon">
-                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
                                     <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
                                     <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
                                 </svg>
