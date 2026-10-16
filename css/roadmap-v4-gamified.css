@@ -1,25 +1,21 @@
 /* ======================================================== */
-/* 🗺️ ROADMAP v4.0 GAMIFIED UPGRADES (ITEMS 1, 2, 3, 4, 5)  */
+/* 🗺️ ROADMAP v5.0: WINDING 3D SQUARE '?' STEPPING-STONES   */
 /* Ceiling: < 350 lines | Standard: Material Design 3 M3-07  */
 /* ======================================================== */
 
-/* 1. ITEM 1: VIETNAMESE-SAFE TYPOGRAPHY & ZERO-OVERLAP HERO */
+/* 1. VIETNAMESE-SAFE TYPOGRAPHY & HERO HEADER */
 #screenParchmentRoadmap, #screenMysteryRoadmap,
 #roadmapChapterHeading, #mysteryRoadmapChapterHeading,
 #roadmapHeaderTitle, #mysteryHeaderTitle,
 #roadmapHeaderEyebrow, #mysteryHeaderEyebrow {
     font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif !important;
 }
-
-#roadmapHeroHeader, #mysteryRoadmapHeroHeader { min-height: 220px !important; }
+#roadmapHeroHeader, #mysteryRoadmapHeroHeader { min-height: 214px !important; }
 #roadmapHeroHeader .hero-content, #mysteryRoadmapHeroHeader .hero-content {
-    padding: 14px 18px 14px !important;
-    will-change: opacity, transform;
+    padding: 14px 18px 14px !important; will-change: opacity, transform;
 }
 #roadmapHeroHeader:not(.is-switching) .hero-content,
-#mysteryRoadmapHeroHeader:not(.is-switching) .hero-content {
-    transition: none !important;
-}
+#mysteryRoadmapHeroHeader:not(.is-switching) .hero-content { transition: none !important; }
 #roadmapChapterHeading, #mysteryRoadmapChapterHeading {
     font-size: 24px !important; font-weight: 800 !important;
     letter-spacing: -0.025em !important; line-height: 1.18 !important;
@@ -27,321 +23,324 @@
 
 .rm-hero-meta-strip { display: inline-flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 .rm-hero-meta-chip {
-    display: inline-flex; align-items: center; gap: 5px;
-    padding: 4px 10px; border-radius: 999px;
+    display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: 999px;
     background: rgba(18, 20, 14, 0.75); border: 1px solid rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-    color: #E5E3DB; font-size: 10.5px; font-weight: 800; letter-spacing: 0.01em;
+    color: #E5E3DB; font-size: 10.5px; font-weight: 800;
 }
 html.light .rm-hero-meta-chip { background: rgba(255, 255, 255, 0.88); border-color: rgba(82, 102, 0, 0.22); color: #1B1C17; }
 .rm-hero-meta-chip.is-gold { border-color: rgba(251, 191, 36, 0.45); color: #FDE68A; }
 html.light .rm-hero-meta-chip.is-gold { background: #FEF3C7; border-color: rgba(217, 119, 6, 0.4); color: #92400E; }
 .rm-hero-meta-dot { width: 6px; height: 6px; border-radius: 50%; background: #B8D166; box-shadow: 0 0 6px #B8D166; }
 
-/* 2. ITEM 3: LUMI COLOR-WAVE AWAKENING & VISUAL REWARD BAR [🟢🟢⚪⚪⚪ → 🎁] */
-.mb-segbar span.on {
-    background: linear-gradient(90deg, #B8D166, #FBBF24) !important;
-    box-shadow: 0 0 8px rgba(184, 209, 102, 0.55);
-}
-.mb-segbar-row {
-    display: inline-flex !important; align-items: center !important; gap: 6px !important; margin-top: 4px !important;
-}
-.mb-segbar-arrow {
-    font-size: 11px; font-weight: 900; color: rgba(251, 191, 36, 0.78); line-height: 1;
-}
-html.light .mb-segbar-arrow { color: #B45309; }
-.mb-segbar-chest {
-    width: 24px; height: 24px; border-radius: 8px;
-    background: rgba(251, 191, 36, 0.16); border: 1px solid rgba(251, 191, 36, 0.45);
-    display: inline-flex; align-items: center; justify-content: center;
-    font-size: 13px; line-height: 1; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
-}
-.mb-segbar-chest.is-unlocked {
-    background: linear-gradient(135deg, #FBBF24, #D97706); border-color: #FEF3C7;
-    box-shadow: 0 0 10px rgba(251, 191, 36, 0.55);
-}
-html.light .mb-segbar-chest { background: #FEF3C7; border-color: rgba(217, 119, 6, 0.45); }
+/* 2. WINDING MAP STAGE CONTAINER & SECTION PILL */
+.sq-roadmap-map { padding: 10px 12px 56px !important; max-width: 440px; margin: 0 auto; }
+#roadmapNextBar, #mysteryRoadmapNextBar { display: none !important; }
+.sq-winding-section { position: relative; margin-bottom: 18px; }
+.sq-winding-section.is-future-loop { opacity: 0.78; }
 
+.sq-section-pill-row {
+    display: flex; align-items: center; gap: 10px; margin: 4px 4px 18px;
+}
+.sq-section-line {
+    flex: 1; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(184, 209, 102, 0.28), transparent);
+}
+.sq-section-pill {
+    padding: 4px 12px; border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(184, 209, 102, 0.24);
+    color: var(--rm-on-surface); font-size: 10.5px; font-weight: 800; letter-spacing: 0.03em;
+}
+html.light .sq-section-pill { background: rgba(82, 102, 0, 0.06); border-color: rgba(82, 102, 0, 0.22); color: #2D3618; }
+
+.sq-winding-stage { position: relative; width: 100%; min-height: 520px; }
+.sq-winding-nodes { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: stretch; }
+
+/* 3. SVG WINDING STEPPING-STONE TRAIL BRIDGES */
+.sq-bridge-wrap {
+    width: 100%; height: 34px; margin: -6px 0; position: relative; z-index: 1; pointer-events: none;
+}
+.sq-bridge-svg { width: 100%; height: 100%; overflow: visible; display: block; }
+.sq-bridge-glow {
+    fill: none; stroke: rgba(255, 255, 255, 0.04); stroke-width: 12px; stroke-linecap: round;
+}
+.sq-bridge-dash {
+    fill: none; stroke: rgba(255, 255, 255, 0.16); stroke-width: 3.5px;
+    stroke-dasharray: 6 8; stroke-linecap: round;
+}
+html.light .sq-bridge-dash { stroke: rgba(82, 102, 0, 0.22); }
+.sq-bridge-wrap.is-lit .sq-bridge-glow { stroke: rgba(184, 209, 102, 0.16); }
+.sq-bridge-wrap.is-lit .sq-bridge-dash { stroke: #B8D166; stroke-dasharray: none; stroke-width: 4px; }
+.sq-bridge-wrap.is-active-bridge .sq-bridge-glow { stroke: rgba(251, 191, 36, 0.22); }
+.sq-bridge-wrap.is-active-bridge .sq-bridge-dash { stroke: #FBBF24; stroke-width: 4px; stroke-dasharray: 7 7; }
+
+/* 4. NODE ROW & BESPOKE 3D SQUARE '?' TILE ANATOMY */
+.sq-node-row { position: relative; width: 100%; min-height: 92px; display: block; z-index: 2; }
+.sq-node-row.is-active-hero { min-height: 162px; z-index: 6; margin: 6px 0 8px; }
+.sq-node-anchor {
+    position: relative; left: var(--x, 50%); transform: translateX(-50%);
+    width: max-content; max-width: 196px;
+    display: flex; flex-direction: column; align-items: center; gap: 5px;
+}
+
+.sq-tile {
+    position: relative; width: 76px; height: 76px; border-radius: 22px;
+    background: linear-gradient(160deg, #2D3324 0%, #1C2016 100%);
+    border: 2px solid rgba(184, 209, 102, 0.35);
+    box-shadow: 0 7px 0 #11140D, 0 12px 22px rgba(0, 0, 0, 0.52), inset 0 2px 0 rgba(255, 255, 255, 0.16);
+    cursor: pointer; user-select: none;
+    transition: transform 0.16s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.16s ease, border-color 0.16s ease;
+}
+html.light .sq-tile {
+    background: linear-gradient(160deg, #F6F8EE 0%, #E5EBD0 100%);
+    border-color: rgba(82, 102, 0, 0.35);
+    box-shadow: 0 7px 0 #BCC69C, 0 10px 18px rgba(45, 54, 24, 0.16), inset 0 2px 0 #FFFFFF;
+}
+.sq-tile:hover { transform: translateY(-2px); border-color: #B8D166; }
+.sq-tile:active { transform: translateY(4px); box-shadow: 0 3px 0 #11140D, 0 6px 12px rgba(0, 0, 0, 0.45); }
+
+.sq-tile-locked.is-mystery-q {
+    background: linear-gradient(160deg, #23261E 0%, #171913 100%);
+    border-color: rgba(255, 255, 255, 0.13);
+    box-shadow: 0 6px 0 #0E100B, 0 10px 18px rgba(0, 0, 0, 0.42), inset 0 1.5px 0 rgba(255, 255, 255, 0.08);
+    opacity: 0.78;
+}
+html.light .sq-tile-locked.is-mystery-q {
+    background: linear-gradient(160deg, #ECEFE4 0%, #DCE1CE 100%);
+    border-color: rgba(82, 102, 0, 0.2); box-shadow: 0 6px 0 #C4CBAE, 0 8px 14px rgba(0, 0, 0, 0.08);
+}
+.sq-tile-locked:hover { opacity: 1; border-color: rgba(251, 191, 36, 0.55); }
+
+.sq-corner-stud {
+    position: absolute; width: 4px; height: 4px; border-radius: 50%;
+    background: rgba(255, 255, 255, 0.22); pointer-events: none; z-index: 3;
+}
+.sq-corner-stud.s1 { top: 6px; left: 6px; }
+.sq-corner-stud.s2 { top: 6px; right: 6px; }
+.sq-corner-stud.s3 { bottom: 6px; left: 6px; }
+.sq-corner-stud.s4 { bottom: 6px; right: 6px; }
+
+.sq-tile-inner {
+    position: absolute; inset: 4px; border-radius: 17px; overflow: hidden;
+    background: radial-gradient(circle at 50% 30%, rgba(184, 209, 102, 0.12), rgba(14, 16, 11, 0.65));
+    border: 1px dashed rgba(255, 255, 255, 0.12);
+    display: flex; align-items: center; justify-content: center;
+}
+html.light .sq-tile-inner {
+    background: radial-gradient(circle at 50% 30%, rgba(184, 209, 102, 0.22), rgba(255, 255, 255, 0.8));
+    border-color: rgba(82, 102, 0, 0.2);
+}
+
+/* 5. BASE '?' QUESTION FACE (LUÔN NẰM DƯỚI LÀM NỀN Ô VUÔNG ?) */
+.sq-q-face {
+    width: 100%; height: 100%; position: relative;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.sq-big-q {
+    font-size: 32px; font-weight: 900; line-height: 1;
+    background: linear-gradient(180deg, #FFFBEB 0%, #D4EE7F 45%, #8CA832 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 3px 0 rgba(0, 0, 0, 0.55));
+}
+.sq-tile-locked .sq-big-q {
+    background: linear-gradient(180deg, #E5E7EB 0%, #9CA3AF 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; opacity: 0.72;
+}
+html.light .sq-tile-locked .sq-big-q {
+    background: linear-gradient(180deg, #526600 0%, #7C8B4C 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.sq-step-tag {
+    position: absolute; top: 4px; left: 5px;
+    padding: 1px 5px; border-radius: 6px;
+    background: rgba(15, 17, 12, 0.72); color: #CBD5E1;
+    font-size: 8.5px; font-weight: 900; letter-spacing: 0.02em; z-index: 2;
+}
+.sq-step-tag.is-active { background: #B8D166; color: #171A0E; }
+.sq-q-flavor { position: absolute; bottom: 3px; right: 5px; font-size: 11px; opacity: 0.82; }
+.sq-q-sub { font-size: 8.5px; font-weight: 800; color: #FDE68A; letter-spacing: 0.02em; margin-top: 1px; }
+
+/* 6. STORY ARTWORK OVERLAY ("ẢNH CÂU TRUYỆN ĐÈ LÊN Ô ?") */
+.sq-story-overlay {
+    position: absolute; inset: 0; border-radius: 16px; overflow: hidden; z-index: 5;
+    box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.28);
+    background: #181B12;
+}
+.sq-story-overlay.is-cover-stamp {
+    animation: sq-cover-stamp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes sq-cover-stamp {
+    0% { transform: scale(1.38) translateY(-14px) rotate(-8deg); opacity: 0.2; filter: brightness(1.5); }
+    65% { transform: scale(0.95) translateY(2px) rotate(1.5deg); opacity: 1; }
+    100% { transform: scale(1) translateY(0) rotate(0deg); opacity: 1; filter: brightness(1); }
+}
+.sq-story-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.sq-story-vignette {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.32) 0%, transparent 45%, rgba(0,0,0,0.52) 100%);
+    pointer-events: none;
+}
+.sq-peeking-q {
+    position: absolute; top: 3px; left: 4px; width: 16px; height: 16px; border-radius: 5px;
+    background: rgba(18, 20, 14, 0.86); border: 1px solid rgba(251, 191, 36, 0.65);
+    color: #FBBF24; font-size: 9.5px; font-weight: 900;
+    display: flex; align-items: center; justify-content: center; pointer-events: none;
+}
+.sq-done-badge {
+    position: absolute; bottom: 3px; right: 3px; width: 18px; height: 18px; border-radius: 6px;
+    background: #B8D166; color: #171A0E; font-size: 10px; font-weight: 900;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+}
+.sq-corner-btn {
+    position: absolute; width: 20px; height: 20px; border-radius: 6px;
+    background: rgba(18, 20, 14, 0.86); border: 1px solid rgba(255, 255, 255, 0.28);
+    color: #FFFFFF; font-size: 10px; font-weight: 900;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; z-index: 6; padding: 0; line-height: 1;
+}
+.sq-corner-btn.is-swap { top: 3px; right: 3px; border-color: rgba(251, 191, 36, 0.65); }
+.sq-corner-btn.is-reset { bottom: 3px; left: 3px; color: #FDE68A; }
+.sq-corner-btn:hover { transform: scale(1.12); background: #2D3322; }
+
+/* 7. ACTIVE LESSON HERO SQUARE TILE + 4-ARC SQUIRCLE ORBIT RING */
+.sq-active-callout {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 4px 10px; border-radius: 999px; margin-bottom: 2px;
+    background: #B8D166; color: #171A0E;
+    font-size: 9.5px; font-weight: 900; letter-spacing: 0.04em; text-transform: uppercase;
+    box-shadow: 0 4px 14px rgba(184, 209, 102, 0.45);
+    animation: sq-float-callout 2.2s ease-in-out infinite;
+}
+html.light .sq-active-callout { background: #526600; color: #FFFFFF; }
+@keyframes sq-float-callout { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+.rm-spotlight-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #171A0E;
+    animation: rm-pulse-dot 1.4s ease-in-out infinite;
+}
+html.light .rm-spotlight-dot { background: #D4EE7F; }
+@keyframes rm-pulse-dot { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.35); opacity: 0.55; } }
+
+.sq-active-orbit-wrap {
+    position: relative; width: 114px; height: 114px;
+    display: flex; align-items: center; justify-content: center;
+}
+.sq-orbit-svg {
+    position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;
+    filter: drop-shadow(0 0 10px rgba(184, 209, 102, 0.4));
+}
+.sq-orbit-track { fill: none; stroke: rgba(184, 209, 102, 0.16); stroke-width: 5px; }
+.sq-orbit-segments {
+    fill: none; stroke: #B8D166; stroke-width: 5px; stroke-linecap: round;
+    stroke-dasharray: 64 24;
+}
+html.light .sq-orbit-segments { stroke: #526600; }
+
+.sq-tile.sq-tile-active {
+    width: 90px; height: 90px; border-radius: 25px;
+    background: linear-gradient(155deg, #3D4927 0%, #202616 100%);
+    border: 2.5px solid #D4EE7F;
+    box-shadow: 0 8px 0 #14180D, 0 16px 32px rgba(0, 0, 0, 0.72), 0 0 24px rgba(184, 209, 102, 0.38);
+}
+.sq-tile.sq-tile-active .sq-big-q { font-size: 40px; }
+
+.sq-pick-cta-btn, .sq-play-cta-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 5px;
+    padding: 7px 13px; border-radius: 12px; border: none; cursor: pointer;
+    background: linear-gradient(135deg, #C7E372 0%, #B8D166 55%, #FBBF24 100%);
+    color: #171A0E; font-size: 11px; font-weight: 900; white-space: nowrap;
+    box-shadow: 0 5px 16px rgba(184, 209, 102, 0.42);
+}
+.sq-play-cta-btn svg { width: 12px; height: 12px; fill: currentColor; }
+.sq-active-dock {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    background: rgba(20, 23, 16, 0.92); border: 1px solid rgba(184, 209, 102, 0.45);
+    padding: 6px 9px; border-radius: 14px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+html.light .sq-active-dock { background: #FFFFFF; border-color: rgba(82, 102, 0, 0.35); }
+.sq-active-story-title {
+    font-size: 12px; font-weight: 800; color: #FFFFFF; margin: 0;
+    max-width: 168px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+html.light .sq-active-story-title { color: #1B1C17; }
+.sq-active-actions { display: flex; align-items: center; gap: 5px; }
+.sq-swap-mini-btn {
+    padding: 6px 9px; border-radius: 10px; cursor: pointer;
+    background: rgba(251, 191, 36, 0.16); border: 1px solid rgba(251, 191, 36, 0.5);
+    color: #FDE68A; font-size: 10.5px; font-weight: 800;
+}
+html.light .sq-swap-mini-btn { background: #FEF3C7; color: #92400E; }
+
+/* 8. MILESTONE CHEST & BOSS 3D SQUARE VAULTS + NODE CAPTIONS */
+.sq-tile.sq-tile-milestone {
+    width: 80px; height: 80px; border-radius: 23px;
+    background: linear-gradient(155deg, #4B3814 0%, #241C0C 100%);
+    border: 2px solid rgba(251, 191, 36, 0.65);
+    box-shadow: 0 7px 0 #171106, 0 12px 24px rgba(0, 0, 0, 0.55);
+}
+.sq-tile-milestone.is-locked-muted { opacity: 0.72; border-color: rgba(251, 191, 36, 0.32); }
+.sq-milestone-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.45; }
+.sq-milestone-icon { position: absolute; font-size: 30px; filter: drop-shadow(0 3px 6px rgba(0,0,0,0.6)); }
+.sq-lock-corner {
+    position: absolute; bottom: 3px; right: 4px; font-size: 10px;
+    background: rgba(0, 0, 0, 0.65); border-radius: 6px; padding: 1px 4px;
+}
+
+.sq-node-stars { font-size: 10px; color: #FBBF24; letter-spacing: 2px; line-height: 1; }
+.sq-node-caption {
+    padding: 2.5px 9px; border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 10.5px; font-weight: 700; color: var(--rm-on-surface);
+    max-width: 165px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+html.light .sq-node-caption { background: rgba(82, 102, 0, 0.05); border-color: rgba(82, 102, 0, 0.14); }
+.sq-node-caption.is-locked { opacity: 0.62; font-size: 10px; }
+.sq-node-caption.is-preselected { border-color: rgba(251, 191, 36, 0.45); color: #FDE68A; }
+.sq-node-caption.is-gold { border-color: rgba(251, 191, 36, 0.4); color: #FDE68A; font-weight: 800; }
+html.light .sq-node-caption.is-gold, html.light .sq-node-caption.is-preselected { background: #FEF3C7; color: #92400E; }
+
+/* 9. LUMI COMPANION SIDE-HAVEN (NẰM BÊN HÔNG ĐƯỜNG CONG + LỬA TRẠI + 5 SAO) */
+.sq-companion-island {
+    position: absolute; top: 150px; z-index: 3; width: 126px;
+    display: flex; flex-direction: column; align-items: center; gap: 5px;
+}
+.sq-companion-island.is-right { right: 2px; }
+.sq-companion-island.is-left { left: 2px; }
+
+.sq-char-stage {
+    width: 106px !important; height: 106px !important; border-radius: 26px !important;
+    background: radial-gradient(circle at 50% 65%, rgba(251, 191, 36, 0.16), rgba(255, 255, 255, 0.025)) !important;
+    border: 1.5px solid rgba(184, 209, 102, 0.28) !important;
+}
+.sq-campfire-glow {
+    position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%);
+    width: 68px; height: 22px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(251, 146, 60, 0.42) 0%, transparent 72%);
+    pointer-events: none;
+}
+.sq-campfire-prop {
+    position: absolute; bottom: 4px; right: 4px; font-size: 18px; line-height: 1;
+    filter: drop-shadow(0 0 8px rgba(251, 146, 60, 0.75)); z-index: 5; pointer-events: none;
+}
 .mb-char-line {
     left: 10px !important; right: 10px !important; height: 2.5px !important;
     background: linear-gradient(90deg, transparent 0%, #FBBF24 18%, #D4EE7F 50%, #FBBF24 82%, transparent 100%) !important;
     box-shadow: 0 0 10px #B8D166, 0 0 6px #FBBF24 !important; z-index: 4;
 }
 .mb-char-pct-pill {
-    position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%);
+    position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%);
     white-space: nowrap; padding: 2px 8px; border-radius: 999px;
-    background: rgba(20, 22, 16, 0.94); border: 1px solid rgba(184, 209, 102, 0.52);
-    color: #D4EE7F; font-size: 9.5px; font-weight: 800; letter-spacing: 0.02em;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4); z-index: 5; pointer-events: none;
+    background: rgba(20, 22, 16, 0.95); border: 1px solid rgba(184, 209, 102, 0.55);
+    color: #D4EE7F; font-size: 9.5px; font-weight: 800; z-index: 6; pointer-events: none;
 }
-html.light .mb-char-pct-pill { background: #FFFFFF; border-color: rgba(82, 102, 0, 0.35); color: #3D4D00; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.10); }
-.mb-char-pct-pill.is-mastered { background: linear-gradient(135deg, #FBBF24, #D97706); border-color: #FEF3C7; color: #1B1C17; }
+html.light .mb-char-pct-pill { background: #FFFFFF; border-color: rgba(82, 102, 0, 0.35); color: #3D4D00; }
 
-/* 3. ONE-FLOW STORY STAGE (NO LEFT RAIL, 80/20 SPOTLIGHT HIERARCHY) */
-.rm-clean-stage { padding: 8px 16px 42px !important; }
-.rm-clean-stage .mb-section { display: flex; flex-direction: column; gap: 10px; }
-.rm-clean-stage .mb-row { display: block !important; grid-template-columns: 1fr !important; padding: 0 !important; margin: 0 !important; }
-.rm-clean-stage .mb-rail { display: none !important; }
-#roadmapNextBar, #mysteryRoadmapNextBar { display: none !important; }
-.rm-clean-stage .mb-head {
-    padding: 10px 14px !important; border-radius: 18px !important;
-    background: rgba(255, 255, 255, 0.025) !important; border: 1px solid rgba(255, 255, 255, 0.07) !important;
-    box-shadow: none !important; opacity: 0.88;
+.sq-companion-stars {
+    display: inline-flex; align-items: center; gap: 3px; margin-top: 4px;
+    padding: 2px 8px; border-radius: 999px; background: rgba(0, 0, 0, 0.28);
 }
-html.light .rm-clean-stage .mb-head { background: rgba(82, 102, 0, 0.04) !important; border-color: rgba(82, 102, 0, 0.14) !important; }
-
-/* 4. COMPLETED LESSONS — MUTED MINI PILLS (NHƯỜNG SPOTLIGHT CHO BÀI ĐANG HỌC) */
-.rm-done-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-.rm-done-card {
-    display: flex; align-items: center; gap: 8px;
-    padding: 6px 10px; border-radius: 14px;
-    background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.065);
-    opacity: 0.64; cursor: pointer; transition: opacity 0.16s ease, transform 0.16s ease, border-color 0.16s ease;
-}
-.rm-done-card:hover, .rm-done-card:active { opacity: 0.95; transform: translateY(-1px); border-color: rgba(184, 209, 102, 0.35); }
-html.light .rm-done-card { background: rgba(82, 102, 0, 0.035); border-color: rgba(82, 102, 0, 0.12); }
-.rm-done-thumb {
-    width: 32px; height: 32px; border-radius: 50%;
-    border: 1.5px solid rgba(184, 209, 102, 0.55); position: relative; flex-shrink: 0;
-}
-.rm-done-thumb img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; filter: saturate(0.82); display: block; }
-.rm-done-check {
-    position: absolute; bottom: -2px; right: -2px; width: 13px; height: 13px;
-    border-radius: 50%; background: var(--rm-primary); color: var(--rm-on-primary);
-    font-size: 8px; font-weight: 900; display: flex; align-items: center; justify-content: center;
-    border: 1.5px solid var(--rm-card-bg);
-}
-.rm-done-info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
-.rm-done-step { font-size: 9px; font-weight: 800; color: var(--rm-on-surface-variant); letter-spacing: 0.02em; }
-.rm-done-title {
-    font-size: 11.5px; font-weight: 700; color: var(--rm-on-surface);
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; margin: 0; line-height: 1.2;
-}
-
-/* 5. DOMINANT SPOTLIGHT ACTIVE CARD (BÀI CẦN HỌC — TÂM ĐIỂM THỊ GIÁC 100%) */
-.rm-spotlight-wrap { margin: 4px 0 6px !important; }
-.mb-card.mb-card-active-hero {
-    position: relative; overflow: hidden;
-    min-height: 156px !important; border-radius: 26px !important;
-    background: linear-gradient(145deg, rgba(184, 209, 102, 0.24) 0%, #1F2417 52%, rgba(251, 191, 36, 0.18) 100%) !important;
-    border: 2px solid #B8D166 !important;
-    box-shadow: 0 18px 42px -8px rgba(0, 0, 0, 0.78), 0 0 28px rgba(184, 209, 102, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.22) !important;
-    display: flex !important; flex-direction: column !important; align-items: stretch !important;
-    padding: 13px 15px 15px !important; gap: 11px !important; opacity: 1 !important;
-}
-html.light .mb-card.mb-card-active-hero {
-    background: linear-gradient(145deg, #F4F9E4 0%, #FFFFFF 55%, #FEF3C7 100%) !important;
-    border: 2px solid #526600 !important;
-    box-shadow: 0 16px 36px -8px rgba(82, 102, 0, 0.26), 0 0 0 3px rgba(82, 102, 0, 0.10) !important;
-}
-.rm-spotlight-bg {
-    position: absolute; inset: 0; background-size: cover; background-position: center;
-    opacity: 0.16; filter: blur(22px) saturate(1.4); transform: scale(1.2); pointer-events: none; z-index: 0;
-}
-html.light .rm-spotlight-bg { opacity: 0.08; }
-.rm-spotlight-top-bar {
-    position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 8px;
-}
-.rm-spotlight-pill {
-    display: inline-flex; align-items: center; gap: 6px;
-    padding: 4px 10px; border-radius: 999px;
-    background: #B8D166; color: #171A0E;
-    font-size: 10px; font-weight: 900; letter-spacing: 0.05em; text-transform: uppercase;
-    box-shadow: 0 2px 10px rgba(184, 209, 102, 0.45);
-}
-html.light .rm-spotlight-pill { background: #526600; color: #FFFFFF; }
-.rm-spotlight-dot {
-    width: 6.5px; height: 6.5px; border-radius: 50%; background: #171A0E;
-    animation: rm-pulse-dot 1.4s ease-in-out infinite;
-}
-html.light .rm-spotlight-dot { background: #D4EE7F; }
-@keyframes rm-pulse-dot { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.35); opacity: 0.55; } }
-
-.rm-spotlight-main {
-    position: relative; z-index: 2; display: flex; align-items: center; gap: 14px; width: 100%;
-}
-.mb-card.mb-card-active-hero.is-flip-reveal {
-    animation: rm-hero-card-flip 0.65s cubic-bezier(0.22, 1, 0.36, 1) both; transform-origin: center center;
-}
-@keyframes rm-hero-card-flip {
-    0% { transform: perspective(900px) rotateX(68deg) scale(0.92); opacity: 0.25; filter: brightness(1.35); }
-    60% { transform: perspective(900px) rotateX(-6deg) scale(1.02); opacity: 1; }
-    100% { transform: perspective(900px) rotateX(0deg) scale(1); opacity: 1; filter: brightness(1); }
-}
-.mb-card-active-hero .mb-card-body { padding: 0 !important; gap: 6px !important; flex: 1; min-width: 0; }
-.mb-hero-title {
-    font-size: 18px !important; font-weight: 800 !important; letter-spacing: -0.02em; line-height: 1.22 !important;
-    color: #FFFFFF !important; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
-}
-html.light .mb-hero-title { color: #1B1C17 !important; text-shadow: none; }
-.rm-spotlight-meta { font-size: 11px; font-weight: 800; color: #D4EE7F; }
-html.light .rm-spotlight-meta { color: #3D4D00; }
-
-.rm-icon-chip {
-    width: 28px; height: 28px; border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.22);
-    display: inline-flex; align-items: center; justify-content: center;
-    font-size: 12.5px; line-height: 1; cursor: pointer; flex-shrink: 0;
-}
-.rm-swap-pill-btn {
-    padding: 4px 10px; border-radius: 999px;
-    background: rgba(251, 191, 36, 0.18); border: 1px solid rgba(251, 191, 36, 0.5);
-    color: #FDE68A; font-size: 10.5px; font-weight: 800; cursor: pointer; flex-shrink: 0;
-}
-html.light .rm-swap-pill-btn { background: #FEF3C7; border-color: rgba(217, 119, 6, 0.45); color: #92400E; }
-.rm-hero-cta-row { display: flex; align-items: center; width: 100%; margin-top: 4px; }
-.rm-hero-play-btn {
-    width: 100%; justify-content: center !important;
-    padding: 9px 16px !important; font-size: 13px !important; font-weight: 800 !important;
-    border-radius: 14px !important;
-    background: linear-gradient(135deg, #C7E372 0%, #B8D166 55%, #FBBF24 100%) !important;
-    color: #171A0E !important;
-    box-shadow: 0 6px 18px rgba(184, 209, 102, 0.42) !important;
-}
-html.light .rm-hero-play-btn {
-    background: linear-gradient(135deg, #526600 0%, #3D4D00 100%) !important; color: #FFFFFF !important;
-}
-
-.mb-thumb.mb-thumb-hero-book {
-    width: 82px !important; height: 98px !important; margin: 0 !important;
-    border: none !important; border-radius: 0 !important; background: transparent !important;
-    overflow: visible !important; position: relative; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-}
-.hero-book-cover {
-    position: relative; width: 74px; height: 94px; border-radius: 6px 12px 12px 6px;
-    overflow: hidden; border: 2px solid #D4EE7F;
-    box-shadow: -5px 8px 18px rgba(0, 0, 0, 0.6); z-index: 2; transform: rotate(-2deg);
-}
-.hero-book-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.hero-book-spine {
-    position: absolute; top: 0; bottom: 0; left: 0; width: 6px;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.4)); pointer-events: none;
-}
-.hero-book-pages {
-    position: absolute; right: 0; top: 4px; width: 72px; height: 92px;
-    border-radius: 5px 11px 11px 5px;
-    background: repeating-linear-gradient(90deg, #F5F2E6 0px, #F5F2E6 2px, #D6D1C2 2px, #D6D1C2 3px);
-    border: 1px solid rgba(184, 209, 102, 0.5); transform: rotate(3.5deg) translate(4px, 2px); z-index: 1;
-}
-
-/* 6. 3-CARD FANNED DECK FOR UNCHOSEN ACTIVE SLOT (SPOTLIGHT DOMINANCE) */
-.mb-card.mb-card-mystery {
-    min-height: 128px !important; border-radius: 24px !important;
-    border: 2px solid #FBBF24 !important;
-    box-shadow: 0 18px 40px -8px rgba(0, 0, 0, 0.72), 0 0 24px rgba(251, 191, 36, 0.25) !important;
-    padding: 14px 14px !important;
-}
-.rm-spotlight-badge-row { margin-bottom: 2px; }
-.rm-deck-draw-btn {
-    background: linear-gradient(135deg, #FBBF24, #F59E0B) !important;
-    color: #1B1C17 !important; font-weight: 800 !important; font-size: 12.5px !important;
-    padding: 8px 16px !important; border-radius: 12px !important; box-shadow: 0 4px 14px rgba(251, 191, 36, 0.4);
-}
-.mb-thumb.mb-thumb-mystery-fan {
-    width: 84px !important; height: 78px !important; margin: 4px 8px 4px 0 !important;
-    background: transparent !important; border: none !important; overflow: visible !important; position: relative;
-}
-.mystery-fan-card {
-    position: absolute; width: 42px; height: 58px; border-radius: 9px; top: 9px; left: 19px;
-    background: linear-gradient(145deg, #2D3223 0%, #171912 100%);
-    border: 1.5px solid rgba(251, 191, 36, 0.72); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.45);
-    display: flex; align-items: center; justify-content: center;
-    color: #FBBF24; font-size: 15px; font-weight: 900;
-}
-html.light .mystery-fan-card { background: linear-gradient(145deg, #FEF3C7 0%, #FDE68A 100%); border-color: #D97706; color: #B45309; }
-.mystery-fan-card.fan-left { transform: translate(-12px, 3px) rotate(-15deg) scale(0.92); opacity: 0.88; }
-.mystery-fan-card.fan-right { transform: translate(12px, 3px) rotate(15deg) scale(0.92); opacity: 0.88; }
-.mystery-fan-card.fan-center { transform: translateY(-2px) rotate(0deg); z-index: 2; box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5), 0 0 12px rgba(251, 191, 36, 0.4); }
-
-/* 7. LOCKED SLOTS & LOCKED MILESTONES — RECEDED & DIMMED (KHÔNG TRANH CHẤP SPOTLIGHT) */
-.mb-card.mb-card-locked-slot {
-    min-height: 44px !important; border-radius: 14px !important;
-    background: rgba(255, 255, 255, 0.02) !important; border: 1px solid rgba(255, 255, 255, 0.06) !important;
-    box-shadow: none !important; align-items: center !important; justify-content: space-between !important;
-    padding: 6px 11px !important; opacity: 0.55 !important; transition: opacity 0.16s ease;
-}
-.mb-card.mb-card-locked-slot:hover { opacity: 0.85 !important; }
-html.light .mb-card.mb-card-locked-slot { background: rgba(82, 102, 0, 0.025) !important; border-color: rgba(82, 102, 0, 0.12) !important; }
-.rm-slot-inline-row { display: flex; align-items: center; gap: 7px; min-width: 0; }
-.rm-slot-step-pill {
-    display: inline-flex; align-items: center; gap: 3px;
-    padding: 2.5px 8px; border-radius: 999px;
-    background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12);
-    color: var(--rm-on-surface-variant); font-size: 10px; font-weight: 800; white-space: nowrap;
-}
-html.light .rm-slot-step-pill { background: rgba(82, 102, 0, 0.06); border-color: rgba(82, 102, 0, 0.18); color: #3D4D00; }
-.rm-slot-inline-label { font-size: 11.5px; font-weight: 700; color: var(--rm-on-surface-variant); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.rm-slot-genre-stack { display: flex; align-items: center; flex-shrink: 0; }
-.rm-genre-mini-card {
-    width: 22px; height: 26px; border-radius: 6px;
-    background: var(--rm-surface-variant); border: 1px solid var(--rm-outline-variant);
-    display: inline-flex; align-items: center; justify-content: center;
-    font-size: 10px; margin-left: -5px;
-}
-.rm-genre-mini-card.c1 { margin-left: 0; transform: rotate(-7deg); }
-.rm-genre-mini-card.c2 { transform: translateY(-1px); z-index: 1; }
-.rm-genre-mini-card.c3 { transform: rotate(7deg); z-index: 2; }
-
-/* 8. MILESTONE CHEST & BOSS FINALE BANNER CARD (MUTED WHEN LOCKED) */
-.mb-card.mb-card-milestone {
-    min-height: 60px !important; border-radius: 18px !important;
-    background: linear-gradient(135deg, rgba(251, 191, 36, 0.14) 0%, var(--rm-card-bg) 100%) !important;
-    border: 1px solid rgba(251, 191, 36, 0.45) !important;
-    display: flex !important; align-items: center !important;
-    padding: 7px 13px 7px 9px !important; gap: 11px !important;
-}
-.mb-card.mb-card-milestone.is-locked-muted {
-    background: rgba(255, 255, 255, 0.022) !important;
-    border: 1px solid rgba(251, 191, 36, 0.20) !important;
-    box-shadow: none !important; opacity: 0.62 !important;
-}
-.mb-card.mb-card-milestone.is-locked-muted:hover { opacity: 0.88 !important; }
-.mb-card-milestone .mb-card-body { padding: 0 !important; gap: 2px !important; flex: 1; }
-.rm-milestone-arrow { font-size: 18px; font-weight: 700; color: rgba(251, 191, 36, 0.6); padding-left: 4px; }
-.rm-milestone-badge {
-    display: inline-flex; align-items: center; padding: 1.5px 7px; border-radius: 999px;
-    background: rgba(251, 191, 36, 0.16); border: 1px solid rgba(251, 191, 36, 0.38);
-    color: #FDE68A; font-size: 9.5px; font-weight: 800; letter-spacing: 0.03em;
-}
-html.light .rm-milestone-badge { background: #FEF3C7; border-color: rgba(217, 119, 6, 0.4); color: #92400E; }
-.mb-thumb.mb-thumb-milestone {
-    width: 44px !important; height: 44px !important; margin: 0 !important;
-    border-radius: 12px !important; border: 1px solid rgba(251, 191, 36, 0.55) !important;
-    position: relative; overflow: hidden; flex-shrink: 0;
-}
-.mb-state-locked .mb-thumb.mb-thumb-milestone img { filter: saturate(0.85) brightness(0.75) !important; }
-.rm-milestone-emblem {
-    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-    background: radial-gradient(circle, rgba(251, 191, 36, 0.2) 0%, rgba(0, 0, 0, 0.4) 100%);
-    font-size: 18px; pointer-events: none;
-}
-.rm-milestone-lock-pill {
-    position: absolute; bottom: 2px; right: 2px; width: 15px; height: 15px;
-    border-radius: 50%; background: rgba(18, 20, 14, 0.85); border: 1px solid rgba(251, 191, 36, 0.45);
-    display: flex; align-items: center; justify-content: center; font-size: 8px; z-index: 2;
-}
-
-/* 9. STAGE DIVIDER & 4-CARD MYSTERY DECK ROW (DIMMED UNTIL UNLOCKED) */
-.rm-stage-divider { display: flex; align-items: center; gap: 10px; padding: 6px 4px 0; opacity: 0.55; }
-.rm-stage-divider-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent); }
-.rm-stage-divider-pill { font-size: 10px; font-weight: 800; color: var(--rm-on-surface-variant); letter-spacing: 0.04em; text-transform: uppercase; }
-.mb-card.mb-card-stepping-stones {
-    min-height: 62px !important; border-radius: 16px !important;
-    background: transparent !important; border: none !important;
-    box-shadow: none !important; padding: 0 !important; opacity: 0.52 !important; transition: opacity 0.16s ease;
-}
-.mb-card.mb-card-stepping-stones:hover { opacity: 0.82 !important; }
-.rm-stones-track { display: flex; align-items: stretch; justify-content: space-between; width: 100%; gap: 6px; }
-.rm-stone-node {
-    flex: 1; min-width: 0; padding: 7px 4px 6px; border-radius: 13px;
-    background: rgba(255, 255, 255, 0.025); border: 1px solid rgba(255, 255, 255, 0.07);
-    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; cursor: pointer;
-}
-html.light .rm-stone-node { background: rgba(82, 102, 0, 0.03); border-color: rgba(82, 102, 0, 0.12); }
-.rm-stone-step { font-size: 9px; font-weight: 800; color: var(--rm-on-surface-variant); line-height: 1.1; }
-.rm-stone-icon { font-size: 15px; line-height: 1.15; }
-.rm-stone-tag { font-size: 9px; font-weight: 700; color: var(--rm-on-surface-variant); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
-.rm-stone-connector { display: none; }
-
-
-
+html.light .sq-companion-stars { background: rgba(82, 102, 0, 0.08); }
+.sq-companion-star { font-size: 13px; color: rgba(255, 255, 255, 0.2); line-height: 1; }
+html.light .sq-companion-star { color: rgba(82, 102, 0, 0.24); }
+.sq-companion-star.is-on { color: #FBBF24; text-shadow: 0 0 8px rgba(251, 191, 36, 0.65); }
+.sq-companion-name { font-size: 10px; font-weight: 800; color: var(--rm-on-surface-variant); }

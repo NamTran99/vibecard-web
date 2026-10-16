@@ -1,210 +1,205 @@
+// ========================================================
+// 🗺️ WINDING 3D SQUARE '?' STEPPING-STONE ROADMAP RENDERER
+// Ceiling: < 350 lines | Bespoke Winding Square-Tile Path
+// ========================================================
+
 function roadmapJsArg(str) {
-    return String(str).replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+    return String(str || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '&quot;');
 }
 
 function roadmapAttr(str) {
-    return String(str).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+    return String(str || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 }
 
 function resolveRoadmapNodeState(chapter, index) {
     const node = chapter.nodes[index];
+    if (!node) return 'locked';
     if (node.status === 'completed' || node.status === 'active' || node.status === 'locked') return node.status;
     const prev = chapter.nodes[index - 1];
     return prev && prev.status === 'completed' ? 'active' : 'locked';
+}
+
+// Tọa độ X (%) tạo đường cong chữ S uốn lượn cho 5 chặng mỗi vòng (nhường khoảng trống bên cạnh cho Lumi)
+const WINDING_LOOP_X = [
+    [46, 25, 20, 29, 48], // Vòng 1: Uốn sang trái, Lumi & Lửa trại ở bên phải
+    [52, 73, 78, 69, 50]  // Vòng 2: Uốn sang phải, Lumi Nhà Thám Hiểm ở bên trái
+];
+
+function getNodeHorizontalPercent(loop, localIdx) {
+    const curve = WINDING_LOOP_X[loop % 2] || WINDING_LOOP_X[0];
+    return curve[localIdx] !== undefined ? curve[localIdx] : 50;
+}
+
+function hasRoadmapStoryOverlay(chapter, node, state) {
+    if (!node || node.type === 'chest' || node.type === 'boss') return false;
+    const chId = chapter.id || 0;
+    const isDeck = (typeof window.isRoadmapSlotInDeckMode === 'function')
+        && window.isRoadmapSlotInDeckMode(chId, node.num);
+    if (isDeck) return false;
+    const assigned = (typeof window.getAssignedRoadmapStory === 'function')
+        ? window.getAssignedRoadmapStory(chId, node.num) : null;
+    if (assigned && assigned.story) return true;
+    return state === 'completed';
 }
 
 function getRoadmapNodeAction(chapter, index) {
     const node = chapter.nodes[index];
     const state = resolveRoadmapNodeState(chapter, index);
     const unlocked = state !== 'locked';
-    if (node.type === 'chest' && unlocked) return 'claimRoadmapBonusChest()';
-    if ((node.type === 'chest' || node.type === 'boss') && !unlocked) {
-        return `openRoadmapMilestonePreview('${node.type}', ${node.num}, ${chapter.id || 0})`;
+    const chId = chapter.id || 0;
+
+    if (node.type === 'chest' && unlocked) return `claimRoadmapBonusChest(${chId})`;
+    if (node.type === 'chest' || node.type === 'boss') {
+        return `openRoadmapMilestonePreview('${node.type}', ${node.num}, ${chId})`;
     }
-    const isDeckMode = (typeof window.isRoadmapSlotInDeckMode === 'function')
-        && window.isRoadmapSlotInDeckMode(chapter.id || 0, node.num);
-    const assigned = (typeof window.getAssignedRoadmapStory === 'function')
-        ? window.getAssignedRoadmapStory(chapter.id || 0, node.num) : null;
-    if (state === 'active' && node.type !== 'chest' && node.type !== 'boss' && isDeckMode) {
-        return `openRoadmapGenrePickerSheet(${node.num}, ${chapter.id || 0}, 'classic')`;
+
+    const overlaid = hasRoadmapStoryOverlay(chapter, node, state);
+    // Nếu ô vuông đang là dấu '?' (hoặc đang khóa), bấm vào sẽ mở bảng chọn truyện để đè ảnh truyện lên '?'
+    if (!overlaid || state === 'locked') {
+        return `openRoadmapGenrePickerSheet(${node.num}, ${chId}, 'classic')`;
     }
-    if (assigned && assigned.story && unlocked) {
-        return `launchRevealedLesson(${node.num}, ${chapter.id || 0})`;
-    }
-    return `handleParchmentNodeClick(${node.num}, '${roadmapJsArg(node.title)}', ${unlocked}, ${chapter.id})`;
+    return `launchRevealedLesson(${node.num}, ${chId})`;
 }
 
-// Render 1 thẻ đã hoàn thành dạng Mini Pill trầm màu (nhường trọn spotlight cho Bài cần học)
-function renderCompletedGridCard(chapter, index) {
-    const node = chapter.nodes[index];
-    const onClick = getRoadmapNodeAction(chapter, index);
-    const assigned = (typeof window.getAssignedRoadmapStory === 'function')
-        ? window.getAssignedRoadmapStory(chapter.id || 0, node.num) : null;
-    const customStory = assigned ? assigned.story : null;
-    const displayTitle = customStory ? customStory.title : node.title;
-    const displayImg = customStory ? customStory.img : node.img;
-
+// Cầu nối uốn lượn SVG giữa 2 ô vuông liên tiếp (luôn khớp tâm 100% ở mọi kích thước màn hình)
+function renderWindingConnectorSvg(x1, x2, isLit, isActiveNext) {
+    const cls = isLit ? 'is-lit' : (isActiveNext ? 'is-active-bridge' : 'is-dim');
     return `
-        <div class="rm-done-card" data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}" title="Đã hoàn thành Chặng ${node.num}: ${roadmapAttr(displayTitle)}">
-            <div class="rm-done-thumb">
-                <img src="${displayImg}" alt="" loading="lazy" decoding="async" />
-                <span class="rm-done-check">✓</span>
-            </div>
-            <div class="rm-done-info">
-                <span class="rm-done-step">Chặng ${node.num} · ★★★</span>
-                <h4 class="rm-done-title">${displayTitle}</h4>
-            </div>
+        <div class="sq-bridge-wrap ${cls}" aria-hidden="true">
+            <svg class="sq-bridge-svg" viewBox="0 0 100 56" preserveAspectRatio="none">
+                <path class="sq-bridge-glow" d="M ${x1} 0 C ${x1} 28, ${x2} 28, ${x2} 56" vector-effect="non-scaling-stroke" />
+                <path class="sq-bridge-dash" d="M ${x1} 0 C ${x1} 28, ${x2} 28, ${x2} 56" vector-effect="non-scaling-stroke" />
+            </svg>
         </div>`;
 }
 
-// Render thẻ bài học đơn lẻ — Làm nổi bật tuyệt đối Bài Cần Học (Spotlight Card)
-function renderRoadmapLessonRow(chapter, index, flags, order) {
-    const node = chapter.nodes[index];
-    const state = resolveRoadmapNodeState(chapter, index);
+// Render 1 Ô Vuông 3D '?' (hoặc Rương/Trùm) trên đường đi uốn lượn
+function renderWindingSquareNode(chapter, gIdx, loop, localIdx, order) {
+    const node = chapter.nodes[gIdx];
+    const state = resolveRoadmapNodeState(chapter, gIdx);
     const type = node.type || 'star';
-    const meta = roadmapNodeTypeMeta[type] || roadmapNodeTypeMeta.star;
-    const onClick = getRoadmapNodeAction(chapter, index);
-    const assigned = (typeof window.getAssignedRoadmapStory === 'function')
-        ? window.getAssignedRoadmapStory(chapter.id || 0, node.num) : null;
-    const customStory = assigned ? assigned.story : null;
-    const isDeckMode = (typeof window.isRoadmapSlotInDeckMode === 'function')
-        && window.isRoadmapSlotInDeckMode(chapter.id || 0, node.num);
     const isSpecial = (type === 'chest' || type === 'boss');
+    const chId = chapter.id || 0;
+    const xPct = getNodeHorizontalPercent(loop, localIdx);
+    const onClick = getRoadmapNodeAction(chapter, gIdx);
 
-    const justDone = roadmapUiState.justCompletedNum === node.num ? 'is-just-done' : '';
-    const justUnlocked = roadmapUiState.justUnlockedNum === node.num ? 'is-just-unlocked' : '';
+    const assigned = (typeof window.getAssignedRoadmapStory === 'function')
+        ? window.getAssignedRoadmapStory(chId, node.num) : null;
+    const customStory = assigned ? assigned.story : null;
+    const overlaid = hasRoadmapStoryOverlay(chapter, node, state);
     const displayTitle = customStory ? customStory.title : node.title;
     const displayImg = customStory ? customStory.img : node.img;
-    const dMeta = (typeof window.resolveRoadmapDifficulty === 'function')
-        ? window.resolveRoadmapDifficulty(node, customStory)
-        : ((window.DIFFICULTY_META && customStory && window.DIFFICULTY_META[customStory.difficulty]) || { short: 'Vừa', badgeCls: 'age-badge-15' });
-    const rawDuration = customStory ? customStory.duration : `${meta.minutes || 5}p`;
-    const shortDur = String(rawDuration).replace(/\s*phút/i, 'p');
+    const justUnlocked = roadmapUiState.justUnlockedNum === node.num ? 'is-just-unlocked' : '';
+    const justMounted = (window.__justRevealedSlot === `${chId}_${node.num}`) ? 'is-cover-stamp' : '';
 
-    if (state === 'completed') {
-        return `<div class="rm-single-done-wrap" style="--i:${order}">${renderCompletedGridCard(chapter, index)}</div>`;
-    }
-
-    // Trạng thái Đang mở nhưng ở chế độ 3 lá bài úp (Deck Mode) — Spotlight nổi bật
-    if (state === 'active' && !isSpecial && isDeckMode) {
-        return `
-            <div class="mb-row mb-state-active mb-state-mystery rm-spotlight-wrap ${justDone}" style="--i:${order}" data-roadmap-active="1">
-                <div class="mb-card mb-card-mystery ${justUnlocked}" data-node-num="${node.num}" role="button" tabindex="0" onclick="openRoadmapGenrePickerSheet(${node.num}, ${chapter.id || 0}, 'classic')">
-                    <div class="mystery-shimmer-sweep"></div>
-                    <div class="mb-card-body relative z-10">
-                        <div class="rm-spotlight-badge-row">
-                            <span class="rm-spotlight-pill"><span class="rm-spotlight-dot"></span>BÀI CẦN HỌC · CHẶNG ${node.num}</span>
-                        </div>
-                        <h4 class="mb-card-title mb-hero-title">Rút câu chuyện của bạn</h4>
-                        <div class="rm-hero-cta-row">
-                            <span class="mb-card-cta rm-deck-draw-btn">+ Chọn câu chuyện ngay</span>
-                        </div>
-                    </div>
-                    <div class="mb-thumb mb-thumb-mystery-fan relative z-10" aria-hidden="true">
-                        <div class="mystery-fan-card fan-left"><span>🦊</span></div>
-                        <div class="mystery-fan-card fan-right"><span>✈️</span></div>
-                        <div class="mystery-fan-card fan-center"><span>✦</span></div>
-                    </div>
-                </div>
-            </div>`;
-    }
-
-    // ② BÀI CẦN HỌC — DOMINANT SPOTLIGHT HERO CARD (To gấp đôi, Sáng rực, Nút CTA Full-Width)
-    if (state === 'active' && !isSpecial) {
-        const flipCls = (window.__justRevealedSlot === `${chapter.id || 0}_${node.num}`) ? 'is-flip-reveal' : '';
-        return `
-            <div class="mb-row mb-state-active mb-type-${type} rm-spotlight-wrap ${justDone}" style="--i:${order}" data-roadmap-active="1">
-                <div class="mb-card mb-card-active-hero ${justUnlocked} ${flipCls}" data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}">
-                    <div class="rm-spotlight-bg" style="background-image: url('${displayImg}');"></div>
-                    <div class="rm-spotlight-top-bar">
-                        <span class="rm-spotlight-pill"><span class="rm-spotlight-dot"></span>BÀI CẦN HỌC · CHẶNG ${node.num}</span>
-                        <div class="flex items-center gap-1.5">
-                            <button type="button" onclick="event.stopPropagation(); if(typeof window.resetRoadmapSlotToDeck==='function') window.resetRoadmapSlotToDeck(${node.num}, ${chapter.id || 0});" class="rm-icon-chip is-deck" title="Úp lại bộ bài" aria-label="Úp bài">🃏</button>
-                            <button type="button" onclick="event.stopPropagation(); openRoadmapGenrePickerSheet(${node.num}, ${chapter.id || 0}, 'classic')" class="rm-swap-pill-btn" title="Đổi câu chuyện khác">🎲 Đổi truyện</button>
-                        </div>
-                    </div>
-                    <div class="rm-spotlight-main">
-                        <div class="mb-thumb mb-thumb-hero-book">
-                            <div class="hero-book-cover"><img src="${displayImg}" alt="" loading="lazy" decoding="async" /><span class="hero-book-spine"></span></div>
-                            <span class="hero-book-pages"></span>
-                        </div>
-                        <div class="mb-card-body">
-                            <div class="flex items-center gap-1.5">
-                                <span class="age-badge ${dMeta.badgeCls}">${dMeta.short}</span>
-                                <span class="rm-spotlight-meta">${shortDur} · +20% ⚡ Lumi</span>
-                            </div>
-                            <h4 class="mb-card-title mb-hero-title">${displayTitle}</h4>
-                            <div class="rm-hero-cta-row">
-                                <span class="mb-card-cta rm-hero-play-btn">${ROADMAP_ICON_PLAY} Bắt đầu học ngay</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>`;
-    }
-
-    // ④ RƯƠNG KHO BÁU & TRÙM CUỐI (Khi đang khóa sẽ trầm xuống để không tranh chấp với Bài cần học)
+    // 1. MỐC RƯƠNG KHO BÁU (CHẶNG 5) & TRÙM CUỐI (CHẶNG 10) DẠNG Ô VUÔNG KHO BÁU 3D
     if (isSpecial) {
         const isBoss = type === 'boss';
-        const badgeText = isBoss ? '👑 CHẶNG 10 · +300 XP' : `🎁 CHẶNG ${node.num} · +150 XP`;
-        const milestoneTitle = isBoss ? 'Thử Thách Trùm Cuối' : 'Rương Kho Báu';
         const chestImg = isBoss ? 'assets/cards/lumi_progress_celebration.jpg' : 'assets/cards/reward_gift_box.jpg';
+        const tagText = isBoss ? '👑 Trùm Cuối · +300 XP' : '🎁 Rương Báu · +150 XP';
         return `
-            <div class="mb-row mb-state-${state} mb-type-${type} ${justDone}" style="--i:${order}" ${state === 'active' ? 'data-roadmap-active="1"' : ''}>
-                <div class="mb-card mb-card-milestone ${isBoss ? 'is-boss' : 'is-chest'} ${state === 'locked' ? 'is-locked-muted' : ''} ${justUnlocked}" data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}">
-                    <div class="mb-thumb mb-thumb-milestone">
-                        <img src="${chestImg}" alt="" loading="lazy" decoding="async" />
-                        <span class="rm-milestone-emblem">${isBoss ? '👑' : '🎁'}</span>
-                        <span class="rm-milestone-lock-pill">${state === 'locked' ? '🔒' : '✨'}</span>
+            <div class="sq-node-row is-milestone state-${state}" style="--x:${xPct}%; --i:${order}" ${state === 'active' ? 'data-roadmap-active="1"' : ''}>
+                <div class="sq-node-anchor">
+                    <div class="sq-tile sq-tile-milestone ${isBoss ? 'is-boss' : 'is-chest'} ${state === 'locked' ? 'is-locked-muted' : ''}"
+                         data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}">
+                        <div class="sq-tile-inner">
+                            <img src="${chestImg}" alt="" class="sq-milestone-img" loading="lazy" />
+                            <span class="sq-milestone-icon">${isBoss ? '👑' : '🎁'}</span>
+                            <span class="sq-step-tag">#${node.num}</span>
+                            <span class="sq-lock-corner">${state === 'locked' ? '🔒' : '✨'}</span>
+                        </div>
                     </div>
-                    <div class="mb-card-body">
-                        <div class="flex items-center gap-1.5"><span class="rm-milestone-badge">${badgeText}</span></div>
-                        <h4 class="mb-card-title">${milestoneTitle}</h4>
-                    </div>
-                    <span class="rm-milestone-arrow" aria-hidden="true">›</span>
+                    <span class="sq-node-caption is-gold">${tagText}</span>
                 </div>
             </div>`;
     }
 
-    // ③ CHẶNG TỰ CHỌN CHƯA MỞ (LẺ): Làm trầm rõ rệt (Muted Locked Slot)
     const flavor = (typeof window.getRoadmapSlotFlavor === 'function')
         ? window.getRoadmapSlotFlavor(node.num)
-        : { icon: '☕', cards: ['☕', '🌧️', '🌿'], diffShort: 'Dễ', badgeCls: 'age-badge-3', themeTag: 'Đời thường' };
-    return `
-        <div class="mb-row mb-state-locked" style="--i:${order}">
-            <div class="mb-card mb-card-locked-slot" data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}">
-                <div class="rm-slot-inline-row">
-                    <span class="rm-slot-step-pill">🔒 Chặng ${node.num}</span>
-                    <span class="age-badge ${flavor.badgeCls}">${flavor.diffShort}</span>
-                    <span class="rm-slot-inline-label">${flavor.themeTag}</span>
-                </div>
-                <div class="rm-slot-genre-stack" aria-hidden="true">
-                    <span class="rm-genre-mini-card c1">${flavor.cards[0]}</span><span class="rm-genre-mini-card c2">${flavor.cards[1]}</span><span class="rm-genre-mini-card c3">${flavor.cards[2]}</span>
-                </div>
-            </div>
-        </div>`;
-}
+        : { icon: '✦', diffShort: 'Vừa', badgeCls: 'age-badge-15', themeTag: 'Tự chọn' };
 
-// Render khay 4 Lá Bài Bí Ẩn (Chặng 6 -> 9) dạng Deck Grid phẳng sang trọng
-function renderLockedSteppingStonesRow(chapter, lockedNodes, order) {
-    const stonesHtml = lockedNodes.map((n, idx) => {
-        const fl = (typeof window.getRoadmapSlotFlavor === 'function')
-            ? window.getRoadmapSlotFlavor(n.num)
-            : { icon: '✦', diffShort: 'Vừa', badgeCls: 'age-badge-15', themeTag: 'Tự chọn' };
-        const act = `handleParchmentNodeClick(${n.num}, '${roadmapJsArg(n.title)}', false, ${chapter.id || 0})`;
-        const conn = idx < lockedNodes.length - 1 ? '<span class="rm-stone-connector" aria-hidden="true"></span>' : '';
+    // Lớp nền Ô Vuông '?' luôn nằm bên dưới; khi chọn truyện thì lớp .sq-story-overlay đè lên trên '?'
+    const overlayHtml = overlaid ? `
+        <div class="sq-story-overlay ${justMounted}">
+            <img src="${displayImg}" alt="${roadmapAttr(displayTitle)}" class="sq-story-img" loading="lazy" decoding="async" />
+            <div class="sq-story-vignette"></div>
+            <span class="sq-peeking-q" title="Ảnh truyện đang đè lên ô ?">?</span>
+            ${state === 'completed'
+                ? '<span class="sq-done-badge" title="Đã hoàn thành">✓</span>'
+                : `<button type="button" class="sq-corner-btn is-reset" title="Gỡ ảnh về lại ô ?" onclick="event.stopPropagation(); if(typeof window.resetRoadmapSlotToDeck==='function') window.resetRoadmapSlotToDeck(${node.num}, ${chId});">?</button>`
+            }
+            <button type="button" class="sq-corner-btn is-swap" title="Chọn truyện khác đè lên ô ?" onclick="event.stopPropagation(); openRoadmapGenrePickerSheet(${node.num}, ${chId}, 'classic')">🎲</button>
+        </div>` : '';
+
+    // 2. BÀI CẦN HỌC HIỆN TẠI (ACTIVE SPOTLIGHT SQUARE TILE — TÂM ĐIỂM THỊ GIÁC 100%)
+    if (state === 'active') {
         return `
-            <button type="button" class="rm-stone-node" onclick="${act}" title="Chặng ${n.num} · ${fl.themeTag} (${fl.diffShort})">
-                <span class="rm-stone-step">🔒 ${n.num}</span>
-                <span class="rm-stone-icon">${fl.icon}</span>
-                <span class="rm-stone-tag">${fl.themeTag}</span>
-            </button>${conn}`;
-    }).join('');
+            <div class="sq-node-row is-active-hero" style="--x:${xPct}%; --i:${order}" data-roadmap-active="1">
+                <div class="sq-node-anchor">
+                    <div class="sq-active-callout">
+                        <span class="rm-spotlight-dot"></span>
+                        <span>BÀI CẦN HỌC · CHẶNG ${node.num}</span>
+                    </div>
+                    <div class="sq-active-orbit-wrap">
+                        <svg class="sq-orbit-svg" viewBox="0 0 120 120" aria-hidden="true">
+                            <rect x="6" y="6" width="108" height="108" rx="30" ry="30" class="sq-orbit-track" />
+                            <rect x="6" y="6" width="108" height="108" rx="30" ry="30" class="sq-orbit-segments" />
+                        </svg>
+                        <div class="sq-tile sq-tile-active ${overlaid ? 'has-story-cover' : 'is-mystery-q'} ${justUnlocked}"
+                             data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}">
+                            <span class="sq-corner-stud s1"></span><span class="sq-corner-stud s2"></span>
+                            <span class="sq-corner-stud s3"></span><span class="sq-corner-stud s4"></span>
+                            <div class="sq-tile-inner">
+                                <div class="sq-q-face">
+                                    <span class="sq-step-tag is-active">#${node.num}</span>
+                                    <span class="sq-big-q">?</span>
+                                    <span class="sq-q-sub">Chạm chọn</span>
+                                </div>
+                                ${overlayHtml}
+                            </div>
+                        </div>
+                    </div>
+                    ${overlaid ? `
+                        <div class="sq-active-dock">
+                            <h4 class="sq-active-story-title">${displayTitle}</h4>
+                            <div class="sq-active-actions">
+                                <button type="button" class="sq-play-cta-btn" onclick="launchRevealedLesson(${node.num}, ${chId})">${ROADMAP_ICON_PLAY} Bắt đầu học</button>
+                                <button type="button" class="sq-swap-mini-btn" onclick="openRoadmapGenrePickerSheet(${node.num}, ${chId}, 'classic')" title="Đổi câu chuyện khác">🎲 Đổi</button>
+                            </div>
+                        </div>` : `
+                        <button type="button" class="sq-pick-cta-btn" onclick="openRoadmapGenrePickerSheet(${node.num}, ${chId}, 'classic')">
+                            ✦ Chọn truyện đè lên ô ?
+                        </button>`
+                    }
+                </div>
+            </div>`;
+    }
+
+    // 3. Ô VUÔNG ĐÃ HOÀN THÀNH (COMPLETED) HOẶC ĐANG KHÓA (LOCKED '?' / PRE-SELECTED STORY)
+    const captionHtml = state === 'completed'
+        ? `<span class="sq-node-stars">★★★</span><span class="sq-node-caption is-done">${ overlaid ? displayTitle : `Chặng ${node.num}` }</span>`
+        : (overlaid
+            ? `<span class="sq-node-caption is-preselected">🔒 ${displayTitle}</span>`
+            : `<span class="sq-node-caption is-locked">🔒 Chặng ${node.num} · ${flavor.themeTag}</span>`);
 
     return `
-        <div class="mb-row mb-state-locked" style="--i:${order}">
-            <div class="mb-card mb-card-stepping-stones" role="group" aria-label="Chặng ${lockedNodes[0].num} đến ${lockedNodes[lockedNodes.length - 1].num}">
-                <div class="rm-stones-track">${stonesHtml}</div>
+        <div class="sq-node-row state-${state}" style="--x:${xPct}%; --i:${order}">
+            <div class="sq-node-anchor">
+                <div class="sq-tile sq-tile-${state} ${overlaid ? 'has-story-cover' : 'is-mystery-q'}"
+                     data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}"
+                     title="${overlaid ? roadmapAttr(displayTitle) : `Chặng ${node.num}: Chạm để chọn truyện đè lên ô ?`}">
+                    <span class="sq-corner-stud s1"></span><span class="sq-corner-stud s2"></span>
+                    <span class="sq-corner-stud s3"></span><span class="sq-corner-stud s4"></span>
+                    <div class="sq-tile-inner">
+                        <div class="sq-q-face">
+                            <span class="sq-step-tag">#${node.num}</span>
+                            <span class="sq-big-q">?</span>
+                            <span class="sq-q-flavor">${flavor.icon}</span>
+                        </div>
+                        ${overlayHtml}
+                    </div>
+                </div>
+                ${captionHtml}
             </div>
         </div>`;
 }
@@ -212,12 +207,12 @@ function renderLockedSteppingStonesRow(chapter, lockedNodes, order) {
 function getRoadmapCharacterLine(char, completed, started, justDone) {
     const remaining = ROADMAP_LESSONS_PER_LOOP - completed;
     if (completed >= ROADMAP_LESSONS_PER_LOOP) return char.quote || 'Cảm ơn bạn đã đánh thức 100% sắc màu cho mình!';
-    if (justDone) return `Tuyệt! Mình vừa có thêm 20% màu. Còn ${remaining} chặng nữa thôi!`;
-    if (started) return `Học xong ${remaining} bài nữa là Lumi sáng rực 100% và mở Rương +150 XP!`;
-    return 'Mình đang đợi bạn đánh thức ở vòng này…';
+    if (justDone) return `Tuyệt! Mình vừa có thêm 20% màu. Còn ${remaining} ô nữa thôi!`;
+    if (started) return `Chọn truyện & học thêm ${remaining} ô vuông nữa để Lumi sáng 100%!`;
+    return 'Mình đang đợi bạn đánh thức ở chặng này…';
 }
 
-// Render toàn bộ chương theo 1 Mạch Liền (One-Flow Story Stage — Chỉ 1 thẻ Lumi ở đầu, 2 cột thẻ đã học)
+// Render 1 Vòng (5 ô vuông uốn lượn + Trạm Lumi & Lửa trại nằm gọn bên hông đường cong như ảnh mẫu)
 function renderRoadmapSection(chapter, loop, characters, orderStart) {
     const start = loop * ROADMAP_LESSONS_PER_LOOP, end = start + ROADMAP_LESSONS_PER_LOOP;
     const sectionNodes = chapter.nodes.slice(start, end);
@@ -225,85 +220,57 @@ function renderRoadmapSection(chapter, loop, characters, orderStart) {
     const hasActive = sectionNodes.some((n, i) => resolveRoadmapNodeState(chapter, start + i) === 'active');
     const fillPct = Math.min(100, completed * 20), mastered = fillPct >= 100;
     const started = completed > 0 || hasActive;
-    const isLastSection = end >= chapter.nodes.length;
     const fillKey = `${chapter.id}-${loop}`;
     const prevPct = roadmapUiState.lastFill[fillKey] ?? fillPct;
     const justDoneHere = sectionNodes.some(n => n.num === roadmapUiState.justCompletedNum);
     const titles = roadmapSectionTitles[chapter.id] || [];
     const sectionTitle = titles[loop] || `Phần ${loop + 1}`;
     const char = characters[loop] || characters[0];
-    const segments = Array.from({ length: ROADMAP_LESSONS_PER_LOOP }, (_, i) => `<span class="${i < completed ? 'on' : ''} ${justDoneHere && i === completed - 1 ? 'pop' : ''}"></span>`).join('');
-    const rewardIcon = loop === 0 ? '🎁' : '👑';
     const line = getRoadmapCharacterLine(char, completed, started, justDoneHere);
     const showLine = prevPct > 0 && prevPct < 100;
     const pctLabel = mastered ? '✨ 100%' : (started ? `⚡ ${fillPct}%` : '🔒 0%');
+    const sideCls = (loop % 2 === 0) ? 'is-right' : 'is-left';
+    const starsHtml = Array.from({ length: 5 }, (_, i) => `<span class="sq-companion-star ${i < completed ? 'is-on' : ''}">★</span>`).join('');
 
-    let html = `<section class="mb-section" data-loop="${loop + 1}">`;
-
-    // Chỉ hiện Thẻ Đồng Hành Lumi lớn ở Vòng đang học (hoặc Vòng 1); nếu Vòng 2 chưa mở chỉ hiện dải phân cách gọn
-    if (started || loop === 0) {
-        html += `
-            <div class="mb-row mb-head-row" style="--i:${orderStart}">
-                <div class="mb-head">
-                    <div class="mb-head-text">
-                        <span class="mb-head-eyebrow">ĐỒNG HÀNH CÙNG LUMI</span>
-                        <h3 class="mb-head-title">${sectionTitle}</h3>
-                        <div class="mb-segbar-row">
-                            <div class="mb-segbar ${mastered ? 'is-mastered' : ''}" role="img" aria-label="Đã tô ${completed} trên ${ROADMAP_LESSONS_PER_LOOP}">${segments}</div>
-                            <span class="mb-segbar-arrow" aria-hidden="true">→</span>
-                            <span class="mb-segbar-chest ${mastered ? 'is-unlocked' : ''}">${rewardIcon}</span>
-                        </div>
-                    </div>
-                    <div class="mb-char ${mastered ? 'is-mastered' : ''} ${started ? '' : 'is-waiting'}"
-                         role="button" tabindex="0" data-fill-key="${fillKey}" data-fill-target="${fillPct}" data-just-done="${justDoneHere ? 1 : 0}"
-                         onclick="handleCharacterTap(this)">
-                        <div class="mb-char-bubble" role="status">${line}</div>
-                        <div class="mb-char-shadow"></div>
-                        <img class="mb-char-gray" src="${char.img}" alt="" />
-                        <img class="mb-char-color" src="${char.img}" alt="" style="clip-path: inset(${100 - prevPct}% 0 0 0);" />
-                        <div class="mb-char-line" style="bottom: calc(${prevPct}% - 1px); opacity: ${showLine ? 1 : 0};"></div>
-                        <span class="mb-char-pct-pill ${mastered ? 'is-mastered' : ''}">${pctLabel}</span>
-                    </div>
-                </div>
-            </div>`;
-    } else {
-        html += `
-            <div class="rm-stage-divider" style="--i:${orderStart}">
-                <span class="rm-stage-divider-line"></span>
-                <span class="rm-stage-divider-pill">🔒 Chặng 6 – 10 · ${sectionTitle}</span>
-                <span class="rm-stage-divider-line"></span>
-            </div>`;
-    }
-
-    // Gom các bài đã học liên tiếp thành Lưới 2 Cột (2-Column Completed Grid)
-    const completedIndices = [];
-    const remainingIndices = [];
-    sectionNodes.forEach((n, i) => {
-        const gIdx = start + i;
-        if (resolveRoadmapNodeState(chapter, gIdx) === 'completed' && n.type !== 'chest' && n.type !== 'boss') {
-            completedIndices.push(gIdx);
-        } else {
-            remainingIndices.push({ node: n, gIdx, localIdx: i });
+    let trackHtml = '';
+    sectionNodes.forEach((n, localIdx) => {
+        const gIdx = start + localIdx;
+        trackHtml += renderWindingSquareNode(chapter, gIdx, loop, localIdx, orderStart + localIdx + 1);
+        if (localIdx < sectionNodes.length - 1) {
+            const x1 = getNodeHorizontalPercent(loop, localIdx);
+            const x2 = getNodeHorizontalPercent(loop, localIdx + 1);
+            const stateCurr = resolveRoadmapNodeState(chapter, gIdx);
+            const stateNext = resolveRoadmapNodeState(chapter, gIdx + 1);
+            trackHtml += renderWindingConnectorSvg(x1, x2, stateCurr === 'completed', stateNext === 'active');
         }
     });
 
-    if (completedIndices.length > 0) {
-        html += `<div class="rm-done-grid" style="--i:${orderStart + 1}">${completedIndices.map(gIdx => renderCompletedGridCard(chapter, gIdx)).join('')}</div>`;
-    }
-
-    const nonSpecialLocked = !started && remainingIndices.length > 2
-        && remainingIndices.slice(0, -1).every(item => resolveRoadmapNodeState(chapter, item.gIdx) === 'locked' && item.node.type !== 'chest' && item.node.type !== 'boss');
-
-    if (nonSpecialLocked) {
-        html += renderLockedSteppingStonesRow(chapter, remainingIndices.slice(0, -1).map(x => x.node), orderStart + 2);
-        const lastItem = remainingIndices[remainingIndices.length - 1];
-        html += renderRoadmapLessonRow(chapter, lastItem.gIdx, {}, orderStart + 3);
-    } else {
-        remainingIndices.forEach((item, idx) => {
-            html += renderRoadmapLessonRow(chapter, item.gIdx, {}, orderStart + 2 + idx);
-        });
-    }
-    return html + '</section>';
+    return `
+        <section class="mb-section sq-winding-section ${!started && loop > 0 ? 'is-future-loop' : ''}" data-loop="${loop + 1}">
+            <div class="sq-section-pill-row" style="--i:${orderStart}">
+                <span class="sq-section-line"></span>
+                <span class="sq-section-pill">${started ? '🌿' : '🔒'} Vòng ${loop + 1} · ${sectionTitle}</span>
+                <span class="sq-section-line"></span>
+            </div>
+            <div class="sq-winding-stage">
+                <div class="sq-companion-island ${sideCls}">
+                    <div class="mb-char sq-char-stage ${mastered ? 'is-mastered' : ''} ${started ? '' : 'is-waiting'}"
+                         role="button" tabindex="0" data-fill-key="${fillKey}" data-fill-target="${fillPct}" data-just-done="${justDoneHere ? 1 : 0}"
+                         onclick="handleCharacterTap(this)" title="Chạm vào ${roadmapAttr(char.name)}">
+                        <div class="mb-char-bubble" role="status">${line}</div>
+                        <div class="sq-campfire-glow" aria-hidden="true"></div>
+                        <img class="mb-char-gray" src="${char.img}" alt="" />
+                        <img class="mb-char-color" src="${char.img}" alt="" style="clip-path: inset(${100 - prevPct}% 0 0 0);" />
+                        <div class="mb-char-line" style="bottom: calc(${prevPct}% - 1px); opacity: ${showLine ? 1 : 0};"></div>
+                        <span class="sq-campfire-prop" aria-hidden="true">${loop === 0 ? '🔥' : '🏮'}</span>
+                        <span class="mb-char-pct-pill ${mastered ? 'is-mastered' : ''}">${pctLabel}</span>
+                    </div>
+                    <div class="sq-companion-stars" aria-label="Tiến độ ${completed} trên 5 sao">${starsHtml}</div>
+                    <span class="sq-companion-name">${char.name}</span>
+                </div>
+                <div class="sq-winding-nodes">${trackHtml}</div>
+            </div>
+        </section>`;
 }
 
 function renderRoadmapLockedNotice(chapter) {
@@ -313,9 +280,7 @@ function renderRoadmapLockedNotice(chapter) {
     return `<div class="mb-locked-notice" style="--i:0"><span class="mb-locked-icon" aria-hidden="true">${ROADMAP_ICON_LOCK}</span><div class="mb-locked-text"><strong>Chương đang khóa</strong><span>Hoàn thành "${prevName}" để mở.</span></div>${backBtn}</div>`;
 }
 
-function renderRoadmapNodes(chapter, opts = {}) {
-    const nodesContainer = document.getElementById('roadmapNodesContainer');
-    if (!nodesContainer) return;
+function buildRoadmapTimelineHtml(chapter, opts = {}) {
     const rawCharacters = chapter.characters || [
         { name: 'Thần Rừng Lumi', img: 'assets/create/lumi_fox.png' },
         { name: 'Lumi Nhà Thám Hiểm', img: 'assets/library/lumi_reading_fox.webp' }
@@ -328,14 +293,21 @@ function renderRoadmapNodes(chapter, opts = {}) {
         });
     });
 
-    const locked = isRoadmapChapterLocked(chapter);
+    const locked = typeof isRoadmapChapterLocked === 'function' ? isRoadmapChapterLocked(chapter) : false;
     const loops = Math.ceil(chapter.nodes.length / ROADMAP_LESSONS_PER_LOOP);
-    let html = `<div class="mb-timeline rm-clean-stage ${opts.animateIn ? 'mb-animate-in' : ''} ${locked ? 'is-chapter-locked' : ''}">`;
+    let html = `<div class="mb-timeline rm-clean-stage sq-roadmap-map ${opts.animateIn ? 'mb-animate-in' : ''} ${locked ? 'is-chapter-locked' : ''}">`;
     if (locked) html += renderRoadmapLockedNotice(chapter);
     for (let loop = 0; loop < loops; loop++) {
         html += renderRoadmapSection(chapter, loop, characters, 1 + loop * (ROADMAP_LESSONS_PER_LOOP + 1));
     }
-    nodesContainer.innerHTML = html + '</div>';
+    return html + '</div>';
+}
+window.buildRoadmapTimelineHtml = buildRoadmapTimelineHtml;
+
+function renderRoadmapNodes(chapter, opts = {}) {
+    const nodesContainer = document.getElementById('roadmapNodesContainer');
+    if (!nodesContainer) return;
+    nodesContainer.innerHTML = buildRoadmapTimelineHtml(chapter, opts);
     roadmapRaf(() => roadmapRaf(() => applyRoadmapFillAnimations(nodesContainer)));
 }
 
@@ -354,8 +326,8 @@ function applyRoadmapFillAnimations(root) {
         if (el.getAttribute('data-just-done') === '1') setTimeout(() => showRoadmapCharacterBubble(el), 650);
     });
 }
+window.applyRoadmapFillAnimations = applyRoadmapFillAnimations;
 
-// Ẩn thanh nổi NextBar dưới đáy để không bị lặp lại với Spotlight Hero Card ở giữa màn hình
 function renderRoadmapNextBar() {
     const bar = document.getElementById('roadmapNextBar');
     if (bar) bar.classList.remove('is-visible');
