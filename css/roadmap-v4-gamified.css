@@ -77,157 +77,168 @@ html.light .mb-segbar-chest { background: #FEF3C7; border-color: rgba(217, 119, 
 html.light .mb-char-pct-pill { background: #FFFFFF; border-color: rgba(82, 102, 0, 0.35); color: #3D4D00; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.10); }
 .mb-char-pct-pill.is-mastered { background: linear-gradient(135deg, #FBBF24, #D97706); border-color: #FEF3C7; color: #1B1C17; }
 
-/* 3. ONE-FLOW STORY STAGE (NO LEFT RAIL, FULL-WIDTH CENTERED CARDS) */
-.rm-clean-stage {
-    padding: 8px 16px 42px !important;
-}
-.rm-clean-stage .mb-section {
-    display: flex; flex-direction: column; gap: 10px;
-}
-.rm-clean-stage .mb-row {
-    display: block !important; grid-template-columns: 1fr !important;
-    padding: 0 !important; margin: 0 !important;
-}
+/* 3. ONE-FLOW STORY STAGE (NO LEFT RAIL, 80/20 SPOTLIGHT HIERARCHY) */
+.rm-clean-stage { padding: 8px 16px 42px !important; }
+.rm-clean-stage .mb-section { display: flex; flex-direction: column; gap: 10px; }
+.rm-clean-stage .mb-row { display: block !important; grid-template-columns: 1fr !important; padding: 0 !important; margin: 0 !important; }
 .rm-clean-stage .mb-rail { display: none !important; }
 #roadmapNextBar, #mysteryRoadmapNextBar { display: none !important; }
+.rm-clean-stage .mb-head {
+    padding: 10px 14px !important; border-radius: 18px !important;
+    background: rgba(255, 255, 255, 0.025) !important; border: 1px solid rgba(255, 255, 255, 0.07) !important;
+    box-shadow: none !important; opacity: 0.88;
+}
+html.light .rm-clean-stage .mb-head { background: rgba(82, 102, 0, 0.04) !important; border-color: rgba(82, 102, 0, 0.14) !important; }
 
-/* 4. 2-COLUMN COMPLETED STORY GRID (CHẶNG 1 & CHẶNG 2 CẠNH NHAU) */
-.rm-done-grid {
-    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;
-}
+/* 4. COMPLETED LESSONS — MUTED MINI PILLS (NHƯỜNG SPOTLIGHT CHO BÀI ĐANG HỌC) */
+.rm-done-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
 .rm-done-card {
-    display: flex; align-items: center; gap: 10px;
-    padding: 9px 11px; border-radius: 18px;
-    background: rgba(184, 209, 102, 0.065); border: 1px solid rgba(184, 209, 102, 0.22);
-    cursor: pointer; transition: transform 0.16s ease, border-color 0.16s ease, background 0.16s ease;
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px 10px; border-radius: 14px;
+    background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.065);
+    opacity: 0.64; cursor: pointer; transition: opacity 0.16s ease, transform 0.16s ease, border-color 0.16s ease;
 }
-.rm-done-card:hover, .rm-done-card:active {
-    transform: translateY(-1.5px); background: rgba(184, 209, 102, 0.11); border-color: rgba(184, 209, 102, 0.42);
-}
-html.light .rm-done-card {
-    background: rgba(255, 255, 255, 0.88); border-color: rgba(82, 102, 0, 0.18);
-    box-shadow: 0 3px 10px rgba(82, 102, 0, 0.06);
-}
+.rm-done-card:hover, .rm-done-card:active { opacity: 0.95; transform: translateY(-1px); border-color: rgba(184, 209, 102, 0.35); }
+html.light .rm-done-card { background: rgba(82, 102, 0, 0.035); border-color: rgba(82, 102, 0, 0.12); }
 .rm-done-thumb {
-    width: 44px; height: 44px; border-radius: 13px;
-    border: 1.5px solid var(--rm-primary); position: relative; flex-shrink: 0;
+    width: 32px; height: 32px; border-radius: 50%;
+    border: 1.5px solid rgba(184, 209, 102, 0.55); position: relative; flex-shrink: 0;
 }
-.rm-done-thumb img {
-    width: 100%; height: 100%; object-fit: cover; border-radius: 11.5px; display: block;
-}
+.rm-done-thumb img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; filter: saturate(0.82); display: block; }
 .rm-done-check {
-    position: absolute; bottom: -3px; right: -3px; width: 15px; height: 15px;
+    position: absolute; bottom: -2px; right: -2px; width: 13px; height: 13px;
     border-radius: 50%; background: var(--rm-primary); color: var(--rm-on-primary);
-    font-size: 9px; font-weight: 900; display: flex; align-items: center; justify-content: center;
+    font-size: 8px; font-weight: 900; display: flex; align-items: center; justify-content: center;
     border: 1.5px solid var(--rm-card-bg);
 }
-.rm-done-info {
-    flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 2px;
-}
-.rm-done-top {
-    display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 4px;
-}
-.rm-done-step {
-    font-size: 9.5px; font-weight: 800; color: var(--rm-primary); letter-spacing: 0.02em; text-transform: uppercase;
-}
-.rm-completed-stars {
-    color: #FBBF24; font-size: 9.5px; letter-spacing: 0.5px; flex-shrink: 0;
-}
+.rm-done-info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+.rm-done-step { font-size: 9px; font-weight: 800; color: var(--rm-on-surface-variant); letter-spacing: 0.02em; }
 .rm-done-title {
-    font-size: 12.5px; font-weight: 800; color: var(--rm-on-surface);
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; margin: 0; line-height: 1.25;
-}
-.rm-done-diff {
-    margin-top: 1px; transform: scale(0.92); transform-origin: left center;
+    font-size: 11.5px; font-weight: 700; color: var(--rm-on-surface);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; margin: 0; line-height: 1.2;
 }
 
-/* 5. SPOTLIGHT ACTIVE HERO CARD (BÌA SÁCH 3D LỚN BÊN TRÁI + NỘI DUNG THOÁNG BÊN PHẢI) */
+/* 5. DOMINANT SPOTLIGHT ACTIVE CARD (BÀI CẦN HỌC — TÂM ĐIỂM THỊ GIÁC 100%) */
+.rm-spotlight-wrap { margin: 4px 0 6px !important; }
 .mb-card.mb-card-active-hero {
-    min-height: 112px !important; border-radius: 24px !important;
-    background: linear-gradient(135deg, rgba(184, 209, 102, 0.16) 0%, var(--rm-card-bg) 55%, rgba(251, 191, 36, 0.11) 100%) !important;
-    border: 1.5px solid var(--rm-primary) !important;
-    box-shadow: 0 14px 32px -8px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(184, 209, 102, 0.3) !important;
-    display: flex !important; align-items: center !important;
-    padding: 12px 14px 12px 14px !important; gap: 14px !important;
+    position: relative; overflow: hidden;
+    min-height: 156px !important; border-radius: 26px !important;
+    background: linear-gradient(145deg, rgba(184, 209, 102, 0.24) 0%, #1F2417 52%, rgba(251, 191, 36, 0.18) 100%) !important;
+    border: 2px solid #B8D166 !important;
+    box-shadow: 0 18px 42px -8px rgba(0, 0, 0, 0.78), 0 0 28px rgba(184, 209, 102, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.22) !important;
+    display: flex !important; flex-direction: column !important; align-items: stretch !important;
+    padding: 13px 15px 15px !important; gap: 11px !important; opacity: 1 !important;
+}
+html.light .mb-card.mb-card-active-hero {
+    background: linear-gradient(145deg, #F4F9E4 0%, #FFFFFF 55%, #FEF3C7 100%) !important;
+    border: 2px solid #526600 !important;
+    box-shadow: 0 16px 36px -8px rgba(82, 102, 0, 0.26), 0 0 0 3px rgba(82, 102, 0, 0.10) !important;
+}
+.rm-spotlight-bg {
+    position: absolute; inset: 0; background-size: cover; background-position: center;
+    opacity: 0.16; filter: blur(22px) saturate(1.4); transform: scale(1.2); pointer-events: none; z-index: 0;
+}
+html.light .rm-spotlight-bg { opacity: 0.08; }
+.rm-spotlight-top-bar {
+    position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 8px;
+}
+.rm-spotlight-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 10px; border-radius: 999px;
+    background: #B8D166; color: #171A0E;
+    font-size: 10px; font-weight: 900; letter-spacing: 0.05em; text-transform: uppercase;
+    box-shadow: 0 2px 10px rgba(184, 209, 102, 0.45);
+}
+html.light .rm-spotlight-pill { background: #526600; color: #FFFFFF; }
+.rm-spotlight-dot {
+    width: 6.5px; height: 6.5px; border-radius: 50%; background: #171A0E;
+    animation: rm-pulse-dot 1.4s ease-in-out infinite;
+}
+html.light .rm-spotlight-dot { background: #D4EE7F; }
+@keyframes rm-pulse-dot { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.35); opacity: 0.55; } }
+
+.rm-spotlight-main {
+    position: relative; z-index: 2; display: flex; align-items: center; gap: 14px; width: 100%;
 }
 .mb-card.mb-card-active-hero.is-flip-reveal {
-    animation: rm-hero-card-flip 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
-    transform-origin: center center;
+    animation: rm-hero-card-flip 0.65s cubic-bezier(0.22, 1, 0.36, 1) both; transform-origin: center center;
 }
 @keyframes rm-hero-card-flip {
     0% { transform: perspective(900px) rotateX(68deg) scale(0.92); opacity: 0.25; filter: brightness(1.35); }
     60% { transform: perspective(900px) rotateX(-6deg) scale(1.02); opacity: 1; }
     100% { transform: perspective(900px) rotateX(0deg) scale(1); opacity: 1; filter: brightness(1); }
 }
-html.light .mb-card.mb-card-active-hero {
-    background: linear-gradient(135deg, #FFFFFF 0%, #F7F6EE 65%, #FEF9C3 100%) !important;
-    box-shadow: 0 10px 26px -6px rgba(82, 102, 0, 0.18), 0 0 0 1px rgba(82, 102, 0, 0.18) !important;
-}
-.mb-card-active-hero .mb-card-body {
-    padding: 2px 0 !important; gap: 6px !important; flex: 1; min-width: 0;
-}
+.mb-card-active-hero .mb-card-body { padding: 0 !important; gap: 6px !important; flex: 1; min-width: 0; }
 .mb-hero-title {
-    font-size: 16.5px !important; font-weight: 800 !important; letter-spacing: -0.02em; line-height: 1.25 !important;
+    font-size: 18px !important; font-weight: 800 !important; letter-spacing: -0.02em; line-height: 1.22 !important;
+    color: #FFFFFF !important; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
 }
+html.light .mb-hero-title { color: #1B1C17 !important; text-shadow: none; }
+.rm-spotlight-meta { font-size: 11px; font-weight: 800; color: #D4EE7F; }
+html.light .rm-spotlight-meta { color: #3D4D00; }
+
 .rm-icon-chip {
-    width: 27px; height: 27px; border-radius: 50%;
-    background: rgba(184, 209, 102, 0.13); border: 1px solid rgba(184, 209, 102, 0.38);
+    width: 28px; height: 28px; border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.22);
     display: inline-flex; align-items: center; justify-content: center;
     font-size: 12.5px; line-height: 1; cursor: pointer; flex-shrink: 0;
-    transition: transform 0.15s ease;
 }
 .rm-swap-pill-btn {
-    padding: 3.5px 9px; border-radius: 999px;
-    background: rgba(251, 191, 36, 0.15); border: 1px solid rgba(251, 191, 36, 0.45);
+    padding: 4px 10px; border-radius: 999px;
+    background: rgba(251, 191, 36, 0.18); border: 1px solid rgba(251, 191, 36, 0.5);
     color: #FDE68A; font-size: 10.5px; font-weight: 800; cursor: pointer; flex-shrink: 0;
-    transition: transform 0.15s ease;
 }
 html.light .rm-swap-pill-btn { background: #FEF3C7; border-color: rgba(217, 119, 6, 0.45); color: #92400E; }
-.rm-icon-chip:hover, .rm-swap-pill-btn:hover { transform: scale(1.06); }
-.rm-hero-cta-row { display: flex; align-items: center; gap: 10px; margin-top: 2px; }
+.rm-hero-cta-row { display: flex; align-items: center; width: 100%; margin-top: 4px; }
 .rm-hero-play-btn {
-    padding: 6px 15px !important; font-size: 12px !important; font-weight: 800 !important;
-    border-radius: 999px !important; box-shadow: 0 4px 12px rgba(184, 209, 102, 0.32);
+    width: 100%; justify-content: center !important;
+    padding: 9px 16px !important; font-size: 13px !important; font-weight: 800 !important;
+    border-radius: 14px !important;
+    background: linear-gradient(135deg, #C7E372 0%, #B8D166 55%, #FBBF24 100%) !important;
+    color: #171A0E !important;
+    box-shadow: 0 6px 18px rgba(184, 209, 102, 0.42) !important;
 }
-.rm-hero-xp-hint { font-size: 11px; font-weight: 800; color: #FDE68A; }
-html.light .rm-hero-xp-hint { color: #92400E; }
+html.light .rm-hero-play-btn {
+    background: linear-gradient(135deg, #526600 0%, #3D4D00 100%) !important; color: #FFFFFF !important;
+}
 
 .mb-thumb.mb-thumb-hero-book {
-    width: 76px !important; height: 90px !important; margin: 0 !important;
+    width: 82px !important; height: 98px !important; margin: 0 !important;
     border: none !important; border-radius: 0 !important; background: transparent !important;
     overflow: visible !important; position: relative; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
 }
 .hero-book-cover {
-    position: relative; width: 68px; height: 86px; border-radius: 6px 12px 12px 6px;
-    overflow: hidden; border: 1.5px solid var(--rm-primary);
-    box-shadow: -4px 6px 14px rgba(0, 0, 0, 0.48); z-index: 2; transform: rotate(-2deg);
+    position: relative; width: 74px; height: 94px; border-radius: 6px 12px 12px 6px;
+    overflow: hidden; border: 2px solid #D4EE7F;
+    box-shadow: -5px 8px 18px rgba(0, 0, 0, 0.6); z-index: 2; transform: rotate(-2deg);
 }
 .hero-book-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .hero-book-spine {
     position: absolute; top: 0; bottom: 0; left: 0; width: 6px;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.38), rgba(0, 0, 0, 0.38)); pointer-events: none;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.4)); pointer-events: none;
 }
 .hero-book-pages {
-    position: absolute; right: 1px; top: 4px; width: 66px; height: 84px;
+    position: absolute; right: 0; top: 4px; width: 72px; height: 92px;
     border-radius: 5px 11px 11px 5px;
     background: repeating-linear-gradient(90deg, #F5F2E6 0px, #F5F2E6 2px, #D6D1C2 2px, #D6D1C2 3px);
-    border: 1px solid rgba(184, 209, 102, 0.45); transform: rotate(3deg) translate(3px, 2px); z-index: 1;
+    border: 1px solid rgba(184, 209, 102, 0.5); transform: rotate(3.5deg) translate(4px, 2px); z-index: 1;
 }
 
-/* 6. 3-CARD FANNED DECK FOR UNCHOSEN ACTIVE SLOT */
-.rm-active-step-pill {
-    padding: 2.5px 8px; border-radius: 999px;
-    background: rgba(251, 191, 36, 0.2); border: 1px solid rgba(251, 191, 36, 0.5);
-    color: #FCD34D; font-size: 9.5px; font-weight: 800; letter-spacing: 0.04em;
+/* 6. 3-CARD FANNED DECK FOR UNCHOSEN ACTIVE SLOT (SPOTLIGHT DOMINANCE) */
+.mb-card.mb-card-mystery {
+    min-height: 128px !important; border-radius: 24px !important;
+    border: 2px solid #FBBF24 !important;
+    box-shadow: 0 18px 40px -8px rgba(0, 0, 0, 0.72), 0 0 24px rgba(251, 191, 36, 0.25) !important;
+    padding: 14px 14px !important;
 }
-html.light .rm-active-step-pill { color: #92400E; }
+.rm-spotlight-badge-row { margin-bottom: 2px; }
 .rm-deck-draw-btn {
     background: linear-gradient(135deg, #FBBF24, #F59E0B) !important;
-    color: #1B1C17 !important; font-weight: 800 !important; font-size: 11.5px !important;
-    padding: 6px 13px !important; box-shadow: 0 3px 10px rgba(251, 191, 36, 0.35);
+    color: #1B1C17 !important; font-weight: 800 !important; font-size: 12.5px !important;
+    padding: 8px 16px !important; border-radius: 12px !important; box-shadow: 0 4px 14px rgba(251, 191, 36, 0.4);
 }
 .mb-thumb.mb-thumb-mystery-fan {
-    width: 82px !important; height: 76px !important; margin: 4px 8px 4px 0 !important;
+    width: 84px !important; height: 78px !important; margin: 4px 8px 4px 0 !important;
     background: transparent !important; border: none !important; overflow: visible !important; position: relative;
 }
 .mystery-fan-card {
@@ -242,106 +253,95 @@ html.light .mystery-fan-card { background: linear-gradient(145deg, #FEF3C7 0%, #
 .mystery-fan-card.fan-right { transform: translate(12px, 3px) rotate(15deg) scale(0.92); opacity: 0.88; }
 .mystery-fan-card.fan-center { transform: translateY(-2px) rotate(0deg); z-index: 2; box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5), 0 0 12px rgba(251, 191, 36, 0.4); }
 
-/* 7. NEXT LOCKED SLOT (CHẶNG 4) — FLAT GLASS PILL (NO DASHED BORDER) */
+/* 7. LOCKED SLOTS & LOCKED MILESTONES — RECEDED & DIMMED (KHÔNG TRANH CHẤP SPOTLIGHT) */
 .mb-card.mb-card-locked-slot {
-    min-height: 48px !important; border-radius: 16px !important;
-    background: rgba(255, 255, 255, 0.035) !important; border: 1px solid rgba(255, 255, 255, 0.09) !important;
+    min-height: 44px !important; border-radius: 14px !important;
+    background: rgba(255, 255, 255, 0.02) !important; border: 1px solid rgba(255, 255, 255, 0.06) !important;
     box-shadow: none !important; align-items: center !important; justify-content: space-between !important;
-    padding: 7px 12px !important; opacity: 0.94 !important;
+    padding: 6px 11px !important; opacity: 0.55 !important; transition: opacity 0.16s ease;
 }
-html.light .mb-card.mb-card-locked-slot { background: rgba(82, 102, 0, 0.04) !important; border-color: rgba(82, 102, 0, 0.16) !important; }
-.rm-slot-inline-row { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.mb-card.mb-card-locked-slot:hover { opacity: 0.85 !important; }
+html.light .mb-card.mb-card-locked-slot { background: rgba(82, 102, 0, 0.025) !important; border-color: rgba(82, 102, 0, 0.12) !important; }
+.rm-slot-inline-row { display: flex; align-items: center; gap: 7px; min-width: 0; }
 .rm-slot-step-pill {
     display: inline-flex; align-items: center; gap: 3px;
-    padding: 3px 9px; border-radius: 999px;
-    background: rgba(184, 209, 102, 0.12); border: 1px solid rgba(184, 209, 102, 0.25);
-    color: var(--rm-primary); font-size: 10.5px; font-weight: 800; white-space: nowrap;
+    padding: 2.5px 8px; border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--rm-on-surface-variant); font-size: 10px; font-weight: 800; white-space: nowrap;
 }
-html.light .rm-slot-step-pill { background: rgba(82, 102, 0, 0.08); border-color: rgba(82, 102, 0, 0.22); color: #3D4D00; }
-.rm-slot-inline-label {
-    font-size: 12px; font-weight: 700; color: var(--rm-on-surface-variant);
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
+html.light .rm-slot-step-pill { background: rgba(82, 102, 0, 0.06); border-color: rgba(82, 102, 0, 0.18); color: #3D4D00; }
+.rm-slot-inline-label { font-size: 11.5px; font-weight: 700; color: var(--rm-on-surface-variant); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .rm-slot-genre-stack { display: flex; align-items: center; flex-shrink: 0; }
 .rm-genre-mini-card {
-    width: 24px; height: 28px; border-radius: 7px;
+    width: 22px; height: 26px; border-radius: 6px;
     background: var(--rm-surface-variant); border: 1px solid var(--rm-outline-variant);
     display: inline-flex; align-items: center; justify-content: center;
-    font-size: 11px; margin-left: -5px; box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.22);
+    font-size: 10px; margin-left: -5px;
 }
 .rm-genre-mini-card.c1 { margin-left: 0; transform: rotate(-7deg); }
 .rm-genre-mini-card.c2 { transform: translateY(-1px); z-index: 1; }
 .rm-genre-mini-card.c3 { transform: rotate(7deg); z-index: 2; }
 
-/* 8. MILESTONE CHEST & BOSS FINALE BANNER CARD */
+/* 8. MILESTONE CHEST & BOSS FINALE BANNER CARD (MUTED WHEN LOCKED) */
 .mb-card.mb-card-milestone {
-    min-height: 68px !important; border-radius: 20px !important;
-    background: linear-gradient(135deg, rgba(251, 191, 36, 0.16) 0%, rgba(217, 119, 6, 0.07) 55%, var(--rm-card-bg) 100%) !important;
-    border: 1px solid rgba(251, 191, 36, 0.48) !important;
-    box-shadow: 0 6px 20px -4px rgba(245, 158, 11, 0.18) !important;
+    min-height: 60px !important; border-radius: 18px !important;
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.14) 0%, var(--rm-card-bg) 100%) !important;
+    border: 1px solid rgba(251, 191, 36, 0.45) !important;
     display: flex !important; align-items: center !important;
-    padding: 8px 14px 8px 10px !important; gap: 12px !important; opacity: 0.98 !important;
+    padding: 7px 13px 7px 9px !important; gap: 11px !important;
 }
-.mb-card-milestone .mb-card-body { padding: 0 !important; gap: 3px !important; flex: 1; }
-.rm-milestone-arrow { font-size: 20px; font-weight: 700; color: rgba(251, 191, 36, 0.75); padding-left: 4px; }
+.mb-card.mb-card-milestone.is-locked-muted {
+    background: rgba(255, 255, 255, 0.022) !important;
+    border: 1px solid rgba(251, 191, 36, 0.20) !important;
+    box-shadow: none !important; opacity: 0.62 !important;
+}
+.mb-card.mb-card-milestone.is-locked-muted:hover { opacity: 0.88 !important; }
+.mb-card-milestone .mb-card-body { padding: 0 !important; gap: 2px !important; flex: 1; }
+.rm-milestone-arrow { font-size: 18px; font-weight: 700; color: rgba(251, 191, 36, 0.6); padding-left: 4px; }
 .rm-milestone-badge {
-    display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 999px;
-    background: rgba(251, 191, 36, 0.2); border: 1px solid rgba(251, 191, 36, 0.5);
-    color: #FDE68A; font-size: 10px; font-weight: 800; letter-spacing: 0.03em;
+    display: inline-flex; align-items: center; padding: 1.5px 7px; border-radius: 999px;
+    background: rgba(251, 191, 36, 0.16); border: 1px solid rgba(251, 191, 36, 0.38);
+    color: #FDE68A; font-size: 9.5px; font-weight: 800; letter-spacing: 0.03em;
 }
-html.light .rm-milestone-badge { background: #FEF3C7; border-color: rgba(217, 119, 6, 0.5); color: #92400E; }
+html.light .rm-milestone-badge { background: #FEF3C7; border-color: rgba(217, 119, 6, 0.4); color: #92400E; }
 .mb-thumb.mb-thumb-milestone {
-    width: 50px !important; height: 50px !important; margin: 0 !important;
-    border-radius: 14px !important; border: 1.5px solid #FBBF24 !important;
-    box-shadow: 0 0 12px rgba(251, 191, 36, 0.3); position: relative; overflow: hidden; flex-shrink: 0;
+    width: 44px !important; height: 44px !important; margin: 0 !important;
+    border-radius: 12px !important; border: 1px solid rgba(251, 191, 36, 0.55) !important;
+    position: relative; overflow: hidden; flex-shrink: 0;
 }
-.mb-state-locked .mb-thumb.mb-thumb-milestone img { filter: saturate(1.15) brightness(0.92) !important; }
+.mb-state-locked .mb-thumb.mb-thumb-milestone img { filter: saturate(0.85) brightness(0.75) !important; }
 .rm-milestone-emblem {
     position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-    background: radial-gradient(circle, rgba(251, 191, 36, 0.25) 0%, rgba(0, 0, 0, 0.35) 100%);
-    font-size: 21px; filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6)); pointer-events: none;
+    background: radial-gradient(circle, rgba(251, 191, 36, 0.2) 0%, rgba(0, 0, 0, 0.4) 100%);
+    font-size: 18px; pointer-events: none;
 }
 .rm-milestone-lock-pill {
-    position: absolute; bottom: 2px; right: 2px; width: 16px; height: 16px;
-    border-radius: 50%; background: rgba(18, 20, 14, 0.85); border: 1px solid rgba(251, 191, 36, 0.5);
-    display: flex; align-items: center; justify-content: center; font-size: 8.5px; z-index: 2;
+    position: absolute; bottom: 2px; right: 2px; width: 15px; height: 15px;
+    border-radius: 50%; background: rgba(18, 20, 14, 0.85); border: 1px solid rgba(251, 191, 36, 0.45);
+    display: flex; align-items: center; justify-content: center; font-size: 8px; z-index: 2;
 }
 
-/* 9. STAGE DIVIDER & 4-CARD MYSTERY DECK ROW (CHẶNG 6 -> 9) */
-.rm-stage-divider {
-    display: flex; align-items: center; gap: 10px; padding: 6px 4px 2px;
-}
-.rm-stage-divider-line {
-    flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(184, 209, 102, 0.25), transparent);
-}
-.rm-stage-divider-pill {
-    font-size: 10.5px; font-weight: 800; color: var(--rm-on-surface-variant);
-    letter-spacing: 0.04em; text-transform: uppercase; opacity: 0.85;
-}
+/* 9. STAGE DIVIDER & 4-CARD MYSTERY DECK ROW (DIMMED UNTIL UNLOCKED) */
+.rm-stage-divider { display: flex; align-items: center; gap: 10px; padding: 6px 4px 0; opacity: 0.55; }
+.rm-stage-divider-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent); }
+.rm-stage-divider-pill { font-size: 10px; font-weight: 800; color: var(--rm-on-surface-variant); letter-spacing: 0.04em; text-transform: uppercase; }
 .mb-card.mb-card-stepping-stones {
-    min-height: 70px !important; border-radius: 18px !important;
+    min-height: 62px !important; border-radius: 16px !important;
     background: transparent !important; border: none !important;
-    box-shadow: none !important; padding: 0 !important; opacity: 0.96 !important;
+    box-shadow: none !important; padding: 0 !important; opacity: 0.52 !important; transition: opacity 0.16s ease;
 }
-.rm-stones-track {
-    display: flex; align-items: stretch; justify-content: space-between; width: 100%; gap: 6px;
-}
+.mb-card.mb-card-stepping-stones:hover { opacity: 0.82 !important; }
+.rm-stones-track { display: flex; align-items: stretch; justify-content: space-between; width: 100%; gap: 6px; }
 .rm-stone-node {
-    flex: 1; min-width: 0; padding: 9px 4px 8px; border-radius: 15px;
-    background: rgba(255, 255, 255, 0.035); border: 1px solid rgba(255, 255, 255, 0.09);
-    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
-    cursor: pointer; transition: transform 0.16s ease, border-color 0.16s ease, background 0.16s ease;
+    flex: 1; min-width: 0; padding: 7px 4px 6px; border-radius: 13px;
+    background: rgba(255, 255, 255, 0.025); border: 1px solid rgba(255, 255, 255, 0.07);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; cursor: pointer;
 }
-.rm-stone-node:hover, .rm-stone-node:active {
-    transform: translateY(-2px); background: rgba(184, 209, 102, 0.12); border-color: rgba(251, 191, 36, 0.5);
-}
-html.light .rm-stone-node { background: rgba(255, 255, 255, 0.88); border-color: rgba(82, 102, 0, 0.16); }
-.rm-stone-step { font-size: 9.5px; font-weight: 800; color: var(--rm-primary); line-height: 1.1; }
-.rm-stone-icon { font-size: 17px; line-height: 1.15; filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.28)); }
-.rm-stone-tag {
-    font-size: 9.5px; font-weight: 700; color: var(--rm-on-surface-variant);
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; line-height: 1.1;
-}
+html.light .rm-stone-node { background: rgba(82, 102, 0, 0.03); border-color: rgba(82, 102, 0, 0.12); }
+.rm-stone-step { font-size: 9px; font-weight: 800; color: var(--rm-on-surface-variant); line-height: 1.1; }
+.rm-stone-icon { font-size: 15px; line-height: 1.15; }
+.rm-stone-tag { font-size: 9px; font-weight: 700; color: var(--rm-on-surface-variant); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
 .rm-stone-connector { display: none; }
+
 
 

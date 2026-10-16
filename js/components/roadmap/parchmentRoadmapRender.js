@@ -34,7 +34,7 @@ function getRoadmapNodeAction(chapter, index) {
     return `handleParchmentNodeClick(${node.num}, '${roadmapJsArg(node.title)}', ${unlocked}, ${chapter.id})`;
 }
 
-// Render 1 thẻ đã hoàn thành dạng Grid Card gọn đẹp (dùng cho lưới 2 cột)
+// Render 1 thẻ đã hoàn thành dạng Mini Pill trầm màu (nhường trọn spotlight cho Bài cần học)
 function renderCompletedGridCard(chapter, index) {
     const node = chapter.nodes[index];
     const onClick = getRoadmapNodeAction(chapter, index);
@@ -43,28 +43,21 @@ function renderCompletedGridCard(chapter, index) {
     const customStory = assigned ? assigned.story : null;
     const displayTitle = customStory ? customStory.title : node.title;
     const displayImg = customStory ? customStory.img : node.img;
-    const dMeta = (typeof window.resolveRoadmapDifficulty === 'function')
-        ? window.resolveRoadmapDifficulty(node, customStory)
-        : { short: 'Dễ', badgeCls: 'age-badge-3' };
 
     return `
-        <div class="rm-done-card" data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}">
+        <div class="rm-done-card" data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}" title="Đã hoàn thành Chặng ${node.num}: ${roadmapAttr(displayTitle)}">
             <div class="rm-done-thumb">
                 <img src="${displayImg}" alt="" loading="lazy" decoding="async" />
                 <span class="rm-done-check">✓</span>
             </div>
             <div class="rm-done-info">
-                <div class="rm-done-top">
-                    <span class="rm-done-step">Chặng ${node.num}</span>
-                    <span class="rm-completed-stars" aria-label="3 sao">★★★</span>
-                </div>
+                <span class="rm-done-step">Chặng ${node.num} · ★★★</span>
                 <h4 class="rm-done-title">${displayTitle}</h4>
-                <span class="age-badge ${dMeta.badgeCls} rm-done-diff">${dMeta.short}</span>
             </div>
         </div>`;
 }
 
-// Render thẻ bài học đơn lẻ (Đang học, Rương/Trùm, hoặc Ô tự chọn) — Không cột đường ray
+// Render thẻ bài học đơn lẻ — Làm nổi bật tuyệt đối Bài Cần Học (Spotlight Card)
 function renderRoadmapLessonRow(chapter, index, flags, order) {
     const node = chapter.nodes[index];
     const state = resolveRoadmapNodeState(chapter, index);
@@ -92,16 +85,20 @@ function renderRoadmapLessonRow(chapter, index, flags, order) {
         return `<div class="rm-single-done-wrap" style="--i:${order}">${renderCompletedGridCard(chapter, index)}</div>`;
     }
 
-    // Trạng thái Đang mở nhưng ở chế độ 3 lá bài úp (Deck Mode)
+    // Trạng thái Đang mở nhưng ở chế độ 3 lá bài úp (Deck Mode) — Spotlight nổi bật
     if (state === 'active' && !isSpecial && isDeckMode) {
         return `
-            <div class="mb-row mb-state-active mb-state-mystery ${justDone}" style="--i:${order}" data-roadmap-active="1">
+            <div class="mb-row mb-state-active mb-state-mystery rm-spotlight-wrap ${justDone}" style="--i:${order}" data-roadmap-active="1">
                 <div class="mb-card mb-card-mystery ${justUnlocked}" data-node-num="${node.num}" role="button" tabindex="0" onclick="openRoadmapGenrePickerSheet(${node.num}, ${chapter.id || 0}, 'classic')">
                     <div class="mystery-shimmer-sweep"></div>
                     <div class="mb-card-body relative z-10">
-                        <div class="flex items-center gap-1.5"><span class="rm-active-step-pill">CHẶNG ${node.num} · ĐANG HỌC</span></div>
+                        <div class="rm-spotlight-badge-row">
+                            <span class="rm-spotlight-pill"><span class="rm-spotlight-dot"></span>BÀI CẦN HỌC · CHẶNG ${node.num}</span>
+                        </div>
                         <h4 class="mb-card-title mb-hero-title">Rút câu chuyện của bạn</h4>
-                        <div class="rm-hero-cta-row"><span class="mb-card-cta rm-deck-draw-btn">+ Chọn truyện ngay</span></div>
+                        <div class="rm-hero-cta-row">
+                            <span class="mb-card-cta rm-deck-draw-btn">+ Chọn câu chuyện ngay</span>
+                        </div>
                     </div>
                     <div class="mb-thumb mb-thumb-mystery-fan relative z-10" aria-hidden="true">
                         <div class="mystery-fan-card fan-left"><span>🦊</span></div>
@@ -112,39 +109,41 @@ function renderRoadmapLessonRow(chapter, index, flags, order) {
             </div>`;
     }
 
-    // ② THẺ ĐANG HỌC — SPOTLIGHT BOOK STAGE (Bìa sách 3D lớn bên trái + Nội dung thoáng bên phải)
+    // ② BÀI CẦN HỌC — DOMINANT SPOTLIGHT HERO CARD (To gấp đôi, Sáng rực, Nút CTA Full-Width)
     if (state === 'active' && !isSpecial) {
         const flipCls = (window.__justRevealedSlot === `${chapter.id || 0}_${node.num}`) ? 'is-flip-reveal' : '';
         return `
-            <div class="mb-row mb-state-active mb-type-${type} ${justDone}" style="--i:${order}" data-roadmap-active="1">
+            <div class="mb-row mb-state-active mb-type-${type} rm-spotlight-wrap ${justDone}" style="--i:${order}" data-roadmap-active="1">
                 <div class="mb-card mb-card-active-hero ${justUnlocked} ${flipCls}" data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}">
-                    <div class="mb-thumb mb-thumb-hero-book">
-                        <div class="hero-book-cover"><img src="${displayImg}" alt="" loading="lazy" decoding="async" /><span class="hero-book-spine"></span></div>
-                        <span class="hero-book-pages"></span>
-                    </div>
-                    <div class="mb-card-body">
-                        <div class="flex items-center justify-between gap-1.5">
-                            <div class="flex items-center gap-1.5">
-                                <span class="rm-active-step-pill">CHẶNG ${node.num}</span>
-                                <span class="age-badge ${dMeta.badgeCls}">${dMeta.short}</span>
-                                <span class="mb-card-kicker text-[10.5px]">${shortDur}</span>
-                            </div>
-                            <div class="flex items-center gap-1">
-                                <button type="button" onclick="event.stopPropagation(); if(typeof window.resetRoadmapSlotToDeck==='function') window.resetRoadmapSlotToDeck(${node.num}, ${chapter.id || 0});" class="rm-icon-chip is-deck" title="Úp lại bộ bài" aria-label="Úp bài">🃏</button>
-                                <button type="button" onclick="event.stopPropagation(); openRoadmapGenrePickerSheet(${node.num}, ${chapter.id || 0}, 'classic')" class="rm-swap-pill-btn" title="Đổi câu chuyện khác">🎲 Đổi</button>
-                            </div>
+                    <div class="rm-spotlight-bg" style="background-image: url('${displayImg}');"></div>
+                    <div class="rm-spotlight-top-bar">
+                        <span class="rm-spotlight-pill"><span class="rm-spotlight-dot"></span>BÀI CẦN HỌC · CHẶNG ${node.num}</span>
+                        <div class="flex items-center gap-1.5">
+                            <button type="button" onclick="event.stopPropagation(); if(typeof window.resetRoadmapSlotToDeck==='function') window.resetRoadmapSlotToDeck(${node.num}, ${chapter.id || 0});" class="rm-icon-chip is-deck" title="Úp lại bộ bài" aria-label="Úp bài">🃏</button>
+                            <button type="button" onclick="event.stopPropagation(); openRoadmapGenrePickerSheet(${node.num}, ${chapter.id || 0}, 'classic')" class="rm-swap-pill-btn" title="Đổi câu chuyện khác">🎲 Đổi truyện</button>
                         </div>
-                        <h4 class="mb-card-title mb-hero-title">${displayTitle}</h4>
-                        <div class="rm-hero-cta-row">
-                            <span class="mb-card-cta rm-hero-play-btn">${ROADMAP_ICON_PLAY} Học ngay</span>
-                            <span class="rm-hero-xp-hint">+20% ⚡</span>
+                    </div>
+                    <div class="rm-spotlight-main">
+                        <div class="mb-thumb mb-thumb-hero-book">
+                            <div class="hero-book-cover"><img src="${displayImg}" alt="" loading="lazy" decoding="async" /><span class="hero-book-spine"></span></div>
+                            <span class="hero-book-pages"></span>
+                        </div>
+                        <div class="mb-card-body">
+                            <div class="flex items-center gap-1.5">
+                                <span class="age-badge ${dMeta.badgeCls}">${dMeta.short}</span>
+                                <span class="rm-spotlight-meta">${shortDur} · +20% ⚡ Lumi</span>
+                            </div>
+                            <h4 class="mb-card-title mb-hero-title">${displayTitle}</h4>
+                            <div class="rm-hero-cta-row">
+                                <span class="mb-card-cta rm-hero-play-btn">${ROADMAP_ICON_PLAY} Bắt đầu học ngay</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>`;
     }
 
-    // ④ RƯƠNG KHO BÁU & TRÙM CUỐI (Thẻ thưởng sang trọng)
+    // ④ RƯƠNG KHO BÁU & TRÙM CUỐI (Khi đang khóa sẽ trầm xuống để không tranh chấp với Bài cần học)
     if (isSpecial) {
         const isBoss = type === 'boss';
         const badgeText = isBoss ? '👑 CHẶNG 10 · +300 XP' : `🎁 CHẶNG ${node.num} · +150 XP`;
@@ -152,7 +151,7 @@ function renderRoadmapLessonRow(chapter, index, flags, order) {
         const chestImg = isBoss ? 'assets/cards/lumi_progress_celebration.jpg' : 'assets/cards/reward_gift_box.jpg';
         return `
             <div class="mb-row mb-state-${state} mb-type-${type} ${justDone}" style="--i:${order}" ${state === 'active' ? 'data-roadmap-active="1"' : ''}>
-                <div class="mb-card mb-card-milestone ${isBoss ? 'is-boss' : 'is-chest'} ${justUnlocked}" data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}">
+                <div class="mb-card mb-card-milestone ${isBoss ? 'is-boss' : 'is-chest'} ${state === 'locked' ? 'is-locked-muted' : ''} ${justUnlocked}" data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}">
                     <div class="mb-thumb mb-thumb-milestone">
                         <img src="${chestImg}" alt="" loading="lazy" decoding="async" />
                         <span class="rm-milestone-emblem">${isBoss ? '👑' : '🎁'}</span>
@@ -167,7 +166,7 @@ function renderRoadmapLessonRow(chapter, index, flags, order) {
             </div>`;
     }
 
-    // ③ CHẶNG TỰ CHỌN CHƯA MỞ (LẺ): Thẻ kính phẳng hiện đại (không viền nét đứt)
+    // ③ CHẶNG TỰ CHỌN CHƯA MỞ (LẺ): Làm trầm rõ rệt (Muted Locked Slot)
     const flavor = (typeof window.getRoadmapSlotFlavor === 'function')
         ? window.getRoadmapSlotFlavor(node.num)
         : { icon: '☕', cards: ['☕', '🌧️', '🌿'], diffShort: 'Dễ', badgeCls: 'age-badge-3', themeTag: 'Đời thường' };
@@ -177,7 +176,7 @@ function renderRoadmapLessonRow(chapter, index, flags, order) {
                 <div class="rm-slot-inline-row">
                     <span class="rm-slot-step-pill">🔒 Chặng ${node.num}</span>
                     <span class="age-badge ${flavor.badgeCls}">${flavor.diffShort}</span>
-                    <span class="rm-slot-inline-label">Chủ đề: ${flavor.themeTag}</span>
+                    <span class="rm-slot-inline-label">${flavor.themeTag}</span>
                 </div>
                 <div class="rm-slot-genre-stack" aria-hidden="true">
                     <span class="rm-genre-mini-card c1">${flavor.cards[0]}</span><span class="rm-genre-mini-card c2">${flavor.cards[1]}</span><span class="rm-genre-mini-card c3">${flavor.cards[2]}</span>

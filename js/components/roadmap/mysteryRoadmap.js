@@ -130,15 +130,11 @@
     function renderMysteryCompletedCard(node, chapterId) {
         const assigned = getAssignedStory(chapterId, node.num), story = assigned ? assigned.story : null;
         const title = story ? story.title : node.title, img = story ? story.img : node.img;
-        const dMeta = (typeof window.resolveRoadmapDifficulty === 'function')
-            ? window.resolveRoadmapDifficulty(node, story)
-            : { short: 'Dễ', badgeCls: 'age-badge-3' };
         return `<div class="rm-done-card" onclick="launchRevealedLesson(${node.num}, ${chapterId})" role="button" tabindex="0">
             <div class="rm-done-thumb"><img src="${img}" alt="${title}" loading="lazy" /><span class="rm-done-check">✓</span></div>
             <div class="rm-done-info">
-                <div class="rm-done-top"><span class="rm-done-step">Chặng ${node.num}</span><span class="rm-completed-stars" aria-label="3 sao">★★★</span></div>
+                <span class="rm-done-step">Chặng ${node.num} · ★★★</span>
                 <h4 class="rm-done-title">${title}</h4>
-                <span class="age-badge ${dMeta.badgeCls} rm-done-diff">${dMeta.short}</span>
             </div>
         </div>`;
     }
@@ -248,13 +244,13 @@
 
         if (state === 'active' && !isSpecial) {
             if (isDeck || !story) {
-                return `<div class="mb-row mb-state-active mb-state-mystery" id="mysteryNodeRow-${chapterId}-${num}" data-roadmap-active="1">
+                return `<div class="mb-row mb-state-active mb-state-mystery rm-spotlight-wrap" id="mysteryNodeRow-${chapterId}-${num}" data-roadmap-active="1">
                     <div class="mb-card mb-card-mystery" onclick="openRoadmapGenrePickerSheet(${num}, ${chapterId}, 'mystery')" role="button" tabindex="0">
                         <div class="mystery-shimmer-sweep"></div>
                         <div class="mb-card-body relative z-10">
-                            <div class="flex items-center gap-1.5"><span class="rm-active-step-pill">CHẶNG ${num} · ĐANG HỌC</span></div>
+                            <div class="rm-spotlight-badge-row"><span class="rm-spotlight-pill"><span class="rm-spotlight-dot"></span>BÀI CẦN HỌC · CHẶNG ${num}</span></div>
                             <h4 class="mb-card-title mb-hero-title">Rút câu chuyện của bạn</h4>
-                            <div class="rm-hero-cta-row"><span class="mb-card-cta rm-deck-draw-btn">+ Chọn truyện ngay</span></div>
+                            <div class="rm-hero-cta-row"><span class="mb-card-cta rm-deck-draw-btn">+ Chọn câu chuyện ngay</span></div>
                         </div>
                         <div class="mb-thumb mb-thumb-mystery-fan relative z-10" aria-hidden="true">
                             <div class="mystery-fan-card fan-left"><span>🦊</span></div><div class="mystery-fan-card fan-right"><span>✈️</span></div><div class="mystery-fan-card fan-center"><span>✦</span></div>
@@ -264,22 +260,26 @@
             }
             const flipCls = (window.__justRevealedSlot === `${chapterId}_${num}`) ? 'is-flip-reveal' : '';
             const shortDur = String(story.duration || '5p').replace(/\s*phút/i, 'p');
-            return `<div class="mb-row mb-state-active" id="mysteryNodeRow-${chapterId}-${num}" data-roadmap-active="1">
+            return `<div class="mb-row mb-state-active rm-spotlight-wrap" id="mysteryNodeRow-${chapterId}-${num}" data-roadmap-active="1">
                 <div class="mb-card mb-card-active-hero ${flipCls}" onclick="launchRevealedLesson(${num}, ${chapterId})" role="button" tabindex="0">
-                    <div class="mb-thumb mb-thumb-hero-book">
-                        <div class="hero-book-cover"><img src="${story.img}" alt="${story.title}" loading="lazy" /><span class="hero-book-spine"></span></div>
-                        <span class="hero-book-pages"></span>
-                    </div>
-                    <div class="mb-card-body">
-                        <div class="flex items-center justify-between gap-1.5">
-                            <div class="flex items-center gap-1.5"><span class="rm-active-step-pill">CHẶNG ${num}</span><span class="age-badge ${dMeta.badgeCls}">${dMeta.short}</span><span class="mb-card-kicker text-[10.5px]">${shortDur}</span></div>
-                            <div class="flex items-center gap-1">
-                                <button type="button" onclick="event.stopPropagation(); resetRoadmapSlotToDeck(${num}, ${chapterId})" class="rm-icon-chip is-deck" title="Úp lại bộ bài" aria-label="Úp bài">🃏</button>
-                                <button type="button" onclick="event.stopPropagation(); openRoadmapGenrePickerSheet(${num}, ${chapterId}, 'mystery')" class="rm-swap-pill-btn" title="Đổi câu chuyện khác">🎲 Đổi</button>
-                            </div>
+                    <div class="rm-spotlight-bg" style="background-image: url('${story.img}');"></div>
+                    <div class="rm-spotlight-top-bar">
+                        <span class="rm-spotlight-pill"><span class="rm-spotlight-dot"></span>BÀI CẦN HỌC · CHẶNG ${num}</span>
+                        <div class="flex items-center gap-1.5">
+                            <button type="button" onclick="event.stopPropagation(); resetRoadmapSlotToDeck(${num}, ${chapterId})" class="rm-icon-chip is-deck" title="Úp lại bộ bài" aria-label="Úp bài">🃏</button>
+                            <button type="button" onclick="event.stopPropagation(); openRoadmapGenrePickerSheet(${num}, ${chapterId}, 'mystery')" class="rm-swap-pill-btn" title="Đổi câu chuyện khác">🎲 Đổi truyện</button>
                         </div>
-                        <h4 class="mb-card-title mb-hero-title">${story.title}</h4>
-                        <div class="rm-hero-cta-row"><span class="mb-card-cta rm-hero-play-btn">${ICON_PLAY} Học ngay</span><span class="rm-hero-xp-hint">+20% ⚡</span></div>
+                    </div>
+                    <div class="rm-spotlight-main">
+                        <div class="mb-thumb mb-thumb-hero-book">
+                            <div class="hero-book-cover"><img src="${story.img}" alt="${story.title}" loading="lazy" /><span class="hero-book-spine"></span></div>
+                            <span class="hero-book-pages"></span>
+                        </div>
+                        <div class="mb-card-body">
+                            <div class="flex items-center gap-1.5"><span class="age-badge ${dMeta.badgeCls}">${dMeta.short}</span><span class="rm-spotlight-meta">${shortDur} · +20% ⚡ Lumi</span></div>
+                            <h4 class="mb-card-title mb-hero-title">${story.title}</h4>
+                            <div class="rm-hero-cta-row"><span class="mb-card-cta rm-hero-play-btn">${ICON_PLAY} Bắt đầu học ngay</span></div>
+                        </div>
                     </div>
                 </div>
             </div>`;
@@ -292,7 +292,7 @@
             const chestImg = isBoss ? 'assets/cards/lumi_progress_celebration.jpg' : 'assets/cards/reward_gift_box.jpg';
             const clickAct = (isActive && !isBoss) ? `claimRoadmapBonusChest(${chapterId})` : `openRoadmapMilestonePreview('${type}', ${num}, ${chapterId})`;
             return `<div class="mb-row mb-type-${type} mb-state-${state}">
-                <div class="mb-card mb-card-milestone ${isBoss ? 'is-boss' : 'is-chest'}" onclick="${clickAct}">
+                <div class="mb-card mb-card-milestone ${isBoss ? 'is-boss' : 'is-chest'} ${!isActive ? 'is-locked-muted' : ''}" onclick="${clickAct}">
                     <div class="mb-thumb mb-thumb-milestone"><img src="${chestImg}" alt="" loading="lazy" /><span class="rm-milestone-emblem">${isBoss ? '👑' : '🎁'}</span><span class="rm-milestone-lock-pill">${isActive ? '✨' : '🔒'}</span></div>
                     <div class="mb-card-body"><div class="flex items-center gap-1.5"><span class="rm-milestone-badge">${badgeText}</span></div><h4 class="mb-card-title">${milestoneTitle}</h4></div>
                     <span class="rm-milestone-arrow" aria-hidden="true">›</span>
@@ -305,7 +305,7 @@
             : { icon: '☕', cards: ['☕', '🌧️', '🌿'], diffShort: 'Dễ', badgeCls: 'age-badge-3', themeTag: 'Đời thường' };
         return `<div class="mb-row mb-state-locked">
             <div class="mb-card mb-card-locked-slot" onclick="if(typeof showDictToast==='function') showDictToast('🔒 Hoàn thành Chặng ${num - 1} để mở khóa Chặng ${num} (${fl.themeTag})!');">
-                <div class="rm-slot-inline-row"><span class="rm-slot-step-pill">🔒 Chặng ${num}</span><span class="age-badge ${fl.badgeCls}">${fl.diffShort}</span><span class="rm-slot-inline-label">Chủ đề: ${fl.themeTag}</span></div>
+                <div class="rm-slot-inline-row"><span class="rm-slot-step-pill">🔒 Chặng ${num}</span><span class="age-badge ${fl.badgeCls}">${fl.diffShort}</span><span class="rm-slot-inline-label">${fl.themeTag}</span></div>
                 <div class="rm-slot-genre-stack" aria-hidden="true"><span class="rm-genre-mini-card c1">${fl.cards[0]}</span><span class="rm-genre-mini-card c2">${fl.cards[1]}</span><span class="rm-genre-mini-card c3">${fl.cards[2]}</span></div>
             </div>
         </div>`;
