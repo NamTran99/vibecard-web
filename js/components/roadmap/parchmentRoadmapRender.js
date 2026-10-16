@@ -144,8 +144,9 @@ function renderRoadmapLessonRow(chapter, index, flags, order) {
     // ④ RƯƠNG KHO BÁU CUỐI VÒNG & TRÙM CUỐI (Milestone Chest Banner màu Vàng Hổ Phách)
     if (isSpecial) {
         const isBoss = type === 'boss';
+        const loopNum = Math.ceil(node.num / ROADMAP_LESSONS_PER_LOOP);
         const badgeText = isBoss ? '👑 TRÙM CUỐI · +300 XP' : '🎁 RƯƠNG KHO BÁU · +150 XP';
-        const milestoneTitle = isBoss ? `Thử thách: ${displayTitle}` : `Rương Thưởng Vòng · ${displayTitle}`;
+        const milestoneTitle = isBoss ? `Thử Thách Trùm Cuối Chương ${(chapter.id || 0) + 1}` : `Rương Kho Báu Vòng ${loopNum}`;
         const subHint = state === 'active'
             ? (isBoss ? 'Sẵn sàng khiêu chiến ngay!' : 'Chạm để mở rương kho báu!')
             : (isBoss ? `Hoàn thành Chặng ${node.num - 1} để mở khóa` : `Mở rương khi hoàn thành Chặng ${node.num - 1}`);
@@ -168,14 +169,14 @@ function renderRoadmapLessonRow(chapter, index, flags, order) {
             </div>`;
     }
 
-    // ③ CHẶNG TỰ CHỌN CHƯA MỞ: Khấc Khóa Bí Ẩn (Mystery Slot Pill) kèm 3 bóng mờ thể loại (🦊 ✈️ 💼)
+    // ③ CHẶNG TỰ CHỌN CHƯA MỞ: Khấc Khóa Bí Ẩn (Mystery Slot Pill) — KHÔNG gắn cứng tên truyện trước khi mở
     return `
         <div class="mb-row ${railClasses} mb-state-locked" style="--i:${order}">
             <div class="mb-rail" onclick="${onClick}" role="button" tabindex="-1"><span class="mb-dot"></span>${pawsHtml}</div>
             <div class="mb-card mb-card-locked-slot" data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}">
                 <div class="mb-card-body">
                     <div class="flex items-center gap-1.5"><span class="rm-slot-step-badge">✦ Chặng ${node.num} · Mở khóa sau Chặng ${node.num - 1}</span></div>
-                    <h4 class="mb-card-title rm-slot-title">Ô truyện tự chọn · ${displayTitle}</h4>
+                    <h4 class="mb-card-title rm-slot-title">Ô truyện tự chọn · Tự do chọn chủ đề</h4>
                 </div>
                 <div class="rm-slot-genre-stack" aria-hidden="true">
                     <span class="rm-genre-mini-card c1">🦊</span><span class="rm-genre-mini-card c2">✈️</span><span class="rm-genre-mini-card c3">💼</span>

@@ -163,10 +163,8 @@ function handleParchmentNodeClick(nodeId, title, unlocked, chapterIdx = 0) {
             SoundEngine.play(8);
         }
 
-        const activeNode = ch.nodes.find(n => n.status === 'active');
-        const guideText = activeNode ? `Hãy hoàn thành bài "${activeNode.title}" trước nhé!` : 'Hãy hoàn thành bài trước để mở khóa.';
         if (typeof showDictToast === 'function') {
-            showDictToast(`🔒 "${title}" chưa mở! ${guideText}`);
+            showDictToast(`🔒 Hoàn thành Chặng ${nodeId - 1} để mở khóa và tự chọn câu chuyện cho Chặng ${nodeId}!`);
         }
 
         // Tự động cuộn nhẹ tới bài đang học sau 350ms

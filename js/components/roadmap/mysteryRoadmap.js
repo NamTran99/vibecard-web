@@ -254,8 +254,9 @@
         }
 
         if (isSpecial) {
-            const isBoss = type === 'boss', badgeText = isBoss ? '👑 TRÙM CUỐI · +300 XP' : '🎁 RƯƠNG KHO BÁU · +150 XP';
-            const milestoneTitle = isBoss ? `Thử thách: ${node.title}` : `Rương Thưởng Vòng · ${node.title}`;
+            const isBoss = type === 'boss', loopNum = Math.ceil(num / 5);
+            const badgeText = isBoss ? '👑 TRÙM CUỐI · +300 XP' : '🎁 RƯƠNG KHO BÁU · +150 XP';
+            const milestoneTitle = isBoss ? `Thử Thách Trùm Cuối Chương ${(chapterId || 0) + 1}` : `Rương Kho Báu Vòng ${loopNum}`;
             const subHint = isActive ? (isBoss ? 'Sẵn sàng khiêu chiến ngay!' : 'Chạm để mở rương kho báu!') : (isBoss ? 'Hoàn thành Chặng 9 để khiêu chiến' : 'Mở rương khi hoàn thành Chặng 4');
             const chestImg = isBoss ? 'assets/cards/lumi_progress_celebration.jpg' : 'assets/cards/reward_gift_box.jpg';
             const clickAct = (isActive && !isBoss) ? `claimRoadmapBonusChest(${chapterId})` : `openRoadmapMilestonePreview('${type}', ${num}, ${chapterId})`;
@@ -270,8 +271,8 @@
 
         return `<div class="mb-row ${railCls} mb-state-locked">
             <div class="mb-rail"><span class="mb-dot"></span>${pawsHtml}</div>
-            <div class="mb-card mb-card-locked-slot" onclick="if(typeof showDictToast==='function') showDictToast('🔒 Hoàn thành Chặng ${num - 1} để mở khóa ô truyện tự chọn Chặng ${num}!');">
-                <div class="mb-card-body"><div class="flex items-center gap-1.5"><span class="rm-slot-step-badge">✦ Chặng ${num} · Mở khóa sau Chặng ${num - 1}</span></div><h4 class="mb-card-title rm-slot-title">Ô truyện tự chọn · ${node.title}</h4></div>
+            <div class="mb-card mb-card-locked-slot" onclick="if(typeof showDictToast==='function') showDictToast('🔒 Hoàn thành Chặng ${num - 1} để mở khóa và tự chọn câu chuyện cho Chặng ${num}!');">
+                <div class="mb-card-body"><div class="flex items-center gap-1.5"><span class="rm-slot-step-badge">✦ Chặng ${num} · Mở khóa sau Chặng ${num - 1}</span></div><h4 class="mb-card-title rm-slot-title">Ô truyện tự chọn · Tự do chọn chủ đề</h4></div>
                 <div class="rm-slot-genre-stack" aria-hidden="true"><span class="rm-genre-mini-card c1">🦊</span><span class="rm-genre-mini-card c2">✈️</span><span class="rm-genre-mini-card c3">💼</span></div>
             </div>
         </div>`;
