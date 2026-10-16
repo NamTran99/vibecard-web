@@ -1,5 +1,5 @@
 
-// Cuộn tới bài đang học (thẻ active đầu tiên), căn giữa màn hình mượt mà
+// Cuộn tới bài đang học (nếu ở Vòng 1 thì giữ ở đỉnh trang để không cắt đôi Hero Banner)
 function scrollRoadmapToActive(smooth = true) {
     const scrollArea = document.getElementById('scrollAreaRoadmap');
     if (!scrollArea || typeof scrollArea.scrollTo !== 'function') return;
@@ -7,9 +7,12 @@ function scrollRoadmapToActive(smooth = true) {
     let top = 0;
     if (target) {
         const delta = target.getBoundingClientRect().top - scrollArea.getBoundingClientRect().top;
-        const cardHeight = target.offsetHeight || 88;
-        const areaHeight = scrollArea.clientHeight || 500;
-        top = Math.max(0, scrollArea.scrollTop + delta - (areaHeight / 2 - cardHeight / 2));
+        const currentAbsTop = scrollArea.scrollTop + delta;
+        if (currentAbsTop > 540) {
+            const cardHeight = target.offsetHeight || 88;
+            const areaHeight = scrollArea.clientHeight || 500;
+            top = Math.max(0, currentAbsTop - (areaHeight / 2 - cardHeight / 2));
+        }
     }
     scrollArea.scrollTo({ top, behavior: smooth ? 'smooth' : 'auto' });
 }
@@ -29,10 +32,16 @@ function updateRoadmapTopBarOnScroll() {
     const topBar = document.getElementById('roadmapTopBar');
     if (!scrollArea || !screen || !topBar) return;
     const y = scrollArea.scrollTop;
-    if (y > 56) {
+    const heroBox = document.getElementById('roadmapHeroContentBox');
+    if (heroBox) {
+        const fade = Math.max(0, Math.min(1, 1 - Math.max(0, y - 36) / 100));
+        heroBox.style.opacity = String(fade);
+        heroBox.style.transform = `translateY(${Math.min(14, Math.max(0, (y - 36) * 0.14)).toFixed(1)}px)`;
+    }
+    if (y > 140) {
         screen.classList.add('mb-condensed');
         topBar.classList.add('is-scrolled');
-    } else if (y < 8) {
+    } else if (y < 115) {
         screen.classList.remove('mb-condensed');
         topBar.classList.remove('is-scrolled');
     }

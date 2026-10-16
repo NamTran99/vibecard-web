@@ -36,9 +36,27 @@ const ROADMAP_ICON_PLAY = '<svg viewBox="0 0 20 20"><path d="M6.3 2.84A1.5 1.5 0
 const ROADMAP_ICON_LUMI_PAW = '<svg viewBox="0 0 20 20" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M4 8.5 C3 6.5 4.5 3 7 2 C8.8 1.3 11.2 1.3 13 2 C15.5 3 17 6.5 16 8.5 C15 10.3 12.5 11 10 11 C7.5 11 5 10.3 4 8.5 Z"/><ellipse cx="4.5" cy="14.5" rx="1.8" ry="2.6" transform="rotate(20 4.5 14.5)"/><ellipse cx="8" cy="17" rx="1.8" ry="2.8" transform="rotate(6 8 17)"/><ellipse cx="12" cy="17" rx="1.8" ry="2.8" transform="rotate(-6 12 17)"/><ellipse cx="15.5" cy="14.5" rx="1.8" ry="2.6" transform="rotate(-20 15.5 14.5)"/></svg>';
 
 function renderRailPawsHtml(down, downOn, isActive, downLong) {
-    // Tối giản hóa rail: chỉ dùng đường kết nối thanh mảnh, không rườm rà
-    return '';
+    if (!down) return '';
+    if (!downOn && !isActive) {
+        return `<div class="mb-rail-paws ${downLong ? 'is-long' : ''}"><span class="mb-trail-line"></span></div>`;
+    }
+    const cls = [
+        'mb-rail-paws',
+        downOn ? 'is-on' : '',
+        isActive ? 'is-active-stride' : '',
+        downLong ? 'is-long' : ''
+    ].filter(Boolean).join(' ');
+    return `
+        <div class="${cls}" aria-hidden="true">
+            <span class="mb-trail-line"></span>
+            <span class="mb-paw mb-paw-1">${ROADMAP_ICON_LUMI_PAW}</span>
+            <span class="mb-trail-sparkle mb-sparkle-1">✦</span>
+            <span class="mb-paw mb-paw-2">${ROADMAP_ICON_LUMI_PAW}</span>
+            <span class="mb-trail-sparkle mb-sparkle-2">✦</span>
+            <span class="mb-paw mb-paw-3">${ROADMAP_ICON_LUMI_PAW}</span>
+        </div>`;
 }
+window.renderRailPawsHtml = renderRailPawsHtml;
 
 // 10 Chương Lộ Trình với 10 Units / Chương & 2 Nhân Vật Tô Màu (từ roadmap.json)
 let roadmapChaptersData = (typeof window !== 'undefined' && Array.isArray(window.REAL_ROADMAP_CHAPTERS) && window.REAL_ROADMAP_CHAPTERS.length > 0)

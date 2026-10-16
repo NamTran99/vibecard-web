@@ -1,4 +1,3 @@
-
 function roadmapJsArg(str) {
     return String(str).replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '&quot;');
 }
@@ -32,7 +31,7 @@ function getRoadmapNodeAction(chapter, index) {
     return `handleParchmentNodeClick(${node.num}, '${roadmapJsArg(node.title)}', ${unlocked}, ${chapter.id})`;
 }
 
-// Render 1 thẻ bài học kèm chấm trên đường ray (Hỗ trợ Create Your Own Roadmap)
+// Render 1 thẻ bài học kèm chấm trên đường ray (Đồng bộ 5 nâng cấp v4.0)
 function renderRoadmapLessonRow(chapter, index, flags, order) {
     const node = chapter.nodes[index];
     const state = resolveRoadmapNodeState(chapter, index);
@@ -48,46 +47,11 @@ function renderRoadmapLessonRow(chapter, index, flags, order) {
         flags.up ? 'mb-up' : '', flags.upOn ? 'mb-up-on' : '',
         flags.down ? 'mb-down' : '', flags.downOn ? 'mb-down-on' : '',
         flags.downLong ? 'mb-down-long' : ''
-    ].join(' ');
+    ].filter(Boolean).join(' ');
     const justDone = roadmapUiState.justCompletedNum === node.num ? 'is-just-done' : '';
     const justUnlocked = roadmapUiState.justUnlockedNum === node.num ? 'is-just-unlocked' : '';
     const railUnlocking = roadmapUiState.justCompletedNum === node.num ? 'is-unlocking' : '';
     const pawsHtml = renderRailPawsHtml(flags.down, flags.downOn, state === 'active', flags.downLong);
-
-    if (state === 'active' && !isSpecial && !customStory) {
-        return `
-            <div class="mb-row ${railClasses} mb-state-active mb-state-mystery ${justDone}" style="--i:${order}" data-roadmap-active="1">
-                <div class="mb-rail ${railUnlocking}" onclick="${onClick}" role="button" tabindex="-1">
-                    <span class="mb-dot mb-dot-mystery">+</span>${pawsHtml}
-                </div>
-                <div class="mb-card mb-card-mystery ${justUnlocked}" data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}">
-                    <div class="mystery-shimmer-sweep"></div>
-                    <div class="mb-card-body relative z-10">
-                        <div class="flex items-center gap-1.5">
-                            <span class="age-badge age-badge-15">TỰ CHỌN</span>
-                            <span class="mb-card-kicker font-black" style="color: var(--rm-amber-text, #D97706);">Chặng ${node.num}</span>
-                        </div>
-                        <h4 class="mb-card-title font-extrabold text-[15px] leading-tight">Chọn câu chuyện</h4>
-                        <span class="mb-card-cta" style="background:#FBBF24; color:#1C1E17; font-weight:800;">+ Chọn truyện</span>
-                    </div>
-                    <div class="mb-thumb mb-thumb-mystery relative z-10"><span class="mystery-qmark-icon">+</span></div>
-                </div>
-            </div>`;
-    }
-
-    if (state === 'locked' && !isSpecial) {
-        return `
-            <div class="mb-row ${railClasses} mb-state-locked" style="--i:${order}">
-                <div class="mb-rail" onclick="${onClick}" role="button" tabindex="-1"><span class="mb-dot"></span>${pawsHtml}</div>
-                <div class="mb-card" data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}" aria-disabled="true">
-                    <div class="mb-card-body">
-                        <span class="mb-card-kicker">Chặng ${node.num}</span>
-                        <h4 class="mb-card-title">Chặng tự chọn</h4>
-                    </div>
-                    <div class="mb-thumb mb-thumb-slot-locked"><span class="slot-locked-icon">🔒</span></div>
-                </div>
-            </div>`;
-    }
 
     const displayTitle = customStory ? customStory.title : node.title;
     const displayImg = customStory ? customStory.img : node.img;
@@ -95,47 +59,137 @@ function renderRoadmapLessonRow(chapter, index, flags, order) {
     const dMeta = (typeof window.resolveRoadmapDifficulty === 'function')
         ? window.resolveRoadmapDifficulty(node, customStory)
         : ((window.DIFFICULTY_META && customStory && window.DIFFICULTY_META[customStory.difficulty]) || { short: 'Độ khó: Vừa', badgeCls: 'age-badge-15' });
-    const kicker = type === 'chest'
-        ? `<span>🎁 ${node.subtitle || '+150 XP'}</span>`
-        : type === 'boss'
-            ? `<span>👑 ${meta.minutes} phút</span>`
-            : customStory
-                ? `<span class="age-badge ${dMeta.badgeCls}">${dMeta.short}</span><span>${gMeta ? `${gMeta.name} · ${customStory.duration}` : customStory.duration}</span>`
-                : `<span class="age-badge ${dMeta.badgeCls}">${dMeta.short}</span><span>${meta.minutes} phút</span>`;
+    const durationStr = customStory ? customStory.duration : `${meta.minutes || 5} phút`;
 
-    const switchBtn = (state === 'active' && !isSpecial && customStory)
-        ? `<button type="button" onclick="event.stopPropagation(); openRoadmapGenrePickerSheet(${node.num}, ${chapter.id || 0}, 'classic')" class="text-[10.5px] font-bold hover:underline" style="color: var(--rm-amber-text, #D97706);">Đổi ↺</button>`
-        : '';
-
-    const cta = state === 'active' && type !== 'chest'
-        ? `<span class="mb-card-cta">Học ngay ${ROADMAP_ICON_PLAY}</span>`
-        : state === 'active' ? '<span class="mb-card-cta">Nhận thưởng</span>' : '';
-
-    const badge = state === 'locked' ? '<div class="mb-thumb-badge" aria-hidden="true">🔒</div>' : '';
-    const crown = type === 'boss' ? '<span class="mb-crown" aria-hidden="true">👑</span>' : '';
-    const dotInner = state === 'completed'
-        ? ROADMAP_ICON_CHECK
-        : state === 'active' ? '<span class="mb-active-lumi-companion" title="Lumi đang đồng hành cùng bạn!">🦊</span>' : '';
-
-    return `
-        <div class="mb-row ${railClasses} mb-state-${state} mb-type-${type} ${justDone}" style="--i:${order}" ${state === 'active' ? 'data-roadmap-active="1"' : ''}>
-            <div class="mb-rail ${railUnlocking}" onclick="${onClick}" role="button" tabindex="-1"><span class="mb-dot">${dotInner}</span>${pawsHtml}</div>
-            <div class="mb-card ${justUnlocked}" data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}" ${state === 'locked' ? 'aria-disabled="true"' : ''}>
-                <div class="mb-card-body">
-                    <div class="flex items-center justify-between gap-1"><span class="mb-card-kicker">${kicker}</span>${switchBtn}</div>
-                    <h4 class="mb-card-title">${displayTitle}</h4>${cta}
+    // ① Completed Node: Compact Memory Strip
+    if (state === 'completed') {
+        return `
+            <div class="mb-row ${railClasses} mb-state-completed mb-type-${type} ${justDone}" style="--i:${order}">
+                <div class="mb-rail ${railUnlocking}" onclick="${onClick}" role="button" tabindex="-1"><span class="mb-dot">${ROADMAP_ICON_CHECK}</span>${pawsHtml}</div>
+                <div class="mb-card mb-card-completed-strip ${justUnlocked}" data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}">
+                    <div class="mb-card-body">
+                        <div class="flex items-center gap-1.5">
+                            <span class="age-badge ${dMeta.badgeCls}">${dMeta.short}</span>
+                            <span class="rm-done-pill">✓ Đã học · ${durationStr}</span>
+                        </div>
+                        <h4 class="mb-card-title">${displayTitle}</h4>
+                    </div>
+                    <div class="mb-thumb mb-thumb-compact"><img src="${displayImg}" alt="" loading="lazy" decoding="async" /></div>
                 </div>
-                <div class="mb-thumb"><img src="${displayImg}" alt="" loading="lazy" decoding="async" />${badge}${crown}</div>
+            </div>`;
+    }
+
+    // ② Active Node (Unchosen Mystery Slot): Fanned 3-Card Deck
+    if (state === 'active' && !isSpecial && !customStory) {
+        return `
+            <div class="mb-row ${railClasses} mb-state-active mb-state-mystery ${justDone}" style="--i:${order}" data-roadmap-active="1">
+                <div class="mb-rail ${railUnlocking}" onclick="${onClick}" role="button" tabindex="-1">
+                    <span class="mb-dot mb-dot-lumi-token"><img src="assets/create/lumi_fox.png" alt="Lumi" class="mb-dot-lumi-avatar" /></span>${pawsHtml}
+                </div>
+                <div class="mb-card mb-card-mystery ${justUnlocked}" data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}">
+                    <div class="mystery-shimmer-sweep"></div>
+                    <div class="mb-card-body relative z-10">
+                        <div class="flex items-center gap-1.5">
+                            <span class="rm-active-step-pill">CHẶNG ${node.num} · ĐANG MỞ</span>
+                            <span class="age-badge age-badge-15">TỰ CHỌN</span>
+                        </div>
+                        <h4 class="mb-card-title mb-hero-title">Rút câu chuyện của bạn</h4>
+                        <div class="rm-hero-cta-row">
+                            <span class="mb-card-cta" style="background:#FBBF24; color:#1C1E17; font-weight:800;">🃏 Chọn câu chuyện</span>
+                            <span class="rm-hero-xp-hint">+20% Lumi</span>
+                        </div>
+                    </div>
+                    <div class="mb-thumb mb-thumb-mystery-fan relative z-10" aria-hidden="true">
+                        <div class="mystery-fan-card fan-left"></div>
+                        <div class="mystery-fan-card fan-right"></div>
+                        <div class="mystery-fan-card fan-center"><span>✦</span></div>
+                    </div>
+                </div>
+            </div>`;
+    }
+
+    // ② Active Node (Chosen Story): Elevated 3D Book Hero Card
+    if (state === 'active' && !isSpecial) {
+        return `
+            <div class="mb-row ${railClasses} mb-state-active mb-type-${type} ${justDone}" style="--i:${order}" data-roadmap-active="1">
+                <div class="mb-rail ${railUnlocking}" onclick="${onClick}" role="button" tabindex="-1">
+                    <span class="mb-dot mb-dot-lumi-token"><img src="assets/create/lumi_fox.png" alt="Lumi" class="mb-dot-lumi-avatar" /></span>${pawsHtml}
+                </div>
+                <div class="mb-card mb-card-active-hero ${justUnlocked}" data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}">
+                    <div class="mb-card-body">
+                        <div class="flex items-center justify-between gap-1">
+                            <div class="flex items-center gap-1.5">
+                                <span class="age-badge ${dMeta.badgeCls}">${dMeta.short}</span>
+                                <span class="mb-card-kicker text-[10.5px]">${gMeta ? `${gMeta.name} · ${durationStr}` : durationStr}</span>
+                            </div>
+                            <button type="button" onclick="event.stopPropagation(); openRoadmapGenrePickerSheet(${node.num}, ${chapter.id || 0}, 'classic')" class="rm-swap-story-chip" title="Đổi câu chuyện khác">🎲 Đổi truyện</button>
+                        </div>
+                        <h4 class="mb-card-title mb-hero-title">${displayTitle}</h4>
+                        <div class="rm-hero-cta-row">
+                            <span class="mb-card-cta rm-hero-play-btn">${ROADMAP_ICON_PLAY} Học ngay</span>
+                            <span class="rm-hero-xp-hint">⚡ +20% Lumi</span>
+                        </div>
+                    </div>
+                    <div class="mb-thumb mb-thumb-hero-book">
+                        <div class="hero-book-cover"><img src="${displayImg}" alt="" loading="lazy" decoding="async" /><span class="hero-book-spine"></span></div>
+                        <span class="hero-book-pages"></span>
+                    </div>
+                </div>
+            </div>`;
+    }
+
+    // ④ Milestone Chest & Boss Finale Nodes
+    if (isSpecial) {
+        const isBoss = type === 'boss';
+        const badgeText = isBoss ? '👑 TRÙM CUỐI · +300 XP' : `🎁 RƯƠNG BÁU · ${node.subtitle || '+150 XP'}`;
+        const subHint = state === 'active'
+            ? (isBoss ? 'Sẵn sàng khiêu chiến ngay!' : 'Chạm để mở rương thưởng!')
+            : (isBoss ? `Hoàn thành Chặng ${node.num - 1} để khiêu chiến` : `Mở khóa khi hoàn thành Chặng ${node.num - 1}`);
+        const dotInner = state === 'active' ? '<span class="mb-dot-lumi-token"><img src="assets/create/lumi_fox.png" alt="Lumi" class="mb-dot-lumi-avatar" /></span>' : '';
+        return `
+            <div class="mb-row ${railClasses} mb-state-${state} mb-type-${type} ${justDone}" style="--i:${order}" ${state === 'active' ? 'data-roadmap-active="1"' : ''}>
+                <div class="mb-rail ${railUnlocking}" onclick="${onClick}" role="button" tabindex="-1"><span class="mb-dot">${dotInner}</span>${pawsHtml}</div>
+                <div class="mb-card mb-card-milestone ${isBoss ? 'is-boss' : 'is-chest'} ${justUnlocked}" data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}" ${state === 'locked' ? 'aria-disabled="true"' : ''}>
+                    <div class="mb-card-body">
+                        <div class="flex items-center gap-1.5"><span class="rm-milestone-badge">${badgeText}</span></div>
+                        <h4 class="mb-card-title">${displayTitle}</h4>
+                        <span class="rm-milestone-sub">${subHint}</span>
+                    </div>
+                    <div class="mb-thumb mb-thumb-milestone">
+                        <img src="${displayImg}" alt="" loading="lazy" decoding="async" />
+                        ${state === 'locked' ? '<span class="rm-milestone-lock-pill">🔒</span>' : '<span class="rm-milestone-lock-pill is-open">✨</span>'}
+                    </div>
+                </div>
+            </div>`;
+    }
+
+    // ③ Locked Custom Story Slot: Sleek Dashed Mystery Slot Pill with Genre Preview
+    return `
+        <div class="mb-row ${railClasses} mb-state-locked" style="--i:${order}">
+            <div class="mb-rail" onclick="${onClick}" role="button" tabindex="-1"><span class="mb-dot"></span>${pawsHtml}</div>
+            <div class="mb-card mb-card-locked-slot" data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}" aria-disabled="true">
+                <div class="mb-card-body">
+                    <div class="flex items-center gap-1.5">
+                        <span class="rm-slot-step-badge">Chặng ${node.num}</span>
+                        <span class="rm-slot-unlock-hint">Mở sau Chặng ${node.num - 1}</span>
+                    </div>
+                    <h4 class="mb-card-title rm-slot-title">Ô truyện tự chọn</h4>
+                </div>
+                <div class="rm-slot-genre-stack" aria-hidden="true">
+                    <span class="rm-genre-mini-card c1">📖</span>
+                    <span class="rm-genre-mini-card c2">✈️</span>
+                    <span class="rm-genre-mini-card c3">🔒</span>
+                </div>
             </div>
         </div>`;
 }
 
 function getRoadmapCharacterLine(char, completed, started, justDone) {
     const remaining = ROADMAP_LESSONS_PER_LOOP - completed;
-    if (completed >= ROADMAP_LESSONS_PER_LOOP) return char.quote || 'Cảm ơn bạn đã tô màu cho mình!';
-    if (justDone) return `Tuyệt! Mình vừa có thêm 1/5 màu. Còn ${remaining} bài nữa thôi!`;
-    if (started) return `Còn ${remaining} bài nữa là mình có màu đầy đủ!`;
-    return 'Mình đang đợi bạn ở vòng này…';
+    if (completed >= ROADMAP_LESSONS_PER_LOOP) return char.quote || 'Cảm ơn bạn đã đánh thức 100% sắc màu cho mình!';
+    if (justDone) return `Tuyệt! Mình vừa có thêm 20% màu. Còn ${remaining} chặng nữa thôi!`;
+    if (started) return `Hoàn thành thêm ${remaining} chặng nữa để đánh thức 100% sắc màu của mình nhé!`;
+    return 'Mình đang đợi bạn đánh thức ở vòng này…';
 }
 
 function renderRoadmapSection(chapter, loop, characters, orderStart) {
@@ -150,7 +204,7 @@ function renderRoadmapSection(chapter, loop, characters, orderStart) {
     const isFirstSection = loop === 0;
     const isLastSection = end >= chapter.nodes.length;
     const fillKey = `${chapter.id}-${loop}`;
-    const prevPct = roadmapUiState.lastFill[fillKey] ?? 0;
+    const prevPct = roadmapUiState.lastFill[fillKey] ?? fillPct;
     const justDoneHere = sectionNodes.some(n => n.num === roadmapUiState.justCompletedNum);
     const titles = roadmapSectionTitles[chapter.id] || [];
     const sectionTitle = titles[loop] || `Vòng ${loop + 1}`;
@@ -167,6 +221,7 @@ function renderRoadmapSection(chapter, loop, characters, orderStart) {
     const line = getRoadmapCharacterLine(char, completed, started, justDoneHere);
     const showLine = prevPct > 0 && prevPct < 100;
     const headPawsHtml = renderRailPawsHtml(true, started, false, false);
+    const pctLabel = mastered ? '✨ 100% Thức tỉnh' : (started ? `⚡ ${fillPct}% Đánh thức` : '🔒 0% Đánh thức');
 
     let html = `
         <section class="mb-section" data-loop="${loop + 1}">
@@ -174,7 +229,7 @@ function renderRoadmapSection(chapter, loop, characters, orderStart) {
                 <div class="mb-rail"><span class="mb-section-node ${started ? '' : 'is-locked'}">${nodeIcon}</span>${headPawsHtml}</div>
                 <div class="mb-head">
                     <div class="mb-head-text">
-                        <span class="mb-head-eyebrow">Vòng ${loop + 1}</span>
+                        <span class="mb-head-eyebrow">Vòng ${loop + 1} · ${char.name}</span>
                         <h3 class="mb-head-title">${sectionTitle}</h3>
                         <div class="mb-segbar-row">
                             <div class="mb-segbar ${mastered ? 'is-mastered' : ''}" role="img" aria-label="Đã tô ${completed} trên ${ROADMAP_LESSONS_PER_LOOP}">${segments}</div>
@@ -189,6 +244,7 @@ function renderRoadmapSection(chapter, loop, characters, orderStart) {
                         <img class="mb-char-gray" src="${char.img}" alt="" />
                         <img class="mb-char-color" src="${char.img}" alt="" style="clip-path: inset(${100 - prevPct}% 0 0 0);" />
                         <div class="mb-char-line" style="bottom: calc(${prevPct}% - 1px); opacity: ${showLine ? 1 : 0};"></div>
+                        <span class="mb-char-pct-pill ${mastered ? 'is-mastered' : ''}">${pctLabel}</span>
                     </div>
                 </div>
             </div>`;
@@ -273,8 +329,6 @@ function renderRoadmapNextBar(chapter) {
     }
     if (isRoadmapChapterLocked(chapter)) {
         bar.classList.remove('is-visible');
-        const floatingLumi = document.getElementById('roadmapLumiFab');
-        if (floatingLumi && floatingLumi.parentElement) floatingLumi.parentElement.classList.remove('hidden');
         return;
     }
 
@@ -299,14 +353,14 @@ function renderRoadmapNextBar(chapter) {
         ? window.getAssignedRoadmapStory(chapter.id || 0, node.num) : null;
     const customStory = assigned ? assigned.story : null;
     const actionCall = getRoadmapNodeAction(chapter, activeIdx);
-    const barKicker = (!isSpecial && !customStory) ? `Chặng ${node.num} · Tự chọn` : `Chặng ${node.num} · Tiếp theo`;
-    const barTitle = (!isSpecial && !customStory) ? '+ Chọn truyện học ngay' : (customStory ? customStory.title : node.title);
+    const barKicker = (!isSpecial && !customStory) ? `Chặng ${node.num} · Tự chọn` : `Chặng ${node.num} · Đang học`;
+    const barTitle = (!isSpecial && !customStory) ? '🃏 Chọn câu chuyện học ngay' : (customStory ? customStory.title : node.title);
     const goIcon = (!isSpecial && !customStory) ? '+' : ROADMAP_ICON_PLAY;
 
     bar.innerHTML = `
         <div class="mb-nextbar-inner" onclick="${actionCall}">
             <button type="button" class="mb-nextbar-lumi-btn" onclick="event.stopPropagation(); if(typeof openAITutorChat === 'function') openAITutorChat(); else if(typeof showDictToast === 'function') showDictToast('💬 Trợ lý Lumi sẵn sàng đồng hành cùng bạn!');" title="Trợ lý Lumi">
-                <span class="mb-nextbar-lumi-avatar">🦊</span><span class="mb-nextbar-lumi-badge">2</span>
+                <img src="assets/create/lumi_fox.png" alt="Lumi" class="mb-nextbar-lumi-img" /><span class="mb-nextbar-lumi-badge">✨</span>
             </button>
             <div class="mb-nextbar-text">
                 <span class="mb-nextbar-kicker">${barKicker}</span>
@@ -315,6 +369,4 @@ function renderRoadmapNextBar(chapter) {
             <button type="button" class="mb-nextbar-go" aria-label="Học tiếp" onclick="event.stopPropagation(); ${actionCall}">${goIcon}</button>
         </div>`;
     bar.classList.add('is-visible');
-    const floatingLumi = document.getElementById('roadmapLumiFab');
-    if (floatingLumi && floatingLumi.parentElement) floatingLumi.parentElement.classList.add('hidden');
 }

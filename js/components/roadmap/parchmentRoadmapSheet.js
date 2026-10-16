@@ -68,10 +68,10 @@ function renderRoadmapChapterSheetList() {
                 </div>
                 <div class="flex-1 min-w-0">
                     <div class="flex items-center justify-between gap-1 mb-0.5">
-                        <span class="text-[10.5px] font-black uppercase tracking-wider text-[var(--rm-primary,#526600)] dark:text-[#B8D166]" style="font-family: 'Cinzel', serif;">Chương ${i + 1}</span>
+                        <span class="text-[10.5px] font-black uppercase tracking-wider text-[var(--rm-primary,#526600)] dark:text-[#B8D166]">Chương ${i + 1}</span>
                         ${statusBadge}
                     </div>
-                    <h4 class="text-[15px] font-bold text-[var(--rm-on-surface,#1B1C17)] dark:text-[#E5E3DB] truncate" style="font-family: 'Playfair Display', serif;">${ch.title}</h4>
+                    <h4 class="text-[15px] font-extrabold text-[var(--rm-on-surface,#1B1C17)] dark:text-[#E5E3DB] truncate">${ch.title}</h4>
                     ${progressBar}
                 </div>
             </div>
@@ -110,9 +110,11 @@ function selectRoadmapChapter(idx, opts = {}) {
     const eyebrowEl = document.getElementById('roadmapHeaderEyebrow');
     const titleEl = document.getElementById('roadmapHeaderTitle');
     const progressEl = document.getElementById('roadmapProgressText');
+    const heroProgChip = document.getElementById('roadmapHeroProgressChip');
     if (eyebrowEl) eyebrowEl.innerText = `CHƯƠNG ${idx + 1}`;
     if (titleEl) titleEl.innerText = ch.title;
     if (progressEl) progressEl.innerText = getRoadmapProgressLabel(ch);
+    if (heroProgChip) heroProgChip.innerText = `${getRoadmapCompletedCount(ch)}/${(ch.nodes || []).length} chặng`;
 
     // 2. Tabs: giữ tương thích nếu cần
     for (let i = 0; i < roadmapChaptersData.length; i++) {
