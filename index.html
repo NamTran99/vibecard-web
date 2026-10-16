@@ -54,7 +54,7 @@
     <link rel="stylesheet" href="css/m3-tokens.css?v=20261009_exact">
     <link rel="stylesheet" href="css/animations.css?v=20261009_exact">
     <link rel="stylesheet" href="css/components.css?v=20261015_m3_v45">
-    <link rel="stylesheet" href="css/roadmap-timeline.css?v=20261015_m3_v45">
+    <link rel="stylesheet" href="css/roadmap-timeline.css?v=20261016_cyor_v2">
     <link rel="stylesheet" href="css/create-circle.css?v=20261012_m3_audit_clean">
     <link rel="stylesheet" href="css/lumi-wakeup.css?v=20261010_wakeup">
     <link rel="stylesheet" href="css/pronunciation-modal.css?v=20261012_v1">
@@ -63,7 +63,7 @@
     <link rel="stylesheet" href="css/components/storyWordLookup.css?v=20261015_m3_v43">
     <link rel="stylesheet" href="css/components/storyFlippableCard.css?v=20261015_m3_v42">
     <link rel="stylesheet" href="css/components/bottomNav.css?v=20261012_pill">
-    <link rel="stylesheet" href="css/roadmap-mystery.css?v=20261015_m3_v45">
+    <link rel="stylesheet" href="css/roadmap-mystery.css?v=20261016_cyor_v2">
 </head>
 <body class="h-[820px] w-full max-w-[420px] mx-auto relative overflow-hidden bg-appBg border border-white/10 shadow-[0_30px_100px_rgba(0,0,0,0.9)] rounded-[48px] mt-3 sm:mt-5 mb-6 flex flex-col">
     
@@ -1977,26 +1977,26 @@
         <div id="roadmapGenrePickerSheet" class="hidden" onclick="if(event.target === this) closeRoadmapGenrePickerSheet()">
             <div id="roadmapGenrePickerSheetContent">
                 <div class="mb-sheet-handle"></div>
-                <div class="flex items-center justify-between mb-2.5">
-                    <div class="flex items-center gap-2">
-                        <span id="pickerSheetNodeBadge" class="px-2 py-0.5 rounded-full bg-[var(--rm-primary)]/15 text-[var(--rm-primary)] text-[10.5px] font-black tracking-wider uppercase" style="font-family: 'Cinzel', serif;">CHẶNG 3</span>
-                        <h3 class="text-[17px] font-black text-[var(--rm-on-surface)]" style="font-family: 'Playfair Display', serif;">Chọn Truyện</h3>
+                <div class="story-sheet-header">
+                    <div class="story-sheet-title-group">
+                        <span id="pickerSheetNodeBadge" class="story-sheet-node-pill">CHẶNG 3</span>
+                        <h3 class="story-sheet-heading">Chọn Truyện</h3>
                     </div>
-                    <div class="flex items-center gap-1.5">
-                        <button type="button" onclick="handleRandomStoryPick()" class="px-2.5 py-1 rounded-full bg-[#FBBF24]/20 hover:bg-[#FBBF24]/30 border border-[#FBBF24]/50 text-[var(--rm-on-surface)] text-[11px] font-extrabold flex items-center gap-1 active:scale-95 transition-all cursor-pointer">
+                    <div class="story-sheet-actions">
+                        <button type="button" onclick="handleRandomStoryPick()" class="story-sheet-random-btn">
                             <span>🎲 Ngẫu nhiên</span>
                         </button>
-                        <button type="button" onclick="closeRoadmapGenrePickerSheet()" class="w-8 h-8 rounded-full bg-black/5 dark:bg-white/10 text-[var(--rm-on-surface)] flex items-center justify-center hover:bg-black/10 dark:hover:bg-white/20 active:scale-90 transition-all cursor-pointer">
+                        <button type="button" onclick="closeRoadmapGenrePickerSheet()" class="story-sheet-close-btn" aria-label="Đóng">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
                         </button>
                     </div>
                 </div>
 
                 <!-- Filter Chips Container (Genre + Difficulty) -->
-                <div id="roadmapStoryFilterChips" class="mb-2.5 space-y-1.5"></div>
+                <div id="roadmapStoryFilterChips" class="story-filter-wrap"></div>
 
                 <!-- Stories Catalog Container (From Backend + Local Pool) -->
-                <div id="genreCardsListContainer" class="space-y-2 max-h-[52vh] overflow-y-auto no-scrollbar pr-0.5"></div>
+                <div id="genreCardsListContainer" class="story-pick-list no-scrollbar"></div>
             </div>
         </div>
 
@@ -5219,11 +5219,11 @@
     <script src="js/components/roadmap/parchmentRoadmapCoreUI.js"></script>
     <script src="js/components/roadmap/parchmentRoadmapSheet.js?v=20261013_jewel_tag"></script>
     <script src="js/components/roadmap/parchmentRoadmapDetails.js?v=20261014_v10"></script>
-    <script src="js/components/roadmap/parchmentRoadmapRender.js?v=20261015_m3_v45"></script>
+    <script src="js/components/roadmap/parchmentRoadmapRender.js?v=20261016_cyor_v2"></script>
     <script src="js/components/roadmap/parchmentRoadmapActions.js?v=20261014_v10"></script>
     <script src="js/components/roadmap/parchmentRoadmapLogic.js?v=20261014_v10"></script>
-    <script src="js/components/roadmap/mysteryRoadmapData.js?v=20261015_m3_v45"></script>
-    <script src="js/components/roadmap/mysteryRoadmap.js?v=20261015_m3_v45"></script>
+    <script src="js/components/roadmap/mysteryRoadmapData.js?v=20261016_cyor_v2"></script>
+    <script src="js/components/roadmap/mysteryRoadmap.js?v=20261016_cyor_v2"></script>
     <script src="js/data/audioCandidateWords.js"></script>
     <script src="js/components/audioVideo/audioPlayer.js"></script>
     <script src="js/components/audioVideo/audioCandidateList.js"></script>

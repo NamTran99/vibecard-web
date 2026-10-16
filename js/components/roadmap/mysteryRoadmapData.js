@@ -159,17 +159,24 @@
         };
     }
 
+    function normalizeStoryKey(title) {
+        return String(title || '')
+            .toLowerCase()
+            .replace(/^(ngụ ngôn|cổ tích)\s*:\s*/i, '')
+            .trim();
+    }
+
     function getFullStoryPool() {
         if (cachedStoryPool && cachedStoryPool.length > 0) return cachedStoryPool;
 
         const map = new Map();
-        FALLBACK_STORIES.forEach(s => map.set(s.title.toLowerCase(), s));
+        FALLBACK_STORIES.forEach(s => map.set(normalizeStoryKey(s.title), s));
 
         const chapters = window.REAL_ROADMAP_CHAPTERS || window.roadmapChaptersData || [];
         chapters.forEach(ch => {
             (ch.nodes || []).forEach(n => {
                 if (!n || !n.title || n.type === 'chest' || n.type === 'boss') return;
-                const key = n.title.toLowerCase();
+                const key = normalizeStoryKey(n.title);
                 if (!map.has(key)) {
                     map.set(key, classifyNodeToStory(n));
                 }
@@ -191,13 +198,14 @@
             if (!Array.isArray(stages) || !stages.length) return;
 
             const pool = getFullStoryPool();
-            const existingTitles = new Set(pool.map(s => s.title.toLowerCase()));
+            const existingKeys = new Set(pool.map(s => normalizeStoryKey(s.title)));
 
             stages.forEach(st => {
                 (st.lessons || st.nodes || []).forEach(les => {
                     const title = les.title || les.name;
-                    if (!title || existingTitles.has(String(title).toLowerCase())) return;
-                    existingTitles.add(String(title).toLowerCase());
+                    const key = normalizeStoryKey(title);
+                    if (!title || existingKeys.has(key)) return;
+                    existingKeys.add(key);
                     pool.push(classifyNodeToStory({
                         topicId: les.id || les.topicId,
                         title: title,
@@ -254,9 +262,9 @@
         const list = getFilteredStories();
         if (list.length === 0) {
             container.innerHTML = `
-                <div class="text-center py-6 text-[12px] text-[var(--rm-on-surface-variant)]">
+                <div class="text-center py-6 text-[12px] text-[var(--m3-on-surface-variant)]">
                     Không có truyện khớp bộ lọc.
-                    <button type="button" onclick="setStoryFilter('genre','all'); setStoryFilter('difficulty','all');" class="block mx-auto mt-2 px-3 py-1 rounded-full bg-[var(--rm-primary)] text-[var(--rm-on-primary)] font-bold">Xem tất cả</button>
+                    <button type="button" onclick="setStoryFilter('genre','all'); setStoryFilter('difficulty','all');" class="block mx-auto mt-2 px-3 py-1 rounded-full bg-[var(--m3-primary)] text-[var(--m3-on-primary)] font-bold">Xem tất cả</button>
                 </div>`;
             return;
         }
@@ -265,17 +273,18 @@
             const gMeta = GENRE_META[story.genre] || GENRE_META.travel_daily;
             const dMeta = DIFFICULTY_META[story.difficulty] || DIFFICULTY_META.medium;
             const safeId = String(story.id).replace(/'/g, "\\'");
+            const badgeText = `${dMeta.icon} ${story.age.replace(/^[🌱⚡🔥]\s*/, '')}`;
             return `
                 <div class="genre-choice-card" onclick="handlePickStoryById('${safeId}')">
                     <img src="${story.img}" alt="${story.title}" class="story-pick-thumb" loading="lazy" />
-                    <div class="flex-1 min-w-0">
-                        <div class="flex items-center gap-1.5 mb-0.5">
-                            <span class="age-badge ${dMeta.badgeCls}">${story.age}</span>
-                            <span class="text-[11px] font-bold text-[var(--rm-on-surface-variant)] truncate">${gMeta.icon} ${gMeta.name} · ${story.duration}</span>
+                    <div class="story-pick-body">
+                        <div class="story-pick-meta">
+                            <span class="age-badge ${dMeta.badgeCls}">${badgeText}</span>
+                            <span class="story-pick-sub">${gMeta.icon} ${gMeta.name} · ${story.duration}</span>
                         </div>
-                        <h4 class="text-[14.5px] font-extrabold text-[var(--rm-on-surface)] truncate">${story.title}</h4>
+                        <h4 class="story-pick-title">${story.title}</h4>
                     </div>
-                    <span class="story-pick-go">Chọn</span>
+                    <span class="story-pick-go">Chọn ›</span>
                 </div>
             `;
         }).join('');
