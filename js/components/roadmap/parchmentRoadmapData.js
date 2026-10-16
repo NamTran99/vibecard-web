@@ -32,18 +32,13 @@ const ROADMAP_ICON_CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="current
 const ROADMAP_ICON_SPARKLE = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c.6 5.5 4.5 9.4 10 10-5.5.6-9.4 4.5-10 10-.6-5.5-4.5-9.4-10-10 5.5-.6 9.4-4.5 10-10z"/></svg>';
 const ROADMAP_ICON_LOCK = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 9V7a5 5 0 0 0-10 0v2H5v12h14V9h-2zm-8-2a3 3 0 0 1 6 0v2H9V7z"/></svg>';
 const ROADMAP_ICON_PLAY = '<svg viewBox="0 0 20 20"><path d="M6.3 2.84A1.5 1.5 0 004 4.11v11.78a1.5 1.5 0 002.3 1.27l9.34-5.89a1.5 1.5 0 000-2.54L6.3 2.84z"/></svg>';
-// 🐾 Dấu chân Cáo Lumi bước đi (đệm gót + 4 hạt đệm ngón bầu bĩnh, 15px)
 const ROADMAP_ICON_LUMI_PAW = '<svg viewBox="0 0 20 20" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M4 8.5 C3 6.5 4.5 3 7 2 C8.8 1.3 11.2 1.3 13 2 C15.5 3 17 6.5 16 8.5 C15 10.3 12.5 11 10 11 C7.5 11 5 10.3 4 8.5 Z"/><ellipse cx="4.5" cy="14.5" rx="1.8" ry="2.6" transform="rotate(20 4.5 14.5)"/><ellipse cx="8" cy="17" rx="1.8" ry="2.8" transform="rotate(6 8 17)"/><ellipse cx="12" cy="17" rx="1.8" ry="2.8" transform="rotate(-6 12 17)"/><ellipse cx="15.5" cy="14.5" rx="1.8" ry="2.6" transform="rotate(-20 15.5 14.5)"/></svg>';
 
 function renderRailPawsHtml(down, downOn, isActive, downLong) {
     if (!down) return '';
-    if (!downOn && !isActive) {
-        return `<div class="mb-rail-paws ${downLong ? 'is-long' : ''}"><span class="mb-trail-line"></span></div>`;
-    }
     const cls = [
         'mb-rail-paws',
-        downOn ? 'is-on' : '',
-        isActive ? 'is-active-stride' : '',
+        downOn ? 'is-on' : (isActive ? 'is-active-stride' : 'is-fading-trail'),
         downLong ? 'is-long' : ''
     ].filter(Boolean).join(' ');
     return `
