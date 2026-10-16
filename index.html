@@ -64,7 +64,7 @@
     <link rel="stylesheet" href="css/components/storyFlippableCard.css?v=20261015_m3_v42">
     <link rel="stylesheet" href="css/components/bottomNav.css?v=20261012_pill">
     <link rel="stylesheet" href="css/roadmap-mystery.css?v=20261016_cyor_v3">
-    <link rel="stylesheet" href="css/book-styles-showcase.css?v=20261016_stack10">
+    <link rel="stylesheet" href="css/book-styles-showcase.css?v=20261016_final3d">
 </head>
 <body class="h-[820px] w-full max-w-[420px] mx-auto relative overflow-hidden bg-appBg border border-white/10 shadow-[0_30px_100px_rgba(0,0,0,0.9)] rounded-[48px] mt-3 sm:mt-5 mb-6 flex flex-col">
     
@@ -343,50 +343,38 @@
                 </div>
             </div>
 
-            <!-- NÚT RIÊNG XEM & CHỌN 10 KIỂU SÁCH XẾP LỚP (6.1 -> 6.10) -->
-            <div class="mb-3 p-2.5 rounded-2xl bg-[#1E2218] border border-[#B8D166]/35 shadow-md flex flex-col gap-2">
-                <div class="flex items-center justify-between gap-2">
-                    <span class="text-[11px] font-extrabold uppercase tracking-wider text-[#D4EE7F] flex items-center gap-1.5">
-                        <span>📚 Kiểu bìa sách:</span>
-                        <span id="currentBookStyleLabel" class="text-amber-300">6.1 — Fanned Art Deck</span>
-                    </span>
-                    <button type="button" onclick="openAllBookStylesModal()" class="px-3 py-1.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-[#181A12] text-[11.5px] font-black flex items-center gap-1 cursor-pointer active:scale-95 transition-all shadow-sm shrink-0">
-                        <span>🎨 Xem bảng 10 kiểu</span>
-                    </button>
-                </div>
-                <div id="bookStyleSwitcherBar" class="book-style-switcher-bar !p-0"></div>
-            </div>
-
             <!-- MULTI-CARD HORIZONTAL PEEK CAROUSEL (LƯỚT NGANG HÉ LỘ BÀI KẾ TIẾP) -->
-            <div id="storyCarouselStage" class="relative w-full" data-book-style="1">
+            <div id="storyCarouselStage" class="relative w-full">
                 <!-- Carousel Horizontal Scrollable Track -->
-                <div id="storyCarouselContainer" class="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-none py-4 px-1.5 scroll-smooth select-none" style="-webkit-overflow-scrolling: touch;">
+                <div id="storyCarouselContainer" class="flex gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-none py-4 px-2 scroll-smooth select-none" style="-webkit-overflow-scrolling: touch;">
                     
                     <!-- BOOK 0: CHƯƠNG 1 -->
                     <div id="storyCard-0" onclick="openStoryReaderScreen()" class="flex flex-col shrink-0 w-36 sm:w-40 snap-start group cursor-pointer">
-                        <div class="vibe-book-cover">
+                        <div class="vibe-book-cover" style="--book-bg: url('assets/cards/lumi_rain_coffee_eaves.jpg');">
+                            <div class="stack-layer-2"></div>
+                            <div class="stack-layer-1"></div>
                             <div class="vibe-book-spine"></div>
-                            <div class="vibe-book-pages-right"></div>
                             <div class="vibe-book-foil-frame"></div>
                             <div class="vibe-book-sheen"></div>
                             <img src="assets/cards/lumi_rain_coffee_eaves.jpg" alt="Mưa Dưới Mái Hiên" class="w-full h-full object-cover relative z-10" loading="lazy">
                         </div>
-                        <div class="mt-3 px-0.5 min-w-0 flex flex-col gap-0.5">
-                            <span class="text-[9.5px] font-extrabold tracking-[0.14em] uppercase text-[#B8D166]/80">Tập 01</span>
+                        <div class="mt-3.5 px-0.5 min-w-0 flex flex-col gap-0.5">
+                            <span class="text-[9.5px] font-extrabold tracking-[0.14em] uppercase text-[#B8D166]/85">Tập 01</span>
                             <h4 class="text-[14px] sm:text-[15px] font-extrabold text-white leading-tight group-hover:text-[#D4EE7F] transition-colors truncate" title="Mưa Dưới Mái Hiên">Mưa Dưới Mái Hiên</h4>
                         </div>
                     </div>
 
                     <!-- BOOK 1: CHƯƠNG 2 -->
                     <div id="storyCard-1" onclick="openStoryReaderScreen()" class="flex flex-col shrink-0 w-36 sm:w-40 snap-start group cursor-pointer">
-                        <div class="vibe-book-cover">
+                        <div class="vibe-book-cover" style="--book-bg: url('assets/cards/lumi_train_station_night.jpg');">
+                            <div class="stack-layer-2"></div>
+                            <div class="stack-layer-1"></div>
                             <div class="vibe-book-spine"></div>
-                            <div class="vibe-book-pages-right"></div>
                             <div class="vibe-book-foil-frame"></div>
                             <div class="vibe-book-sheen"></div>
                             <img src="assets/cards/lumi_train_station_night.jpg" alt="Nhầm Chuyến Xe" class="w-full h-full object-cover relative z-10" loading="lazy">
                         </div>
-                        <div class="mt-3 px-0.5 min-w-0 flex flex-col gap-0.5">
+                        <div class="mt-3.5 px-0.5 min-w-0 flex flex-col gap-0.5">
                             <span class="text-[9.5px] font-extrabold tracking-[0.14em] uppercase text-white/45">Tập 02</span>
                             <h4 class="text-[14px] sm:text-[15px] font-extrabold text-white leading-tight group-hover:text-[#D4EE7F] transition-colors truncate" title="Nhầm Chuyến Xe">Nhầm Chuyến Xe</h4>
                         </div>
@@ -394,14 +382,15 @@
 
                     <!-- BOOK 2: SỰ KIỆN -->
                     <div id="storyCard-2" onclick="openStoryReaderScreen()" class="flex flex-col shrink-0 w-36 sm:w-40 snap-start group cursor-pointer">
-                        <div class="vibe-book-cover">
+                        <div class="vibe-book-cover" style="--book-bg: url('assets/cards/lumi_melody_arena.jpg');">
+                            <div class="stack-layer-2"></div>
+                            <div class="stack-layer-1"></div>
                             <div class="vibe-book-spine"></div>
-                            <div class="vibe-book-pages-right"></div>
                             <div class="vibe-book-foil-frame"></div>
                             <div class="vibe-book-sheen"></div>
                             <img src="assets/cards/lumi_melody_arena.jpg" alt="Thử Thách Âm Điệu" class="w-full h-full object-cover relative z-10" loading="lazy">
                         </div>
-                        <div class="mt-3 px-0.5 min-w-0 flex flex-col gap-0.5">
+                        <div class="mt-3.5 px-0.5 min-w-0 flex flex-col gap-0.5">
                             <span class="text-[9.5px] font-extrabold tracking-[0.14em] uppercase text-white/45">Tập 03</span>
                             <h4 class="text-[14px] sm:text-[15px] font-extrabold text-white leading-tight group-hover:text-amber-300 transition-colors truncate" title="Thử Thách Âm Điệu">Thử Thách Âm Điệu</h4>
                         </div>
@@ -409,14 +398,15 @@
 
                     <!-- BOOK 3: NGOẠI TRUYỆN -->
                     <div id="storyCard-3" onclick="openStoryReaderScreen()" class="flex flex-col shrink-0 w-36 sm:w-40 snap-start group cursor-pointer">
-                        <div class="vibe-book-cover">
+                        <div class="vibe-book-cover" style="--book-bg: url('assets/cards/pixar_night_farm_scenery.jpg');">
+                            <div class="stack-layer-2"></div>
+                            <div class="stack-layer-1"></div>
                             <div class="vibe-book-spine"></div>
-                            <div class="vibe-book-pages-right"></div>
                             <div class="vibe-book-foil-frame"></div>
                             <div class="vibe-book-sheen"></div>
                             <img src="assets/cards/pixar_night_farm_scenery.jpg" alt="Đêm Hội Đom Đóm" class="w-full h-full object-cover relative z-10" loading="lazy">
                         </div>
-                        <div class="mt-3 px-0.5 min-w-0 flex flex-col gap-0.5">
+                        <div class="mt-3.5 px-0.5 min-w-0 flex flex-col gap-0.5">
                             <span class="text-[9.5px] font-extrabold tracking-[0.14em] uppercase text-white/45">Tập 04</span>
                             <h4 class="text-[14px] sm:text-[15px] font-extrabold text-white leading-tight group-hover:text-purple-300 transition-colors truncate" title="Đêm Hội Đom Đóm">Đêm Hội Đom Đóm</h4>
                         </div>
@@ -5249,7 +5239,7 @@
     <script src="js/components/library/flashcard3D.js"></script>
 
     <!-- 5. App Bootstrap -->
-    <script src="js/components/bookStyleSwitcher.js?v=20261016_stack10_v2"></script>
+    <script src="js/components/bookStyleSwitcher.js?v=20261016_final3d"></script>
     <script src="js/app.js?v=20261014_v10"></script>
 </body>
 </html>
