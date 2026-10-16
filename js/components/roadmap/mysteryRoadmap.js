@@ -169,13 +169,13 @@
         const railCls = isLastInSection ? 'mb-up mb-up-on mb-down-long' : 'mb-up mb-up-on mb-down mb-down-on';
         const assigned = getAssignedStory(chapterId, num);
         const story = assigned ? assigned.story : null;
-        const gMeta = (window.GENRE_META && story && window.GENRE_META[story.genre]) || { icon: '✨', name: 'Truyện' };
+        const gMeta = (window.GENRE_META && story && window.GENRE_META[story.genre]) || { name: 'Truyện' };
         const dMeta = (window.DIFFICULTY_META && story && window.DIFFICULTY_META[story.difficulty]) || { badgeCls: 'age-badge-15' };
 
         if (state === 'completed') {
             const title = story ? story.title : node.title;
             const img = story ? story.img : node.img;
-            const badge = story ? story.age : ((node.display_badges && node.display_badges[0]) || '15+');
+            const badge = story ? story.age : ((node.display_badges && node.display_badges[0]) || 'Cơ bản');
             return `
                 <div class="mb-row ${railCls} mb-state-completed mb-type-${type}">
                     <div class="mb-rail"><span class="mb-dot">${ICON_CHECK}</span></div>
@@ -197,9 +197,9 @@
                         <div class="mb-card mb-card-mystery" onclick="openRoadmapGenrePickerSheet(${num}, ${chapterId}, 'mystery')" role="button" tabindex="0">
                             <div class="mystery-shimmer-sweep"></div>
                             <div class="mb-card-body relative z-10">
-                                <div class="flex items-center gap-1.5"><span class="age-badge age-badge-15">🎲 TỰ CHỌN</span><span class="mb-card-kicker font-black" style="color: var(--rm-amber-text, #D97706);">Chặng ${num}</span></div>
+                                <div class="flex items-center gap-1.5"><span class="age-badge age-badge-15">TỰ CHỌN</span><span class="mb-card-kicker font-black" style="color: var(--rm-amber-text, #D97706);">Chặng ${num}</span></div>
                                 <h4 class="mb-card-title font-extrabold text-[15px] leading-tight">Chọn câu chuyện</h4>
-                                <span class="mb-card-cta" style="background:#FBBF24; color:#1C1E17; font-weight:800;">+ Chọn truyện ✨</span>
+                                <span class="mb-card-cta" style="background:#FBBF24; color:#1C1E17; font-weight:800;">+ Chọn truyện</span>
                             </div>
                             <div class="mb-thumb mb-thumb-mystery relative z-10"><span class="mystery-qmark-icon">+</span></div>
                         </div>
@@ -211,7 +211,7 @@
                     <div class="mb-card" onclick="launchRevealedLesson(${num}, ${chapterId})" role="button" tabindex="0">
                         <div class="mb-card-body">
                             <div class="flex items-center justify-between gap-1">
-                                <div class="flex items-center gap-1.5"><span class="age-badge ${dMeta.badgeCls}">${story.age}</span><span class="mb-card-kicker text-[10.5px]">${gMeta.icon} ${gMeta.name}</span></div>
+                                <div class="flex items-center gap-1.5"><span class="age-badge ${dMeta.badgeCls}">${story.age}</span><span class="mb-card-kicker text-[10.5px]">${gMeta.name} · ${story.duration}</span></div>
                                 <button type="button" onclick="event.stopPropagation(); openRoadmapGenrePickerSheet(${num}, ${chapterId}, 'mystery')" class="text-[10.5px] font-bold hover:underline" style="color: var(--rm-amber-text, #D97706);">Đổi ↺</button>
                             </div>
                             <h4 class="mb-card-title font-extrabold">${story.title}</h4>

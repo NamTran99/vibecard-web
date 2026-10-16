@@ -1,45 +1,45 @@
 // ========================================================
-// 🗺️ CREATE YOUR OWN ROADMAP — BACKEND STORY CATALOG & FILTER SHEET
-// Ceiling: < 350 lines | Standard: Material Design 3 Dark Olive Green
+// 🗺️ CREATE YOUR OWN ROADMAP — BACKEND STORY CATALOG & TRACKLIST
+// Ceiling: < 350 lines | Standard: Apple/Linear Mobile Sheet V4.0
 // ========================================================
 
 (function (window) {
     'use strict';
 
     const GENRE_META = {
-        all:          { id: 'all',          icon: '✨', name: 'Tất cả' },
-        fable:        { id: 'fable',        icon: '🐾', name: 'Ngụ ngôn' },
-        travel_daily: { id: 'travel_daily', icon: '✈️', name: 'Du ký' },
-        pro_business: { id: 'pro_business', icon: '💼', name: 'Công sở' },
-        mystery:      { id: 'mystery',      icon: '🕵️', name: 'Kỳ bí' }
+        all:          { id: 'all',          name: 'Tất cả' },
+        fable:        { id: 'fable',        name: 'Ngụ ngôn' },
+        travel_daily: { id: 'travel_daily', name: 'Du ký' },
+        pro_business: { id: 'pro_business', name: 'Công sở' },
+        mystery:      { id: 'mystery',      name: 'Kỳ bí' }
     };
 
     const DIFFICULTY_META = {
-        all:    { id: 'all',    icon: '⚡', label: 'Mọi mức', badgeCls: 'age-badge-10' },
-        easy:   { id: 'easy',   icon: '🌱', label: 'Dễ · 3p',  badgeCls: 'age-badge-3' },
-        medium: { id: 'medium', icon: '⚡', label: 'Vừa · 5p', badgeCls: 'age-badge-15' },
-        hard:   { id: 'hard',   icon: '🔥', label: 'Khó · 7p', badgeCls: 'age-badge-18' }
+        all:    { id: 'all',    label: 'Mọi mức', short: 'Tất cả', dotCls: 'diff-dot-all',  badgeCls: 'age-badge-15' },
+        easy:   { id: 'easy',   label: 'Dễ · 3p',  short: 'Cơ bản', dotCls: 'diff-dot-easy', badgeCls: 'age-badge-3'  },
+        medium: { id: 'medium', label: 'Vừa · 5p', short: 'Vừa sức', dotCls: 'diff-dot-med',  badgeCls: 'age-badge-15' },
+        hard:   { id: 'hard',   label: 'Khó · 7p', short: 'Nâng cao', dotCls: 'diff-dot-hard', badgeCls: 'age-badge-18' }
     };
 
     const FALLBACK_STORIES = [
         {
             id: 'topic_003',
-            title: 'Ngụ ngôn: Rùa và Thỏ',
+            title: 'Rùa và Thỏ',
             subtitle: 'Bài học về sự kiên trì',
             genre: 'fable',
             difficulty: 'easy',
-            age: '🌱 Dễ',
+            age: 'Cơ bản',
             duration: '3 phút',
             img: 'assets/cards/lumi_farmer_strawhat.jpg',
             scenario: 'Cuộc đua vô tiền khoáng hậu giữa chú Thỏ kiêu ngạo và chú Rùa điềm tĩnh tại thung lũng mùa xuân.'
         },
         {
             id: 'topic_006',
-            title: 'Ngụ ngôn: Quạ và Bình Nước',
+            title: 'Quạ và Bình Nước',
             subtitle: 'Sự thông minh và kiên nhẫn',
             genre: 'fable',
             difficulty: 'easy',
-            age: '🌱 Dễ',
+            age: 'Cơ bản',
             duration: '3 phút',
             img: 'assets/cards/lumi_melody_arena.jpg',
             scenario: 'Chú Quạ khát nước khéo léo dùng sỏi để nâng mực nước trong chiếc bình sâu đáy.'
@@ -50,7 +50,7 @@
             subtitle: 'Giá trị của sự trung thực',
             genre: 'fable',
             difficulty: 'easy',
-            age: '🌱 Dễ',
+            age: 'Cơ bản',
             duration: '4 phút',
             img: 'assets/cards/lumi_review_flashcards.jpg',
             scenario: 'Những ngày chăn cừu trên đồi cỏ và bài học sâu sắc về lòng tin.'
@@ -61,7 +61,7 @@
             subtitle: 'Quán cà phê góc phố Tokyo',
             genre: 'travel_daily',
             difficulty: 'medium',
-            age: '⚡ Vừa',
+            age: 'Vừa sức',
             duration: '5 phút',
             img: 'assets/cards/lumi_rain_coffee_eaves.jpg',
             scenario: 'Trú mưa bên hiên quán nhỏ & gọi một ly latte ấm nóng.'
@@ -72,7 +72,7 @@
             subtitle: 'Sân ga mù sương 00:00',
             genre: 'travel_daily',
             difficulty: 'medium',
-            age: '⚡ Vừa',
+            age: 'Vừa sức',
             duration: '5 phút',
             img: 'assets/cards/lumi_train_station_night.jpg',
             scenario: 'Hơi nước rít lên tại Ke ga số 1 khi đồng hồ điểm qua nửa đêm.'
@@ -83,7 +83,7 @@
             subtitle: 'Ẩm thực đêm & hỏi đường',
             genre: 'travel_daily',
             difficulty: 'medium',
-            age: '⚡ Vừa',
+            age: 'Vừa sức',
             duration: '5 phút',
             img: 'assets/cards/pixar_night_farm_scenery.jpg',
             scenario: 'Gọi món đặc sản địa phương và trò chuyện cùng đầu bếp bản xứ.'
@@ -94,7 +94,7 @@
             subtitle: 'Sảnh hội nghị AI quốc tế',
             genre: 'pro_business',
             difficulty: 'hard',
-            age: '🔥 Khó',
+            age: 'Nâng cao',
             duration: '6 phút',
             img: 'assets/cards/lumi_review_flashcards.jpg',
             scenario: 'Xử lý tình huống nhầm lẫn thông tin đại biểu lịch thiệp trước giờ khai mạc.'
@@ -105,7 +105,7 @@
             subtitle: 'Ký kết thương vụ chiến lược',
             genre: 'pro_business',
             difficulty: 'hard',
-            age: '🔥 Khó',
+            age: 'Nâng cao',
             duration: '7 phút',
             img: 'assets/cards/lumi_progress_celebration.jpg',
             scenario: 'Thương thảo điều khoản hợp đồng gấp trước thời hạn đóng phiên.'
@@ -116,7 +116,7 @@
             subtitle: 'Bí mật dưới ánh trăng',
             genre: 'mystery',
             difficulty: 'hard',
-            age: '🔥 Khó',
+            age: 'Nâng cao',
             duration: '7 phút',
             img: 'assets/cards/lumi_farmer_night.png',
             scenario: 'Giải mã những dòng chữ cổ để lại trong căn gác mái đầy bụi thời gian.'
@@ -127,10 +127,19 @@
     let activeFilterGenre = 'all';
     let activeFilterDifficulty = 'all';
 
+    function cleanStoryTitle(raw) {
+        return String(raw || '').replace(/^(ngụ ngôn|cổ tích)\s*:\s*/i, '').trim();
+    }
+
+    function normalizeStoryKey(title) {
+        return cleanStoryTitle(title).toLowerCase();
+    }
+
     function classifyNodeToStory(n) {
-        const title = String(n.title || '');
+        const rawTitle = String(n.title || '');
+        const title = cleanStoryTitle(rawTitle);
         const rawGenre = (n.tags && n.tags.genre) || '';
-        const isFable = title.toLowerCase().includes('ngụ ngôn') || title.toLowerCase().includes('cổ tích') || rawGenre === 'fable' || n.type === 'book';
+        const isFable = rawTitle.toLowerCase().includes('ngụ ngôn') || rawTitle.toLowerCase().includes('cổ tích') || rawGenre === 'fable' || n.type === 'book';
         const isWork = rawGenre === 'dialogue_work' || (n.tags && n.tags.age === '18+') || title.includes('Hội Nghị') || title.includes('Sóng') || title.includes('Thẻ');
         const isMystery = title.includes('Bí Ẩn') || title.includes('Đêm') || title.includes('Lạc');
 
@@ -152,18 +161,11 @@
             subtitle: n.subtitle || '',
             genre: genre,
             difficulty: difficulty,
-            age: diffMeta.label.split(' · ')[0],
+            age: diffMeta.short,
             duration: duration,
             img: n.img || 'assets/cards/lumi_rain_coffee_eaves.jpg',
             scenario: n.scenario || n.purpose || ''
         };
-    }
-
-    function normalizeStoryKey(title) {
-        return String(title || '')
-            .toLowerCase()
-            .replace(/^(ngụ ngôn|cổ tích)\s*:\s*/i, '')
-            .trim();
     }
 
     function getFullStoryPool() {
@@ -227,19 +229,19 @@
     }
 
     function renderFilterChipsHtml() {
-        const genreChips = Object.values(GENRE_META).map(g => {
-            const active = activeFilterGenre === g.id ? 'is-active' : '';
-            return `<button type="button" class="story-filter-chip ${active}" onclick="setStoryFilter('genre','${g.id}')">${g.icon} ${g.name}</button>`;
+        const diffTabs = Object.values(DIFFICULTY_META).map(d => {
+            const active = activeFilterDifficulty === d.id ? 'is-active' : '';
+            return `<button type="button" class="story-seg-btn ${active}" onclick="setStoryFilter('difficulty','${d.id}')">${d.label}</button>`;
         }).join('');
 
-        const diffChips = Object.values(DIFFICULTY_META).map(d => {
-            const active = activeFilterDifficulty === d.id ? 'is-active' : '';
-            return `<button type="button" class="story-filter-chip is-diff ${active}" onclick="setStoryFilter('difficulty','${d.id}')">${d.label}</button>`;
+        const genreChips = Object.values(GENRE_META).map(g => {
+            const active = activeFilterGenre === g.id ? 'is-active' : '';
+            return `<button type="button" class="story-genre-pill ${active}" onclick="setStoryFilter('genre','${g.id}')">${g.name}</button>`;
         }).join('');
 
         return `
-            <div class="story-filter-row no-scrollbar">${genreChips}</div>
-            <div class="story-filter-row no-scrollbar">${diffChips}</div>
+            <div class="story-seg-control">${diffTabs}</div>
+            <div class="story-genre-row no-scrollbar">${genreChips}</div>
         `;
     }
 
@@ -262,32 +264,39 @@
         const list = getFilteredStories();
         if (list.length === 0) {
             container.innerHTML = `
-                <div class="text-center py-6 text-[12px] text-[var(--m3-on-surface-variant)]">
-                    Không có truyện khớp bộ lọc.
-                    <button type="button" onclick="setStoryFilter('genre','all'); setStoryFilter('difficulty','all');" class="block mx-auto mt-2 px-3 py-1 rounded-full bg-[var(--m3-primary)] text-[var(--m3-on-primary)] font-bold">Xem tất cả</button>
+                <div class="story-empty-state">
+                    <span>Chưa có câu chuyện ở mục này</span>
+                    <button type="button" onclick="setStoryFilter('genre','all'); setStoryFilter('difficulty','all');">Xem tất cả</button>
                 </div>`;
             return;
         }
 
-        container.innerHTML = list.map(story => {
+        const rowsHtml = list.map(story => {
             const gMeta = GENRE_META[story.genre] || GENRE_META.travel_daily;
             const dMeta = DIFFICULTY_META[story.difficulty] || DIFFICULTY_META.medium;
             const safeId = String(story.id).replace(/'/g, "\\'");
-            const badgeText = `${dMeta.icon} ${story.age.replace(/^[🌱⚡🔥]\s*/, '')}`;
             return `
-                <div class="genre-choice-card" onclick="handlePickStoryById('${safeId}')">
-                    <img src="${story.img}" alt="${story.title}" class="story-pick-thumb" loading="lazy" />
-                    <div class="story-pick-body">
-                        <div class="story-pick-meta">
-                            <span class="age-badge ${dMeta.badgeCls}">${badgeText}</span>
-                            <span class="story-pick-sub">${gMeta.icon} ${gMeta.name} · ${story.duration}</span>
+                <div class="story-track-row" onclick="handlePickStoryById('${safeId}')" role="button" tabindex="0">
+                    <img src="${story.img}" alt="${story.title}" class="story-track-art" loading="lazy" />
+                    <div class="story-track-info">
+                        <h4 class="story-track-title">${story.title}</h4>
+                        <div class="story-track-meta">
+                            <span class="story-diff-dot ${dMeta.dotCls}"></span>
+                            <span class="story-diff-text">${dMeta.short}</span>
+                            <span class="story-meta-sep">·</span>
+                            <span>${gMeta.name}</span>
+                            <span class="story-meta-sep">·</span>
+                            <span>${story.duration}</span>
                         </div>
-                        <h4 class="story-pick-title">${story.title}</h4>
                     </div>
-                    <span class="story-pick-go">Chọn ›</span>
+                    <div class="story-track-chevron" aria-hidden="true">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                    </div>
                 </div>
             `;
         }).join('');
+
+        container.innerHTML = `<div class="story-tracklist-card">${rowsHtml}</div>`;
     }
 
     setTimeout(syncBackendStoryCatalog, 400);
