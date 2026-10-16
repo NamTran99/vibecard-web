@@ -1973,27 +1973,30 @@
             </div>
         </div>
 
-        <!-- THE CROSSROADS BOTTOM SHEET: CHỌN THỂ LOẠI CHẶNG BÍ ẨN -->
+        <!-- THE CROSSROADS BOTTOM SHEET: CHỌN THỂ LOẠI & TRUYỆN TỪ BACKEND -->
         <div id="roadmapGenrePickerSheet" class="hidden" onclick="if(event.target === this) closeRoadmapGenrePickerSheet()">
             <div id="roadmapGenrePickerSheetContent">
-                <!-- Drag Handle -->
                 <div class="mb-sheet-handle"></div>
-                
-                <!-- Sheet Header -->
-                <div class="flex items-center justify-between mb-3 pb-2 border-b border-[var(--rm-outline-variant)]">
-                    <div>
-                        <span class="text-[10px] uppercase tracking-[0.22em] font-extrabold text-[var(--rm-primary)] block" style="font-family: 'Cinzel', serif;">CHẶNG BÍ ẨN</span>
-                        <h3 class="text-[17px] font-black text-[var(--rm-on-surface)]" style="font-family: 'Playfair Display', serif;">Chọn Thể Loại</h3>
+                <div class="flex items-center justify-between mb-2.5">
+                    <div class="flex items-center gap-2">
+                        <span id="pickerSheetNodeBadge" class="px-2 py-0.5 rounded-full bg-[var(--rm-primary)]/15 text-[var(--rm-primary)] text-[10.5px] font-black tracking-wider uppercase" style="font-family: 'Cinzel', serif;">CHẶNG 3</span>
+                        <h3 class="text-[17px] font-black text-[var(--rm-on-surface)]" style="font-family: 'Playfair Display', serif;">Chọn Truyện</h3>
                     </div>
-                    <button type="button" onclick="closeRoadmapGenrePickerSheet()" class="w-8 h-8 rounded-full bg-black/5 dark:bg-white/10 text-[var(--rm-on-surface)] flex items-center justify-center hover:bg-black/10 dark:hover:bg-white/20 active:scale-90 transition-all cursor-pointer">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-                    </button>
+                    <div class="flex items-center gap-1.5">
+                        <button type="button" onclick="handleRandomStoryPick()" class="px-2.5 py-1 rounded-full bg-[#FBBF24]/20 hover:bg-[#FBBF24]/30 border border-[#FBBF24]/50 text-[var(--rm-on-surface)] text-[11px] font-extrabold flex items-center gap-1 active:scale-95 transition-all cursor-pointer">
+                            <span>🎲 Ngẫu nhiên</span>
+                        </button>
+                        <button type="button" onclick="closeRoadmapGenrePickerSheet()" class="w-8 h-8 rounded-full bg-black/5 dark:bg-white/10 text-[var(--rm-on-surface)] flex items-center justify-center hover:bg-black/10 dark:hover:bg-white/20 active:scale-90 transition-all cursor-pointer">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                        </button>
+                    </div>
                 </div>
 
-                <!-- 4 Genre Cards Container -->
-                <div id="genreCardsListContainer" class="space-y-2.5 max-h-[55vh] overflow-y-auto no-scrollbar pr-0.5">
-                    <!-- Populated dynamically via renderGenreCardsList() -->
-                </div>
+                <!-- Filter Chips Container (Genre + Difficulty) -->
+                <div id="roadmapStoryFilterChips" class="mb-2.5 space-y-1.5"></div>
+
+                <!-- Stories Catalog Container (From Backend + Local Pool) -->
+                <div id="genreCardsListContainer" class="space-y-2 max-h-[52vh] overflow-y-auto no-scrollbar pr-0.5"></div>
             </div>
         </div>
 
