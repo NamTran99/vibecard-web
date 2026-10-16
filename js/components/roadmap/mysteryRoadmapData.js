@@ -32,6 +32,21 @@
         return DIFFICULTY_META.medium;
     }
 
+    const ROADMAP_SLOT_FLAVORS = {
+        3: { icon: '✦',  cards: ['🦊', '✈️', '💼'], diffShort: 'Vừa', badgeCls: 'age-badge-15', themeTag: 'Tự chọn' },
+        4: { icon: '☕', cards: ['☕', '🌧️', '🌿'], diffShort: 'Dễ',  badgeCls: 'age-badge-3',  themeTag: 'Đời thường' },
+        6: { icon: '✈️', cards: ['✈️', '🍜', '🗺️'], diffShort: 'Vừa', badgeCls: 'age-badge-15', themeTag: 'Du ký' },
+        7: { icon: '💼', cards: ['💼', '💻', '🤝'], diffShort: 'Vừa', badgeCls: 'age-badge-15', themeTag: 'Công sở' },
+        8: { icon: '🦊', cards: ['🦊', '🌙', '🎭'], diffShort: 'Khó', badgeCls: 'age-badge-18', themeTag: 'Kể chuyện' },
+        9: { icon: '🔥', cards: ['🔥', '⚡', '🏆'], diffShort: 'Khó', badgeCls: 'age-badge-18', themeTag: 'Nâng cao' }
+    };
+
+    function getRoadmapSlotFlavor(nodeNum) {
+        return ROADMAP_SLOT_FLAVORS[nodeNum] || {
+            icon: '✦', cards: ['🦊', '✈️', '💼'], diffShort: 'Vừa', badgeCls: 'age-badge-15', themeTag: 'Tự chọn'
+        };
+    }
+
     const FALLBACK_STORIES = [
         {
             id: 'topic_003',
@@ -315,6 +330,7 @@
     window.GENRE_META = GENRE_META;
     window.DIFFICULTY_META = DIFFICULTY_META;
     window.resolveRoadmapDifficulty = resolveRoadmapDifficulty;
+    window.getRoadmapSlotFlavor = getRoadmapSlotFlavor;
     window.getFullStoryPool = getFullStoryPool;
     window.getFilteredStories = getFilteredStories;
     window.setStoryFilter = setStoryFilter;

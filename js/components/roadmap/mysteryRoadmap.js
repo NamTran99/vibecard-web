@@ -177,14 +177,33 @@
                             </div>
                         </div>
                     </div>`;
-            sectionNodes.forEach((node, i) => {
-                const isLastInSection = i === sectionNodes.length - 1, isVeryLast = (loop === loops - 1) && isLastInSection;
-                timelineHtml += renderMysteryLessonRow(node, chapter.id || 0, isLastInSection, isVeryLast);
-            });
+            const nonSpecialLocked = !started && sectionNodes.length > 2
+                && sectionNodes.slice(0, -1).every(n => n.status === 'locked' && n.type !== 'chest' && n.type !== 'boss');
+            if (nonSpecialLocked) {
+                timelineHtml += renderMysterySteppingStonesRow(sectionNodes.slice(0, -1));
+                timelineHtml += renderMysteryLessonRow(sectionNodes[sectionNodes.length - 1], chapter.id || 0, true, loop === loops - 1);
+            } else {
+                sectionNodes.forEach((node, i) => {
+                    const isLastInSection = i === sectionNodes.length - 1, isVeryLast = (loop === loops - 1) && isLastInSection;
+                    timelineHtml += renderMysteryLessonRow(node, chapter.id || 0, isLastInSection, isVeryLast);
+                });
+            }
             timelineHtml += '</section>';
         }
         container.innerHTML = timelineHtml + '</div>';
         renderMysteryNextBar(chapter);
+    }
+
+    function renderMysterySteppingStonesRow(lockedNodes) {
+        const pawsHtml = (typeof window.renderRailPawsHtml === 'function') ? window.renderRailPawsHtml(true, false, false, false) : '';
+        const stonesHtml = lockedNodes.map((n, idx) => {
+            const fl = (typeof window.getRoadmapSlotFlavor === 'function')
+                ? window.getRoadmapSlotFlavor(n.num)
+                : { icon: '✦', diffShort: 'Vừa', badgeCls: 'age-badge-15', themeTag: 'Tự chọn' };
+            const conn = idx < lockedNodes.length - 1 ? '<span class="rm-stone-connector" aria-hidden="true"></span>' : '';
+            return `<button type="button" class="rm-stone-node" onclick="if(typeof showDictToast==='function') showDictToast('🔒 Hoàn thành Chặng ${n.num - 1} để mở khóa Chặng ${n.num} (${fl.themeTag})!');" title="Chặng ${n.num} · ${fl.themeTag} (${fl.diffShort})"><span class="rm-stone-step">🔒 ${n.num}</span><span class="rm-stone-icon">${fl.icon}</span><span class="rm-stone-tag">${fl.themeTag}</span></button>${conn}`;
+        }).join('');
+        return `<div class="mb-row mb-up mb-down mb-state-locked"><div class="mb-rail"><span class="mb-dot"></span>${pawsHtml}</div><div class="mb-card mb-card-stepping-stones"><div class="rm-stones-track">${stonesHtml}</div></div></div>`;
     }
 
     function renderMysteryLessonRow(node, chapterId, isLastInSection, isVeryLast) {
@@ -270,11 +289,14 @@
             </div>`;
         }
 
+        const fl = (typeof window.getRoadmapSlotFlavor === 'function')
+            ? window.getRoadmapSlotFlavor(num)
+            : { icon: '☕', cards: ['☕', '🌧️', '🌿'], diffShort: 'Dễ', badgeCls: 'age-badge-3', themeTag: 'Đời thường' };
         return `<div class="mb-row ${railCls} mb-state-locked">
             <div class="mb-rail"><span class="mb-dot"></span>${pawsHtml}</div>
-            <div class="mb-card mb-card-locked-slot" onclick="if(typeof showDictToast==='function') showDictToast('🔒 Hoàn thành Chặng ${num - 1} để mở khóa và tự chọn câu chuyện cho Chặng ${num}!');">
-                <div class="rm-slot-inline-row"><span class="rm-slot-step-pill">🔒 Chặng ${num}</span><span class="rm-slot-inline-label">Truyện tự chọn</span></div>
-                <div class="rm-slot-genre-stack" aria-hidden="true"><span class="rm-genre-mini-card c1">🦊</span><span class="rm-genre-mini-card c2">✈️</span><span class="rm-genre-mini-card c3">💼</span></div>
+            <div class="mb-card mb-card-locked-slot" onclick="if(typeof showDictToast==='function') showDictToast('🔒 Hoàn thành Chặng ${num - 1} để mở khóa Chặng ${num} (${fl.themeTag})!');">
+                <div class="rm-slot-inline-row"><span class="rm-slot-step-pill">🔒 Chặng ${num}</span><span class="age-badge ${fl.badgeCls}">${fl.diffShort}</span><span class="rm-slot-inline-label">${fl.themeTag}</span></div>
+                <div class="rm-slot-genre-stack" aria-hidden="true"><span class="rm-genre-mini-card c1">${fl.cards[0]}</span><span class="rm-genre-mini-card c2">${fl.cards[1]}</span><span class="rm-genre-mini-card c3">${fl.cards[2]}</span></div>
             </div>
         </div>`;
     }

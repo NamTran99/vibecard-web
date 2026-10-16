@@ -165,18 +165,48 @@ function renderRoadmapLessonRow(chapter, index, flags, order) {
             </div>`;
     }
 
-    // ③ CHẶNG TỰ CHỌN CHƯA MỞ: 1 dòng gọn gàng (🔒 Chặng N · Truyện tự chọn + 3 thẻ 🦊✈️💼)
+    // ③ CHẶNG TỰ CHỌN CHƯA MỞ (LẺ Ở VÒNG ĐANG HỌC): Cá tính riêng theo từng chặng (Độ khó + Chủ đề gợi ý + Bộ 3 thẻ riêng)
+    const flavor = (typeof window.getRoadmapSlotFlavor === 'function')
+        ? window.getRoadmapSlotFlavor(node.num)
+        : { icon: '☕', cards: ['☕', '🌧️', '🌿'], diffShort: 'Dễ', badgeCls: 'age-badge-3', themeTag: 'Đời thường' };
     return `
         <div class="mb-row ${railClasses} mb-state-locked" style="--i:${order}">
             <div class="mb-rail" onclick="${onClick}" role="button" tabindex="-1"><span class="mb-dot"></span>${pawsHtml}</div>
             <div class="mb-card mb-card-locked-slot" data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}">
                 <div class="rm-slot-inline-row">
                     <span class="rm-slot-step-pill">🔒 Chặng ${node.num}</span>
-                    <span class="rm-slot-inline-label">Truyện tự chọn</span>
+                    <span class="age-badge ${flavor.badgeCls}">${flavor.diffShort}</span>
+                    <span class="rm-slot-inline-label">${flavor.themeTag}</span>
                 </div>
                 <div class="rm-slot-genre-stack" aria-hidden="true">
-                    <span class="rm-genre-mini-card c1">🦊</span><span class="rm-genre-mini-card c2">✈️</span><span class="rm-genre-mini-card c3">💼</span>
+                    <span class="rm-genre-mini-card c1">${flavor.cards[0]}</span><span class="rm-genre-mini-card c2">${flavor.cards[1]}</span><span class="rm-genre-mini-card c3">${flavor.cards[2]}</span>
                 </div>
+            </div>
+        </div>`;
+}
+
+// Render dải 4 Đá Bước Chân Ngang (Chặng 6 -> 9) cho Vòng chưa mở để xóa cảm giác lặp 4 hàng dọc
+function renderLockedSteppingStonesRow(chapter, lockedNodes, order) {
+    const pawsHtml = renderRailPawsHtml(true, false, false, false);
+    const stonesHtml = lockedNodes.map((n, idx) => {
+        const fl = (typeof window.getRoadmapSlotFlavor === 'function')
+            ? window.getRoadmapSlotFlavor(n.num)
+            : { icon: '✦', diffShort: 'Vừa', badgeCls: 'age-badge-15', themeTag: 'Tự chọn' };
+        const act = `handleParchmentNodeClick(${n.num}, '${roadmapJsArg(n.title)}', false, ${chapter.id || 0})`;
+        const conn = idx < lockedNodes.length - 1 ? '<span class="rm-stone-connector" aria-hidden="true"></span>' : '';
+        return `
+            <button type="button" class="rm-stone-node" onclick="${act}" title="Chặng ${n.num} · ${fl.themeTag} (${fl.diffShort})">
+                <span class="rm-stone-step">🔒 ${n.num}</span>
+                <span class="rm-stone-icon">${fl.icon}</span>
+                <span class="rm-stone-tag">${fl.themeTag}</span>
+            </button>${conn}`;
+    }).join('');
+
+    return `
+        <div class="mb-row mb-up mb-down mb-state-locked" style="--i:${order}">
+            <div class="mb-rail"><span class="mb-dot"></span>${pawsHtml}</div>
+            <div class="mb-card mb-card-stepping-stones" role="group" aria-label="Các chặng tự chọn từ ${lockedNodes[0].num} đến ${lockedNodes[lockedNodes.length - 1].num}">
+                <div class="rm-stones-track">${stonesHtml}</div>
             </div>
         </div>`;
 }
@@ -241,15 +271,26 @@ function renderRoadmapSection(chapter, loop, characters, orderStart) {
                 </div>
             </div>`;
 
-    sectionNodes.forEach((node, i) => {
-        const globalIdx = start + i, isLastInSection = i === sectionNodes.length - 1;
-        const prevCompleted = chapter.nodes[globalIdx - 1] && chapter.nodes[globalIdx - 1].status === 'completed';
-        html += renderRoadmapLessonRow(chapter, globalIdx, {
-            up: true, upOn: i === 0 ? started : prevCompleted,
-            down: !(isLastInSection && isLastSection), downOn: node.status === 'completed',
-            downLong: isLastInSection && !isLastSection
-        }, orderStart + 1 + i);
-    });
+    const nonSpecialLocked = !started && sectionNodes.length > 2
+        && sectionNodes.slice(0, -1).every((n, i) => resolveRoadmapNodeState(chapter, start + i) === 'locked' && n.type !== 'chest' && n.type !== 'boss');
+
+    if (nonSpecialLocked) {
+        html += renderLockedSteppingStonesRow(chapter, sectionNodes.slice(0, -1), orderStart + 1);
+        const lastIdx = start + sectionNodes.length - 1;
+        html += renderRoadmapLessonRow(chapter, lastIdx, {
+            up: true, upOn: false, down: !isLastSection, downOn: false, downLong: !isLastSection
+        }, orderStart + 2);
+    } else {
+        sectionNodes.forEach((node, i) => {
+            const globalIdx = start + i, isLastInSection = i === sectionNodes.length - 1;
+            const prevCompleted = chapter.nodes[globalIdx - 1] && chapter.nodes[globalIdx - 1].status === 'completed';
+            html += renderRoadmapLessonRow(chapter, globalIdx, {
+                up: true, upOn: i === 0 ? started : prevCompleted,
+                down: !(isLastInSection && isLastSection), downOn: node.status === 'completed',
+                downLong: isLastInSection && !isLastSection
+            }, orderStart + 1 + i);
+        });
+    }
     return html + '</section>';
 }
 
