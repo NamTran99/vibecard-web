@@ -38,21 +38,29 @@ html.light .rm-hero-meta-chip { background: rgba(255, 255, 255, 0.88); border-co
 html.light .rm-hero-meta-chip.is-gold { background: #FEF3C7; border-color: rgba(217, 119, 6, 0.4); color: #92400E; }
 .rm-hero-meta-dot { width: 6px; height: 6px; border-radius: 50%; background: #B8D166; box-shadow: 0 0 6px #B8D166; }
 
-/* 2. ITEM 3: LUMI COLOR-WAVE AWAKENING, ENERGY BEAM & GOAL HINT */
+/* 2. ITEM 3: LUMI COLOR-WAVE AWAKENING & VISUAL REWARD BAR [🟢🟢⚪⚪⚪ → 🎁] */
 .mb-segbar span.on {
     background: linear-gradient(90deg, #B8D166, #FBBF24) !important;
     box-shadow: 0 0 8px rgba(184, 209, 102, 0.55);
 }
-.mb-energy-beam {
-    flex: 1; min-width: 14px; height: 2px; border-radius: 999px;
-    background: linear-gradient(90deg, rgba(251, 191, 36, 0.65), rgba(184, 209, 102, 0.85), transparent);
-    position: relative;
+.mb-segbar-row {
+    display: inline-flex !important; align-items: center !important; gap: 6px !important; margin-top: 4px !important;
 }
-.mb-head-goal-hint {
-    display: inline-flex; align-items: center; gap: 4px; margin-top: 2px;
-    font-size: 10.5px; font-weight: 700; color: #FDE68A; letter-spacing: 0.01em;
+.mb-segbar-arrow {
+    font-size: 11px; font-weight: 900; color: rgba(251, 191, 36, 0.78); line-height: 1;
 }
-html.light .mb-head-goal-hint { color: #92400E; }
+html.light .mb-segbar-arrow { color: #B45309; }
+.mb-segbar-chest {
+    width: 24px; height: 24px; border-radius: 8px;
+    background: rgba(251, 191, 36, 0.16); border: 1px solid rgba(251, 191, 36, 0.45);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 13px; line-height: 1; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+.mb-segbar-chest.is-unlocked {
+    background: linear-gradient(135deg, #FBBF24, #D97706); border-color: #FEF3C7;
+    box-shadow: 0 0 10px rgba(251, 191, 36, 0.55);
+}
+html.light .mb-segbar-chest { background: #FEF3C7; border-color: rgba(217, 119, 6, 0.45); }
 
 .mb-char-line {
     left: 10px !important; right: 10px !important; height: 2.5px !important;
@@ -89,33 +97,32 @@ html.light .mb-state-active .mb-dot.mb-dot-lumi-token {
 .mb-rail-paws.is-fading-trail .mb-paw-2 { color: #FBBF24; opacity: 0.36; }
 .mb-rail-paws.is-fading-trail .mb-paw-3 { color: #FBBF24; opacity: 0.20; }
 
-/* 4. ITEM 2.1: COMPLETED NODE — COMPACT MEMORY STRIP (42px CIRCLE + STARS) */
+/* 4. ITEM 2.1: COMPLETED NODE — 1-ROW COMPACT MEMORY STRIP (40px CIRCLE + TAG + STARS) */
 .mb-card.mb-card-completed-strip {
-    min-height: 54px !important; border-radius: 999px !important;
+    min-height: 48px !important; border-radius: 999px !important;
     background: rgba(184, 209, 102, 0.06) !important; border: 1px solid rgba(184, 209, 102, 0.22) !important;
-    align-items: center !important; justify-content: flex-start !important; padding: 5px 14px 5px 7px !important; gap: 10px;
+    align-items: center !important; justify-content: flex-start !important; padding: 4px 13px 4px 6px !important; gap: 9px;
 }
 html.light .mb-card.mb-card-completed-strip { background: rgba(82, 102, 0, 0.05) !important; border-color: rgba(82, 102, 0, 0.20) !important; }
 .mb-thumb.mb-thumb-compact {
-    width: 42px !important; height: 42px !important; margin: 0 !important;
+    width: 38px !important; height: 38px !important; margin: 0 !important;
     border-radius: 50% !important; border: 2px solid var(--rm-primary) !important;
     overflow: visible !important; position: relative; flex-shrink: 0;
 }
 .mb-thumb.mb-thumb-compact img { border-radius: 50% !important; width: 100%; height: 100%; object-fit: cover; }
 .rm-compact-check-dot {
-    position: absolute; bottom: -2px; right: -2px; width: 15px; height: 15px;
+    position: absolute; bottom: -2px; right: -2px; width: 14px; height: 14px;
     border-radius: 50%; background: var(--rm-primary); color: var(--rm-on-primary);
-    font-size: 9px; font-weight: 900; display: flex; align-items: center; justify-content: center;
+    font-size: 8.5px; font-weight: 900; display: flex; align-items: center; justify-content: center;
     border: 1.5px solid var(--rm-card-bg);
 }
-.mb-card-completed-strip .mb-card-body { padding: 2px 0 !important; gap: 2px !important; }
-.mb-card-completed-strip .mb-card-title { font-size: 13.5px !important; font-weight: 700 !important; -webkit-line-clamp: 1 !important; }
-.rm-completed-stars { color: #FBBF24; font-size: 10.5px; letter-spacing: 1px; flex-shrink: 0; text-shadow: 0 0 6px rgba(251, 191, 36, 0.35); }
-.rm-done-pill { font-size: 10px; font-weight: 700; color: var(--rm-primary); opacity: 0.92; }
+.mb-card-completed-strip .mb-card-body { padding: 0 !important; gap: 0 !important; flex: 1; min-width: 0; }
+.mb-card-completed-strip .mb-card-title { font-size: 13px !important; font-weight: 700 !important; -webkit-line-clamp: 1 !important; margin: 0 !important; }
+.rm-completed-stars { color: #FBBF24; font-size: 10px; letter-spacing: 0.5px; flex-shrink: 0; text-shadow: 0 0 6px rgba(251, 191, 36, 0.35); }
 
-/* 5. ITEM 2.2: ACTIVE NODE — ELEVATED 3D BOOK HERO CARD */
+/* 5. ITEM 2.2: ACTIVE NODE — ELEVATED 3D BOOK HERO CARD & ICON CHIPS (🃏/🎲) */
 .mb-card.mb-card-active-hero {
-    min-height: 96px !important; border-radius: 22px !important;
+    min-height: 92px !important; border-radius: 22px !important;
     background: linear-gradient(135deg, rgba(184, 209, 102, 0.14) 0%, var(--rm-card-bg) 58%, rgba(251, 191, 36, 0.09) 100%) !important;
     border: 1.5px solid var(--rm-primary) !important;
     box-shadow: 0 10px 26px -6px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(184, 209, 102, 0.28) !important;
@@ -134,31 +141,32 @@ html.light .mb-card.mb-card-active-hero {
     background: linear-gradient(135deg, #FFFFFF 0%, #F7F6EE 65%, #FEF9C3 100%) !important;
     box-shadow: 0 8px 22px -6px rgba(82, 102, 0, 0.18), 0 0 0 1px rgba(82, 102, 0, 0.18) !important;
 }
-.mb-card-active-hero .mb-card-body { padding: 12px 8px 12px 15px !important; gap: 5px !important; }
-.mb-hero-title { font-size: 15.5px !important; font-weight: 800 !important; letter-spacing: -0.015em; }
-.rm-swap-story-chip {
-    padding: 2.5px 7px; border-radius: 999px;
-    background: rgba(251, 191, 36, 0.15); border: 1px solid rgba(251, 191, 36, 0.42);
-    color: #FBBF24; font-size: 9.5px; font-weight: 800; cursor: pointer; flex-shrink: 0;
+.mb-card-active-hero .mb-card-body { padding: 11px 8px 11px 14px !important; gap: 4px !important; }
+.mb-hero-title { font-size: 15px !important; font-weight: 800 !important; letter-spacing: -0.015em; }
+.rm-icon-chip {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: rgba(251, 191, 36, 0.14); border: 1px solid rgba(251, 191, 36, 0.42);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 12.5px; line-height: 1; cursor: pointer; flex-shrink: 0;
     transition: transform 0.15s ease, background 0.15s ease;
 }
-.rm-swap-story-chip.is-deck {
-    background: rgba(184, 209, 102, 0.12); border-color: rgba(184, 209, 102, 0.38); color: #D4EE7F;
+.rm-icon-chip.is-deck {
+    background: rgba(184, 209, 102, 0.13); border-color: rgba(184, 209, 102, 0.4);
 }
-html.light .rm-swap-story-chip { background: #FEF3C7; border-color: rgba(217, 119, 6, 0.4); color: #92400E; }
-html.light .rm-swap-story-chip.is-deck { background: rgba(82, 102, 0, 0.1); border-color: rgba(82, 102, 0, 0.3); color: #3D4D00; }
-.rm-swap-story-chip:hover { transform: scale(1.04); }
+html.light .rm-icon-chip { background: #FEF3C7; border-color: rgba(217, 119, 6, 0.4); }
+html.light .rm-icon-chip.is-deck { background: rgba(82, 102, 0, 0.1); border-color: rgba(82, 102, 0, 0.3); }
+.rm-icon-chip:hover { transform: scale(1.08); }
 .rm-hero-cta-row { display: flex; align-items: center; gap: 8px; margin-top: 2px; }
 .rm-hero-play-btn { padding: 5px 12px !important; font-size: 11.5px !important; font-weight: 800 !important; box-shadow: 0 3px 10px rgba(184, 209, 102, 0.28); }
 .rm-hero-xp-hint { font-size: 10.5px; font-weight: 800; color: var(--rm-on-surface-variant); }
 
 .mb-thumb.mb-thumb-hero-book {
-    width: 68px !important; height: 76px !important; margin: 0 !important;
+    width: 66px !important; height: 74px !important; margin: 0 !important;
     border: none !important; border-radius: 0 !important; background: transparent !important;
     overflow: visible !important; position: relative; display: flex; align-items: center; justify-content: center;
 }
 .hero-book-cover {
-    position: relative; width: 62px; height: 72px; border-radius: 6px 11px 11px 6px;
+    position: relative; width: 60px; height: 70px; border-radius: 6px 11px 11px 6px;
     overflow: hidden; border: 1.5px solid var(--rm-primary);
     box-shadow: -3px 5px 12px rgba(0, 0, 0, 0.45); z-index: 2; transform: rotate(-2deg);
 }
@@ -168,7 +176,7 @@ html.light .rm-swap-story-chip.is-deck { background: rgba(82, 102, 0, 0.1); bord
     background: linear-gradient(90deg, rgba(255, 255, 255, 0.35), rgba(0, 0, 0, 0.35)); pointer-events: none;
 }
 .hero-book-pages {
-    position: absolute; right: 1px; top: 5px; width: 60px; height: 70px;
+    position: absolute; right: 1px; top: 5px; width: 58px; height: 68px;
     border-radius: 5px 10px 10px 5px;
     background: repeating-linear-gradient(90deg, #F5F2E6 0px, #F5F2E6 2px, #D6D1C2 2px, #D6D1C2 3px);
     border: 1px solid rgba(184, 209, 102, 0.45); transform: rotate(3deg) translate(3px, 2px); z-index: 1;
@@ -187,11 +195,11 @@ html.light .rm-active-step-pill { color: #92400E; }
     padding: 5px 11px !important; box-shadow: 0 3px 10px rgba(251, 191, 36, 0.35);
 }
 .mb-thumb.mb-thumb-mystery-fan {
-    width: 80px !important; height: 78px !important; margin: 4px 8px 4px 0 !important;
+    width: 80px !important; height: 74px !important; margin: 4px 8px 4px 0 !important;
     background: transparent !important; border: none !important; overflow: visible !important; position: relative;
 }
 .mystery-fan-card {
-    position: absolute; width: 42px; height: 58px; border-radius: 9px; top: 10px; left: 19px;
+    position: absolute; width: 40px; height: 56px; border-radius: 9px; top: 9px; left: 19px;
     background: linear-gradient(145deg, #2D3223 0%, #171912 100%);
     border: 1.5px solid rgba(251, 191, 36, 0.72); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.45);
     display: flex; align-items: center; justify-content: center;
@@ -202,30 +210,42 @@ html.light .mystery-fan-card { background: linear-gradient(145deg, #FEF3C7 0%, #
 .mystery-fan-card.fan-right { transform: translate(12px, 3px) rotate(15deg) scale(0.92); opacity: 0.88; }
 .mystery-fan-card.fan-center { transform: translateY(-2px) rotate(0deg); z-index: 2; box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5), 0 0 12px rgba(251, 191, 36, 0.4); }
 
-/* 7. ITEM 2.3: LOCKED CUSTOM SLOT — DASHED MYSTERY PILL */
+/* 7. ITEM 2.3: LOCKED CUSTOM SLOT — 1-LINE COMPACT DASHED PILL (44px) */
 .mb-card.mb-card-locked-slot {
-    min-height: 52px !important; border-radius: 16px !important;
+    min-height: 44px !important; border-radius: 14px !important;
     background: rgba(255, 255, 255, 0.025) !important; border: 1.5px dashed rgba(184, 209, 102, 0.32) !important;
-    box-shadow: none !important; align-items: center !important; padding-right: 10px; opacity: 0.88 !important;
+    box-shadow: none !important; align-items: center !important; justify-content: space-between !important;
+    padding: 6px 10px 6px 10px !important; opacity: 0.88 !important;
 }
 html.light .mb-card.mb-card-locked-slot { background: rgba(82, 102, 0, 0.03) !important; border-color: rgba(82, 102, 0, 0.28) !important; }
-.mb-card-locked-slot .mb-card-body { padding: 7px 6px 7px 13px !important; gap: 2px !important; }
-.rm-slot-step-badge { font-size: 10px; font-weight: 800; letter-spacing: 0.03em; color: var(--rm-primary); opacity: 0.9; }
-.rm-slot-title { font-size: 12.5px !important; font-weight: 700 !important; color: var(--rm-on-surface-variant) !important; -webkit-line-clamp: 1 !important; }
+.rm-slot-inline-row {
+    display: flex; align-items: center; gap: 8px; min-width: 0;
+}
+.rm-slot-step-pill {
+    display: inline-flex; align-items: center; gap: 3px;
+    padding: 2.5px 8px; border-radius: 999px;
+    background: rgba(184, 209, 102, 0.12); border: 1px solid rgba(184, 209, 102, 0.28);
+    color: var(--rm-primary); font-size: 10.5px; font-weight: 800; white-space: nowrap;
+}
+html.light .rm-slot-step-pill { background: rgba(82, 102, 0, 0.08); border-color: rgba(82, 102, 0, 0.25); color: #3D4D00; }
+.rm-slot-inline-label {
+    font-size: 12.5px; font-weight: 700; color: var(--rm-on-surface-variant);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
 .rm-slot-genre-stack { display: flex; align-items: center; flex-shrink: 0; }
 .rm-genre-mini-card {
-    width: 24px; height: 28px; border-radius: 7px;
+    width: 23px; height: 27px; border-radius: 7px;
     background: var(--rm-surface-variant); border: 1px solid var(--rm-outline-variant);
     display: inline-flex; align-items: center; justify-content: center;
-    font-size: 11px; margin-left: -5px; box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.22);
+    font-size: 10.5px; margin-left: -5px; box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.22);
 }
 .rm-genre-mini-card.c1 { margin-left: 0; transform: rotate(-7deg); }
 .rm-genre-mini-card.c2 { transform: translateY(-1px); z-index: 1; }
 .rm-genre-mini-card.c3 { transform: rotate(7deg); z-index: 2; }
 
-/* 8. ITEM 2.4: MILESTONE CHEST & BOSS FINALE BANNER CARD */
+/* 8. ITEM 2.4: MILESTONE CHEST & BOSS FINALE BANNER CARD (CLEAN 2-LINE) */
 .mb-card.mb-card-milestone {
-    min-height: 72px !important; border-radius: 20px !important;
+    min-height: 64px !important; border-radius: 20px !important;
     background: linear-gradient(135deg, rgba(251, 191, 36, 0.18) 0%, rgba(217, 119, 6, 0.08) 55%, var(--rm-card-bg) 100%) !important;
     border: 1.5px solid rgba(251, 191, 36, 0.55) !important;
     box-shadow: 0 6px 20px -4px rgba(245, 158, 11, 0.22) !important;
@@ -236,15 +256,14 @@ html.light .mb-card.mb-card-locked-slot { background: rgba(82, 102, 0, 0.03) !im
     border-color: rgba(251, 191, 36, 0.72) !important;
 }
 .rm-milestone-badge {
-    display: inline-flex; align-items: center; padding: 2.5px 8px; border-radius: 999px;
+    display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 999px;
     background: rgba(251, 191, 36, 0.22); border: 1px solid rgba(251, 191, 36, 0.55);
     color: #FDE68A; font-size: 10px; font-weight: 800; letter-spacing: 0.03em;
 }
 html.light .rm-milestone-badge { background: #FEF3C7; border-color: rgba(217, 119, 6, 0.5); color: #92400E; }
-.rm-milestone-sub { font-size: 10.5px; font-weight: 600; color: var(--rm-on-surface-variant); }
 .mb-thumb.mb-thumb-milestone {
-    width: 56px !important; height: 56px !important; margin: 0 !important;
-    border-radius: 16px !important; border: 1.5px solid #FBBF24 !important;
+    width: 52px !important; height: 52px !important; margin: 0 !important;
+    border-radius: 15px !important; border: 1.5px solid #FBBF24 !important;
     box-shadow: 0 0 12px rgba(251, 191, 36, 0.35); position: relative; overflow: hidden;
 }
 .mb-state-locked .mb-thumb.mb-thumb-milestone img {

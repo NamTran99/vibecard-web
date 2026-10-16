@@ -15,10 +15,10 @@
     };
 
     const DIFFICULTY_META = {
-        all:    { id: 'all',    label: 'Mọi mức', short: 'Tất cả',      dotCls: 'diff-dot-all',  badgeCls: 'age-badge-15' },
-        easy:   { id: 'easy',   label: 'Dễ · 3p',  short: 'Độ khó: Dễ',  dotCls: 'diff-dot-easy', badgeCls: 'age-badge-3'  },
-        medium: { id: 'medium', label: 'Vừa · 5p', short: 'Độ khó: Vừa', dotCls: 'diff-dot-med',  badgeCls: 'age-badge-15' },
-        hard:   { id: 'hard',   label: 'Khó · 7p', short: 'Độ khó: Khó', dotCls: 'diff-dot-hard', badgeCls: 'age-badge-18' }
+        all:    { id: 'all',    label: 'Mọi mức', short: 'Tất cả', dotCls: 'diff-dot-all',  badgeCls: 'age-badge-15' },
+        easy:   { id: 'easy',   label: 'Dễ · 3p',  short: 'Dễ',    dotCls: 'diff-dot-easy', badgeCls: 'age-badge-3'  },
+        medium: { id: 'medium', label: 'Vừa · 5p', short: 'Vừa',   dotCls: 'diff-dot-med',  badgeCls: 'age-badge-15' },
+        hard:   { id: 'hard',   label: 'Khó · 7p', short: 'Khó',   dotCls: 'diff-dot-hard', badgeCls: 'age-badge-18' }
     };
 
     function resolveRoadmapDifficulty(node, story) {
