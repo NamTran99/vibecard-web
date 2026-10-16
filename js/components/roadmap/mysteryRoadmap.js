@@ -27,9 +27,7 @@
             if (parsed && typeof parsed === 'object') mysteryState = Object.assign(mysteryState, parsed);
         } catch (e) {}
     }
-    function saveState() {
-        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(mysteryState)); } catch (e) {}
-    }
+    function saveState() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(mysteryState)); } catch (e) {} }
     loadSavedState();
 
     function ensureSheetMountedOnBody() {
@@ -57,8 +55,7 @@
                 if (y > 140) topBar.classList.add('is-scrolled');
                 else if (y < 115) topBar.classList.remove('is-scrolled');
             }
-            const nextBar = document.getElementById('mysteryRoadmapNextBar');
-            const dy = y - lastY;
+            const nextBar = document.getElementById('mysteryRoadmapNextBar'), dy = y - lastY;
             if (nextBar) {
                 if (dy > 12 && y > 60) nextBar.classList.add('is-hidden-scroll');
                 else if (dy < -12) nextBar.classList.remove('is-hidden-scroll');
@@ -106,11 +103,7 @@
     function renderMysteryAmbientRain() {
         const container = document.getElementById('mysteryAmbientContainer');
         if (!container) return;
-        let html = '';
-        for (let i = 0; i < 16; i++) {
-            html += `<div class="ambient-rain-drop" style="left:${(Math.random() * 100).toFixed(1)}%; top:${(Math.random() * -80).toFixed(0)}px; animation-duration:${(0.85 + Math.random() * 0.65).toFixed(2)}s; animation-delay:${(Math.random() * 2).toFixed(2)}s;"></div>`;
-        }
-        container.innerHTML = html;
+        container.innerHTML = Array.from({ length: 16 }, () => `<div class="ambient-rain-drop" style="left:${(Math.random() * 100).toFixed(1)}%; top:${(Math.random() * -80).toFixed(0)}px; animation-duration:${(0.85 + Math.random() * 0.65).toFixed(2)}s; animation-delay:${(Math.random() * 2).toFixed(2)}s;"></div>`).join('');
     }
 
     function renderMysteryRoadmapTimeline() {
