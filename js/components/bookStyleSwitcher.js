@@ -7,16 +7,16 @@
     'use strict';
 
     const BOOK_STYLES_CATALOG = [
-        { id: 1,  short: 'Kiểu 6.1',  name: 'Fanned Art Deck',        desc: '3 lớp tranh thật của truyện xòe quạt nghệ thuật sang phải' },
-        { id: 2,  short: 'Kiểu 6.2',  name: 'Apple Top-Stack',        desc: '3 lớp thẻ tranh xếp nhô dần lên đỉnh chuẩn iOS / Apple Music' },
-        { id: 3,  short: 'Kiểu 6.3',  name: 'Stepped Hardcover',      desc: 'Xếp bậc thang song song: Bìa trước + Xấp giấy kem + Bìa sau' },
-        { id: 4,  short: 'Kiểu 6.4',  name: 'Cross-Tilt Polaroid',    desc: '2 lớp nền nghiêng chéo đối xứng trái-phải tôn bìa chính giữa' },
-        { id: 5,  short: 'Kiểu 6.5',  name: 'Slipcase Box Edition',   desc: 'Sách bìa cứng đang rút hé ra khỏi hộp cứng (Slipcase) bên trái' },
-        { id: 6,  short: 'Kiểu 6.6',  name: 'Glassmorphic Stack',     desc: 'Chồng thẻ kính mờ 3 tầng xếp lùi dưới đáy' },
-        { id: 7,  short: 'Kiểu 6.7',  name: 'Twin Volume Stack',      desc: '2 quyển sách thật đặt chồng lệch góc lộ gáy & trang giấy' },
-        { id: 8,  short: 'Kiểu 6.8',  name: 'Gold Tarot Deck',        desc: 'Bộ bài câu chuyện viền vàng kim xòe 3 lá trên nền tối' },
-        { id: 9,  short: 'Kiểu 6.9',  name: 'Parchment Archive',      desc: 'Tệp bản thảo giấy kem cổ điển kẹp khung ảnh truyện' },
-        { id: 10, short: 'Kiểu 6.10', name: '3D Isometric Stack',     desc: 'Chồng sách xếp lớp kết hợp góc nghiêng không gian 3D' }
+        { id: 1,  short: '6.1',  name: 'Fanned Art Deck',      desc: '2 lớp thẻ phía sau mang chính bức tranh của truyện xòe hình cánh quạt sang phải' },
+        { id: 2,  short: '6.2',  name: 'Apple Top-Stack',      desc: '3 lớp thẻ tranh xếp nhô dần lên phía trên đỉnh chuẩn Album Stack iOS' },
+        { id: 3,  short: '6.3',  name: 'Stepped Hardcover',    desc: 'Xếp bậc thang song song 3 tầng: Bìa trước + Xấp giấy kem + Bìa cứng Olive' },
+        { id: 4,  short: '6.4',  name: 'Cross-Tilt Polaroid',  desc: '2 lớp đế nghiêng chéo đối xứng trái (-4.5°) và phải (+4.2°) nâng bìa chính' },
+        { id: 5,  short: '6.5',  name: 'Slipcase Box Edition', desc: 'Sách bìa cứng đang rút hé ra khỏi hộp cứng (Slipcase) bọc vải bên trái' },
+        { id: 6,  short: '6.6',  name: 'Glassmorphic Stack',   desc: 'Chồng thẻ kính mờ 3 tầng xếp lùi xuống dưới đáy' },
+        { id: 7,  short: '6.7',  name: 'Twin Volume Stack',    desc: '2 quyển sách thật đặt chồng lệch góc (+5°) lộ cả gáy sách và mép giấy' },
+        { id: 8,  short: '6.8',  name: 'Gold Tarot Deck',      desc: 'Bộ bài câu chuyện 3 lá viền nhũ vàng kim xòe nhẹ trên nền tối' },
+        { id: 9,  short: '6.9',  name: 'Parchment Archive',    desc: 'Tệp bản thảo giấy kem cổ điển xếp lệch góc kẹp khung ảnh truyện' },
+        { id: 10, short: '6.10', name: '3D Isometric Stack',   desc: 'Chồng sách 3 lớp kết hợp góc nghiêng không gian 3D (rotateY -16°)' }
     ];
 
     const BOOKS_DATA = [
@@ -41,9 +41,15 @@
         activeBookStyle = Number(styleId) || 1;
         try { localStorage.setItem('vibe_book_style_v6_id', String(activeBookStyle)); } catch (_) {}
 
+        const found = BOOK_STYLES_CATALOG.find(s => s.id === activeBookStyle) || BOOK_STYLES_CATALOG[0];
+        const labelEl = document.getElementById('currentBookStyleLabel');
+        if (labelEl) {
+            labelEl.textContent = `${found.short} — ${found.name}`;
+        }
+
         const carousel = document.getElementById('storyCarouselContainer');
         if (carousel) {
-            const wrapper = carousel.parentElement;
+            const wrapper = document.getElementById('storyCarouselStage') || carousel.parentElement;
             if (wrapper) wrapper.setAttribute('data-book-style', String(activeBookStyle));
             BOOKS_DATA.forEach(b => {
                 const card = document.getElementById(`storyCard-${b.idx}`);
@@ -64,31 +70,24 @@
 
     function ensureSwitcherBar() {
         const carousel = document.getElementById('storyCarouselContainer');
-        if (!carousel || !carousel.parentElement) return;
-        const wrapper = carousel.parentElement;
+        if (!carousel) return;
 
         let bar = document.getElementById('bookStyleSwitcherBar');
-        if (!bar) {
+        if (!bar && carousel.parentElement) {
             bar = document.createElement('div');
             bar.id = 'bookStyleSwitcherBar';
             bar.className = 'book-style-switcher-bar';
-            wrapper.insertBefore(bar, carousel);
+            carousel.parentElement.insertBefore(bar, carousel);
         }
-        bar.innerHTML = `
-            <button type="button" class="book-style-grid-btn" onclick="openAllBookStylesModal()">
-                ✨ Xem 10 kiểu xếp lớp
-            </button>
-            ${BOOK_STYLES_CATALOG.map(s => `
+        if (bar) {
+            bar.innerHTML = BOOK_STYLES_CATALOG.map(s => `
                 <button type="button" class="book-style-pill ${s.id === activeBookStyle ? 'is-active' : ''}"
                         data-style-id="${s.id}" onclick="applyBookCoverStyle(${s.id})" title="${s.name} — ${s.desc}">
-                    ${s.short}: ${s.name}
+                    Kiểu ${s.short}: ${s.name}
                 </button>
-            `).join('')}
-        `;
-        applyBookCoverStyle(activeBookStyle);
-        if (window.location.search.indexOf('pickbook=1') !== -1) {
-            setTimeout(openAllBookStylesModal, 250);
+            `).join('');
         }
+        applyBookCoverStyle(activeBookStyle);
     }
 
     function openAllBookStylesModal() {
@@ -96,24 +95,24 @@
         if (!modal) {
             modal = document.createElement('div');
             modal.id = 'allBookStylesComparisonModal';
-            modal.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(10,12,8,0.9);backdrop-filter:blur(16px);display:flex;flex-direction:column;padding:18px 16px;overflow-y:auto;';
+            modal.style.cssText = 'position:absolute;inset:0;z-index:99999;background:rgba(10,12,8,0.95);backdrop-filter:blur(16px);display:flex;flex-direction:column;padding:18px 14px;overflow-y:auto;border-radius:inherit;';
             document.body.appendChild(modal);
         }
         const sample = BOOKS_DATA[0];
         modal.innerHTML = `
-            <div style="max-width:440px;width:100%;margin:0 auto;">
-                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+            <div style="width:100%;margin:0 auto;">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;position:sticky;top:0;z-index:50;background:rgba(10,12,8,0.92);padding:6px 2px 10px;border-bottom:1px solid rgba(255,255,255,0.08);">
                     <div>
-                        <div style="font-size:10px;font-weight:800;letter-spacing:0.14em;color:#B8D166;text-transform:uppercase;">CHỒNG SÁCH XẾP LỚP (STYLE 6)</div>
-                        <h3 style="margin:2px 0 0;font-size:19px;font-weight:800;color:#F2F1EA;">10 Thiết Kế Chồng Sách Xếp Lớp</h3>
+                        <div style="font-size:10px;font-weight:800;letter-spacing:0.14em;color:#B8D166;text-transform:uppercase;">CHỒNG SÁCH XẾP LỚP (6.1 – 6.10)</div>
+                        <h3 style="margin:2px 0 0;font-size:18px;font-weight:800;color:#F2F1EA;">Chạm vào 1 kiểu để áp dụng</h3>
                     </div>
                     <button type="button" onclick="document.getElementById('allBookStylesComparisonModal').remove()"
-                            style="width:36px;height:36px;border-radius:999px;border:none;background:rgba(255,255,255,0.12);color:#fff;font-size:16px;cursor:pointer;">✕</button>
+                            style="width:34px;height:34px;border-radius:999px;border:none;background:rgba(255,255,255,0.14);color:#fff;font-size:15px;font-weight:800;cursor:pointer;">✕</button>
                 </div>
-                <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;padding-bottom:32px;">
+                <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding-bottom:36px;">
                     ${BOOK_STYLES_CATALOG.map(s => `
                         <div data-book-style="${s.id}" onclick="applyBookCoverStyle(${s.id}); document.getElementById('allBookStylesComparisonModal').remove();"
-                             style="background:#1B1E16;border:1.5px solid ${s.id === activeBookStyle ? '#B8D166' : 'rgba(255,255,255,0.08)'};border-radius:20px;padding:14px 12px 12px;cursor:pointer;display:flex;flex-direction:column;gap:12px;">
+                             style="background:#1B1E16;border:1.5px solid ${s.id === activeBookStyle ? '#B8D166' : 'rgba(255,255,255,0.09)'};border-radius:18px;padding:14px 11px 12px;cursor:pointer;display:flex;flex-direction:column;gap:12px;">
                             <div style="width:74%;margin:6px auto 2px;">
                                 <div class="vibe-book-cover" style="--book-bg: url('${sample.img}');">
                                     ${renderBookInnerHtml(sample)}
@@ -121,11 +120,11 @@
                             </div>
                             <div>
                                 <div style="display:flex;align-items:center;justify-content:space-between;">
-                                    <span style="font-size:10.5px;font-weight:800;color:#B8D166;">${s.short}</span>
-                                    ${s.id === activeBookStyle ? '<span style="font-size:10px;font-weight:800;background:#B8D166;color:#182000;padding:1px 7px;border-radius:99px;">Đang chọn</span>' : ''}
+                                    <span style="font-size:10.5px;font-weight:800;color:#B8D166;">KIỂU ${s.short}</span>
+                                    ${s.id === activeBookStyle ? '<span style="font-size:9.5px;font-weight:800;background:#B8D166;color:#182000;padding:1px 6px;border-radius:99px;">Đang chọn</span>' : ''}
                                 </div>
-                                <div style="font-size:13.5px;font-weight:800;color:#fff;margin-top:2px;">${s.name}</div>
-                                <div style="font-size:11px;color:rgba(242,241,234,0.6);line-height:1.35;margin-top:2px;">${s.desc}</div>
+                                <div style="font-size:13px;font-weight:800;color:#fff;margin-top:2px;">${s.name}</div>
+                                <div style="font-size:10.5px;color:rgba(242,241,234,0.65);line-height:1.35;margin-top:3px;">${s.desc}</div>
                             </div>
                         </div>
                     `).join('')}

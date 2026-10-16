@@ -343,8 +343,22 @@
                 </div>
             </div>
 
+            <!-- NÚT RIÊNG XEM & CHỌN 10 KIỂU SÁCH XẾP LỚP (6.1 -> 6.10) -->
+            <div class="mb-3 p-2.5 rounded-2xl bg-[#1E2218] border border-[#B8D166]/35 shadow-md flex flex-col gap-2">
+                <div class="flex items-center justify-between gap-2">
+                    <span class="text-[11px] font-extrabold uppercase tracking-wider text-[#D4EE7F] flex items-center gap-1.5">
+                        <span>📚 Kiểu bìa sách:</span>
+                        <span id="currentBookStyleLabel" class="text-amber-300">6.1 — Fanned Art Deck</span>
+                    </span>
+                    <button type="button" onclick="openAllBookStylesModal()" class="px-3 py-1.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-[#181A12] text-[11.5px] font-black flex items-center gap-1 cursor-pointer active:scale-95 transition-all shadow-sm shrink-0">
+                        <span>🎨 Xem bảng 10 kiểu</span>
+                    </button>
+                </div>
+                <div id="bookStyleSwitcherBar" class="book-style-switcher-bar !p-0"></div>
+            </div>
+
             <!-- MULTI-CARD HORIZONTAL PEEK CAROUSEL (LƯỚT NGANG HÉ LỘ BÀI KẾ TIẾP) -->
-            <div class="relative w-full">
+            <div id="storyCarouselStage" class="relative w-full" data-book-style="1">
                 <!-- Carousel Horizontal Scrollable Track -->
                 <div id="storyCarouselContainer" class="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-none py-4 px-1.5 scroll-smooth select-none" style="-webkit-overflow-scrolling: touch;">
                     
@@ -5235,7 +5249,7 @@
     <script src="js/components/library/flashcard3D.js"></script>
 
     <!-- 5. App Bootstrap -->
-    <script src="js/components/bookStyleSwitcher.js?v=20261016_stack10"></script>
+    <script src="js/components/bookStyleSwitcher.js?v=20261016_stack10_v2"></script>
     <script src="js/app.js?v=20261014_v10"></script>
 </body>
 </html>
