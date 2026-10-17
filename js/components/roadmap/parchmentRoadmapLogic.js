@@ -99,12 +99,27 @@ function showRoadmapCharacterBubble(el) {
     el._bubbleTimer = setTimeout(() => el.classList.remove('is-talking'), 2800);
 }
 
-// Chạm nhân vật: nảy lên + bong bóng thoại theo tiến độ
+// Chạm nhân vật: nảy lên + bong bóng thoại + tăng tốc độ chuyển động 1.8x trong 2.2s
 function handleCharacterTap(el) {
     if (typeof SoundEngine !== 'undefined' && SoundEngine.play) {
         SoundEngine.play(1);
     }
     showRoadmapCharacterBubble(el);
+    if (el && typeof el.querySelectorAll === 'function') {
+        clearTimeout(el._speedBoostTimer);
+        el.querySelectorAll('svg *').forEach(node => {
+            if (typeof node.getAnimations === 'function') {
+                node.getAnimations().forEach(anim => { anim.playbackRate = 1.85; });
+            }
+        });
+        el._speedBoostTimer = setTimeout(() => {
+            el.querySelectorAll('svg *').forEach(node => {
+                if (typeof node.getAnimations === 'function') {
+                    node.getAnimations().forEach(anim => { anim.playbackRate = 1.0; });
+                }
+            });
+        }, 2200);
+    }
 }
 
 // Màn ăn mừng khi 1 nhân vật được tô đủ 5/5
@@ -117,7 +132,10 @@ function getActiveRoadmapScreen() {
 function showRoadmapCelebration(chapter, loop) {
     const screen = getActiveRoadmapScreen();
     if (!screen || typeof document.createElement !== 'function') return;
-    const char = (chapter.characters || [])[loop] || { name: 'Thần Rừng Lumi', img: 'assets/create/lumi_fox.png' };
+    const animChar = (typeof window.getRoadmapAnimatedCharacter === 'function')
+        ? window.getRoadmapAnimatedCharacter(chapter.id || 0, loop)
+        : null;
+    const char = animChar || (chapter.characters || [])[loop] || { name: 'Bea · Lửa Trại', img: 'assets/create/lumi_fox.png' };
 
     closeRoadmapCelebration();
     const overlay = document.createElement('div');
@@ -128,13 +146,16 @@ function showRoadmapCelebration(chapter, loop) {
 
     const confetti = Array.from({ length: 14 }, (_, i) => `<span style="--c:${i}"></span>`).join('');
     const hasNextLoop = (loop + 1) * ROADMAP_LESSONS_PER_LOOP < chapter.nodes.length;
+    const visualHtml = animChar
+        ? `<div class="w-40 h-40 mx-auto relative flex items-center justify-center">${animChar.svg}</div>`
+        : `<img class="mb-celebrate-img" src="${char.img}" alt="${char.name}" />`;
 
     overlay.innerHTML = `
         <div class="mb-celebrate-backdrop" onclick="closeRoadmapCelebration()"></div>
         <div class="mb-celebrate-card">
             <div class="mb-celebrate-confetti" aria-hidden="true">${confetti}</div>
             <div class="mb-celebrate-glow" aria-hidden="true"></div>
-            <img class="mb-celebrate-img" src="${char.img}" alt="${char.name}" />
+            ${visualHtml}
             <div class="mb-celebrate-badge my-2 text-3xl" aria-hidden="true">🏆 ✨</div>
             <span class="mb-celebrate-kicker">Vòng ${loop + 1} hoàn thành · +150 XP</span>
             <h3 class="mb-celebrate-title">${char.name} đã thức tỉnh 100%!</h3>

@@ -1,0 +1,316 @@
+/* ======================================================== */
+/* 🎭 ROADMAP 10 STUDIO-GRADE ANIMATED CHARACTERS (60FPS)   */
+/* Ceiling: < 350 lines | Pure SVG Anatomical Rigging       */
+/* ======================================================== */
+
+@keyframes blink {
+    0%, 45%, 48%, 95%, 98%, 100% { transform: scaleY(1); }
+    46.5%, 96.5% { transform: scaleY(0.05); }
+}
+@keyframes breathe {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-3px) rotate(0.6deg); }
+}
+@keyframes floatUp {
+    0% { transform: translateY(0) scale(0.75); opacity: 0; }
+    25% { opacity: 0.95; }
+    100% { transform: translateY(-48px) scale(1.15); opacity: 0; }
+}
+
+/* 1. BEA - CAMPFIRE ROAST */
+@keyframes roastArm {
+    0%, 100% { transform: rotate(0deg); }
+    35% { transform: rotate(6.5deg); }
+    70% { transform: rotate(-4.5deg); }
+}
+@keyframes flameOuter {
+    0%, 100% { transform: scale(1, 1) rotate(-1.5deg) skewX(-1deg); }
+    33% { transform: scale(0.95, 1.07) rotate(2deg) skewX(2deg); }
+    66% { transform: scale(1.04, 0.95) rotate(-1deg) skewX(-2deg); }
+}
+@keyframes flameInner {
+    0%, 100% { transform: scale(1, 1) translateY(0); }
+    50% { transform: scale(0.91, 1.13) translateY(-3px); }
+}
+@keyframes headChill {
+    0%, 100% { transform: rotate(0deg) translateY(0); }
+    50% { transform: rotate(2.2deg) translateY(-2.5px); }
+}
+@keyframes headBob {
+    0%, 100% { transform: rotate(0deg) translateY(0); }
+    50% { transform: rotate(-2deg) translateY(-2.5px); }
+}
+@keyframes footTap {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(-9deg); }
+}
+
+/* 2. LEO - READING & COFFEE */
+@keyframes eyeScan {
+    0%, 100% { transform: translateX(-2.5px); }
+    50% { transform: translateX(3.5px); }
+}
+@keyframes pageTurn {
+    0%, 65%, 100% { transform: rotate(0deg) skewY(0deg) scaleX(1); }
+    82% { transform: rotate(-10deg) skewY(4deg) scaleX(0.78); }
+}
+@keyframes steamCurl {
+    0% { transform: translateY(0) translateX(0) scale(0.85); opacity: 0; }
+    35% { opacity: 0.7; transform: translateY(-14px) translateX(-3px) scale(1); }
+    100% { transform: translateY(-34px) translateX(5px) scale(1.2); opacity: 0; }
+}
+
+/* 3. MIKO - LOFI HEADPHONES */
+@keyframes grooveHead {
+    0%, 100% { transform: rotate(-4.5deg) translateY(0px); }
+    50% { transform: rotate(5.5deg) translateY(4px); }
+}
+@keyframes handBeat {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(-15deg); }
+}
+@keyframes noteDrift {
+    0% { transform: translate(0, 0) scale(0.6) rotate(-12deg); opacity: 0; }
+    30% { opacity: 1; }
+    100% { transform: translate(16px, -46px) scale(1.1) rotate(16deg); opacity: 0; }
+}
+
+/* 4. OSCAR - 2-JOINT ANCHORED OVERHEAD BARBELL PRESS */
+@keyframes squatTorso {
+    0%, 100% { transform: translateY(0px) scaleY(1); }
+    50% { transform: translateY(6px) scaleY(0.96); }
+}
+@keyframes oscarUpperL {
+    0%, 100% { transform: rotate(-18deg); }
+    50% { transform: rotate(45deg); }
+}
+@keyframes oscarForeL {
+    0%, 100% { transform: rotate(18deg); }
+    50% { transform: rotate(-45deg); }
+}
+@keyframes oscarUpperR {
+    0%, 100% { transform: rotate(18deg); }
+    50% { transform: rotate(-45deg); }
+}
+@keyframes oscarForeR {
+    0%, 100% { transform: rotate(-18deg); }
+    50% { transform: rotate(45deg); }
+}
+@keyframes oscarBarbellY {
+    0%, 100% { transform: translateY(10px); }
+    50% { transform: translateY(-22.5px); }
+}
+@keyframes sweatFly {
+    0%, 35% { transform: translate(0, 0) scale(0); opacity: 0; }
+    55% { transform: translate(-10px, 6px) scale(1); opacity: 1; }
+    95%, 100% { transform: translate(-22px, 26px) scale(0.4); opacity: 0; }
+}
+
+/* 5. HANA - CANVAS PAINTING */
+@keyframes brushStroke {
+    0%, 100% { transform: rotate(-8deg); }
+    40% { transform: rotate(14deg); }
+    75% { transform: rotate(-3deg); }
+}
+@keyframes beretBob {
+    0%, 100% { transform: rotate(-1.5deg) translateY(0); }
+    50% { transform: rotate(3.5deg) translateY(-2.5px); }
+}
+
+/* 6 & 7. MIA & VIKRAM - SHADOW & ZEN LEVITATION */
+@keyframes shadowPulse {
+    0%, 100% { transform: scale(1); opacity: 0.25; }
+    50% { transform: scale(0.6); opacity: 0.1; }
+}
+@keyframes zenHover {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+}
+@keyframes scarfFloat {
+    0%, 100% { transform: rotate(0deg) skewX(0deg); }
+    50% { transform: rotate(8deg) skewX(6deg); }
+}
+@keyframes cardFloat {
+    0%, 100% { transform: translateY(0px) rotate(-8deg); }
+    50% { transform: translateY(-12px) rotate(6deg); }
+}
+
+/* 8. EDDY - MULTI-JOINT BIOMECHANICAL RUN CYCLE */
+@keyframes runTorsoBounce {
+    0%, 100% { transform: translateY(-7px) rotate(8deg); }
+    25% { transform: translateY(4px) rotate(11deg) scale(1.02, 0.98); }
+    50% { transform: translateY(-7px) rotate(8deg); }
+    75% { transform: translateY(4px) rotate(11deg) scale(1.02, 0.98); }
+}
+@keyframes runHeadStabilize {
+    0%, 100% { transform: rotate(-3deg) translateY(0px); }
+    25% { transform: rotate(2deg) translateY(1.5px); }
+    50% { transform: rotate(-3deg) translateY(0px); }
+    75% { transform: rotate(2deg) translateY(1.5px); }
+}
+@keyframes runThigh {
+    0%   { transform: rotate(-38deg); }
+    25%  { transform: rotate(-6deg); }
+    50%  { transform: rotate(36deg); }
+    75%  { transform: rotate(-8deg); }
+    100% { transform: rotate(-38deg); }
+}
+@keyframes runCalf {
+    0%   { transform: rotate(10deg); }
+    25%  { transform: rotate(26deg); }
+    50%  { transform: rotate(16deg); }
+    75%  { transform: rotate(78deg); }
+    100% { transform: rotate(10deg); }
+}
+@keyframes runFoot {
+    0%   { transform: rotate(-16deg); }
+    25%  { transform: rotate(2deg); }
+    50%  { transform: rotate(28deg); }
+    75%  { transform: rotate(12deg); }
+    100% { transform: rotate(-16deg); }
+}
+@keyframes runUpperArm {
+    0%   { transform: rotate(-36deg); }
+    50%  { transform: rotate(34deg); }
+    100% { transform: rotate(-36deg); }
+}
+@keyframes runForearm {
+    0%   { transform: rotate(-68deg); }
+    50%  { transform: rotate(-28deg); }
+    100% { transform: rotate(-68deg); }
+}
+@keyframes headbandWave {
+    0%, 100% { transform: rotate(-6deg) skewY(-4deg); }
+    50% { transform: rotate(12deg) skewY(6deg); }
+}
+@keyframes trackScroll {
+    0% { stroke-dashoffset: 0; }
+    100% { stroke-dashoffset: 60; }
+}
+@keyframes dustPuff {
+    0% { transform: translate(0, 0) scale(0.4); opacity: 0.85; }
+    100% { transform: translate(-48px, -14px) scale(1.6); opacity: 0; }
+}
+@keyframes runShadow {
+    0%, 50%, 100% { transform: scaleX(0.82); opacity: 0.18; }
+    25%, 75% { transform: scaleX(1.08); opacity: 0.32; }
+}
+@keyframes windStreak {
+    0% { transform: translateX(35px); opacity: 0; }
+    30% { opacity: 0.85; }
+    100% { transform: translateX(-75px); opacity: 0; }
+}
+
+/* 10. KOJI - ACOUSTIC GUITAR */
+@keyframes strumWrist {
+    0%, 100% { transform: rotate(-14deg); }
+    50% { transform: rotate(18deg); }
+}
+@keyframes bodyGroove {
+    0%, 100% { transform: rotate(-2deg) translateY(0px); }
+    50% { transform: rotate(3deg) translateY(-3px); }
+}
+@keyframes stringVibrate {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(1.2px); }
+}
+
+/* ─── STAGE PLACEMENT IN THE BELLY OF EACH WINDING CURVE ─── */
+.sq-companion-island {
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 4 !important;
+    width: 176px !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+}
+.sq-companion-island.is-right { right: 4px !important; }
+.sq-companion-island.is-left { left: 4px !important; }
+
+.sq-char-stage.is-svg-rig {
+    position: relative;
+    width: 162px !important;
+    height: 162px !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.rm-svg-char-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    transition: clip-path 0.85s cubic-bezier(0.22, 1, 0.36, 1), filter 0.35s ease;
+}
+.rm-svg-char-layer svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: visible;
+}
+.rm-svg-char-layer.is-base-layer {
+    filter: saturate(0.72) brightness(0.92);
+    opacity: 0.94;
+}
+.rm-svg-char-layer.is-awake-layer {
+    filter: saturate(1.12) brightness(1.04) drop-shadow(0 8px 18px rgba(0, 0, 0, 0.38));
+}
+.rm-char-floor-shadow {
+    fill: rgba(0, 0, 0, 0.36) !important;
+}
+html.light .rm-char-floor-shadow {
+    fill: rgba(45, 54, 24, 0.12) !important;
+}
+
+.sq-companion-nav-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 2.5px 7px;
+    border-radius: 999px;
+    background: rgba(20, 23, 17, 0.78);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.32), inset 0 0 0 1px rgba(255, 255, 255, 0.07);
+}
+html.light .sq-companion-nav-pill {
+    background: rgba(255, 255, 255, 0.88);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), inset 0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+.sq-char-switch-btn {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.07);
+    color: #D4D4D8;
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+html.light .sq-char-switch-btn {
+    background: rgba(0, 0, 0, 0.06);
+    color: #27272A;
+}
+.sq-char-switch-btn:active { transform: scale(0.9); }
+.sq-companion-role-tag {
+    font-size: 9.5px;
+    font-weight: 700;
+    padding: 1.5px 6px;
+    border-radius: 6px;
+    line-height: 1.2;
+}

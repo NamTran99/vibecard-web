@@ -19,10 +19,10 @@ function resolveRoadmapNodeState(chapter, index) {
     return prev && prev.status === 'completed' ? 'active' : 'locked';
 }
 
-// Đường cong chữ S uốn lượn cho 5 chặng mỗi vòng (nhường toàn bộ khoảng trống bên phải/trái cho Lumi)
+// Đường cong chữ S uốn lượn mở rộng bụng đường cong để đặt 2 nhân vật hoạt họa ở giữa 2 đường cong mỗi chặng
 const WINDING_LOOP_X = [
-    [45, 25, 20, 28, 46],
-    [54, 74, 78, 70, 52]
+    [44, 21, 16, 24, 44],
+    [56, 79, 84, 76, 56]
 ];
 
 function getNodeHorizontalPercent(loop, localIdx) {
@@ -175,7 +175,7 @@ function getRoadmapCharacterLine(char, completed, started, justDone) {
     const remaining = ROADMAP_LESSONS_PER_LOOP - completed;
     if (completed >= ROADMAP_LESSONS_PER_LOOP) return char.quote || 'Cảm ơn bạn đã đánh thức 100% sắc màu cho mình!';
     if (justDone) return `Tuyệt! Mình vừa có thêm 20% sắc màu. Còn ${remaining} chặng nữa!`;
-    if (started) return `Chọn truyện trên các ô vuông ? để đánh thức sắc màu cho Lumi nhé.`;
+    if (started) return `Chọn truyện trên các ô vuông ? để đánh thức sắc màu nhé.`;
     return 'Mình đang đợi bạn ở chặng này…';
 }
 
@@ -221,6 +221,13 @@ function renderRoadmapSection(chapter, loop, characters, orderStart) {
         }
     });
 
+    const companionHtml = (typeof window.renderRoadmapAnimatedCompanionHtml === 'function')
+        ? window.renderRoadmapAnimatedCompanionHtml({
+            chapterId: chId, loop, sideCls, fillKey, fillPct, prevPct,
+            completed, started, mastered, justDoneHere, starsHtml
+        })
+        : '';
+
     return `
         <section class="mb-section sq-winding-section ${!started && loop > 0 ? 'is-future-loop' : ''}" data-loop="${loop + 1}">
             <div class="sq-section-header" style="--i:${orderStart}">
@@ -230,20 +237,7 @@ function renderRoadmapSection(chapter, loop, characters, orderStart) {
             </div>
             <div class="sq-winding-stage">
                 ${energyOrbsHtml}
-                <div class="sq-companion-island ${sideCls}">
-                    <div class="mb-char sq-char-stage ${mastered ? 'is-mastered' : ''} ${started ? '' : 'is-waiting'}"
-                         role="button" tabindex="0" data-fill-key="${fillKey}" data-fill-target="${fillPct}" data-just-done="${justDoneHere ? 1 : 0}"
-                         onclick="handleCharacterTap(this)" title="Chạm vào ${roadmapAttr(char.name)}">
-                        <div class="mb-char-bubble" role="status">${line}</div>
-                        <div class="sq-campfire-glow" aria-hidden="true"></div>
-                        <img class="mb-char-gray" src="${char.img}" alt="" />
-                        <img class="mb-char-color" src="${char.img}" alt="" style="clip-path: inset(${100 - prevPct}% 0 0 0);" />
-                    </div>
-                    <div class="sq-companion-footer">
-                        <div class="sq-companion-stars" aria-label="Tiến độ ${completed} trên 5 sao">${starsHtml}</div>
-                        <span class="sq-companion-meta">${char.name} · ${fillPct}%</span>
-                    </div>
-                </div>
+                ${companionHtml}
                 <div class="sq-winding-nodes">${trackHtml}</div>
             </div>
         </section>`;
