@@ -232,14 +232,5 @@ window.renderRoadmapAnimatedCompanionHtml = function (opts) {
                 <div class="rm-svg-char-layer is-base-layer" aria-hidden="true">${animChar.svg}</div>
                 <div class="rm-svg-char-layer is-awake-layer mb-char-color" style="clip-path: inset(${100 - prevPct}% 0 0 0);">${animChar.svg}</div>
             </div>
-            <div class="sq-companion-footer">
-                <div class="sq-companion-stars" aria-label="Tiến độ ${completed} trên 5 sao">${starsHtml}</div>
-                <div class="sq-companion-nav-pill">
-                    <button type="button" class="sq-char-switch-btn" onclick="cycleRoadmapCurveCharacter(${chapterId}, ${loop}, -1, event)" title="Nhân vật trước">‹</button>
-                    <span class="sq-companion-meta">#${animChar.num} ${animChar.name} · ${fillPct}%</span>
-                    <button type="button" class="sq-char-switch-btn" onclick="cycleRoadmapCurveCharacter(${chapterId}, ${loop}, 1, event)" title="Nhân vật tiếp theo">›</button>
-                </div>
-                <span class="sq-companion-role-tag" style="${animChar.badgeStyle}">${animChar.badge}</span>
-            </div>
         </div>`;
 };
