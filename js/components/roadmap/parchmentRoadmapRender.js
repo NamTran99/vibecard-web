@@ -122,6 +122,10 @@ function renderWindingSquareNode(chapter, gIdx, loop, localIdx, order) {
         ? window.renderSquareNodePopover(chapter, node, state, overlaid, customStory, xPct)
         : '';
 
+    const qFaceHtml = (typeof window.renderAnimatedMysteryTileSvg === 'function')
+        ? `<div class="sq-q-face">${window.renderAnimatedMysteryTileSvg(numLabel, state === 'active', order)}</div>`
+        : `<div class="sq-q-face"><span class="sq-bare-num">${numLabel}</span><span class="sq-big-q">?</span></div>`;
+
     // 2. BÀI CẦN HỌC HIỆN TẠI (TO GẤP RƯỠI Ô ĐÃ HỌC, BỆ SÁNG NỔI BẬT, KHÔNG LẶP CHỮ DƯỚI ĐÁY)
     if (state === 'active') {
         return `
@@ -138,10 +142,7 @@ function renderWindingSquareNode(chapter, gIdx, loop, localIdx, order) {
                         <div class="sq-tile sq-tile-active ${overlaid ? 'has-story-cover' : 'is-mystery-q'} ${justUnlocked} ${springTileCls}"
                              data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}"
                              title="${overlaid ? roadmapAttr(displayTitle) : `Chặng ${node.num}: Chạm để chọn truyện`}">
-                            <div class="sq-q-face">
-                                <span class="sq-bare-num">${numLabel}</span>
-                                <span class="sq-big-q">?</span>
-                            </div>
+                            ${qFaceHtml}
                             ${overlayHtml}
                         </div>
                     </div>
@@ -159,10 +160,7 @@ function renderWindingSquareNode(chapter, gIdx, loop, localIdx, order) {
                     <div class="sq-tile sq-tile-${state} ${overlaid ? 'has-story-cover' : 'is-mystery-q'} ${springTileCls}"
                          data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}"
                          title="${overlaid ? roadmapAttr(displayTitle) : `Chặng ${node.num} · Ô vuông ?`}">
-                        <div class="sq-q-face">
-                            <span class="sq-bare-num">${numLabel}</span>
-                            <span class="sq-big-q">?</span>
-                        </div>
+                        ${qFaceHtml}
                         ${overlayHtml}
                     </div>
                 </div>
