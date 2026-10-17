@@ -1,6 +1,6 @@
 // ========================================================
-// 🗺️ CREATE YOUR OWN ROADMAP CONTROLLER (3D SQUARE '?' SLOTS v5.0)
-// Ceiling: < 350 lines | Standard: Material Design 3 Dark Olive Green
+// 🗺️ CREATE YOUR OWN ROADMAP CONTROLLER (3D SQUARE '?' SLOTS v5.2)
+// Ceiling: < 350 lines | Quick 3-Card Fan + Story Vocab Popover
 // ========================================================
 
 (function (window) {
@@ -9,7 +9,21 @@
     const STORAGE_KEY = 'vibecard_custom_roadmap_slots_v5_sq';
     let mysteryState = { activeNodeNum: 3, revealedStories: {}, deckModeSlots: {} };
     let mysteryListenersBound = false;
+    let outsidePopoverBound = false;
     let currentPickingSlot = { chapterId: 0, nodeNum: 3, source: 'classic' };
+
+    // Từ vựng mỏ neo (3 từ/truyện) hiển thị trong Bong bóng nổi khi chạm vào ô vuông đã có truyện
+    const STORY_VOCAB_PREVIEW = {
+        topic_001: ['downpour · mưa rào', 'shelter · trú mưa', 'warmth · ấm áp'],
+        topic_002: ['badge · thẻ tên', 'keynote · khai mạc', 'mix-up · nhầm lẫn'],
+        topic_003: ['steady · bền bỉ', 'pace · nhịp độ', 'boast · khoe khoang'],
+        topic_004: ['platform · sân ga', 'delayed · trễ tàu', 'depart · khởi hành'],
+        topic_006: ['pebble · viên sỏi', 'thirsty · khát khô', 'clever · mưu trí'],
+        topic_007: ['alley · con hẻm', 'broth · nước dùng', 'local · bản xứ'],
+        topic_008: ['attic · gác mái', 'seal · niêm phong', 'cipher · mật mã'],
+        topic_009: ['shepherd · chăn cừu', 'flock · đàn cừu', 'trust · lòng tin'],
+        topic_010: ['clause · điều khoản', 'deadline · hạn chót', 'deal · thương vụ']
+    };
 
     function getSlotKey(chapterId, nodeNum) {
         return `${chapterId || 0}_${nodeNum}`;
@@ -51,17 +65,138 @@
         renderMysteryRoadmapTimeline(chapterId);
     }
 
+    function bindOutsidePopoverClick() {
+        if (outsidePopoverBound || typeof document === 'undefined') return;
+        outsidePopoverBound = true;
+        document.addEventListener('click', (e) => {
+            if (!window.__openRoadmapPopoverKey) return;
+            if (e.target && e.target.closest && (e.target.closest('.sq-node-anchor') || e.target.closest('#roadmapGenrePickerSheet'))) return;
+            window.__openRoadmapPopoverKey = null;
+            const chIdx = (typeof window.currentRoadmapChapterIdx === 'number') ? window.currentRoadmapChapterIdx : 0;
+            refreshAllRoadmapViews(chIdx);
+        });
+    }
+    bindOutsidePopoverClick();
+
+    function toggleRoadmapNodePopover(nodeNum = 3, chapterId = 0, ev) {
+        if (ev && typeof ev.stopPropagation === 'function') ev.stopPropagation();
+        const key = getSlotKey(chapterId, nodeNum);
+        window.__openRoadmapPopoverKey = (window.__openRoadmapPopoverKey === key) ? null : key;
+        if (typeof SoundEngine !== 'undefined' && SoundEngine.play) SoundEngine.play(1);
+        refreshAllRoadmapViews(chapterId);
+    }
+
+    function closeRoadmapNodePopover(chapterId = 0) {
+        if (!window.__openRoadmapPopoverKey) return;
+        window.__openRoadmapPopoverKey = null;
+        refreshAllRoadmapViews(chapterId);
+    }
+
+    function getQuickFanSuggestions(nodeNum) {
+        const pool = (typeof window.getFullStoryPool === 'function') ? window.getFullStoryPool() : [];
+        const easyList = pool.filter(s => s.difficulty === 'easy');
+        const medList = pool.filter(s => s.difficulty === 'medium');
+        const hardList = pool.filter(s => s.difficulty === 'hard');
+        const pick = (arr, fallbackIdx) => arr.length ? arr[nodeNum % arr.length] : (pool[fallbackIdx] || pool[0]);
+        return [pick(easyList, 0), pick(medList, 3), pick(hardList, 6)].filter(Boolean);
+    }
+
+    function getStoryVocabChips(story, node) {
+        const id = (story && story.id) || (node && node.topicId) || 'topic_003';
+        return STORY_VOCAB_PREVIEW[id] || ['context · ngữ cảnh', 'fluency · phản xạ', 'idiom · thành ngữ'];
+    }
+
+    // Render Bong bóng nổi (Popover): Xòe 3 lá bài nếu là ô '?' HOẶC Xem trước 3 từ vựng + Nút Học ngay nếu đã có ảnh
+    function renderSquareNodePopover(chapter, node, state, overlaid, customStory, xPct) {
+        const chId = chapter.id || 0;
+        const num = node.num;
+        // Giữ bong bóng nổi không bao giờ tràn mép trái/phải màn hình khi ô vuông nằm ở khúc cua gắt (21% hoặc 77%)
+        const shiftPx = xPct < 32 ? 54 : (xPct > 68 ? -54 : 0);
+        const arrowShiftPx = -shiftPx;
+
+        if (!overlaid) {
+            const trio = getQuickFanSuggestions(num);
+            const fanCardsHtml = trio.map((st, idx) => {
+                const dMeta = (window.DIFFICULTY_META && window.DIFFICULTY_META[st.difficulty]) || { short: 'Vừa', badgeCls: 'age-badge-15' };
+                const safeId = String(st.id).replace(/'/g, "\\'");
+                return `
+                    <button type="button" class="sq-fan-card fan-slot-${idx}" onclick="event.stopPropagation(); pickQuickFanStory(${num}, ${chId}, '${safeId}')">
+                        <div class="sq-fan-art-wrap">
+                            <img src="${st.img}" alt="" loading="lazy" />
+                            <span class="sq-fan-diff ${dMeta.badgeCls}">${dMeta.short}</span>
+                        </div>
+                        <span class="sq-fan-title">${st.title}</span>
+                    </button>`;
+            }).join('');
+
+            return `
+                <div class="sq-popover is-fan-picker" style="--pop-shift:${shiftPx}px; --arrow-shift:${arrowShiftPx}px;" onclick="event.stopPropagation()">
+                    <span class="sq-popover-arrow"></span>
+                    <div class="sq-popover-head">
+                        <span class="sq-popover-kicker">🃏 CHỌN NHANH ĐÈ LÊN Ô #${num}</span>
+                        <button type="button" class="sq-pop-mini-link" onclick="pickRandomForNode(${num}, ${chId})">🎲 Ngẫu nhiên</button>
+                    </div>
+                    <div class="sq-fan-cards-row">${fanCardsHtml}</div>
+                    <button type="button" class="sq-pop-sheet-btn" onclick="openRoadmapGenrePickerSheet(${num}, ${chId}, 'classic')">
+                        📚 Xem toàn bộ kho truyện
+                    </button>
+                </div>`;
+        }
+
+        const activeStory = customStory || node;
+        const title = activeStory.title || node.title;
+        const dMeta = (typeof window.resolveRoadmapDifficulty === 'function')
+            ? window.resolveRoadmapDifficulty(node, customStory)
+            : { short: 'Vừa', badgeCls: 'age-badge-15' };
+        const dur = String((customStory && customStory.duration) || '4 phút').replace(/\s*phút/i, 'p');
+        const vocabs = getStoryVocabChips(customStory, node);
+        const vocabHtml = vocabs.map(v => `<span class="sq-vocab-chip">${v}</span>`).join('');
+        const unlocked = state !== 'locked';
+
+        return `
+            <div class="sq-popover is-story-preview" style="--pop-shift:${shiftPx}px; --arrow-shift:${arrowShiftPx}px;" onclick="event.stopPropagation()">
+                <span class="sq-popover-arrow"></span>
+                <div class="sq-popover-head">
+                    <span class="age-badge ${dMeta.badgeCls}">${dMeta.short} · ${dur}</span>
+                    <span class="sq-pop-xp">+20% ⚡ Lumi</span>
+                </div>
+                <h4 class="sq-pop-story-title">${title}</h4>
+                <div class="sq-vocab-row">${vocabHtml}</div>
+                <div class="sq-pop-actions">
+                    ${unlocked
+                        ? `<button type="button" class="sq-pop-start-btn" onclick="launchRevealedLesson(${num}, ${chId})">▶ Bắt đầu học ngay</button>`
+                        : `<button type="button" class="sq-pop-start-btn is-locked-btn" onclick="openRoadmapGenrePickerSheet(${num}, ${chId}, 'classic')">🔒 Đã đặt trước · Chạm đổi truyện</button>`
+                    }
+                    <div class="sq-pop-sub-btns">
+                        <button type="button" class="sq-pop-icon-btn" title="Gỡ về lại ô ?" onclick="resetRoadmapSlotToDeck(${num}, ${chId})">❓ Về ô ?</button>
+                        <button type="button" class="sq-pop-icon-btn is-gold" title="Đổi truyện khác" onclick="openRoadmapGenrePickerSheet(${num}, ${chId}, 'classic')">🎲 Đổi</button>
+                    </div>
+                </div>
+            </div>`;
+    }
+
+    function pickQuickFanStory(nodeNum, chapterId, storyId) {
+        currentPickingSlot = { chapterId: chapterId || 0, nodeNum: nodeNum || 3, source: 'classic' };
+        const pool = (typeof window.getFullStoryPool === 'function') ? window.getFullStoryPool() : [];
+        const matched = pool.find(s => String(s.id) === String(storyId)) || pool[0];
+        bindStoryToCurrentSlot(matched, true);
+    }
+
+    function pickRandomForNode(nodeNum, chapterId) {
+        currentPickingSlot = { chapterId: chapterId || 0, nodeNum: nodeNum || 3, source: 'classic' };
+        handleRandomStoryPick(true);
+    }
+
     function resetRoadmapSlotToDeck(nodeNum = 3, chapterId = 0) {
         const key = getSlotKey(chapterId, nodeNum);
         if (!mysteryState.deckModeSlots) mysteryState.deckModeSlots = {};
         mysteryState.deckModeSlots[key] = true;
         delete mysteryState.revealedStories[key];
         delete mysteryState.revealedStories[nodeNum];
+        window.__openRoadmapPopoverKey = key; // Mở ngay xòe 3 lá bài trên ô '?' vừa gỡ
         saveState();
         refreshAllRoadmapViews(chapterId);
-        if (typeof showDictToast === 'function') {
-            showDictToast(`❓ Đã gỡ ảnh truyện ở Chặng ${nodeNum} về lại ô vuông ?`);
-        }
+        if (typeof showDictToast === 'function') showDictToast(`❓ Đã gỡ ảnh truyện ở Ô #${nodeNum} về lại dấu ?`);
     }
 
     function ensureSheetMountedOnBody() {
@@ -99,41 +234,23 @@
         const classicScreen = document.getElementById('screenParchmentRoadmap');
         if (classicScreen && !classicScreen.classList.contains('hidden')) classicScreen.classList.add('hidden');
         bindMysteryScrollListener();
-        renderMysteryAmbientRain();
         const chIdx = (typeof window.currentRoadmapChapterIdx === 'number') ? window.currentRoadmapChapterIdx : 0;
         refreshAllRoadmapViews(chIdx);
         screen.classList.remove('hidden');
         requestAnimationFrame(() => screen.classList.remove('translate-x-full'));
-        const scrollArea = document.getElementById('scrollAreaMysteryRoadmap');
-        const topBar = document.getElementById('mysteryRoadmapTopBar');
-        const heroBox = document.getElementById('mysteryHeroContentBox');
-        if (scrollArea) scrollArea.scrollTop = 0;
-        if (topBar) topBar.classList.remove('is-scrolled');
-        if (heroBox) { heroBox.style.opacity = '1'; heroBox.style.pointerEvents = 'auto'; heroBox.style.transform = 'translateY(0)'; }
-        if (typeof SoundEngine !== 'undefined' && SoundEngine.play) SoundEngine.play(1);
     }
 
     function closeMysteryRoadmap() {
         const screen = document.getElementById('screenMysteryRoadmap');
         if (!screen) return;
         screen.classList.add('translate-x-full');
-        setTimeout(() => {
-            screen.classList.add('hidden');
-            const topBar = document.getElementById('mysteryRoadmapTopBar');
-            if (topBar) topBar.classList.remove('is-scrolled');
-        }, 300);
+        setTimeout(() => screen.classList.add('hidden'), 300);
     }
 
     function switchToClassicRoadmap() {
         const chIdx = (typeof window.currentRoadmapChapterIdx === 'number') ? window.currentRoadmapChapterIdx : 0;
         closeMysteryRoadmap();
         setTimeout(() => { if (typeof window.openParchmentRoadmap === 'function') window.openParchmentRoadmap(chIdx); }, 220);
-    }
-
-    function renderMysteryAmbientRain() {
-        const container = document.getElementById('mysteryAmbientContainer');
-        if (!container) return;
-        container.innerHTML = Array.from({ length: 16 }, () => `<div class="ambient-rain-drop" style="left:${(Math.random() * 100).toFixed(1)}%; top:${(Math.random() * -80).toFixed(0)}px; animation-duration:${(0.85 + Math.random() * 0.65).toFixed(2)}s; animation-delay:${(Math.random() * 2).toFixed(2)}s;"></div>`).join('');
     }
 
     function renderMysteryRoadmapTimeline(chapterIdx) {
@@ -165,7 +282,7 @@
         if (sheet) sheet.classList.add('hidden');
     }
 
-    function bindStoryToCurrentSlot(matchedStory) {
+    function bindStoryToCurrentSlot(matchedStory, keepPopoverOpen = true) {
         if (!matchedStory) return;
         closeRoadmapGenrePickerSheet();
         const { chapterId, nodeNum } = currentPickingSlot;
@@ -175,27 +292,29 @@
         mysteryState.revealedStories[key] = { story: matchedStory };
         mysteryState.revealedStories[nodeNum] = { story: matchedStory };
         window.__justRevealedSlot = key;
+        window.__openRoadmapPopoverKey = keepPopoverOpen ? key : null;
         setTimeout(() => { if (window.__justRevealedSlot === key) window.__justRevealedSlot = null; }, 1100);
         saveState();
         if (typeof SoundEngine !== 'undefined' && SoundEngine.play) SoundEngine.play(4);
         refreshAllRoadmapViews(chapterId);
         if (typeof showDictToast === 'function') {
-            showDictToast(`✨ Đã đặt truyện "${matchedStory.title}" đè lên ô ? Chặng ${nodeNum}!`);
+            showDictToast(`✨ Đã đặt truyện "${matchedStory.title}" đè lên Ô #${nodeNum}!`);
         }
     }
 
     function handlePickStoryById(storyId) {
         const pool = (typeof window.getFullStoryPool === 'function') ? window.getFullStoryPool() : [];
-        bindStoryToCurrentSlot(pool.find(s => String(s.id) === String(storyId)) || pool[0]);
+        bindStoryToCurrentSlot(pool.find(s => String(s.id) === String(storyId)) || pool[0], true);
     }
 
-    function handleRandomStoryPick() {
+    function handleRandomStoryPick(keepOpen = true) {
         const list = (typeof window.getFilteredStories === 'function' && window.getFilteredStories().length > 0)
             ? window.getFilteredStories() : ((typeof window.getFullStoryPool === 'function') ? window.getFullStoryPool() : []);
-        bindStoryToCurrentSlot(list[Math.floor(Math.random() * list.length)]);
+        bindStoryToCurrentSlot(list[Math.floor(Math.random() * list.length)], keepOpen);
     }
 
     function launchRevealedLesson(nodeNum = 3, chapterId = 0) {
+        window.__openRoadmapPopoverKey = null;
         const assigned = getAssignedStory(chapterId, nodeNum);
         const chapter = (typeof window.roadmapChaptersData !== 'undefined' && window.roadmapChaptersData[chapterId || 0]) || { nodes: [] };
         const fallbackNode = (chapter.nodes || []).find(n => n.num === nodeNum);
@@ -217,6 +336,8 @@
 
     Object.assign(window, {
         getAssignedRoadmapStory: getAssignedStory, isRoadmapSlotInDeckMode, resetRoadmapSlotToDeck,
+        toggleRoadmapNodePopover, closeRoadmapNodePopover, renderSquareNodePopover,
+        pickQuickFanStory, pickRandomForNode,
         renderMysteryRoadmapTimeline, openMysteryRoadmap, closeMysteryRoadmap, switchToClassicRoadmap,
         openRoadmapGenrePickerSheet, closeRoadmapGenrePickerSheet,
         handlePickStoryById, handleRandomStoryPick, handleSelectGenreAndReveal: handleRandomStoryPick, launchRevealedLesson
