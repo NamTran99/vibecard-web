@@ -252,43 +252,21 @@
         return sheet;
     }
 
-    function openMysteryRoadmap() {
+    function openMysteryRoadmap(chapterIdx) {
         loadSavedState();
-        const screen = document.getElementById('screenMysteryRoadmap');
-        if (!screen) return;
-        const classicScreen = document.getElementById('screenParchmentRoadmap');
-        if (classicScreen && !classicScreen.classList.contains('hidden')) classicScreen.classList.add('hidden');
-        const chIdx = (typeof window.currentRoadmapChapterIdx === 'number') ? window.currentRoadmapChapterIdx : 0;
-        refreshAllRoadmapViews(chIdx);
-        screen.classList.remove('hidden');
-        requestAnimationFrame(() => screen.classList.remove('translate-x-full'));
+        const chIdx = (typeof chapterIdx === 'number') ? chapterIdx : ((typeof window.currentRoadmapChapterIdx === 'number') ? window.currentRoadmapChapterIdx : 0);
+        if (typeof window.openParchmentRoadmap === 'function') window.openParchmentRoadmap(chIdx);
     }
 
     function closeMysteryRoadmap() {
-        const screen = document.getElementById('screenMysteryRoadmap');
-        if (!screen) return;
-        screen.classList.add('translate-x-full');
-        setTimeout(() => screen.classList.add('hidden'), 300);
+        if (typeof window.closeParchmentRoadmap === 'function') window.closeParchmentRoadmap();
     }
 
     function switchToClassicRoadmap() {
-        const chIdx = (typeof window.currentRoadmapChapterIdx === 'number') ? window.currentRoadmapChapterIdx : 0;
-        closeMysteryRoadmap();
-        setTimeout(() => { if (typeof window.openParchmentRoadmap === 'function') window.openParchmentRoadmap(chIdx); }, 220);
+        openMysteryRoadmap();
     }
 
-    function renderMysteryRoadmapTimeline(chapterIdx) {
-        const container = document.getElementById('mysteryRoadmapNodesContainer');
-        if (!container) return;
-        const idx = (typeof chapterIdx === 'number') ? chapterIdx : ((typeof window.currentRoadmapChapterIdx === 'number') ? window.currentRoadmapChapterIdx : 0);
-        const chapter = (typeof window.roadmapChaptersData !== 'undefined' && window.roadmapChaptersData[idx]) ? window.roadmapChaptersData[idx] : { id: 0, nodes: [] };
-        if (typeof window.buildRoadmapTimelineHtml === 'function') {
-            container.innerHTML = window.buildRoadmapTimelineHtml(chapter, { animateIn: true });
-            if (typeof window.applyRoadmapFillAnimations === 'function') {
-                requestAnimationFrame(() => window.applyRoadmapFillAnimations(container));
-            }
-        }
-    }
+    function renderMysteryRoadmapTimeline() {}
 
     function openRoadmapGenrePickerSheet(nodeNum = 3, chapterId = 0, source = 'classic') {
         currentPickingSlot = { chapterId, nodeNum, source };
