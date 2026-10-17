@@ -32,17 +32,10 @@ function updateRoadmapTopBarOnScroll() {
     const topBar = document.getElementById('roadmapTopBar');
     if (!scrollArea || !screen || !topBar) return;
     const y = scrollArea.scrollTop;
-    const heroBox = document.getElementById('roadmapHeroContentBox');
-    if (heroBox) {
-        const fade = Math.max(0, Math.min(1, 1 - Math.max(0, y - 8) / 72));
-        heroBox.style.opacity = String(fade);
-        heroBox.style.pointerEvents = fade < 0.15 ? 'none' : 'auto';
-        heroBox.style.transform = `translateY(${Math.min(12, Math.max(0, (y - 8) * 0.15)).toFixed(1)}px)`;
-    }
-    if (y > 90) {
+    if (y > 140) {
         screen.classList.add('mb-condensed');
         topBar.classList.add('is-scrolled');
-    } else if (y < 76) {
+    } else if (y < 120) {
         screen.classList.remove('mb-condensed');
         topBar.classList.remove('is-scrolled');
     }

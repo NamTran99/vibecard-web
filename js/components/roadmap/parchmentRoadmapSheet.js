@@ -106,9 +106,12 @@ function selectRoadmapChapter(idx, opts = {}) {
     const switching = idx !== currentRoadmapChapterIdx;
     currentRoadmapChapterIdx = idx;
     const ch = roadmapChaptersData[idx];
-    const progChipText = `${getRoadmapCompletedCount(ch)}/${(ch.nodes || []).length} chặng`;
+    const doneCount = getRoadmapCompletedCount(ch);
+    const totalCount = (ch.nodes || []).length || 10;
+    const progChipText = `${doneCount}/${totalCount} chặng`;
+    const progPct = Math.max(0, Math.min(100, Math.round((doneCount / totalCount) * 100)));
 
-    // 1. Single-Row Dropdown Header (Đồng bộ cả 2 màn hình Roadmap)
+    // 1. Single-Row Dropdown Header & Floating Chapter Card Progress
     ['roadmapHeaderEyebrow', 'mysteryHeaderEyebrow'].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.innerText = `CHƯƠNG ${idx + 1}`;
@@ -121,6 +124,8 @@ function selectRoadmapChapter(idx, opts = {}) {
         const el = document.getElementById(id);
         if (el) el.innerText = progChipText;
     });
+    const progFillEl = document.getElementById('roadmapHeroProgressFill');
+    if (progFillEl) progFillEl.style.width = `${progPct}%`;
     const progressEl = document.getElementById('roadmapProgressText');
     if (progressEl) progressEl.innerText = getRoadmapProgressLabel(ch);
 
