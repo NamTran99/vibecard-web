@@ -1,6 +1,6 @@
 // ========================================================
-// 🗺️ CREATE YOUR OWN ROADMAP CONTROLLER (3D SQUARE '?' SLOTS v5.2)
-// Ceiling: < 350 lines | Quick 3-Card Fan + Story Vocab Popover
+// 🗺️ CREATE YOUR OWN ROADMAP CONTROLLER (mobile-web-pwa V4.0)
+// Ceiling: < 350 lines | Zero Nested Borders & Pure Typography
 // ========================================================
 
 (function (window) {
@@ -12,7 +12,6 @@
     let outsidePopoverBound = false;
     let currentPickingSlot = { chapterId: 0, nodeNum: 3, source: 'classic' };
 
-    // Từ vựng mỏ neo (3 từ/truyện) hiển thị trong Bong bóng nổi khi chạm vào ô vuông đã có truyện
     const STORY_VOCAB_PREVIEW = {
         topic_001: ['downpour · mưa rào', 'shelter · trú mưa', 'warmth · ấm áp'],
         topic_002: ['badge · thẻ tên', 'keynote · khai mạc', 'mix-up · nhầm lẫn'],
@@ -106,26 +105,25 @@
         return STORY_VOCAB_PREVIEW[id] || ['context · ngữ cảnh', 'fluency · phản xạ', 'idiom · thành ngữ'];
     }
 
-    // Render Bong bóng nổi (Popover): Xòe 3 lá bài nếu là ô '?' HOẶC Xem trước 3 từ vựng + Nút Học ngay nếu đã có ảnh
+    // Popover chuẩn mobile-web-pwa V4.0: Single Outer Boundary, Zero Nested Borders, Clean Artwork
     function renderSquareNodePopover(chapter, node, state, overlaid, customStory, xPct) {
         const chId = chapter.id || 0;
         const num = node.num;
-        // Giữ bong bóng nổi không bao giờ tràn mép trái/phải màn hình khi ô vuông nằm ở khúc cua gắt (21% hoặc 77%)
-        const shiftPx = xPct < 32 ? 54 : (xPct > 68 ? -54 : 0);
+        const shiftPx = xPct < 32 ? 56 : (xPct > 68 ? -56 : 0);
         const arrowShiftPx = -shiftPx;
 
         if (!overlaid) {
             const trio = getQuickFanSuggestions(num);
-            const fanCardsHtml = trio.map((st, idx) => {
-                const dMeta = (window.DIFFICULTY_META && window.DIFFICULTY_META[st.difficulty]) || { short: 'Vừa', badgeCls: 'age-badge-15' };
+            const fanCardsHtml = trio.map((st) => {
+                const dMeta = (window.DIFFICULTY_META && window.DIFFICULTY_META[st.difficulty]) || { short: 'Vừa' };
                 const safeId = String(st.id).replace(/'/g, "\\'");
                 return `
-                    <button type="button" class="sq-fan-card fan-slot-${idx}" onclick="event.stopPropagation(); pickQuickFanStory(${num}, ${chId}, '${safeId}')">
+                    <button type="button" class="sq-fan-card" onclick="event.stopPropagation(); pickQuickFanStory(${num}, ${chId}, '${safeId}')">
                         <div class="sq-fan-art-wrap">
                             <img src="${st.img}" alt="" loading="lazy" />
-                            <span class="sq-fan-diff ${dMeta.badgeCls}">${dMeta.short}</span>
                         </div>
                         <span class="sq-fan-title">${st.title}</span>
+                        <span class="sq-fan-meta">• ${dMeta.short}</span>
                     </button>`;
             }).join('');
 
@@ -133,12 +131,13 @@
                 <div class="sq-popover is-fan-picker" style="--pop-shift:${shiftPx}px; --arrow-shift:${arrowShiftPx}px;" onclick="event.stopPropagation()">
                     <span class="sq-popover-arrow"></span>
                     <div class="sq-popover-head">
-                        <span class="sq-popover-kicker">🃏 CHỌN NHANH ĐÈ LÊN Ô #${num}</span>
-                        <button type="button" class="sq-pop-mini-link" onclick="pickRandomForNode(${num}, ${chId})">🎲 Ngẫu nhiên</button>
+                        <span class="sq-popover-kicker">Chọn truyện · Chặng ${num}</span>
+                        <button type="button" class="sq-pop-ghost-link" onclick="pickRandomForNode(${num}, ${chId})">Ngẫu nhiên</button>
                     </div>
                     <div class="sq-fan-cards-row">${fanCardsHtml}</div>
                     <button type="button" class="sq-pop-sheet-btn" onclick="openRoadmapGenrePickerSheet(${num}, ${chId}, 'classic')">
-                        📚 Xem toàn bộ kho truyện
+                        <span>Mở kho truyện đầy đủ</span>
+                        <span aria-hidden="true">›</span>
                     </button>
                 </div>`;
         }
@@ -147,8 +146,8 @@
         const title = activeStory.title || node.title;
         const dMeta = (typeof window.resolveRoadmapDifficulty === 'function')
             ? window.resolveRoadmapDifficulty(node, customStory)
-            : { short: 'Vừa', badgeCls: 'age-badge-15' };
-        const dur = String((customStory && customStory.duration) || '4 phút').replace(/\s*phút/i, 'p');
+            : { short: 'Vừa' };
+        const dur = String((customStory && customStory.duration) || '4 phút');
         const vocabs = getStoryVocabChips(customStory, node);
         const vocabHtml = vocabs.map(v => `<span class="sq-vocab-chip">${v}</span>`).join('');
         const unlocked = state !== 'locked';
@@ -156,20 +155,18 @@
         return `
             <div class="sq-popover is-story-preview" style="--pop-shift:${shiftPx}px; --arrow-shift:${arrowShiftPx}px;" onclick="event.stopPropagation()">
                 <span class="sq-popover-arrow"></span>
-                <div class="sq-popover-head">
-                    <span class="age-badge ${dMeta.badgeCls}">${dMeta.short} · ${dur}</span>
-                    <span class="sq-pop-xp">+20% ⚡ Lumi</span>
-                </div>
                 <h4 class="sq-pop-story-title">${title}</h4>
+                <div class="sq-pop-meta-line">${dMeta.short} · ${dur} · +20% Lumi</div>
                 <div class="sq-vocab-row">${vocabHtml}</div>
                 <div class="sq-pop-actions">
                     ${unlocked
-                        ? `<button type="button" class="sq-pop-start-btn" onclick="launchRevealedLesson(${num}, ${chId})">▶ Bắt đầu học ngay</button>`
-                        : `<button type="button" class="sq-pop-start-btn is-locked-btn" onclick="openRoadmapGenrePickerSheet(${num}, ${chId}, 'classic')">🔒 Đã đặt trước · Chạm đổi truyện</button>`
+                        ? `<button type="button" class="sq-pop-start-btn" onclick="launchRevealedLesson(${num}, ${chId})">Bắt đầu học ngay</button>`
+                        : `<button type="button" class="sq-pop-start-btn is-locked-btn" onclick="openRoadmapGenrePickerSheet(${num}, ${chId}, 'classic')">Đã chọn trước · Chạm để đổi</button>`
                     }
-                    <div class="sq-pop-sub-btns">
-                        <button type="button" class="sq-pop-icon-btn" title="Gỡ về lại ô ?" onclick="resetRoadmapSlotToDeck(${num}, ${chId})">❓ Về ô ?</button>
-                        <button type="button" class="sq-pop-icon-btn is-gold" title="Đổi truyện khác" onclick="openRoadmapGenrePickerSheet(${num}, ${chId}, 'classic')">🎲 Đổi</button>
+                    <div class="sq-seg-bar">
+                        <button type="button" class="sq-seg-btn" onclick="openRoadmapGenrePickerSheet(${num}, ${chId}, 'classic')">Đổi truyện khác</button>
+                        <span class="sq-seg-div" aria-hidden="true"></span>
+                        <button type="button" class="sq-seg-btn is-muted" onclick="resetRoadmapSlotToDeck(${num}, ${chId})">Đặt lại ô ?</button>
                     </div>
                 </div>
             </div>`;
@@ -193,10 +190,10 @@
         mysteryState.deckModeSlots[key] = true;
         delete mysteryState.revealedStories[key];
         delete mysteryState.revealedStories[nodeNum];
-        window.__openRoadmapPopoverKey = key; // Mở ngay xòe 3 lá bài trên ô '?' vừa gỡ
+        window.__openRoadmapPopoverKey = key;
         saveState();
         refreshAllRoadmapViews(chapterId);
-        if (typeof showDictToast === 'function') showDictToast(`❓ Đã gỡ ảnh truyện ở Ô #${nodeNum} về lại dấu ?`);
+        if (typeof showDictToast === 'function') showDictToast(`Đã đặt lại Chặng ${nodeNum} về ô ?`);
     }
 
     function ensureSheetMountedOnBody() {
@@ -271,7 +268,7 @@
         const sheet = ensureSheetMountedOnBody();
         if (!sheet) return;
         const badge = document.getElementById('pickerSheetNodeBadge');
-        if (badge) badge.textContent = `Ô VUÔNG #${nodeNum}`;
+        if (badge) badge.textContent = `Chặng ${nodeNum}`;
         if (typeof window.renderMysteryGenreCardsList === 'function') window.renderMysteryGenreCardsList();
         sheet.classList.remove('hidden');
         if (typeof SoundEngine !== 'undefined' && SoundEngine.play) SoundEngine.play(1);
@@ -298,7 +295,7 @@
         if (typeof SoundEngine !== 'undefined' && SoundEngine.play) SoundEngine.play(4);
         refreshAllRoadmapViews(chapterId);
         if (typeof showDictToast === 'function') {
-            showDictToast(`✨ Đã đặt truyện "${matchedStory.title}" đè lên Ô #${nodeNum}!`);
+            showDictToast(`Đã chọn "${matchedStory.title}" cho Chặng ${nodeNum}`);
         }
     }
 
