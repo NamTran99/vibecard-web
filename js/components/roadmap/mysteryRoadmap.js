@@ -1,6 +1,6 @@
 // ========================================================
 // 🗺️ CREATE YOUR OWN ROADMAP CONTROLLER (mobile-web-pwa V4.0)
-// Ceiling: < 350 lines | Zero Nested Borders & Pure Typography
+// Ceiling: < 350 lines | Story Hook Audio Preview + Popover
 // ========================================================
 
 (function (window) {
@@ -23,6 +23,21 @@
         topic_009: ['shepherd · chăn cừu', 'flock · đàn cừu', 'trust · lòng tin'],
         topic_010: ['clause · điều khoản', 'deadline · hạn chót', 'deal · thương vụ']
     };
+
+    // Mục #3: 1 Câu dẫn mở đầu gợi tò mò + câu phát âm bản xứ khi bấm nút Loa trong Popover
+    const STORY_HOOK_PREVIEW = {
+        topic_001: { en: 'A sudden downpour brought us under the warm café eaves.', vi: '“Cơn mưa rào bất chợt kéo hai người lạ vào chung mái hiên quán nhỏ…”' },
+        topic_002: { en: 'Excuse me, I think we accidentally swapped our name badges.', vi: '“Xin lỗi, hình như chúng ta vừa cầm nhầm thẻ tên của nhau ở quầy lễ tân…”' },
+        topic_003: { en: 'Slow and steady wins the race across the spring valley.', vi: '“Chậm mà chắc mới là người chạm đích cuối cùng giữa thung lũng mùa xuân…”' },
+        topic_004: { en: 'The midnight train is delayed on platform three.', vi: '“Chuyến tàu nửa đêm vừa báo hoãn giữa sân ga số 3 mờ sương…”' },
+        topic_006: { en: 'One pebble at a time, the water began to rise.', vi: '“Từng viên sỏi nhỏ thả xuống, mực nước trong bình từ từ dâng lên…”' },
+        topic_007: { en: 'Follow the warm aroma of ramen down the quiet alley.', vi: '“Đi theo hương nước dùng thơm lừng cuối con hẻm nhỏ lúc lên đèn…”' },
+        topic_008: { en: 'Under the moonlight, the ancient wax seal finally cracked.', vi: '“Dưới ánh trăng bạc, dấu niêm phong bằng sáp cổ cuối cùng cũng hé mở…”' },
+        topic_009: { en: 'Once trust is broken, even the truth sounds hollow.', vi: '“Khi niềm tin đã vơi, lời nói thật cũng hóa tiếng vọng giữa đồi cỏ…”' },
+        topic_010: { en: 'We have ten minutes left before the live broadcast begins.', vi: '“Chỉ còn đúng mười phút cuối trước khi đèn báo lên sóng trực tiếp bật sáng…”' }
+    };
+
+    const ICON_SPEAKER = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>';
 
     function getSlotKey(chapterId, nodeNum) {
         return `${chapterId || 0}_${nodeNum}`;
@@ -51,9 +66,7 @@
     }
 
     function saveState() {
-        try {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(mysteryState));
-        } catch (e) {}
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(mysteryState)); } catch (e) {}
     }
     loadSavedState();
 
@@ -62,6 +75,10 @@
             window.selectRoadmapChapter(chapterId, { keepScroll: true });
         }
         renderMysteryRoadmapTimeline(chapterId);
+        if (typeof window.renderRoadmapNextBar === 'function') {
+            const ch = (window.roadmapChaptersData && window.roadmapChaptersData[chapterId]) || null;
+            window.renderRoadmapNextBar(ch);
+        }
     }
 
     function bindOutsidePopoverClick() {
@@ -69,7 +86,7 @@
         outsidePopoverBound = true;
         document.addEventListener('click', (e) => {
             if (!window.__openRoadmapPopoverKey) return;
-            if (e.target && e.target.closest && (e.target.closest('.sq-node-anchor') || e.target.closest('#roadmapGenrePickerSheet'))) return;
+            if (e.target && e.target.closest && (e.target.closest('.sq-node-anchor') || e.target.closest('.sq-thumb-dock') || e.target.closest('#roadmapGenrePickerSheet'))) return;
             window.__openRoadmapPopoverKey = null;
             const chIdx = (typeof window.currentRoadmapChapterIdx === 'number') ? window.currentRoadmapChapterIdx : 0;
             refreshAllRoadmapViews(chIdx);
@@ -105,7 +122,35 @@
         return STORY_VOCAB_PREVIEW[id] || ['context · ngữ cảnh', 'fluency · phản xạ', 'idiom · thành ngữ'];
     }
 
-    // Popover chuẩn mobile-web-pwa V4.0: Single Outer Boundary, Zero Nested Borders, Clean Artwork
+    function getStoryHookData(story, node) {
+        const id = (story && story.id) || (node && node.topicId) || 'topic_003';
+        if (STORY_HOOK_PREVIEW[id]) return STORY_HOOK_PREVIEW[id];
+        const fallbackVi = (story && story.scenario) || (node && node.scenario) || 'Khám phá tình huống giao tiếp tự nhiên qua câu chuyện.';
+        return { en: 'Listen closely to how native speakers handle this moment.', vi: `“${fallbackVi}”` };
+    }
+
+    function playStoryHookAudio(encodedEnText, btnEl) {
+        const text = decodeURIComponent(encodedEnText || '');
+        if (!text) return;
+        if (btnEl && btnEl.classList) {
+            btnEl.classList.add('is-speaking');
+            setTimeout(() => btnEl.classList.remove('is-speaking'), 2400);
+        }
+        if (typeof window.speechSynthesis !== 'undefined') {
+            try {
+                window.speechSynthesis.cancel();
+                const utter = new SpeechSynthesisUtterance(text);
+                utter.lang = 'en-US';
+                utter.rate = 0.96;
+                utter.onend = () => { if (btnEl && btnEl.classList) btnEl.classList.remove('is-speaking'); };
+                window.speechSynthesis.speak(utter);
+                return;
+            } catch (_) {}
+        }
+        if (typeof SoundEngine !== 'undefined' && SoundEngine.play) SoundEngine.play(1);
+    }
+
+    // Popover chuẩn mobile-web-pwa V4.0 + Câu dẫn mở đầu & Nút Loa nghe thử (#3)
     function renderSquareNodePopover(chapter, node, state, overlaid, customStory, xPct) {
         const chId = chapter.id || 0;
         const num = node.num;
@@ -119,9 +164,7 @@
                 const safeId = String(st.id).replace(/'/g, "\\'");
                 return `
                     <button type="button" class="sq-fan-card" onclick="event.stopPropagation(); pickQuickFanStory(${num}, ${chId}, '${safeId}')">
-                        <div class="sq-fan-art-wrap">
-                            <img src="${st.img}" alt="" loading="lazy" />
-                        </div>
+                        <div class="sq-fan-art-wrap"><img src="${st.img}" alt="" loading="lazy" /></div>
                         <span class="sq-fan-title">${st.title}</span>
                         <span class="sq-fan-meta">• ${dMeta.short}</span>
                     </button>`;
@@ -136,8 +179,7 @@
                     </div>
                     <div class="sq-fan-cards-row">${fanCardsHtml}</div>
                     <button type="button" class="sq-pop-sheet-btn" onclick="openRoadmapGenrePickerSheet(${num}, ${chId}, 'classic')">
-                        <span>Mở kho truyện đầy đủ</span>
-                        <span aria-hidden="true">›</span>
+                        <span>Mở kho truyện đầy đủ</span><span aria-hidden="true">›</span>
                     </button>
                 </div>`;
         }
@@ -145,18 +187,27 @@
         const activeStory = customStory || node;
         const title = activeStory.title || node.title;
         const dMeta = (typeof window.resolveRoadmapDifficulty === 'function')
-            ? window.resolveRoadmapDifficulty(node, customStory)
-            : { short: 'Vừa' };
+            ? window.resolveRoadmapDifficulty(node, customStory) : { short: 'Vừa' };
         const dur = String((customStory && customStory.duration) || '4 phút');
         const vocabs = getStoryVocabChips(customStory, node);
         const vocabHtml = vocabs.map(v => `<span class="sq-vocab-chip">${v}</span>`).join('');
+        const hook = getStoryHookData(customStory, node);
+        const encodedEn = encodeURIComponent(hook.en);
         const unlocked = state !== 'locked';
 
         return `
             <div class="sq-popover is-story-preview" style="--pop-shift:${shiftPx}px; --arrow-shift:${arrowShiftPx}px;" onclick="event.stopPropagation()">
                 <span class="sq-popover-arrow"></span>
-                <h4 class="sq-pop-story-title">${title}</h4>
-                <div class="sq-pop-meta-line">${dMeta.short} · ${dur} · +20% Lumi</div>
+                <div class="sq-pop-title-row">
+                    <div class="sq-pop-title-col">
+                        <h4 class="sq-pop-story-title">${title}</h4>
+                        <div class="sq-pop-meta-line">${dMeta.short} · ${dur} · +20% Lumi</div>
+                    </div>
+                    <button type="button" class="sq-audio-preview-btn" onclick="playStoryHookAudio('${encodedEn}', this)" title="Nghe thử câu mở đầu tiếng Anh" aria-label="Nghe thử">
+                        ${ICON_SPEAKER}
+                    </button>
+                </div>
+                <p class="sq-story-hook-line">${hook.vi}</p>
                 <div class="sq-vocab-row">${vocabHtml}</div>
                 <div class="sq-pop-actions">
                     ${unlocked
@@ -175,8 +226,7 @@
     function pickQuickFanStory(nodeNum, chapterId, storyId) {
         currentPickingSlot = { chapterId: chapterId || 0, nodeNum: nodeNum || 3, source: 'classic' };
         const pool = (typeof window.getFullStoryPool === 'function') ? window.getFullStoryPool() : [];
-        const matched = pool.find(s => String(s.id) === String(storyId)) || pool[0];
-        bindStoryToCurrentSlot(matched, true);
+        bindStoryToCurrentSlot(pool.find(s => String(s.id) === String(storyId)) || pool[0], true);
     }
 
     function pickRandomForNode(nodeNum, chapterId) {
@@ -202,35 +252,12 @@
         return sheet;
     }
 
-    function bindMysteryScrollListener() {
-        if (mysteryListenersBound) return;
-        const scrollArea = document.getElementById('scrollAreaMysteryRoadmap');
-        const topBar = document.getElementById('mysteryRoadmapTopBar');
-        if (!scrollArea) return;
-        mysteryListenersBound = true;
-        scrollArea.addEventListener('scroll', () => {
-            const y = scrollArea.scrollTop;
-            const heroBox = document.getElementById('mysteryHeroContentBox');
-            if (heroBox) {
-                const fade = Math.max(0, Math.min(1, 1 - Math.max(0, y - 8) / 72));
-                heroBox.style.opacity = String(fade);
-                heroBox.style.pointerEvents = fade < 0.15 ? 'none' : 'auto';
-                heroBox.style.transform = `translateY(${Math.min(12, Math.max(0, (y - 8) * 0.15)).toFixed(1)}px)`;
-            }
-            if (topBar) {
-                if (y > 90) topBar.classList.add('is-scrolled');
-                else if (y < 76) topBar.classList.remove('is-scrolled');
-            }
-        }, { passive: true });
-    }
-
     function openMysteryRoadmap() {
         loadSavedState();
         const screen = document.getElementById('screenMysteryRoadmap');
         if (!screen) return;
         const classicScreen = document.getElementById('screenParchmentRoadmap');
         if (classicScreen && !classicScreen.classList.contains('hidden')) classicScreen.classList.add('hidden');
-        bindMysteryScrollListener();
         const chIdx = (typeof window.currentRoadmapChapterIdx === 'number') ? window.currentRoadmapChapterIdx : 0;
         refreshAllRoadmapViews(chIdx);
         screen.classList.remove('hidden');
@@ -294,9 +321,7 @@
         saveState();
         if (typeof SoundEngine !== 'undefined' && SoundEngine.play) SoundEngine.play(4);
         refreshAllRoadmapViews(chapterId);
-        if (typeof showDictToast === 'function') {
-            showDictToast(`Đã chọn "${matchedStory.title}" cho Chặng ${nodeNum}`);
-        }
+        if (typeof showDictToast === 'function') showDictToast(`Đã chọn "${matchedStory.title}" cho Chặng ${nodeNum}`);
     }
 
     function handlePickStoryById(storyId) {
@@ -317,10 +342,7 @@
         const fallbackNode = (chapter.nodes || []).find(n => n.num === nodeNum);
         const isCompleted = fallbackNode && fallbackNode.status === 'completed';
         const story = (assigned && assigned.story) ? assigned.story : (isCompleted ? fallbackNode : null);
-        if (!story) {
-            openRoadmapGenrePickerSheet(nodeNum, chapterId, 'classic');
-            return;
-        }
+        if (!story) { openRoadmapGenrePickerSheet(nodeNum, chapterId, 'classic'); return; }
         const lessonPayload = {
             chapterNumber: nodeNum, title: story.title, subtitle: story.subtitle || `Chặng ${nodeNum}`,
             category: `CHẶNG ${nodeNum} • ${story.age || 'TỰ CHỌN'}`, desc: story.scenario,
@@ -333,7 +355,7 @@
 
     Object.assign(window, {
         getAssignedRoadmapStory: getAssignedStory, isRoadmapSlotInDeckMode, resetRoadmapSlotToDeck,
-        toggleRoadmapNodePopover, closeRoadmapNodePopover, renderSquareNodePopover,
+        toggleRoadmapNodePopover, closeRoadmapNodePopover, renderSquareNodePopover, playStoryHookAudio,
         pickQuickFanStory, pickRandomForNode,
         renderMysteryRoadmapTimeline, openMysteryRoadmap, closeMysteryRoadmap, switchToClassicRoadmap,
         openRoadmapGenrePickerSheet, closeRoadmapGenrePickerSheet,

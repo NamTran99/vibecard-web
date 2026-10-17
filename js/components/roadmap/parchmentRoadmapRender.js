@@ -1,6 +1,6 @@
 // ========================================================
 // 🗺️ WINDING 3D SQUARE '?' STEPPING-STONE ROADMAP RENDERER
-// Ceiling: < 350 lines | mobile-web-pwa V4.0 (Zero Border Slop)
+// Ceiling: < 350 lines | mobile-web-pwa V4.0 + Thumb Dock + Ripple
 // ========================================================
 
 function roadmapJsArg(str) {
@@ -19,7 +19,6 @@ function resolveRoadmapNodeState(chapter, index) {
     return prev && prev.status === 'completed' ? 'active' : 'locked';
 }
 
-// Đường cong chữ S uốn lượn cho 5 chặng mỗi vòng (nhường khoảng trống tự nhiên cho Lumi đứng bên cạnh)
 const WINDING_LOOP_X = [
     [46, 26, 22, 30, 48],
     [52, 72, 76, 68, 50]
@@ -55,17 +54,20 @@ function getRoadmapNodeAction(chapter, index) {
     return `toggleRoadmapNodePopover(${node.num}, ${chId}, event)`;
 }
 
-function renderWindingConnectorSvg(x1, x2, isLit, isActiveNext) {
-    const cls = isLit ? 'is-lit' : (isActiveNext ? 'is-active-bridge' : 'is-dim');
+function renderWindingConnectorSvg(x1, x2, isLit, isActiveNext, isPulseFlow) {
+    const cls = [
+        isLit ? 'is-lit' : (isActiveNext ? 'is-active-bridge' : 'is-dim'),
+        isPulseFlow ? 'is-pulse-flow' : ''
+    ].filter(Boolean).join(' ');
     return `
         <div class="sq-bridge-wrap ${cls}" aria-hidden="true">
-            <svg class="sq-bridge-svg" viewBox="0 0 100 50" preserveAspectRatio="none">
-                <path class="sq-bridge-line" d="M ${x1} 0 C ${x1} 25, ${x2} 25, ${x2} 50" vector-effect="non-scaling-stroke" />
+            <svg class="sq-bridge-svg" viewBox="0 0 100 46" preserveAspectRatio="none">
+                <path class="sq-bridge-line" d="M ${x1} 0 C ${x1} 23, ${x2} 23, ${x2} 46" vector-effect="non-scaling-stroke" />
             </svg>
         </div>`;
 }
 
-// Render 1 Ô Vuông 3D '?' theo chuẩn mobile-web-pwa: Không lồng viền, ảnh bìa tràn viền sạch chữ
+// Render 1 Ô Vuông 3D '?' + Hiệu ứng Vòng Sóng Lan Tỏa (#5) khi ảnh truyện đáp xuống ô '?'
 function renderWindingSquareNode(chapter, gIdx, loop, localIdx, order) {
     const node = chapter.nodes[gIdx];
     const state = resolveRoadmapNodeState(chapter, gIdx);
@@ -82,7 +84,10 @@ function renderWindingSquareNode(chapter, gIdx, loop, localIdx, order) {
     const displayTitle = customStory ? customStory.title : node.title;
     const displayImg = customStory ? customStory.img : node.img;
     const justUnlocked = roadmapUiState.justUnlockedNum === node.num ? 'is-just-unlocked' : '';
-    const justMounted = (window.__justRevealedSlot === `${chId}_${node.num}`) ? 'is-cover-stamp' : '';
+    const isJustLanded = (window.__justRevealedSlot === `${chId}_${node.num}`);
+    const justMounted = isJustLanded ? 'is-cover-stamp' : '';
+    const springTileCls = isJustLanded ? 'is-spring-land' : '';
+    const rippleHtml = isJustLanded ? '<span class="sq-landing-ripple" aria-hidden="true"></span>' : '';
     const isPopoverOpen = (window.__openRoadmapPopoverKey === `${chId}_${node.num}`);
 
     // 1. MỐC RƯƠNG KHO BÁU (CHẶNG 5) & TRÙM CUỐI (CHẶNG 10)
@@ -104,7 +109,6 @@ function renderWindingSquareNode(chapter, gIdx, loop, localIdx, order) {
             </div>`;
     }
 
-    // Lớp ảnh câu chuyện đè trực tiếp lên ô '?' (Clean Artwork Discipline: Không đè nút hay chữ rác lên tranh)
     const overlayHtml = overlaid ? `
         <div class="sq-story-overlay ${justMounted}">
             <img src="${displayImg}" alt="${roadmapAttr(displayTitle)}" class="sq-story-img" loading="lazy" decoding="async" />
@@ -117,7 +121,7 @@ function renderWindingSquareNode(chapter, gIdx, loop, localIdx, order) {
 
     const numLabel = node.num < 10 ? `0${node.num}` : `${node.num}`;
 
-    // 2. BÀI CẦN HỌC HIỆN TẠI (ACTIVE SPOTLIGHT SQUARE TILE — TƯƠNG PHẢN TRẮNG SẠCH, KHÔNG VIỀN RÁC)
+    // 2. BÀI CẦN HỌC HIỆN TẠI (ACTIVE SPOTLIGHT SQUARE TILE)
     if (state === 'active') {
         const activeSubText = overlaid ? displayTitle : 'Chạm để chọn truyện';
         return `
@@ -129,7 +133,8 @@ function renderWindingSquareNode(chapter, gIdx, loop, localIdx, order) {
                     </div>
                     <div class="sq-active-stage">
                         <div class="sq-active-halo" aria-hidden="true"></div>
-                        <div class="sq-tile sq-tile-active ${overlaid ? 'has-story-cover' : 'is-mystery-q'} ${justUnlocked}"
+                        ${rippleHtml}
+                        <div class="sq-tile sq-tile-active ${overlaid ? 'has-story-cover' : 'is-mystery-q'} ${justUnlocked} ${springTileCls}"
                              data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}">
                             <div class="sq-q-face">
                                 <span class="sq-bare-num">${numLabel}</span>
@@ -144,7 +149,7 @@ function renderWindingSquareNode(chapter, gIdx, loop, localIdx, order) {
             </div>`;
     }
 
-    // 3. Ô VUÔNG ĐÃ HOÀN THÀNH HOẶC ĐANG KHÓA (KHÔNG VIỀN LỒNG, KHÔNG NHÃN RÁC)
+    // 3. Ô VUÔNG ĐÃ HOÀN THÀNH HOẶC ĐANG KHÓA
     const bareCaption = state === 'completed'
         ? `<span class="sq-bare-caption is-done-cap">${displayTitle}</span>`
         : (overlaid ? `<span class="sq-bare-caption is-queued-cap">${displayTitle}</span>` : '');
@@ -152,13 +157,16 @@ function renderWindingSquareNode(chapter, gIdx, loop, localIdx, order) {
     return `
         <div class="sq-node-row state-${state} ${isPopoverOpen ? 'has-open-popover' : ''}" style="--x:${xPct}%; --i:${order}">
             <div class="sq-node-anchor">
-                <div class="sq-tile sq-tile-${state} ${overlaid ? 'has-story-cover' : 'is-mystery-q'}"
-                     data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}">
-                    <div class="sq-q-face">
-                        <span class="sq-bare-num">${numLabel}</span>
-                        <span class="sq-big-q">?</span>
+                <div class="sq-active-stage">
+                    ${rippleHtml}
+                    <div class="sq-tile sq-tile-${state} ${overlaid ? 'has-story-cover' : 'is-mystery-q'} ${springTileCls}"
+                         data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}">
+                        <div class="sq-q-face">
+                            <span class="sq-bare-num">${numLabel}</span>
+                            <span class="sq-big-q">?</span>
+                        </div>
+                        ${overlayHtml}
                     </div>
-                    ${overlayHtml}
                 </div>
                 ${bareCaption}
                 ${popoverHtml}
@@ -190,6 +198,7 @@ function renderRoadmapSection(chapter, loop, characters, orderStart) {
     const line = getRoadmapCharacterLine(char, completed, started, justDoneHere);
     const showLine = prevPct > 0 && prevPct < 100;
     const sideCls = (loop % 2 === 0) ? 'is-right' : 'is-left';
+    const chId = chapter.id || 0;
 
     const starsHtml = Array.from({ length: 5 }, (_, i) => {
         const isOn = i < completed;
@@ -199,9 +208,7 @@ function renderRoadmapSection(chapter, loop, characters, orderStart) {
 
     const energyOrbsHtml = justDoneHere ? `
         <div class="sq-energy-burst ${sideCls}" aria-hidden="true">
-            <span class="sq-energy-orb orb-1"></span>
-            <span class="sq-energy-orb orb-2"></span>
-            <span class="sq-energy-orb orb-3"></span>
+            <span class="sq-energy-orb orb-1"></span><span class="sq-energy-orb orb-2"></span><span class="sq-energy-orb orb-3"></span>
         </div>` : '';
 
     let trackHtml = '';
@@ -213,7 +220,8 @@ function renderRoadmapSection(chapter, loop, characters, orderStart) {
             const x2 = getNodeHorizontalPercent(loop, localIdx + 1);
             const stateCurr = resolveRoadmapNodeState(chapter, gIdx);
             const stateNext = resolveRoadmapNodeState(chapter, gIdx + 1);
-            trackHtml += renderWindingConnectorSvg(x1, x2, stateCurr === 'completed', stateNext === 'active');
+            const isFlowing = (window.__justRevealedSlot === `${chId}_${n.num}`);
+            trackHtml += renderWindingConnectorSvg(x1, x2, stateCurr === 'completed', stateNext === 'active', isFlowing);
         }
     });
 
@@ -279,6 +287,7 @@ function renderRoadmapNodes(chapter, opts = {}) {
     const nodesContainer = document.getElementById('roadmapNodesContainer');
     if (!nodesContainer) return;
     nodesContainer.innerHTML = buildRoadmapTimelineHtml(chapter, opts);
+    renderRoadmapNextBar(chapter);
     roadmapRaf(() => roadmapRaf(() => applyRoadmapFillAnimations(nodesContainer)));
 }
 
@@ -299,7 +308,50 @@ function applyRoadmapFillAnimations(root) {
 }
 window.applyRoadmapFillAnimations = applyRoadmapFillAnimations;
 
-function renderRoadmapNextBar() {
-    const bar = document.getElementById('roadmapNextBar');
-    if (bar) bar.classList.remove('is-visible');
+// Mục #2: Thanh Neo Vùng Ngón Cái ở Đáy Màn Hình (Floating Thumb-Zone Dock)
+function renderRoadmapNextBar(chapter) {
+    const ch = chapter || (typeof roadmapChaptersData !== 'undefined' && roadmapChaptersData[currentRoadmapChapterIdx]) || (roadmapChaptersData && roadmapChaptersData[0]);
+    if (!ch || !Array.isArray(ch.nodes)) return;
+    const activeIdx = ch.nodes.findIndex((_, i) => resolveRoadmapNodeState(ch, i) === 'active');
+    const activeNode = activeIdx >= 0 ? ch.nodes[activeIdx] : ch.nodes[0];
+    if (!activeNode) return;
+
+    const chId = ch.id || 0;
+    const assigned = (typeof window.getAssignedRoadmapStory === 'function')
+        ? window.getAssignedRoadmapStory(chId, activeNode.num) : null;
+    const customStory = assigned ? assigned.story : null;
+    const overlaid = hasRoadmapStoryOverlay(ch, activeNode, 'active');
+    const title = overlaid ? (customStory ? customStory.title : activeNode.title) : `Chặng ${activeNode.num} · Chưa chọn truyện`;
+    const sub = overlaid
+        ? `Chặng ${activeNode.num} · ${(customStory && customStory.duration) || '4 phút'} · +20% Lumi`
+        : 'Chạm để chọn câu chuyện đè lên ô ?';
+    const thumbHtml = overlaid
+        ? `<img src="${customStory ? customStory.img : activeNode.img}" alt="" class="sq-dock-img" />`
+        : `<div class="sq-dock-q">?</div>`;
+    const ctaHtml = overlaid
+        ? `<button type="button" class="sq-dock-cta" onclick="event.stopPropagation(); launchRevealedLesson(${activeNode.num}, ${chId})">Học ngay</button>`
+        : `<button type="button" class="sq-dock-cta" onclick="event.stopPropagation(); openRoadmapGenrePickerSheet(${activeNode.num}, ${chId}, 'classic')">Chọn truyện</button>`;
+
+    const dockMarkup = `
+        <div class="sq-thumb-dock-inner" onclick="if(typeof scrollRoadmapToActive==='function') scrollRoadmapToActive(true); toggleRoadmapNodePopover(${activeNode.num}, ${chId}, event);">
+            <div class="sq-dock-thumb">${thumbHtml}</div>
+            <div class="sq-dock-info">
+                <span class="sq-dock-title">${title}</span>
+                <span class="sq-dock-sub">${sub}</span>
+            </div>
+            ${ctaHtml}
+        </div>`;
+
+    ['screenParchmentRoadmap', 'screenMysteryRoadmap'].forEach(screenId => {
+        const screen = document.getElementById(screenId);
+        if (!screen) return;
+        let dock = screen.querySelector('.sq-thumb-dock');
+        if (!dock) {
+            dock = document.createElement('div');
+            dock.className = 'sq-thumb-dock';
+            screen.appendChild(dock);
+        }
+        dock.innerHTML = dockMarkup;
+    });
 }
+window.renderRoadmapNextBar = renderRoadmapNextBar;

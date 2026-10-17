@@ -1,6 +1,6 @@
 // ========================================================
 // 🗺️ CREATE YOUR OWN ROADMAP — BACKEND STORY CATALOG & TRACKLIST
-// Ceiling: < 350 lines | Standard: Apple/Linear Mobile Sheet V4.0
+// Ceiling: < 350 lines | Standard: mobile-web-pwa V4.0
 // ========================================================
 
 (function (window) {
@@ -48,105 +48,15 @@
     }
 
     const FALLBACK_STORIES = [
-        {
-            id: 'topic_003',
-            title: 'Rùa và Thỏ',
-            subtitle: 'Bài học về sự kiên trì',
-            genre: 'fable',
-            difficulty: 'easy',
-            age: 'Độ khó: Dễ',
-            duration: '3 phút',
-            img: 'assets/cards/lumi_farmer_strawhat.jpg',
-            scenario: 'Cuộc đua vô tiền khoáng hậu giữa chú Thỏ kiêu ngạo và chú Rùa điềm tĩnh tại thung lũng mùa xuân.'
-        },
-        {
-            id: 'topic_006',
-            title: 'Quạ và Bình Nước',
-            subtitle: 'Sự thông minh và kiên nhẫn',
-            genre: 'fable',
-            difficulty: 'easy',
-            age: 'Độ khó: Dễ',
-            duration: '3 phút',
-            img: 'assets/cards/lumi_melody_arena.jpg',
-            scenario: 'Chú Quạ khát nước khéo léo dùng sỏi để nâng mực nước trong chiếc bình sâu đáy.'
-        },
-        {
-            id: 'topic_009',
-            title: 'Cậu Bé Chăn Cừu',
-            subtitle: 'Giá trị của sự trung thực',
-            genre: 'fable',
-            difficulty: 'easy',
-            age: 'Độ khó: Dễ',
-            duration: '4 phút',
-            img: 'assets/cards/lumi_review_flashcards.jpg',
-            scenario: 'Những ngày chăn cừu trên đồi cỏ và bài học sâu sắc về lòng tin.'
-        },
-        {
-            id: 'topic_001',
-            title: 'Mưa Dưới Mái Hiên',
-            subtitle: 'Quán cà phê góc phố Tokyo',
-            genre: 'travel_daily',
-            difficulty: 'medium',
-            age: 'Độ khó: Vừa',
-            duration: '5 phút',
-            img: 'assets/cards/lumi_rain_coffee_eaves.jpg',
-            scenario: 'Trú mưa bên hiên quán nhỏ & gọi một ly latte ấm nóng.'
-        },
-        {
-            id: 'topic_004',
-            title: 'Chuyến Tàu Nửa Đêm',
-            subtitle: 'Sân ga mù sương 00:00',
-            genre: 'travel_daily',
-            difficulty: 'medium',
-            age: 'Độ khó: Vừa',
-            duration: '5 phút',
-            img: 'assets/cards/lumi_train_station_night.jpg',
-            scenario: 'Hơi nước rít lên tại Ke ga số 1 khi đồng hồ điểm qua nửa đêm.'
-        },
-        {
-            id: 'topic_007',
-            title: 'Quán Mì Hẻm Nhỏ',
-            subtitle: 'Ẩm thực đêm & hỏi đường',
-            genre: 'travel_daily',
-            difficulty: 'medium',
-            age: 'Độ khó: Vừa',
-            duration: '5 phút',
-            img: 'assets/cards/pixar_night_farm_scenery.jpg',
-            scenario: 'Gọi món đặc sản địa phương và trò chuyện cùng đầu bếp bản xứ.'
-        },
-        {
-            id: 'topic_002',
-            title: 'Chiếc Thẻ Nhầm Tên',
-            subtitle: 'Sảnh hội nghị AI quốc tế',
-            genre: 'pro_business',
-            difficulty: 'hard',
-            age: 'Độ khó: Khó',
-            duration: '6 phút',
-            img: 'assets/cards/lumi_review_flashcards.jpg',
-            scenario: 'Xử lý tình huống nhầm lẫn thông tin đại biểu lịch thiệp trước giờ khai mạc.'
-        },
-        {
-            id: 'topic_010',
-            title: 'Bản Đàm Phán Đêm Muộn',
-            subtitle: 'Ký kết thương vụ chiến lược',
-            genre: 'pro_business',
-            difficulty: 'hard',
-            age: 'Độ khó: Khó',
-            duration: '7 phút',
-            img: 'assets/cards/lumi_progress_celebration.jpg',
-            scenario: 'Thương thảo điều khoản hợp đồng gấp trước thời hạn đóng phiên.'
-        },
-        {
-            id: 'topic_008',
-            title: 'Bức Thư Trong Rương Cổ',
-            subtitle: 'Bí mật dưới ánh trăng',
-            genre: 'mystery',
-            difficulty: 'hard',
-            age: 'Độ khó: Khó',
-            duration: '7 phút',
-            img: 'assets/cards/lumi_farmer_night.png',
-            scenario: 'Giải mã những dòng chữ cổ để lại trong căn gác mái đầy bụi thời gian.'
-        }
+        { id: 'topic_003', title: 'Rùa và Thỏ', subtitle: 'Bài học về sự kiên trì', genre: 'fable', difficulty: 'easy', age: 'Độ khó: Dễ', duration: '3 phút', img: 'assets/cards/lumi_farmer_strawhat.jpg', scenario: 'Cuộc đua vô tiền khoáng hậu giữa chú Thỏ kiêu ngạo và chú Rùa điềm tĩnh tại thung lũng mùa xuân.' },
+        { id: 'topic_006', title: 'Quạ và Bình Nước', subtitle: 'Sự thông minh và kiên nhẫn', genre: 'fable', difficulty: 'easy', age: 'Độ khó: Dễ', duration: '3 phút', img: 'assets/cards/lumi_melody_arena.jpg', scenario: 'Chú Quạ khát nước khéo léo dùng sỏi để nâng mực nước trong chiếc bình sâu đáy.' },
+        { id: 'topic_009', title: 'Cậu Bé Chăn Cừu', subtitle: 'Giá trị của sự trung thực', genre: 'fable', difficulty: 'easy', age: 'Độ khó: Dễ', duration: '4 phút', img: 'assets/cards/lumi_review_flashcards.jpg', scenario: 'Những ngày chăn cừu trên đồi cỏ và bài học sâu sắc về lòng tin.' },
+        { id: 'topic_001', title: 'Mưa Dưới Mái Hiên', subtitle: 'Quán cà phê góc phố Tokyo', genre: 'travel_daily', difficulty: 'medium', age: 'Độ khó: Vừa', duration: '5 phút', img: 'assets/cards/lumi_rain_coffee_eaves.jpg', scenario: 'Trú mưa bên hiên quán nhỏ & gọi một ly latte ấm nóng.' },
+        { id: 'topic_004', title: 'Chuyến Tàu Nửa Đêm', subtitle: 'Sân ga mù sương 00:00', genre: 'travel_daily', difficulty: 'medium', age: 'Độ khó: Vừa', duration: '5 phút', img: 'assets/cards/lumi_train_station_night.jpg', scenario: 'Hơi nước rít lên tại Ke ga số 1 khi đồng hồ điểm qua nửa đêm.' },
+        { id: 'topic_007', title: 'Quán Mì Hẻm Nhỏ', subtitle: 'Ẩm thực đêm & hỏi đường', genre: 'travel_daily', difficulty: 'medium', age: 'Độ khó: Vừa', duration: '5 phút', img: 'assets/cards/pixar_night_farm_scenery.jpg', scenario: 'Gọi món đặc sản địa phương và trò chuyện cùng đầu bếp bản xứ.' },
+        { id: 'topic_002', title: 'Chiếc Thẻ Nhầm Tên', subtitle: 'Sảnh hội nghị AI quốc tế', genre: 'pro_business', difficulty: 'hard', age: 'Độ khó: Khó', duration: '6 phút', img: 'assets/cards/lumi_review_flashcards.jpg', scenario: 'Xử lý tình huống nhầm lẫn thông tin đại biểu lịch thiệp trước giờ khai mạc.' },
+        { id: 'topic_010', title: 'Bản Đàm Phán Đêm Muộn', subtitle: 'Ký kết thương vụ chiến lược', genre: 'pro_business', difficulty: 'hard', age: 'Độ khó: Khó', duration: '7 phút', img: 'assets/cards/lumi_progress_celebration.jpg', scenario: 'Thương thảo điều khoản hợp đồng gấp trước thời hạn đóng phiên.' },
+        { id: 'topic_008', title: 'Bức Thư Trong Rương Cổ', subtitle: 'Bí mật dưới ánh trăng', genre: 'mystery', difficulty: 'hard', age: 'Độ khó: Khó', duration: '7 phút', img: 'assets/cards/lumi_farmer_night.png', scenario: 'Giải mã những dòng chữ cổ để lại trong căn gác mái đầy bụi thời gian.' }
     ];
 
     let cachedStoryPool = null;
@@ -183,12 +93,8 @@
 
         return {
             id: n.topicId || `node_${n.num}_${n.day || 1}`,
-            title: title,
-            subtitle: n.subtitle || '',
-            genre: genre,
-            difficulty: difficulty,
-            age: diffMeta.short,
-            duration: duration,
+            title, subtitle: n.subtitle || '', genre, difficulty,
+            age: diffMeta.short, duration,
             img: n.img || 'assets/cards/lumi_rain_coffee_eaves.jpg',
             scenario: n.scenario || n.purpose || ''
         };
@@ -196,21 +102,16 @@
 
     function getFullStoryPool() {
         if (cachedStoryPool && cachedStoryPool.length > 0) return cachedStoryPool;
-
         const map = new Map();
         FALLBACK_STORIES.forEach(s => map.set(normalizeStoryKey(s.title), s));
-
         const chapters = window.REAL_ROADMAP_CHAPTERS || window.roadmapChaptersData || [];
         chapters.forEach(ch => {
             (ch.nodes || []).forEach(n => {
                 if (!n || !n.title || n.type === 'chest' || n.type === 'boss') return;
                 const key = normalizeStoryKey(n.title);
-                if (!map.has(key)) {
-                    map.set(key, classifyNodeToStory(n));
-                }
+                if (!map.has(key)) map.set(key, classifyNodeToStory(n));
             });
         });
-
         cachedStoryPool = Array.from(map.values());
         return cachedStoryPool;
     }
@@ -224,10 +125,8 @@
             const data = await resp.json();
             const stages = data.stages || (data.data && data.data.stages) || [];
             if (!Array.isArray(stages) || !stages.length) return;
-
             const pool = getFullStoryPool();
             const existingKeys = new Set(pool.map(s => normalizeStoryKey(s.title)));
-
             stages.forEach(st => {
                 (st.lessons || st.nodes || []).forEach(les => {
                     const title = les.title || les.name;
@@ -235,8 +134,7 @@
                     if (!title || existingKeys.has(key)) return;
                     existingKeys.add(key);
                     pool.push(classifyNodeToStory({
-                        topicId: les.id || les.topicId,
-                        title: title,
+                        topicId: les.id || les.topicId, title,
                         subtitle: les.subtitle || les.summary || '',
                         img: les.image || les.img || les.keyArtUrl || 'assets/cards/lumi_rain_coffee_eaves.jpg',
                         scenario: les.scenario || les.description || '',
@@ -259,16 +157,11 @@
             const active = activeFilterDifficulty === d.id ? 'is-active' : '';
             return `<button type="button" class="story-seg-btn ${active}" onclick="setStoryFilter('difficulty','${d.id}')">${d.label}</button>`;
         }).join('');
-
         const genreChips = Object.values(GENRE_META).map(g => {
             const active = activeFilterGenre === g.id ? 'is-active' : '';
             return `<button type="button" class="story-genre-pill ${active}" onclick="setStoryFilter('genre','${g.id}')">${g.name}</button>`;
         }).join('');
-
-        return `
-            <div class="story-seg-control">${diffTabs}</div>
-            <div class="story-genre-row no-scrollbar">${genreChips}</div>
-        `;
+        return `<div class="story-seg-control">${diffTabs}</div><div class="story-genre-row no-scrollbar">${genreChips}</div>`;
     }
 
     function getFilteredStories() {
@@ -280,6 +173,29 @@
         });
     }
 
+    // Mục #4: Kệ "Truyện Gợi Ý Hôm Nay" dạng Lướt Ngang (Horizontal Scroll-Snap Covers) chuẩn Apple Music
+    function renderFeaturedSnapShelfHtml(list) {
+        const featured = list.slice(0, 4);
+        if (featured.length < 2) return '';
+        const cards = featured.map(st => {
+            const dMeta = DIFFICULTY_META[st.difficulty] || DIFFICULTY_META.medium;
+            const safeId = String(st.id).replace(/'/g, "\\'");
+            return `
+                <button type="button" class="story-snap-album" onclick="handlePickStoryById('${safeId}')">
+                    <div class="story-snap-cover">
+                        <img src="${st.img}" alt="${st.title}" loading="lazy" />
+                    </div>
+                    <span class="story-snap-title">${st.title}</span>
+                    <span class="story-snap-sub">${dMeta.short} · ${st.duration}</span>
+                </button>`;
+        }).join('');
+        return `
+            <div class="story-shelf-wrap">
+                <div class="story-shelf-label">Gợi ý nổi bật</div>
+                <div class="story-snap-lane no-scrollbar">${cards}</div>
+            </div>`;
+    }
+
     function renderMysteryGenreCardsList() {
         const chipsBox = document.getElementById('roadmapStoryFilterChips');
         if (chipsBox) chipsBox.innerHTML = renderFilterChipsHtml();
@@ -289,13 +205,12 @@
 
         const list = getFilteredStories();
         if (list.length === 0) {
-            container.innerHTML = `
-                <div class="story-empty-state">
-                    <span>Chưa có câu chuyện ở mục này</span>
-                    <button type="button" onclick="setStoryFilter('genre','all'); setStoryFilter('difficulty','all');">Xem tất cả</button>
-                </div>`;
+            container.innerHTML = `<div class="story-empty-state"><span>Chưa có câu chuyện ở mục này</span><button type="button" onclick="setStoryFilter('genre','all'); setStoryFilter('difficulty','all');">Xem tất cả</button></div>`;
             return;
         }
+
+        const shelfHtml = (activeFilterGenre === 'all' && activeFilterDifficulty === 'all')
+            ? renderFeaturedSnapShelfHtml(list) : '';
 
         const rowsHtml = list.map(story => {
             const gMeta = GENRE_META[story.genre] || GENRE_META.travel_daily;
@@ -318,21 +233,16 @@
                     <div class="story-track-chevron" aria-hidden="true">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
                     </div>
-                </div>
-            `;
+                </div>`;
         }).join('');
 
-        container.innerHTML = `<div class="story-tracklist-card">${rowsHtml}</div>`;
+        container.innerHTML = `${shelfHtml}<div class="story-shelf-label is-list-label">Danh sách truyện</div><div class="story-tracklist-card">${rowsHtml}</div>`;
     }
 
     setTimeout(syncBackendStoryCatalog, 400);
 
-    window.GENRE_META = GENRE_META;
-    window.DIFFICULTY_META = DIFFICULTY_META;
-    window.resolveRoadmapDifficulty = resolveRoadmapDifficulty;
-    window.getRoadmapSlotFlavor = getRoadmapSlotFlavor;
-    window.getFullStoryPool = getFullStoryPool;
-    window.getFilteredStories = getFilteredStories;
-    window.setStoryFilter = setStoryFilter;
-    window.renderMysteryGenreCardsList = renderMysteryGenreCardsList;
+    Object.assign(window, {
+        GENRE_META, DIFFICULTY_META, resolveRoadmapDifficulty, getRoadmapSlotFlavor,
+        getFullStoryPool, getFilteredStories, setStoryFilter, renderMysteryGenreCardsList
+    });
 })(window);
