@@ -99,20 +99,23 @@ function renderWindingSquareNode(chapter, gIdx, loop, localIdx, order) {
         return `
             <div class="sq-node-row is-milestone state-${state}" style="--x:${xPct}%; --i:${order}" ${state === 'active' ? 'data-roadmap-active="1"' : ''}>
                 <div class="sq-node-anchor">
-                    <div class="sq-tile sq-tile-milestone"
+                    <div class="sq-tile sq-tile-milestone ${state === 'locked' ? 'is-locked-muted' : ''}"
                          data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}"
                          title="${isBoss ? 'Thử thách cuối · +300 XP' : 'Rương thưởng · +150 XP'}">
                         <img src="${chestImg}" alt="" class="sq-milestone-img" loading="lazy" />
+                        <div class="sq-milestone-shade"></div>
                         <span class="sq-milestone-num">${numLabel}</span>
                     </div>
                 </div>
             </div>`;
     }
 
-    // Ô sưu tầm bìa truyện sạch 100% (không đính tem ? đen hay chấm tích đen gây rối mắt)
+    // Khi có ảnh truyện đè lên ô '?', tấm ảnh nằm gọn trên bệ ô '?' (giữ dấu '?' nhỏ ở góc trên trái để thấy rõ cơ chế đè lên '?')
     const overlayHtml = overlaid ? `
         <div class="sq-story-overlay ${justMounted}">
             <img src="${displayImg}" alt="${roadmapAttr(displayTitle)}" class="sq-story-img" loading="lazy" decoding="async" />
+            <span class="sq-mini-q-tag" aria-hidden="true">?</span>
+            ${state === 'completed' ? `<span class="sq-done-dot" aria-label="Đã hoàn thành">${ROADMAP_ICON_CHECK}</span>` : ''}
         </div>` : '';
 
     const popoverHtml = (isPopoverOpen && typeof window.renderSquareNodePopover === 'function')
@@ -123,7 +126,7 @@ function renderWindingSquareNode(chapter, gIdx, loop, localIdx, order) {
         ? `<div class="sq-q-face">${window.renderAnimatedMysteryTileSvg(numLabel, state === 'active', order)}</div>`
         : `<div class="sq-q-face"><span class="sq-bare-num">${numLabel}</span><span class="sq-big-q">?</span></div>`;
 
-    // 2. BÀI CẦN HỌC HIỆN TẠI (NỔI KHỐI 3D RỰC RỠ, SẠCH RÁC THỊ GIÁC)
+    // 2. BÀI CẦN HỌC HIỆN TẠI (TO GẤP RƯỠI Ô ĐÃ HỌC, BỆ SÁNG NỔI BẬT, KHÔNG LẶP CHỮ DƯỚI ĐÁY)
     if (state === 'active') {
         return `
             <div class="sq-node-row is-active-hero ${isPopoverOpen ? 'has-open-popover' : ''}" style="--x:${xPct}%; --i:${order}" data-roadmap-active="1">
@@ -134,6 +137,7 @@ function renderWindingSquareNode(chapter, gIdx, loop, localIdx, order) {
                     </div>
                     <div class="sq-active-stage">
                         <div class="sq-active-halo" aria-hidden="true"></div>
+                        <div class="sq-active-q-backing" aria-hidden="true"><span>?</span></div>
                         ${rippleHtml}
                         <div class="sq-tile sq-tile-active ${overlaid ? 'has-story-cover' : 'is-mystery-q'} ${justUnlocked} ${springTileCls}"
                              data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}"
