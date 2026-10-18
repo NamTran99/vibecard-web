@@ -1792,8 +1792,16 @@
             <div id="roadmapHeaderPill" class="hidden">
                 <span id="roadmapProgressText"></span>
             </div>
-            <!-- Right Spacer for Balanced Center Dropdown -->
-            <div class="w-9 h-9 shrink-0"></div>
+
+            <!-- Sleek Translucent Glass Chapter & Progress Pill (Top-Right) -->
+            <button id="roadmapCardTagBtn" type="button" onclick="openRoadmapChapterSheet()" class="rm-top-chapter-pill pointer-events-auto" title="Bấm để đổi chương học">
+                <span id="roadmapCardTag">Chương 1</span>
+                <span class="rm-top-pill-dot" aria-hidden="true">·</span>
+                <span id="roadmapHeroProgressChip" class="rm-top-pill-prog">3/10</span>
+                <svg class="w-3.5 h-3.5 opacity-80 shrink-0" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                </svg>
+            </button>
         </div>
 
         <!-- Hidden Legacy TabBar for backward compatibility -->
@@ -1806,46 +1814,18 @@
         
         <!-- Scrollable Roadmap Area -->
         <div id="scrollAreaRoadmap" class="flex-1 overflow-y-auto no-scrollbar relative z-10 scroll-smooth p-0">
-            <!-- Full-Bleed Chapter Hero Artwork (100% Clean Art) -->
+            <!-- Full-Bleed Chapter Hero Artwork (Pure Art + Single Clean Editorial Title) -->
             <header id="roadmapHeroHeader" class="relative w-full">
                 <img id="roadmapBannerImg" src="assets/cards/lumi_rain_coffee_eaves.jpg" alt="Chapter Artwork" />
                 <div class="hero-vignette-top"></div>
                 <div class="hero-vignette-bottom"></div>
+                <div class="hero-content" id="roadmapHeroContentBox">
+                    <h2 id="roadmapChapterHeading" onclick="openRoadmapChapterSheet()" class="cursor-pointer">Khu Rừng Ngụ Ngôn</h2>
+                    <p id="roadmapCardDesc" class="hidden"></p>
+                </div>
             </header>
 
-            <!-- Floating Chapter Card (Duolingo / Apple Arcade Style) -->
-            <div class="rm-floating-card-wrap">
-                <div id="roadmapHeroContentBox" class="rm-floating-chapter-card" role="button" tabindex="0" onclick="openRoadmapChapterSheet()" title="Bấm để chọn chương học">
-                    <div class="rm-fc-top-row">
-                        <div class="rm-fc-title-col">
-                            <div id="roadmapCardTagBtn" class="rm-fc-eyebrow">
-                                <span id="roadmapCardTag">
-                                    <span class="roadmap-tag-pill">
-                                        <span class="roadmap-tag-sparkle">✦</span>
-                                        <span>CHƯƠNG 1</span>
-                                    </span>
-                                </span>
-                            </div>
-                            <h2 id="roadmapChapterHeading">Khu Rừng Ngụ Ngôn</h2>
-                            <p id="roadmapCardDesc" class="hidden"></p>
-                        </div>
-                        <span class="rm-fc-switch-pill">
-                            <span>Đổi chương</span>
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
-                            </svg>
-                        </span>
-                    </div>
-                    <div class="rm-fc-progress-row">
-                        <div class="rm-fc-progress-track">
-                            <div id="roadmapHeroProgressFill" class="rm-fc-progress-fill" style="width: 30%;"></div>
-                        </div>
-                        <span id="roadmapHeroProgressChip" class="rm-fc-progress-label">3/10 chặng</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="w-full max-w-[390px] mx-auto relative px-4 pt-1 pb-36">
+            <div class="w-full max-w-[390px] mx-auto relative px-4 pt-2 pb-36">
                 <!-- ROADMAP TIMELINE -->
                 <div id="roadmapNodesContainer"></div>
             </div>

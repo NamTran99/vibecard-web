@@ -108,10 +108,9 @@ function selectRoadmapChapter(idx, opts = {}) {
     const ch = roadmapChaptersData[idx];
     const doneCount = getRoadmapCompletedCount(ch);
     const totalCount = (ch.nodes || []).length || 10;
-    const progChipText = `${doneCount}/${totalCount} chặng`;
-    const progPct = Math.max(0, Math.min(100, Math.round((doneCount / totalCount) * 100)));
+    const progChipText = `${doneCount}/${totalCount}`;
 
-    // 1. Single-Row Dropdown Header & Floating Chapter Card Progress
+    // 1. Single-Row Dropdown Header & Top Glass Pill
     ['roadmapHeaderEyebrow', 'mysteryHeaderEyebrow'].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.innerText = `CHƯƠNG ${idx + 1}`;
@@ -124,8 +123,6 @@ function selectRoadmapChapter(idx, opts = {}) {
         const el = document.getElementById(id);
         if (el) el.innerText = progChipText;
     });
-    const progFillEl = document.getElementById('roadmapHeroProgressFill');
-    if (progFillEl) progFillEl.style.width = `${progPct}%`;
     const progressEl = document.getElementById('roadmapProgressText');
     if (progressEl) progressEl.innerText = getRoadmapProgressLabel(ch);
 
@@ -146,7 +143,7 @@ function selectRoadmapChapter(idx, opts = {}) {
     function formatHeroTagHtml(chObj, chIdx) {
         if (!chObj) return '';
         const chNum = (typeof chIdx === 'number') ? (chIdx + 1) : ((typeof chObj.id === 'number') ? chObj.id + 1 : 1);
-        return `<span class="roadmap-tag-pill"><span class="roadmap-tag-sparkle">✦</span><span>CHƯƠNG ${chNum}</span></span>`;
+        return `Chương ${chNum}`;
     }
 
     // 3. Banner chương (Đồng bộ cả #roadmapHeroHeader và #mysteryRoadmapHeroHeader)
