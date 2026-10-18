@@ -236,38 +236,42 @@ window.renderRoadmapAnimatedCompanionHtml = function (opts) {
 };
 
 window.renderAnimatedMysteryTileSvg = function (numLabel, isActive, order) {
-    const delay = -(((Number(order) || 0) * 0.37) % 2.8).toFixed(2);
-    const baseFill = isActive ? '#14180F' : '#0F110C';
-    const topFill = isActive ? '#262C1E' : '#1A1D16';
-    const rimStroke = isActive ? '#FFFFFF' : 'url(#topRimHighlight)';
-    const rimWidth = isActive ? '2.2' : '1.2';
-    const qFill = isActive ? '#FFFFFF' : '#4F524B';
+    const idx = Number(order) || 0;
+    const delay = -((idx * 0.37) % 2.8).toFixed(2);
+    const GEMS = [
+        { topA: '#634616', topB: '#3B280A', base: '#211504', rim: 'rgba(253, 224, 71, 0.62)', q: '#FEF08A', num: 'rgba(254, 240, 138, 0.78)' }, // Vàng Hổ Phách
+        { topA: '#1D544D', topB: '#10332E', base: '#081C19', rim: 'rgba(110, 231, 183, 0.58)', q: '#A7F3D0', num: 'rgba(167, 243, 208, 0.78)' }, // Xanh Ngọc
+        { topA: '#4B306E', topB: '#2B1A42', base: '#160C24', rim: 'rgba(216, 180, 254, 0.58)', q: '#E9D5FF', num: 'rgba(233, 213, 255, 0.78)' }  // Tím Tinh Vân
+    ];
+    const pal = isActive
+        ? { topA: '#547826', topB: '#314914', base: '#1B290A', rim: '#E2F89C', q: '#FFFFFF', num: '#E2F89C' }
+        : GEMS[idx % GEMS.length];
+    const gradId = `gemTop_${idx}_${isActive ? 'a' : 'n'}`;
+    const rimWidth = isActive ? '2.6' : '1.8';
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="12 10 96 102" class="sq-mystery-tile-svg" style="--anim-delay:${delay}s" fill="none" aria-hidden="true">
         <defs>
-          <filter id="softFloorBlur" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="4.5" /></filter>
-          <linearGradient id="topRimHighlight" x1="60" y1="14" x2="60" y2="102" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="rgba(255, 255, 255, 0.13)" />
-            <stop offset="35%" stop-color="rgba(255, 255, 255, 0.06)" />
-            <stop offset="100%" stop-color="rgba(255, 255, 255, 0.02)" />
+          <linearGradient id="${gradId}" x1="60" y1="14" x2="60" y2="102" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="${pal.topA}" />
+            <stop offset="100%" stop-color="${pal.topB}" />
           </linearGradient>
-          <linearGradient id="sheenGrad" x1="0" y1="0" x2="1" y2="0">
+          <linearGradient id="sheenGrad_${idx}" x1="0" y1="0" x2="1" y2="0">
             <stop offset="0%" stop-color="rgba(255, 255, 255, 0)" />
-            <stop offset="50%" stop-color="rgba(255, 255, 255, 0.065)" />
+            <stop offset="50%" stop-color="rgba(255, 255, 255, 0.14)" />
             <stop offset="100%" stop-color="rgba(255, 255, 255, 0)" />
           </linearGradient>
-          <clipPath id="tileSurfaceClip"><rect x="16" y="14" width="88" height="88" rx="26" /></clipPath>
+          <clipPath id="tileClip_${idx}"><rect x="16" y="14" width="88" height="88" rx="26" /></clipPath>
         </defs>
-        <rect class="floor-shadow" x="18" y="24" width="84" height="86" rx="26" fill="rgba(0, 0, 0, 0.45)" filter="url(#softFloorBlur)" />
-        <rect x="16" y="20" width="88" height="88" rx="26" fill="${baseFill}" stroke="rgba(0, 0, 0, 0.35)" stroke-width="1" />
+        <rect x="16" y="21" width="88" height="88" rx="26" fill="${pal.base}" />
         <g class="tile-top-group">
-          <rect x="16" y="14" width="88" height="88" rx="26" fill="${topFill}" />
-          <g clip-path="url(#tileSurfaceClip)"><rect class="sheen-bar" x="10" y="-30" width="38" height="170" fill="url(#sheenGrad)" /></g>
-          <rect x="16.5" y="14.5" width="87" height="87" rx="25.5" stroke="${rimStroke}" stroke-width="${rimWidth}" />
-          <text x="27" y="34" class="sq-svg-num">${numLabel}</text>
-          <g fill="${qFill}">
+          <rect x="16" y="14" width="88" height="88" rx="26" fill="url(#${gradId})" />
+          <g clip-path="url(#tileClip_${idx})"><rect class="sheen-bar" x="10" y="-30" width="38" height="170" fill="url(#sheenGrad_${idx})" /></g>
+          <rect x="16.8" y="14.8" width="86.4" height="86.4" rx="25.2" stroke="${pal.rim}" stroke-width="${rimWidth}" />
+          <text x="27" y="34" class="sq-svg-num" style="fill:${pal.num} !important">${numLabel}</text>
+          <g fill="${pal.q}">
             <path class="q-hook" d="M 48.8 50.8 C 49.1 44.9 53.6 41.3 60.4 41.3 C 67.0 41.3 71.3 45.0 71.3 50.2 C 71.3 54.1 69.1 56.6 65.6 59.1 C 63.4 60.6 62.7 61.8 62.7 64.5 L 62.7 66.4 L 56.4 66.4 L 56.4 63.8 C 56.4 60.1 57.8 57.9 60.9 55.7 C 63.3 54.0 64.4 52.7 64.4 50.4 C 64.4 48.0 62.7 46.5 60.1 46.5 C 57.3 46.5 55.5 48.2 55.3 51.2 L 48.8 50.8 Z" />
             <rect class="q-dot" x="56.2" y="70.6" width="7.4" height="6.9" rx="1.2" />
           </g>
         </g>
     </svg>`;
 };
+

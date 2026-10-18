@@ -62,142 +62,123 @@ html.light #roadmapCardTagBtn.rm-top-chapter-pill {
 }
 html.light #roadmapCardTag, html.light .rm-top-pill-prog { color: #18181B !important; }
 
-/* 2. WINDING MAP STAGE (COMPACT VERTICAL RHYTHM SO CHEST 05 CLEARS DOCK — FIX #4) */
-.sq-roadmap-map { padding: 2px 12px 124px !important; max-width: 440px; margin: 0 auto; }
+/* 2. CRYSTAL-CLEAR #12140E CANVAS (ZERO PAPER TEXTURE MUDDINESS) & WINDING STAGE */
+#screenParchmentRoadmap .paper-texture { display: none !important; }
+.sq-roadmap-map { padding: 4px 12px 124px !important; max-width: 440px; margin: 0 auto; }
 #roadmapNextBar, #mysteryRoadmapNextBar { display: none !important; }
-.sq-winding-section { position: relative; margin-bottom: 18px; z-index: 1; }
-.sq-winding-section:has(.has-open-popover) { z-index: 50 !important; opacity: 1 !important; }
-.sq-winding-section.is-future-loop:not(:has(.has-open-popover)) { opacity: 0.85; }
+.sq-winding-section { position: relative; margin-bottom: 20px; z-index: 1; opacity: 1 !important; }
+.sq-winding-section:has(.has-open-popover) { z-index: 50 !important; }
 
-.sq-section-header { display: flex; align-items: center; gap: 12px; margin: 2px 4px 10px; }
-.sq-section-hairline { flex: 1; height: 1px; background: rgba(255, 255, 255, 0.07); }
-html.light .sq-section-hairline { background: rgba(0, 0, 0, 0.08); }
-.sq-section-title { font-size: 11px; font-weight: 700; color: #9CA3AF; letter-spacing: 0.02em; }
-html.light .sq-section-title { color: #52525B; }
+.sq-section-header { display: flex; align-items: center; gap: 12px; margin: 4px 4px 12px; }
+.sq-section-hairline { flex: 1; height: 1px; background: rgba(212, 238, 127, 0.16); }
+html.light .sq-section-hairline { background: rgba(0, 0, 0, 0.1); }
+.sq-section-title { font-size: 11.5px; font-weight: 800; color: #D4EE7F; letter-spacing: 0.03em; }
+html.light .sq-section-title { color: #3D4D00; }
 
 .sq-winding-stage { position: relative; width: 100%; min-height: 390px; }
 .sq-winding-nodes { position: relative; z-index: 6; display: flex; flex-direction: column; align-items: stretch; }
 .sq-winding-nodes:has(.has-open-popover) { z-index: 50 !important; }
 
-/* 3. CLEAN WINDING TRAIL BRIDGES (FIX #2: ZERO TEXT OVERLAP) */
+/* 3. HIGH-CONTRAST WINDING TRAIL BRIDGES (3X BRIGHTER) */
 .sq-bridge-wrap { width: 100%; height: 22px; margin: -2px 0; position: relative; z-index: 1; pointer-events: none; }
 .sq-bridge-svg { width: 100%; height: 100%; overflow: visible; display: block; }
 .sq-bridge-line {
-    fill: none; stroke: rgba(255, 255, 255, 0.12); stroke-width: 3px;
-    stroke-dasharray: 4 7; stroke-linecap: round;
+    fill: none; stroke: rgba(212, 238, 127, 0.34); stroke-width: 3.5px;
+    stroke-dasharray: 5 6; stroke-linecap: round;
 }
-html.light .sq-bridge-line { stroke: rgba(0, 0, 0, 0.15); }
-.sq-bridge-wrap.is-lit .sq-bridge-line { stroke: rgba(184, 209, 102, 0.55); stroke-dasharray: none; stroke-width: 3.5px; }
-.sq-bridge-wrap.is-active-bridge .sq-bridge-line { stroke: #B8D166; stroke-width: 3.5px; stroke-dasharray: none; }
+html.light .sq-bridge-line { stroke: rgba(82, 102, 0, 0.28); }
+.sq-bridge-wrap.is-lit .sq-bridge-line {
+    stroke: #B8D166; stroke-dasharray: none; stroke-width: 4px;
+    filter: drop-shadow(0 0 6px rgba(184, 209, 102, 0.45));
+}
+.sq-bridge-wrap.is-active-bridge .sq-bridge-line {
+    stroke: #D4EE7F; stroke-width: 4px; stroke-dasharray: none;
+    filter: drop-shadow(0 0 8px rgba(212, 238, 127, 0.55));
+}
 .sq-bridge-wrap.is-pulse-flow .sq-bridge-line {
-    stroke: #D4EE7F; stroke-width: 4px; stroke-dasharray: 6 6; animation: sq-path-flow 0.7s linear infinite;
+    stroke: #E2F89C; stroke-width: 4.5px; stroke-dasharray: 6 6; animation: sq-path-flow 0.7s linear infinite;
 }
 @keyframes sq-path-flow { to { stroke-dashoffset: -24; } }
 
-/* 4. 3-TIER SIZE & BRIGHTNESS HIERARCHY FOR SQUARE '?' TILES (FIX #3) */
-.sq-node-row { position: relative; width: 100%; min-height: 62px; display: block; z-index: 2; }
-.sq-node-row.is-active-hero { min-height: 122px; z-index: 6; margin: 2px 0 4px; }
+/* 4. 3D COLLECTIBLE STORY TILES & RADIANT GEM '?' TILES */
+.sq-node-row { position: relative; width: 100%; min-height: 66px; display: block; z-index: 2; }
+.sq-node-row.is-active-hero { min-height: 124px; z-index: 6; margin: 2px 0 6px; }
 .sq-node-row.has-open-popover { z-index: 45 !important; }
 .sq-node-anchor {
     position: relative; left: var(--x, 50%); transform: translateX(-50%);
-    width: max-content; display: flex; flex-direction: column; align-items: center; gap: 4px;
+    width: max-content; display: flex; flex-direction: column; align-items: center; gap: 5px;
 }
 
 .sq-tile {
-    position: relative; width: 68px; height: 68px; border-radius: 20px; overflow: hidden;
-    background: #22261D; border: none;
-    box-shadow: 0 5px 0 #12150F, 0 12px 24px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.10);
+    position: relative; width: 72px; height: 72px; border-radius: 22px; overflow: hidden;
+    background: #28331D; border: none; opacity: 1 !important;
+    box-shadow: 0 6px 0 #16220B, 0 14px 28px rgba(0, 0, 0, 0.55), 0 0 0 2px rgba(184, 209, 102, 0.55);
     cursor: pointer; user-select: none;
-    transition: transform 0.15s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.15s ease, opacity 0.15s ease;
+    transition: transform 0.16s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.16s ease;
 }
-html.light .sq-tile { background: #EAEFE0; box-shadow: 0 5px 0 #C5CEB0, 0 10px 20px rgba(0, 0, 0, 0.10), inset 0 1.5px 0 #FFFFFF; }
-.sq-tile:hover { transform: translateY(-2px); opacity: 1 !important; }
-.sq-tile:active { transform: translateY(3px) scale(0.98); box-shadow: 0 2px 0 #12150F, 0 6px 12px rgba(0, 0, 0, 0.4); }
+/* Ô '?' dùng trực tiếp khối 3D Gem SVG nên không bọc hộp đen bên ngoài */
+.sq-tile.is-mystery-q:not(.has-story-cover) {
+    background: transparent !important; box-shadow: none !important; overflow: visible !important;
+    filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.55));
+}
+.sq-tile:hover { transform: translateY(-2px) scale(1.02); }
+.sq-tile:active { transform: translateY(3px) scale(0.97); }
 
-/* Completed tiles: Smaller (62x62px) and softened so Active Hero tile dominates 100% */
-.sq-tile.sq-tile-completed {
-    width: 62px; height: 62px; border-radius: 18px; opacity: 0.82;
+/* Completed Collectible Story Tile: Sáng trong 100%, viền Ngọc Lục Bảo / Cốm 3D */
+.sq-tile.sq-tile-completed.has-story-cover {
+    width: 68px; height: 68px; border-radius: 20px; opacity: 1 !important;
+    box-shadow: 0 6px 0 #1C300E, 0 12px 24px rgba(0, 0, 0, 0.55), 0 0 0 2.2px #A3E635, inset 0 1.5px 0 rgba(255, 255, 255, 0.35);
 }
-.sq-tile.sq-tile-completed .sq-story-img { filter: saturate(0.86) brightness(0.88); }
+/* Pre-selected Future Story Tile: Viền Vàng Hổ Phách 3D */
+.sq-tile.sq-tile-locked.has-story-cover {
+    width: 68px; height: 68px; border-radius: 20px; opacity: 1 !important;
+    box-shadow: 0 6px 0 #362207, 0 12px 24px rgba(0, 0, 0, 0.55), 0 0 0 2.2px #FBBF24, inset 0 1.5px 0 rgba(255, 255, 255, 0.35);
+}
+.sq-story-img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    filter: saturate(1.08) brightness(1.04) contrast(1.03) !important;
+}
 
 .sq-tile.is-spring-land { animation: sq-tile-spring 0.55s cubic-bezier(0.22, 1, 0.36, 1) both; }
 @keyframes sq-tile-spring { 0% { transform: scale(0.86) translateY(6px); } 55% { transform: scale(1.06) translateY(-3px); } 100% { transform: scale(1) translateY(0); } }
 .sq-landing-ripple {
     position: absolute; inset: -4px; border-radius: 28px; pointer-events: none; z-index: 1;
-    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.75); animation: sq-ripple-wave 0.68s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    box-shadow: 0 0 0 2px rgba(212, 238, 127, 0.85); animation: sq-ripple-wave 0.68s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 @keyframes sq-ripple-wave { 0% { transform: scale(0.88); opacity: 0.85; } 100% { transform: scale(1.62); opacity: 0; } }
 
-.sq-tile-locked.is-mystery-q {
-    background: #1A1D16; box-shadow: 0 5px 0 #0F110C, 0 10px 20px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
-}
-html.light .sq-tile-locked.is-mystery-q { background: #E4E7DC; box-shadow: 0 5px 0 #C8CEB8, 0 8px 16px rgba(0, 0, 0, 0.06); }
-
-/* 5. '?' FACE & STORY OVERLAY WITH PEEKING '?' TAG */
+/* 5. '?' FACE & CLEAN STORY OVERLAY */
 .sq-q-face { width: 100%; height: 100%; position: relative; display: flex; align-items: center; justify-content: center; }
-.sq-bare-num { position: absolute; top: 6px; left: 8px; font-size: 9.5px; font-weight: 800; color: rgba(255, 255, 255, 0.28); }
-html.light .sq-bare-num { color: rgba(0, 0, 0, 0.32); }
-.sq-big-q { font-size: 28px; font-weight: 900; line-height: 1; color: rgba(255, 255, 255, 0.88); letter-spacing: -0.03em; }
-.sq-tile-locked .sq-big-q { color: rgba(255, 255, 255, 0.34); }
-html.light .sq-big-q { color: #2D3618; }
-html.light .sq-tile-locked .sq-big-q { color: rgba(45, 54, 24, 0.35); }
-
 .sq-story-overlay {
     position: absolute; inset: 0; border-radius: inherit; overflow: hidden; z-index: 4;
-    background: #141610; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+    background: #1B2214; box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, 0.32);
 }
 .sq-story-overlay.is-cover-stamp { animation: sq-cover-stamp 0.42s cubic-bezier(0.22, 1, 0.36, 1) both; }
 @keyframes sq-cover-stamp { 0% { transform: scale(1.26) translateY(-8px); opacity: 0.25; } 100% { transform: scale(1) translateY(0); opacity: 1; } }
-.sq-story-img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.sq-mini-q-tag {
-    position: absolute; top: 5px; left: 5px; width: 15px; height: 15px; border-radius: 5px;
-    background: rgba(15, 17, 12, 0.76); color: rgba(255, 255, 255, 0.72);
-    font-size: 9px; font-weight: 900; display: flex; align-items: center; justify-content: center;
-    backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); pointer-events: none;
-}
-.sq-done-dot {
-    position: absolute; bottom: 5px; right: 5px; width: 17px; height: 17px; border-radius: 50%;
-    background: rgba(15, 17, 12, 0.86); color: #B8D166; display: flex; align-items: center; justify-content: center;
-}
-.sq-done-dot svg { width: 10px; height: 10px; }
 
-/* 6. ACTIVE HERO SQUARE TILE + TILTED '?' BACKING PLATE (FIX #3) */
+/* 6. ACTIVE HERO TILE (SPOTLIGHT RỰC RỠ GẤP 3 LẦN) */
 .sq-active-callout {
     display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
-    padding: 4px 11px; border-radius: 999px; margin-bottom: 2px;
-    background: #FFFFFF; color: #0E100B; border: none;
-    font-size: 10.5px; font-weight: 800; letter-spacing: -0.01em;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5); animation: sq-float-callout 2.4s ease-in-out infinite;
+    padding: 4.5px 12px; border-radius: 999px; margin-bottom: 3px;
+    background: linear-gradient(135deg, #E2F89C 0%, #B8D166 100%); color: #111807; border: none;
+    font-size: 11px; font-weight: 800; letter-spacing: -0.01em;
+    box-shadow: 0 8px 20px rgba(184, 209, 102, 0.35); animation: sq-float-callout 2.4s ease-in-out infinite;
 }
-html.light .sq-active-callout { background: #18181B; color: #FFFFFF; }
-.sq-live-dot { width: 6px; height: 6px; border-radius: 50%; background: #65A30D; }
-html.light .sq-live-dot { background: #B8D166; }
+.sq-live-dot { width: 6px; height: 6px; border-radius: 50%; background: #166534; }
 @keyframes sq-float-callout { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
 
 .sq-active-stage { position: relative; display: flex; align-items: center; justify-content: center; }
 .sq-active-halo {
-    position: absolute; inset: -16px; border-radius: 38px;
-    background: radial-gradient(circle, rgba(184, 209, 102, 0.30) 0%, transparent 70%); pointer-events: none;
+    position: absolute; inset: -18px; border-radius: 40px;
+    background: radial-gradient(circle, rgba(212, 238, 127, 0.42) 0%, transparent 70%); pointer-events: none;
 }
-/* Tấm đế ô vuông '?' nghiêng nhẹ lấp ló phía sau Bài cần học để thấy rõ ảnh truyện đang đè lên ô '?' */
-.sq-active-q-backing {
-    position: absolute; width: 92px; height: 92px; border-radius: 25px;
-    background: #23281C; box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.14);
-    transform: rotate(-8deg) translate(-8px, 3px); pointer-events: none; z-index: 1;
-    display: flex; align-items: flex-start; justify-content: flex-start; padding: 7px 9px;
-}
-.sq-active-q-backing span { font-size: 14px; font-weight: 900; color: #B8D166; opacity: 0.85; }
-html.light .sq-active-q-backing { background: #DCE4C8; }
-
 .sq-tile.sq-tile-active {
-    position: relative; z-index: 2; width: 94px; height: 94px; border-radius: 26px; background: #2B3122;
-    box-shadow: 0 8px 0 #14180F, 0 22px 42px rgba(0, 0, 0, 0.75), 0 0 0 2.5px #FFFFFF;
+    position: relative; z-index: 2; width: 92px; height: 92px; border-radius: 26px;
 }
-html.light .sq-tile.sq-tile-active {
-    background: #FFFFFF; box-shadow: 0 8px 0 #B8C49A, 0 18px 34px rgba(45, 54, 24, 0.24), 0 0 0 2.5px #18181B;
+.sq-tile.sq-tile-active.has-story-cover {
+    background: #2B361E;
+    box-shadow: 0 8px 0 #1A290B, 0 20px 40px rgba(0, 0, 0, 0.75), 0 0 0 3px #E2F89C, 0 0 24px rgba(212, 238, 127, 0.4);
 }
-.sq-tile.sq-tile-active .sq-big-q { font-size: 38px; color: #FFFFFF; }
-html.light .sq-tile.sq-tile-active .sq-big-q { color: #1B1C17; }
 
 /* 7. POPOVER SHEET + STORY HOOK & AUDIO PREVIEW */
 .sq-popover {
@@ -310,12 +291,16 @@ html.light .sq-dock-cta { background: #18181B; color: #FFFFFF; }
 html.light .story-snap-title { color: #18181B; }
 .story-snap-sub { font-size: 10.5px; font-weight: 500; color: #71717A; margin-top: -3px; }
 
-/* 9. MILESTONE TILES & LUMI STAGE (FIX #1: NO TAIL OVERLAP, NO EYE LASER) */
-.sq-tile.sq-tile-milestone { width: 70px; height: 70px; border-radius: 20px; background: #262015; }
-.sq-tile-milestone.is-locked-muted { opacity: 0.65; }
-.sq-milestone-img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.sq-milestone-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.45) 100%); }
-.sq-milestone-num { position: absolute; top: 6px; left: 8px; font-size: 9.5px; font-weight: 800; color: rgba(255, 255, 255, 0.78); }
+/* 9. 3D AMBER GOLD MILESTONE TILES & COMPANION STAGE */
+.sq-tile.sq-tile-milestone {
+    width: 74px; height: 74px; border-radius: 22px; background: #3D280A; opacity: 1 !important;
+    box-shadow: 0 6px 0 #261603, 0 14px 28px rgba(0, 0, 0, 0.6), 0 0 0 2.5px #FBBF24, 0 0 18px rgba(251, 191, 36, 0.25) !important;
+}
+.sq-milestone-img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.12) brightness(1.06) !important; }
+.sq-milestone-num {
+    position: absolute; top: 5px; left: 7px; padding: 1px 5px; border-radius: 6px;
+    background: rgba(24, 15, 3, 0.72); font-size: 9.5px; font-weight: 800; color: #FEF08A;
+}
 
 .sq-companion-island { position: absolute; top: 106px; z-index: 3; width: 132px; display: flex; flex-direction: column; align-items: center; gap: 0; }
 .sq-companion-island.is-right { right: 2px; }
