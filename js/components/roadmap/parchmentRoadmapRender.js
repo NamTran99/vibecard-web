@@ -65,6 +65,7 @@ function renderWindingConnectorSvg(x1, x2, isLit, isActiveNext, isPulseFlow) {
         <div class="sq-bridge-wrap ${cls}" aria-hidden="true">
             <svg class="sq-bridge-svg" viewBox="0 0 100 40" preserveAspectRatio="none">
                 <path class="sq-bridge-ribbon" d="${d}" vector-effect="non-scaling-stroke" />
+                <path class="sq-stone-shadow" d="${d}" vector-effect="non-scaling-stroke" />
                 <path class="sq-bridge-line" d="${d}" vector-effect="non-scaling-stroke" />
             </svg>
         </div>`;
@@ -101,12 +102,14 @@ function renderWindingSquareNode(chapter, gIdx, loop, localIdx, order) {
         return `
             <div class="sq-node-row is-milestone state-${state}" style="--x:${xPct}%; --i:${order}" ${state === 'active' ? 'data-roadmap-active="1"' : ''}>
                 <div class="sq-node-anchor">
+                    <span class="sq-loot-aura ${isBoss ? 'is-boss-aura' : ''}" aria-hidden="true"></span>
                     <div class="sq-tile sq-tile-milestone ${state === 'locked' ? 'is-locked-muted' : ''}"
                          data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}"
                          title="${isBoss ? 'Thử thách cuối · +300 XP' : 'Rương thưởng · +150 XP'}">
                         <img src="${chestImg}" alt="" class="sq-milestone-img" loading="lazy" />
                         <div class="sq-milestone-shade"></div>
                         <span class="sq-milestone-num">${numLabel}</span>
+                        <span class="sq-loot-xp-pill">${isBoss ? '★ BOSS' : '🎁 +150 XP'}</span>
                     </div>
                 </div>
             </div>`;
@@ -170,14 +173,6 @@ function renderWindingSquareNode(chapter, gIdx, loop, localIdx, order) {
         </div>`;
 }
 
-function getRoadmapCharacterLine(char, completed, started, justDone) {
-    const remaining = ROADMAP_LESSONS_PER_LOOP - completed;
-    if (completed >= ROADMAP_LESSONS_PER_LOOP) return char.quote || 'Cảm ơn bạn đã đánh thức 100% sắc màu cho mình!';
-    if (justDone) return `Tuyệt! Mình vừa có thêm 20% sắc màu. Còn ${remaining} chặng nữa!`;
-    if (started) return `Chọn truyện trên các ô vuông ? để đánh thức sắc màu nhé.`;
-    return 'Mình đang đợi bạn ở chặng này…';
-}
-
 function renderRoadmapSection(chapter, loop, characters, orderStart) {
     const start = loop * ROADMAP_LESSONS_PER_LOOP, end = start + ROADMAP_LESSONS_PER_LOOP;
     const sectionNodes = chapter.nodes.slice(start, end);
@@ -190,16 +185,8 @@ function renderRoadmapSection(chapter, loop, characters, orderStart) {
     const justDoneHere = sectionNodes.some(n => n.num === roadmapUiState.justCompletedNum);
     const titles = roadmapSectionTitles[chapter.id] || [];
     const sectionTitle = titles[loop] || `Phần ${loop + 1}`;
-    const char = characters[loop] || characters[0];
-    const line = getRoadmapCharacterLine(char, completed, started, justDoneHere);
     const sideCls = (loop % 2 === 0) ? 'is-right' : 'is-left';
     const chId = chapter.id || 0;
-
-    const starsHtml = Array.from({ length: 5 }, (_, i) => {
-        const isOn = i < completed;
-        const isPop = justDoneHere && i === completed - 1;
-        return `<span class="sq-companion-star ${isOn ? 'is-on' : ''} ${isPop ? 'is-star-pop' : ''}">★</span>`;
-    }).join('');
 
     const energyOrbsHtml = justDoneHere ? `
         <div class="sq-energy-burst ${sideCls}" aria-hidden="true">
@@ -220,21 +207,23 @@ function renderRoadmapSection(chapter, loop, characters, orderStart) {
         }
     });
 
+    const sceneryHtml = (typeof window.renderRoadmapGameSceneryHtml === 'function')
+        ? window.renderRoadmapGameSceneryHtml(loop) : '';
     const companionHtml = (typeof window.renderRoadmapAnimatedCompanionHtml === 'function')
         ? window.renderRoadmapAnimatedCompanionHtml({
             chapterId: chId, loop, sideCls, fillKey, fillPct, prevPct,
-            completed, started, mastered, justDoneHere, starsHtml
-        })
-        : '';
+            completed, started, mastered, justDoneHere
+        }) : '';
 
     return `
         <section class="mb-section sq-winding-section ${!started && loop > 0 ? 'is-future-loop' : ''}" data-loop="${loop + 1}">
             <div class="sq-section-header" style="--i:${orderStart}">
                 <span class="sq-section-hairline"></span>
-                <span class="sq-section-title">Phần ${loop + 1} · ${sectionTitle}</span>
+                <span class="sq-section-title"><i>✦</i> Phần ${loop + 1} · ${sectionTitle} <i>✦</i></span>
                 <span class="sq-section-hairline"></span>
             </div>
             <div class="sq-winding-stage">
+                ${sceneryHtml}
                 ${energyOrbsHtml}
                 ${companionHtml}
                 <div class="sq-winding-nodes">${trackHtml}</div>

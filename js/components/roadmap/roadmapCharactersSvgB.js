@@ -211,7 +211,7 @@ window.cycleRoadmapCurveCharacter = function (chapterId, loop, delta, event) {
 window.renderRoadmapAnimatedCompanionHtml = function (opts) {
     const {
         chapterId, loop, sideCls, fillKey, fillPct, prevPct,
-        completed, started, mastered, justDoneHere, starsHtml
+        completed, started, mastered, justDoneHere
     } = opts;
     const animChar = window.getRoadmapAnimatedCharacter(chapterId, loop);
     if (!animChar) return '';
@@ -222,16 +222,74 @@ window.renderRoadmapAnimatedCompanionHtml = function (opts) {
             ? `Tuyệt! ${animChar.name} vừa có thêm 20% năng lượng. Còn ${remaining} chặng nữa!`
             : animChar.quote);
 
+    const islandRim = started ? '#B8D166' : '#4B553A';
     return `
         <div class="sq-companion-island ${sideCls}">
             <div class="mb-char sq-char-stage is-svg-rig ${mastered ? 'is-mastered' : ''} ${started ? '' : 'is-waiting'}"
                  role="button" tabindex="0" data-fill-key="${fillKey}" data-fill-target="${fillPct}" data-just-done="${justDoneHere ? 1 : 0}"
                  onclick="handleCharacterTap(this)" title="Chạm vào ${animChar.name}">
                 <div class="mb-char-bubble" role="status">${line}</div>
+                <svg class="sq-game-island-base" viewBox="0 0 180 74" fill="none" aria-hidden="true">
+                    <ellipse cx="90" cy="52" rx="76" ry="18" fill="rgba(0,0,0,0.52)" />
+                    <path d="M 18 34 C 18 54, 48 64, 90 64 C 132 64, 162 54, 162 34 L 156 26 L 24 26 Z" fill="#171C12" stroke="rgba(255,255,255,0.07)" stroke-width="1" />
+                    <path d="M 28 38 C 36 50, 62 56, 90 56 C 118 56, 144 50, 152 38" stroke="#0F130B" stroke-width="4" stroke-linecap="round" />
+                    <ellipse cx="90" cy="27" rx="72" ry="19" fill="#232B1B" stroke="${islandRim}" stroke-opacity="0.38" stroke-width="1.4" />
+                    <ellipse cx="90" cy="25" rx="58" ry="13.5" fill="#2B3520" />
+                    <circle cx="34" cy="29" r="3" fill="#B8D166" opacity="0.55" />
+                    <circle cx="146" cy="27" r="2.5" fill="#FBBF24" opacity="0.65" />
+                    <path d="M 42 22 Q 40 15, 45 13 M 45 23 Q 46 16, 50 15" stroke="#84CC16" stroke-width="1.8" stroke-linecap="round" opacity="0.6" />
+                </svg>
                 <div class="sq-campfire-glow" aria-hidden="true"></div>
                 <div class="rm-svg-char-layer is-base-layer" aria-hidden="true">${animChar.svg}</div>
                 <div class="rm-svg-char-layer is-awake-layer mb-char-color" style="clip-path: inset(${100 - prevPct}% 0 0 0);">${animChar.svg}</div>
+                <div class="sq-island-hud-pill" aria-hidden="true"><span>✦</span> ${completed}/5</div>
             </div>
+        </div>`;
+};
+
+window.renderRoadmapGameSceneryHtml = function (loop) {
+    if (loop % 2 === 0) {
+        return `
+            <div class="sq-game-scenery" aria-hidden="true">
+                <svg class="sq-prop sq-prop-tl" viewBox="0 0 88 84" fill="none">
+                    <ellipse cx="42" cy="70" rx="32" ry="9" fill="rgba(0,0,0,0.38)" />
+                    <path d="M 18 68 Q 12 52, 22 44 M 22 68 Q 20 55, 29 48" stroke="#3F6212" stroke-width="2.5" stroke-linecap="round" />
+                    <rect x="37" y="30" width="6" height="39" rx="2.5" fill="#5C3A21" />
+                    <path d="M 24 33 L 56 33 L 62 40 L 56 47 L 24 47 Z" fill="#7C4D2B" stroke="#9A633A" stroke-width="1.2" />
+                    <line x1="30" y1="40" x2="50" y2="40" stroke="#FDE68A" stroke-width="2" stroke-linecap="round" opacity="0.7" />
+                    <path d="M 55 69 Q 55 56, 58 54" stroke="#CBD5E1" stroke-width="4" stroke-linecap="round" />
+                    <path d="M 46 56 C 46 45, 68 45, 68 56 Z" fill="#06B6D4" />
+                    <circle cx="54" cy="51" r="2" fill="#CFFAFE" /><circle cx="61" cy="53" r="1.5" fill="#CFFAFE" />
+                    <circle cx="66" cy="36" r="2" fill="#FDE047" class="sq-game-spore" />
+                </svg>
+                <svg class="sq-prop sq-prop-br" viewBox="0 0 80 68" fill="none">
+                    <ellipse cx="40" cy="56" rx="28" ry="8" fill="rgba(0,0,0,0.36)" />
+                    <path d="M 22 55 L 28 34 L 46 28 L 56 42 L 54 55 Z" fill="#272E22" stroke="#3F4B36" stroke-width="1.2" />
+                    <path d="M 37 36 L 41 43 L 37 50 M 35 43 L 43 43" stroke="#B8D166" stroke-width="1.8" stroke-linecap="round" opacity="0.8" />
+                    <path d="M 56 54 C 56 46, 68 46, 68 54 Z" fill="#84CC16" />
+                    <circle cx="24" cy="28" r="2" fill="#B8D166" class="sq-game-spore" />
+                </svg>
+            </div>`;
+    }
+    return `
+        <div class="sq-game-scenery" aria-hidden="true">
+            <svg class="sq-prop sq-prop-tr" viewBox="0 0 88 86" fill="none">
+                <ellipse cx="46" cy="74" rx="30" ry="8.5" fill="rgba(0,0,0,0.4)" />
+                <path d="M 58 70 L 44 46 L 52 46 L 40 26 L 48 26 L 38 10 L 68 26 L 60 26 L 72 46 L 64 46 L 76 70 Z" fill="#1A2617" opacity="0.85" />
+                <rect x="24" y="64" width="22" height="7" rx="3" fill="#333A2E" />
+                <rect x="29" y="42" width="12" height="23" rx="2" fill="#272D22" />
+                <rect x="26" y="27" width="18" height="16" rx="3" fill="#1F241B" stroke="#4A5440" stroke-width="1.2" />
+                <rect x="30" y="31" width="10" height="8" rx="2" fill="#FBBF24" />
+                <path d="M 21 28 L 35 18 L 49 28 Z" fill="#3B4334" />
+                <circle cx="35" cy="35" r="13" fill="rgba(251,191,36,0.22)" />
+            </svg>
+            <svg class="sq-prop sq-prop-bl" viewBox="0 0 80 68" fill="none">
+                <ellipse cx="38" cy="56" rx="28" ry="8" fill="rgba(0,0,0,0.36)" />
+                <polygon points="28,55 24,34 33,24 38,55" fill="#38BDF8" opacity="0.78" />
+                <polygon points="36,55 41,29 49,36 45,55" fill="#818CF8" opacity="0.75" />
+                <path d="M 18 56 C 18 47, 48 47, 52 56 Z" fill="#252C1F" />
+                <circle cx="48" cy="22" r="2" fill="#7DD3FC" class="sq-game-spore" />
+            </svg>
         </div>`;
 };
 
