@@ -5,14 +5,14 @@
 
 /* 1. MOONLY / APPLE MUSIC TRANSLUCENT GLASS TOPBAR & PURE HERO BANNER */
 #screenParchmentRoadmap, #screenParchmentRoadmap * { -webkit-tap-highlight-color: transparent; font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif; }
-html.dark #screenParchmentRoadmap.parchment-bg { background: #0B130E !important; }
+html.dark #screenParchmentRoadmap.parchment-bg { background: radial-gradient(ellipse at 50% 14%, #151C10 0%, #0E100B 48%, #090A08 100%) !important; }
 #roadmapHeroHeader { min-height: 166px !important; max-height: 172px !important; overflow: hidden; }
 #roadmapHeroHeader #roadmapBannerImg {
     object-position: center 38% !important;
     -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 66%, rgba(0,0,0,0.48) 86%, transparent 100%) !important;
     mask-image: linear-gradient(to bottom, #000 0%, #000 66%, rgba(0,0,0,0.48) 86%, transparent 100%) !important;
 }
-#roadmapHeroHeader .hero-vignette-bottom { background: linear-gradient(180deg, transparent 0%, transparent 46%, rgba(11, 19, 14, 0.68) 78%, #0B130E 100%) !important; }
+#roadmapHeroHeader .hero-vignette-bottom { background: linear-gradient(180deg, transparent 0%, transparent 46%, rgba(14, 16, 11, 0.52) 78%, #0E100B 100%) !important; }
 #roadmapHeroHeader .hero-content { padding: 0 18px 12px !important; will-change: opacity, transform; }
 #roadmapHeroHeader:not(.is-switching) .hero-content { transition: none !important; }
 #roadmapChapterHeading {
@@ -54,13 +54,10 @@ html.light #roadmapChapterHeading { color: #18181B !important; text-shadow: none
 html.light #roadmapCardTagBtn.rm-top-chapter-pill { background: rgba(255, 255, 255, 0.85) !important; color: #18181B !important; }
 html.light #roadmapCardTag, html.light .rm-top-pill-prog { color: #18181B !important; }
 
-/* 2. 2.5D GAMING WORLD MAP TERRAIN STAGE (CLEAR BACKGROUND + LOCAL ITEM CONTRAST) */
+/* 2. CLEAN DARK OLIVE STAGE (NO BACKGROUND IMAGE) */
 .sq-roadmap-map {
     padding: 6px 12px 128px !important; max-width: 100% !important; margin: 0 auto;
-    background:
-        linear-gradient(90deg, rgba(8, 14, 10, 0.04) 0%, rgba(8, 14, 10, 0.24) 32%, rgba(8, 14, 10, 0.26) 50%, rgba(8, 14, 10, 0.24) 68%, rgba(8, 14, 10, 0.04) 100%),
-        linear-gradient(180deg, #0B130E 0%, rgba(11, 19, 14, 0.28) 5%, rgba(11, 19, 14, 0.06) 12%, rgba(11, 19, 14, 0.06) 94%, #0B130E 100%),
-        url('../assets/cards/fable_forest_game_map_bg.jpg?v=20261020_seamless2') center top / 100% auto repeat-y !important;
+    background: transparent !important;
 }
 html.light .sq-roadmap-map { background: #F4F5EE !important; }
 #roadmapNextBar, #mysteryRoadmapNextBar { display: none !important; }
