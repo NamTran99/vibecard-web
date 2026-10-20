@@ -6,7 +6,7 @@ window.REAL_ROADMAP_CHAPTERS = [
     "title": "Khu rừng ngụ ngôn",
     "progressText": "2/10 bài · 20%",
     "desc": "Khám phá ngụ ngôn ngắn, học từ vựng qua câu chuyện và bài học ý nghĩa.",
-    "image": "https://mindcards-lessons.mindcards.workers.dev/api/v1/admin/media/roadmap_stage_01_background?v=20260804-mobile-webp",
+    "image": "assets/cards/fable_forest_hero_banner.jpg",
     "activeNodeIndex": 2,
     "characters": [
       {

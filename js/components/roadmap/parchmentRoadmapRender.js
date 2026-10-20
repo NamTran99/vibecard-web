@@ -98,7 +98,7 @@ function renderWindingSquareNode(chapter, gIdx, loop, localIdx, order) {
     // 1. MỐC RƯƠNG KHO BÁU (CHẶNG 5) & TRÙM CUỐI (CHẶNG 10)
     if (isSpecial) {
         const isBoss = type === 'boss';
-        const chestImg = isBoss ? 'assets/cards/lumi_progress_celebration.jpg' : 'assets/cards/reward_gift_box.jpg';
+        const chestImg = isBoss ? 'assets/cards/lumi_progress_celebration.jpg' : 'assets/cards/deck_saved_banner.jpg';
         return `
             <div class="sq-node-row is-milestone state-${state}" style="--x:${xPct}%; --i:${order}" ${state === 'active' ? 'data-roadmap-active="1"' : ''}>
                 <div class="sq-node-anchor">

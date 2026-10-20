@@ -197,7 +197,7 @@ window.triggerRoadmapPropEasterEgg = function (el, label, event) {
 async function syncRoadmapWithJson() {
     if (typeof fetch !== 'function') return;
     try {
-        const resp = await fetch('js/roadmapChaptersData.json');
+        const resp = await fetch('js/roadmapChaptersData.json?v=20261020_v22_fableforest');
         if (resp.ok) {
             const data = await resp.json();
             if (Array.isArray(data) && data.length > 0) {

@@ -18,7 +18,7 @@ const roadmapNodeTypeMeta = {
 
 // Tên 2 section (2 vòng) của từng chương, index theo chapter.id
 const roadmapSectionTitles = [
-    ['Trú mưa dưới hiên', 'Bước ra màn đêm'],
+    ['Bìa rừng đom đóm', 'Lối mòn cổ thụ'],
     ['Sân ga nửa đêm', 'Toa tàu bí ẩn'],
     ['Khởi động giọng hát', 'Sân khấu cực quang'],
     ['Cánh đồng ngàn sao', 'Bầu trời đom đóm']
@@ -63,7 +63,7 @@ let roadmapChaptersData = (typeof window !== 'undefined' && Array.isArray(window
         title: "Khu Rừng Ngụ Ngôn",
         progressText: "2/10 bài · 20%",
         desc: "Khám phá ngụ ngôn ngắn, học từ vựng qua câu chuyện và bài học ý nghĩa.",
-        image: "assets/cards/lumi_rain_coffee_eaves.jpg",
+        image: "assets/cards/fable_forest_hero_banner.jpg",
         activeNodeIndex: 2,
         characters: [
             {
@@ -86,7 +86,7 @@ let roadmapChaptersData = (typeof window !== 'undefined' && Array.isArray(window
             { num: 2, day: 2, topicId: "topic_002", title: "Chiếc Thẻ Nhầm Tên", subtitle: "Xác nhận danh tính và phối hợp", type: "video", status: "completed", img: "assets/cards/lumi_review_flashcards.jpg", scenario: "Sảnh đăng ký của một hội nghị công nghệ quốc tế ngay trước bài khai mạc.", purpose: "Xác nhận danh tính, xử lý nhầm lẫn nhạy cảm và phối hợp khi thời gian gấp.", lessonType: "dialogue", tags: { age: "18+", genre: "dialogue_work", origin: "vietnam", moral: "collaboration", mood: "witty" }, display_badges: ["18+", "Công sở", "Hợp tác", "Thực chiến"] },
             { num: 3, day: 3, topicId: "topic_003", title: "Ngụ ngôn: Rùa và Thỏ", subtitle: "Bài học về sự kiên trì", type: "book", status: "active", img: "assets/cards/lumi_farmer_strawhat.jpg", scenario: "Một lời thách thức bất ngờ giữa thung lũng mùa xuân đã châm ngòi cho cuộc đua vô tiền khoáng hậu giữa chú Thỏ kiêu ngạo và chú Rùa điềm tĩnh.", purpose: "Sự kiên trì bền bỉ làm chủ con đường.", lessonType: "story", tags: { age: "3+", genre: "fable", origin: "western", moral: "persistence", mood: "cozy" }, display_badges: ["3+", "Ngụ ngôn Aesop", "Kiên trì", "Ấm áp"] },
             { num: 4, day: 4, topicId: "topic_004", title: "Tàu Trễ", subtitle: "Ứng phó hoãn chuyến tàu", type: "video", status: "locked", img: "assets/cards/lesson_004_chuyen_tau_nua_dem_lofi_vi.jpg", scenario: "Ke ga số 3 vắng lặng giữa đêm khuya khi chuyến tàu cuối cùng bị hoãn.", purpose: "Hỏi thăm lịch tàu và ứng phó tình huống khẩn.", lessonType: "dialogue", tags: { age: "15+", genre: "dialogue_daily", origin: "vietnam", moral: "collaboration", mood: "adventurous" }, display_badges: ["15+", "Đời thường", "Du lịch", "Linh hoạt"] },
-            { num: 5, day: 5, topicId: "topic_005", title: "Ảnh Cũ", subtitle: "Rương kho báu +150 XP", type: "chest", status: "chest", img: "assets/cards/reward_gift_box.jpg", scenario: "Bức ảnh kỷ niệm bị rơi dưới góc bàn.", purpose: "Giao tiếp lịch thiệp và trao trả đồ thất lạc.", lessonType: "dialogue", tags: { age: "10+", genre: "dialogue_daily", origin: "vietnam", moral: "kindness", mood: "cozy" }, display_badges: ["10+", "Rương báu 🎁", "Gắn kết", "Ấm áp"] },
+            { num: 5, day: 5, topicId: "topic_005", title: "Ảnh Cũ", subtitle: "Rương kho báu +150 XP", type: "chest", status: "chest", img: "assets/cards/deck_saved_banner.jpg", scenario: "Bức ảnh kỷ niệm bị rơi dưới góc bàn.", purpose: "Giao tiếp lịch thiệp và trao trả đồ thất lạc.", lessonType: "dialogue", tags: { age: "10+", genre: "dialogue_daily", origin: "vietnam", moral: "kindness", mood: "cozy" }, display_badges: ["10+", "Rương báu 🎁", "Gắn kết", "Ấm áp"] },
             { num: 6, day: 6, topicId: "topic_006", title: "Ngụ ngôn: Quạ và Bình Nước", subtitle: "Sự thông minh và kiên nhẫn", type: "book", status: "locked", img: "assets/cards/lumi_melody_arena.jpg", scenario: "Dưới cái nắng gay gắt như thiêu như đốt, chú Quạ khát khô cổ họng tìm thấy một chiếc bình đựng nước sâu đáy hẹp miệng.", purpose: "Giải quyết khó khăn bằng trí tuệ và kiên nhẫn.", lessonType: "story", tags: { age: "3+", genre: "fable", origin: "western", moral: "wisdom", mood: "witty" }, display_badges: ["3+", "Ngụ ngôn Aesop", "Trí tuệ", "Bình tĩnh"] },
             { num: 7, day: 7, topicId: "topic_007", title: "Sai Hóa Đơn", subtitle: "Trao đổi hóa đơn nhã nhặn", type: "video", status: "locked", img: "assets/cards/pixar_night_farm_scenery.jpg", scenario: "Hóa đơn thanh toán tại quán ăn có món lạ.", purpose: "Lịch thiệp đối chiếu lại hóa đơn.", lessonType: "dialogue", tags: { age: "15+", genre: "dialogue_daily", origin: "vietnam", moral: "collaboration", mood: "adventurous" }, display_badges: ["15+", "Đời thường", "Du lịch", "Linh hoạt"] },
             { num: 8, day: 8, topicId: "topic_008", title: "Lộn Bàn Ăn", subtitle: "Xử lý nhầm chỗ ngồi khéo léo", type: "video", status: "locked", img: "assets/cards/lumi_farmer_night.png", scenario: "Ngồi nhầm bàn ăn đã có người đặt trước trong giờ cao điểm.", purpose: "Xử lý tình huống nhầm lẫn nhã nhặn.", lessonType: "dialogue", tags: { age: "15+", genre: "dialogue_daily", origin: "vietnam", moral: "collaboration", mood: "adventurous" }, display_badges: ["15+", "Đời thường", "Du lịch", "Linh hoạt"] },
