@@ -74,7 +74,7 @@
       <button id="primaryCtaBtn" type="button" class="tactile-cta-btn" onclick="handleNextStep()">
         Khám phá cách học ngay →
       </button>
-      <button id="secondaryCtaBtn" type="button" class="secondary-outline-btn" onclick="window.location.href='../index.html?from=onboarding'">
+      <button id="secondaryCtaBtn" type="button" class="secondary-outline-btn" onclick="try{sessionStorage.setItem('vibecard-skip-wakeup','true');sessionStorage.setItem('vibecard-entered-app','true');}catch(e){}window.location.href='../index.html?from=onboarding'">
         Tôi đã có tài khoản học viên
       </button>
     </footer>

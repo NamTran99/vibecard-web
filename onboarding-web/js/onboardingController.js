@@ -210,7 +210,10 @@ function renderScreen(idx, direction = 'forward', skipAnim = false) {
   secondaryBtn.style.display = 'none';
   secondaryBtn.textContent = 'Tôi đã có tài khoản học viên';
   secondaryBtn.onclick = () => {
-    try { sessionStorage.setItem('vibecard-skip-wakeup', 'true'); } catch (e) {}
+    try {
+      sessionStorage.setItem('vibecard-skip-wakeup', 'true');
+      sessionStorage.setItem('vibecard-entered-app', 'true');
+    } catch (e) {}
     window.location.href = '../index.html?from=onboarding';
   };
   bottomBar.style.display = 'flex';
@@ -442,7 +445,10 @@ window.selectOnboardingPlanTier = function (tier, cardEl) {
 window.completeOnboardingWithAuth = function (provider) {
   if (window.SoundEffects) SoundEffects.playFanfare();
   OnboardingState.syncToAppStorage(provider);
-  try { sessionStorage.setItem('vibecard-skip-wakeup', 'true'); } catch (e) {}
+  try {
+    sessionStorage.setItem('vibecard-skip-wakeup', 'true');
+    sessionStorage.setItem('vibecard-entered-app', 'true');
+  } catch (e) {}
   window.location.href = '../index.html?from=onboarding';
 };
 
