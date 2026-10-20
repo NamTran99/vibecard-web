@@ -171,6 +171,28 @@ window.openRoadmapChapterSheet = openRoadmapChapterSheet;
 window.closeRoadmapChapterSheet = closeRoadmapChapterSheet;
 window.handleChapterSheetSelect = handleChapterSheetSelect;
 
+// Tương tác Easter Egg khi người chơi chạm vào Đạo Cụ Môi Trường (Nấm, Đá Cổ Ngữ, Đèn Đá, Pha Lê)
+window.triggerRoadmapPropEasterEgg = function (el, label, event) {
+    if (event && typeof event.stopPropagation === 'function') event.stopPropagation();
+    if (!el) return;
+    el.classList.remove('is-prop-bouncing');
+    void el.offsetWidth;
+    el.classList.add('is-prop-bouncing');
+
+    const oldToast = el.querySelector('.sq-prop-toast');
+    if (oldToast) oldToast.remove();
+
+    const toast = document.createElement('div');
+    toast.className = 'sq-prop-toast';
+    toast.innerHTML = `<span class="sq-prop-spark-a">✦</span>${label || '+5 ✦'}<span class="sq-prop-spark-b">✦</span>`;
+    el.appendChild(toast);
+
+    setTimeout(() => {
+        el.classList.remove('is-prop-bouncing');
+        if (toast.parentNode) toast.remove();
+    }, 1150);
+};
+
 // Tự động đồng bộ roadmap data từ JSON nếu có
 async function syncRoadmapWithJson() {
     if (typeof fetch !== 'function') return;
