@@ -48,15 +48,15 @@
     }
 
     const FALLBACK_STORIES = [
-        { id: 'topic_003', title: 'Rùa và Thỏ', subtitle: 'Bài học về sự kiên trì', genre: 'fable', difficulty: 'easy', age: 'Độ khó: Dễ', duration: '3 phút', img: 'assets/cards/lumi_farmer_strawhat.jpg', scenario: 'Cuộc đua vô tiền khoáng hậu giữa chú Thỏ kiêu ngạo và chú Rùa điềm tĩnh tại thung lũng mùa xuân.' },
-        { id: 'topic_006', title: 'Quạ và Bình Nước', subtitle: 'Sự thông minh và kiên nhẫn', genre: 'fable', difficulty: 'easy', age: 'Độ khó: Dễ', duration: '3 phút', img: 'assets/cards/lumi_melody_arena.jpg', scenario: 'Chú Quạ khát nước khéo léo dùng sỏi để nâng mực nước trong chiếc bình sâu đáy.' },
-        { id: 'topic_009', title: 'Cậu Bé Chăn Cừu', subtitle: 'Giá trị của sự trung thực', genre: 'fable', difficulty: 'easy', age: 'Độ khó: Dễ', duration: '4 phút', img: 'assets/cards/lumi_review_flashcards.jpg', scenario: 'Những ngày chăn cừu trên đồi cỏ và bài học sâu sắc về lòng tin.' },
-        { id: 'topic_001', title: 'Mưa Dưới Mái Hiên', subtitle: 'Quán cà phê góc phố Tokyo', genre: 'travel_daily', difficulty: 'medium', age: 'Độ khó: Vừa', duration: '5 phút', img: 'assets/cards/lumi_rain_coffee_eaves.jpg', scenario: 'Trú mưa bên hiên quán nhỏ & gọi một ly latte ấm nóng.' },
-        { id: 'topic_004', title: 'Chuyến Tàu Nửa Đêm', subtitle: 'Sân ga mù sương 00:00', genre: 'travel_daily', difficulty: 'medium', age: 'Độ khó: Vừa', duration: '5 phút', img: 'assets/cards/lumi_train_station_night.jpg', scenario: 'Hơi nước rít lên tại Ke ga số 1 khi đồng hồ điểm qua nửa đêm.' },
-        { id: 'topic_007', title: 'Quán Mì Hẻm Nhỏ', subtitle: 'Ẩm thực đêm & hỏi đường', genre: 'travel_daily', difficulty: 'medium', age: 'Độ khó: Vừa', duration: '5 phút', img: 'assets/cards/pixar_night_farm_scenery.jpg', scenario: 'Gọi món đặc sản địa phương và trò chuyện cùng đầu bếp bản xứ.' },
-        { id: 'topic_002', title: 'Chiếc Thẻ Nhầm Tên', subtitle: 'Sảnh hội nghị AI quốc tế', genre: 'pro_business', difficulty: 'hard', age: 'Độ khó: Khó', duration: '6 phút', img: 'assets/cards/lumi_review_flashcards.jpg', scenario: 'Xử lý tình huống nhầm lẫn thông tin đại biểu lịch thiệp trước giờ khai mạc.' },
-        { id: 'topic_010', title: 'Bản Đàm Phán Đêm Muộn', subtitle: 'Ký kết thương vụ chiến lược', genre: 'pro_business', difficulty: 'hard', age: 'Độ khó: Khó', duration: '7 phút', img: 'assets/cards/lumi_progress_celebration.jpg', scenario: 'Thương thảo điều khoản hợp đồng gấp trước thời hạn đóng phiên.' },
-        { id: 'topic_008', title: 'Bức Thư Trong Rương Cổ', subtitle: 'Bí mật dưới ánh trăng', genre: 'mystery', difficulty: 'hard', age: 'Độ khó: Khó', duration: '7 phút', img: 'assets/cards/lumi_farmer_night.png', scenario: 'Giải mã những dòng chữ cổ để lại trong căn gác mái đầy bụi thời gian.' }
+        { id: 'topic_003', title: 'Rùa và Thỏ', subtitle: 'Bài học về sự kiên trì', genre: 'fable', difficulty: 'easy', age: 'Độ khó: Dễ', duration: '3 phút', img: 'assets/cards/calm_story_03_tortoise_hare.jpg', scenario: 'Cuộc đua vô tiền khoáng hậu giữa chú Thỏ kiêu ngạo và chú Rùa điềm tĩnh tại thung lũng mùa xuân.' },
+        { id: 'topic_006', title: 'Quạ và Bình Nước', subtitle: 'Sự thông minh và kiên nhẫn', genre: 'fable', difficulty: 'easy', age: 'Độ khó: Dễ', duration: '3 phút', img: 'assets/cards/calm_story_03_tortoise_hare.jpg', scenario: 'Chú Quạ khát nước khéo léo dùng sỏi để nâng mực nước trong chiếc bình sâu đáy.' },
+        { id: 'topic_009', title: 'Cậu Bé Chăn Cừu', subtitle: 'Giá trị của sự trung thực', genre: 'fable', difficulty: 'easy', age: 'Độ khó: Dễ', duration: '4 phút', img: 'assets/cards/calm_story_02_badge.jpg', scenario: 'Những ngày chăn cừu trên đồi cỏ và bài học sâu sắc về lòng tin.' },
+        { id: 'topic_001', title: 'Mưa Dưới Mái Hiên', subtitle: 'Quán cà phê góc phố Tokyo', genre: 'travel_daily', difficulty: 'medium', age: 'Độ khó: Vừa', duration: '5 phút', img: 'assets/cards/calm_story_01_rain.jpg', scenario: 'Trú mưa bên hiên quán nhỏ & gọi một ly latte ấm nóng.' },
+        { id: 'topic_004', title: 'Chuyến Tàu Nửa Đêm', subtitle: 'Sân ga mù sương 00:00', genre: 'travel_daily', difficulty: 'medium', age: 'Độ khó: Vừa', duration: '5 phút', img: 'assets/cards/calm_story_04_train.jpg', scenario: 'Hơi nước rít lên tại Ke ga số 1 khi đồng hồ điểm qua nửa đêm.' },
+        { id: 'topic_007', title: 'Quán Mì Hẻm Nhỏ', subtitle: 'Ẩm thực đêm & hỏi đường', genre: 'travel_daily', difficulty: 'medium', age: 'Độ khó: Vừa', duration: '5 phút', img: 'assets/cards/calm_story_01_rain.jpg', scenario: 'Gọi món đặc sản địa phương và trò chuyện cùng đầu bếp bản xứ.' },
+        { id: 'topic_002', title: 'Chiếc Thẻ Nhầm Tên', subtitle: 'Sảnh hội nghị AI quốc tế', genre: 'pro_business', difficulty: 'hard', age: 'Độ khó: Khó', duration: '6 phút', img: 'assets/cards/calm_story_02_badge.jpg', scenario: 'Xử lý tình huống nhầm lẫn thông tin đại biểu lịch thiệp trước giờ khai mạc.' },
+        { id: 'topic_010', title: 'Bản Đàm Phán Đêm Muộn', subtitle: 'Ký kết thương vụ chiến lược', genre: 'pro_business', difficulty: 'hard', age: 'Độ khó: Khó', duration: '7 phút', img: 'assets/cards/calm_story_02_badge.jpg', scenario: 'Thương thảo điều khoản hợp đồng gấp trước thời hạn đóng phiên.' },
+        { id: 'topic_008', title: 'Bức Thư Trong Rương Cổ', subtitle: 'Bí mật dưới ánh trăng', genre: 'mystery', difficulty: 'hard', age: 'Độ khó: Khó', duration: '7 phút', img: 'assets/cards/calm_story_04_train.jpg', scenario: 'Giải mã những dòng chữ cổ để lại trong căn gác mái đầy bụi thời gian.' }
     ];
 
     let cachedStoryPool = null;
@@ -91,11 +91,17 @@
         const diffMeta = DIFFICULTY_META[difficulty];
         const duration = difficulty === 'easy' ? '3 phút' : (difficulty === 'hard' ? '7 phút' : '5 phút');
 
+        const calmImgs = {
+            fable: 'assets/cards/calm_story_03_tortoise_hare.jpg',
+            travel_daily: 'assets/cards/calm_story_01_rain.jpg',
+            pro_business: 'assets/cards/calm_story_02_badge.jpg',
+            mystery: 'assets/cards/calm_story_04_train.jpg'
+        };
         return {
             id: n.topicId || `node_${n.num}_${n.day || 1}`,
             title, subtitle: n.subtitle || '', genre, difficulty,
             age: diffMeta.short, duration,
-            img: n.img || 'assets/cards/lumi_rain_coffee_eaves.jpg',
+            img: calmImgs[genre] || 'assets/cards/calm_story_01_rain.jpg',
             scenario: n.scenario || n.purpose || ''
         };
     }

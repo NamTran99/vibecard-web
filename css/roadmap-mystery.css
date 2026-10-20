@@ -18,26 +18,26 @@
 /* #6: Thanh 5 Viên Tinh Thể Năng Lượng Trên Vách Đảo Nhân Vật */
 .sq-island-gem-bar {
     position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); z-index: 6;
-    padding: 3px 8px; border-radius: 999px; background: #161B12;
-    border: 1px solid rgba(184, 209, 102, 0.36); box-shadow: 0 3px 0 #0A0C08, 0 6px 14px rgba(0, 0, 0, 0.5);
+    padding: 3.5px 9px; border-radius: 999px; background: rgba(255, 255, 255, 0.94);
+    border: 1.5px solid rgba(125, 168, 172, 0.55); box-shadow: 0 3px 0 rgba(88, 128, 132, 0.28), 0 6px 14px rgba(45, 76, 80, 0.16);
     display: inline-flex; align-items: center; gap: 4px; pointer-events: none;
 }
 .sq-island-gem {
     width: 8px; height: 8px; transform: rotate(45deg); border-radius: 2px;
-    background: #272E20; border: 1px solid rgba(255, 255, 255, 0.14);
+    background: #DCE6E7; border: 1px solid #A4BCBE;
     transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
 }
 .sq-island-gem.is-lit-gem {
-    background: linear-gradient(135deg, #FEF08A 0%, #B8D166 55%, #65A30D 100%);
-    border-color: #FFFFFF; box-shadow: 0 0 7px rgba(184, 209, 102, 0.85);
+    background: linear-gradient(135deg, #7C66FF 0%, #5C44F5 100%);
+    border-color: #4933CC; box-shadow: 0 0 6px rgba(92, 68, 245, 0.45);
 }
 .sq-island-gem.is-gem-pop { animation: sq-gem-awaken 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
 @keyframes sq-gem-awaken {
     0% { transform: rotate(45deg) scale(0.3); }
-    60% { transform: rotate(45deg) scale(1.45); box-shadow: 0 0 14px #FEF08A; }
+    60% { transform: rotate(45deg) scale(1.45); box-shadow: 0 0 14px #5C44F5; }
     100% { transform: rotate(45deg) scale(1); }
 }
-.sq-gem-count { font-size: 9.5px; font-weight: 800; color: #E4F2B8; margin-left: 3px; font-variant-numeric: tabular-nums; }
+.sq-gem-count { font-size: 9.5px; font-weight: 800; color: #2D4A4D; margin-left: 3px; font-variant-numeric: tabular-nums; }
 
 /* #7: Linh Hồn Lửa Dẫn Đường Đậu Trên Ô Đang Học (Player Wisp Marker) */
 .sq-player-wisp {

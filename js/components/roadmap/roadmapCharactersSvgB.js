@@ -253,37 +253,56 @@ window.renderRoadmapGameSceneryHtml = function () {
 
 window.renderAnimatedMysteryTileSvg = function (numLabel, isActive, order) {
     const delay = -(((Number(order) || 0) * 0.37) % 2.8).toFixed(2);
-    const baseFill = isActive ? '#14180F' : '#10140D';
-    const topFill = isActive ? '#283020' : '#20261B';
-    const rimStroke = isActive ? '#FFFFFF' : 'url(#topRimHighlight)';
-    const rimWidth = isActive ? '2.2' : '1.5';
-    const qFill = isActive ? '#FFFFFF' : '#78806E';
+    const baseFill = isActive ? '#3D2BB5' : '#9EB1B3';
+    const topFill = isActive ? '#5C44F5' : '#CED9DA';
+    const rimStroke = '#FFFFFF';
+    const rimWidth = isActive ? '4.5' : '4';
+    const qFill = '#FFFFFF';
+    const numFill = isActive ? 'rgba(255, 255, 255, 0.78)' : 'rgba(255, 255, 255, 0.85)';
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="12 10 96 102" class="sq-mystery-tile-svg" style="--anim-delay:${delay}s" fill="none" aria-hidden="true">
         <defs>
-          <filter id="softFloorBlur" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="4.5" /></filter>
-          <linearGradient id="topRimHighlight" x1="60" y1="14" x2="60" y2="102" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="rgba(255, 255, 255, 0.24)" />
-            <stop offset="40%" stop-color="rgba(255, 255, 255, 0.10)" />
-            <stop offset="100%" stop-color="rgba(255, 255, 255, 0.04)" />
-          </linearGradient>
+          <filter id="softFloorBlur" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="4" /></filter>
           <linearGradient id="sheenGrad" x1="0" y1="0" x2="1" y2="0">
             <stop offset="0%" stop-color="rgba(255, 255, 255, 0)" />
-            <stop offset="50%" stop-color="rgba(255, 255, 255, 0.065)" />
+            <stop offset="50%" stop-color="rgba(255, 255, 255, 0.14)" />
             <stop offset="100%" stop-color="rgba(255, 255, 255, 0)" />
           </linearGradient>
-          <clipPath id="tileSurfaceClip"><rect x="16" y="14" width="88" height="88" rx="26" /></clipPath>
+          <clipPath id="tileSurfaceClip"><rect x="16" y="14" width="88" height="88" rx="28" /></clipPath>
         </defs>
-        <rect class="floor-shadow" x="18" y="24" width="84" height="86" rx="26" fill="rgba(0, 0, 0, 0.45)" filter="url(#softFloorBlur)" />
-        <rect x="16" y="20" width="88" height="88" rx="26" fill="${baseFill}" stroke="rgba(0, 0, 0, 0.35)" stroke-width="1" />
+        <rect class="floor-shadow" x="18" y="24" width="84" height="84" rx="28" fill="rgba(56, 88, 92, 0.32)" filter="url(#softFloorBlur)" />
+        <rect x="16" y="19" width="88" height="88" rx="28" fill="${baseFill}" />
         <g class="tile-top-group">
-          <rect x="16" y="14" width="88" height="88" rx="26" fill="${topFill}" />
+          <rect x="16" y="14" width="88" height="88" rx="28" fill="${topFill}" />
           <g clip-path="url(#tileSurfaceClip)"><rect class="sheen-bar" x="10" y="-30" width="38" height="170" fill="url(#sheenGrad)" /></g>
-          <rect x="16.5" y="14.5" width="87" height="87" rx="25.5" stroke="${rimStroke}" stroke-width="${rimWidth}" />
-          <text x="27" y="34" class="sq-svg-num">${numLabel}</text>
+          <rect x="18" y="16" width="84" height="84" rx="26" stroke="${rimStroke}" stroke-width="${rimWidth}" />
+          <text x="28" y="35" class="sq-svg-num" style="fill:${numFill}">${numLabel}</text>
           <g fill="${qFill}">
             <path class="q-hook" d="M 48.8 50.8 C 49.1 44.9 53.6 41.3 60.4 41.3 C 67.0 41.3 71.3 45.0 71.3 50.2 C 71.3 54.1 69.1 56.6 65.6 59.1 C 63.4 60.6 62.7 61.8 62.7 64.5 L 62.7 66.4 L 56.4 66.4 L 56.4 63.8 C 56.4 60.1 57.8 57.9 60.9 55.7 C 63.3 54.0 64.4 52.7 64.4 50.4 C 64.4 48.0 62.7 46.5 60.1 46.5 C 57.3 46.5 55.5 48.2 55.3 51.2 L 48.8 50.8 Z" />
             <rect class="q-dot" x="56.2" y="70.6" width="7.4" height="6.9" rx="1.2" />
           </g>
         </g>
     </svg>`;
+};
+
+window.renderCalmGiftBoxMilestoneHtml = function (numLabel, isBoss, state, onClick) {
+    const ribbonColor = isBoss ? '#8B5CF6' : '#F4C430';
+    const boxBody = isBoss ? '#6C5CE7' : '#D9534F';
+    const boxLid = isBoss ? '#7E6FF2' : '#E8635E';
+    const waveStroke = isBoss ? '#A29BFE' : '#F28B82';
+    return `
+        <div class="sq-tile sq-tile-milestone is-flat-gift ${state === 'locked' ? 'is-locked-muted' : ''}"
+             data-node-num="${Number(numLabel)}" role="button" tabindex="0" onclick="${onClick}"
+             title="${isBoss ? 'Hộp quà tổng kết · +300 XP' : 'Hộp quà chặng 5 · +150 XP'}">
+            <svg viewBox="0 0 88 92" fill="none" class="sq-flat-gift-svg" aria-hidden="true">
+                <ellipse cx="44" cy="68" rx="34" ry="20" fill="#8B9E9F" />
+                <ellipse cx="44" cy="64" rx="34" ry="20" fill="#DDE6E6" stroke="#FFFFFF" stroke-width="3.5" />
+                <ellipse cx="44" cy="67" rx="22" ry="6.5" fill="#1F2426" />
+                <path d="M 44 22 C 36 10, 24 12, 29 22 C 32 26, 40 25, 44 24 Z" fill="${ribbonColor}" />
+                <path d="M 44 22 C 52 10, 64 12, 59 22 C 56 26, 48 25, 44 24 Z" fill="${ribbonColor}" />
+                <rect x="20" y="29" width="48" height="36" rx="4" fill="${boxBody}" />
+                <path d="M 27 30 Q 30 39, 27 48 T 27 65 M 35 30 Q 38 39, 35 48 T 35 65 M 44 30 Q 47 39, 44 48 T 44 65 M 53 30 Q 56 39, 53 48 T 53 65 M 61 30 Q 64 39, 61 48 T 61 65" stroke="${waveStroke}" stroke-width="1.6" fill="none" opacity="0.78" />
+                <rect x="17" y="22" width="54" height="8.5" rx="3" fill="${boxLid}" />
+            </svg>
+            <span class="sq-loot-xp-pill">${isBoss ? '★ +300 XP' : '🎁 +150 XP'}</span>
+        </div>`;
 };

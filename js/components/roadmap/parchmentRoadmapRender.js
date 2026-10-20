@@ -72,6 +72,19 @@ function renderWindingConnectorSvg(x1, x2, isLit, isActiveNext, isPulseFlow) {
 }
 
 // Render 1 Ô Vuông 3D '?' (Không in chữ dưới đáy ô để dây nối sạch 100% như Duolingo)
+function resolveCalmPastelNodeImg(node, customStory) {
+    const num = Number(node && node.num) || 1;
+    const calmPool = [
+        'assets/cards/calm_story_01_rain.jpg',
+        'assets/cards/calm_story_02_badge.jpg',
+        'assets/cards/calm_story_03_tortoise_hare.jpg',
+        'assets/cards/calm_story_04_train.jpg'
+    ];
+    const raw = String((customStory && customStory.img) || (node && node.img) || '');
+    if (raw.includes('calm_story_')) return raw;
+    return calmPool[(num - 1) % calmPool.length];
+}
+
 function renderWindingSquareNode(chapter, gIdx, loop, localIdx, order) {
     const node = chapter.nodes[gIdx];
     const state = resolveRoadmapNodeState(chapter, gIdx);
@@ -86,7 +99,7 @@ function renderWindingSquareNode(chapter, gIdx, loop, localIdx, order) {
     const customStory = assigned ? assigned.story : null;
     const overlaid = hasRoadmapStoryOverlay(chapter, node, state);
     const displayTitle = customStory ? customStory.title : node.title;
-    const displayImg = customStory ? customStory.img : node.img;
+    const displayImg = resolveCalmPastelNodeImg(node, customStory);
     const justUnlocked = roadmapUiState.justUnlockedNum === node.num ? 'is-just-unlocked' : '';
     const isJustLanded = (window.__justRevealedSlot === `${chId}_${node.num}`);
     const justMounted = isJustLanded ? 'is-cover-stamp' : '';
@@ -95,25 +108,15 @@ function renderWindingSquareNode(chapter, gIdx, loop, localIdx, order) {
     const isPopoverOpen = (window.__openRoadmapPopoverKey === `${chId}_${node.num}`);
     const numLabel = node.num < 10 ? `0${node.num}` : `${node.num}`;
 
-    // 1. MỐC RƯƠNG KHO BÁU (CHẶNG 5) & TRÙM CUỐI (CHẶNG 10)
+    // 1. MỐC HỘP QUÀ FLAT VECTOR (CHẶNG 5 & CHẶNG 10 GIỐNG ẢNH MẪU)
     if (isSpecial) {
         const isBoss = type === 'boss';
-        const chestImg = isBoss ? 'assets/cards/lumi_progress_celebration.jpg' : 'assets/cards/deck_saved_banner.jpg';
+        const giftHtml = (typeof window.renderCalmGiftBoxMilestoneHtml === 'function')
+            ? window.renderCalmGiftBoxMilestoneHtml(numLabel, isBoss, state, onClick)
+            : '';
         return `
             <div class="sq-node-row is-milestone state-${state}" style="--x:${xPct}%; --i:${order}" ${state === 'active' ? 'data-roadmap-active="1"' : ''}>
-                <div class="sq-node-anchor">
-                    <span class="sq-loot-aura ${isBoss ? 'is-boss-aura' : ''}" aria-hidden="true"></span>
-                    <span class="sq-milestone-crest" aria-hidden="true">${isBoss ? '👑' : '🔑'}</span>
-                    <div class="sq-tile sq-tile-milestone ${state === 'locked' ? 'is-locked-muted' : ''}"
-                         data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}"
-                         title="${isBoss ? 'Thử thách cuối · +300 XP' : 'Rương thưởng · +150 XP'}">
-                        <img src="${chestImg}" alt="" class="sq-milestone-img" loading="lazy" />
-                        <div class="sq-milestone-shade"></div>
-                        <span class="sq-milestone-glint" aria-hidden="true"></span>
-                        <span class="sq-milestone-num">${numLabel}</span>
-                        <span class="sq-loot-xp-pill">${isBoss ? '★ BOSS' : '🎁 +150 XP'}</span>
-                    </div>
-                </div>
+                <div class="sq-node-anchor">${giftHtml}</div>
             </div>`;
     }
 
@@ -144,9 +147,6 @@ function renderWindingSquareNode(chapter, gIdx, loop, localIdx, order) {
                     <div class="sq-active-stage">
                         <div class="sq-active-halo" aria-hidden="true"></div>
                         <div class="sq-active-q-backing" aria-hidden="true"><span>?</span></div>
-                        <div class="sq-player-wisp" aria-hidden="true" title="Vị trí hiện tại của bạn">
-                            <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="18" r="10" fill="rgba(184,209,102,0.28)"/><path d="M16 4 C21 10, 24 14, 24 19 C24 23.5, 20.5 27, 16 27 C11.5 27, 8 23.5, 8 19 C8 14, 11 10, 16 4 Z" fill="#B8D166"/><path d="M16 9 C19 13, 20.5 16, 20.5 19.5 C20.5 22, 18.5 24, 16 24 C13.5 24, 11.5 22, 11.5 19.5 C11.5 16, 13 13, 16 9 Z" fill="#FEF08A"/><circle cx="14" cy="19" r="1.4" fill="#182000"/><circle cx="18" cy="19" r="1.4" fill="#182000"/></svg>
-                        </div>
                         ${rippleHtml}
                         <div class="sq-tile sq-tile-active ${overlaid ? 'has-story-cover' : 'is-mystery-q'} ${justUnlocked} ${springTileCls}"
                              data-node-num="${node.num}" role="button" tabindex="0" onclick="${onClick}"
@@ -223,12 +223,11 @@ function renderRoadmapSection(chapter, loop, characters, orderStart) {
     const zoneBridgeHtml = loop > 0 ? `
         <div class="sq-zone-bridge-wrap ${started ? 'is-unlocked' : ''}" aria-hidden="true">
             <svg class="sq-zone-bridge-svg" viewBox="0 0 80 42" fill="none">
-                <path d="M 24 2 L 24 40 M 56 2 L 56 40" stroke="#5C3A21" stroke-width="3" stroke-linecap="round"/>
-                <rect x="20" y="6" width="40" height="5.5" rx="2" fill="#4A321F" stroke="#6E4B2E" stroke-width="0.8"/>
-                <rect x="20" y="15" width="40" height="5.5" rx="2" fill="#543923" stroke="#785233" stroke-width="0.8"/>
-                <rect x="20" y="24" width="40" height="5.5" rx="2" fill="#4A321F" stroke="#6E4B2E" stroke-width="0.8"/>
-                <rect x="20" y="33" width="40" height="5.5" rx="2" fill="#543923" stroke="#785233" stroke-width="0.8"/>
-                <circle cx="20" cy="4" r="3" fill="#B8D166" opacity="0.8"/><circle cx="60" cy="4" r="3" fill="#B8D166" opacity="0.8"/>
+                <path d="M 24 2 L 24 40 M 56 2 L 56 40" stroke="#789E9E" stroke-width="3" stroke-linecap="round"/>
+                <rect x="20" y="6" width="40" height="5.5" rx="2.5" fill="#FFFFFF" stroke="#9BBEC0" stroke-width="1"/>
+                <rect x="20" y="15" width="40" height="5.5" rx="2.5" fill="#EBF4F4" stroke="#9BBEC0" stroke-width="1"/>
+                <rect x="20" y="24" width="40" height="5.5" rx="2.5" fill="#FFFFFF" stroke="#9BBEC0" stroke-width="1"/>
+                <rect x="20" y="33" width="40" height="5.5" rx="2.5" fill="#EBF4F4" stroke="#9BBEC0" stroke-width="1"/>
             </svg>
         </div>` : '';
 
@@ -318,7 +317,7 @@ function renderRoadmapNextBar(chapter) {
         ? `Chặng ${activeNode.num} · ${(customStory && customStory.duration) || '4 phút'} · +20% Lumi`
         : 'Chạm để chọn câu chuyện đè lên ô ?';
     const thumbHtml = overlaid
-        ? `<img src="${customStory ? customStory.img : activeNode.img}" alt="" class="sq-dock-img" />`
+        ? `<img src="${resolveCalmPastelNodeImg(activeNode, customStory)}" alt="" class="sq-dock-img" />`
         : `<div class="sq-dock-q">?</div>`;
     const ctaHtml = overlaid
         ? `<button type="button" class="sq-dock-cta" onclick="event.stopPropagation(); launchRevealedLesson(${activeNode.num}, ${chId})">Học ngay</button>`

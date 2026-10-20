@@ -109,89 +109,91 @@ html.light .sq-section-title { background: rgba(255, 255, 255, 0.94); color: #1E
     width: max-content; display: flex; flex-direction: column; align-items: center; gap: 4px;
 }
 .sq-node-anchor::after {
-    content: ''; position: absolute; bottom: -7px; left: 50%; transform: translateX(-50%);
-    width: 82px; height: 22px; border-radius: 50%; z-index: 0; pointer-events: none;
-    background: radial-gradient(ellipse at center, rgba(64, 102, 106, 0.36) 0%, rgba(64, 102, 106, 0.14) 62%, transparent 74%);
+    content: ''; position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%);
+    width: 68px; height: 14px; border-radius: 50%; z-index: 0; pointer-events: none;
+    background: rgba(68, 104, 108, 0.22); box-shadow: none;
 }
 .sq-node-row.is-active-hero .sq-node-anchor::after {
-    width: 116px; height: 28px; bottom: -8px;
-    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.55) 0%, rgba(72, 110, 114, 0.25) 66%, transparent 76%);
-    border: 1.5px dashed rgba(255, 255, 255, 0.85);
+    width: 98px; height: 18px; bottom: -6px;
+    background: rgba(92, 68, 245, 0.18);
+    border: none;
 }
 
 .sq-tile {
-    position: relative; z-index: 2; width: 68px; height: 68px; border-radius: 20px; overflow: hidden; background: #262C20; border: none;
-    box-shadow: 0 5px 0 rgba(45, 76, 80, 0.45), 0 10px 22px rgba(36, 64, 68, 0.28), 0 0 0 2.5px #FFFFFF;
+    position: relative; z-index: 2; width: 68px; height: 68px; border-radius: 22px; overflow: hidden; background: #CED9DA; border: none;
+    box-shadow: 0 4px 0 #95A8AA, 0 8px 16px rgba(56, 88, 92, 0.18), 0 0 0 3.5px #FFFFFF;
     cursor: pointer; user-select: none; transition: transform 0.15s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.15s ease, opacity 0.15s ease;
 }
-html.light .sq-tile { background: #EAEFE0; box-shadow: 0 5px 0 rgba(45, 76, 80, 0.35), 0 10px 20px rgba(36, 64, 68, 0.22), 0 0 0 2.5px #FFFFFF; }
+html.light .sq-tile { background: #CED9DA; box-shadow: 0 4px 0 #95A8AA, 0 8px 16px rgba(56, 88, 92, 0.18), 0 0 0 3.5px #FFFFFF; }
 .sq-tile:hover { transform: translateY(-2px); opacity: 1 !important; }
-.sq-tile:active { transform: translateY(3px) scale(0.98); box-shadow: 0 2px 0 rgba(45, 76, 80, 0.45), 0 6px 12px rgba(0, 0, 0, 0.25); }
-.sq-tile.sq-tile-completed { width: 64px; height: 64px; border-radius: 18px; opacity: 1; box-shadow: 0 5px 0 rgba(45, 76, 80, 0.42), 0 10px 20px rgba(36, 64, 68, 0.26), 0 0 0 2.5px #FFFFFF; }
+.sq-tile:active { transform: translateY(3px) scale(0.98); box-shadow: 0 2px 0 #95A8AA, 0 4px 10px rgba(56, 88, 92, 0.18), 0 0 0 3.5px #FFFFFF; }
+.sq-tile.sq-tile-completed { width: 64px; height: 64px; border-radius: 20px; opacity: 1; box-shadow: 0 4px 0 #8FA4A6, 0 8px 16px rgba(56, 88, 92, 0.18), 0 0 0 3.5px #FFFFFF; }
 .sq-tile.sq-tile-completed .sq-story-img { filter: saturate(1.04) brightness(1); }
 .sq-tile.is-spring-land { animation: sq-tile-spring 0.55s cubic-bezier(0.22, 1, 0.36, 1) both; }
 @keyframes sq-tile-spring { 0% { transform: scale(0.86) translateY(6px); } 55% { transform: scale(1.06) translateY(-3px); } 100% { transform: scale(1) translateY(0); } }
 .sq-landing-ripple { position: absolute; inset: -4px; border-radius: 28px; pointer-events: none; z-index: 1; box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.75); animation: sq-ripple-wave 0.68s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 @keyframes sq-ripple-wave { 0% { transform: scale(0.88); opacity: 0.85; } 100% { transform: scale(1.62); opacity: 0; } }
-.sq-tile-locked.is-mystery-q { background: #1F251A; box-shadow: 0 5px 0 rgba(45, 76, 80, 0.42), 0 10px 20px rgba(36, 64, 68, 0.24); }
-html.light .sq-tile-locked.is-mystery-q { background: #E4E7DC; box-shadow: 0 5px 0 #C8CEB8, 0 8px 16px rgba(0, 0, 0, 0.06); }
+.sq-tile-locked.is-mystery-q { background: transparent; box-shadow: none; }
+html.light .sq-tile-locked.is-mystery-q { background: transparent; box-shadow: none; }
 
 /* 5. '?' FACE & STORY OVERLAY WITH PEEKING '?' TAG */
 .sq-q-face { width: 100%; height: 100%; position: relative; display: flex; align-items: center; justify-content: center; }
-.sq-bare-num { position: absolute; top: 6px; left: 8px; font-size: 9.5px; font-weight: 800; color: rgba(255, 255, 255, 0.28); }
-html.light .sq-bare-num { color: rgba(0, 0, 0, 0.32); }
-.sq-big-q { font-size: 28px; font-weight: 900; line-height: 1; color: rgba(255, 255, 255, 0.88); letter-spacing: -0.03em; }
-.sq-tile-locked .sq-big-q { color: rgba(255, 255, 255, 0.34); }
-html.light .sq-big-q { color: #2D3618; }
-html.light .sq-tile-locked .sq-big-q { color: rgba(45, 54, 24, 0.35); }
+.sq-bare-num { position: absolute; top: 6px; left: 8px; font-size: 9.5px; font-weight: 800; color: rgba(255, 255, 255, 0.85); }
+html.light .sq-bare-num { color: rgba(255, 255, 255, 0.85); }
+.sq-big-q { font-size: 28px; font-weight: 900; line-height: 1; color: #FFFFFF; letter-spacing: -0.03em; }
+.sq-tile-locked .sq-big-q { color: #FFFFFF; }
+html.light .sq-big-q { color: #FFFFFF; }
+html.light .sq-tile-locked .sq-big-q { color: #FFFFFF; }
 
 .sq-story-overlay {
     position: absolute; inset: 0; border-radius: inherit; overflow: hidden; z-index: 4;
-    background: #141610; box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.24);
+    background: #DDE6E6; box-shadow: none;
 }
 .sq-story-overlay.is-cover-stamp { animation: sq-cover-stamp 0.42s cubic-bezier(0.22, 1, 0.36, 1) both; }
 @keyframes sq-cover-stamp { 0% { transform: scale(1.26) translateY(-8px); opacity: 0.25; } 100% { transform: scale(1) translateY(0); opacity: 1; } }
 .sq-story-img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .sq-done-dot {
-    position: absolute; bottom: 5px; right: 5px; width: 17px; height: 17px; border-radius: 50%;
-    background: rgba(15, 17, 12, 0.86); color: #B8D166; display: flex; align-items: center; justify-content: center;
+    position: absolute; bottom: 5px; right: 5px; width: 19px; height: 19px; border-radius: 50%;
+    background: #5C44F5; color: #FFFFFF; border: 2px solid #FFFFFF;
+    box-shadow: 0 2px 6px rgba(45, 34, 128, 0.35);
+    display: flex; align-items: center; justify-content: center;
 }
 .sq-done-dot svg { width: 10px; height: 10px; }
 
 /* 6. ACTIVE HERO SQUARE TILE + TILTED '?' BACKING PLATE (FIX #3) */
 .sq-active-callout {
     display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
-    padding: 4px 11px; border-radius: 999px; margin-bottom: 2px;
-    background: #FFFFFF; color: #0E100B; border: none;
+    padding: 5px 12px; border-radius: 999px; margin-bottom: 3px;
+    background: #FFFFFF; color: #1E293B; border: none;
     font-size: 10.5px; font-weight: 800; letter-spacing: -0.01em;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5); animation: sq-float-callout 2.4s ease-in-out infinite;
+    box-shadow: 0 6px 18px rgba(45, 76, 80, 0.22); animation: sq-float-callout 2.4s ease-in-out infinite;
 }
-html.light .sq-active-callout { background: #18181B; color: #FFFFFF; }
-.sq-live-dot { width: 6px; height: 6px; border-radius: 50%; background: #65A30D; }
-html.light .sq-live-dot { background: #B8D166; }
+html.light .sq-active-callout { background: #FFFFFF; color: #1E293B; }
+.sq-live-dot { width: 6.5px; height: 6.5px; border-radius: 50%; background: #5C44F5; }
+html.light .sq-live-dot { background: #5C44F5; }
 @keyframes sq-float-callout { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
 
 .sq-active-stage { position: relative; display: flex; align-items: center; justify-content: center; }
 .sq-active-halo {
-    position: absolute; inset: -16px; border-radius: 38px;
-    background: radial-gradient(circle, rgba(184, 209, 102, 0.30) 0%, transparent 70%); pointer-events: none;
+    position: absolute; inset: -14px; border-radius: 38px;
+    background: radial-gradient(circle, rgba(92, 68, 245, 0.22) 0%, transparent 70%); pointer-events: none;
 }
 /* Tấm đế ô vuông '?' nghiêng nhẹ lấp ló phía sau Bài cần học để thấy rõ ảnh truyện đang đè lên ô '?' */
 .sq-active-q-backing {
     position: absolute; width: 92px; height: 92px; border-radius: 25px;
-    background: #23281C; box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+    background: #7A67F8; box-shadow: 0 5px 14px rgba(56, 40, 160, 0.26), 0 0 0 2.5px #FFFFFF;
     transform: rotate(-8deg) translate(-8px, 3px); pointer-events: none; z-index: 1;
     display: flex; align-items: flex-start; justify-content: flex-start; padding: 7px 9px;
 }
-.sq-active-q-backing span { font-size: 14px; font-weight: 900; color: #B8D166; opacity: 0.85; }
-html.light .sq-active-q-backing { background: #DCE4C8; }
+.sq-active-q-backing span { font-size: 14px; font-weight: 900; color: #FFFFFF; opacity: 0.95; }
+html.light .sq-active-q-backing { background: #7A67F8; }
 
 .sq-tile.sq-tile-active {
-    position: relative; z-index: 2; width: 94px; height: 94px; border-radius: 26px; background: #2B3122;
-    box-shadow: 0 8px 0 #14180F, 0 22px 42px rgba(0, 0, 0, 0.75), 0 0 0 2.5px #FFFFFF;
+    position: relative; z-index: 2; width: 94px; height: 94px; border-radius: 26px; background: #5C44F5;
+    box-shadow: 0 6px 0 #3D2BB5, 0 14px 28px rgba(61, 43, 181, 0.32), 0 0 0 4px #FFFFFF;
 }
 html.light .sq-tile.sq-tile-active {
-    background: #FFFFFF; box-shadow: 0 8px 0 #B8C49A, 0 18px 34px rgba(45, 54, 24, 0.24), 0 0 0 2.5px #18181B;
+    background: #5C44F5; box-shadow: 0 6px 0 #3D2BB5, 0 14px 28px rgba(61, 43, 181, 0.32), 0 0 0 4px #FFFFFF;
 }
 .sq-tile.sq-tile-active .sq-big-q { font-size: 38px; color: #FFFFFF; }
 html.light .sq-tile.sq-tile-active .sq-big-q { color: #1B1C17; }
@@ -307,21 +309,19 @@ html.light .sq-dock-cta { background: #18181B; color: #FFFFFF; }
 html.light .story-snap-title { color: #18181B; }
 .story-snap-sub { font-size: 10.5px; font-weight: 500; color: #71717A; margin-top: -3px; }
 
-/* 9. MILESTONE LOOT TILES, FLOATING SANCTUARY ISLAND & 2.5D GAME SCENERY */
-.sq-tile.sq-tile-milestone { width: 70px; height: 70px; border-radius: 20px; background: #262015; z-index: 2; }
-.sq-tile-milestone.is-locked-muted { opacity: 0.92; }
-.sq-milestone-img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.sq-milestone-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.22) 100%); }
-.sq-milestone-num { position: absolute; top: 6px; left: 8px; font-size: 9.5px; font-weight: 800; color: rgba(255, 255, 255, 0.85); }
-.sq-loot-aura { position: absolute; inset: -12px; border-radius: 28px; background: radial-gradient(circle, rgba(34, 211, 238, 0.30) 0%, rgba(251, 191, 36, 0.18) 50%, transparent 74%); pointer-events: none; z-index: 0; }
-.sq-loot-xp-pill { position: absolute; bottom: 4px; right: 4px; padding: 1.5px 6px; border-radius: 999px; background: rgba(15, 17, 12, 0.88); border: 1px solid rgba(251, 191, 36, 0.45); color: #FDE68A; font-size: 8.5px; font-weight: 800; }
+/* 9. MILESTONE GIFT TILES & FLOATING SANCTUARY ISLAND */
+.sq-tile.sq-tile-milestone.is-flat-gift {
+    width: 78px; height: 82px; border-radius: 0; background: transparent !important;
+    box-shadow: none !important; overflow: visible !important; z-index: 2;
+}
+.sq-flat-gift-svg { width: 100%; height: 100%; display: block; overflow: visible; filter: drop-shadow(0 6px 12px rgba(45, 76, 80, 0.22)); }
+.sq-tile-milestone.is-locked-muted { opacity: 0.96; }
+.sq-loot-xp-pill {
+    position: absolute; bottom: -2px; left: 50%; transform: translateX(-50%); white-space: nowrap;
+    padding: 2px 8px; border-radius: 999px; background: #FFFFFF; border: 1.5px solid #D9534F;
+    color: #B83B37; font-size: 9px; font-weight: 800; box-shadow: 0 3px 8px rgba(45, 76, 80, 0.2);
+}
 
-.sq-game-scenery { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
-.sq-prop { position: absolute; width: 76px; height: 72px; opacity: 0.88; filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.45)); }
-.sq-prop-tl { top: 12px; left: -2px; }
-.sq-prop-br { bottom: 8px; right: 2px; width: 66px; height: 56px; }
-.sq-prop-tr { top: 12px; right: -2px; }
-.sq-prop-bl { bottom: 8px; left: 2px; width: 66px; height: 56px; }
+.sq-game-scenery { display: none !important; }
 .sq-game-island-base { position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 170px; height: 70px; z-index: 0; pointer-events: none; }
 .mb-char-line { display: none !important; }
-.sq-campfire-glow { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); width: 92px; height: 32px; border-radius: 50%; background: radial-gradient(circle, rgba(251, 191, 36, 0.28) 0%, rgba(184, 209, 102, 0.14) 52%, transparent 74%); pointer-events: none; z-index: 1; }
