@@ -19,10 +19,10 @@ function resolveRoadmapNodeState(chapter, index) {
     return prev && prev.status === 'completed' ? 'active' : 'locked';
 }
 
-// Đường cong chữ S uốn lượn mở rộng bụng đường cong để đặt 2 nhân vật hoạt họa ở giữa 2 đường cong mỗi chặng
+// Đường cong chữ S uốn lượn gọn trong vùng đất liền để đặt 2 nhân vật hoạt họa ở giữa 2 đường cong mỗi chặng
 const WINDING_LOOP_X = [
-    [44, 21, 16, 24, 44],
-    [56, 79, 84, 76, 56]
+    [45, 25, 20, 27, 45],
+    [55, 72, 76, 68, 52]
 ];
 
 function getNodeHorizontalPercent(loop, localIdx) {

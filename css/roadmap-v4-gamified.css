@@ -56,13 +56,13 @@ html.light #roadmapChapterHeading { color: #18181B !important; text-shadow: none
 html.light #roadmapCardTagBtn.rm-top-chapter-pill { background: rgba(255, 255, 255, 0.85) !important; color: #18181B !important; }
 html.light #roadmapCardTag, html.light .rm-top-pill-prog { color: #18181B !important; }
 
-/* 2. MISTY SAGE-TEAL FLAT VECTOR PINE HILLS & CALM LAKE BACKGROUND */
+/* 2. MISTY SAGE-TEAL FLAT VECTOR PINE HILLS & CALM LAKE BACKGROUND (100% ITEMS ON LAND, LAKE AT BOTTOM) */
 .sq-roadmap-map {
-    padding: 6px 12px 128px !important; max-width: 100% !important; margin: 0 auto;
-    background: url('../assets/cards/calm_pine_lake_bg.svg?v=20261020_calm1') center top / 100% auto repeat-y !important;
+    padding: 6px 12px 210px !important; max-width: 100% !important; margin: 0 auto;
+    background: #A7D4F0 url('../assets/cards/calm_pine_lake_bg.svg?v=20261020_landonly') center top / 100% 100% no-repeat !important;
 }
 html.light .sq-roadmap-map {
-    background: url('../assets/cards/calm_pine_lake_bg.svg?v=20261020_calm1') center top / 100% auto repeat-y !important;
+    background: #A7D4F0 url('../assets/cards/calm_pine_lake_bg.svg?v=20261020_landonly') center top / 100% 100% no-repeat !important;
 }
 #roadmapNextBar, #mysteryRoadmapNextBar { display: none !important; }
 .sq-winding-section { position: relative; max-width: 430px; margin: 0 auto 18px; z-index: 1; border: none !important; background: transparent !important; }
