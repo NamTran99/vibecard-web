@@ -58,9 +58,9 @@ html.light #roadmapCardTag, html.light .rm-top-pill-prog { color: #18181B !impor
 .sq-roadmap-map {
     padding: 6px 12px 128px !important; max-width: 100% !important; margin: 0 auto;
     background:
-        linear-gradient(90deg, rgba(8, 14, 10, 0.06) 0%, rgba(8, 14, 10, 0.30) 32%, rgba(8, 14, 10, 0.32) 50%, rgba(8, 14, 10, 0.30) 68%, rgba(8, 14, 10, 0.06) 100%),
-        linear-gradient(180deg, #0B130E 0%, rgba(11, 19, 14, 0.55) 7%, rgba(11, 19, 14, 0.12) 15%, rgba(11, 19, 14, 0.12) 93%, #0B130E 100%),
-        url('../assets/cards/fable_forest_game_map_bg.jpg?v=20261020_nopath') center top / 100% auto repeat-y !important;
+        linear-gradient(90deg, rgba(8, 14, 10, 0.04) 0%, rgba(8, 14, 10, 0.24) 32%, rgba(8, 14, 10, 0.26) 50%, rgba(8, 14, 10, 0.24) 68%, rgba(8, 14, 10, 0.04) 100%),
+        linear-gradient(180deg, #0B130E 0%, rgba(11, 19, 14, 0.28) 5%, rgba(11, 19, 14, 0.06) 12%, rgba(11, 19, 14, 0.06) 94%, #0B130E 100%),
+        url('../assets/cards/fable_forest_game_map_bg.jpg?v=20261020_seamless2') center top / 100% auto repeat-y !important;
 }
 html.light .sq-roadmap-map { background: #F4F5EE !important; }
 #roadmapNextBar, #mysteryRoadmapNextBar { display: none !important; }
