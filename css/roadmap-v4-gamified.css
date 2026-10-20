@@ -5,7 +5,7 @@
 
 /* 1. MOONLY / APPLE MUSIC TRANSLUCENT GLASS TOPBAR & PURE HERO BANNER */
 #screenParchmentRoadmap, #screenParchmentRoadmap * { -webkit-tap-highlight-color: transparent; font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif; }
-html.dark #screenParchmentRoadmap.parchment-bg { background: radial-gradient(ellipse at 50% 14%, #151C10 0%, #0E100B 48%, #090A08 100%) !important; }
+html.dark #screenParchmentRoadmap.parchment-bg { background: #0E100B !important; }
 #roadmapHeroHeader { min-height: 166px !important; max-height: 172px !important; overflow: hidden; }
 #roadmapHeroHeader #roadmapBannerImg {
     object-position: center 38% !important;
@@ -79,15 +79,7 @@ html.light .sq-roadmap-map { background: #F4F5EE !important; }
 html.light .sq-section-title { background: #EEF2E4; color: #27272A; border-color: rgba(82, 102, 0, 0.25); box-shadow: 0 3px 0 #CBD5B4; }
 
 .sq-winding-stage { position: relative; width: 100%; min-height: 390px; background: transparent !important; }
-.sq-winding-stage::before {
-    content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
-    background: radial-gradient(circle at 74% 52%, rgba(251, 191, 36, 0.14) 0%, transparent 55%),
-                radial-gradient(circle at 22% 36%, rgba(34, 211, 238, 0.14) 0%, transparent 52%);
-    -webkit-mask-image: radial-gradient(ellipse at center, #000 35%, transparent 72%);
-    mask-image: radial-gradient(ellipse at center, #000 35%, transparent 72%);
-    animation: sq-stage-aura 4s ease-in-out infinite alternate;
-}
-@keyframes sq-stage-aura { 0% { opacity: 0.65; } 100% { opacity: 1; } }
+.sq-winding-stage::before { display: none !important; content: none !important; }
 .sq-winding-nodes { position: relative; z-index: 6; display: flex; flex-direction: column; align-items: stretch; }
 .sq-winding-nodes:has(.has-open-popover) { z-index: 50 !important; }
 
