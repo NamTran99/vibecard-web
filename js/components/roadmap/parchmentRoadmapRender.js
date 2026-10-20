@@ -60,10 +60,12 @@ function renderWindingConnectorSvg(x1, x2, isLit, isActiveNext, isPulseFlow) {
         isLit ? 'is-lit' : (isActiveNext ? 'is-active-bridge' : 'is-dim'),
         isPulseFlow ? 'is-pulse-flow' : ''
     ].filter(Boolean).join(' ');
+    const d = `M ${x1} 0 C ${x1} 20, ${x2} 20, ${x2} 40`;
     return `
         <div class="sq-bridge-wrap ${cls}" aria-hidden="true">
             <svg class="sq-bridge-svg" viewBox="0 0 100 40" preserveAspectRatio="none">
-                <path class="sq-bridge-line" d="M ${x1} 0 C ${x1} 20, ${x2} 20, ${x2} 40" vector-effect="non-scaling-stroke" />
+                <path class="sq-bridge-ribbon" d="${d}" vector-effect="non-scaling-stroke" />
+                <path class="sq-bridge-line" d="${d}" vector-effect="non-scaling-stroke" />
             </svg>
         </div>`;
 }

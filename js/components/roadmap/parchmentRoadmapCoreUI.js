@@ -59,14 +59,15 @@ function renderRoadmapAmbientEffects(chapterIdx) {
 
     setTimeout(() => {
         let html = '';
-        if (chapterIdx === 0) {
-            // Chương I: Mưa rơi lất phất dưới hiên (16 giọt mưa xiên)
-            for (let i = 0; i < 16; i++) {
-                const left = (Math.random() * 100).toFixed(1);
-                const top = (Math.random() * -80).toFixed(0);
-                const dur = (0.85 + Math.random() * 0.65).toFixed(2);
-                const del = (Math.random() * 2).toFixed(2);
-                html += `<div class="ambient-rain-drop" style="left:${left}%; top:${top}px; animation-duration:${dur}s; animation-delay:${del}s;"></div>`;
+        if (chapterIdx === 0 || chapterIdx === 3) {
+            // Chương I (Khu Rừng Ngụ Ngôn) & Chương IV: 8 đom đóm rừng đêm phát quang dịu nhẹ
+            for (let i = 0; i < 8; i++) {
+                const left = (8 + Math.random() * 84).toFixed(1);
+                const top = (140 + Math.random() * 540).toFixed(0);
+                const dur1 = (2.6 + Math.random() * 2).toFixed(2);
+                const dur2 = (5.5 + Math.random() * 4).toFixed(2);
+                const del = (Math.random() * 3).toFixed(2);
+                html += `<div class="ambient-firefly" style="left:${left}%; top:${top}px; animation-duration:${dur1}s, ${dur2}s; animation-delay:${del}s;"></div>`;
             }
         } else if (chapterIdx === 1) {
             // Chương II: Hơi nước đầu máy & đốm sáng ga đêm (12 đốm sáng)
