@@ -60,14 +60,15 @@ function renderRoadmapAmbientEffects(chapterIdx) {
     setTimeout(() => {
         let html = '';
         if (chapterIdx === 0 || chapterIdx === 3) {
-            // Chương I (Khu Rừng Ngụ Ngôn) & Chương IV: 8 đom đóm rừng đêm phát quang dịu nhẹ
-            for (let i = 0; i < 8; i++) {
-                const left = (8 + Math.random() * 84).toFixed(1);
-                const top = (140 + Math.random() * 540).toFixed(0);
-                const dur1 = (2.6 + Math.random() * 2).toFixed(2);
-                const dur2 = (5.5 + Math.random() * 4).toFixed(2);
+            // Chương I (Khu Rừng Ngụ Ngôn) & Chương IV: 16 hạt đom đóm vàng-lục bảo & bào tử nấm lam phát quang
+            for (let i = 0; i < 16; i++) {
+                const left = (6 + Math.random() * 88).toFixed(1);
+                const top = (140 + Math.random() * 620).toFixed(0);
+                const dur1 = (2.2 + Math.random() * 1.8).toFixed(2);
+                const dur2 = (4.8 + Math.random() * 3.8).toFixed(2);
                 const del = (Math.random() * 3).toFixed(2);
-                html += `<div class="ambient-firefly" style="left:${left}%; top:${top}px; animation-duration:${dur1}s, ${dur2}s; animation-delay:${del}s;"></div>`;
+                const cls = (i % 3 === 0) ? 'ambient-firefly ambient-cyan-spore' : 'ambient-firefly';
+                html += `<div class="${cls}" style="left:${left}%; top:${top}px; animation-duration:${dur1}s, ${dur2}s; animation-delay:${del}s;"></div>`;
             }
         } else if (chapterIdx === 1) {
             // Chương II: Hơi nước đầu máy & đốm sáng ga đêm (12 đốm sáng)
