@@ -5,14 +5,16 @@
 
 /* 1. MOONLY / APPLE MUSIC TRANSLUCENT GLASS TOPBAR & PURE HERO BANNER */
 #screenParchmentRoadmap, #screenParchmentRoadmap * { -webkit-tap-highlight-color: transparent; font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif; }
-html.dark #screenParchmentRoadmap.parchment-bg { background: #0E100B !important; }
+html.dark #screenParchmentRoadmap.parchment-bg,
+#screenParchmentRoadmap.parchment-bg { background: #BCDAD9 !important; }
+#screenParchmentRoadmap .paper-texture, #screenParchmentRoadmap #roadmapAmbientContainer { display: none !important; }
 #roadmapHeroHeader { min-height: 166px !important; max-height: 172px !important; overflow: hidden; }
 #roadmapHeroHeader #roadmapBannerImg {
     object-position: center 38% !important;
     -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 66%, rgba(0,0,0,0.48) 86%, transparent 100%) !important;
     mask-image: linear-gradient(to bottom, #000 0%, #000 66%, rgba(0,0,0,0.48) 86%, transparent 100%) !important;
 }
-#roadmapHeroHeader .hero-vignette-bottom { background: linear-gradient(180deg, transparent 0%, transparent 46%, rgba(14, 16, 11, 0.52) 78%, #0E100B 100%) !important; }
+#roadmapHeroHeader .hero-vignette-bottom { background: linear-gradient(180deg, transparent 0%, transparent 46%, rgba(212, 232, 232, 0.72) 80%, #D4E8E8 100%) !important; }
 #roadmapHeroHeader .hero-content { padding: 0 18px 12px !important; will-change: opacity, transform; }
 #roadmapHeroHeader:not(.is-switching) .hero-content { transition: none !important; }
 #roadmapChapterHeading {
@@ -54,12 +56,14 @@ html.light #roadmapChapterHeading { color: #18181B !important; text-shadow: none
 html.light #roadmapCardTagBtn.rm-top-chapter-pill { background: rgba(255, 255, 255, 0.85) !important; color: #18181B !important; }
 html.light #roadmapCardTag, html.light .rm-top-pill-prog { color: #18181B !important; }
 
-/* 2. CLEAN DARK OLIVE STAGE (NO BACKGROUND IMAGE) */
+/* 2. MISTY SAGE-TEAL FLAT VECTOR PINE HILLS & CALM LAKE BACKGROUND */
 .sq-roadmap-map {
     padding: 6px 12px 128px !important; max-width: 100% !important; margin: 0 auto;
-    background: transparent !important;
+    background: url('../assets/cards/calm_pine_lake_bg.svg?v=20261020_calm1') center top / 100% auto repeat-y !important;
 }
-html.light .sq-roadmap-map { background: #F4F5EE !important; }
+html.light .sq-roadmap-map {
+    background: url('../assets/cards/calm_pine_lake_bg.svg?v=20261020_calm1') center top / 100% auto repeat-y !important;
+}
 #roadmapNextBar, #mysteryRoadmapNextBar { display: none !important; }
 .sq-winding-section { position: relative; max-width: 430px; margin: 0 auto 18px; z-index: 1; border: none !important; background: transparent !important; }
 .mb-section.sq-winding-section + .mb-section.sq-winding-section { margin-top: 0 !important; }
@@ -68,15 +72,15 @@ html.light .sq-roadmap-map { background: #F4F5EE !important; }
 .sq-winding-section.is-future-loop:not(:has(.has-open-popover)) { opacity: 0.95; }
 
 .sq-section-header { display: flex; align-items: center; gap: 10px; margin: 4px 2px 12px; position: relative; z-index: 4; }
-.sq-section-hairline { flex: 1; height: 1.5px; background: linear-gradient(90deg, transparent, rgba(184, 209, 102, 0.35), transparent); }
+.sq-section-hairline { flex: 1; height: 1.5px; background: linear-gradient(90deg, transparent, rgba(55, 92, 96, 0.35), transparent); }
 .sq-section-title {
-    font-size: 11px; font-weight: 800; color: #F4F4F5; letter-spacing: 0.02em;
-    padding: 4.5px 13px; border-radius: 999px; background: rgba(18, 28, 20, 0.92);
-    border: 1px solid rgba(184, 209, 102, 0.34); box-shadow: 0 3px 0 #09100B, 0 8px 18px rgba(0, 0, 0, 0.55);
+    font-size: 11px; font-weight: 800; color: #1E3A3D; letter-spacing: 0.02em;
+    padding: 5px 14px; border-radius: 999px; background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(114, 160, 164, 0.45); box-shadow: 0 3px 0 rgba(88, 128, 132, 0.35), 0 8px 18px rgba(45, 78, 82, 0.14);
     backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
 }
-.sq-section-title i { font-style: normal; color: #D4EE7F; font-size: 9px; margin: 0 3px; }
-html.light .sq-section-title { background: #EEF2E4; color: #27272A; border-color: rgba(82, 102, 0, 0.25); box-shadow: 0 3px 0 #CBD5B4; }
+.sq-section-title i { font-style: normal; color: #5B4CE6; font-size: 9px; margin: 0 3px; }
+html.light .sq-section-title { background: rgba(255, 255, 255, 0.94); color: #1E3A3D; }
 
 .sq-winding-stage { position: relative; width: 100%; min-height: 390px; background: transparent !important; }
 .sq-winding-stage::before { display: none !important; content: none !important; }
@@ -86,19 +90,17 @@ html.light .sq-section-title { background: #EEF2E4; color: #27272A; border-color
 /* 3. 3D GAME STEPPING-STONE TRAIL + SOFT TRAIL RIBBON */
 .sq-bridge-wrap { width: 100%; height: 22px; margin: -2px 0; position: relative; z-index: 1; pointer-events: none; }
 .sq-bridge-svg { width: 100%; height: 100%; overflow: visible; display: block; }
-.sq-bridge-ribbon { fill: none; stroke: rgba(255, 255, 255, 0.042); stroke-width: 24px; stroke-linecap: round; }
-html.light .sq-bridge-ribbon { stroke: rgba(82, 102, 0, 0.06); }
-.sq-bridge-wrap.is-lit .sq-bridge-ribbon, .sq-bridge-wrap.is-active-bridge .sq-bridge-ribbon { stroke: rgba(184, 209, 102, 0.10); stroke-width: 26px; }
-.sq-stone-shadow { fill: none; stroke: #0C0E0A; stroke-width: 8.5px; stroke-dasharray: 2 11.5; stroke-linecap: round; transform: translateY(2px); }
-.sq-bridge-line { fill: none; stroke: #353C2D; stroke-width: 7.5px; stroke-dasharray: 2 11.5; stroke-linecap: round; }
-html.light .sq-bridge-line { stroke: #C2CAAE; }
-.sq-bridge-wrap.is-lit .sq-stone-shadow, .sq-bridge-wrap.is-active-bridge .sq-stone-shadow { stroke: #384C11; }
-.sq-bridge-wrap.is-lit .sq-bridge-line { stroke: #9BB845; stroke-width: 8px; stroke-dasharray: 2.5 11; }
-.sq-bridge-wrap.is-active-bridge .sq-bridge-line { stroke: #B8D166; stroke-width: 8.5px; stroke-dasharray: 2.5 11; }
-.sq-bridge-wrap.is-pulse-flow .sq-bridge-line { stroke: #D4EE7F; stroke-width: 8.5px; stroke-dasharray: 3 10; animation: sq-path-flow 0.7s linear infinite; }
+.sq-bridge-ribbon { fill: none; stroke: rgba(255, 255, 255, 0.28); stroke-width: 22px; stroke-linecap: round; }
+.sq-bridge-wrap.is-lit .sq-bridge-ribbon, .sq-bridge-wrap.is-active-bridge .sq-bridge-ribbon { stroke: rgba(255, 255, 255, 0.48); stroke-width: 24px; }
+.sq-stone-shadow { fill: none; stroke: rgba(66, 102, 106, 0.55); stroke-width: 8.5px; stroke-dasharray: 2 11.5; stroke-linecap: round; transform: translateY(2px); }
+.sq-bridge-line { fill: none; stroke: rgba(255, 255, 255, 0.72); stroke-width: 7.5px; stroke-dasharray: 2 11.5; stroke-linecap: round; }
+.sq-bridge-wrap.is-lit .sq-stone-shadow, .sq-bridge-wrap.is-active-bridge .sq-stone-shadow { stroke: rgba(58, 92, 96, 0.65); }
+.sq-bridge-wrap.is-lit .sq-bridge-line { stroke: #FFFFFF; stroke-width: 8px; stroke-dasharray: 2.5 11; }
+.sq-bridge-wrap.is-active-bridge .sq-bridge-line { stroke: #FFFFFF; stroke-width: 8.5px; stroke-dasharray: 2.5 11; }
+.sq-bridge-wrap.is-pulse-flow .sq-bridge-line { stroke: #FFFFFF; stroke-width: 8.5px; stroke-dasharray: 3 10; animation: sq-path-flow 0.7s linear infinite; }
 @keyframes sq-path-flow { to { stroke-dashoffset: -26; } }
 
-/* 4. 3-TIER SIZE & 2.5D STONE PEDESTALS FOR SQUARE '?' TILES */
+/* 4. 3-TIER SIZE & SOFT PASTEL PEDESTALS FOR SQUARE '?' TILES */
 .sq-node-row { position: relative; width: 100%; min-height: 62px; display: block; z-index: 2; }
 .sq-node-row.is-active-hero { min-height: 122px; z-index: 6; margin: 2px 0 4px; }
 .sq-node-row.has-open-popover { z-index: 45 !important; }
@@ -107,32 +109,31 @@ html.light .sq-bridge-line { stroke: #C2CAAE; }
     width: max-content; display: flex; flex-direction: column; align-items: center; gap: 4px;
 }
 .sq-node-anchor::after {
-    content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);
-    width: 102px; height: 34px; border-radius: 50%; z-index: 0; pointer-events: none;
-    background: radial-gradient(ellipse at center, rgba(16, 22, 13, 0.96) 0%, rgba(10, 14, 9, 0.85) 56%, transparent 76%);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.95);
+    content: ''; position: absolute; bottom: -7px; left: 50%; transform: translateX(-50%);
+    width: 82px; height: 22px; border-radius: 50%; z-index: 0; pointer-events: none;
+    background: radial-gradient(ellipse at center, rgba(64, 102, 106, 0.36) 0%, rgba(64, 102, 106, 0.14) 62%, transparent 74%);
 }
 .sq-node-row.is-active-hero .sq-node-anchor::after {
-    width: 128px; height: 38px; bottom: -10px;
-    background: radial-gradient(ellipse at center, rgba(184, 209, 102, 0.36) 0%, rgba(18, 24, 12, 0.95) 64%, transparent 76%);
-    border: 1.5px dashed rgba(184, 209, 102, 0.72);
+    width: 116px; height: 28px; bottom: -8px;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.55) 0%, rgba(72, 110, 114, 0.25) 66%, transparent 76%);
+    border: 1.5px dashed rgba(255, 255, 255, 0.85);
 }
 
 .sq-tile {
     position: relative; z-index: 2; width: 68px; height: 68px; border-radius: 20px; overflow: hidden; background: #262C20; border: none;
-    box-shadow: 0 6px 0 #0A0D08, 0 12px 26px rgba(0, 0, 0, 0.92), 0 0 22px rgba(6, 10, 7, 0.88), 0 0 0 1.8px rgba(255, 255, 255, 0.22);
+    box-shadow: 0 5px 0 rgba(45, 76, 80, 0.45), 0 10px 22px rgba(36, 64, 68, 0.28), 0 0 0 2.5px #FFFFFF;
     cursor: pointer; user-select: none; transition: transform 0.15s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.15s ease, opacity 0.15s ease;
 }
-html.light .sq-tile { background: #EAEFE0; box-shadow: 0 5px 0 #C5CEB0, 0 10px 20px rgba(0, 0, 0, 0.10), inset 0 1.5px 0 #FFFFFF; }
+html.light .sq-tile { background: #EAEFE0; box-shadow: 0 5px 0 rgba(45, 76, 80, 0.35), 0 10px 20px rgba(36, 64, 68, 0.22), 0 0 0 2.5px #FFFFFF; }
 .sq-tile:hover { transform: translateY(-2px); opacity: 1 !important; }
-.sq-tile:active { transform: translateY(3px) scale(0.98); box-shadow: 0 2px 0 #12150F, 0 6px 12px rgba(0, 0, 0, 0.4); }
-.sq-tile.sq-tile-completed { width: 64px; height: 64px; border-radius: 18px; opacity: 1; box-shadow: 0 6px 0 #0A0D08, 0 12px 24px rgba(0, 0, 0, 0.92), 0 0 0 1.8px rgba(184, 209, 102, 0.42); }
+.sq-tile:active { transform: translateY(3px) scale(0.98); box-shadow: 0 2px 0 rgba(45, 76, 80, 0.45), 0 6px 12px rgba(0, 0, 0, 0.25); }
+.sq-tile.sq-tile-completed { width: 64px; height: 64px; border-radius: 18px; opacity: 1; box-shadow: 0 5px 0 rgba(45, 76, 80, 0.42), 0 10px 20px rgba(36, 64, 68, 0.26), 0 0 0 2.5px #FFFFFF; }
 .sq-tile.sq-tile-completed .sq-story-img { filter: saturate(1.04) brightness(1); }
 .sq-tile.is-spring-land { animation: sq-tile-spring 0.55s cubic-bezier(0.22, 1, 0.36, 1) both; }
 @keyframes sq-tile-spring { 0% { transform: scale(0.86) translateY(6px); } 55% { transform: scale(1.06) translateY(-3px); } 100% { transform: scale(1) translateY(0); } }
 .sq-landing-ripple { position: absolute; inset: -4px; border-radius: 28px; pointer-events: none; z-index: 1; box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.75); animation: sq-ripple-wave 0.68s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 @keyframes sq-ripple-wave { 0% { transform: scale(0.88); opacity: 0.85; } 100% { transform: scale(1.62); opacity: 0; } }
-.sq-tile-locked.is-mystery-q { background: #1F251A; box-shadow: 0 6px 0 #090C07, 0 12px 24px rgba(0, 0, 0, 0.92), 0 0 20px rgba(5, 9, 6, 0.88), 0 0 0 1.6px rgba(255, 255, 255, 0.18); }
+.sq-tile-locked.is-mystery-q { background: #1F251A; box-shadow: 0 5px 0 rgba(45, 76, 80, 0.42), 0 10px 20px rgba(36, 64, 68, 0.24); }
 html.light .sq-tile-locked.is-mystery-q { background: #E4E7DC; box-shadow: 0 5px 0 #C8CEB8, 0 8px 16px rgba(0, 0, 0, 0.06); }
 
 /* 5. '?' FACE & STORY OVERLAY WITH PEEKING '?' TAG */

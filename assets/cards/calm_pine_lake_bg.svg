@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 1050" fill="none" preserveAspectRatio="xMidYMin slice">
+  <defs>
+    <!-- Misty Sage-Teal Pastel Sky-to-Hill Gradient -->
+    <linearGradient id="mistySkyHillGrad" x1="215" y1="0" x2="215" y2="1050" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#D4E8E8" />
+      <stop offset="16%" stop-color="#BCDAD9" />
+      <stop offset="38%" stop-color="#9DC2C2" />
+      <stop offset="68%" stop-color="#87B1B2" />
+      <stop offset="100%" stop-color="#7AA6A8" />
+    </linearGradient>
+
+    <!-- Soft Lake Water Gradient -->
+    <linearGradient id="calmLakeWaterGrad" x1="215" y1="680" x2="215" y2="1050" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#BBE4FA" />
+      <stop offset="65%" stop-color="#B1DCF5" />
+      <stop offset="100%" stop-color="#D4E8E8" />
+    </linearGradient>
+
+    <!-- Reusable Layered Pine Tree A -->
+    <g id="flatPineA">
+      <ellipse cx="0" cy="48" rx="18" ry="5" fill="#7CA5A7" opacity="0.55" />
+      <rect x="-3.5" y="34" width="7" height="14" rx="2" fill="#9BBEC0" />
+      <path d="M 0 -22 C -8 -8, -22 10, -24 16 C -26 20, -18 22, -12 20 C -18 28, -26 36, -26 39 C -26 42, 26 42, 26 39 C 26 36, 18 28, 12 20 C 18 22, 26 20, 24 16 C 22 10, 8 -8, 0 -22 Z" fill="#BCE0E1" />
+      <path d="M 0 -22 C -6 -10, -18 4, -19 8 C -20 11, 20 11, 19 8 C 18 4, 6 -10, 0 -22 Z" fill="#CEEAEB" />
+    </g>
+
+    <!-- Reusable Tree Stump with Roots -->
+    <g id="flatTreeStump">
+      <ellipse cx="0" cy="10" rx="22" ry="6" fill="#7CA5A7" opacity="0.45" />
+      <path d="M -11 0 L -15 9 L -24 13 M 11 0 L 16 9 L 25 12 M -4 6 L -9 14 M 5 6 L 11 15" stroke="#9BBEC0" stroke-width="2.2" stroke-linecap="round" />
+      <path d="M -12 -6 L -15 7 C -8 10, 8 10, 15 7 L 12 -6 Z" fill="#9BBEC0" />
+      <ellipse cx="0" cy="-6" rx="12" ry="4.2" fill="#CEEAEB" />
+      <ellipse cx="0" cy="-6" rx="7.5" ry="2.4" fill="none" stroke="#9BBEC0" stroke-width="1.2" />
+    </g>
+  </defs>
+
+  <!-- 1. Base Misty Sage-Teal Canvas -->
+  <rect width="430" height="1050" fill="url(#mistySkyHillGrad)" />
+
+  <!-- 2. Distant Layered Mountain Ridges (Top) -->
+  <path d="M -20 120 Q 75 68, 185 110 T 450 95 L 450 240 L -20 240 Z" fill="#C5E1E1" opacity="0.7" />
+  <path d="M -20 165 Q 110 125, 235 155 T 450 140 L 450 260 L -20 260 Z" fill="#B2D3D3" opacity="0.85" />
+  <path d="M -20 215 Q 140 190, 290 208 T 450 200 L 450 290 L -20 290 Z" fill="#A2C6C6" />
+
+  <!-- 3. Upper-Right Distant Pine Grove -->
+  <g transform="translate(268, 178) scale(0.82)" opacity="0.72"><use href="#flatPineA" /></g>
+  <g transform="translate(306, 165) scale(1.05)" opacity="0.82"><use href="#flatPineA" /></g>
+  <g transform="translate(348, 174) scale(0.9)" opacity="0.76"><use href="#flatPineA" /></g>
+  <g transform="translate(384, 182) scale(0.75)" opacity="0.68"><use href="#flatPineA" /></g>
+  <ellipse cx="326" cy="216" rx="85" ry="7" fill="#94BABA" opacity="0.6" />
+
+  <!-- 4. Mid-Ground Pine Trees & Stumps (Matching Reference Layout) -->
+  <!-- Right small stump -->
+  <g transform="translate(338, 304) scale(0.85)"><use href="#flatTreeStump" /></g>
+
+  <!-- Right mid pine duo -->
+  <g transform="translate(278, 376) scale(0.95)"><use href="#flatPineA" /></g>
+  <g transform="translate(308, 392) scale(0.68)"><use href="#flatPineA" /></g>
+
+  <!-- Left stump with roots -->
+  <g transform="translate(56, 442) scale(0.95)"><use href="#flatTreeStump" /></g>
+
+  <!-- Right fallen log & stump -->
+  <g transform="translate(366, 456) scale(0.92)">
+    <path d="M -48 12 L -8 2 L -4 10 L -44 20 Z" fill="#9BBEC0" />
+    <ellipse cx="-46" cy="16" rx="4" ry="5" fill="#7CA5A7" />
+    <use href="#flatTreeStump" />
+  </g>
+
+  <!-- Mid-right stump near node 3-4 -->
+  <g transform="translate(284, 574) scale(0.82)"><use href="#flatTreeStump" /></g>
+
+  <!-- Left Pine Cluster & Winding White-Bordered Stream -->
+  <path d="M -10 562 C 32 562, 58 568, 86 582 L 86 598 L -10 598 Z" fill="#638D90" />
+  <g transform="translate(18, 535) scale(0.88)"><use href="#flatPineA" /></g>
+  <g transform="translate(50, 526) scale(1.02)"><use href="#flatPineA" /></g>
+  <g transform="translate(80, 542) scale(0.78)"><use href="#flatPineA" /></g>
+
+  <!-- Left Winding Stream Channel -->
+  <path d="M -12 586 C 52 590, 92 612, 82 642 C 72 668, 18 688, -12 710" stroke="#D7ECEC" stroke-width="18" stroke-linecap="round" fill="none" />
+  <path d="M -12 586 C 52 590, 92 612, 82 642 C 72 668, 18 688, -12 710" stroke="#79A4A7" stroke-width="11" stroke-linecap="round" fill="none" />
+
+  <!-- Right Cliff Shrubs & Pines above Lake -->
+  <path d="M 332 645 C 355 626, 405 626, 440 648 L 440 675 L 332 675 Z" fill="#5D878A" />
+  <g transform="translate(368, 598) scale(0.98)"><use href="#flatPineA" /></g>
+  <g transform="translate(402, 610) scale(0.76)"><use href="#flatPineA" /></g>
+
+  <!-- Lower-left stump above shoreline -->
+  <g transform="translate(112, 686) scale(0.9)"><use href="#flatTreeStump" /></g>
+
+  <!-- 5. Calm Lake Shoreline & 3D Ledge Rim (Bottom Third) -->
+  <!-- Dark Slate-Teal Shoreline Cliff Wall -->
+  <path d="M -15 712 C 18 712, 42 748, 48 800 C 52 835, 108 828, 146 804 C 182 782, 232 798, 268 762 C 304 726, 326 664, 376 660 C 408 658, 425 672, 445 685 L 445 1050 L -15 1050 Z" fill="#5B8286" />
+
+  <!-- Calm Pastel Sky-Blue Lake Water -->
+  <path d="M -15 724 C 14 724, 36 758, 42 808 C 46 842, 106 836, 146 812 C 182 790, 234 806, 270 770 C 306 734, 328 672, 378 668 C 408 666, 425 680, 445 693 L 445 1050 L -15 1050 Z" fill="url(#calmLakeWaterGrad)" />
+
+  <!-- Soft Water Ripples -->
+  <ellipse cx="348" cy="744" rx="28" ry="5.5" fill="#DDF2FD" opacity="0.85" />
+  <ellipse cx="366" cy="792" rx="14" ry="3.2" fill="#DDF2FD" opacity="0.75" />
+  <ellipse cx="182" cy="842" rx="22" ry="4.5" fill="#DDF2FD" opacity="0.75" />
+  <ellipse cx="92" cy="895" rx="26" ry="5" fill="#DDF2FD" opacity="0.7" />
+
+  <!-- 6. Cute Coral-Red & Lavender Wooden Rowboat with Oars -->
+  <g transform="translate(256, 822) rotate(-6)">
+    <!-- Boat Water Shadow -->
+    <ellipse cx="2" cy="14" rx="34" ry="8.5" fill="#9AC9E8" opacity="0.85" />
+    <!-- Back Oar -->
+    <line x1="-4" y1="-10" x2="12" y2="-22" stroke="#7E6CE6" stroke-width="2.4" stroke-linecap="round" />
+    <!-- Boat Hull (Lavender Base + Coral-Red Rim) -->
+    <path d="M -32 -2 C -26 14, 24 14, 32 -2 Z" fill="#8C7AE6" />
+    <path d="M -34 -3 C -28 5, 28 5, 34 -3 L 30 -8 L -30 -8 Z" fill="#EB6B56" />
+    <ellipse cx="0" cy="-6" rx="28" ry="5.5" fill="#F28B78" />
+    <ellipse cx="0" cy="-6" rx="21" ry="3.6" fill="#B84B39" />
+    <!-- Wooden Seats -->
+    <rect x="-12" y="-8.5" width="4.5" height="5" rx="1" fill="#F28B78" />
+    <rect x="6" y="-8.5" width="4.5" height="5" rx="1" fill="#F28B78" />
+    <!-- Front Oar with Paddle -->
+    <line x1="2" y1="-5" x2="28" y2="12" stroke="#D9E8F5" stroke-width="2.4" stroke-linecap="round" />
+    <path d="M 24 9 L 34 14 C 36 15, 34 19, 31 18 L 22 12 Z" fill="#6C5CE7" />
+  </g>
+
+  <!-- 7. Bottom Mint-Sage Pine Foreground Silhouette (Seamless Wrap to Top) -->
+  <g fill="#9FD4CB" opacity="0.88">
+    <path d="M 310 920 L 285 985 L 335 985 Z" />
+    <path d="M 342 900 L 312 985 L 372 985 Z" />
+    <path d="M 378 915 L 350 985 L 406 985 Z" />
+    <path d="M 412 930 L 388 985 L 436 985 Z" />
+    <path d="M 48 935 L 22 995 L 74 995 Z" />
+    <path d="M 82 920 L 54 995 L 110 995 Z" />
+  </g>
+  <path d="M 0 975 Q 115 955, 230 975 T 430 965 L 430 1050 L 0 1050 Z" fill="#D4E8E8" />
+</svg>

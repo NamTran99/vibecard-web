@@ -222,7 +222,7 @@ window.renderRoadmapAnimatedCompanionHtml = function (opts) {
             ? `Tuyệt! ${animChar.name} vừa có thêm 20% năng lượng. Còn ${remaining} chặng nữa!`
             : animChar.quote);
 
-    const islandRim = started ? '#B8D166' : '#4B553A';
+    const islandRim = started ? '#7DA8AC' : '#8DB3B5';
     const gemsHtml = Array.from({ length: 5 }, (_, i) => {
         const isLit = i < completed;
         const isPop = justDoneHere && i === completed - 1;
@@ -235,18 +235,11 @@ window.renderRoadmapAnimatedCompanionHtml = function (opts) {
                  onclick="handleCharacterTap(this)" title="Chạm vào ${animChar.name}">
                 <div class="mb-char-bubble" role="status">${line}</div>
                 <svg class="sq-game-island-base" viewBox="0 0 180 74" fill="none" aria-hidden="true">
-                    <ellipse cx="90" cy="52" rx="76" ry="18" fill="rgba(0,0,0,0.55)" />
-                    <path d="M 18 34 C 18 54, 48 64, 90 64 C 132 64, 162 54, 162 34 L 156 26 L 24 26 Z" fill="#131E16" stroke="rgba(103,232,249,0.14)" stroke-width="1" />
-                    <path d="M 28 38 C 36 50, 62 56, 90 56 C 118 56, 144 50, 152 38" stroke="#0B120D" stroke-width="4" stroke-linecap="round" />
-                    <ellipse cx="90" cy="27" rx="72" ry="19" fill="#1D2E20" stroke="${islandRim}" stroke-opacity="0.45" stroke-width="1.4" />
-                    <ellipse cx="90" cy="25" rx="58" ry="13.5" fill="#253A28" />
-                    <path d="M 31 28 L 31 21" stroke="#A5F3FC" stroke-width="2.2" stroke-linecap="round" />
-                    <path d="M 25 22 C 25 16, 37 16, 37 22 Z" fill="#22D3EE" />
-                    <circle cx="29" cy="19.5" r="1" fill="#ECFEFF" /><circle cx="33" cy="20" r="0.9" fill="#ECFEFF" />
-                    <circle cx="146" cy="27" r="2.5" fill="#FDE047" opacity="0.85" />
-                    <path d="M 42 24 Q 40 17, 45 15 M 45 25 Q 46 18, 50 17" stroke="#84CC16" stroke-width="1.8" stroke-linecap="round" opacity="0.7" />
+                    <ellipse cx="90" cy="52" rx="70" ry="15" fill="rgba(72,110,114,0.35)" />
+                    <path d="M 22 34 C 22 50, 50 58, 90 58 C 130 58, 158 50, 158 34 L 152 27 L 28 27 Z" fill="#6D979B" />
+                    <ellipse cx="90" cy="27" rx="68" ry="17" fill="#A3C7C9" stroke="${islandRim}" stroke-width="1.5" />
+                    <ellipse cx="90" cy="25" rx="54" ry="12" fill="#BCE0E1" />
                 </svg>
-                <div class="sq-campfire-glow" aria-hidden="true"></div>
                 <div class="rm-svg-char-layer is-base-layer" aria-hidden="true">${animChar.svg}</div>
                 <div class="rm-svg-char-layer is-awake-layer mb-char-color" style="clip-path: inset(${100 - prevPct}% 0 0 0);">${animChar.svg}</div>
                 <div class="sq-island-gem-bar" aria-label="Tiến độ thức tỉnh ${completed}/5">${gemsHtml}<b class="sq-gem-count">${completed}/5</b></div>
@@ -254,27 +247,8 @@ window.renderRoadmapAnimatedCompanionHtml = function (opts) {
         </div>`;
 };
 
-window.renderRoadmapGameSceneryHtml = function (loop) {
-    if (loop % 2 === 0) {
-        return `
-            <div class="sq-game-scenery">
-                <div class="sq-prop sq-prop-tl" role="button" tabindex="0" onclick="triggerRoadmapPropEasterEgg(this, '🍄 Nấm Lam Phát Quang · +5 ✦', event)" title="Chạm vào vùng sáng rừng đêm">
-                    <svg viewBox="0 0 88 84" fill="none"><circle cx="32" cy="36" r="2.6" fill="#67E8F9" class="sq-game-spore" /><circle cx="54" cy="48" r="2" fill="#FEF08A" class="sq-game-spore" /><path d="M44 24 L45.5 28.5 L50 30 L45.5 31.5 L44 36 L42.5 31.5 L38 30 L42.5 28.5 Z" fill="#A5F3FC" opacity="0.85" class="sq-hotspot-star" /></svg>
-                </div>
-                <div class="sq-prop sq-prop-br" role="button" tabindex="0" onclick="triggerRoadmapPropEasterEgg(this, '🏮 Đèn Đá Rừng Cổ · +5 ✦', event)" title="Chạm vào đèn đá rừng đêm">
-                    <svg viewBox="0 0 80 72" fill="none"><circle cx="28" cy="26" r="2.2" fill="#FDE047" class="sq-game-spore" /><circle cx="52" cy="42" r="2" fill="#D9F99D" class="sq-game-spore" /><path d="M40 20 L41.5 24.5 L46 26 L41.5 27.5 L40 32 L38.5 27.5 L34 26 L38.5 24.5 Z" fill="#FDE68A" opacity="0.9" class="sq-hotspot-star" /></svg>
-                </div>
-            </div>`;
-    }
-    return `
-        <div class="sq-game-scenery">
-            <div class="sq-prop sq-prop-tr" role="button" tabindex="0" onclick="triggerRoadmapPropEasterEgg(this, '🌳 Cổ Thụ Đom Đóm · +5 ✦', event)" title="Chạm vào đom đóm cổ thụ">
-                <svg viewBox="0 0 88 86" fill="none"><circle cx="30" cy="34" r="2.4" fill="#D9F99D" class="sq-game-spore" /><circle cx="58" cy="46" r="2" fill="#FDE047" class="sq-game-spore" /><path d="M44 22 L45.5 26.5 L50 28 L45.5 29.5 L44 34 L42.5 29.5 L38 28 L42.5 26.5 Z" fill="#D9F99D" opacity="0.85" class="sq-hotspot-star" /></svg>
-            </div>
-            <div class="sq-prop sq-prop-bl" role="button" tabindex="0" onclick="triggerRoadmapPropEasterEgg(this, '💎 Suối Đá Phát Quang · +5 ✦', event)" title="Chạm vào suối phát quang">
-                <svg viewBox="0 0 80 68" fill="none"><circle cx="28" cy="30" r="2.2" fill="#67E8F9" class="sq-game-spore" /><circle cx="50" cy="42" r="2" fill="#A5F3FC" class="sq-game-spore" /><path d="M40 20 L41.5 24.5 L46 26 L41.5 27.5 L40 32 L38.5 27.5 L34 26 L38.5 24.5 Z" fill="#67E8F9" opacity="0.9" class="sq-hotspot-star" /></svg>
-            </div>
-        </div>`;
+window.renderRoadmapGameSceneryHtml = function () {
+    return '';
 };
 
 window.renderAnimatedMysteryTileSvg = function (numLabel, isActive, order) {
