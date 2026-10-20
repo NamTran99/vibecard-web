@@ -259,38 +259,38 @@ window.renderRoadmapGameSceneryHtml = function (loop) {
         return `
             <div class="sq-game-scenery">
                 <div class="sq-prop sq-prop-tl" role="button" tabindex="0" onclick="triggerRoadmapPropEasterEgg(this, '🍄 Nấm Lam Phát Quang · +5 ✦', event)" title="Chạm vào vùng sáng rừng đêm">
-                    <svg viewBox="0 0 88 84" fill="none"><circle cx="44" cy="44" r="30" fill="rgba(34,211,238,0.16)" class="sq-hotspot-pulse" /><circle cx="32" cy="36" r="3" fill="#67E8F9" class="sq-game-spore" /><circle cx="56" cy="48" r="2.4" fill="#FEF08A" class="sq-game-spore" /><path d="M44 22 L46 28 L52 30 L46 32 L44 38 L42 32 L36 30 L42 28 Z" fill="#A5F3FC" opacity="0.85" class="sq-hotspot-star" /></svg>
+                    <svg viewBox="0 0 88 84" fill="none"><circle cx="32" cy="36" r="2.6" fill="#67E8F9" class="sq-game-spore" /><circle cx="54" cy="48" r="2" fill="#FEF08A" class="sq-game-spore" /><path d="M44 24 L45.5 28.5 L50 30 L45.5 31.5 L44 36 L42.5 31.5 L38 30 L42.5 28.5 Z" fill="#A5F3FC" opacity="0.85" class="sq-hotspot-star" /></svg>
                 </div>
                 <div class="sq-prop sq-prop-br" role="button" tabindex="0" onclick="triggerRoadmapPropEasterEgg(this, '🏮 Đèn Đá Rừng Cổ · +5 ✦', event)" title="Chạm vào đèn đá rừng đêm">
-                    <svg viewBox="0 0 80 72" fill="none"><circle cx="40" cy="36" r="26" fill="rgba(251,191,36,0.20)" class="sq-hotspot-pulse" /><circle cx="28" cy="26" r="2.5" fill="#FDE047" class="sq-game-spore" /><circle cx="52" cy="42" r="2.2" fill="#D9F99D" class="sq-game-spore" /><path d="M40 18 L42 24 L48 26 L42 28 L40 34 L38 28 L32 26 L38 24 Z" fill="#FDE68A" opacity="0.9" class="sq-hotspot-star" /></svg>
+                    <svg viewBox="0 0 80 72" fill="none"><circle cx="28" cy="26" r="2.2" fill="#FDE047" class="sq-game-spore" /><circle cx="52" cy="42" r="2" fill="#D9F99D" class="sq-game-spore" /><path d="M40 20 L41.5 24.5 L46 26 L41.5 27.5 L40 32 L38.5 27.5 L34 26 L38.5 24.5 Z" fill="#FDE68A" opacity="0.9" class="sq-hotspot-star" /></svg>
                 </div>
             </div>`;
     }
     return `
         <div class="sq-game-scenery">
             <div class="sq-prop sq-prop-tr" role="button" tabindex="0" onclick="triggerRoadmapPropEasterEgg(this, '🌳 Cổ Thụ Đom Đóm · +5 ✦', event)" title="Chạm vào đom đóm cổ thụ">
-                <svg viewBox="0 0 88 86" fill="none"><circle cx="44" cy="42" r="28" fill="rgba(184,209,102,0.18)" class="sq-hotspot-pulse" /><circle cx="30" cy="34" r="2.8" fill="#D9F99D" class="sq-game-spore" /><circle cx="58" cy="46" r="2.4" fill="#FDE047" class="sq-game-spore" /><path d="M44 20 L46 26 L52 28 L46 30 L44 36 L42 30 L36 28 L42 26 Z" fill="#D9F99D" opacity="0.85" class="sq-hotspot-star" /></svg>
+                <svg viewBox="0 0 88 86" fill="none"><circle cx="30" cy="34" r="2.4" fill="#D9F99D" class="sq-game-spore" /><circle cx="58" cy="46" r="2" fill="#FDE047" class="sq-game-spore" /><path d="M44 22 L45.5 26.5 L50 28 L45.5 29.5 L44 34 L42.5 29.5 L38 28 L42.5 26.5 Z" fill="#D9F99D" opacity="0.85" class="sq-hotspot-star" /></svg>
             </div>
             <div class="sq-prop sq-prop-bl" role="button" tabindex="0" onclick="triggerRoadmapPropEasterEgg(this, '💎 Suối Đá Phát Quang · +5 ✦', event)" title="Chạm vào suối phát quang">
-                <svg viewBox="0 0 80 68" fill="none"><circle cx="40" cy="36" r="26" fill="rgba(34,211,238,0.18)" class="sq-hotspot-pulse" /><circle cx="28" cy="30" r="2.5" fill="#67E8F9" class="sq-game-spore" /><circle cx="50" cy="42" r="2.2" fill="#A5F3FC" class="sq-game-spore" /><path d="M40 18 L42 24 L48 26 L42 28 L40 34 L38 28 L32 26 L38 24 Z" fill="#67E8F9" opacity="0.9" class="sq-hotspot-star" /></svg>
+                <svg viewBox="0 0 80 68" fill="none"><circle cx="28" cy="30" r="2.2" fill="#67E8F9" class="sq-game-spore" /><circle cx="50" cy="42" r="2" fill="#A5F3FC" class="sq-game-spore" /><path d="M40 20 L41.5 24.5 L46 26 L41.5 27.5 L40 32 L38.5 27.5 L34 26 L38.5 24.5 Z" fill="#67E8F9" opacity="0.9" class="sq-hotspot-star" /></svg>
             </div>
         </div>`;
 };
 
 window.renderAnimatedMysteryTileSvg = function (numLabel, isActive, order) {
     const delay = -(((Number(order) || 0) * 0.37) % 2.8).toFixed(2);
-    const baseFill = isActive ? '#14180F' : '#0F110C';
-    const topFill = isActive ? '#262C1E' : '#1A1D16';
+    const baseFill = isActive ? '#14180F' : '#10140D';
+    const topFill = isActive ? '#283020' : '#20261B';
     const rimStroke = isActive ? '#FFFFFF' : 'url(#topRimHighlight)';
-    const rimWidth = isActive ? '2.2' : '1.2';
-    const qFill = isActive ? '#FFFFFF' : '#4F524B';
+    const rimWidth = isActive ? '2.2' : '1.5';
+    const qFill = isActive ? '#FFFFFF' : '#78806E';
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="12 10 96 102" class="sq-mystery-tile-svg" style="--anim-delay:${delay}s" fill="none" aria-hidden="true">
         <defs>
           <filter id="softFloorBlur" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="4.5" /></filter>
           <linearGradient id="topRimHighlight" x1="60" y1="14" x2="60" y2="102" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="rgba(255, 255, 255, 0.13)" />
-            <stop offset="35%" stop-color="rgba(255, 255, 255, 0.06)" />
-            <stop offset="100%" stop-color="rgba(255, 255, 255, 0.02)" />
+            <stop offset="0%" stop-color="rgba(255, 255, 255, 0.24)" />
+            <stop offset="40%" stop-color="rgba(255, 255, 255, 0.10)" />
+            <stop offset="100%" stop-color="rgba(255, 255, 255, 0.04)" />
           </linearGradient>
           <linearGradient id="sheenGrad" x1="0" y1="0" x2="1" y2="0">
             <stop offset="0%" stop-color="rgba(255, 255, 255, 0)" />
