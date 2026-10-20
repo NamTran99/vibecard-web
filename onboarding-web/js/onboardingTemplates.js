@@ -1,356 +1,319 @@
 // ==========================================================================
-// 🎨 VIBECARD ONBOARDING TEMPLATES — STORYBOOK & ENTERTAINMENT EDITION
+// 🎨 VIBECARD ONBOARDING TEMPLATES — /HUMAN-CRAFTED-UI EDITION
+// Show, Don't Tell: Live Interactive Story Excerpts & Tethered Cards (Zero Marketing Slop)
 // ==========================================================================
 
 const OnboardingTemplates = {
-  // Helper: Cozy Lumi Storyteller Header
+  // Duolingo-Inspired Mascot + Left-Pointing Speech Bubble (Adapted to VibeCard Lumi & Warm Paper)
   whisperHeader(textHtml, textId = 'sideBubbleText', avatarSrc = '../assets/cards/lumi_farmer_night.png', imgId = '') {
     return `
       <div class="lumi-whisper-header">
-        <div class="lumi-lantern-avatar">
+        <div class="lumi-mascot-fig anim-mascot-float">
           <img ${imgId ? `id="${imgId}"` : ''} src="${avatarSrc}" alt="Lumi" />
         </div>
-        <div class="lumi-whisper-body">
-          <div class="lumi-whisper-kicker"><span>✦</span><span>CÁO NHỎ LUMI</span></div>
+        <div class="lumi-speech-bubble">
+          <span class="lumi-bubble-tail" aria-hidden="true"></span>
           <div id="${textId}" class="lumi-whisper-text">${textHtml}</div>
         </div>
       </div>`;
   },
 
-  // Screen 2 of 24: Welcome Screen
+  // SCREEN 1: 65%-70% Hero + Live Interactive Book Excerpt tethered to Popover Card
   welcome() {
+    const wId = OnboardingState.heroWordId || 'serendipity';
+    const wObj = OnboardingData.microStory.words[wId] || OnboardingData.microStory.words.serendipity;
+
     return `
       <div class="welcome-stage">
         <div class="welcome-scenery-frame">
-          <img class="welcome-scenery-bg" src="../assets/cards/pixar_night_farm_scenery.jpg" alt="VibeCard Fairytale World" />
+          <img class="welcome-scenery-bg anim-hero-pan" src="../assets/cards/pixar_night_farm_scenery.jpg" alt="VibeCard Story World" />
           <div class="welcome-scenery-scrim"></div>
-          <div class="welcome-badge-floating">✦ KHU RỪNG TRUYỆN NGỤ NGÔN</div>
-          <div class="welcome-proof-pill"><b>★ 4.9</b> • 148K+ bạn đọc mỗi tối</div>
-          <span class="firefly-dot" style="top:28%;left:22%;"></span>
-          <span class="firefly-dot" style="top:46%;left:54%;animation-delay:0.8s;"></span>
-          <span class="firefly-dot" style="top:22%;right:24%;animation-delay:1.5s;"></span>
+          <span class="hero-firefly ff-1" aria-hidden="true"></span>
+          <span class="hero-firefly ff-2" aria-hidden="true"></span>
+          <span class="hero-firefly ff-3" aria-hidden="true"></span>
+          <span class="hero-firefly ff-4" aria-hidden="true"></span>
+          <div class="welcome-badge-floating anim-hero-item-1">${VcIcons.book(12)}<span>Ch. 00 · Quán trà đêm mưa</span></div>
+
+          <!-- Real Interactive Product Artifact: Live Story Line + Tethered Lookup Card -->
+          <div class="hero-artifact-stack anim-hero-item-2">
+            <div class="hero-live-reader-card">
+              “Finding this
+              <span class="hero-live-word ${wId === 'cozy' ? 'is-active' : ''}" onclick="previewHeroWord('cozy', event)">cozy</span>
+              shop was pure
+              <span class="hero-live-word ${wId === 'serendipity' ? 'is-active' : ''}" onclick="previewHeroWord('serendipity', event)">serendipity</span>, like a warm
+              <span class="hero-live-word ${wId === 'lantern' ? 'is-active' : ''}" onclick="previewHeroWord('lantern', event)">lantern</span>.”
+            </div>
+
+            <div class="hero-mini-flashcard anim-popover-morph" id="heroLivePopover" onclick="speakText('${wObj.word}')" title="Chạm để nghe phát âm">
+              <div class="hero-mini-fc-top">
+                <span class="hero-mini-fc-word" id="heroFcWord">${wObj.word}</span>
+                <span class="hero-mini-fc-ipa">${VcIcons.volume(11)}<span id="heroFcIpa">${wObj.ipa}</span></span>
+              </div>
+              <div class="hero-mini-fc-meaning" id="heroFcMeaning">${wObj.pos} · ${wObj.meaning}</div>
+              <div class="hero-mini-fc-quote" id="heroFcColloc">${wObj.collocation}</div>
+            </div>
+          </div>
+
+          <div class="welcome-proof-pill anim-hero-item-3">${VcIcons.star(true, 12)}<b>4.9</b><span>· 148.2K bạn đọc</span></div>
           <div class="welcome-lumi-lantern anim-mascot-float">
             <img src="../assets/cards/lumi_farmer_night.png" alt="Lumi Mascot" />
           </div>
         </div>
-        <div class="welcome-feature-ribbon">
-          <span class="welcome-feature-pill">📖 Truyện chêm song ngữ</span>
-          <span class="welcome-feature-pill">🎨 Tô màu nhân vật</span>
-          <span class="welcome-feature-pill">🎙️ Thử giọng AI</span>
-        </div>
-        <div class="welcome-editorial-copy">
-          <div class="welcome-kicker">VIBECARD • HỌC NHẸ NHÀNG NHƯ ĐỌC TRUYỆN</div>
+
+        <div class="welcome-editorial-copy anim-hero-item-3">
           <h1 class="welcome-headline">
-            Góp nhặt từ vựng qua những <em>trang truyện sống động</em> & giai điệu hay.
+            Học ngoại ngữ qua <em>những câu truyện</em>
           </h1>
           <p class="welcome-subcopy">
-            Không áp lực thi cử, không nhồi nhét khô khan. Đọc truyện ngụ ngôn, tô màu nhân vật và khám phá ngôn ngữ bất cứ lúc nào bạn thích.
+            Chạm vào từ vựng ngay trong mạch truyện để nghe phát âm và ghi nhớ tự nhiên.
           </p>
         </div>
       </div>`;
   },
 
-  // Screen 3 of 24: Lumi Greeting
-  mascotGreet() {
-    return `
-      <div class="center-stage">
-        <div class="grimoire-medallion anim-mascot-hop">
-          <span class="firefly-dot" style="top:14px;left:18px;"></span>
-          <span class="firefly-dot" style="bottom:18px;right:16px;animation-delay:1.1s;"></span>
-          <img src="../assets/cards/lumi_farmer_night.png" alt="Lumi Greeting" />
-        </div>
-        <div class="grimoire-quote-card anim-bubble-pop">
-          <div class="grimoire-quote-eyebrow">✦ LỜI CHÀO TỪ KHU RỪNG TRUYỆN KỂ</div>
-          <div id="centerBubbleText" class="grimoire-quote-body"></div>
-          <div class="grimoire-chip-row">
-            <span class="grimoire-chip">🌿 Không áp lực thi cử</span>
-            <span class="grimoire-chip">🦊 Kể chuyện mỗi tối</span>
-            <span class="grimoire-chip">✨ Ngấm từ tự nhiên</span>
-          </div>
-        </div>
-      </div>`;
-  },
-
-  // Screen 4 & 5 of 24: Lumi Prologue
-  mascotPitch() {
-    return `
-      <div class="center-stage">
-        <div class="grimoire-medallion anim-mascot-hop">
-          <span class="firefly-dot" style="top:10px;left:24px;"></span>
-          <span class="firefly-dot" style="top:16px;right:18px;animation-delay:0.6s;"></span>
-          <span class="firefly-dot" style="bottom:14px;left:20px;animation-delay:1.2s;"></span>
-          <img src="../assets/cards/lumi_avatar_portrait_clean.png" alt="Lumi Portrait" style="border-radius:26px;" />
-        </div>
-        <div class="grimoire-quote-card anim-bubble-pop">
-          <div class="grimoire-quote-eyebrow">✦ LÀM QUEN CÙNG NHAU • 30 GIÂY</div>
-          <div id="centerBubbleText" class="grimoire-quote-body"></div>
-          <div class="grimoire-chip-row">
-            <span class="grimoire-chip">01 · Ngôn ngữ</span>
-            <span class="grimoire-chip">02 · Gu đọc truyện</span>
-            <span class="grimoire-chip">03 · Nhịp độ riêng</span>
-          </div>
-        </div>
-      </div>`;
-  },
-
-  // Screen 6, 7, 8 of 24: 2-Column Collectible Language Bento Grid
+  // QUESTION 1 (Matches Image 1): Conversational Bubble + Section Heading + Full-Width Vertical Flag Rows
   languageSelect(selectedCode) {
     return `
-      ${this.whisperHeader('Bạn muốn cùng mình đọc truyện và phiêu lưu bằng <b>ngôn ngữ nào</b>?')}
-      <div class="language-bento-grid">
-        ${OnboardingData.languages.map(lang => `
-          <div class="lang-bento-card ${selectedCode === lang.code ? 'is-selected' : ''}"
-               onclick="pickLanguage('${lang.code}', '${lang.flag}', '${lang.name}', this)">
-            <div class="lang-bento-top">
-              <span class="lang-flag-pill">
-                <span class="lang-flag-glyph">${lang.flag}</span>
-                <span class="lang-iso-code">${lang.code}</span>
-              </span>
-              <span class="vc-check-ring">✓</span>
-            </div>
-            <div>
-              <div class="lang-bento-title">${lang.name}</div>
-              <div class="lang-bento-sub">${lang.sub}</div>
-              <div class="lang-learners-tag">✦ ${lang.learners} bạn đọc</div>
-            </div>
-          </div>`).join('')}
-      </div>`;
-  },
+      <div class="step-fill-stage">
+        ${this.whisperHeader('Bạn muốn học ngôn ngữ nào?')}
 
-  // Screen 9 of 24: Storybook Preparing Auto-Advance Transition
-  courseBuilding(langObj) {
-    return `
-      <div class="center-stage">
-        <div class="grimoire-medallion anim-grimoire-card" style="width:152px;height:152px;">
-          <span class="firefly-dot" style="top:12px;left:16px;"></span>
-          <span class="firefly-dot" style="bottom:14px;right:14px;animation-delay:0.9s;"></span>
-          <img src="../assets/library/lumi_reading_fox.webp" alt="Preparing Stories" />
+        <div class="duo-section-heading">
+          <span>Dành cho người nói tiếng Việt</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
         </div>
-        <div class="grimoire-quote-card">
-          <div class="grimoire-quote-eyebrow">✦ ĐANG MỞ KHO TRUYỆN NGỤ NGÔN...</div>
-          <div class="grimoire-quote-body" style="font-size:16px;">
-            Đang chuẩn bị góc đọc truyện <b>${langObj.name}</b> thú vị cùng <b>${langObj.learners} người bạn</b>...
-          </div>
-          <div class="forge-progress-track"><div class="forge-progress-bar"></div></div>
-          <div class="forge-checklist">
-            <div class="forge-check-item"><b>✓</b> Mở kho truyện chêm song ngữ ${langObj.name}</div>
-            <div class="forge-check-item"><b>✓</b> Kết nối giọng đọc truyền cảm & thẻ minh họa</div>
-          </div>
+
+        <div class="duo-option-list">
+          ${OnboardingData.languages.map(lang => `
+            <div class="duo-option-card lang-bento-card ${selectedCode === lang.code ? 'is-selected' : ''}"
+                 onclick="pickLanguage('${lang.code}', '', '${lang.name}', this)">
+              <span class="duo-flag-slot">${lang.flagSvg}</span>
+              <span class="duo-option-label">${lang.name}</span>
+            </div>`).join('')}
         </div>
       </div>`;
   },
 
-  // Screen 10 & 11 of 24: Attribution 2-Column Cozy Bento Grid
-  sourceSelect(selectedSourceId) {
-    return `
-      ${this.whisperHeader('Cơn gió nào đã đưa bạn ghé thăm <b>góc nhỏ của tụi mình</b> thế?')}
-      <div class="language-bento-grid">
-        ${OnboardingData.sources.map(src => `
-          <div class="lang-bento-card ${selectedSourceId === src.id ? 'is-selected' : ''}"
-               onclick="pickSingleOption('sourceId', '${src.id}', this)">
-            <div class="lang-bento-top">
-              <div class="option-leading-glyph">${src.icon}</div>
-              <span class="vc-check-ring">✓</span>
-            </div>
-            <div>
-              <div class="lang-bento-title" style="font-size:14px;">${src.label}</div>
-              <div class="lang-bento-sub">${src.sub}</div>
-            </div>
-          </div>`).join('')}
-      </div>`;
-  },
-
-  // Screen 12 & 13 of 24: Botanical Stages
+  // QUESTION 2 (Matches Image 2): "Bạn biết [Ngôn ngữ] đến mức nào rồi?" + 5-Bar Signal Strength Icons
   levelSelect(langObj, selectedLevelId) {
+    const langName = (langObj && langObj.name) ? langObj.name : 'Tiếng Anh';
     return `
-      ${this.whisperHeader(`Hiện tại bạn cảm thấy thế nào khi bắt gặp <b>${langObj.name}</b>?`, 'sideBubbleText', '../assets/library/lumi_reading_fox.webp')}
-      <div class="vibe-card-stack">
-        ${OnboardingData.levels.map(lv => `
-          <div class="tactile-option-card ${selectedLevelId === lv.id ? 'is-selected' : ''}"
-               onclick="pickSingleOption('levelId', '${lv.id}', this)">
-            <img class="option-seed-art" src="${lv.seedImg}" alt="${lv.cefr}" />
-            <div class="option-content">
-              <div class="option-title">${lv.label}</div>
-              <div class="option-subtitle">${lv.sub}</div>
-            </div>
-            <div class="option-trailing-col">
-              <span class="option-trailing-meta">${lv.cefr}</span>
-              <span class="vc-check-ring">✓</span>
-            </div>
-          </div>`).join('')}
+      <div class="step-fill-stage">
+        ${this.whisperHeader(`Bạn biết <b>${langName}</b> đến mức nào rồi?`)}
+
+        <div class="duo-option-list is-spacious-list">
+          ${OnboardingData.levels.map(lv => `
+            <div class="duo-option-card level-full-card ${selectedLevelId === lv.id ? 'is-selected' : ''}"
+                 onclick="pickLevelPill('${lv.id}', this)">
+              <span class="duo-signal-slot">${window.renderSignalBars(lv.bars, 5)}</span>
+              <span class="duo-option-label">${lv.getLabel(langName)}</span>
+            </div>`).join('')}
+        </div>
       </div>`;
   },
 
-  // Screen 14 of 24: Dynamic Level Response
-  levelResponse(levelObj) {
+  // Centerpiece Mascot Reading on Book Stack (Matches Duolingo COURSE BUILDING... illustration)
+  courseBuildingScene() {
     return `
-      <div class="center-stage">
-        <div class="grimoire-medallion anim-mascot-hop">
-          <img src="${levelObj.seedImg}" alt="Memory Seed" />
-        </div>
-        <div class="grimoire-quote-card anim-bubble-pop">
-          <div class="grimoire-quote-eyebrow">✦ HÀNH TRÌNH ĐỌC TRUYỆN • ${levelObj.cefr}</div>
-          <div class="grimoire-quote-body">${levelObj.lumiReply}</div>
-          <div class="grimoire-chip-row">
-            <span class="grimoire-chip">📖 Độ khó vừa vặn</span>
-            <span class="grimoire-chip">🎧 Kèm phát âm chuẩn</span>
+      <div class="course-building-art-wrap">
+        <div class="course-building-pedestal"></div>
+        <img class="course-building-mascot" src="../assets/cards/lumi_farmer_night.png" alt="Lumi đang xây dựng lộ trình" />
+        <svg class="course-building-books-svg" width="144" height="84" viewBox="0 0 144 84" fill="none" aria-hidden="true">
+          <!-- Bottom Coral Storybook -->
+          <path d="M26 54 L76 68 L120 50 L70 38 Z" fill="#FF7A70" />
+          <path d="M26 54 L76 68 L120 50 L120 59 L76 77 L26 63 Z" fill="#E65A50" />
+          <path d="M30 55 L75 68 L117 51 L117 56 L75 73 L30 60 Z" fill="#FFFDF9" />
+          <!-- Middle Amber Storybook -->
+          <path d="M22 41 L74 56 L118 37 L66 25 Z" fill="#FFC833" />
+          <path d="M22 41 L74 56 L118 37 L118 46 L74 65 L22 50 Z" fill="#E5AC19" />
+          <path d="M26 42 L73 56 L114 38 L114 43 L73 61 L26 47 Z" fill="#FFFDF9" />
+          <!-- Top Open Emerald/Cobalt Book in front of Lumi -->
+          <path d="M40 16 C52 14 64 19 72 26 C80 19 92 14 104 16 L100 40 C88 38 78 42 72 48 C66 42 56 38 44 40 Z" fill="#FFFDF9" />
+          <path d="M38 18 C50 16 64 21 72 28 L72 50 C64 43 50 39 38 41 Z" fill="#2EBD85" />
+          <path d="M106 18 C94 16 80 21 72 28 L72 50 C80 43 94 39 106 41 Z" fill="#1F9E6C" />
+          <path d="M42 14 C54 13 65 18 72 25 C79 18 90 13 102 14" stroke="#FFFDF9" stroke-width="2.5" stroke-linecap="round" />
+        </svg>
+      </div>`;
+  },
+
+  // INTERLEAVED COURSE BUILDING SCREEN 1 (5s Fixed Duration — No Progress Bar, No Early Skip)
+  loadingStep1() {
+    const langObj = OnboardingState.getSelectedLanguageObj();
+    const levelObj = OnboardingState.getSelectedLevelObj();
+
+    return `
+      <div class="course-building-stage">
+        ${this.courseBuildingScene()}
+        <div class="course-building-kicker">ĐANG XÂY DỰNG LỘ TRÌNH...</div>
+        <p class="course-building-copy">
+          Chuẩn bị cùng <b>hơn 120.000 người đọc</b> chinh phục <b>${langObj.name}</b> từ mức <b>${levelObj.shortTag.toLowerCase()}</b> với VibeCard!
+        </p>
+
+        <div class="course-outcome-box">
+          <div class="course-outcome-kicker">DỰ KIẾN KẾT QUẢ ĐẦU RA</div>
+          <div class="course-outcome-item">
+            <span class="course-outcome-badge">7 NGÀY</span>
+            <span class="course-outcome-text">Đọc trọn vẹn <b>7 chương truyện</b> & ghi nhớ tự nhiên <b>~35 từ vựng</b> ngay trong mạch truyện.</span>
+          </div>
+          <div class="course-outcome-item">
+            <span class="course-outcome-badge is-highlight">30 NGÀY</span>
+            <span class="course-outcome-text">Chỉ với <b>10 phút/ngày</b>, bạn sẽ nắm vững <b>~150 từ vựng</b> trong ngữ cảnh sau 1 tháng.</span>
           </div>
         </div>
       </div>`;
   },
 
-  // Screen 15 & 16 of 24: Visual Illustrated Vibe Cards
-  goalSelect(langObj, selectedGoalId, initialBubble) {
+  // QUESTION 3: Story Genres Tab (Conversational Prompt + Tall Photography Cards — Outline Only Selection)
+  genreSelect(selectedGenreId) {
     return `
-      ${this.whisperHeader(initialBubble, 'reactiveGoalBubble', '../assets/cards/lumi_farmer_night.png', 'goalMascotImg')}
-      <div class="vibe-card-stack">
-        ${OnboardingData.goals.map(g => `
-          <div class="tactile-option-card ${selectedGoalId === g.id ? 'is-selected' : ''}"
-               onclick="pickGoalWithReactiveBubble('${g.id}', this)">
-            <img class="vibe-scene-thumb" src="${g.sceneImg}" alt="${g.label}" />
-            <div class="option-content">
-              <span class="vibe-tag-Chip">${g.vibeTag}</span>
-              <div class="option-title">${g.label}</div>
-              <div class="option-subtitle">${g.sub}</div>
-            </div>
-            <span class="vc-check-ring">✓</span>
-          </div>`).join('')}
-      </div>`;
-  },
-
-  // Screen 17 of 24: Playful Pacing Intro
-  routineIntro() {
-    return `
-      <div class="center-stage">
-        <div class="grimoire-medallion anim-mascot-hop">
-          <img src="../assets/cards/lumi_progress_celebration.jpg" alt="Lumi Joy" style="border-radius:28px;object-fit:cover;" />
-        </div>
-        <div class="grimoire-quote-card anim-bubble-pop">
-          <div class="grimoire-quote-eyebrow">✦ NHỊP ĐỘ THƯ THÁI MỖI NGÀY</div>
-          <div class="grimoire-quote-body">
-            Chẳng cần cày cuốc vất vả đâu! Chỉ cần <b>vài phút rảnh rỗi trong ngày</b> để đọc vài trang truyện cùng mình là đủ.
-          </div>
-          <div class="grimoire-chip-row">
-            <span class="grimoire-chip">🍵 Nhẹ nhàng mỗi tối</span>
-            <span class="grimoire-chip">🔥 Giữ lửa thói quen</span>
-          </div>
+      <div class="step-fill-stage">
+        ${this.whisperHeader('Bạn thích đọc thể loại truyện nào nhất?')}
+        <div class="genre-bento-grid is-spacious">
+          ${OnboardingData.genres.map(g => `
+            <div class="genre-bento-card ${selectedGenreId === g.id ? 'is-selected' : ''}"
+                 onclick="pickGenreWithReactiveBubble('${g.id}', this)">
+              <div class="genre-thumb-wrap is-tall">
+                <img src="${g.sceneImg}" alt="${g.title}" />
+                <span class="genre-chapter-pill">${g.chapterMeta}</span>
+              </div>
+              <div class="genre-card-body">
+                <div class="lang-bento-title">${g.title}</div>
+                <div class="lang-bento-sub">${g.sub}</div>
+              </div>
+            </div>`).join('')}
         </div>
       </div>`;
   },
 
-  // Screen 18 & 19 of 24: Daily Pacing Selection
+  // QUESTION 4: Daily Time Commitment — Conversational Prompt + Clock Icons (No Adjectives)
   dailyGoalSelect(selectedMinutes) {
     return `
-      ${this.whisperHeader('Mỗi ngày bạn muốn dành khoảng bao lâu để <b>đọc truyện & khám phá từ mới</b>?', 'sideBubbleText', '../assets/library/lumi_reading_fox.webp')}
-      <div class="vibe-card-stack">
-        ${OnboardingData.dailyGoals.map(d => `
-          <div class="tactile-option-card ${selectedMinutes === d.minutes ? 'is-selected' : ''}"
-               onclick="pickDailyGoal(${d.minutes}, this)">
-            <div class="daily-time-orb">${d.minutes}'<small>phút</small></div>
-            <div class="option-content">
-              <div class="option-title">${d.label}</div>
-              <div class="option-subtitle">${d.sub}</div>
-            </div>
-            <div class="option-trailing-col">
-              <span class="option-trailing-meta">${d.tag}</span>
-              <span class="vc-check-ring">✓</span>
-            </div>
-          </div>`).join('')}
-      </div>`;
-  },
-
-  // Screen 20 of 24: First-Week Story Harvest
-  weeklyImpact(dailyObj) {
-    const days = ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'];
-    return `
-      ${this.whisperHeader('Chỉ với vài phút giải trí mỗi ngày, sau <b>tuần đầu tiên</b> bạn đã gom được từng này món quà nè:')}
-      <div class="harvest-artifact-card anim-bubble-pop">
-        <div class="harvest-streak-bar">
-          ${days.map(day => `<div class="streak-day-pill"><span class="streak-day-dot">✦</span><span>${day}</span></div>`).join('')}
-        </div>
-        <div class="harvest-stat-grid">
-          <div class="harvest-stat-box">
-            <div class="harvest-stat-num">+${dailyObj.wordsPerWeek} từ</div>
-            <div class="harvest-stat-label">Ngấm tự nhiên qua ngữ cảnh câu chuyện</div>
-          </div>
-          <div class="harvest-stat-box">
-            <div class="harvest-stat-num">Quà tuần 1</div>
-            <div class="harvest-stat-label">${dailyObj.characterReward}</div>
-          </div>
-        </div>
-        <div class="artifact-bento-item" style="background:var(--m3-surface-container-low);">
-          <img class="artifact-thumb-squircle" src="../assets/cards/billy_possum_cover.png" alt="Billy Possum" />
-          <div class="option-content">
-            <div class="option-title">Trọn vẹn: Cuộc Phiêu Lưu Của Billy Possum</div>
-            <div class="option-subtitle">Nghe giọng đọc truyền cảm & tô màu bức tranh đầu tiên.</div>
-          </div>
+      <div class="step-fill-stage">
+        ${this.whisperHeader('Mỗi ngày bạn muốn dành <b>bao nhiêu phút</b> đọc truyện?')}
+        <div class="duo-option-list">
+          ${OnboardingData.dailyGoals.map(d => `
+            <div class="duo-option-card tactile-option-card ${selectedMinutes === d.minutes ? 'is-selected' : ''}"
+                 onclick="pickDailyGoal(${d.minutes}, this)">
+              <span class="duo-signal-slot">${window.renderClockIcon(d.minutes)}</span>
+              <span class="duo-option-label">${d.label}</span>
+              <span class="duo-option-right-tag">${d.cards}</span>
+            </div>`).join('')}
         </div>
       </div>`;
   },
 
-  // Screen 21 & 22 of 24: Reminder Priming
-  notificationPrompt(notificationsAllowed) {
+  // INTERLEAVED COURSE BUILDING SCREEN 2 (5s Fixed Duration — No Progress Bar, No Early Skip)
+  loadingStep2() {
+    const genreObj = OnboardingState.getSelectedGenreObj();
+    const dailyObj = OnboardingState.getSelectedDailyObj();
+    const cardsPerDay = parseInt(dailyObj.cards, 10) || 5;
+    const weeklyWords = cardsPerDay * 7;
+    const monthlyWords = cardsPerDay * 30;
+
     return `
-      ${this.whisperHeader('Khi có chương truyện mới hoặc thẻ từ thú vị, mình <b>nhắn gọi bạn</b> một tiếng nhẹ nhàng nhé!')}
-      <div class="notif-mock-wrapper">
-        <div class="notif-push-preview">
-          <img src="../assets/cards/lumi_farmer_night.png" alt="Lumi" />
-          <div class="option-content">
-            <div style="font-size:10.5px;font-weight:800;color:var(--vc-amber-glow);">VIBECARD • 20:30 TỐI NAY</div>
-            <div style="font-size:12.5px;font-weight:700;color:var(--m3-on-surface);">Chương 2 của Billy Possum vừa mở khóa! Ghé đọc 5 phút nhé 🏮</div>
+      <div class="course-building-stage">
+        ${this.courseBuildingScene()}
+        <div class="course-building-kicker">ĐANG CẬP NHẬT HỒ SƠ...</div>
+        <p class="course-building-copy">
+          Đang xếp tuyển tập truyện <b>${genreObj.title}</b> với nhịp đọc <b>${dailyObj.minutes} phút mỗi ngày</b> vào tủ sách của bạn!
+        </p>
+
+        <div class="course-outcome-box">
+          <div class="course-outcome-kicker">LỘ TRÌNH ĐẦU RA CÁ NHÂN HÓA</div>
+          <div class="course-outcome-item">
+            <span class="course-outcome-badge">7 NGÀY</span>
+            <span class="course-outcome-text">Hoàn thành <b>7 chương ${genreObj.title}</b> & mở khóa <b>+${weeklyWords} thẻ từ</b> ngữ cảnh.</span>
           </div>
-        </div>
-        <div class="notif-mock-card">
-          <div class="notif-mock-body">
-            <div class="notif-mock-title">“VibeCard” Muốn Gửi Lời Nhắn Từ Cáo Lumi</div>
-            <div class="notif-mock-desc">Báo tin khi có chương truyện mới, nhắc lật thẻ nhẹ nhàng và giữ chuỗi ngày khám phá cùng nhau.</div>
+          <div class="course-outcome-item">
+            <span class="course-outcome-badge is-highlight">30 NGÀY</span>
+            <span class="course-outcome-text">Chỉ với <b>${dailyObj.minutes} phút/ngày</b>, bạn sẽ nắm vững <b>~${monthlyWords} từ vựng</b> trong ngữ cảnh sau 1 tháng.</span>
           </div>
-          <div class="notif-mock-actions">
-            <button type="button" class="notif-btn ${notificationsAllowed === false ? 'is-chosen' : ''}" onclick="pickNotificationPermission(false)">Để sau</button>
-            <button type="button" class="notif-btn is-allow ${notificationsAllowed === true ? 'is-chosen' : ''}" onclick="pickNotificationPermission(true)">Đồng ý nhé</button>
-          </div>
-        </div>
-        <div style="width:100%;max-width:315px;display:flex;justify-content:flex-end;padding-right:62px;">
-          <svg class="anim-arrow-bounce" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--vc-amber-glow)" stroke-width="2.6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m0 0l-6 6m6-6l6 6"/>
-          </svg>
         </div>
       </div>`;
   },
 
-  // Screen 23 of 24: 3-Month Showcase
-  threeMonthBenefits() {
-    return `
-      ${this.whisperHeader('Ba niềm vui nho nhỏ sẽ đến với bạn khi <b>đồng hành cùng VibeCard</b>:', 'sideBubbleText', '../assets/library/lumi_reading_fox.webp')}
-      <div class="artifact-bento-list">
-        ${OnboardingData.threeMonthPillars.map((p, idx) => `
-          <div class="artifact-bento-item">
-            <img class="artifact-thumb-squircle" src="${p.art}" alt="${p.title}" />
-            <div class="option-content">
-              <div style="font-size:10px;font-weight:800;letter-spacing:0.08em;color:var(--vc-amber-glow);margin-bottom:2px;">0${idx + 1} • ${p.kicker}</div>
-              <div class="option-title">${p.title}</div>
-              <div class="option-subtitle">${p.desc}</div>
-            </div>
-          </div>`).join('')}
-      </div>`;
-  },
+  // FINAL SCREEN: Personalized Roadmap + 30-Day Outcome Chart + Free vs Plus Energy Tier (Zero Bottom Flashcards, Tight Layout)
+  deferredSignup() {
+    const langObj = OnboardingState.getSelectedLanguageObj();
+    const genreObj = OnboardingState.getSelectedGenreObj();
+    const levelObj = OnboardingState.getSelectedLevelObj();
+    const dailyObj = OnboardingState.getSelectedDailyObj();
+    const selectedPlan = OnboardingState.answers.planTier || 'plus';
 
-  // Screen 24 of 24: The Crossroads Starting Point Selection
-  startPathSelect(selectedPathId) {
+    const cardsPerDay = parseInt(dailyObj.cards, 10) || 5;
+    const weeklyWords = cardsPerDay * 7;
+    const monthlyWords = cardsPerDay * 30;
+
     return `
-      ${this.whisperHeader('Cánh cổng khu rừng đã mở! Bạn muốn <b>ghé thăm góc nào</b> trước tiên?')}
-      <div class="crossroads-list">
-        ${OnboardingData.startingPaths.map(path => `
-          <div class="crossroads-card tactile-option-card ${selectedPathId === path.id ? 'is-selected' : ''}"
-               onclick="pickSingleOption('startPathId', '${path.id}', this)">
-            ${path.recommended ? '<span class="recommended-pill">✦ LỰA CHỌN THÚ VỊ NHẤT</span>' : ''}
-            <img class="artifact-thumb-squircle" src="${path.art}" alt="${path.title}" />
-            <div class="option-content">
-              <div class="option-title" style="font-size:15px;">${path.title}</div>
-              <div class="option-subtitle" style="margin-top:4px;">${path.desc}</div>
+      <div class="signup-paywall-stage">
+        <div class="signup-header-card anim-bubble-pop">
+          <div class="signup-kicker">HỒ SƠ ĐỌC TRUYỆN CÁ NHÂN ĐÃ LƯU</div>
+          <h2 class="signup-headline">Lộ trình của bạn đã hoàn tất</h2>
+          <div class="endowed-summary-grid">
+            <div class="endowed-pill"><span style="width:20px;display:inline-flex;">${langObj.flagSvg}</span><span>${langObj.name}</span></div>
+            <div class="endowed-pill">${VcIcons.book(13)}<span>${genreObj.title}</span></div>
+            <div class="endowed-pill"><span style="display:inline-flex;transform:scale(0.78);transform-origin:left center;">${window.renderSignalBars(levelObj.bars, 5)}</span><span>${levelObj.shortTag}</span></div>
+            <div class="endowed-pill">${VcIcons.clock(13)}<span>${dailyObj.minutes} phút/ngày</span></div>
+          </div>
+        </div>
+
+        <!-- 30-Day Outcome Commitment & Growth Bar Chart -->
+        <div class="outcome-chart-card">
+          <div class="outcome-chart-top">
+            <div class="outcome-chart-kicker">CAM KẾT ĐẦU RA · ${dailyObj.minutes} PHÚT MỖI TỐI</div>
+            <div class="outcome-chart-headline">Nắm vững <b>+${monthlyWords} từ vựng/tháng</b> với ${dailyObj.minutes} phút đọc truyện mỗi tối</div>
+          </div>
+          <div class="outcome-bars-grid">
+            <div class="outcome-bar-col">
+              <span class="outcome-bar-val">3 từ</span>
+              <div class="outcome-bar-track"><div class="outcome-bar-fill" style="height:28%;"></div></div>
+              <span class="outcome-bar-label">Hôm nay</span>
             </div>
-            <span class="vc-check-ring">✓</span>
-          </div>`).join('')}
+            <div class="outcome-bar-col">
+              <span class="outcome-bar-val">+${weeklyWords} từ</span>
+              <div class="outcome-bar-track"><div class="outcome-bar-fill is-mid" style="height:58%;"></div></div>
+              <span class="outcome-bar-label">Sau 7 ngày</span>
+            </div>
+            <div class="outcome-bar-col is-target">
+              <span class="outcome-bar-val is-accent">+${monthlyWords} từ</span>
+              <div class="outcome-bar-track"><div class="outcome-bar-fill is-peak" style="height:100%;"></div></div>
+              <span class="outcome-bar-label">Sau 30 ngày</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Free (50 Energy Limit + 30s Ads) vs. Plus (Unlimited Energy + 0 Ads + Risk Reversal) -->
+        <div class="energy-tier-card">
+          <div class="energy-tier-kicker">CHẾ ĐỘ NĂNG LƯỢNG ĐỌC TRUYỆN</div>
+          <div class="energy-tier-grid">
+            <div class="energy-tier-option ${selectedPlan === 'free' ? 'is-selected' : ''}"
+                 onclick="selectOnboardingPlanTier('free', this)">
+              <div class="energy-tier-title-row">
+                <span class="energy-tier-name">Bản Miễn Phí</span>
+                <span class="energy-tier-price">0đ</span>
+              </div>
+              <div class="energy-tier-desc">
+                <div>⚡ <b>Giới hạn 50⚡/ngày</b> (~1 chương truyện)</div>
+                <div>📺 Chèn <b>quảng cáo 30s</b> khi qua chương</div>
+              </div>
+            </div>
+
+            <div class="energy-tier-option is-plus ${selectedPlan === 'plus' ? 'is-selected' : ''}"
+                 onclick="selectOnboardingPlanTier('plus', this)">
+              <span class="energy-tier-recommend-badge">KHUYÊN DÙNG</span>
+              <div class="energy-tier-title-row">
+                <span class="energy-tier-name">VibeCard Plus</span>
+                <span class="energy-tier-price is-accent">7 ngày 0đ</span>
+              </div>
+              <div class="energy-tier-desc">
+                <div>♾️ <b>Vô hạn năng lượng</b> đọc & chạm từ</div>
+                <div>🚫 <b>0 Quảng cáo</b> làm đứt mạch cảm xúc</div>
+              </div>
+            </div>
+          </div>
+          <div class="energy-risk-shield">
+            🛡️ <b>0đ hôm nay</b> · Sau 7 ngày chỉ <b>1.600đ/ngày</b> (49k/tháng) · Nhắc trước 2 ngày, hủy 1 chạm
+          </div>
+        </div>
       </div>`;
   }
 };

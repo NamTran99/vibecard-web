@@ -1,5 +1,6 @@
 /* ==========================================================================
-   📱 VIBECARD BESPOKE ONBOARDING — SHELL, CONSTELLATION HUD & WHISPER STAGE
+   📱 VIBECARD SHELL & HUD — /HUMAN-CRAFTED-UI EDITION
+   Antialiased Typography, 40px Hit Targets, Tabular Nums, 1px Hairline Borders
    ========================================================================== */
 
 *, *::before, *::after {
@@ -12,15 +13,24 @@
 html, body {
   width: 100%;
   height: 100%;
-  background-color: var(--m3-app-bg);
+  background-color: var(--m3-surface-dim);
   color: var(--m3-on-surface);
-  font-family: var(--font-body);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   overflow: hidden;
   overscroll-behavior: none;
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
-  transition: background-color 0.28s ease, color 0.28s ease;
+  transition: background-color 0.18s var(--ease-out-expo), color 0.18s var(--ease-out-expo);
+}
+
+button, a, [role="button"] {
+  user-select: none;
+  -webkit-user-select: none;
+  font-family: inherit;
 }
 
 /* Mobile Phone Frame on Desktop, Full 100dvh on Mobile */
@@ -34,7 +44,7 @@ html, body {
   flex-direction: column;
   background-color: var(--m3-surface);
   overflow: hidden;
-  transition: background-color 0.28s ease;
+  transition: background-color 0.18s var(--ease-out-expo);
 }
 
 @media (min-width: 640px) {
@@ -42,48 +52,16 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image:
-      radial-gradient(circle at 50% 18%, rgba(184, 209, 102, 0.11) 0%, transparent 52%),
-      radial-gradient(circle at 50% 88%, rgba(251, 191, 36, 0.08) 0%, transparent 48%);
   }
   .phone-shell {
-    height: min(852px, 94dvh);
-    border-radius: 48px;
-    border: 1.5px solid var(--vc-glass-border);
-    box-shadow:
-      0 32px 90px -12px rgba(0, 0, 0, 0.78),
-      0 0 0 6px rgba(255, 255, 255, 0.025),
-      inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    height: min(856px, 95dvh);
+    border-radius: 42px;
+    border: 1px solid var(--m3-outline);
+    box-shadow: var(--vc-shell-shadow);
   }
 }
 
-/* Ambient Aurora & Firefly Layer */
-.ambient-aurora-top {
-  position: absolute;
-  top: -10%;
-  left: -14%;
-  width: 78%;
-  height: 36%;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(184, 209, 102, 0.15), transparent 70%);
-  filter: blur(44px);
-  pointer-events: none;
-  z-index: 1;
-}
-.ambient-aurora-bottom {
-  position: absolute;
-  bottom: -6%;
-  right: -14%;
-  width: 72%;
-  height: 32%;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(251, 191, 36, 0.11), transparent 70%);
-  filter: blur(48px);
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Status Bar */
+/* Status Bar (Tabular Nums) */
 .status-bar {
   position: relative;
   z-index: 25;
@@ -92,29 +70,31 @@ html, body {
   justify-content: space-between;
   padding: 12px 24px 4px;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
   color: var(--m3-on-surface);
 }
 .status-icons { display: flex; align-items: center; gap: 6px; }
 
-/* 1. Cinematic Night Farm Splash Screen (Screen 1 of 24) */
+/* 1. Splash Screen */
 .splash-screen {
   position: absolute;
   inset: 0;
   z-index: 100;
-  background: radial-gradient(circle at 50% 42%, #243308 0%, #111608 58%, #090A06 100%);
+  background-color: var(--m3-surface);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 76px 24px 48px;
-  transition: opacity 0.55s ease, visibility 0.55s ease;
+  padding: 80px 24px 48px;
+  transition: opacity 0.22s var(--ease-out-expo), visibility 0.22s var(--ease-out-expo);
 }
 .splash-screen.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 .splash-mascot-wrap {
   position: relative;
-  width: 168px;
-  height: 168px;
+  width: 148px;
+  height: 148px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -126,129 +106,104 @@ html, body {
   object-fit: contain;
   position: relative;
   z-index: 2;
-  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.65));
-}
-.splash-glow {
-  position: absolute;
-  inset: -28px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(251, 191, 36, 0.38) 0%, rgba(184, 209, 102, 0.2) 45%, transparent 72%);
-  animation: lanternAuraPulse 3s ease-in-out infinite;
 }
 .splash-brand-group { text-align: center; }
 .splash-eyebrow {
+  font-family: var(--font-mono);
   font-size: 10.5px;
-  font-weight: 800;
-  letter-spacing: 0.22em;
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #FDE68A;
-  opacity: 0.88;
-  margin-bottom: 4px;
+  color: var(--m3-on-surface-variant);
+  margin-bottom: 6px;
 }
 .splash-brand {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 35px;
+  font-size: 34px;
   font-weight: 700;
-  letter-spacing: -0.02em;
-  color: #ECEAE2;
+  letter-spacing: -0.03em;
+  color: var(--m3-on-surface);
 }
 
-/* 2. Top Navigation & Constellation Thread Progress Bar */
+/* 2. Top Navigation & Pure Visual Progress Bar (Zero Text Labels, Matches Image 1 & 2) */
 .top-nav-bar {
   position: relative;
   z-index: 25;
-  padding: 4px 18px 8px;
+  padding: 8px 18px 8px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 14px;
   min-height: 48px;
 }
 .icon-nav-btn {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 1px solid var(--m3-outline-variant);
-  background: var(--vc-card-grad);
-  box-shadow: var(--vc-card-shadow);
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: transparent;
   color: var(--m3-on-surface-variant);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   flex-shrink: 0;
-  font-size: 15px;
-  transition: transform 0.14s ease, border-color 0.2s ease, color 0.2s ease;
+  transition: transform 0.12s var(--ease-out-expo), background-color 0.15s ease, color 0.15s ease;
 }
-.icon-nav-btn:hover { border-color: var(--vc-glass-border); color: var(--m3-on-surface); }
-.icon-nav-btn:active { transform: scale(0.92); }
+@media (hover: hover) and (pointer: fine) {
+  .icon-nav-btn:hover { background: var(--m3-surface-container-low); color: var(--m3-on-surface); }
+}
+.icon-nav-btn:active {
+  transform: scale(0.95);
+}
 .icon-nav-btn.is-invisible { opacity: 0; pointer-events: none; }
 
-/* Bespoke Constellation Thread */
+/* Pure Visual Progress Track (Thick Rounded Pill Bar with Specular Highlight) */
 .progress-bar-wrap {
   flex: 1;
   display: flex;
-  flex-direction: column;
-  gap: 5px;
-  transition: opacity 0.25s ease;
+  align-items: center;
+  transition: opacity 0.18s ease;
 }
 .progress-bar-wrap.is-hidden { opacity: 0; pointer-events: none; }
-.progress-chapter-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--m3-outline);
-}
 .progress-thread-track {
   width: 100%;
-  height: 5px;
-  background-color: var(--m3-surface-container-highest);
+  height: 15px;
+  background-color: var(--m3-surface-container-high);
   border-radius: 999px;
   position: relative;
-  overflow: visible;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
 }
 .progress-bar-fill {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, var(--m3-primary) 0%, var(--vc-amber-glow) 100%);
+  background-color: var(--m3-primary);
   border-radius: 999px;
-  position: relative;
-  box-shadow: 0 0 12px rgba(184, 209, 102, 0.35);
-  transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.progress-bar-fill::after {
-  content: '';
-  position: absolute;
-  right: -4px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: #FFFBEB;
-  border: 2px solid var(--vc-amber-glow);
-  box-shadow: 0 0 10px var(--vc-amber-glow);
+  transition: width 0.28s var(--ease-out-expo);
 }
 
-.step-badge-pill {
-  font-size: 11px;
-  font-weight: 800;
-  padding: 5px 11px;
-  border-radius: 999px;
-  border: 1px solid var(--vc-glass-border);
-  background: var(--vc-card-grad);
-  box-shadow: var(--vc-card-shadow);
-  color: var(--m3-primary);
-  cursor: pointer;
-  flex-shrink: 0;
-  transition: transform 0.14s ease, border-color 0.2s ease;
+/* Inline Keyboard Badge (<kbd>) */
+.vc-kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  padding: 2px 5px;
+  border-radius: 4px;
+  background: var(--m3-surface-container-low);
+  border: 1px solid var(--m3-outline-variant);
+  color: var(--m3-on-surface-variant);
 }
-.step-badge-pill:active { transform: scale(0.95); }
+
+.vc-svg-icon {
+  display: inline-block;
+  vertical-align: -0.15em;
+  flex-shrink: 0;
+}
 
 /* 3. Main Step Viewport */
 .stage-viewport {
@@ -257,80 +212,68 @@ html, body {
   z-index: 10;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 4px 18px 16px;
+  scrollbar-gutter: stable;
+  padding: 4px 18px 10px;
   display: flex;
   flex-direction: column;
 }
-.stage-viewport::-webkit-scrollbar { display: none; }
+.stage-viewport::-webkit-scrollbar { width: 0; height: 0; }
 
-/* 4. Editorial Storyteller Whisper Card */
+/* 4. Duolingo-Inspired Mascot + Left-Pointing Speech Bubble (Matches Image 1 & 2) */
 .lumi-whisper-header {
   display: flex;
   align-items: center;
-  gap: 13px;
-  padding: 13px 15px;
-  border-radius: 24px;
-  background: var(--vc-glass-bg);
-  border: 1px solid var(--vc-glass-border);
-  box-shadow: var(--vc-card-shadow);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  margin-bottom: 14px;
+  gap: 14px;
+  padding: 2px 0 4px;
   flex-shrink: 0;
-  position: relative;
-  overflow: hidden;
 }
-.lumi-whisper-header::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 12px;
-  bottom: 12px;
-  width: 3.5px;
-  border-radius: 0 4px 4px 0;
-  background: linear-gradient(180deg, var(--vc-amber-glow), var(--m3-primary));
-}
-.lumi-lantern-avatar {
-  width: 58px;
-  height: 58px;
-  border-radius: 18px;
-  background: radial-gradient(circle at 50% 55%, var(--vc-amber-soft), var(--m3-surface-container-high));
-  border: 1px solid var(--vc-glass-border);
+.lumi-mascot-fig {
+  width: 78px;
+  height: 78px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  position: relative;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
-.lumi-lantern-avatar img {
-  width: 92%;
-  height: 92%;
+.lumi-mascot-fig img {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35));
+  filter: drop-shadow(0 6px 14px rgba(15, 20, 15, 0.14));
 }
-.lumi-whisper-body { flex: 1; display: flex; flex-direction: column; justify-content: center; min-width: 0; }
-.lumi-whisper-kicker {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 9.5px;
-  font-weight: 800;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  color: var(--vc-amber-glow);
-  margin-bottom: 3px;
+.lumi-speech-bubble {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  padding: 14px 17px;
+  border-radius: 18px;
+  background: var(--vc-card-grad);
+  border: 1.5px solid var(--m3-outline);
+  box-shadow: var(--vc-card-shadow);
+}
+.lumi-bubble-tail {
+  position: absolute;
+  left: -7px;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  background: var(--m3-surface-container-lowest);
+  border-left: 1.5px solid var(--m3-outline);
+  border-bottom: 1.5px solid var(--m3-outline);
+  transform: translateY(-50%) rotate(45deg);
+  border-bottom-left-radius: 3px;
 }
 .lumi-whisper-text {
   font-family: var(--font-display);
-  font-size: 15px;
-  font-weight: 700;
+  font-size: 15.5px;
+  font-weight: 600;
   line-height: 1.4;
+  letter-spacing: -0.015em;
   color: var(--m3-on-surface);
+  text-wrap: pretty;
 }
 .lumi-whisper-text b,
 .lumi-whisper-text strong {
   font-weight: 800;
   color: var(--m3-primary);
 }
-

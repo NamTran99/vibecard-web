@@ -1,31 +1,27 @@
 <!DOCTYPE html>
-<html lang="vi" class="dark">
+<html lang="vi" class="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <title>VibeCard — Khởi Hành Khu Rừng Cổ Thư Cùng Cáo Lumi</title>
+  <title>VibeCard — Học Ngoại Ngữ Qua Truyện & Thẻ (EdTech Story Onboarding)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/tokens.css" />
   <link rel="stylesheet" href="css/animations.css" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/story-flashcard.css" />
 </head>
 <body>
   <main class="phone-shell" id="onboardingAppShell">
-    <!-- Ambient Aurora Background Glows -->
-    <div class="ambient-aurora-top"></div>
-    <div class="ambient-aurora-bottom"></div>
-
-    <!-- Screen 1 of 24: Night Farm Lantern Splash Screen -->
+    <!-- Splash Screen (Auto-fades after 850ms) -->
     <div id="splashOverlay" class="splash-screen">
       <div class="splash-mascot-wrap anim-mascot-float">
-        <div class="splash-glow"></div>
         <img src="../assets/cards/lumi_farmer_night.png" alt="Lumi Night Farmer" />
       </div>
       <div class="splash-brand-group">
-        <div class="splash-eyebrow">✦ KHU RỪNG CỔ THƯ & AI</div>
+        <div class="splash-eyebrow">TRUYỆN CHÊM & THẺ NHỚ NGỮ CẢNH</div>
         <div class="splash-brand">VibeCard</div>
       </div>
     </div>
@@ -51,40 +47,32 @@
       </div>
     </header>
 
-    <!-- Top Navigation Bar: Back Button + Constellation Story Thread + Quick Inspector -->
+    <!-- Top Navigation Bar: Back Arrow + Pure Visual Progress Bar (Zero Text / Zero x/9 Badge) -->
     <nav class="top-nav-bar" aria-label="Điều hướng Onboarding">
       <button id="navBackBtn" type="button" class="icon-nav-btn is-invisible" onclick="handlePrevStep()" aria-label="Quay lại">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5M12 19l-7-7 7-7" />
         </svg>
       </button>
 
-      <div id="progressBarWrap" class="progress-bar-wrap is-hidden" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-        <div class="progress-chapter-row">
-          <span>✦ SỢI CHỈ HÀNH TRÌNH</span>
-          <span id="progressPercentLabel">0%</span>
-        </div>
+      <div id="progressBarWrap" class="progress-bar-wrap" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-label="Tiến độ thiết lập">
         <div class="progress-thread-track">
-          <div id="progressBarFill" class="progress-bar-fill"></div>
+          <div id="progressBarFill" class="progress-bar-fill" style="width:15%;"></div>
         </div>
       </div>
 
-      <button id="stepInspectorBadge" type="button" class="step-badge-pill" onclick="openQuickStepJumper()" title="Chuyển nhanh màn hình kiểm thử">
-        1/15
-      </button>
-
       <button id="themeToggleBtn" type="button" class="icon-nav-btn" onclick="toggleThemeMode()" aria-label="Đổi giao diện Sáng/Tối">
-        ☀️
+        <svg class="vc-svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
     </nav>
 
-    <!-- Dynamic Stage Viewport (Renders all 24 Flow States in Bespoke VibeCard Style) -->
+    <!-- Dynamic Stage Viewport (Renders 6-Phase EdTech Story & Flashcard Flow) -->
     <section id="stageViewport" class="stage-viewport" aria-live="polite"></section>
 
-    <!-- Sticky Bottom M3 Pill Action Zone -->
+    <!-- Sticky Bottom Action Zone -->
     <footer id="bottomCtaBar" class="bottom-cta-bar">
       <button id="primaryCtaBtn" type="button" class="tactile-cta-btn" onclick="handleNextStep()">
-        Bước vào khu rừng VibeCard →
+        Khám phá cách học ngay →
       </button>
       <button id="secondaryCtaBtn" type="button" class="secondary-outline-btn" onclick="window.location.href='../index.html'">
         Tôi đã có tài khoản học viên
@@ -95,15 +83,15 @@
     <div id="stepJumperModal"
          style="display:none;position:absolute;inset:0;z-index:200;background:rgba(0,0,0,0.68);backdrop-filter:blur(6px);align-items:flex-end;justify-content:center;"
          onclick="if(event.target===this)closeQuickStepJumper()">
-      <div style="width:100%;max-height:78%;background:var(--m3-surface-container-low);border-top-left-radius:26px;border-top-right-radius:26px;border-top:1px solid var(--m3-outline-variant);padding:16px 16px 26px;display:flex;flex-direction:column;gap:12px;">
-        <div style="width:40px;height:4px;border-radius:999px;background:var(--m3-outline-variant);margin:0 auto 2px;"></div>
+      <div style="width:100%;max-height:78%;background:var(--m3-surface-container-low);border-top-left-radius:22px;border-top-right-radius:22px;border-top:1px solid var(--m3-outline-variant);padding:16px 16px 26px;display:flex;flex-direction:column;gap:12px;">
+        <div style="width:36px;height:4px;border-radius:999px;background:var(--m3-outline-variant);margin:0 auto 2px;"></div>
         <div style="display:flex;align-items:center;justify-content:space-between;">
-          <span style="font-size:13px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:var(--m3-primary);">
-            ✦ Chuyển nhanh màn hình (24 States)
+          <span style="font-family:var(--font-mono);font-size:11.5px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--m3-primary);">
+            CHUYỂN NHANH 6-PHASE (9 MÀN HÌNH)
           </span>
-          <button type="button" onclick="closeQuickStepJumper()" style="background:none;border:none;color:var(--m3-on-surface-variant);font-size:18px;font-weight:800;cursor:pointer;">✕</button>
+          <button type="button" onclick="closeQuickStepJumper()" style="width:36px;height:36px;background:none;border:none;color:var(--m3-on-surface-variant);font-size:16px;font-weight:600;cursor:pointer;">✕</button>
         </div>
-        <div id="stepJumperList" style="overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding-right:4px;"></div>
+        <div id="stepJumperList" style="overflow-y:auto;display:flex;flex-direction:column;gap:6px;padding-right:4px;"></div>
       </div>
     </div>
   </main>
@@ -111,6 +99,7 @@
   <script src="js/soundEffects.js"></script>
   <script src="js/onboardingData.js"></script>
   <script src="js/onboardingState.js"></script>
+  <script src="js/onboardingInteractiveDemo.js"></script>
   <script src="js/onboardingTemplates.js"></script>
   <script src="js/onboardingController.js"></script>
 </body>

@@ -1,201 +1,248 @@
 // ==========================================================================
-// 📚 VIBECARD ONBOARDING DATA — PLAYFUL STORYTELLING & ENTERTAINMENT EDITION
+// 📚 VIBECARD ONBOARDING DATA — /HUMAN-CRAFTED-UI EDITION
+// Show, Don't Tell: Live Bilingual Excerpts, Real Story Quotes, Crisp SVG Flags
 // ==========================================================================
 
-const doodleSvg = (pathsHtml, blobColor = 'var(--vc-amber-soft)') => `
-  <svg viewBox="0 0 100 100" width="34" height="34" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M48 10 C74 12, 91 30, 89 53 C87 77, 70 92, 49 90 C22 88, 10 72, 12 49 C14 26, 25 8, 48 10 Z" fill="${blobColor}" />
-    ${pathsHtml}
-  </svg>`;
+const VcFlags = {
+  EN: `<svg viewBox="0 0 28 20" width="34" height="24" style="border-radius:5px;display:block;box-shadow:0 0 0 1px rgba(0,0,0,0.08);"><rect width="28" height="20" fill="#012169"/><path d="M0 0L28 20M28 0L0 20" stroke="#FFF" stroke-width="3.2"/><path d="M0 0L28 20M28 0L0 20" stroke="#C8102E" stroke-width="1.6"/><path d="M14 0V20M0 10H28" stroke="#FFF" stroke-width="5.2"/><path d="M14 0V20M0 10H28" stroke="#C8102E" stroke-width="3"/></svg>`,
+  JA: `<svg viewBox="0 0 28 20" width="34" height="24" style="border-radius:5px;display:block;box-shadow:0 0 0 1px rgba(0,0,0,0.08);"><rect width="28" height="20" fill="#FFFFFF"/><circle cx="14" cy="10" r="5.6" fill="#BC002D"/></svg>`,
+  KO: `<svg viewBox="0 0 28 20" width="34" height="24" style="border-radius:5px;display:block;box-shadow:0 0 0 1px rgba(0,0,0,0.08);"><rect width="28" height="20" fill="#FFFFFF"/><circle cx="14" cy="10" r="5" fill="#CD2E3A"/><path d="M9 10a5 5 0 0 0 10 0 2.5 2.5 0 0 0-5 0 2.5 2.5 0 0 1-5 0z" fill="#0047A0"/><g stroke="#111" stroke-width="1.1"><line x1="6" y1="4.5" x2="8.5" y2="7"/><line x1="22" y1="4.5" x2="19.5" y2="7"/><line x1="6" y1="15.5" x2="8.5" y2="13"/><line x1="22" y1="15.5" x2="19.5" y2="13"/></g></svg>`,
+  ZH: `<svg viewBox="0 0 28 20" width="34" height="24" style="border-radius:5px;display:block;box-shadow:0 0 0 1px rgba(0,0,0,0.08);"><rect width="28" height="20" fill="#DE2910"/><polygon points="6,3.2 6.9,5.8 9.6,5.8 7.4,7.4 8.2,10 6,8.4 3.8,10 4.6,7.4 2.4,5.8 5.1,5.8" fill="#FFDE00"/><circle cx="11.5" cy="3.2" r="0.9" fill="#FFDE00"/><circle cx="13.2" cy="5.2" r="0.9" fill="#FFDE00"/><circle cx="13.2" cy="7.8" r="0.9" fill="#FFDE00"/><circle cx="11.5" cy="9.8" r="0.9" fill="#FFDE00"/></svg>`,
+  FR: `<svg viewBox="0 0 28 20" width="34" height="24" style="border-radius:5px;display:block;box-shadow:0 0 0 1px rgba(0,0,0,0.08);"><rect width="9.33" height="20" fill="#002395"/><rect x="9.33" width="9.34" height="20" fill="#FFFFFF"/><rect x="18.67" width="9.33" height="20" fill="#ED2939"/></svg>`,
+  ES: `<svg viewBox="0 0 28 20" width="34" height="24" style="border-radius:5px;display:block;box-shadow:0 0 0 1px rgba(0,0,0,0.08);"><rect width="28" height="20" fill="#AA151B"/><rect y="5" width="28" height="10" fill="#F1BF00"/></svg>`,
+  DE: `<svg viewBox="0 0 28 20" width="34" height="24" style="border-radius:5px;display:block;box-shadow:0 0 0 1px rgba(0,0,0,0.08);"><rect width="28" height="6.67" fill="#111111"/><rect y="6.67" width="28" height="6.67" fill="#DD0000"/><rect y="13.33" width="28" height="6.67" fill="#FFCE00"/></svg>`
+};
+
+// 5-Bar Proficiency Signal Graphic (Matches Image 2 Duolingo Level Bars in VibeCard Emerald)
+function renderSignalBars(activeBars = 1, totalBars = 5) {
+  const heights = [7, 11, 15, 19, 23];
+  const barsSvg = heights.slice(0, totalBars).map((h, i) => {
+    const x = 2 + i * 6;
+    const y = 25 - h;
+    const isActive = i < activeBars;
+    return `<rect class="sig-bar ${isActive ? 'is-filled' : ''}" x="${x}" y="${y}" width="4.2" height="${h}" rx="2.1" />`;
+  }).join('');
+  return `<svg class="vc-signal-bars" width="32" height="26" viewBox="0 0 32 26" aria-hidden="true">${barsSvg}</svg>`;
+}
+
+// Progressive Clock / Stopwatch Icon with Time-Slice Wedge (5m, 10m, 15m, 20m)
+function renderClockIcon(minutes = 10) {
+  let sectorSvg = '';
+  let arcSvg = '';
+  let handX = 19.5;
+  let handY = 15;
+
+  if (minutes <= 5) {
+    // 1/4 dial (12 o'clock to 3 o'clock)
+    sectorSvg = `<path d="M14 15 L14 7.2 A7.8 7.8 0 0 1 21.8 15 Z" fill="rgba(46, 189, 133, 0.24)" />`;
+    arcSvg = `<path d="M14 5 A10 10 0 0 1 24 15" fill="none" stroke="#2EBD85" stroke-width="2.2" stroke-linecap="round" />`;
+    handX = 19.2;
+    handY = 15;
+  } else if (minutes <= 10) {
+    // 1/2 dial (12 o'clock to 6 o'clock)
+    sectorSvg = `<path d="M14 15 L14 7.2 A7.8 7.8 0 0 1 14 22.8 Z" fill="rgba(46, 189, 133, 0.28)" />`;
+    arcSvg = `<path d="M14 5 A10 10 0 0 1 14 25" fill="none" stroke="#2EBD85" stroke-width="2.2" stroke-linecap="round" />`;
+    handX = 14;
+    handY = 20.2;
+  } else if (minutes <= 15) {
+    // 3/4 dial (12 o'clock to 9 o'clock)
+    sectorSvg = `<path d="M14 15 L14 7.2 A7.8 7.8 0 1 1 6.2 15 Z" fill="rgba(46, 189, 133, 0.32)" />`;
+    arcSvg = `<path d="M14 5 A10 10 0 1 1 4 15" fill="none" stroke="#2EBD85" stroke-width="2.2" stroke-linecap="round" />`;
+    handX = 8.8;
+    handY = 15;
+  } else {
+    // Full dial (20 mins intensive)
+    sectorSvg = `<circle cx="14" cy="15" r="7.8" fill="rgba(46, 189, 133, 0.36)" />`;
+    arcSvg = `<circle cx="14" cy="15" r="10" fill="none" stroke="#2EBD85" stroke-width="2.2" />`;
+    handX = 18.5;
+    handY = 11.5;
+  }
+
+  return `
+    <svg class="vc-clock-icon" width="30" height="30" viewBox="0 0 28 28" aria-hidden="true">
+      <path d="M11 2h6M14 2v2.4M20.8 5.8l1.5-1.5" stroke="#2EBD85" stroke-width="2" stroke-linecap="round" />
+      <circle cx="14" cy="15" r="10" fill="none" stroke="currentColor" stroke-width="2" opacity="0.22" />
+      ${sectorSvg}
+      ${arcSvg}
+      <line x1="14" y1="15" x2="14" y2="9.4" stroke="#2EBD85" stroke-width="2" stroke-linecap="round" />
+      <line x1="14" y1="15" x2="${handX}" y2="${handY}" stroke="#2EBD85" stroke-width="2" stroke-linecap="round" />
+      <circle cx="14" cy="15" r="1.8" fill="#2EBD85" />
+    </svg>`;
+}
+
+window.VcFlags = VcFlags;
+window.renderSignalBars = renderSignalBars;
+window.renderClockIcon = renderClockIcon;
 
 const OnboardingData = {
-  // 1. Target Languages (Fun & Entertainment-First Subtitles)
+  // Phase 2.1: Target Languages (Full-width vertical list like Image 1)
   languages: [
-    { code: 'EN', name: 'Tiếng Anh', flag: '🇬🇧', sub: 'Truyện ngụ ngôn, Phim & Âm nhạc', learners: '148.2K' },
-    { code: 'JA', name: 'Tiếng Nhật', flag: '🇯🇵', sub: 'Anime, Cổ tích & Văn hóa Nhật', learners: '64.5K' },
-    { code: 'KO', name: 'Tiếng Hàn', flag: '🇰🇷', sub: 'K-Drama, Nhạc Indie & Đời sống', learners: '52.1K' },
-    { code: 'ZH', name: 'Tiếng Trung', flag: '🇨🇳', sub: 'Truyện cổ phong & Phim ảnh', learners: '49.8K' },
-    { code: 'FR', name: 'Tiếng Pháp', flag: '🇫🇷', sub: 'Giai điệu lãng mạn & Nghệ thuật', learners: '19.4K' },
-    { code: 'ES', name: 'Tiếng Tây Ban Nha', flag: '🇪🇸', sub: 'Nhạc Latin, Lễ hội & Phiêu lưu', learners: '16.2K' },
-    { code: 'DE', name: 'Tiếng Đức', flag: '🇩🇪', sub: 'Cổ tích Grimm & Khám phá Âu châu', learners: '14.7K' },
-    { code: 'VI', name: 'Tiếng Việt', flag: '🇻🇳', sub: 'Kho tàng ngụ ngôn & Đồng dao', learners: '11.3K' }
-  ],
-
-  // 2. Attribution Sources (Screens 10–11)
-  sources: [
     {
-      id: 'tiktok',
-      label: 'TikTok / Reels',
-      sub: 'Lướt thấy video Cáo Lumi kể chuyện',
-      icon: doodleSvg(`<path d="M56 24 Q55 52, 55 64 C55 75, 36 77, 35 64 C34 52, 48 50, 52 53 M56 24 C60 34, 68 38, 74 38" stroke="var(--m3-primary)" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/>`)
+      code: 'EN',
+      name: 'Tiếng Anh',
+      flagSvg: VcFlags.EN,
+      ttsLang: 'en-US'
     },
     {
-      id: 'friends',
-      label: 'Bạn bè rủ rê',
-      sub: 'Được hội bạn thân truyền tai nhau',
-      icon: doodleSvg(`<path d="M38 38 Q48 36, 48 47 Q46 56, 38 56 Q29 56, 28 47 Q28 36, 38 38 Z M22 76 Q23 63, 38 62 Q52 63, 54 76 M63 34 Q72 33, 72 43 Q70 51, 63 51 M56 72 Q58 61, 69 60 Q78 61, 80 72" stroke="var(--vc-amber-glow)" stroke-width="6.8" stroke-linecap="round" stroke-linejoin="round"/>`)
+      code: 'JA',
+      name: 'Tiếng Nhật',
+      flagSvg: VcFlags.JA,
+      ttsLang: 'ja-JP'
     },
     {
-      id: 'youtube',
-      label: 'YouTube',
-      sub: 'Xem kênh vlog học ngoại ngữ thú vị',
-      icon: doodleSvg(`<path d="M22 35 Q50 30, 78 35 Q83 50, 78 66 Q50 71, 22 66 Q17 50, 22 35 Z" stroke="var(--m3-primary)" stroke-width="7" stroke-linejoin="round"/><path d="M44 42 Q55 47, 61 50 Q54 54, 44 59 Z" fill="var(--vc-amber-glow)" stroke="var(--vc-amber-glow)" stroke-width="4" stroke-linejoin="round"/>`)
+      code: 'KO',
+      name: 'Tiếng Hàn',
+      flagSvg: VcFlags.KO,
+      ttsLang: 'ko-KR'
     },
     {
-      id: 'facebook',
-      label: 'Facebook / Instagram',
-      sub: 'Bắt gặp tranh vẽ khu rừng cổ tích',
-      icon: doodleSvg(`<path d="M30 26 Q50 23, 70 26 Q77 48, 72 72 Q50 76, 28 72 Q23 48, 30 26 Z" stroke="var(--m3-primary)" stroke-width="6.8"/><circle cx="50" cy="50" r="11" stroke="var(--vc-amber-glow)" stroke-width="6.5"/><circle cx="64" cy="36" r="3.5" fill="var(--vc-amber-glow)"/>`)
+      code: 'ZH',
+      name: 'Tiếng Trung',
+      flagSvg: VcFlags.ZH,
+      ttsLang: 'zh-CN'
     },
     {
-      id: 'appstore',
-      label: 'Google Play / App Store',
-      sub: 'Tình cờ dạo chợ ứng dụng',
-      icon: doodleSvg(`<path d="M50 23 Q55 37, 68 38 Q57 47, 61 62 Q50 53, 39 62 Q43 47, 32 38 Q45 37, 50 23 Z" stroke="var(--vc-amber-glow)" stroke-width="6.8" stroke-linejoin="round"/>`)
+      code: 'FR',
+      name: 'Tiếng Pháp',
+      flagSvg: VcFlags.FR,
+      ttsLang: 'fr-FR'
     },
     {
-      id: 'google',
-      label: 'Tình cờ tìm thấy trên Web',
-      sub: 'Đang tìm cách đọc truyện song ngữ vui',
-      icon: doodleSvg(`<path d="M46 26 Q66 24, 67 45 Q68 65, 46 66 Q26 67, 25 46 Q24 25, 46 26 Z M61 60 Q70 69, 77 75" stroke="var(--m3-primary)" stroke-width="7.2" stroke-linecap="round"/>`)
+      code: 'ES',
+      name: 'Tiếng Tây Ban Nha',
+      flagSvg: VcFlags.ES,
+      ttsLang: 'es-ES'
+    },
+    {
+      code: 'DE',
+      name: 'Tiếng Đức',
+      flagSvg: VcFlags.DE,
+      ttsLang: 'de-DE'
     }
   ],
 
-  // 3. Botanical Stages (Screens 12–14)
-  levels: [
+  // Story Genre Cards
+  genres: [
     {
-      id: 'lv1',
-      cefr: 'Hạt Mầm Mới',
-      label: 'Mình muốn bắt đầu lại từ trang đầu',
-      sub: 'Vừa đọc truyện tranh vừa làm quen từng từ mới',
-      seedImg: 'assets/levels/level_a0_seed.svg',
-      lumiReply: 'Tuyệt vời! Tụi mình sẽ <b>bắt đầu bằng những mẩu chuyện siêu ngắn</b>, đọc tới đâu hiểu ngay tới đó nhé!'
+      id: 'slice_of_life',
+      title: 'Đời thường ấm áp',
+      sub: 'Quán trà đêm mưa',
+      chapterMeta: 'Ch. 01 · 3 phút',
+      sceneImg: '../assets/cards/lumi_rain_coffee_eaves.jpg'
     },
     {
-      id: 'lv2',
-      cefr: 'Chồi Non',
-      label: 'Mình biết vài từ quen thuộc',
-      sub: 'Đoán được ý chính nhưng muốn đọc mượt hơn',
-      seedImg: 'assets/levels/level_a1_sprout.svg',
-      lumiReply: 'Hay quá! Mình sẽ dệt những từ bạn đã biết vào <b>truyện chêm ngụ ngôn</b> để bạn đọc một mạch không cần tra từ điển!'
+      id: 'mystery',
+      title: 'Trinh thám bí ẩn',
+      sub: 'Chuyến tàu 23:15',
+      chapterMeta: 'Ch. 01 · 4 phút',
+      sceneImg: '../assets/cards/lumi_train_station_night.jpg'
     },
     {
-      id: 'lv3',
-      cefr: 'Nhánh Xanh',
-      label: 'Mình nghe hiểu được hội thoại đời thường',
-      sub: 'Muốn xem phim, nghe nhạc và đọc truyện dài hơn',
-      seedImg: 'assets/levels/level_a2_branch.svg',
-      lumiReply: 'Đỉnh luôn! Những chương truyện rừng sâu và <b>trò chơi thử giọng cùng mình</b> sẽ làm bạn mê tít cho xem!'
-    },
-    {
-      id: 'lv4',
-      cefr: 'Tán Rộng',
-      label: 'Mình đọc & trò chuyện khá thoải mái',
-      sub: 'Muốn sưu tầm thêm nhiều cách diễn đạt tinh tế',
-      seedImg: 'assets/levels/level_b1_canopy.svg',
-      lumiReply: 'Quá xịn! Cùng mình đi săn những <b>cụm từ đẹp như thơ</b> trong kho truyện cổ tích và đời sống nhé!'
-    },
-    {
-      id: 'lv5',
-      cefr: 'Cổ Thụ',
-      label: 'Mình muốn thưởng thức nguyên tác trọn vẹn',
-      sub: 'Đọc tiểu thuyết, ẩn dụ văn học & kể chuyện tự nhiên',
-      seedImg: 'assets/levels/level_b2_ancient.svg',
-      lumiReply: 'Chào đón người kể chuyện đại tài! Toàn bộ <b>kho tàng cổ thư và thẻ bài bí ẩn</b> đã mở rộng chờ bạn khám phá.'
-    }
-  ],
-
-  // 4. Entertaining & Cozy Vibe Goals with Rich Scene Artwork (Screens 15–16)
-  goals: [
-    {
-      id: 'story',
-      vibeTag: '📖 ĐỌC TRUYỆN & TÔ MÀU',
-      label: 'Đọc truyện ngụ ngôn & sưu tầm nhân vật',
-      sub: 'Theo chân Billy Possum, vừa đọc truyện chêm vừa mở khóa tranh tô màu',
-      sceneImg: '../assets/cards/billy_possum_cover.png',
-      reactiveBubble: 'Vừa theo dõi cốt truyện ngụ ngôn kỳ thú vừa tô màu nhân vật — cách ngấm từ vựng tự nhiên nhất!'
-    },
-    {
-      id: 'chill',
-      vibeTag: '☕ GÓC THƯ GIÃN',
-      label: 'Biến giờ giải lao thành lúc thưởng thức truyện',
-      sub: 'Nghe giọng đọc truyền cảm bất cứ khi nào rảnh, học nhẹ tênh như đang nghỉ ngơi',
-      sceneImg: '../assets/cards/lumi_rain_coffee_eaves.jpg',
-      reactiveBubble: 'Chỉ cần vài phút rảnh rỗi nhâm nhi tách cà phê và lật thẻ — tâm trí thư thái mà từ vựng vẫn vào đầu!'
-    },
-    {
-      id: 'melody',
-      vibeTag: '🎵 PHIM ẢNH & GIAI ĐIỆU',
-      label: 'Xem phim, nghe nhạc & bắt trend không cần sub',
-      sub: 'Hiểu trọn lời bài hát yêu thích và lời thoại phim tự nhiên',
-      sceneImg: '../assets/cards/lumi_melody_arena.jpg',
-      reactiveBubble: 'Mình sẽ đưa bạn vào Đấu Trường Giai Điệu — nơi từ vựng gắn liền với âm nhạc và cảm xúc!'
+      id: 'fantasy',
+      title: 'Ngụ ngôn cổ tích',
+      sub: 'Khu rừng đom đóm',
+      chapterMeta: 'Ch. 01 · 3 phút',
+      sceneImg: '../assets/cards/billy_possum_cover.png'
     },
     {
       id: 'travel',
-      vibeTag: '🚂 XÁCH BALO & PHIÊU LƯU',
-      label: 'Đi du lịch tự túc & trò chuyện khắp nơi',
-      sub: 'Tự tin gọi món ở quán nhỏ, hỏi đường và kết bạn mới trên mọi hành trình',
-      sceneImg: '../assets/cards/lumi_train_station_night.jpg',
-      reactiveBubble: 'Chuyến tàu phiêu lưu đã sẵn sàng! Mình sẽ gói ghém những câu giao tiếp thực tế nhất vào balo cho bạn.'
-    },
-    {
-      id: 'collect',
-      vibeTag: '✨ SƯU TẦM TỪ ĐẸP',
-      label: 'Chụp lại những câu chữ hay tình cờ bắt gặp',
-      sub: 'Thấy trang sách, lời thoại hay biển hiệu đẹp là quét ảnh biến thành thẻ ngay',
-      sceneImg: '../assets/cards/serendipity.jpg',
-      reactiveBubble: 'Chỉ cần giơ máy ảnh lên chụp — mình sẽ biến mọi trang sách bạn yêu thích thành bộ thẻ lung linh!'
+      title: 'Du ký lữ hành',
+      sub: 'Phố cổ sương mờ',
+      chapterMeta: 'Ch. 01 · 5 phút',
+      sceneImg: '../assets/cards/lumi_melody_arena.jpg'
     }
   ],
 
-  // 5. Daily Playful Pacing Tiers (Screens 18–20)
+  // Conversational Level Cards with Signal Bars (Matches Image 2 — Zero A1/B1 Codes)
+  levels: [
+    {
+      id: 'lv1',
+      bars: 1,
+      shortTag: 'Mới bắt đầu',
+      getLabel: (langName) => `Mới bắt đầu học ${langName}`
+    },
+    {
+      id: 'lv2',
+      bars: 2,
+      shortTag: 'Biết từ cơ bản',
+      getLabel: () => 'Biết một vài từ thông dụng'
+    },
+    {
+      id: 'lv3',
+      bars: 3,
+      shortTag: 'Giao tiếp cơ bản',
+      getLabel: () => 'Có thể giao tiếp những câu cơ bản'
+    },
+    {
+      id: 'lv4',
+      bars: 4,
+      shortTag: 'Đa dạng chủ đề',
+      getLabel: () => 'Hiểu và nói được nhiều chủ đề khác nhau'
+    },
+    {
+      id: 'lv5',
+      bars: 5,
+      shortTag: 'Hiểu sâu chi tiết',
+      getLabel: () => 'Đọc hiểu sâu hầu hết các chủ đề chi tiết'
+    }
+  ],
+
+  // Daily Rhythm (Clean visual metrics with signal bars)
   dailyGoals: [
-    { minutes: 5, label: '5 phút / ngày', sub: 'Đọc nhanh vài trang truyện lúc rảnh tay', tag: '🌱 Nhẹ nhàng', wordsPerWeek: 35, characterReward: 'Tô màu 1 nhân vật cổ tích' },
-    { minutes: 10, label: '10 phút / ngày', sub: 'Trọn vẹn 1 chương truyện ngụ ngôn & lật thẻ', tag: '🍵 Vừa vặn', wordsPerWeek: 70, characterReward: 'Tô màu 2 nhân vật cổ tích' },
-    { minutes: 15, label: '15 phút / ngày', sub: 'Đọc truyện, nghe giọng đọc & thử giọng cùng Lumi', tag: '🔥 Cuốn hút', wordsPerWeek: 110, characterReward: 'Tô màu 3 nhân vật & mở Rương Bí Ẩn' },
-    { minutes: 20, label: '20 phút / ngày', sub: 'Đắm mình vào thế giới ngụ ngôn & săn thẻ hiếm', tag: '✨ Mê mẩn', wordsPerWeek: 150, characterReward: 'Mở khóa trọn bộ Chương I trong tuần đầu' }
+    { minutes: 5, bars: 1, label: '5 phút / ngày', tag: 'Nhẹ nhàng', chapters: '1 cảnh ngắn', cards: '3 thẻ từ' },
+    { minutes: 10, bars: 2, label: '10 phút / ngày', tag: 'Đều đặn', chapters: '1 chương', cards: '5 thẻ từ' },
+    { minutes: 15, bars: 3, label: '15 phút / ngày', tag: 'Tiến bộ nhanh', chapters: '2 chương', cards: '10 thẻ từ' },
+    { minutes: 20, bars: 4, label: '20 phút / ngày', tag: 'Chuyên sâu', chapters: '3 chương', cards: '15 thẻ từ' }
   ],
 
-  // 6. 3-Month Achievement Showcase (Screen 23)
-  threeMonthPillars: [
-    {
-      art: '../assets/cards/billy_possum_cover.png',
-      kicker: '📖 TRUYỆN CHÊM & SƯU TẦM NHÂN VẬT',
-      title: 'Đọc hết hàng chục câu chuyện ngụ ngôn kỳ thú',
-      desc: 'Từ mới được lồng khéo léo vào cốt truyện, đọc tới đâu tự khắc hiểu nghĩa tới đó.'
+  // Phase 3 & Phase 4: Interactive Story Excerpt & Contextual Deck
+  microStory: {
+    chapterBadge: 'Ch. 00 · Quán trà đêm mưa',
+    missionPill: 'Chạm từ gạch chân để mở nghĩa',
+    sceneImg: '../assets/cards/lumi_rain_coffee_eaves.jpg',
+    speakerName: 'Lumi · Tokyo, 21:40',
+    audioSentence: 'Finding this cozy tea shop under the rain was pure serendipity, glowing like a warm lantern.',
+    viTranslation: 'Tìm thấy quán trà ấm cúng này dưới cơn mưa quả là một cơ duyên tình cờ, tỏa sáng như chiếc đèn lồng ấm áp.',
+    words: {
+      cozy: {
+        id: 'cozy',
+        word: 'cozy',
+        ipa: '/ˈkəʊ.zi/',
+        pos: 'adj.',
+        meaning: 'Ấm cúng, dễ chịu và bình yên',
+        collocation: 'a cozy little tea shop — một quán trà nhỏ ấm cúng',
+        quote: '“Finding this <b>cozy</b> tea shop under the rain...”',
+        quoteVi: '“Tìm thấy quán trà ấm cúng này dưới cơn mưa...”',
+        art: '../assets/cards/lumi_rain_coffee_eaves.jpg',
+        mastery: 12
+      },
+      serendipity: {
+        id: 'serendipity',
+        word: 'serendipity',
+        ipa: '/ˌser.ənˈdɪp.ə.ti/',
+        pos: 'noun',
+        meaning: 'Cơ duyên tình cờ mang lại niềm vui bất ngờ',
+        collocation: 'pure serendipity — cơ duyên tình cờ tuyệt đẹp',
+        quote: '“...under the rain was pure <b>serendipity</b>...”',
+        quoteVi: '“...dưới cơn mưa quả là một cơ duyên tình cờ tuyệt đẹp...”',
+        art: '../assets/cards/serendipity.jpg',
+        mastery: 18
+      },
+      lantern: {
+        id: 'lantern',
+        word: 'lantern',
+        ipa: '/ˈlæn.tən/',
+        pos: 'noun',
+        meaning: 'Chiếc đèn lồng thắp sáng trong đêm',
+        collocation: 'glowing like a warm lantern — tỏa sáng như đèn lồng ấm',
+        quote: '“...glowing like a warm <b>lantern</b>.”',
+        quoteVi: '“...tỏa sáng như một chiếc đèn lồng ấm áp.”',
+        art: '../assets/cards/lumi_farmer_night.png',
+        mastery: 25
+      }
     },
-    {
-      art: '../assets/create/ic_create_source_ocr_new.png',
-      kicker: '📸 BẮT GẶP TỪ ĐẸP Ở BẤT CỨ ĐÂU',
-      title: 'Biến trang sách, lời nhạc & giọng nói thành thẻ nhớ',
-      desc: 'Chụp ảnh một trang truyện hoặc câu hát tâm đắc — Lumi tự động tạo thẻ minh họa cho bạn.'
-    },
-    {
-      art: '../assets/cards/lumi_progress_celebration.jpg',
-      kicker: '🌿 THẤM TỪ TỰ NHIÊN MỖI NGÀY',
-      title: 'Nhớ từ lâu dài không cần cày cuốc căng thẳng',
-      desc: 'Chỉ vài phút giải trí lúc rảnh rỗi, từ vựng tự thấm sâu qua từng câu chuyện bạn đọc.'
-    }
-  ],
-
-  // 7. Starting Point Crossroads (Screen 24)
-  startingPaths: [
-    {
-      id: 'fable_roadmap',
-      art: '../assets/cards/billy_possum_cover.png',
-      title: 'Đọc ngay Chương I: Khu Rừng Ngụ Ngôn',
-      desc: 'Theo chân chú chồn Billy Possum phiêu lưu rừng sâu và mở khóa những từ vựng đầu tiên.',
-      recommended: true
-    },
-    {
-      id: 'ai_studio',
-      art: '../assets/create/ic_create_source_ocr_new.png',
-      title: 'Ghé Góc Sáng Tạo & Tự Làm Bộ Thẻ Riêng',
-      desc: 'Chụp ảnh trang sách yêu thích hoặc tự tạo góc sưu tầm từ vựng theo gu của bạn.',
-      recommended: false
-    }
-  ]
+    deckOrder: ['serendipity', 'cozy', 'lantern']
+  }
 };
 
 window.OnboardingData = OnboardingData;

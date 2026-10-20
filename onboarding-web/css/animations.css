@@ -1,158 +1,386 @@
 /* ==========================================================================
-   ✨ VIBECARD BESPOKE ANIMATIONS — FIREFLIES, LANTERN GLOW & GRIMOIRE FORGE
+   ⚡ VIBECARD MOTION ENGINEERING — /ONBOARDING-MOTION-DESIGN SKILL EDITION
+   Implements all 7 Signature Onboarding Animations (Duolingo, Quizlet, Vocabulary, Noom)
+   GPU-Safe (transform/opacity) · Spring Physics cubic-bezier(0.34, 1.56, 0.64, 1)
    ========================================================================== */
 
-@keyframes mascotFloat {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-6px); }
+:root {
+  --ease-out-fast: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring-pop: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-@keyframes mascotHop {
-  0% { transform: scale(0.94) translateY(8px); }
-  55% { transform: scale(1.03) translateY(-4px); }
-  100% { transform: scale(1) translateY(0); }
+/* --- ANIMATION 1: Anchored Progress Bar Specular Highlight & Milestone Pop --- */
+.progress-bar-fill {
+  position: relative;
+  transition: width 360ms var(--ease-spring-smooth) !important;
+}
+.progress-bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 4px;
+  right: 4px;
+  height: 34%;
+  background: rgba(255, 255, 255, 0.32);
+  border-radius: 999px;
+  pointer-events: none;
 }
 
-@keyframes whisperReveal {
-  0% {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes milestonePop {
+  0% { transform: scale(1); }
+  45% { transform: scale(1.24); }
+  100% { transform: scale(1); }
+}
+.anim-milestone-pop {
+  animation: milestonePop 300ms var(--ease-spring-pop);
+}
+
+/* --- ANIMATION 2: Staggered Question Slide (40ms Cascade) + Spring Checkmark Pop --- */
+@keyframes questionEnterTitle {
+  0% { opacity: 0; transform: translate3d(24px, 0, 0); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes optionCascadeIn {
+  0% { opacity: 0; transform: translate3d(0, 12px, 0); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes checkSpringPop {
+  0% { transform: scale(0); opacity: 0; }
+  65% { transform: scale(1.18); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
 @keyframes stepSlideForward {
-  0% {
-    opacity: 0;
-    transform: translateX(18px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  0% { opacity: 0; transform: translate3d(22px, 0, 0); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 
 @keyframes stepSlideBack {
-  0% {
-    opacity: 0;
-    transform: translateX(-18px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fireflyDrift {
-  0%, 100% {
-    transform: translate(0, 0) scale(0.85);
-    opacity: 0.25;
-  }
-  50% {
-    transform: translate(12px, -18px) scale(1.25);
-    opacity: 0.9;
-  }
-}
-
-@keyframes lanternAuraPulse {
-  0%, 100% {
-    opacity: 0.45;
-    transform: scale(0.95);
-  }
-  50% {
-    opacity: 0.85;
-    transform: scale(1.08);
-  }
-}
-
-@keyframes grimoireSpin {
-  0%, 100% {
-    transform: translateY(0) rotate(-1.5deg);
-    box-shadow: 0 12px 35px rgba(251, 191, 36, 0.18);
-  }
-  50% {
-    transform: translateY(-7px) rotate(1.5deg);
-    box-shadow: 0 18px 48px rgba(251, 191, 36, 0.35);
-  }
-}
-
-@keyframes shineSweep {
-  0% { transform: translateX(-140%) skewX(-20deg); }
-  45%, 100% { transform: translateX(220%) skewX(-20deg); }
-}
-
-@keyframes arrowNudgeUp {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-7px); }
-}
-
-.anim-mascot-float {
-  animation: mascotFloat 3.6s ease-in-out infinite;
-}
-
-.anim-mascot-hop {
-  animation: mascotHop 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-.anim-bubble-pop {
-  animation: whisperReveal 0.32s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  0% { opacity: 0; transform: translate3d(-22px, 0, 0); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 
 .anim-step-forward {
-  animation: stepSlideForward 0.28s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: stepSlideForward 240ms var(--ease-out-fast) forwards;
 }
-
 .anim-step-back {
-  animation: stepSlideBack 0.28s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: stepSlideBack 240ms var(--ease-out-fast) forwards;
 }
 
-.anim-grimoire-card {
-  animation: grimoireSpin 2.6s ease-in-out infinite;
+.lumi-whisper-header {
+  animation: questionEnterTitle 240ms var(--ease-out-fast) backwards;
 }
 
-.anim-arrow-bounce {
-  animation: arrowNudgeUp 1.1s ease-in-out infinite;
+.duo-option-card,
+.lang-bento-card,
+.genre-bento-card,
+.tactile-option-card,
+.saved-mini-card {
+  animation: optionCascadeIn 260ms var(--ease-out-fast) backwards;
 }
 
-@keyframes cardRevealUp {
-  0% {
-    opacity: 0;
-    transform: translateY(12px) scale(0.985);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+/* Exact 40ms Option Stagger per /onboarding-motion-design Animation #2 */
+.duo-option-card:nth-child(1), .lang-bento-card:nth-child(1), .genre-bento-card:nth-child(1), .tactile-option-card:nth-child(1), .saved-mini-card:nth-child(1) { animation-delay: 40ms; }
+.duo-option-card:nth-child(2), .lang-bento-card:nth-child(2), .genre-bento-card:nth-child(2), .tactile-option-card:nth-child(2), .saved-mini-card:nth-child(2) { animation-delay: 80ms; }
+.duo-option-card:nth-child(3), .lang-bento-card:nth-child(3), .genre-bento-card:nth-child(3), .tactile-option-card:nth-child(3), .saved-mini-card:nth-child(3) { animation-delay: 120ms; }
+.duo-option-card:nth-child(4), .lang-bento-card:nth-child(4), .genre-bento-card:nth-child(4), .tactile-option-card:nth-child(4) { animation-delay: 160ms; }
+.duo-option-card:nth-child(5), .lang-bento-card:nth-child(5), .tactile-option-card:nth-child(5) { animation-delay: 200ms; }
+.duo-option-card:nth-child(6), .lang-bento-card:nth-child(6) { animation-delay: 240ms; }
+.duo-option-card:nth-child(7), .lang-bento-card:nth-child(7) { animation-delay: 280ms; }
+.duo-option-card:nth-child(8), .lang-bento-card:nth-child(8) { animation-delay: 320ms; }
+
+.is-selected .vc-check-ring svg {
+  animation: checkSpringPop 240ms var(--ease-spring-pop) forwards;
 }
 
-@keyframes checkRingPop {
-  0% { transform: scale(0.6); }
-  65% { transform: scale(1.16); }
+/* --- ANIMATION 3: 3D Flashcard Flip, Tinder Swipe Stamp, Counter Pulse & Stack Promotion --- */
+@keyframes counterPillPulse {
+  0% { transform: scale(1); }
+  45% { transform: scale(1.3); }
   100% { transform: scale(1); }
 }
+.anim-counter-pulse {
+  animation: counterPillPulse 300ms var(--ease-spring-pop);
+}
 
-@keyframes forgeProgressFill {
-  0% { width: 12%; }
-  50% { width: 68%; }
+@keyframes deckPromoteUp {
+  0% { transform: scale(0.94) translate3d(0, 10px, 0); opacity: 0.78; }
+  100% { transform: scale(1) translate3d(0, 0, 0); opacity: 1; }
+}
+.anim-deck-promote {
+  animation: deckPromoteUp 260ms var(--ease-spring-smooth) forwards;
+}
+
+@keyframes card3DFlip {
+  0% { transform: perspective(1000px) rotateY(-95deg) scale(0.96); opacity: 0.5; }
+  70% { transform: perspective(1000px) rotateY(6deg) scale(1.01); opacity: 1; }
+  100% { transform: perspective(1000px) rotateY(0deg) scale(1); opacity: 1; }
+}
+.anim-card-3d-flip {
+  animation: card3DFlip 360ms var(--ease-spring-smooth) forwards;
+}
+
+.fc-swipe-stamp {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.85) rotate(-8deg);
+  padding: 8px 18px;
+  border-radius: 12px;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 20;
+  transition: opacity 120ms ease, transform 120ms var(--ease-spring-pop);
+}
+.fc-swipe-stamp.is-know {
+  background: var(--m3-primary);
+  color: var(--m3-on-primary);
+  border: 2px solid var(--m3-on-primary);
+  box-shadow: 0 8px 24px rgba(31, 99, 72, 0.35);
+}
+.fc-swipe-stamp.is-learning {
+  background: var(--vc-amber-glow);
+  color: #FFFFFF;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 8px 24px rgba(194, 94, 20, 0.35);
+  transform: translate(-50%, -50%) scale(0.85) rotate(8deg);
+}
+.fc-active-card.anim-tilt-right .fc-swipe-stamp.is-know,
+.fc-active-card.is-dragging-right .fc-swipe-stamp.is-know {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1) rotate(-6deg);
+}
+.fc-active-card.anim-tilt-left .fc-swipe-stamp.is-learning,
+.fc-active-card.is-dragging-left .fc-swipe-stamp.is-learning {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1) rotate(6deg);
+}
+.fc-active-card.anim-tilt-right {
+  transform: translate3d(56px, -6px, 0) rotate(9deg) !important;
+  border-color: var(--m3-primary) !important;
+  opacity: 0.4;
+}
+.fc-active-card.anim-tilt-left {
+  transform: translate3d(-56px, -6px, 0) rotate(-9deg) !important;
+  border-color: var(--vc-amber-glow) !important;
+  opacity: 0.4;
+}
+
+/* --- ANIMATION 4: Bottom Feedback Sheet Slide-Up & Status Badge Pop --- */
+@keyframes feedbackSheetSlideUp {
+  0% { opacity: 0; transform: translate3d(0, 18px, 0); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+.inline-word-sheet.is-open {
+  animation: feedbackSheetSlideUp 220ms var(--ease-out-fast) forwards;
+}
+.inline-word-sheet.is-open .word-saved-pill {
+  animation: checkSpringPop 260ms var(--ease-spring-pop) 60ms backwards;
+}
+
+/* --- ANIMATION 5: "Labor Illusion" 3-State Plan-Builder Loader --- */
+@keyframes spinArc {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.labor-checklist-card {
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: var(--vc-card-grad);
+  border: 1px solid var(--m3-outline-variant);
+  box-shadow: var(--vc-card-shadow);
+}
+.labor-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.labor-title {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--m3-primary);
+}
+.labor-pct-badge {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--m3-primary);
+}
+.labor-rows { display: flex; flex-direction: column; gap: 7px; }
+.labor-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 12px;
+  color: var(--m3-on-surface);
+  transition: opacity 200ms ease;
+}
+.labor-row.is-pending { opacity: 0.45; }
+.labor-row.is-processing { opacity: 1; font-weight: 600; }
+.labor-row.is-completed { opacity: 1; }
+.labor-icon-slot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.labor-row.is-pending .labor-icon-slot {
+  border: 1.5px solid var(--m3-outline);
+}
+.labor-row.is-processing .labor-icon-slot {
+  border: 2px solid var(--m3-outline-variant);
+  border-top-color: var(--m3-primary);
+  animation: spinArc 700ms linear infinite;
+}
+.labor-row.is-completed .labor-icon-slot {
+  background: var(--m3-primary);
+  color: var(--m3-on-primary);
+  animation: checkSpringPop 280ms var(--ease-spring-pop) forwards;
+}
+
+/* --- ANIMATION 6: Micro-Win Confetti Burst --- */
+.confetti-stage {
+  position: relative;
+}
+.confetti-particle {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 30;
+  opacity: 0;
+}
+@keyframes confettiBurst1 { 0% { opacity: 1; transform: translate(0,0) scale(0.6); } 100% { opacity: 0; transform: translate(-65px, -36px) rotate(140deg) scale(1); } }
+@keyframes confettiBurst2 { 0% { opacity: 1; transform: translate(0,0) scale(0.6); } 100% { opacity: 0; transform: translate(68px, -32px) rotate(-130deg) scale(1); } }
+@keyframes confettiBurst3 { 0% { opacity: 1; transform: translate(0,0) scale(0.6); } 100% { opacity: 0; transform: translate(-42px, 28px) rotate(95deg) scale(0.9); } }
+@keyframes confettiBurst4 { 0% { opacity: 1; transform: translate(0,0) scale(0.6); } 100% { opacity: 0; transform: translate(48px, 26px) rotate(-110deg) scale(0.9); } }
+@keyframes confettiBurst5 { 0% { opacity: 1; transform: translate(0,0) scale(0.6); } 100% { opacity: 0; transform: translate(-88px, -4px) rotate(180deg) scale(0.85); } }
+@keyframes confettiBurst6 { 0% { opacity: 1; transform: translate(0,0) scale(0.6); } 100% { opacity: 0; transform: translate(86px, -6px) rotate(-165deg) scale(0.85); } }
+
+.confetti-particle.cp-1 { background: #1F6348; animation: confettiBurst1 650ms var(--ease-out-fast) forwards; }
+.confetti-particle.cp-2 { background: #F59E0B; animation: confettiBurst2 650ms var(--ease-out-fast) 30ms forwards; }
+.confetti-particle.cp-3 { background: #10B981; animation: confettiBurst3 650ms var(--ease-out-fast) 50ms forwards; }
+.confetti-particle.cp-4 { background: #EC4899; animation: confettiBurst4 650ms var(--ease-out-fast) 20ms forwards; }
+.confetti-particle.cp-5 { background: #3B82F6; animation: confettiBurst5 650ms var(--ease-out-fast) 40ms forwards; }
+.confetti-particle.cp-6 { background: #F97316; animation: confettiBurst6 650ms var(--ease-out-fast) 60ms forwards; }
+
+/* --- ANIMATION 7: Animated Strikethrough & Reminder Toggle Attention Nudge --- */
+.strike-draw-text {
+  position: relative;
+  display: inline-block;
+  color: var(--m3-on-surface-variant);
+}
+.strike-draw-text::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 52%;
+  height: 1.5px;
+  width: 0%;
+  background: var(--m3-primary);
+  animation: drawStrikeLine 340ms var(--ease-spring-smooth) 220ms forwards;
+}
+@keyframes drawStrikeLine {
+  0% { width: 0%; }
   100% { width: 100%; }
 }
 
-.lang-bento-card,
-.tactile-option-card,
-.artifact-bento-item,
-.crossroads-card {
-  animation: cardRevealUp 0.34s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+@keyframes reminderToggleNudge {
+  0% { transform: scale(0.92) translateX(-6px); }
+  60% { transform: scale(1.08) translateX(2px); }
+  100% { transform: scale(1) translateX(0); }
+}
+.notif-switch-pill.is-on {
+  animation: reminderToggleNudge 380ms var(--ease-spring-pop) 380ms backwards;
 }
 
-.lang-bento-card:nth-child(1), .tactile-option-card:nth-child(1), .artifact-bento-item:nth-child(1) { animation-delay: 0.02s; }
-.lang-bento-card:nth-child(2), .tactile-option-card:nth-child(2), .artifact-bento-item:nth-child(2) { animation-delay: 0.05s; }
-.lang-bento-card:nth-child(3), .tactile-option-card:nth-child(3), .artifact-bento-item:nth-child(3) { animation-delay: 0.08s; }
-.lang-bento-card:nth-child(4), .tactile-option-card:nth-child(4) { animation-delay: 0.11s; }
-.lang-bento-card:nth-child(5), .tactile-option-card:nth-child(5) { animation-delay: 0.14s; }
-.lang-bento-card:nth-child(6) { animation-delay: 0.17s; }
-.lang-bento-card:nth-child(7) { animation-delay: 0.20s; }
-.lang-bento-card:nth-child(8) { animation-delay: 0.23s; }
+/* Hero Ambience & Micro-Interactions */
+@keyframes mascotFloat {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(0, -6px, 0) rotate(1.2deg); }
+}
+@keyframes heroSlowPan {
+  0% { transform: scale(1.01) translate3d(0, 0, 0); }
+  100% { transform: scale(1.09) translate3d(-6px, -4px, 0); }
+}
+@keyframes heroItemReveal {
+  0% { opacity: 0; transform: translate3d(0, 14px, 0) scale(0.96); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+@keyframes fireflyFloat {
+  0%, 100% { opacity: 0.25; transform: translate3d(0, 0, 0) scale(0.85); }
+  50% { opacity: 0.95; transform: translate3d(8px, -14px, 0) scale(1.15); }
+}
+@keyframes popoverMorph {
+  0% { opacity: 0.4; transform: translate3d(0, 5px, 0) scale(0.97); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+@keyframes ctaShimmer {
+  0% { transform: translateX(-120%) skewX(-18deg); }
+  100% { transform: translateX(220%) skewX(-18deg); }
+}
 
+.hero-firefly {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #FDE68A;
+  box-shadow: 0 0 10px 2px rgba(253, 230, 138, 0.75);
+  z-index: 3;
+  pointer-events: none;
+  animation: fireflyFloat 4.2s ease-in-out infinite;
+}
+.hero-firefly.ff-1 { top: 24%; left: 18%; animation-delay: 0s; animation-duration: 4.4s; }
+.hero-firefly.ff-2 { top: 38%; right: 22%; animation-delay: 1.1s; animation-duration: 3.8s; }
+.hero-firefly.ff-3 { top: 18%; right: 34%; animation-delay: 2.2s; animation-duration: 4.8s; width: 5px; height: 5px; }
+.hero-firefly.ff-4 { bottom: 32%; right: 38%; animation-delay: 0.6s; animation-duration: 4.1s; width: 4px; height: 4px; }
+
+.anim-hero-pan { animation: heroSlowPan 9s ease-in-out infinite alternate; }
+.anim-hero-item-1 { animation: heroItemReveal 0.34s var(--ease-out-fast) 0.05s backwards; }
+.anim-hero-item-2 { animation: heroItemReveal 0.38s var(--ease-out-fast) 0.12s backwards, mascotFloat 4.4s ease-in-out 0.6s infinite; }
+.anim-hero-item-3 { animation: heroItemReveal 0.38s var(--ease-out-fast) 0.18s backwards; }
+.anim-mascot-float { animation: mascotFloat 3.6s ease-in-out infinite; }
+.anim-popover-morph { animation: popoverMorph 0.22s var(--ease-out-fast) forwards; }
+.anim-bubble-pop { animation: optionCascadeIn 0.24s var(--ease-out-fast) forwards; }
+
+.tactile-cta-btn { position: relative; overflow: hidden; }
+.tactile-cta-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 36%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+  animation: ctaShimmer 4.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Reduced Motion Accessibility (Rule #4 of /onboarding-motion-design) */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 150ms !important;
+    scroll-behavior: auto !important;
+  }
+}
