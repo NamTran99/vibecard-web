@@ -33,9 +33,9 @@ window.ROADMAP_ANIMATED_CHARACTERS_A = [
             </g> <path d="M 124 106 Q 134 102, 141 106" fill="none" stroke="#5A331C" stroke-width="3" stroke-linecap="round" /> <path d="M 150 102 Q 158 98, 164 103" fill="none" stroke="#5A331C" stroke-width="3" stroke-linecap="round" />
             <ellipse cx="147" cy="132" rx="5" ry="6.5" fill="#63361E" /> <path d="M 138 144 Q 143 147, 148 142" fill="none" stroke="#5A2818" stroke-width="3" stroke-linecap="round" /> <circle cx="140" cy="144" r="2.2" fill="#D94B43" />
             <circle cx="81" cy="130" r="12" fill="#8C583A" /> <path d="M 78 127 Q 83 130, 80 134" fill="none" stroke="#63361E" stroke-width="2.5" stroke-linecap="round" /> <path d="M 70 96 Q 105 113, 142 90 Q 163 85, 172 96 L 170 110 Q 150 100, 130 110 Q 104 125, 86 125 L 71 113 Z" fill="#F0B138" />
-            <ellipse cx="136" cy="86" rx="8.5" ry="4.5" transform="rotate(25 136 86)" fill="#F7C143" /> <ellipse cx="150" cy="84" rx="8.5" ry="4.5" transform="rotate(-25 150 84)" fill="#F7C143" /> <circle cx="84" cy="74" r="28" fill="#3B3A39" />
-            <circle cx="115" cy="58" r="32" fill="#3B3A39" /> <circle cx="148" cy="66" r="28" fill="#3B3A39" /> <circle cx="162" cy="82" r="20" fill="#3B3A39" />
-            <circle cx="118" cy="82" r="26" fill="#3B3A39" /> </g> </g>
+            <ellipse cx="136" cy="86" rx="8.5" ry="4.5" transform="rotate(25 136 86)" fill="#F7C143" /> <ellipse cx="150" cy="84" rx="8.5" ry="4.5" transform="rotate(-25 150 84)" fill="#F7C143" /> <circle cx="84" cy="74" r="28" fill="#4E3B30" stroke="#685042" stroke-width="1.5" />
+            <circle cx="115" cy="58" r="32" fill="#4E3B30" stroke="#685042" stroke-width="1.5" /> <circle cx="148" cy="66" r="28" fill="#4E3B30" stroke="#685042" stroke-width="1.5" /> <circle cx="162" cy="82" r="20" fill="#4E3B30" stroke="#685042" stroke-width="1.5" />
+            <circle cx="118" cy="82" r="26" fill="#4E3B30" /> </g> </g>
             <g transform="rotate(-28 212 260)"> <rect x="188" y="250" width="46" height="18" rx="8" fill="#A6580F" /> <ellipse cx="192" cy="259" rx="5" ry="9" fill="#8C4708" />
             </g> <g transform="rotate(28 258 260)"> <rect x="235" y="250" width="46" height="18" rx="8" fill="#A6580F" />
             <ellipse cx="278" cy="259" rx="5" ry="9" fill="#8C4708" /> </g> <rect x="224" y="248" width="22" height="36" rx="10" fill="#B86516" />

@@ -74,9 +74,11 @@ html.light #roadmapCardTag, html.light .rm-top-pill-prog { color: #18181B !impor
 /* 2. WINDING MAP STAGE (COMPACT VERTICAL RHYTHM SO CHEST 05 CLEARS DOCK — FIX #4) */
 .sq-roadmap-map { padding: 2px 12px 124px !important; max-width: 440px; margin: 0 auto; }
 #roadmapNextBar, #mysteryRoadmapNextBar { display: none !important; }
-.sq-winding-section { position: relative; margin-bottom: 18px; z-index: 1; }
+.sq-winding-section { position: relative; margin-bottom: 18px; z-index: 1; border: none !important; }
+.mb-section.sq-winding-section + .mb-section.sq-winding-section { margin-top: 0 !important; }
+.mb-section.sq-winding-section::before, .mb-section.sq-winding-section::after { display: none !important; content: none !important; }
 .sq-winding-section:has(.has-open-popover) { z-index: 50 !important; opacity: 1 !important; }
-.sq-winding-section.is-future-loop:not(:has(.has-open-popover)) { opacity: 0.85; }
+.sq-winding-section.is-future-loop:not(:has(.has-open-popover)) { opacity: 0.94; }
 
 .sq-section-header { display: flex; align-items: center; gap: 12px; margin: 2px 4px 10px; }
 .sq-section-hairline { flex: 1; height: 1px; background: rgba(255, 255, 255, 0.07); }
@@ -158,12 +160,6 @@ html.light .sq-tile-locked .sq-big-q { color: rgba(45, 54, 24, 0.35); }
 .sq-story-overlay.is-cover-stamp { animation: sq-cover-stamp 0.42s cubic-bezier(0.22, 1, 0.36, 1) both; }
 @keyframes sq-cover-stamp { 0% { transform: scale(1.26) translateY(-8px); opacity: 0.25; } 100% { transform: scale(1) translateY(0); opacity: 1; } }
 .sq-story-img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.sq-mini-q-tag {
-    position: absolute; top: 5px; left: 5px; width: 15px; height: 15px; border-radius: 5px;
-    background: rgba(15, 17, 12, 0.76); color: rgba(255, 255, 255, 0.72);
-    font-size: 9px; font-weight: 900; display: flex; align-items: center; justify-content: center;
-    backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); pointer-events: none;
-}
 .sq-done-dot {
     position: absolute; bottom: 5px; right: 5px; width: 17px; height: 17px; border-radius: 50%;
     background: rgba(15, 17, 12, 0.86); color: #B8D166; display: flex; align-items: center; justify-content: center;
@@ -321,9 +317,9 @@ html.light .story-snap-title { color: #18181B; }
 
 /* 9. MILESTONE TILES & LUMI STAGE (FIX #1: NO TAIL OVERLAP, NO EYE LASER) */
 .sq-tile.sq-tile-milestone { width: 70px; height: 70px; border-radius: 20px; background: #262015; }
-.sq-tile-milestone.is-locked-muted { opacity: 0.65; }
+.sq-tile-milestone.is-locked-muted { opacity: 0.92; }
 .sq-milestone-img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.sq-milestone-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.45) 100%); }
+.sq-milestone-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.22) 100%); }
 .sq-milestone-num { position: absolute; top: 6px; left: 8px; font-size: 9.5px; font-weight: 800; color: rgba(255, 255, 255, 0.78); }
 
 .sq-companion-island { position: absolute; top: 106px; z-index: 3; width: 132px; display: flex; flex-direction: column; align-items: center; gap: 0; }

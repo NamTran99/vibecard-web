@@ -110,11 +110,10 @@ function renderWindingSquareNode(chapter, gIdx, loop, localIdx, order) {
             </div>`;
     }
 
-    // Khi có ảnh truyện đè lên ô '?', tấm ảnh nằm gọn trên bệ ô '?' (giữ dấu '?' nhỏ ở góc trên trái để thấy rõ cơ chế đè lên '?')
+    // Khi có ảnh truyện đè lên ô '?', tấm ảnh nằm gọn trên bệ ô '?' (chỉ giữ chấm hoàn thành màu xanh ở góc dưới phải)
     const overlayHtml = overlaid ? `
         <div class="sq-story-overlay ${justMounted}">
             <img src="${displayImg}" alt="${roadmapAttr(displayTitle)}" class="sq-story-img" loading="lazy" decoding="async" />
-            <span class="sq-mini-q-tag" aria-hidden="true">?</span>
             ${state === 'completed' ? `<span class="sq-done-dot" aria-label="Đã hoàn thành">${ROADMAP_ICON_CHECK}</span>` : ''}
         </div>` : '';
 
