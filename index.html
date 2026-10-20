@@ -12,15 +12,6 @@
 
     <!-- Early Theme Initialization to Prevent FOUC -->
     <script>
-        (function() {
-            try {
-                if (window.location.search.includes('from=onboarding')) {
-                    sessionStorage.setItem('vibecard-entered-app', 'true');
-                } else if (!sessionStorage.getItem('vibecard-entered-app')) {
-                    window.location.replace('./onboarding-web/');
-                }
-            } catch (e) {}
-        })();
         window.__pageErrors = [];
         window.addEventListener('error', function(e) {
             window.__pageErrors.push({msg: e.message, filename: e.filename, lineno: e.lineno, colno: e.colno, error: e.error ? e.error.stack : null});
