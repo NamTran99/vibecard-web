@@ -27,6 +27,19 @@
             const screen = document.getElementById('screenLumiWakeup');
             if (!screen) return;
 
+            let skipWakeup = false;
+            try {
+                if (window.location.search.includes('from=onboarding') || sessionStorage.getItem('vibecard-skip-wakeup') === 'true') {
+                    skipWakeup = true;
+                    sessionStorage.removeItem('vibecard-skip-wakeup');
+                }
+            } catch (e) {}
+
+            if (skipWakeup) {
+                screen.classList.add('hidden');
+                return;
+            }
+
             screen.classList.remove('hidden');
             this.bindClipListeners();
             this.startSleepingIdle();
