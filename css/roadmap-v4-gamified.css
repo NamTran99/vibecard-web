@@ -59,20 +59,20 @@ html.light #roadmapCardTag, html.light .rm-top-pill-prog { color: #18181B !impor
 /* 2. MISTY SAGE-TEAL FLAT VECTOR PINE HILLS & CALM LAKE BACKGROUND (100% FULL-WIDTH EDGE-TO-EDGE) */
 .sq-roadmap-map {
     width: 100% !important; max-width: 100% !important; margin: 0 !important;
-    padding: 8px 0 210px !important;
-    background: #A7D4F0 url('../assets/cards/calm_pine_lake_bg.svg?v=20261023_fullbleed') center top / 100% 100% no-repeat !important;
+    padding: 12px 0 265px !important;
+    background: #A7D4F0 url('../assets/cards/calm_pine_lake_bg.svg?v=20261023_longmap') center top / 100% 100% no-repeat !important;
 }
 html.light .sq-roadmap-map {
-    background: #A7D4F0 url('../assets/cards/calm_pine_lake_bg.svg?v=20261023_fullbleed') center top / 100% 100% no-repeat !important;
+    background: #A7D4F0 url('../assets/cards/calm_pine_lake_bg.svg?v=20261023_longmap') center top / 100% 100% no-repeat !important;
 }
 #roadmapNextBar, #mysteryRoadmapNextBar { display: none !important; }
-.sq-winding-section { position: relative; max-width: 100% !important; padding: 0 12px !important; margin: 0 auto 18px; z-index: 1; border: none !important; background: transparent !important; }
+.sq-winding-section { position: relative; max-width: 100% !important; padding: 0 12px !important; margin: 0 auto 32px; z-index: 1; border: none !important; background: transparent !important; }
 .mb-section.sq-winding-section + .mb-section.sq-winding-section { margin-top: 0 !important; }
 .mb-section.sq-winding-section::before, .mb-section.sq-winding-section::after { display: none !important; content: none !important; }
 .sq-winding-section:has(.has-open-popover) { z-index: 50 !important; opacity: 1 !important; }
 .sq-winding-section.is-future-loop:not(:has(.has-open-popover)) { opacity: 0.95; }
 
-.sq-section-header { display: flex; align-items: center; gap: 10px; margin: 4px 2px 12px; position: relative; z-index: 4; }
+.sq-section-header { display: flex; align-items: center; gap: 10px; margin: 8px 2px 24px; position: relative; z-index: 4; }
 .sq-section-hairline { flex: 1; height: 1.5px; background: linear-gradient(90deg, transparent, rgba(55, 92, 96, 0.35), transparent); }
 .sq-section-title {
     font-size: 11px; font-weight: 800; color: #1E3A3D; letter-spacing: 0.02em;
@@ -83,27 +83,27 @@ html.light .sq-roadmap-map {
 .sq-section-title i { font-style: normal; color: #5B4CE6; font-size: 9px; margin: 0 3px; }
 html.light .sq-section-title { background: rgba(255, 255, 255, 0.94); color: #1E3A3D; }
 
-.sq-winding-stage { position: relative; width: 100%; min-height: 390px; background: transparent !important; }
+.sq-winding-stage { position: relative; width: 100%; min-height: 590px; background: transparent !important; }
 .sq-winding-stage::before { display: none !important; content: none !important; }
 .sq-winding-nodes { position: relative; z-index: 6; display: flex; flex-direction: column; align-items: stretch; }
 .sq-winding-nodes:has(.has-open-popover) { z-index: 50 !important; }
 
 /* 3. 3D GAME STEPPING-STONE TRAIL + SOFT TRAIL RIBBON */
-.sq-bridge-wrap { width: 100%; height: 22px; margin: -2px 0; position: relative; z-index: 1; pointer-events: none; }
+.sq-bridge-wrap { width: 100%; height: 52px; margin: 2px 0; position: relative; z-index: 1; pointer-events: none; }
 .sq-bridge-svg { width: 100%; height: 100%; overflow: visible; display: block; }
 .sq-bridge-ribbon { fill: none; stroke: rgba(255, 255, 255, 0.28); stroke-width: 22px; stroke-linecap: round; }
 .sq-bridge-wrap.is-lit .sq-bridge-ribbon, .sq-bridge-wrap.is-active-bridge .sq-bridge-ribbon { stroke: rgba(255, 255, 255, 0.48); stroke-width: 24px; }
-.sq-stone-shadow { fill: none; stroke: rgba(66, 102, 106, 0.55); stroke-width: 8.5px; stroke-dasharray: 2 11.5; stroke-linecap: round; transform: translateY(2px); }
-.sq-bridge-line { fill: none; stroke: rgba(255, 255, 255, 0.72); stroke-width: 7.5px; stroke-dasharray: 2 11.5; stroke-linecap: round; }
+.sq-stone-shadow { fill: none; stroke: rgba(66, 102, 106, 0.55); stroke-width: 9px; stroke-dasharray: 2.5 14; stroke-linecap: round; transform: translateY(2px); }
+.sq-bridge-line { fill: none; stroke: rgba(255, 255, 255, 0.76); stroke-width: 8px; stroke-dasharray: 2.5 14; stroke-linecap: round; }
 .sq-bridge-wrap.is-lit .sq-stone-shadow, .sq-bridge-wrap.is-active-bridge .sq-stone-shadow { stroke: rgba(58, 92, 96, 0.65); }
-.sq-bridge-wrap.is-lit .sq-bridge-line { stroke: #FFFFFF; stroke-width: 8px; stroke-dasharray: 2.5 11; }
-.sq-bridge-wrap.is-active-bridge .sq-bridge-line { stroke: #FFFFFF; stroke-width: 8.5px; stroke-dasharray: 2.5 11; }
-.sq-bridge-wrap.is-pulse-flow .sq-bridge-line { stroke: #FFFFFF; stroke-width: 8.5px; stroke-dasharray: 3 10; animation: sq-path-flow 0.7s linear infinite; }
-@keyframes sq-path-flow { to { stroke-dashoffset: -26; } }
+.sq-bridge-wrap.is-lit .sq-bridge-line { stroke: #FFFFFF; stroke-width: 8.5px; stroke-dasharray: 3 13.5; }
+.sq-bridge-wrap.is-active-bridge .sq-bridge-line { stroke: #FFFFFF; stroke-width: 9px; stroke-dasharray: 3 13.5; }
+.sq-bridge-wrap.is-pulse-flow .sq-bridge-line { stroke: #FFFFFF; stroke-width: 9px; stroke-dasharray: 3.5 13; animation: sq-path-flow 0.7s linear infinite; }
+@keyframes sq-path-flow { to { stroke-dashoffset: -33; } }
 
 /* 4. 3-TIER SIZE & SOFT PASTEL PEDESTALS FOR SQUARE '?' TILES */
-.sq-node-row { position: relative; width: 100%; min-height: 62px; display: block; z-index: 2; }
-.sq-node-row.is-active-hero { min-height: 122px; z-index: 6; margin: 2px 0 4px; }
+.sq-node-row { position: relative; width: 100%; min-height: 78px; display: block; z-index: 2; }
+.sq-node-row.is-active-hero { min-height: 142px; z-index: 6; margin: 6px 0 8px; }
 .sq-node-row.has-open-popover { z-index: 45 !important; }
 .sq-node-anchor {
     position: relative; left: var(--x, 50%); transform: translateX(-50%);

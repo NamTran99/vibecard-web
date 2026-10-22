@@ -1,130 +1,329 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 1320" fill="none" preserveAspectRatio="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 1840" preserveAspectRatio="none">
   <defs>
-    <!-- Misty Sage-Teal Pastel Sky-to-Hill Gradient -->
-    <linearGradient id="mistySkyHillGrad" x1="215" y1="0" x2="215" y2="1120" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#D4E8E8" />
-      <stop offset="18%" stop-color="#BCDAD9" />
-      <stop offset="45%" stop-color="#9DC2C2" />
-      <stop offset="78%" stop-color="#87B1B2" />
-      <stop offset="100%" stop-color="#7AA6A8" />
+    <!-- Sky & Distant Mist Gradient -->
+    <linearGradient id="skyMistGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#87B8C2" />
+      <stop offset="35%" stop-color="#9BC7CE" />
+      <stop offset="75%" stop-color="#B0D8DC" />
+      <stop offset="100%" stop-color="#C6E7E5" />
     </linearGradient>
 
-    <!-- Soft Lake Water Gradient (Strictly at bottom below all nodes & gift box) -->
-    <linearGradient id="calmLakeWaterGrad" x1="215" y1="1010" x2="215" y2="1320" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#BBE4FA" />
-      <stop offset="75%" stop-color="#B1DCF5" />
-      <stop offset="100%" stop-color="#A7D4F0" />
+    <!-- Distant Hill 1 (Topmost Blue-Teal) -->
+    <linearGradient id="hillFar1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#609AA6" />
+      <stop offset="100%" stop-color="#74AEBA" />
     </linearGradient>
 
-    <!-- Reusable Layered Pine Tree A -->
-    <g id="flatPineA">
-      <ellipse cx="0" cy="48" rx="18" ry="5" fill="#7CA5A7" opacity="0.55" />
-      <rect x="-3.5" y="34" width="7" height="14" rx="2" fill="#9BBEC0" />
-      <path d="M 0 -22 C -8 -8, -22 10, -24 16 C -26 20, -18 22, -12 20 C -18 28, -26 36, -26 39 C -26 42, 26 42, 26 39 C 26 36, 18 28, 12 20 C 18 22, 26 20, 24 16 C 22 10, 8 -8, 0 -22 Z" fill="#BCE0E1" />
-      <path d="M 0 -22 C -6 -10, -18 4, -19 8 C -20 11, 20 11, 19 8 C 18 4, 6 -10, 0 -22 Z" fill="#CEEAEB" />
+    <!-- Distant Hill 2 (Soft Slate-Teal) -->
+    <linearGradient id="hillFar2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#72ACB8" />
+      <stop offset="100%" stop-color="#88C1CA" />
+    </linearGradient>
+
+    <!-- Mid Meadow 1 (Cool Mint-Sage) -->
+    <linearGradient id="meadowMid1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8BC3C9" />
+      <stop offset="100%" stop-color="#A1D4D5" />
+    </linearGradient>
+
+    <!-- Mid Meadow 2 (Soft Seafoam Green) -->
+    <linearGradient id="meadowMid2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#9CD1D2" />
+      <stop offset="100%" stop-color="#B2E0DC" />
+    </linearGradient>
+
+    <!-- Lower Valley Meadow (Warm Pastel Mint-Green) -->
+    <linearGradient id="meadowLow1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ACE0DB" />
+      <stop offset="55%" stop-color="#BDE8DF" />
+      <stop offset="100%" stop-color="#C9EDE2" />
+    </linearGradient>
+
+    <!-- Shoreline Foreground Slope -->
+    <linearGradient id="meadowShore" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#BAE6DD" />
+      <stop offset="100%" stop-color="#CEEFE4" />
+    </linearGradient>
+
+    <!-- Calm Lake Water (Bottom Only: y = 1525..1840) -->
+    <linearGradient id="calmLakeWater" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#76C2D4" />
+      <stop offset="50%" stop-color="#64B3C8" />
+      <stop offset="100%" stop-color="#53A3BA" />
+    </linearGradient>
+
+    <!-- Side Creek Water Gradient -->
+    <linearGradient id="creekWater" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6CB8CB" />
+      <stop offset="100%" stop-color="#88CFD9" />
+    </linearGradient>
+
+    <!-- Reusable Pine Tree Symbol (Dark Teal-Blue Silhouette) -->
+    <g id="pineDark">
+      <rect x="-2.5" y="34" width="5" height="12" rx="1.5" fill="#3D5265" />
+      <path d="M 0 -22 C -5 -8, -16 4, -20 10 C -13 10, -8 9, -5 8 C -10 18, -19 25, -24 30 C -16 30, -10 29, -6 28 C -11 35, -18 40, -22 42 L 22 42 C 18 40, 11 35, 6 28 C 10 29, 16 30, 24 30 C 19 25, 10 18, 5 8 C 8 9, 13 10, 20 10 C 16 4, 5 -8, 0 -22 Z" fill="#3E7487" />
+      <path d="M 0 -22 C 3 -8, 12 4, 17 10 C 11 10, 7 9, 4 8 C 8 18, 16 25, 20 30 C 13 30, 8 29, 4 28 C 9 35, 15 40, 19 42 L 0 42 Z" fill="#4D899C" opacity="0.65" />
     </g>
 
-    <!-- Reusable Tree Stump with Roots -->
-    <g id="flatTreeStump">
-      <ellipse cx="0" cy="10" rx="22" ry="6" fill="#7CA5A7" opacity="0.45" />
-      <path d="M -11 0 L -15 9 L -24 13 M 11 0 L 16 9 L 25 12 M -4 6 L -9 14 M 5 6 L 11 15" stroke="#9BBEC0" stroke-width="2.2" stroke-linecap="round" />
-      <path d="M -12 -6 L -15 7 C -8 10, 8 10, 15 7 L 12 -6 Z" fill="#9BBEC0" />
-      <ellipse cx="0" cy="-6" rx="12" ry="4.2" fill="#CEEAEB" />
-      <ellipse cx="0" cy="-6" rx="7.5" ry="2.4" fill="none" stroke="#9BBEC0" stroke-width="1.2" />
+    <!-- Reusable Pine Tree Symbol (Mid Sage-Teal) -->
+    <g id="pineMid">
+      <rect x="-2.5" y="36" width="5" height="12" rx="1.5" fill="#495F72" />
+      <path d="M 0 -26 C -6 -10, -18 3, -22 10 C -15 10, -9 9, -6 8 C -12 19, -22 27, -27 32 C -18 32, -11 31, -7 30 C -12 37, -20 42, -25 44 L 25 44 C 20 42, 12 37, 7 30 C 11 31, 18 32, 27 32 C 22 27, 12 19, 6 8 C 9 9, 15 10, 22 10 C 18 3, 6 -10, 0 -26 Z" fill="#5491A1" />
+      <path d="M 0 -26 C 4 -10, 14 3, 18 10 C 12 10, 8 9, 5 8 C 9 19, 18 27, 22 32 C 15 32, 9 31, 5 30 C 10 37, 16 42, 21 44 L 0 44 Z" fill="#6AA8B6" opacity="0.6" />
+    </g>
+
+    <!-- Reusable Pine Tree Symbol (Soft Misty Far Pine) -->
+    <g id="pineMisty">
+      <path d="M 0 -18 C -4 -6, -13 4, -16 9 C -11 9, -6 8, -4 7 C -8 15, -15 21, -19 25 C -12 25, -7 24, -4 23 C -8 29, -14 33, -17 35 L 17 35 C 14 33, 8 29, 4 23 C 7 24, 12 25, 19 25 C 15 21, 8 15, 4 7 C 6 8, 11 9, 16 9 C 13 4, 4 -6, 0 -18 Z" fill="#5D99A8" opacity="0.55" />
+    </g>
+
+    <!-- Reusable Tree Stump Symbol -->
+    <g id="woodStump">
+      <ellipse cx="0" cy="9" rx="18" ry="5" fill="#7FB8B6" opacity="0.55" />
+      <path d="M -12 0 L -14 8 C -10 11, 10 11, 14 8 L 12 0 Z" fill="#5A6D7C" />
+      <path d="M -6 0 L -7 9 L 3 9 L 2 0 Z" fill="#485A68" opacity="0.55" />
+      <ellipse cx="0" cy="0" rx="12" ry="4.2" fill="#D5B895" stroke="#5A6D7C" stroke-width="1.2" />
+      <ellipse cx="0" cy="0" rx="7.5" ry="2.5" fill="none" stroke="#B79672" stroke-width="0.9" />
+      <ellipse cx="0" cy="0" rx="3.2" ry="1.1" fill="none" stroke="#B79672" stroke-width="0.8" />
+    </g>
+
+    <!-- Reusable Clovers / Grass Tuft -->
+    <g id="grassTuft">
+      <path d="M 0 0 C -3 -6, -8 -9, -11 -8 C -7 -4, -4 -1, -2 1 Z" fill="#6CA9AC" />
+      <path d="M 0 0 C -1 -8, 2 -12, 4 -12 C 3 -7, 2 -3, 1 1 Z" fill="#5E9B9F" />
+      <path d="M 2 0 C 5 -6, 10 -8, 12 -7 C 9 -4, 5 -1, 3 1 Z" fill="#6CA9AC" />
+    </g>
+
+    <!-- Reusable Wildflower Cluster -->
+    <g id="wildflowerCluster">
+      <use href="#grassTuft" x="0" y="0" />
+      <circle cx="-5" cy="-7" r="2.2" fill="#FFFDF7" />
+      <circle cx="-5" cy="-7" r="0.9" fill="#F4B961" />
+      <circle cx="4" cy="-9" r="2" fill="#FFFDF7" />
+      <circle cx="4" cy="-9" r="0.8" fill="#F4B961" />
+      <circle cx="9" cy="-5" r="1.8" fill="#F9D5D3" />
     </g>
   </defs>
 
-  <!-- 1. Base Misty Sage-Teal Meadow Canvas (Nodes 01 to 10 all stand on solid green land!) -->
-  <rect width="430" height="1320" fill="url(#mistySkyHillGrad)" />
+  <!-- 1. BASE SKY & DISTANT MIST -->
+  <rect width="430" height="1840" fill="url(#skyMistGrad)" />
 
-  <!-- 2. Distant Layered Mountain Ridges (Top) -->
-  <path d="M -20 85 Q 75 42, 185 78 T 450 64 L 450 185 L -20 185 Z" fill="#C5E1E1" opacity="0.7" />
-  <path d="M -20 125 Q 110 92, 235 118 T 450 105 L 450 215 L -20 215 Z" fill="#B2D3D3" opacity="0.85" />
-  <path d="M -20 172 Q 140 148, 290 165 T 450 156 L 450 245 L -20 245 Z" fill="#A2C6C6" />
+  <!-- Soft Morning Sun Glow at Top Left -->
+  <circle cx="72" cy="88" r="76" fill="#DCEFF0" opacity="0.42" />
+  <circle cx="72" cy="88" r="44" fill="#EAF7F7" opacity="0.55" />
 
-  <!-- 3. Upper-Right Distant Pine Grove (Section 1 Top Right) -->
-  <g transform="translate(278, 138) scale(0.82)" opacity="0.72"><use href="#flatPineA" /></g>
-  <g transform="translate(316, 125) scale(1.05)" opacity="0.82"><use href="#flatPineA" /></g>
-  <g transform="translate(358, 134) scale(0.9)" opacity="0.76"><use href="#flatPineA" /></g>
-  <g transform="translate(394, 142) scale(0.75)" opacity="0.68"><use href="#flatPineA" /></g>
-  <ellipse cx="336" cy="176" rx="85" ry="7" fill="#94BABA" opacity="0.6" />
-
-  <!-- 4. Section 1 Left & Right Border Props (Away from the S-curve nodes) -->
-  <!-- Right small stump -->
-  <g transform="translate(356, 254) scale(0.85)"><use href="#flatTreeStump" /></g>
-
-  <!-- Right mid pine duo -->
-  <g transform="translate(332, 336) scale(0.92)"><use href="#flatPineA" /></g>
-  <g transform="translate(364, 352) scale(0.68)"><use href="#flatPineA" /></g>
-
-  <!-- Left stump with roots -->
-  <g transform="translate(46, 392) scale(0.92)"><use href="#flatTreeStump" /></g>
-
-  <!-- Right fallen log & stump -->
-  <g transform="translate(376, 468) scale(0.9)">
-    <path d="M -48 12 L -8 2 L -4 10 L -44 20 Z" fill="#9BBEC0" />
-    <ellipse cx="-46" cy="16" rx="4" ry="5" fill="#7CA5A7" />
-    <use href="#flatTreeStump" />
+  <!-- Distant Birds in Upper Sky -->
+  <g stroke="#4E8392" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.65">
+    <path d="M 155 68 Q 160 63 165 67 Q 170 63 175 68" />
+    <path d="M 182 56 Q 186 52 190 55 Q 194 52 198 56" />
+    <path d="M 140 82 Q 144 78 148 81 Q 152 78 156 82" />
   </g>
 
-  <!-- 5. Section 2 Meadow Land & Border Pines (Nodes 06, 07, 08, 09, 10 all sit on solid Sage-Teal Land!) -->
-  <!-- Left Pine Cluster & Winding White-Bordered Stream along Left Border (Nodes 06-09 curve on the right at x=56..84%, so left side is completely free!) -->
-  <path d="M -10 692 C 32 692, 58 698, 86 712 L 86 728 L -10 728 Z" fill="#638D90" />
-  <g transform="translate(18, 665) scale(0.88)"><use href="#flatPineA" /></g>
-  <g transform="translate(50, 656) scale(1.02)"><use href="#flatPineA" /></g>
-  <g transform="translate(80, 672) scale(0.78)"><use href="#flatPineA" /></g>
+  <!-- 2. LAYERED ROLLING HILLS (ELONGATED FROM Y=0 TO Y=1540) -->
+  <!-- Far Hill Layer 1 (y = 95..420) -->
+  <path d="M -20 145 C 85 95, 215 110, 330 165 C 380 188, 415 195, 450 185 L 450 520 L -20 520 Z" fill="url(#hillFar1)" />
 
-  <!-- Left Winding Stream Channel (strictly on left border x < 95) -->
-  <path d="M -12 720 C 52 724, 92 746, 82 776 C 72 802, 18 822, -12 844" stroke="#D7ECEC" stroke-width="18" stroke-linecap="round" fill="none" />
-  <path d="M -12 720 C 52 724, 92 746, 82 776 C 72 802, 18 822, -12 844" stroke="#79A4A7" stroke-width="11" stroke-linecap="round" fill="none" />
+  <!-- Misty Far Pines along Ridge 1 -->
+  <use href="#pineMisty" x="28" y="112" transform="scale(0.9)" />
+  <use href="#pineMisty" x="58" y="102" transform="scale(1.05)" />
+  <use href="#pineMisty" x="395" y="152" transform="scale(0.95)" />
+  <use href="#pineMisty" x="422" y="144" transform="scale(1.1)" />
 
-  <!-- Right Edge Pines beside Node 09-10 (at far right edge x=385..418) -->
-  <path d="M 352 945 C 372 928, 412 928, 442 948 L 442 975 L 352 975 Z" fill="#5D878A" />
-  <g transform="translate(382, 898) scale(0.95)"><use href="#flatPineA" /></g>
-  <g transform="translate(412, 910) scale(0.74)"><use href="#flatPineA" /></g>
+  <!-- Far Hill Layer 2 (y = 220..680) -->
+  <path d="M -20 275 C 65 265, 165 225, 285 210 C 355 200, 410 215, 450 235 L 450 740 L -20 740 Z" fill="url(#hillFar2)" />
 
-  <!-- Lower-left stump above shoreline -->
-  <g transform="translate(96, 956) scale(0.88)"><use href="#flatTreeStump" /></g>
+  <!-- Mid Meadow Layer 1 (y = 390..960) -->
+  <path d="M -20 400 C 90 375, 215 415, 345 460 C 395 478, 425 480, 450 472 L 450 1020 L -20 1020 Z" fill="url(#meadowMid1)" />
 
-  <!-- 6. Calm Lake Shoreline & 3D Ledge Rim (Starts at y=1045, BELOW Node 10 Gift Box so NO item ever touches water!) -->
-  <!-- Dark Slate-Teal Shoreline Cliff Wall -->
-  <path d="M -15 1038 C 22 1038, 48 1066, 56 1102 C 62 1128, 122 1122, 168 1104 C 214 1086, 264 1094, 304 1064 C 342 1036, 368 994, 404 990 C 424 988, 436 998, 445 1008 L 445 1320 L -15 1320 Z" fill="#5B8286" />
+  <!-- Subtle Sunlight Contour Ribbons on Mid Meadow 1 -->
+  <path d="M 35 450 C 135 435, 240 465, 355 495" fill="none" stroke="#A7D8DA" stroke-width="5" stroke-linecap="round" opacity="0.35" />
 
-  <!-- Calm Pastel Sky-Blue Lake Water -->
-  <path d="M -15 1052 C 18 1052, 42 1078, 50 1112 C 56 1138, 120 1132, 168 1114 C 214 1096, 266 1104, 306 1074 C 344 1046, 370 1004, 406 1000 C 424 998, 436 1008, 445 1018 L 445 1320 L -15 1320 Z" fill="url(#calmLakeWaterGrad)" />
+  <!-- Mid Meadow Layer 2 (y = 650..1240) -->
+  <path d="M -20 710 C 80 685, 195 645, 325 630 C 385 622, 420 635, 450 648 L 450 1280 L -20 1280 Z" fill="url(#meadowMid2)" />
 
-  <!-- Soft Water Ripples -->
-  <ellipse cx="356" cy="1072" rx="28" ry="5.5" fill="#DDF2FD" opacity="0.85" />
-  <ellipse cx="374" cy="1116" rx="14" ry="3.2" fill="#DDF2FD" opacity="0.75" />
-  <ellipse cx="182" cy="1158" rx="22" ry="4.5" fill="#DDF2FD" opacity="0.75" />
-  <ellipse cx="92" cy="1196" rx="26" ry="5" fill="#DDF2FD" opacity="0.7" />
+  <!-- Subtle Sunlight Contour Ribbons on Mid Meadow 2 -->
+  <path d="M 45 760 C 165 730, 275 710, 390 725" fill="none" stroke="#BCE6E2" stroke-width="6" stroke-linecap="round" opacity="0.4" />
+  <path d="M 25 890 C 145 865, 265 885, 385 915" fill="none" stroke="#BCE6E2" stroke-width="5" stroke-linecap="round" opacity="0.38" />
 
-  <!-- 7. Cute Coral-Red & Lavender Wooden Rowboat with Oars Floating on the Lake Below Node 10 -->
-  <g transform="translate(268, 1142) rotate(-6)">
-    <!-- Boat Water Shadow -->
-    <ellipse cx="2" cy="14" rx="34" ry="8.5" fill="#9AC9E8" opacity="0.85" />
-    <!-- Back Oar -->
-    <line x1="-4" y1="-10" x2="12" y2="-22" stroke="#7E6CE6" stroke-width="2.4" stroke-linecap="round" />
-    <!-- Boat Hull (Lavender Base + Coral-Red Rim) -->
-    <path d="M -32 -2 C -26 14, 24 14, 32 -2 Z" fill="#8C7AE6" />
-    <path d="M -34 -3 C -28 5, 28 5, 34 -3 L 30 -8 L -30 -8 Z" fill="#EB6B56" />
-    <ellipse cx="0" cy="-6" rx="28" ry="5.5" fill="#F28B78" />
-    <ellipse cx="0" cy="-6" rx="21" ry="3.6" fill="#B84B39" />
-    <!-- Wooden Seats -->
-    <rect x="-12" y="-8.5" width="4.5" height="5" rx="1" fill="#F28B78" />
-    <rect x="6" y="-8.5" width="4.5" height="5" rx="1" fill="#F28B78" />
-    <!-- Front Oar with Paddle -->
-    <line x1="2" y1="-5" x2="28" y2="12" stroke="#D9E8F5" stroke-width="2.4" stroke-linecap="round" />
-    <path d="M 24 9 L 34 14 C 36 15, 34 19, 31 18 L 22 12 Z" fill="#6C5CE7" />
+  <!-- Lower Valley Meadow Layer (y = 980..1550) -->
+  <path d="M -20 990 C 95 965, 225 1005, 350 1045 C 398 1060, 425 1062, 450 1055 L 450 1580 L -20 1580 Z" fill="url(#meadowLow1)" />
+
+  <!-- Foreground Gentle Slope Above Shoreline (y = 1280..1560) -->
+  <path d="M -20 1310 C 105 1275, 245 1265, 370 1295 C 410 1305, 435 1315, 450 1322 L 450 1600 L -20 1600 Z" fill="url(#meadowShore)" />
+
+  <!-- Subtle Contour Highlights in Lower Valley -->
+  <path d="M 55 1140 C 165 1115, 280 1135, 380 1165" fill="none" stroke="#D7F4EA" stroke-width="6" stroke-linecap="round" opacity="0.45" />
+  <path d="M 40 1390 C 155 1365, 275 1375, 385 1405" fill="none" stroke="#DCF6EC" stroke-width="6" stroke-linecap="round" opacity="0.5" />
+
+  <!-- 3. SIDE STREAMS / CREEKS ON OUTER MARGINS (KEEPING CENTER PATH CLEAR) -->
+  <!-- Upper Right Creek (y = 500..615) -->
+  <path d="M 445 505 C 395 520, 365 542, 355 562 C 345 582, 385 600, 445 612 L 445 582 C 402 572, 382 562, 388 550 C 394 538, 418 528, 445 522 Z" fill="#82AC9F" opacity="0.7" />
+  <path d="M 445 512 C 398 526, 368 546, 358 564 C 348 582, 388 598, 445 608 L 445 586 C 405 576, 386 565, 392 553 C 398 541, 420 532, 445 526 Z" fill="url(#creekWater)" />
+  <path d="M 372 562 Q 395 568 422 574" stroke="#C8EEF2" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.75" />
+
+  <!-- Lower Left Creek (y = 1090..1210) -->
+  <path d="M -15 1095 C 35 1108, 68 1128, 76 1148 C 84 1168, 45 1188, -15 1202 L -15 1174 C 28 1164, 46 1154, 40 1142 C 34 1130, 12 1120, -15 1112 Z" fill="#82AC9F" opacity="0.7" />
+  <path d="M -15 1102 C 32 1114, 64 1132, 72 1150 C 80 1168, 42 1186, -15 1198 L -15 1178 C 25 1168, 42 1157, 36 1145 C 30 1133, 10 1124, -15 1116 Z" fill="url(#creekWater)" />
+  <path d="M 12 1148 Q 35 1154 58 1158" stroke="#C8EEF2" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.75" />
+
+  <!-- 4. PINE GROVES ALONG LEFT & RIGHT EDGES (Y = 160 TO Y = 1480) -->
+  <!-- Top Left Grove (y = 170..340) -->
+  <use href="#pineMid" x="18" y="185" transform="scale(1.15)" />
+  <use href="#pineDark" x="52" y="210" transform="scale(1.0)" />
+  <use href="#pineMid" x="12" y="295" transform="scale(1.3)" />
+  <use href="#pineDark" x="28" y="268" transform="scale(1.25)" />
+
+  <!-- Top Right Grove (y = 190..390) -->
+  <use href="#pineMid" x="398" y="195" transform="scale(1.05)" />
+  <use href="#pineDark" x="382" y="245" transform="scale(1.2)" />
+  <use href="#pineMid" x="332" y="310" transform="scale(1.25)" />
+  <use href="#pineDark" x="355" y="348" transform="scale(1.1)" />
+
+  <!-- Upper-Mid Left Grove (y = 460..680) -->
+  <use href="#pineMid" x="22" y="455" transform="scale(1.2)" />
+  <use href="#pineDark" x="54" y="510" transform="scale(1.05)" />
+  <use href="#pineMid" x="16" y="595" transform="scale(1.25)" />
+  <use href="#pineDark" x="42" y="640" transform="scale(1.1)" />
+
+  <!-- Upper-Mid Right Grove (y = 620..840) -->
+  <use href="#pineMid" x="392" y="635" transform="scale(1.15)" />
+  <use href="#pineDark" x="358" y="685" transform="scale(1.15)" />
+  <use href="#pineMid" x="396" y="755" transform="scale(1.2)" />
+  <use href="#pineDark" x="366" y="810" transform="scale(1.05)" />
+
+  <!-- Lower-Mid Left Grove (y = 820..1040) -->
+  <use href="#pineMid" x="20" y="815" transform="scale(1.2)" />
+  <use href="#pineDark" x="52" y="875" transform="scale(1.1)" />
+  <use href="#pineMid" x="15" y="965" transform="scale(1.25)" />
+
+  <!-- Lower-Mid Right Grove (y = 960..1220) -->
+  <use href="#pineMid" x="395" y="965" transform="scale(1.15)" />
+  <use href="#pineDark" x="362" y="1025" transform="scale(1.15)" />
+  <use href="#pineMid" x="398" y="1125" transform="scale(1.2)" />
+  <use href="#pineDark" x="368" y="1185" transform="scale(1.08)" />
+
+  <!-- Bottom Valley Left & Right Groves (y = 1230..1460) -->
+  <use href="#pineMid" x="22" y="1245" transform="scale(1.2)" />
+  <use href="#pineDark" x="55" y="1305" transform="scale(1.1)" />
+  <use href="#pineMid" x="18" y="1395" transform="scale(1.25)" />
+
+  <use href="#pineMid" x="395" y="1310" transform="scale(1.2)" />
+  <use href="#pineDark" x="362" y="1375" transform="scale(1.15)" />
+  <use href="#pineMid" x="402" y="1435" transform="scale(1.1)" />
+
+  <!-- 5. WOODLAND PROPS: STUMPS, FALLEN LOGS, BOULDERS & FLOWERS -->
+  <!-- Stumps distributed along the elongated valley margins -->
+  <use href="#woodStump" x="92" y="425" transform="scale(0.95)" />
+  <use href="#woodStump" x="342" y="495" transform="scale(1.05)" />
+  <use href="#woodStump" x="78" y="745" transform="scale(1.1)" />
+  <use href="#woodStump" x="335" y="895" transform="scale(0.95)" />
+  <use href="#woodStump" x="88" y="1255" transform="scale(1.05)" />
+  <use href="#woodStump" x="332" y="1445" transform="scale(1.1)" />
+
+  <!-- Mossy Fallen Hollow Log 1 (Left Margin at y = 690) -->
+  <g transform="translate(52, 695) rotate(-8)">
+    <ellipse cx="32" cy="14" rx="38" ry="6" fill="#7FB8B6" opacity="0.55" />
+    <path d="M 0 0 L 62 -4 C 66 -2, 66 12, 62 14 L 0 16 Z" fill="#5A6D7C" />
+    <path d="M 4 2 L 58 -1 L 58 6 L 4 8 Z" fill="#485A68" opacity="0.65" />
+    <ellipse cx="0" cy="8" rx="4.5" ry="8" fill="#D5B895" stroke="#485A68" stroke-width="1.2" />
+    <ellipse cx="0" cy="8" rx="2.2" ry="4.5" fill="#3D4E5C" />
+    <!-- Moss patch on log -->
+    <path d="M 14 -1 C 22 -4, 38 -4, 46 -2 C 44 2, 20 3, 14 -1 Z" fill="#76B8AC" />
   </g>
 
-  <!-- 8. Bottom Mint-Sage Pine Foreground Silhouette -->
-  <g fill="#9FD4CB" opacity="0.88">
-    <path d="M 310 1215 L 285 1295 L 335 1295 Z" />
-    <path d="M 342 1195 L 312 1295 L 372 1295 Z" />
-    <path d="M 378 1210 L 350 1295 L 406 1295 Z" />
-    <path d="M 412 1225 L 388 1295 L 436 1295 Z" />
-    <path d="M 48 1230 L 22 1300 L 74 1300 Z" />
-    <path d="M 82 1215 L 54 1300 L 110 1300 Z" />
+  <!-- Mossy Fallen Hollow Log 2 (Right Margin at y = 1265) -->
+  <g transform="translate(318, 1268) rotate(7)">
+    <ellipse cx="30" cy="14" rx="36" ry="5.5" fill="#7FB8B6" opacity="0.55" />
+    <path d="M 0 0 L 58 -3 C 62 -1, 62 12, 58 14 L 0 15 Z" fill="#5A6D7C" />
+    <path d="M 4 2 L 54 0 L 54 6 L 4 8 Z" fill="#485A68" opacity="0.65" />
+    <ellipse cx="0" cy="7.5" rx="4.2" ry="7.5" fill="#D5B895" stroke="#485A68" stroke-width="1.2" />
+    <ellipse cx="0" cy="7.5" rx="2" ry="4.2" fill="#3D4E5C" />
+    <path d="M 12 -1 C 20 -4, 34 -4, 42 -2 C 40 2, 18 3, 12 -1 Z" fill="#76B8AC" />
+  </g>
+
+  <!-- Smooth River Stones & Grass Tufts scattered gently along edges -->
+  <g fill="#7AA7B0" opacity="0.75">
+    <ellipse cx="105" cy="310" rx="8" ry="4.5" />
+    <ellipse cx="116" cy="313" rx="5" ry="3" fill="#8FBBC2" />
+    <ellipse cx="318" cy="645" rx="9" ry="5" />
+    <ellipse cx="306" cy="648" rx="5.5" ry="3.2" fill="#8FBBC2" />
+    <ellipse cx="96" cy="1025" rx="8.5" ry="4.8" />
+    <ellipse cx="325" cy="1155" rx="7.5" ry="4.2" />
+    <ellipse cx="86" cy="1435" rx="9" ry="5" />
+  </g>
+
+  <!-- Wildflower & Clover Clusters from Top to Bottom -->
+  <use href="#wildflowerCluster" x="112" y="265" />
+  <use href="#grassTuft" x="310" y="295" />
+  <use href="#wildflowerCluster" x="85" y="545" />
+  <use href="#grassTuft" x="338" y="585" />
+  <use href="#wildflowerCluster" x="322" y="775" />
+  <use href="#grassTuft" x="92" y="845" />
+  <use href="#wildflowerCluster" x="82" y="995" />
+  <use href="#grassTuft" x="335" y="1065" />
+  <use href="#wildflowerCluster" x="315" y="1335" />
+  <use href="#wildflowerCluster" x="95" y="1385" />
+  <use href="#grassTuft" x="295" y="1475" />
+  <use href="#grassTuft" x="118" y="1485" />
+
+  <!-- 6. SHORELINE CLIFF & CALM LAKE AT VERY BOTTOM (Y = 1520..1840, BELOW NODE 10) -->
+  <!-- Earthy / Stone Shoreline Drop-off Ledge (y = 1515..1560) -->
+  <path d="M -20 1518 C 65 1538, 165 1542, 265 1528 C 340 1518, 395 1525, 450 1536 L 450 1585 L -20 1585 Z" fill="#84A99E" />
+  <path d="M -20 1526 C 65 1546, 165 1550, 265 1536 C 340 1526, 395 1533, 450 1544 L 450 1590 L -20 1590 Z" fill="#6D9189" />
+
+  <!-- Vertical Rock/Earth Striations on Shoreline Cliff -->
+  <g stroke="#5A7B74" stroke-width="2" stroke-linecap="round" opacity="0.55">
+    <line x1="45" y1="1534" x2="43" y2="1552" />
+    <line x1="95" y1="1540" x2="94" y2="1558" />
+    <line x1="155" y1="1542" x2="154" y2="1560" />
+    <line x1="225" y1="1536" x2="224" y2="1554" />
+    <line x1="295" y1="1528" x2="294" y2="1546" />
+    <line x1="365" y1="1532" x2="364" y2="1550" />
+  </g>
+
+  <!-- Calm Turquoise-Blue Lake Water (y = 1540..1840) -->
+  <path d="M -20 1542 C 65 1562, 165 1566, 265 1552 C 340 1542, 395 1549, 450 1560 L 450 1840 L -20 1840 Z" fill="url(#calmLakeWater)" />
+
+  <!-- Soft Cream Foam / Waterline Ripples along the Shore -->
+  <path d="M -15 1545 C 65 1565, 165 1569, 265 1555 C 340 1545, 395 1552, 445 1563" fill="none" stroke="#DDF7F8" stroke-width="3.5" stroke-linecap="round" opacity="0.8" />
+  <path d="M 25 1558 C 110 1574, 205 1575, 310 1560" fill="none" stroke="#BCEAF0" stroke-width="2" stroke-linecap="round" opacity="0.65" />
+
+  <!-- Subtle Horizontal Water Shimmer Lines -->
+  <g stroke="#9EE0EC" stroke-width="1.8" stroke-linecap="round" opacity="0.55">
+    <line x1="45" y1="1605" x2="115" y2="1605" />
+    <line x1="275" y1="1595" x2="355" y2="1595" />
+    <line x1="155" y1="1635" x2="245" y2="1635" />
+    <line x1="65" y1="1685" x2="145" y2="1685" />
+    <line x1="285" y1="1710" x2="375" y2="1710" />
+    <line x1="95" y1="1765" x2="195" y2="1765" />
+  </g>
+
+  <!-- Cozy Coral & Lavender Wooden Rowboat Floating Peacefully at y = 1655 -->
+  <g transform="translate(215, 1665) rotate(-6)">
+    <!-- Water Ripple Rings Around Boat -->
+    <ellipse cx="0" cy="8" rx="68" ry="18" fill="none" stroke="#B8ECF2" stroke-width="2" opacity="0.7" />
+    <ellipse cx="0" cy="8" rx="82" ry="23" fill="none" stroke="#9EDCE6" stroke-width="1.4" stroke-dasharray="18 10" opacity="0.55" />
+
+    <!-- Boat Drop Shadow on Water -->
+    <path d="M -52 6 C -35 20, 35 20, 54 6 C 38 14, -38 14, -52 6 Z" fill="#3D8BA1" opacity="0.65" />
+
+    <!-- Outer Hull (Warm Coral-Terracotta) -->
+    <path d="M -54 -4 C -36 -18, 36 -18, 56 -2 C 42 15, -36 15, -54 -4 Z" fill="#D47A72" stroke="#5A4A58" stroke-width="1.5" />
+
+    <!-- Inner Boat Cavity (Soft Lavender-Slate) -->
+    <path d="M -44 -4 C -28 -13, 28 -13, 46 -2 C 32 9, -28 9, -44 -4 Z" fill="#B5A8BE" stroke="#5A4A58" stroke-width="1.2" />
+
+    <!-- Wooden Seats (Thwarts) -->
+    <rect x="-24" y="-9" width="8" height="14" rx="2" fill="#E39A8B" stroke="#5A4A58" stroke-width="1.1" />
+    <rect x="0" y="-10" width="8" height="16" rx="2" fill="#E39A8B" stroke="#5A4A58" stroke-width="1.1" />
+    <rect x="23" y="-8" width="7" height="13" rx="2" fill="#E39A8B" stroke="#5A4A58" stroke-width="1.1" />
+
+    <!-- Resting Wooden Oars -->
+    <g stroke="#5A4A58" stroke-width="1">
+      <line x1="-12" y1="-6" x2="18" y2="-22" stroke="#D9B28C" stroke-width="2.6" stroke-linecap="round" />
+      <ellipse cx="21" cy="-24" rx="6" ry="2.4" transform="rotate(-28 21 -24)" fill="#E39A8B" />
+      <line x1="-8" y1="4" x2="22" y2="19" stroke="#D9B28C" stroke-width="2.6" stroke-linecap="round" />
+      <ellipse cx="25" cy="21" rx="6" ry="2.4" transform="rotate(26 25 21)" fill="#E39A8B" />
+    </g>
   </g>
 </svg>

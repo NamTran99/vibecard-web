@@ -60,10 +60,10 @@ function renderWindingConnectorSvg(x1, x2, isLit, isActiveNext, isPulseFlow) {
         isLit ? 'is-lit' : (isActiveNext ? 'is-active-bridge' : 'is-dim'),
         isPulseFlow ? 'is-pulse-flow' : ''
     ].filter(Boolean).join(' ');
-    const d = `M ${x1} 0 C ${x1} 20, ${x2} 20, ${x2} 40`;
+    const d = `M ${x1} 2 C ${x1} 33, ${x2} 31, ${x2} 62`;
     return `
         <div class="sq-bridge-wrap ${cls}" aria-hidden="true">
-            <svg class="sq-bridge-svg" viewBox="0 0 100 40" preserveAspectRatio="none">
+            <svg class="sq-bridge-svg" viewBox="0 0 100 64" preserveAspectRatio="none">
                 <path class="sq-bridge-ribbon" d="${d}" vector-effect="non-scaling-stroke" />
                 <path class="sq-stone-shadow" d="${d}" vector-effect="non-scaling-stroke" />
                 <path class="sq-bridge-line" d="${d}" vector-effect="non-scaling-stroke" />
@@ -222,12 +222,13 @@ function renderRoadmapSection(chapter, loop, characters, orderStart) {
 
     const zoneBridgeHtml = loop > 0 ? `
         <div class="sq-zone-bridge-wrap ${started ? 'is-unlocked' : ''}" aria-hidden="true">
-            <svg class="sq-zone-bridge-svg" viewBox="0 0 80 42" fill="none">
-                <path d="M 24 2 L 24 40 M 56 2 L 56 40" stroke="#789E9E" stroke-width="3" stroke-linecap="round"/>
+            <svg class="sq-zone-bridge-svg" viewBox="0 0 80 62" fill="none">
+                <path d="M 24 2 L 24 60 M 56 2 L 56 60" stroke="#789E9E" stroke-width="3" stroke-linecap="round"/>
                 <rect x="20" y="6" width="40" height="5.5" rx="2.5" fill="#FFFFFF" stroke="#9BBEC0" stroke-width="1"/>
-                <rect x="20" y="15" width="40" height="5.5" rx="2.5" fill="#EBF4F4" stroke="#9BBEC0" stroke-width="1"/>
-                <rect x="20" y="24" width="40" height="5.5" rx="2.5" fill="#FFFFFF" stroke="#9BBEC0" stroke-width="1"/>
-                <rect x="20" y="33" width="40" height="5.5" rx="2.5" fill="#EBF4F4" stroke="#9BBEC0" stroke-width="1"/>
+                <rect x="20" y="16" width="40" height="5.5" rx="2.5" fill="#EBF4F4" stroke="#9BBEC0" stroke-width="1"/>
+                <rect x="20" y="26" width="40" height="5.5" rx="2.5" fill="#FFFFFF" stroke="#9BBEC0" stroke-width="1"/>
+                <rect x="20" y="36" width="40" height="5.5" rx="2.5" fill="#EBF4F4" stroke="#9BBEC0" stroke-width="1"/>
+                <rect x="20" y="46" width="40" height="5.5" rx="2.5" fill="#FFFFFF" stroke="#9BBEC0" stroke-width="1"/>
             </svg>
         </div>` : '';
 

@@ -9,11 +9,11 @@
 
 /* #5: Cầu Gỗ Nối Khu Vực Giữa Phần 1 & Phần 2 */
 .sq-zone-bridge-wrap {
-    display: flex; justify-content: center; margin: -12px auto -6px;
-    position: relative; z-index: 1; pointer-events: none; opacity: 0.78;
+    display: flex; justify-content: center; margin: -6px auto 10px;
+    position: relative; z-index: 1; pointer-events: none; opacity: 0.88;
 }
 .sq-zone-bridge-wrap.is-unlocked { opacity: 1; filter: drop-shadow(0 0 8px rgba(184, 209, 102, 0.35)); }
-.sq-zone-bridge-svg { width: 64px; height: 34px; display: block; }
+.sq-zone-bridge-svg { width: 72px; height: 54px; display: block; }
 
 /* #6: Thanh 5 Viên Tinh Thể Năng Lượng Trên Vách Đảo Nhân Vật */
 .sq-island-gem-bar {
