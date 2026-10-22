@@ -19,7 +19,7 @@
         (function() {
             try {
                 const savedTheme = localStorage.getItem("mindcard-theme-mode") || "dark";
-                if (savedTheme === "light" || (savedTheme === "system" && window.matchMedia && !window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+                if (savedTheme === "light") {
                     document.documentElement.classList.remove("dark");
                     document.documentElement.classList.add("light");
                 } else {
@@ -32,7 +32,7 @@
 
     <!-- Fonts & Core Dependencies -->
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/tailwind.min.css">
+    <link rel="stylesheet" href="css/tailwind.min.css?v=20261023_v35_colorfix">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <!-- Tailwind Config -->
@@ -51,22 +51,22 @@
             });
         }
     </script>
-    <link rel="stylesheet" href="css/m3-tokens.css?v=20261009_exact">
-    <link rel="stylesheet" href="css/animations.css?v=20261009_exact">
-    <link rel="stylesheet" href="css/components.css?v=20261016_book_v2">
-    <link rel="stylesheet" href="css/roadmap-timeline.css?v=20261016_v4_final">
-    <link rel="stylesheet" href="css/create-circle.css?v=20261012_m3_audit_clean">
-    <link rel="stylesheet" href="css/lumi-wakeup.css?v=20261010_wakeup">
-    <link rel="stylesheet" href="css/pronunciation-modal.css?v=20261012_v1">
-    <link rel="stylesheet" href="css/story-reader.css?v=20261015_m3_v41">
-    <link rel="stylesheet" href="css/components/storyTargetCard.css?v=20261015_m3_v37">
-    <link rel="stylesheet" href="css/components/storyWordLookup.css?v=20261016_ctx_v4">
-    <link rel="stylesheet" href="css/components/storyFlippableCard.css?v=20261015_m3_v42">
-    <link rel="stylesheet" href="css/components/bottomNav.css?v=20261012_pill">
-    <link rel="stylesheet" href="css/roadmap-mystery.css?v=20261023_v34_longmap">
-    <link rel="stylesheet" href="css/roadmap-v4-gamified.css?v=20261023_v34_longmap">
-    <link rel="stylesheet" href="css/roadmap-characters-anim.css?v=20261023_v34_longmap">
-    <link rel="stylesheet" href="css/book-styles-showcase.css?v=20261016_final3d">
+    <link rel="stylesheet" href="css/m3-tokens.css?v=20261023_v35_colorfix">
+    <link rel="stylesheet" href="css/animations.css?v=20261023_v35_colorfix">
+    <link rel="stylesheet" href="css/components.css?v=20261023_v35_colorfix">
+    <link rel="stylesheet" href="css/roadmap-timeline.css?v=20261023_v35_colorfix">
+    <link rel="stylesheet" href="css/create-circle.css?v=20261023_v35_colorfix">
+    <link rel="stylesheet" href="css/lumi-wakeup.css?v=20261023_v35_colorfix">
+    <link rel="stylesheet" href="css/pronunciation-modal.css?v=20261023_v35_colorfix">
+    <link rel="stylesheet" href="css/story-reader.css?v=20261023_v35_colorfix">
+    <link rel="stylesheet" href="css/components/storyTargetCard.css?v=20261023_v35_colorfix">
+    <link rel="stylesheet" href="css/components/storyWordLookup.css?v=20261023_v35_colorfix">
+    <link rel="stylesheet" href="css/components/storyFlippableCard.css?v=20261023_v35_colorfix">
+    <link rel="stylesheet" href="css/components/bottomNav.css?v=20261023_v35_colorfix">
+    <link rel="stylesheet" href="css/roadmap-mystery.css?v=20261023_v35_colorfix">
+    <link rel="stylesheet" href="css/roadmap-v4-gamified.css?v=20261023_v35_colorfix">
+    <link rel="stylesheet" href="css/roadmap-characters-anim.css?v=20261023_v35_colorfix">
+    <link rel="stylesheet" href="css/book-styles-showcase.css?v=20261023_v35_colorfix">
 </head>
 <body class="h-[820px] w-full max-w-[420px] mx-auto relative overflow-hidden bg-appBg border border-white/10 shadow-[0_30px_100px_rgba(0,0,0,0.9)] rounded-[48px] mt-3 sm:mt-5 mb-6 flex flex-col">
     
@@ -1907,7 +1907,7 @@
     <!-- Inspired by reference: Deep cinematic void, floating mascot, -->
     <!-- poetic quote, interactive tap-to-awaken transformation.    -->
     <!-- ========================================================== -->
-    <div id="screenLumiWakeup" class="absolute inset-0 z-[100] flex flex-col justify-between items-center text-center px-6 pt-3 pb-8 select-none overflow-hidden cursor-pointer lumi-video-active" onclick="handleLumiWakeupTap()">
+    <div id="screenLumiWakeup" class="hidden absolute inset-0 z-[100] flex flex-col justify-between items-center text-center px-6 pt-3 pb-8 select-none overflow-hidden cursor-pointer lumi-video-active" onclick="handleLumiWakeupTap()">
         
         <!-- Atmospheric Cavern Top/Bottom Ambient Textures -->
         <div class="lumi-cavern-top"></div>
@@ -5147,7 +5147,7 @@
     <script src="js/components/pronunciation/pronunciationRecording.js"></script>
     <script src="js/data/lumiWakeupData.js"></script>
     <script src="js/components/lumiWakeup/lumiWakeupEffects.js"></script>
-    <script src="js/components/lumiWakeupScreen.js"></script>
+    <script src="js/components/lumiWakeupScreen.js?v=20261023_v35_colorfix"></script>
 
     <!-- 3.5 Views -->
     <script src="js/views/createView.js"></script>

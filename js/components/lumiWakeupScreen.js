@@ -27,26 +27,13 @@
             const screen = document.getElementById('screenLumiWakeup');
             if (!screen) return;
 
-            let skipWakeup = false;
-            try {
-                if (window.location.search.includes('from=onboarding') || sessionStorage.getItem('vibecard-skip-wakeup') === 'true') {
-                    skipWakeup = true;
-                    sessionStorage.removeItem('vibecard-skip-wakeup');
-                }
-            } catch (e) {}
-
-            if (skipWakeup) {
-                screen.classList.add('hidden');
-                return;
-            }
-
-            screen.classList.remove('hidden');
+            // Default hidden on startup unless user explicitly clicks "Đánh thức Lumi"
+            screen.classList.add('hidden');
             this.bindClipListeners();
-            this.startSleepingIdle();
 
             // Browsers pause background-tab media; resume whichever clip is on screen.
             document.addEventListener('visibilitychange', () => {
-                if (document.hidden || !this.useVideoMode) return;
+                if (document.hidden || !this.useVideoMode || screen.classList.contains('hidden')) return;
                 const clip = this.getActiveClip();
                 if (clip && clip.paused) clip.play().catch(() => {});
             });

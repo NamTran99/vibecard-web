@@ -4,12 +4,13 @@
  * ======================================================== */
 
 #screenLumiWakeup {
-    background-color: var(--m3-surface-container-lowest) !important;
+    background-color: #0D0E0B !important;
     background-image: 
         radial-gradient(circle at 50% 18%, rgba(82, 102, 0, 0.18) 0%, transparent 60%),
-        radial-gradient(circle at 50% 55%, rgba(13, 14, 11, 0.9) 0%, var(--m3-surface-container-lowest) 100%);
+        radial-gradient(circle at 50% 55%, rgba(13, 14, 11, 0.9) 0%, #0D0E0B 100%) !important;
     box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.95);
     border-radius: 0 !important; /* Clipped cleanly by parent phone body */
+    color: #E5E3DB !important;
 }
 
 /* Floating mascot container levitation */
@@ -234,7 +235,7 @@
 .lumi-quote-title {
     font-size: 21px;
     font-weight: 700;
-    color: var(--m3-on-surface);
+    color: #E5E3DB !important;
     line-height: 1.38;
     letter-spacing: -0.015em;
     text-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
@@ -243,7 +244,7 @@
 .lumi-quote-sub {
     font-size: 13px;
     font-weight: 500;
-    color: var(--m3-outline);
+    color: #C7C8B8 !important;
     margin-top: 8px;
     letter-spacing: 0.02em;
     transition: color 0.5s ease;
