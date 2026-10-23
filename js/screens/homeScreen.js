@@ -233,20 +233,28 @@
         function openStoryBookReader(chapterIdx = 0) {
             const currentCh = (typeof storyChapters !== 'undefined' && storyChapters[chapterIdx]) ? storyChapters[chapterIdx] : null;
             
-            // Ưu tiên mở trực tiếp Màn hình Đọc truyện Story to Card chuẩn Android 1:1
-            if (typeof window.openStoryReaderScreen === 'function') {
-                window.openStoryReaderScreen(currentCh);
-                return;
-            }
-            if (typeof openStoryReaderScreen === 'function') {
-                openStoryReaderScreen(currentCh);
-                return;
-            }
+            const launchReader = () => {
+                // Ưu tiên mở trực tiếp Màn hình Đọc truyện Story to Card chuẩn Android 1:1
+                if (typeof window.openStoryReaderScreen === 'function') {
+                    window.openStoryReaderScreen(currentCh);
+                    return;
+                }
+                if (typeof openStoryReaderScreen === 'function') {
+                    openStoryReaderScreen(currentCh);
+                    return;
+                }
 
-            if (typeof openLessonIntroScreen === 'function') {
-                openLessonIntroScreen(chapterIdx, currentCh);
+                if (typeof openLessonIntroScreen === 'function') {
+                    openLessonIntroScreen(chapterIdx, currentCh);
+                    return;
+                }
+            };
+
+            if (window.LumiEnergy && typeof window.LumiEnergy.consumeForLesson === 'function') {
+                window.LumiEnergy.consumeForLesson({ isReviewMode: false }, launchReader);
                 return;
             }
+            launchReader();
             const ch = currentCh || (typeof storyChapters !== 'undefined' ? storyChapters[0] : null);
             const modal = document.getElementById('storybookSpreadModal');
             if (!modal) return;

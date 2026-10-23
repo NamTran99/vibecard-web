@@ -43,6 +43,16 @@ function advanceRoadmapProgress(chapterIdx = currentRoadmapChapterIdx) {
 
     const nextIdx = ch.nodes.findIndex(n => n.status !== 'completed');
     if (nextIdx < 0) return;
+
+    // Kiểm tra nếu Pin đã cạn (0/5) và chưa bị trừ ở phiên này thì chặn lại
+    if (window.LumiEnergy && typeof window.LumiEnergy.getState === 'function') {
+        const st = window.LumiEnergy.getState();
+        if (!st.isPro && st.energy <= 0 && typeof window.openLumiEnergySheet === 'function') {
+            window.openLumiEnergySheet('depleted');
+            return;
+        }
+    }
+
     const nextUnit = ch.nodes[nextIdx];
     nextUnit.status = 'completed';
     if (nextIdx + 1 < ch.nodes.length) {
@@ -53,6 +63,11 @@ function advanceRoadmapProgress(chapterIdx = currentRoadmapChapterIdx) {
     }
     ch.progressText = getRoadmapProgressLabel(ch);
     saveRoadmapProgress();
+
+    // Đảm bảo trừ -1 Pin nếu người dùng bấm Hoàn thành bài nhanh mà chưa đi qua bước mở bài
+    if (window.LumiEnergy && typeof window.LumiEnergy.onLessonCompleted === 'function') {
+        window.LumiEnergy.onLessonCompleted();
+    }
 
     const loop = Math.floor(nextIdx / ROADMAP_LESSONS_PER_LOOP);
     const loopStart = loop * ROADMAP_LESSONS_PER_LOOP;

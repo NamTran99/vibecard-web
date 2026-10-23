@@ -11,9 +11,7 @@
             void modal.offsetWidth;
             modal.classList.remove('opacity-0');
             content.classList.remove('translate-y-full');
-            if (typeof SoundEngine !== 'undefined' && SoundEngine.play) {
-                SoundEngine.play(1);
-            }
+            
         }
 
         function closeLanguageSheet() {
@@ -153,24 +151,29 @@
         window.applyTargetLanguageUI = applyTargetLanguageUI;
 
         function selectTargetLanguage(flag, code, name) {
+            if (!code && flag) {
+                code = flag;
+                const flagMap = { EN: '🇬🇧', JA: '🇯🇵', KO: '🇰🇷', ZH: '🇨🇳', FR: '🇫🇷', ES: '🇪🇸', DE: '🇩🇪' };
+                flag = flagMap[code] || '🇬🇧';
+            }
             const flagEl = document.getElementById('topLangFlag');
             const codeEl = document.getElementById('topLangCode');
-            if (flagEl) flagEl.innerText = flag;
-            if (codeEl) codeEl.innerText = code;
+            if (flagEl && flag) flagEl.innerText = flag;
+            if (codeEl && code) codeEl.innerText = code;
             
             try {
-                localStorage.setItem('mindcard-target-lang', code);
-                localStorage.setItem('mindcard-target-flag', flag);
+                if (code) localStorage.setItem('mindcard-target-lang', code);
+                if (flag) localStorage.setItem('mindcard-target-flag', flag);
+                if (window.AppStore && typeof window.AppStore.setState === 'function' && code) {
+                    window.AppStore.setState('targetLang', code);
+                }
             } catch (e) {}
 
             updateDictionaryBookLanguage(code);
             applyTargetLanguageUI(code);
+            if (typeof window.renderProfileScreen === 'function') window.renderProfileScreen();
 
             closeLanguageSheet();
-
-            if (typeof SoundEngine !== 'undefined' && SoundEngine.play) {
-                SoundEngine.play(7);
-            }
         }
         window.selectTargetLanguage = selectTargetLanguage;
 
@@ -183,9 +186,7 @@
             void modal.offsetWidth;
             modal.classList.remove('opacity-0');
             content.classList.remove('translate-y-full');
-            if (typeof SoundEngine !== 'undefined' && SoundEngine.play) {
-                SoundEngine.play(1);
-            }
+            
         }
 
         function closeProSheet() {

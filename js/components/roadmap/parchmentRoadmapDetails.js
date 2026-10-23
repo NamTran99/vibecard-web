@@ -196,15 +196,26 @@ function handleParchmentNodeClick(nodeId, title, unlocked, chapterIdx = 0) {
             ]
         };
 
-        // Ưu tiên mở trực tiếp Màn hình Đọc truyện Story to Card chuẩn 1:1 Android Native
-        if (typeof window.openStoryReaderScreen === 'function') {
-            window.openStoryReaderScreen(lessonCustomData);
+        const launchLesson = () => {
+            // Ưu tiên mở trực tiếp Màn hình Đọc truyện Story to Card chuẩn 1:1 Android Native
+            if (typeof window.openStoryReaderScreen === 'function') {
+                window.openStoryReaderScreen(lessonCustomData);
+                return;
+            }
+            if (typeof window.openLessonIntroScreen === 'function') {
+                window.openLessonIntroScreen(chapterIdx, lessonCustomData);
+                return;
+            }
+        };
+
+        if (window.LumiEnergy && typeof window.LumiEnergy.consumeForLesson === 'function') {
+            window.LumiEnergy.consumeForLesson(
+                { isReviewMode: node.status === 'completed' },
+                launchLesson
+            );
             return;
         }
-        if (typeof window.openLessonIntroScreen === 'function') {
-            window.openLessonIntroScreen(chapterIdx, lessonCustomData);
-            return;
-        }
+        launchLesson();
     }
 
     if (typeof openStoryBookReader === 'function') {

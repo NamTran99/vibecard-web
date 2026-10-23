@@ -191,6 +191,9 @@
             ? `🎉 Hoàn thành bài đọc! Đã tạo ${flashcardsCreated.length} thẻ Flashcard mới vào Thư viện của bạn! (+50 XP)`
             : `🎉 Chúc mừng bạn đã hoàn thành bài đọc "${state.currentStory.title}"! (+50 XP)`;
         if (typeof showDictToast === 'function') showDictToast(msg);
+        if (window.LumiEnergy && typeof window.LumiEnergy.onLessonCompleted === 'function') {
+            try { window.LumiEnergy.onLessonCompleted(); } catch (e) {}
+        }
         if (typeof simulateCompleteCurrentLesson === 'function') { try { simulateCompleteCurrentLesson(); } catch (e) {} }
 
         setTimeout(() => {

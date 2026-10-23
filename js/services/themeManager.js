@@ -14,9 +14,7 @@
             void modal.offsetWidth;
             modal.classList.remove('opacity-0');
             content.classList.remove('translate-y-full');
-            if (typeof SoundEngine !== 'undefined' && SoundEngine.play) {
-                SoundEngine.play(1);
-            }
+            
         }
 
         function closeThemeSheet() {
@@ -36,9 +34,7 @@
             } catch (e) {}
             applyThemeMode(mode);
             updateThemeSheetUI();
-            if (typeof SoundEngine !== 'undefined' && SoundEngine.play) {
-                SoundEngine.play(1);
-            }
+            
             setTimeout(() => {
                 closeThemeSheet();
             }, 260);
@@ -67,9 +63,9 @@
             const iconSvg = document.getElementById('themeSettingIconSvg');
 
             const modeLabels = {
-                'dark': { text: 'Tối (Dark Olive Green)', badge: 'Tối', icon: '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>' },
-                'light': { text: 'Sáng (Light Olive Green)', badge: 'Sáng', icon: '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>' },
-                'system': { text: 'Tự động theo hệ thống', badge: 'Hệ thống', icon: '<circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>' }
+                'dark': { text: 'Giao diện Tối · Bảo vệ mắt', badge: 'Tối', icon: '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>' },
+                'light': { text: 'Giao diện Sáng · Nền giấy ấm', badge: 'Sáng', icon: '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>' },
+                'system': { text: 'Tự động theo thiết bị', badge: 'Hệ thống', icon: '<circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>' }
             };
 
             const currentMeta = modeLabels[mode] || modeLabels['dark'];
@@ -136,7 +132,7 @@
                     profileSwitch.classList.remove('bg-primary/25');
                     profileSwitch.classList.add('bg-surfaceContainerHighest');
                     profileThumb.innerHTML = `
-                        <svg class="w-3 h-3 text-amber-300" viewBox="0 0 24 24" fill="currentColor">
+                        <svg class="w-3 h-3" style="color: #141C00;" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                         </svg>
                     `;
@@ -145,7 +141,7 @@
                     profileSwitch.classList.remove('bg-surfaceContainerHighest');
                     profileSwitch.classList.add('bg-primary/25');
                     profileThumb.innerHTML = `
-                        <svg class="w-3 h-3 text-onPrimary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                        <svg class="w-3 h-3" style="color: #FFFFFF;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
                             <circle cx="12" cy="12" r="5"></circle>
                         </svg>
                     `;
@@ -171,9 +167,7 @@
 
             setThemeMode(nextMode);
 
-            if (typeof SoundEngine !== 'undefined' && SoundEngine.play) {
-                SoundEngine.play(1);
-            }
+            
         }
 
         function updateThemeSheetUI() {

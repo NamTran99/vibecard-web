@@ -82,6 +82,13 @@ function switchBottomNav(index) {
             renderLibraryUI();
         }
     }
+    if (index === 3 && typeof renderProfileScreen === 'function') {
+        renderProfileScreen();
+    }
+    if (false) {
+        if (false) {
+        }
+    }
 
     if (index === 1) {
         if (typeof playCreateScreenEntrance === 'function') {

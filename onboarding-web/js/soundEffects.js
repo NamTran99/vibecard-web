@@ -4,7 +4,7 @@
 
 const SoundEffects = {
   ctx: null,
-  muted: false,
+  muted: true,
 
   init() {
     if (!this.ctx && (window.AudioContext || window.webkitAudioContext)) {
