@@ -63,9 +63,12 @@
     <link rel="stylesheet" href="css/components/storyWordLookup.css?v=20261023_v35_colorfix">
     <link rel="stylesheet" href="css/components/storyFlippableCard.css?v=20261023_v35_colorfix">
     <link rel="stylesheet" href="css/components/bottomNav.css?v=20261023_v35_colorfix">
-    <link rel="stylesheet" href="css/roadmap-mystery.css?v=20261023_v35_colorfix">
-    <link rel="stylesheet" href="css/roadmap-v4-gamified.css?v=20261023_v35_colorfix">
-    <link rel="stylesheet" href="css/roadmap-characters-anim.css?v=20261023_v35_colorfix">
+    <link rel="stylesheet" href="css/roadmap-mystery.css?v=20261024_dice6">
+    <link rel="stylesheet" href="css/roadmap-v4-gamified.css?v=20261024_dice6">
+    <link rel="stylesheet" href="css/roadmap-characters-anim.css?v=20261024_dice6">
+    <link rel="stylesheet" href="css/roadmap-characters-story-anim.css?v=20261024_dice6">
+    <link rel="stylesheet" href="css/roadmap-flow-anim.css?v=20261024_dice6">
+    <link rel="stylesheet" href="css/roadmap-popover-anim.css?v=20261024_isodice8">
     <link rel="stylesheet" href="css/book-styles-showcase.css?v=20261023_v35_colorfix">
 </head>
 <body class="h-[820px] w-full max-w-[420px] mx-auto relative overflow-hidden bg-appBg border border-white/10 shadow-[0_30px_100px_rgba(0,0,0,0.9)] rounded-[48px] mt-3 sm:mt-5 mb-6 flex flex-col">
@@ -2346,8 +2349,8 @@
                 <!-- Sticky Bottom Random CTA -->
                 <div class="story-sheet-footer">
                     <button type="button" onclick="handleRandomStoryPick()" class="story-sheet-random-cta">
-                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c.6 5.5 4.5 9.4 10 10-5.5.6-9.4 4.5-10 10-.6-5.5-4.5-9.4-10-10 5.5-.6 9.4-4.5 10-10z"/></svg>
-                        <span>Chọn ngẫu nhiên cho tôi</span>
+                        <svg class="sq-dice-svg" width="22" height="22" viewBox="0 0 36 36" fill="none" aria-hidden="true"><ellipse class="iso-dice-shadow" cx="18" cy="32.5" rx="9.5" ry="2.6" fill="rgba(0,0,0,0.42)"/><g class="iso-dice-body"><path d="M18 4.5L31 12L18 19.5L5 12Z" fill="#FFFDF5" stroke="#F59E0B" stroke-width="1.2" stroke-linejoin="round"/><path d="M5 12L18 19.5L18 31L5 23.5Z" fill="#FDE68A" stroke="#D97706" stroke-width="1.2" stroke-linejoin="round"/><path d="M18 19.5L31 12L31 23.5L18 31Z" fill="#F59E0B" stroke="#B45309" stroke-width="1.2" stroke-linejoin="round"/><path d="M5.5 12L18 19.2L30.5 12" stroke="#FFFFFF" stroke-width="1.3" stroke-linecap="round" opacity="0.85"/><ellipse class="iso-pip-top" cx="18" cy="12" rx="2.9" ry="1.85" fill="#EF4444"/><ellipse cx="9.5" cy="18.2" rx="1.4" ry="2" transform="rotate(-18 9.5 18.2)" fill="#1E293B"/><ellipse cx="14" cy="23.8" rx="1.4" ry="2" transform="rotate(-18 14 23.8)" fill="#1E293B"/><ellipse cx="22" cy="18.5" rx="1.35" ry="1.9" transform="rotate(18 22 18.5)" fill="#FFFBEB"/><ellipse cx="24.5" cy="21.5" rx="1.35" ry="1.9" transform="rotate(18 24.5 21.5)" fill="#FFFBEB"/><ellipse cx="27" cy="24.5" rx="1.35" ry="1.9" transform="rotate(18 27 24.5)" fill="#FFFBEB"/></g><circle class="iso-dice-spark s1" cx="5" cy="6.5" r="1.4" fill="#FDE047"/><circle class="iso-dice-spark s2" cx="31.5" cy="7.5" r="1.2" fill="#B8D166"/></svg>
+                        <span>Đổ xúc xắc chọn ngẫu nhiên</span>
                     </button>
                 </div>
             </div>
@@ -5439,6 +5442,9 @@
             <button onclick="if(typeof resetRoadmapProgressForTest === 'function') resetRoadmapProgressForTest();" id="floatingResetRoadmapBtn" class="h-[36px] px-3 rounded-full bg-[var(--m3-surface-container)]/90 hover:bg-[var(--m3-surface-container-high)]/90 border border-white/20 text-[var(--m3-on-surface-variant)] shadow-[0_6px_20px_rgba(0,0,0,0.5)] backdrop-blur-xl flex items-center gap-1 text-xs font-bold hover:scale-105 active:scale-95 transition-all cursor-pointer" title="Reset tiến độ Roadmap để test lại từ đầu">
                 <span>↺ Reset</span>
             </button>
+            <button onclick="if(typeof openParchmentRoadmapScreen === 'function') openParchmentRoadmapScreen(); setTimeout(function(){ if(typeof openStoryGenrePicker === 'function') openStoryGenrePicker(4); }, 180);" id="floatingSmartStoryPickerBtn" class="h-[36px] px-3.5 rounded-full bg-[var(--m3-surface-container)]/90 hover:bg-[var(--m3-surface-container-high)]/90 border border-[var(--m3-amber-glow)]/60 text-[var(--m3-amber-glow)] shadow-[0_6px_20px_rgba(0,0,0,0.5)] backdrop-blur-xl flex items-center gap-1.5 text-xs font-black hover:scale-105 active:scale-95 transition-all cursor-pointer" title="Mở nhanh giao diện Chọn Câu Chuyện thông minh">
+                <span>📚 Chọn Truyện</span>
+            </button>
 
             <!-- View mode toggle pill -->
             <div id="externalViewModeToggle" class="h-[36px] pointer-events-auto flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--m3-surface-container)]/90 hover:bg-[var(--m3-surface-container-high)]/90 border border-[var(--m3-primary)]/40 text-[var(--m3-primary)] shadow-[0_6px_20px_rgba(0,0,0,0.5)] backdrop-blur-xl text-xs font-extrabold transition-all">
@@ -5587,16 +5593,17 @@
     <script src="js/roadmapData.js?v=20261020_v27_seamless"></script>
     <script src="js/components/roadmap/parchmentRoadmapData.js?v=20261020_v27_seamless"></script>
     <script src="js/components/roadmap/parchmentRoadmapState.js?v=20261017_v17_zindex"></script>
-    <script src="js/components/roadmap/parchmentRoadmapCoreUI.js?v=20261020_v27_seamless"></script>
-    <script src="js/components/roadmap/parchmentRoadmapSheet.js?v=20261017_v17_zindex"></script>
+    <script src="js/components/roadmap/parchmentRoadmapCoreUI.js?v=20261024_svgchar5"></script>
+    <script src="js/components/roadmap/parchmentRoadmapSheet.js?v=20261024_biome7"></script>
     <script src="js/components/roadmap/parchmentRoadmapDetails.js?v=20261017_v17_zindex"></script>
-    <script src="js/components/roadmap/roadmapCharactersSvgA.js?v=20261023_v34_longmap"></script>
-    <script src="js/components/roadmap/roadmapCharactersSvgB.js?v=20261023_v34_longmap"></script>
-    <script src="js/components/roadmap/parchmentRoadmapRender.js?v=20261023_v34_longmap"></script>
-    <script src="js/components/roadmap/parchmentRoadmapActions.js?v=20261020_v31_calmitems"></script>
-    <script src="js/components/roadmap/parchmentRoadmapLogic.js?v=20261017_v17_zindex"></script>
-    <script src="js/components/roadmap/mysteryRoadmapData.js?v=20261020_v31_calmitems"></script>
-    <script src="js/components/roadmap/mysteryRoadmap.js?v=20261017_v17_zindex"></script>
+    <script src="js/components/roadmap/roadmapCharactersSvgA.js?v=20261024_biome7"></script>
+    <script src="js/components/roadmap/roadmapCharactersSvgB.js?v=20261024_biome7"></script>
+    <script src="js/components/roadmap/roadmapChapterBiomesSvg.js?v=20261024_biome7"></script>
+    <script src="js/components/roadmap/parchmentRoadmapRender.js?v=20261024_biome7"></script>
+    <script src="js/components/roadmap/parchmentRoadmapActions.js?v=20261024_svgchar5"></script>
+    <script src="js/components/roadmap/parchmentRoadmapLogic.js?v=20261024_svgchar5"></script>
+    <script src="js/components/roadmap/mysteryRoadmapData.js?v=20261024_dice6"></script>
+    <script src="js/components/roadmap/mysteryRoadmap.js?v=20261024_cleanhead9"></script>
     <script src="js/data/audioCandidateWords.js"></script>
     <script src="js/components/audioVideo/audioPlayer.js"></script>
     <script src="js/components/audioVideo/audioCandidateList.js"></script>

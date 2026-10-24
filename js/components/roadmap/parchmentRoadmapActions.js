@@ -208,26 +208,99 @@ window.triggerRoadmapPropEasterEgg = function (el, label, event) {
     }, 1150);
 };
 
-// Tự động đồng bộ roadmap data từ JSON nếu có
+// Tự động đồng bộ danh sách chương & bài học trực tiếp từ Backend API (/api/v1/lessons/roadmap)
+function mapBackendStagesToChapters(stages) {
+    if (!Array.isArray(stages) || !stages.length) return null;
+    const prevList = Array.isArray(roadmapChaptersData) ? roadmapChaptersData : [];
+    return stages.map((st, idx) => {
+        const prevCh = prevList[idx] || {};
+        const title = st.title || prevCh.title || `Chương ${idx + 1}`;
+        const desc = st.description || prevCh.desc || '';
+        const biome = (typeof window.resolveRoadmapChapterBiome === 'function')
+            ? window.resolveRoadmapChapterBiome({ id: idx, title, desc }, idx) : null;
+        if (biome && Array.isArray(biome.sections) && typeof roadmapSectionTitles !== 'undefined') {
+            roadmapSectionTitles[idx] = biome.sections;
+        }
+        const rawTopics = Array.isArray(st.topics) ? st.topics : (Array.isArray(st.nodes) ? st.nodes : []);
+        const nodes = rawTopics.map((tp, tIdx) => {
+            const prevNode = (prevCh.nodes && prevCh.nodes[tIdx]) || {};
+            const isChest = tIdx === 4;
+            const isBoss = tIdx === 9;
+            const lType = tp.lesson_type || tp.lessonType || prevNode.lessonType || 'dialogue';
+            const type = isChest ? 'chest' : (isBoss ? 'boss' : (lType === 'story' ? 'book' : 'video'));
+            const defaultStatus = (idx === 0)
+                ? (tIdx < 2 ? 'completed' : (tIdx === 2 ? 'active' : (isChest ? 'chest' : (isBoss ? 'boss' : 'locked'))))
+                : (tIdx === 0 ? 'active' : (isChest ? 'chest' : (isBoss ? 'boss' : 'locked')));
+            return {
+                num: tIdx + 1,
+                day: tp.day || (idx * 10 + tIdx + 1),
+                topicId: tp.topicId || tp.topic_id || prevNode.topicId || `topic_${String(idx * 10 + tIdx + 1).padStart(3, '0')}`,
+                title: tp.topic || tp.title || prevNode.title || `Chặng ${tIdx + 1}`,
+                subtitle: tp.purpose || tp.subtitle || prevNode.subtitle || '',
+                type,
+                status: prevNode.status || defaultStatus,
+                img: tp.backgroundImageUrl || tp.background_image_url || tp.img || prevNode.img || 'assets/cards/calm_story_01_rain.jpg',
+                scenario: tp.scenario || prevNode.scenario || '',
+                purpose: tp.purpose || prevNode.purpose || '',
+                lessonType: lType,
+                level: tp.level || prevNode.level || 'easy'
+            };
+        });
+        return {
+            id: idx,
+            stageId: st.stage_id || `stage_${String(idx + 1).padStart(2, '0')}`,
+            biomeId: biome ? biome.id : 'forest',
+            chapterTag: `CHƯƠNG ${idx + 1} • ${title.toUpperCase()}`,
+            title,
+            desc,
+            image: (idx === 0 && prevCh.image) ? prevCh.image : (st.backgroundImageUrl || st.background_image_url || prevCh.image || 'assets/cards/fable_forest_hero_banner.jpg'),
+            activeNodeIndex: idx === 0 ? 2 : 0,
+            characters: prevCh.characters || [],
+            nodes,
+            progressText: `${nodes.filter(n => n.status === 'completed').length}/${nodes.length} bài`
+        };
+    });
+}
+
 async function syncRoadmapWithJson() {
     if (typeof fetch !== 'function') return;
+    const baseUrl = window.API_BASE_URL || 'https://mindcards-lessons.mindcards.workers.dev';
+    let updatedChapters = null;
+
+    // 1. Ưu tiên gọi trực tiếp Backend API (/api/v1/lessons/roadmap)
     try {
-        const resp = await fetch('js/roadmapChaptersData.json?v=20261020_v22_fableforest');
+        const resp = await fetch(`${baseUrl}/api/v1/lessons/roadmap?displayLanguage=vi&contentLanguage=en`);
         if (resp.ok) {
-            const data = await resp.json();
-            if (Array.isArray(data) && data.length > 0) {
-                roadmapChaptersData = data;
-                window.roadmapChaptersData = data;
-                if (typeof loadRoadmapProgress === 'function') {
-                    loadRoadmapProgress();
-                }
-                const sheet = document.getElementById('roadmapChapterSheet');
-                if (sheet && !sheet.classList.contains('hidden')) {
-                    renderRoadmapChapterSheetList();
-                }
-            }
+            const payload = await resp.json();
+            const stages = payload.stages || (payload.data && payload.data.stages) || [];
+            updatedChapters = mapBackendStagesToChapters(stages);
         }
     } catch (_) {}
+
+    // 2. Fallback ngoại tuyến từ roadmapChaptersData.json nếu mất mạng
+    if (!updatedChapters) {
+        try {
+            const resp = await fetch('js/roadmapChaptersData.json?v=20261020_v22_fableforest');
+            if (resp.ok) {
+                const data = await resp.json();
+                if (Array.isArray(data) && data.length > 0) updatedChapters = data;
+            }
+        } catch (_) {}
+    }
+
+    if (Array.isArray(updatedChapters) && updatedChapters.length > 0) {
+        roadmapChaptersData = updatedChapters;
+        window.roadmapChaptersData = updatedChapters;
+        window.REAL_ROADMAP_CHAPTERS = updatedChapters;
+        if (typeof loadRoadmapProgress === 'function') loadRoadmapProgress();
+        if (typeof selectRoadmapChapter === 'function') {
+            selectRoadmapChapter(currentRoadmapChapterIdx, { keepScroll: true });
+        }
+        const sheet = document.getElementById('roadmapChapterSheet');
+        if (sheet && !sheet.classList.contains('hidden') && typeof renderRoadmapChapterSheetList === 'function') {
+            renderRoadmapChapterSheetList();
+        }
+    }
 }
 
 if (typeof window !== 'undefined') {

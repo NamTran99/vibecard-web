@@ -61,15 +61,21 @@ function renderRoadmapChapterSheetList() {
                </div>`
             : `<span class="text-[11px] text-[var(--rm-on-surface-variant,#46483C)] dark:text-[#909283] block mt-1">Hoàn thành Chương ${i} để mở khóa</span>`;
 
+        const chChar = (typeof window.getRoadmapAnimatedCharacter === 'function')
+            ? window.getRoadmapAnimatedCharacter(i, 0) : null;
+        const thumbContent = (chChar && chChar.svg)
+            ? `<div class="mb-sheet-svg-rig" style="--rm-char-primary:${chChar.primary || '#58CC02'}; --rm-char-accent:${chChar.accent || '#FFC800'};">${chChar.svg}</div>`
+            : `<img src="${ch.image}" alt="${ch.title}" />`;
+
         html += `
             <div class="${cardCls}" onclick="handleChapterSheetSelect(${i})">
-                <div class="mb-sheet-thumb ${locked ? 'is-locked' : ''}">
-                    <img src="${ch.image}" alt="${ch.title}" />
+                <div class="mb-sheet-thumb is-svg-chapter-thumb ${locked ? 'is-locked' : ''}">
+                    ${thumbContent}
                     ${locked ? '<div class="mb-sheet-lock-icon">🔒</div>' : ''}
                 </div>
                 <div class="flex-1 min-w-0">
                     <div class="flex items-center justify-between gap-1 mb-0.5">
-                        <span class="text-[10.5px] font-black uppercase tracking-wider text-[var(--rm-primary,#526600)] dark:text-[#B8D166]">Chương ${i + 1}</span>
+                        <span class="text-[10.5px] font-black uppercase tracking-wider text-[var(--rm-primary,#526600)] dark:text-[#B8D166]">Chương ${i + 1} · ${chChar ? chChar.badge : ''}</span>
                         ${statusBadge}
                     </div>
                     <h4 class="text-[15px] font-extrabold text-[var(--rm-on-surface,#1B1C17)] dark:text-[#E5E3DB] truncate">${ch.title}</h4>
@@ -84,14 +90,13 @@ function renderRoadmapChapterSheetList() {
 
 function handleChapterSheetSelect(idx) {
     const ch = roadmapChaptersData[idx];
-    if (isRoadmapChapterLocked(ch)) {
-        if (typeof SoundEngine !== 'undefined' && SoundEngine.play) {
-            SoundEngine.play(8);
-        }
-        if (typeof showDictToast === 'function') {
-            showDictToast(`🔒 "${ch.title}" đang khóa! Hãy hoàn thành chương trước nhé.`);
-        }
-        return;
+    if (!ch) return;
+
+    // Mở khóa chặng đầu tiên khi người dùng chọn khám phá chương mới từ Backend
+    if (isRoadmapChapterLocked(ch) && Array.isArray(ch.nodes) && ch.nodes.length > 0) {
+        ch.nodes[0].status = 'active';
+        ch.activeNodeIndex = 0;
+        ch.progressText = getRoadmapProgressLabel(ch);
     }
 
     if (typeof SoundEngine !== 'undefined' && SoundEngine.play) {
@@ -146,7 +151,9 @@ function selectRoadmapChapter(idx, opts = {}) {
         return `Chương ${chNum}`;
     }
 
-    // 3. Banner chương (Đồng bộ cả #roadmapHeroHeader và #mysteryRoadmapHeroHeader)
+    // 3. Banner chương (Đồng bộ cả #roadmapHeroHeader và #mysteryRoadmapHeroHeader với SVG Hero đúng tên chương)
+    const heroImgSrc = (idx > 0 && typeof window.buildChapterHeroBannerSvgUri === 'function')
+        ? window.buildChapterHeroBannerSvgUri(ch, idx) : ch.image;
     const applyHeroSwap = (headerId, imgId, tagId, headingId, descId) => {
         const heroHeader = document.getElementById(headerId);
         const bannerImg = document.getElementById(imgId);
@@ -154,7 +161,7 @@ function selectRoadmapChapter(idx, opts = {}) {
         const chapterHeading = document.getElementById(headingId);
         const cardDesc = document.getElementById(descId);
         const finishSwap = () => {
-            if (bannerImg) bannerImg.src = ch.image;
+            if (bannerImg) bannerImg.src = heroImgSrc;
             if (cardTag) cardTag.innerHTML = formatHeroTagHtml(ch, idx);
             if (chapterHeading) chapterHeading.innerText = ch.title;
             if (cardDesc) cardDesc.innerText = ch.desc;
@@ -165,7 +172,7 @@ function selectRoadmapChapter(idx, opts = {}) {
             const imgPreload = new Image();
             imgPreload.onload = finishSwap;
             imgPreload.onerror = finishSwap;
-            imgPreload.src = ch.image;
+            imgPreload.src = heroImgSrc;
         } else {
             finishSwap();
         }
@@ -186,5 +193,11 @@ function selectRoadmapChapter(idx, opts = {}) {
     if (typeof window.renderMysteryRoadmapTimeline === 'function') {
         window.renderMysteryRoadmapTimeline(idx);
     }
-    if (!opts.keepScroll) scrollRoadmapToActive(false);
+    if (!opts.keepScroll) {
+        if (switching && typeof playRoadmapPathRunDown === 'function') {
+            playRoadmapPathRunDown(true);
+        } else {
+            scrollRoadmapToActive(false);
+        }
+    }
 }

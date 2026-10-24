@@ -6,7 +6,7 @@
 /* 1. MOONLY / APPLE MUSIC TRANSLUCENT GLASS TOPBAR & PURE HERO BANNER */
 #screenParchmentRoadmap, #screenParchmentRoadmap * { -webkit-tap-highlight-color: transparent; font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif; }
 html.dark #screenParchmentRoadmap.parchment-bg,
-#screenParchmentRoadmap.parchment-bg { background: #BCDAD9 !important; }
+#screenParchmentRoadmap.parchment-bg { background: var(--rm-biome-bg, #BCDAD9) !important; transition: background-color 0.35s ease; }
 #screenParchmentRoadmap .paper-texture, #screenParchmentRoadmap #roadmapAmbientContainer { display: none !important; }
 #roadmapHeroHeader { min-height: 166px !important; max-height: 172px !important; overflow: hidden; }
 #roadmapHeroHeader #roadmapBannerImg {
@@ -14,7 +14,7 @@ html.dark #screenParchmentRoadmap.parchment-bg,
     -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 66%, rgba(0,0,0,0.48) 86%, transparent 100%) !important;
     mask-image: linear-gradient(to bottom, #000 0%, #000 66%, rgba(0,0,0,0.48) 86%, transparent 100%) !important;
 }
-#roadmapHeroHeader .hero-vignette-bottom { background: linear-gradient(180deg, transparent 0%, transparent 46%, rgba(212, 232, 232, 0.72) 80%, #D4E8E8 100%) !important; }
+#roadmapHeroHeader .hero-vignette-bottom { background: linear-gradient(180deg, transparent 0%, transparent 46%, var(--rm-biome-sky, #D4E8E8) 100%) !important; }
 #roadmapHeroHeader .hero-content { padding: 0 18px 12px !important; will-change: opacity, transform; }
 #roadmapHeroHeader:not(.is-switching) .hero-content { transition: none !important; }
 #roadmapChapterHeading {
@@ -56,14 +56,23 @@ html.light #roadmapChapterHeading { color: #18181B !important; text-shadow: none
 html.light #roadmapCardTagBtn.rm-top-chapter-pill { background: rgba(255, 255, 255, 0.85) !important; color: #18181B !important; }
 html.light #roadmapCardTag, html.light .rm-top-pill-prog { color: #18181B !important; }
 
-/* 2. MISTY SAGE-TEAL FLAT VECTOR PINE HILLS & CALM LAKE BACKGROUND (100% FULL-WIDTH EDGE-TO-EDGE) */
+/* 2. CHAPTER-THEMED DYNAMIC SVG WORLD MAP BACKGROUND (100% FULL-WIDTH EDGE-TO-EDGE) */
 .sq-roadmap-map {
     width: 100% !important; max-width: 100% !important; margin: 0 !important;
     padding: 12px 0 265px !important;
-    background: #A7D4F0 url('../assets/cards/calm_pine_lake_bg.svg?v=20261023_longmap') center top / 100% 100% no-repeat !important;
+    background-color: var(--rm-biome-bg, #B8D6D8) !important;
+    background-image: var(--rm-biome-svg, url('../assets/cards/calm_pine_lake_bg.svg?v=20261023_longmap')) !important;
+    background-position: center top !important;
+    background-size: 100% 100% !important;
+    background-repeat: no-repeat !important;
+    transition: background-color 0.35s ease !important;
 }
 html.light .sq-roadmap-map {
-    background: #A7D4F0 url('../assets/cards/calm_pine_lake_bg.svg?v=20261023_longmap') center top / 100% 100% no-repeat !important;
+    background-color: var(--rm-biome-bg, #B8D6D8) !important;
+    background-image: var(--rm-biome-svg, url('../assets/cards/calm_pine_lake_bg.svg?v=20261023_longmap')) !important;
+    background-position: center top !important;
+    background-size: 100% 100% !important;
+    background-repeat: no-repeat !important;
 }
 #roadmapNextBar, #mysteryRoadmapNextBar { display: none !important; }
 .sq-winding-section { position: relative; max-width: 100% !important; padding: 0 12px !important; margin: 0 auto 32px; z-index: 1; border: none !important; background: transparent !important; }
@@ -75,9 +84,9 @@ html.light .sq-roadmap-map {
 .sq-section-header { display: flex; align-items: center; gap: 10px; margin: 8px 2px 24px; position: relative; z-index: 4; }
 .sq-section-hairline { flex: 1; height: 1.5px; background: linear-gradient(90deg, transparent, rgba(55, 92, 96, 0.35), transparent); }
 .sq-section-title {
-    font-size: 11px; font-weight: 800; color: #1E3A3D; letter-spacing: 0.02em;
-    padding: 5px 14px; border-radius: 999px; background: rgba(255, 255, 255, 0.92);
-    border: 1px solid rgba(114, 160, 164, 0.45); box-shadow: 0 3px 0 rgba(88, 128, 132, 0.35), 0 8px 18px rgba(45, 78, 82, 0.14);
+    font-size: 11px; font-weight: 800; color: var(--rm-biome-pill-text, #1E3A3D); letter-spacing: 0.02em;
+    padding: 5px 14px; border-radius: 999px; background: var(--rm-biome-pill-bg, rgba(255, 255, 255, 0.92));
+    border: 1px solid rgba(255, 255, 255, 0.72); box-shadow: 0 3px 0 rgba(0, 0, 0, 0.14), 0 8px 18px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
 }
 .sq-section-title i { font-style: normal; color: #5B4CE6; font-size: 9px; margin: 0 3px; }

@@ -10,13 +10,16 @@ function getRoadmapActiveIndex(chapter) {
     return chapter.nodes.findIndex((_, i) => resolveRoadmapNodeState(chapter, i) === 'active');
 }
 
-// Mở giao diện Roadmap
+// Mở giao diện Roadmap + Chạy hiệu ứng dòng chảy từ Chặng 1 xuống Bài đang học
 function openParchmentRoadmap(chapterIdx = 0) {
     const screen = document.getElementById('screenParchmentRoadmap');
     if (!screen) return;
 
     bindRoadmapListeners();
-    selectRoadmapChapter(chapterIdx, { animateIn: true });
+    selectRoadmapChapter(chapterIdx, { animateIn: true, keepScroll: true });
+
+    const scrollArea = document.getElementById('scrollAreaRoadmap');
+    if (scrollArea) scrollArea.scrollTop = 0;
 
     screen.classList.remove('hidden');
     roadmapRaf(() => {
@@ -27,7 +30,30 @@ function openParchmentRoadmap(chapterIdx = 0) {
         updateRoadmapTopBarOnScroll();
     }
 
-    setTimeout(() => scrollRoadmapToActive(true), 280);
+    setTimeout(() => {
+        if (typeof playRoadmapPathRunDown === 'function') {
+            playRoadmapPathRunDown(true);
+        } else {
+            scrollRoadmapToActive(true);
+        }
+    }, 180);
+}
+
+if (typeof window !== 'undefined') {
+    window.addEventListener('DOMContentLoaded', () => {
+        if (window.location.hash === '#roadmap' || window.location.hash === '#storypicker' || window.location.search.includes('roadmap=1')) {
+            setTimeout(() => {
+                openParchmentRoadmap(0);
+                setTimeout(() => {
+                    if (window.location.hash === '#storypicker' && typeof window.openStoryGenrePicker === 'function') {
+                        window.openStoryGenrePicker(4);
+                    } else if (!window.__openRoadmapPopoverKey && typeof window.toggleRoadmapNodePopover === 'function') {
+                        window.toggleRoadmapNodePopover(3, 0);
+                    }
+                }, 760);
+            }, 220);
+        }
+    });
 }
 
 // Đóng giao diện Roadmap

@@ -1,0 +1,336 @@
+/* ======================================================== */
+/* ✨ WINDING ROADMAP FLOW & LIVING MICRO-ANIMATIONS (60FPS) */
+/* Ceiling: < 350 lines | Path Stream -> Active Lesson Hero  */
+/* ======================================================== */
+
+/* --------------------------------------------------------- */
+/* 1. SEQUENTIAL TOP-DOWN CASCADE (CHẶNG 1 -> BÀI ĐANG HỌC)  */
+/* --------------------------------------------------------- */
+.mb-animate-in .sq-section-header,
+.is-running-down .sq-section-header {
+    animation: sqHeaderFadeDown 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--i, 0) * 65ms);
+}
+
+.mb-animate-in .sq-node-row,
+.is-running-down .sq-node-row {
+    animation: sqNodeCascadeDown 0.62s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    animation-delay: calc(var(--i, 1) * 115ms);
+}
+
+.mb-animate-in .sq-bridge-wrap,
+.is-running-down .sq-bridge-wrap {
+    animation: sqBridgeCascadeDown 0.56s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--i, 1) * 115ms + 55ms);
+    transform-origin: top center;
+}
+
+.mb-animate-in .sq-node-row.is-active-hero,
+.is-running-down .sq-node-row.is-active-hero {
+    animation: sqActiveHeroArrive 0.78s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    animation-delay: calc(var(--i, 3) * 115ms + 40ms);
+}
+
+@keyframes sqHeaderFadeDown {
+    0% { opacity: 0; transform: translateY(-12px) scale(0.96); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes sqNodeCascadeDown {
+    0% { opacity: 0; transform: translateY(-22px) scale(0.76); }
+    68% { opacity: 1; transform: translateY(3px) scale(1.05); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes sqBridgeCascadeDown {
+    0% { opacity: 0; transform: translateY(-10px) scaleY(0.35); }
+    100% { opacity: 1; transform: translateY(0) scaleY(1); }
+}
+
+@keyframes sqActiveHeroArrive {
+    0% { opacity: 0; transform: translateY(-28px) scale(0.68); filter: brightness(1.35); }
+    62% { opacity: 1; transform: translateY(5px) scale(1.09); filter: brightness(1.15); }
+    82% { transform: translateY(-3px) scale(0.98); }
+    100% { opacity: 1; transform: translateY(0) scale(1); filter: brightness(1); }
+}
+
+/* --------------------------------------------------------- */
+/* 2. DOWNWARD ENERGY STREAM & COMET ORB ALONG S-CURVE PATH   */
+/* --------------------------------------------------------- */
+/* Stepping stones marching downward toward the active lesson */
+.sq-bridge-wrap.is-lit .sq-bridge-line,
+.sq-bridge-wrap.is-active-bridge .sq-bridge-line,
+.sq-bridge-wrap.is-energy-stream .sq-bridge-line {
+    stroke: #FFFFFF !important;
+    animation: sqSteppingMarch 1.35s linear infinite !important;
+}
+
+.sq-bridge-wrap.is-lit .sq-stone-shadow,
+.sq-bridge-wrap.is-active-bridge .sq-stone-shadow,
+.sq-bridge-wrap.is-energy-stream .sq-stone-shadow {
+    animation: sqSteppingMarch 1.35s linear infinite !important;
+}
+
+@keyframes sqSteppingMarch {
+    0% { stroke-dashoffset: 0; }
+    100% { stroke-dashoffset: -34px; }
+}
+
+/* Soft glowing trail beneath unlocked bridges */
+.sq-bridge-glow-trail {
+    fill: none;
+    stroke: rgba(124, 102, 255, 0.34);
+    stroke-width: 16px;
+    stroke-linecap: round;
+    filter: blur(3px);
+    animation: sqTrailBreathe 2.6s ease-in-out infinite;
+    animation-delay: calc(var(--bridge-idx, 0) * 0.65s);
+}
+
+@keyframes sqTrailBreathe {
+    0%, 100% { opacity: 0.35; stroke-width: 14px; }
+    50% { opacity: 0.85; stroke-width: 19px; stroke: rgba(184, 209, 102, 0.55); }
+}
+
+/* Streaming energy comet tail flowing sequentially down each bridge */
+.sq-bridge-energy-beam {
+    fill: none;
+    stroke: #A78BFA;
+    stroke-width: 7.5px;
+    stroke-linecap: round;
+    stroke-dasharray: 24 140;
+    stroke-dashoffset: 124;
+    filter: drop-shadow(0 0 8px rgba(124, 102, 255, 0.85));
+    animation: sqCometTailFlow 2.6s cubic-bezier(0.36, 0, 0.24, 1) infinite;
+    animation-delay: calc(var(--bridge-idx, 0) * 0.68s);
+}
+
+/* Undistorted circular glowing orb head leading the energy stream */
+.sq-bridge-comet-orb {
+    fill: none;
+    stroke: #FEF08A;
+    stroke-width: 13px;
+    stroke-linecap: round;
+    stroke-dasharray: 0.1 160;
+    stroke-dashoffset: 102;
+    filter: drop-shadow(0 0 8px #FBBF24) drop-shadow(0 0 14px #7C66FF);
+    animation: sqCometOrbFlow 2.6s cubic-bezier(0.36, 0, 0.24, 1) infinite;
+    animation-delay: calc(var(--bridge-idx, 0) * 0.68s);
+}
+
+@keyframes sqCometTailFlow {
+    0% { stroke-dashoffset: 124; opacity: 0; }
+    10% { opacity: 0.95; }
+    62% { opacity: 1; }
+    78%, 100% { stroke-dashoffset: -36; opacity: 0; }
+}
+
+@keyframes sqCometOrbFlow {
+    0% { stroke-dashoffset: 102; opacity: 0; }
+    8% { opacity: 1; }
+    64% { opacity: 1; }
+    76%, 100% { stroke-dashoffset: -58; opacity: 0; }
+}
+
+/* --------------------------------------------------------- */
+/* 3. ACTIVE LESSON HERO ('BÀI ĐANG HỌC') MULTI-ANIMATIONS    */
+/* --------------------------------------------------------- */
+/* Dual expanding sonar rings + breathing radial aura */
+.sq-active-halo {
+    animation: sqActiveHaloBreathe 2.6s ease-in-out infinite !important;
+}
+
+.sq-active-halo::before,
+.sq-active-halo::after {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border-radius: 30px;
+    border: 2.5px solid rgba(124, 102, 255, 0.62);
+    pointer-events: none;
+    animation: sqActiveSonarRing 2.6s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+.sq-active-halo::after {
+    border-color: rgba(184, 209, 102, 0.65);
+    animation-delay: 1.3s;
+}
+
+@keyframes sqActiveHaloBreathe {
+    0%, 100% { transform: translate(-50%, -50%) scale(0.95); opacity: 0.82; }
+    50% { transform: translate(-50%, -50%) scale(1.08); opacity: 1; }
+}
+
+@keyframes sqActiveSonarRing {
+    0% { transform: scale(0.78); opacity: 0.9; }
+    80% { transform: scale(1.38); opacity: 0; }
+    100% { transform: scale(1.42); opacity: 0; }
+}
+
+/* 3D Levitation bob on the active tile */
+.sq-node-row.is-active-hero .sq-tile-active {
+    animation: sqActiveTileFloat 2.6s ease-in-out infinite;
+}
+
+.sq-node-row.is-active-hero .sq-tile-active:hover {
+    animation-play-state: paused;
+    transform: translateY(-4px) scale(1.04);
+}
+
+@keyframes sqActiveTileFloat {
+    0%, 100% {
+        transform: translateY(0);
+        box-shadow: 0 7px 0 #3D2BB5, 0 14px 28px rgba(92, 68, 245, 0.42), 0 0 0 3.5px #FFFFFF;
+    }
+    50% {
+        transform: translateY(-6px);
+        box-shadow: 0 11px 0 #3D2BB5, 0 22px 36px rgba(92, 68, 245, 0.58), 0 0 0 4px #FFFFFF, 0 0 22px rgba(184, 209, 102, 0.45);
+    }
+}
+
+/* Peek-a-boo counter-rocking on the tilted '?' backing card */
+.sq-active-q-backing {
+    animation: sqBackingPeekRock 2.6s ease-in-out infinite;
+    transform-origin: bottom left;
+}
+
+@keyframes sqBackingPeekRock {
+    0%, 100% { transform: rotate(12deg) translate(0, 0) scale(1); }
+    50% { transform: rotate(17deg) translate(4px, -4px) scale(1.04); }
+}
+
+/* Orbiting starlight sparkles around the active lesson */
+.sq-active-sparkles {
+    position: absolute;
+    inset: -16px;
+    pointer-events: none;
+    z-index: 6;
+}
+
+.sq-active-spark {
+    position: absolute;
+    font-size: 12px;
+    line-height: 1;
+    color: #FEF08A;
+    text-shadow: 0 0 8px #FBBF24, 0 0 14px #7C66FF;
+    animation: sqSparkleTwinkle 2.2s ease-in-out infinite;
+}
+
+.sq-active-spark.spark-1 { top: 2px; left: -4px; animation-delay: 0s; }
+.sq-active-spark.spark-2 { bottom: 6px; right: -8px; font-size: 14px; color: #D4EE7F; animation-delay: 0.75s; }
+.sq-active-spark.spark-3 { top: -8px; right: 10px; font-size: 10px; color: #FFFFFF; animation-delay: 1.4s; }
+
+@keyframes sqSparkleTwinkle {
+    0%, 100% { transform: translateY(0) scale(0.65) rotate(-10deg); opacity: 0.35; }
+    50% { transform: translateY(-5px) scale(1.22) rotate(12deg); opacity: 1; }
+}
+
+/* Callout Pill ("● Học tiếp · Chặng 3") floating bounce + live radar ping */
+.sq-active-callout {
+    position: relative;
+    animation: sqCalloutBob 2.6s ease-in-out infinite;
+    cursor: pointer;
+    overflow: visible;
+}
+
+.sq-active-callout::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 8px;
+    height: 8px;
+    background: #FFFFFF;
+    border-right: 1.5px solid rgba(92, 68, 245, 0.28);
+    border-bottom: 1.5px solid rgba(92, 68, 245, 0.28);
+}
+
+@keyframes sqCalloutBob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); box-shadow: 0 8px 18px rgba(92, 68, 245, 0.32); }
+}
+
+.sq-live-dot {
+    position: relative;
+}
+
+.sq-live-dot::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 2px solid #22C55E;
+    animation: sqLiveDotPing 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes sqLiveDotPing {
+    0% { transform: scale(0.65); opacity: 0.95; }
+    80%, 100% { transform: scale(2.1); opacity: 0; }
+}
+
+/* --------------------------------------------------------- */
+/* 4. COMPLETED STORY NODES, COMPANION ISLAND & MILESTONES   */
+/* --------------------------------------------------------- */
+/* Staggered gentle float on completed story tiles (Chặng 1, Chặng 2) */
+.sq-node-row.state-completed .sq-tile-completed {
+    animation: sqCompletedNodeFloat 3.4s ease-in-out infinite;
+    animation-delay: calc(var(--i, 1) * 0.45s);
+}
+
+@keyframes sqCompletedNodeFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+/* Periodic sunlight sheen sweeping across completed story covers */
+.sq-story-overlay::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, transparent 28%, rgba(255, 255, 255, 0.36) 48%, transparent 68%);
+    transform: translateX(-140%);
+    pointer-events: none;
+    animation: sqStoryCoverSheen 4.8s ease-in-out infinite;
+    animation-delay: calc(var(--i, 1) * 0.9s);
+}
+
+@keyframes sqStoryCoverSheen {
+    0%, 60% { transform: translateX(-140%); }
+    100% { transform: translateX(140%); }
+}
+
+/* Relay pulse on the green checkmark badge */
+.sq-done-dot {
+    animation: sqDoneBadgePulse 2.6s ease-in-out infinite;
+    animation-delay: calc(var(--i, 1) * 0.65s);
+}
+
+@keyframes sqDoneBadgePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.12); box-shadow: 0 0 10px rgba(34, 197, 94, 0.65); }
+}
+
+/* Companion Sanctuary Island gentle levitation */
+.sq-companion-island .sq-char-stage {
+    animation: sqIslandLevitate 3.8s ease-in-out infinite;
+}
+
+@keyframes sqIslandLevitate {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Milestone Gift Box playful anticipation rock */
+.sq-tile.sq-tile-milestone.is-flat-gift {
+    animation: sqGiftBoxTease 3.6s ease-in-out infinite;
+    transform-origin: 50% 72%;
+}
+
+@keyframes sqGiftBoxTease {
+    0%, 72%, 100% { transform: rotate(0deg) translateY(0); }
+    78% { transform: rotate(-5deg) translateY(-3px) scale(1.04); }
+    84% { transform: rotate(5deg) translateY(-4px) scale(1.05); }
+    90% { transform: rotate(-3deg) translateY(-2px); }
+    95% { transform: rotate(2deg) translateY(0); }
+}

@@ -18,6 +18,7 @@ function resolveRoadmapNodeState(chapter, index) {
     const prev = chapter.nodes[index - 1];
     return prev && prev.status === 'completed' ? 'active' : 'locked';
 }
+window.resolveRoadmapNodeState = resolveRoadmapNodeState;
 
 // Đường cong chữ S uốn lượn gọn trong vùng đất liền để đặt 2 nhân vật hoạt họa ở giữa 2 đường cong mỗi chặng
 const WINDING_LOOP_X = [
@@ -41,6 +42,7 @@ function hasRoadmapStoryOverlay(chapter, node, state) {
     if (assigned && assigned.story) return true;
     return state === 'completed';
 }
+window.hasRoadmapStoryOverlay = hasRoadmapStoryOverlay;
 
 function getRoadmapNodeAction(chapter, index) {
     const node = chapter.nodes[index];
@@ -55,18 +57,24 @@ function getRoadmapNodeAction(chapter, index) {
     return `toggleRoadmapNodePopover(${node.num}, ${chId}, event)`;
 }
 
-function renderWindingConnectorSvg(x1, x2, isLit, isActiveNext, isPulseFlow) {
+function renderWindingConnectorSvg(x1, x2, isLit, isActiveNext, isPulseFlow, bridgeIdx = 0, orderIdx = 1) {
+    const isFlowPath = isLit || isActiveNext;
     const cls = [
         isLit ? 'is-lit' : (isActiveNext ? 'is-active-bridge' : 'is-dim'),
+        isFlowPath ? 'is-energy-stream' : '',
         isPulseFlow ? 'is-pulse-flow' : ''
     ].filter(Boolean).join(' ');
     const d = `M ${x1} 2 C ${x1} 33, ${x2} 31, ${x2} 62`;
+    const streamPaths = isFlowPath ? `
+                <path class="sq-bridge-glow-trail" d="${d}" pathLength="100" vector-effect="non-scaling-stroke" />
+                <path class="sq-bridge-energy-beam" d="${d}" pathLength="100" vector-effect="non-scaling-stroke" />
+                <path class="sq-bridge-comet-orb" d="${d}" pathLength="100" vector-effect="non-scaling-stroke" />` : '';
     return `
-        <div class="sq-bridge-wrap ${cls}" aria-hidden="true">
+        <div class="sq-bridge-wrap ${cls}" style="--bridge-idx:${bridgeIdx}; --i:${orderIdx}" aria-hidden="true">
             <svg class="sq-bridge-svg" viewBox="0 0 100 64" preserveAspectRatio="none">
                 <path class="sq-bridge-ribbon" d="${d}" vector-effect="non-scaling-stroke" />
                 <path class="sq-stone-shadow" d="${d}" vector-effect="non-scaling-stroke" />
-                <path class="sq-bridge-line" d="${d}" vector-effect="non-scaling-stroke" />
+                <path class="sq-bridge-line" d="${d}" vector-effect="non-scaling-stroke" />${streamPaths}
             </svg>
         </div>`;
 }
@@ -84,6 +92,7 @@ function resolveCalmPastelNodeImg(node, customStory) {
     if (raw.includes('calm_story_')) return raw;
     return calmPool[(num - 1) % calmPool.length];
 }
+window.resolveCalmPastelNodeImg = resolveCalmPastelNodeImg;
 
 function renderWindingSquareNode(chapter, gIdx, loop, localIdx, order) {
     const node = chapter.nodes[gIdx];
@@ -120,12 +129,19 @@ function renderWindingSquareNode(chapter, gIdx, loop, localIdx, order) {
             </div>`;
     }
 
-    // Khi có ảnh truyện đè lên ô '?', tấm ảnh nằm gọn trên bệ ô '?' (chỉ giữ chấm hoàn thành màu xanh ở góc dưới phải)
-    const overlayHtml = overlaid ? `
+    // Khi có truyện đè lên ô '?', hiển thị nhân vật SVG 3/4 Isometric theo chủ đề câu chuyện
+    const storyTarget = customStory || Object.assign({}, node, { id: `topic_00${Math.min(9, ((node.num - 1) % 9) + 1)}` });
+    const charVis = (overlaid && typeof window.resolveStoryCharacterVisual === 'function')
+        ? window.resolveStoryCharacterVisual(storyTarget, gIdx) : null;
+    const overlayHtml = overlaid ? (charVis && charVis.svg ? `
+        <div class="sq-story-overlay is-svg-tile ${justMounted}" style="${charVis.styleVars}">
+            <div class="sq-tile-svg-rig">${charVis.svg}</div>
+            ${state === 'completed' ? `<span class="sq-done-dot" aria-label="Đã hoàn thành">${ROADMAP_ICON_CHECK}</span>` : ''}
+        </div>` : `
         <div class="sq-story-overlay ${justMounted}">
             <img src="${displayImg}" alt="${roadmapAttr(displayTitle)}" class="sq-story-img" loading="lazy" decoding="async" />
             ${state === 'completed' ? `<span class="sq-done-dot" aria-label="Đã hoàn thành">${ROADMAP_ICON_CHECK}</span>` : ''}
-        </div>` : '';
+        </div>`) : '';
 
     const popoverHtml = (isPopoverOpen && typeof window.renderSquareNodePopover === 'function')
         ? window.renderSquareNodePopover(chapter, node, state, overlaid, customStory, xPct)
@@ -135,7 +151,7 @@ function renderWindingSquareNode(chapter, gIdx, loop, localIdx, order) {
         ? `<div class="sq-q-face">${window.renderAnimatedMysteryTileSvg(numLabel, state === 'active', order)}</div>`
         : `<div class="sq-q-face"><span class="sq-bare-num">${numLabel}</span><span class="sq-big-q">?</span></div>`;
 
-    // 2. BÀI CẦN HỌC HIỆN TẠI (TO GẤP RƯỠI Ô ĐÃ HỌC, BỆ SÁNG NỔI BẬT, KHÔNG LẶP CHỮ DƯỚI ĐÁY)
+    // 2. BÀI CẦN HỌC HIỆN TẠI (TO GẤP RƯỠI Ô ĐÃ HỌC, BỆ SÁNG NỔI BẬT, SPARKLES & HALO SONAR)
     if (state === 'active') {
         return `
             <div class="sq-node-row is-active-hero ${isPopoverOpen ? 'has-open-popover' : ''}" style="--x:${xPct}%; --i:${order}" data-roadmap-active="1">
@@ -146,6 +162,11 @@ function renderWindingSquareNode(chapter, gIdx, loop, localIdx, order) {
                     </div>
                     <div class="sq-active-stage">
                         <div class="sq-active-halo" aria-hidden="true"></div>
+                        <div class="sq-active-sparkles" aria-hidden="true">
+                            <span class="sq-active-spark spark-1">✦</span>
+                            <span class="sq-active-spark spark-2">✦</span>
+                            <span class="sq-active-spark spark-3">★</span>
+                        </div>
                         <div class="sq-active-q-backing" aria-hidden="true"><span>?</span></div>
                         ${rippleHtml}
                         <div class="sq-tile sq-tile-active ${overlaid ? 'has-story-cover' : 'is-mystery-q'} ${justUnlocked} ${springTileCls}"
@@ -188,7 +209,9 @@ function renderRoadmapSection(chapter, loop, characters, orderStart) {
     const fillKey = `${chapter.id}-${loop}`;
     const prevPct = roadmapUiState.lastFill[fillKey] ?? fillPct;
     const justDoneHere = sectionNodes.some(n => n.num === roadmapUiState.justCompletedNum);
-    const titles = roadmapSectionTitles[chapter.id] || [];
+    const biome = (typeof window.resolveRoadmapChapterBiome === 'function')
+        ? window.resolveRoadmapChapterBiome(chapter, chapter.id || 0) : null;
+    const titles = (biome && biome.sections) || roadmapSectionTitles[chapter.id] || [];
     const sectionTitle = titles[loop] || `Phần ${loop + 1}`;
     const sideCls = (loop % 2 === 0) ? 'is-right' : 'is-left';
     const chId = chapter.id || 0;
@@ -201,19 +224,20 @@ function renderRoadmapSection(chapter, loop, characters, orderStart) {
     let trackHtml = '';
     sectionNodes.forEach((n, localIdx) => {
         const gIdx = start + localIdx;
-        trackHtml += renderWindingSquareNode(chapter, gIdx, loop, localIdx, orderStart + localIdx + 1);
+        const nodeOrder = orderStart + localIdx + 1;
+        trackHtml += renderWindingSquareNode(chapter, gIdx, loop, localIdx, nodeOrder);
         if (localIdx < sectionNodes.length - 1) {
             const x1 = getNodeHorizontalPercent(loop, localIdx);
             const x2 = getNodeHorizontalPercent(loop, localIdx + 1);
             const stateCurr = resolveRoadmapNodeState(chapter, gIdx);
             const stateNext = resolveRoadmapNodeState(chapter, gIdx + 1);
             const isFlowing = (window.__justRevealedSlot === `${chId}_${n.num}`);
-            trackHtml += renderWindingConnectorSvg(x1, x2, stateCurr === 'completed', stateNext === 'active', isFlowing);
+            trackHtml += renderWindingConnectorSvg(x1, x2, stateCurr === 'completed', stateNext === 'active', isFlowing, gIdx, nodeOrder);
         }
     });
 
     const sceneryHtml = (typeof window.renderRoadmapGameSceneryHtml === 'function')
-        ? window.renderRoadmapGameSceneryHtml(loop) : '';
+        ? window.renderRoadmapGameSceneryHtml(loop, chapter) : '';
     const companionHtml = (typeof window.renderRoadmapAnimatedCompanionHtml === 'function')
         ? window.renderRoadmapAnimatedCompanionHtml({
             chapterId: chId, loop, sideCls, fillKey, fillPct, prevPct,
@@ -271,7 +295,19 @@ function buildRoadmapTimelineHtml(chapter, opts = {}) {
 
     const locked = typeof isRoadmapChapterLocked === 'function' ? isRoadmapChapterLocked(chapter) : false;
     const loops = Math.ceil(chapter.nodes.length / ROADMAP_LESSONS_PER_LOOP);
-    let html = `<div class="mb-timeline rm-clean-stage sq-roadmap-map select-none ${opts.animateIn ? 'mb-animate-in' : ''} ${locked ? 'is-chapter-locked' : ''}" onclick="if(event.target===this && typeof window.closeRoadmapNodePopover==='function') window.closeRoadmapNodePopover();">`;
+    const biome = (typeof window.resolveRoadmapChapterBiome === 'function')
+        ? window.resolveRoadmapChapterBiome(chapter, chapter.id || 0) : null;
+    const svgUri = (biome && typeof window.buildBiomeSvgDataUri === 'function')
+        ? window.buildBiomeSvgDataUri(biome) : '';
+    const biomeVars = biome
+        ? `--rm-biome-bg:${biome.bg}; --rm-biome-sky:${biome.skyTop}; --rm-biome-pill-bg:${biome.pillBg}; --rm-biome-pill-text:${biome.pillText}; --rm-island-top:${biome.islandTop}; --rm-island-core:${biome.islandCore}; --rm-island-side:${biome.islandSide};`
+        : '';
+    const screenEl = typeof document !== 'undefined' && document.getElementById('screenParchmentRoadmap');
+    if (screenEl && biome) {
+        screenEl.style.setProperty('--rm-biome-bg', biome.bg);
+        screenEl.style.setProperty('--rm-biome-sky', biome.skyTop);
+    }
+    let html = `<div class="mb-timeline rm-clean-stage sq-roadmap-map select-none ${opts.animateIn ? 'mb-animate-in' : ''} ${locked ? 'is-chapter-locked' : ''}" data-biome="${biome ? biome.id : 'forest'}" style="${biomeVars}" onclick="if(event.target===this && typeof window.closeRoadmapNodePopover==='function') window.closeRoadmapNodePopover();">`;
     if (locked) html += renderRoadmapLockedNotice(chapter);
     for (let loop = 0; loop < loops; loop++) {
         html += renderRoadmapSection(chapter, loop, characters, 1 + loop * (ROADMAP_LESSONS_PER_LOOP + 1));
@@ -284,7 +320,13 @@ function renderRoadmapNodes(chapter, opts = {}) {
     const nodesContainer = document.getElementById('roadmapNodesContainer');
     if (!nodesContainer) return;
     nodesContainer.innerHTML = buildRoadmapTimelineHtml(chapter, opts);
-    renderRoadmapNextBar(chapter);
+    const mapEl = nodesContainer.querySelector('.sq-roadmap-map');
+    const biome = (typeof window.resolveRoadmapChapterBiome === 'function')
+        ? window.resolveRoadmapChapterBiome(chapter, chapter.id || 0) : null;
+    if (mapEl && biome && typeof window.buildBiomeSvgDataUri === 'function') {
+        mapEl.style.setProperty('--rm-biome-svg', window.buildBiomeSvgDataUri(biome));
+    }
+    if (typeof window.renderRoadmapNextBar === 'function') window.renderRoadmapNextBar(chapter);
     roadmapRaf(() => roadmapRaf(() => applyRoadmapFillAnimations(nodesContainer)));
 }
 
@@ -300,50 +342,3 @@ function applyRoadmapFillAnimations(root) {
     });
 }
 window.applyRoadmapFillAnimations = applyRoadmapFillAnimations;
-
-function renderRoadmapNextBar(chapter) {
-    const ch = chapter || (typeof roadmapChaptersData !== 'undefined' && roadmapChaptersData[currentRoadmapChapterIdx]) || (roadmapChaptersData && roadmapChaptersData[0]);
-    if (!ch || !Array.isArray(ch.nodes)) return;
-    const activeIdx = ch.nodes.findIndex((_, i) => resolveRoadmapNodeState(ch, i) === 'active');
-    const activeNode = activeIdx >= 0 ? ch.nodes[activeIdx] : ch.nodes[0];
-    if (!activeNode) return;
-
-    const chId = ch.id || 0;
-    const assigned = (typeof window.getAssignedRoadmapStory === 'function')
-        ? window.getAssignedRoadmapStory(chId, activeNode.num) : null;
-    const customStory = assigned ? assigned.story : null;
-    const overlaid = hasRoadmapStoryOverlay(ch, activeNode, 'active');
-    const title = overlaid ? (customStory ? customStory.title : activeNode.title) : `Chặng ${activeNode.num} · Chưa chọn truyện`;
-    const sub = overlaid
-        ? `Chặng ${activeNode.num} · ${(customStory && customStory.duration) || '4 phút'} · +20% Lumi`
-        : 'Chạm để chọn câu chuyện đè lên ô ?';
-    const thumbHtml = overlaid
-        ? `<img src="${resolveCalmPastelNodeImg(activeNode, customStory)}" alt="" class="sq-dock-img" />`
-        : `<div class="sq-dock-q">?</div>`;
-    const ctaHtml = overlaid
-        ? `<button type="button" class="sq-dock-cta" onclick="event.stopPropagation(); launchRevealedLesson(${activeNode.num}, ${chId})">Học ngay</button>`
-        : `<button type="button" class="sq-dock-cta" onclick="event.stopPropagation(); openRoadmapGenrePickerSheet(${activeNode.num}, ${chId}, 'classic')">Chọn truyện</button>`;
-
-    const dockMarkup = `
-        <div class="sq-thumb-dock-inner" onclick="if(typeof scrollRoadmapToActive==='function') scrollRoadmapToActive(true); toggleRoadmapNodePopover(${activeNode.num}, ${chId}, event);">
-            <div class="sq-dock-thumb">${thumbHtml}</div>
-            <div class="sq-dock-info">
-                <span class="sq-dock-title">${title}</span>
-                <span class="sq-dock-sub">${sub}</span>
-            </div>
-            ${ctaHtml}
-        </div>`;
-
-    ['screenParchmentRoadmap', 'screenMysteryRoadmap'].forEach(screenId => {
-        const screen = document.getElementById(screenId);
-        if (!screen) return;
-        let dock = screen.querySelector('.sq-thumb-dock');
-        if (!dock) {
-            dock = document.createElement('div');
-            dock.className = 'sq-thumb-dock';
-            screen.appendChild(dock);
-        }
-        dock.innerHTML = dockMarkup;
-    });
-}
-window.renderRoadmapNextBar = renderRoadmapNextBar;
