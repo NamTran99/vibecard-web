@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 380" width="380" height="380" fill="none">
+  <defs>
+    <style>
+      @keyframes f1Hop {
+        0%, 100% { transform: translateY(6px) scale(1.05, 0.95); }
+        45%, 55% { transform: translateY(-20px) scale(0.96, 1.05); }
+      }
+      @keyframes f1Shadow {
+        0%, 100% { transform: scale(1.08); opacity: 0.28; }
+        50%      { transform: scale(0.68); opacity: 0.12; }
+      }
+      @keyframes f1EarFlapL {
+        0%, 100% { transform: rotate(-14deg); }
+        50%      { transform: rotate(12deg); }
+      }
+      @keyframes f1EarFlapR {
+        0%, 100% { transform: rotate(14deg); }
+        50%      { transform: rotate(-12deg); }
+      }
+      @keyframes f1PawWave {
+        0%, 100% { transform: rotate(-22deg); }
+        50%      { transform: rotate(26deg); }
+      }
+      @keyframes f1TailWag {
+        0%, 100% { transform: rotate(-16deg); }
+        50%      { transform: rotate(18deg); }
+      }
+      @keyframes f1Blink {
+        0%, 44%, 48%, 96%, 100% { transform: scaleY(1); }
+        46%                     { transform: scaleY(0.08); }
+      }
+
+      .f1-shadow { transform-origin: 185px 344px; animation: f1Shadow 1.3s ease-in-out infinite; }
+      .f1-body   { transform-origin: 185px 320px; animation: f1Hop 1.3s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+      .f1-earL   { transform-origin: 126px 124px; animation: f1EarFlapL 1.3s ease-in-out infinite; }
+      .f1-earR   { transform-origin: 244px 124px; animation: f1EarFlapR 1.3s ease-in-out infinite; }
+      .f1-pawR   { transform-origin: 224px 232px; animation: f1PawWave 0.65s ease-in-out infinite; }
+      .f1-tail   { transform-origin: 215px 286px; animation: f1TailWag 0.65s ease-in-out infinite; }
+      .f1-eyes   { transform-origin: 185px 176px; animation: f1Blink 4.2s infinite; }
+    </style>
+  </defs>
+
+  <ellipse class="f1-shadow" cx="185" cy="344" rx="76" ry="13" fill="#2A1208" />
+
+  <g class="f1-body">
+    <!-- Đuôi tròn bồng bềnh như đám mây kem cam (Nét viền mực nâu #3B1708) -->
+    <g class="f1-tail">
+      <path d="M 208 292 C 232 232, 294 202, 334 228 C 362 246, 356 294, 320 314 C 284 334, 232 322, 208 302 Z" fill="#FF8A3D" stroke="#3B1708" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M 284 218 C 308 214, 326 220, 336 232 C 354 252, 348 290, 320 314 C 314 294, 296 292, 286 300 C 292 280, 276 272, 266 278 C 278 258, 272 238, 284 218 Z" fill="#FFF8EE" stroke="#3B1708" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+
+    <!-- Thân Chibi nhỏ nhắn hình giọt nước bầu bĩnh (Tỷ lệ đầu to - thân nhỏ đáng yêu) -->
+    <path d="M 142 218 C 128 256, 130 304, 152 320 C 172 330, 198 330, 218 320 C 240 304, 242 256, 228 218 Z" fill="#FF8A3D" stroke="#3B1708" stroke-width="6" stroke-linejoin="round" />
+    <!-- Bóng đổ Cel-shade dưới bụng -->
+    <path d="M 136 286 C 142 308, 158 324, 185 326 C 212 324, 228 308, 234 286 C 214 298, 156 298, 136 286 Z" fill="#E06318" />
+
+    <!-- Hai chân sau ngắn mũm mĩm đang bật nhảy -->
+    <ellipse cx="152" cy="322" rx="18" ry="14" transform="rotate(18 152 322)" fill="#4A1E0C" stroke="#3B1708" stroke-width="6" />
+    <ellipse cx="218" cy="322" rx="18" ry="14" transform="rotate(-18 218 322)" fill="#4A1E0C" stroke="#3B1708" stroke-width="6" />
+    <circle cx="150" cy="324" r="5" fill="#FF9EBB" />
+    <circle cx="220" cy="324" r="5" fill="#FF9EBB" />
+
+    <!-- Vòng lông cổ bông xù trắng kem như thú cưng Eevee -->
+    <path d="M 122 214 C 112 228, 124 248, 144 246 C 152 262, 174 268, 185 256 C 196 268, 218 262, 226 246 C 246 248, 258 228, 248 214 Z" fill="#FFF8EE" stroke="#3B1708" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+
+    <!-- Tay trái nhỏ xinh đặt trước ngực -->
+    <path d="M 142 232 C 122 242, 118 266, 134 274 C 148 280, 158 262, 152 244 Z" fill="#FF8A3D" stroke="#3B1708" stroke-width="6" stroke-linejoin="round" />
+    <circle cx="134" cy="268" r="10" fill="#4A1E0C" stroke="#3B1708" stroke-width="5" />
+
+    <!-- Tay phải mũm mĩm vẫy chào liên tục -->
+    <g class="f1-pawR">
+      <path d="M 224 232 C 248 220, 272 194, 266 174 C 260 158, 238 166, 232 186 C 226 202, 220 214, 214 222 Z" fill="#FF8A3D" stroke="#3B1708" stroke-width="6" stroke-linejoin="round" />
+      <circle cx="256" cy="176" r="12" fill="#4A1E0C" stroke="#3B1708" stroke-width="5" />
+      <circle cx="256" cy="177" r="4.5" fill="#FF9EBB" />
+    </g>
+
+    <!-- TAI TRÁI FENNEC SIÊU TO XÒE NGANG ĐÁNG YÊU -->
+    <g class="f1-earL">
+      <path d="M 128 132 C 74 118, 22 72, 28 36 C 34 6, 98 34, 148 98 Z" fill="#FF8A3D" stroke="#3B1708" stroke-width="6" stroke-linejoin="round" />
+      <path d="M 28 36 C 32 14, 58 18, 84 34 C 68 48, 48 56, 30 54 Z" fill="#4A1E0C" />
+      <path d="M 122 122 C 82 108, 46 74, 48 50 C 54 34, 94 54, 132 98 Z" fill="#FFC2B4" />
+      <!-- Chùm lông kem mềm ở gốc tai -->
+      <path d="M 104 114 C 86 106, 82 92, 98 94 C 88 82, 102 76, 116 90" fill="#FFF8EE" stroke="#3B1708" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+
+    <!-- TAI PHẢI FENNEC SIÊU TO XÒE NGANG -->
+    <g class="f1-earR">
+      <path d="M 242 132 C 296 118, 348 72, 342 36 C 336 6, 272 34, 222 98 Z" fill="#FF8A3D" stroke="#3B1708" stroke-width="6" stroke-linejoin="round" />
+      <path d="M 342 36 C 338 14, 312 18, 286 34 C 302 48, 322 56, 340 54 Z" fill="#4A1E0C" />
+      <path d="M 248 122 C 288 108, 324 74, 322 50 C 316 34, 276 54, 238 98 Z" fill="#FFC2B4" />
+      <path d="M 266 114 C 284 106, 288 92, 272 94 C 282 82, 268 76, 254 90" fill="#FFF8EE" stroke="#3B1708" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+
+    <!-- ĐẦU TRÒN BÁNH BAO KAWAII NHẬT BẢN -->
+    <path d="M 185 84 C 242 84, 278 124, 282 172 C 286 206, 252 228, 185 228 C 118 228, 84 206, 88 172 C 92 124, 128 84, 185 84 Z" fill="#FF8A3D" stroke="#3B1708" stroke-width="6" stroke-linejoin="round" />
+
+    <!-- Mảng lông trắng kem chia chữ V mềm mại trên mặt -->
+    <path d="M 90 176 C 114 156, 152 162, 172 184 C 178 178, 192 178, 198 184 C 218 162, 256 156, 280 176 C 282 206, 248 226, 185 226 C 122 226, 88 206, 90 176 Z" fill="#FFF8EE" />
+    <!-- Viền lại khung đầu để nét mực liền lạc -->
+    <path d="M 185 84 C 242 84, 278 124, 282 172 C 286 206, 252 228, 185 228 C 118 228, 84 206, 88 172 C 92 124, 128 84, 185 84 Z" fill="none" stroke="#3B1708" stroke-width="6" stroke-linejoin="round" />
+
+    <!-- Chỏm tóc xoăn đáng yêu giữa trán -->
+    <path d="M 170 86 C 166 66, 184 62, 188 78 C 194 64, 210 70, 202 86" fill="#FF8A3D" stroke="#3B1708" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+
+    <!-- Hai đốm lông mày hạt đậu nhỏ xinh màu kem -->
+    <ellipse cx="144" cy="134" rx="9" ry="5.5" transform="rotate(-10 144 134)" fill="#FFF8EE" stroke="#3B1708" stroke-width="3.5" />
+    <ellipse cx="226" cy="134" rx="9" ry="5.5" transform="rotate(10 226 134)" fill="#FFF8EE" stroke="#3B1708" stroke-width="3.5" />
+
+    <!-- ĐÔI MẮT ĐEN LÁY TO TRÒN ĐẶT THẤP NGANG MŨI (CHUẨN TỶ LỆ VÀNG KAWAII) -->
+    <g class="f1-eyes">
+      <ellipse cx="136" cy="172" rx="19" ry="21" fill="#2B1006" />
+      <ellipse cx="136" cy="178" rx="13" ry="12" fill="#9A3412" />
+      <circle cx="129" cy="162" r="7.5" fill="#FFFFFF" />
+      <circle cx="144" cy="180" r="3.8" fill="#FFFFFF" />
+
+      <ellipse cx="234" cy="172" rx="19" ry="21" fill="#2B1006" />
+      <ellipse cx="234" cy="178" rx="13" ry="12" fill="#9A3412" />
+      <circle cx="227" cy="162" r="7.5" fill="#FFFFFF" />
+      <circle cx="242" cy="180" r="3.8" fill="#FFFFFF" />
+    </g>
+
+    <!-- Má hồng phấn có 2 vạch nghiêng anime -->
+    <ellipse cx="106" cy="192" rx="15" ry="8.5" fill="#FF8FA3" opacity="0.75" />
+    <ellipse cx="264" cy="192" rx="15" ry="8.5" fill="#FF8FA3" opacity="0.75" />
+
+    <!-- Chiếc mũi hạt đậu nhỏ xíu & Miệng mèo :3 mở cười có răng nanh nhỏ -->
+    <ellipse cx="185" cy="180" rx="6.5" ry="4.5" fill="#3B1708" />
+    <path d="M 168 190 Q 176 198, 185 190 Q 194 198, 202 190 C 200 212, 170 212, 168 190 Z" fill="#E11D48" stroke="#3B1708" stroke-width="4.5" stroke-linejoin="round" />
+    <ellipse cx="185" cy="202" rx="9" ry="5" fill="#FDA4AF" />
+    <!-- Chiếc răng nanh nhỏ trắng xinh -->
+    <polygon points="173,192 178,192 175.5,198" fill="#FFFFFF" />
+  </g>
+</svg>

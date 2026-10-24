@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 380" width="360" height="380" fill="none">
+  <defs>
+    <style>
+      @keyframes wbPeekUp {
+        0%, 100% { transform: translateY(0px) rotate(-2deg); }
+        50%      { transform: translateY(-14px) rotate(3deg); }
+      }
+      @keyframes wbWavePaw {
+        0%, 100% { transform: rotate(-18deg); }
+        50%      { transform: rotate(24deg); }
+      }
+      @keyframes wbTailPeek {
+        0%, 100% { transform: rotate(-12deg); }
+        50%      { transform: rotate(16deg); }
+      }
+      @keyframes wbBlink {
+        0%, 45%, 49%, 95%, 100% { transform: scaleY(1); }
+        47%                     { transform: scaleY(0.06); }
+      }
+
+      .wb-fox  { transform-origin: 180px 250px; animation: wbPeekUp 2.4s ease-in-out infinite; }
+      .wb-wave { transform-origin: 244px 218px; animation: wbWavePaw 1.2s ease-in-out infinite; }
+      .wb-tail { transform-origin: 256px 268px; animation: wbTailPeek 1.5s ease-in-out infinite; }
+      .wb-eyes { transform-origin: 172px 158px; animation: wbBlink 4.4s infinite; }
+    </style>
+
+    <radialGradient id="wbFur" cx="172" cy="128" r="115" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFA94D" />
+      <stop offset="55%" stop-color="#F76716" />
+      <stop offset="100%" stop-color="#C23B00" />
+    </radialGradient>
+    <linearGradient id="wbCard" x1="50" y1="225" x2="310" y2="355" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFBEB" />
+      <stop offset="100%" stop-color="#FEF3C7" />
+    </linearGradient>
+  </defs>
+
+  <!-- Đuôi bông lấp ló phía sau mép thẻ -->
+  <g class="wb-tail">
+    <path d="M 244 268 C 266 218, 308 192, 338 208 C 358 220, 352 256, 326 278 C 302 298, 266 294, 244 280 Z" fill="url(#wbFur)" />
+    <path d="M 304 202 C 322 200, 338 206, 346 222 C 352 236, 344 256, 326 278 C 322 262, 310 258, 300 266 C 302 250, 294 238, 304 202 Z" fill="#FFFDF9" />
+  </g>
+
+  <!-- Lumi Ló Đầu Lên Từ Phía Sau Khung Thẻ Chào Mừng -->
+  <g class="wb-fox">
+    <path d="M 76 136 C 56 88, 64 32, 88 24 C 112 22, 144 60, 154 104 Z" fill="url(#wbFur)" />
+    <path d="M 65 60 C 70 36, 78 26, 88 24 C 100 23, 114 36, 124 56 C 104 62, 84 64, 65 60 Z" fill="#2E1207" />
+    <path d="M 86 126 C 74 90, 80 50, 92 40 C 106 42, 126 72, 132 106 Z" fill="#F9BFA8" />
+
+    <path d="M 268 136 C 288 88, 280 32, 256 24 C 232 22, 200 60, 190 104 Z" fill="url(#wbFur)" />
+    <path d="M 279 60 C 274 36, 266 26, 256 24 C 244 23, 230 36, 220 56 C 240 62, 260 64, 279 60 Z" fill="#2E1207" />
+    <path d="M 258 126 C 270 90, 264 50, 252 40 C 238 42, 218 72, 212 106 Z" fill="#F9BFA8" />
+
+    <path d="M 172 74 C 232 74, 268 118, 274 168 C 282 180, 274 202, 256 210 C 234 222, 204 226, 172 226 C 140 226, 110 222, 88 210 C 70 202, 62 180, 70 168 C 76 118, 112 74, 172 74 Z" fill="url(#wbFur)" />
+    <path d="M 70 172 C 88 154, 128 152, 156 174 C 164 168, 180 168, 188 174 C 216 152, 256 154, 274 172 C 280 184, 272 202, 256 210 C 234 222, 204 226, 172 226 C 140 226, 110 222, 88 210 C 72 202, 64 184, 70 172 Z" fill="#FFFDF9" />
+
+    <!-- Đôi mắt long lanh tinh nghịch -->
+    <g class="wb-eyes">
+      <ellipse cx="125" cy="156" rx="18.5" ry="20.5" fill="#230B04" />
+      <ellipse cx="125" cy="158" rx="14.5" ry="16" fill="#D97706" />
+      <ellipse cx="125" cy="156" rx="9.5" ry="11.5" fill="#140502" />
+      <circle cx="119" cy="148" r="5.5" fill="#FFFFFF" />
+      <circle cx="131" cy="163" r="3" fill="#FEF08A" />
+
+      <ellipse cx="219" cy="156" rx="18.5" ry="20.5" fill="#230B04" />
+      <ellipse cx="219" cy="158" rx="14.5" ry="16" fill="#D97706" />
+      <ellipse cx="219" cy="156" rx="9.5" ry="11.5" fill="#140502" />
+      <circle cx="213" cy="148" r="5.5" fill="#FFFFFF" />
+      <circle cx="225" cy="163" r="3" fill="#FEF08A" />
+    </g>
+
+    <ellipse cx="98" cy="184" rx="15" ry="8.5" fill="#FB7185" opacity="0.55" />
+    <ellipse cx="246" cy="184" rx="15" ry="8.5" fill="#FB7185" opacity="0.55" />
+
+    <path d="M 154 186 Q 172 198, 190 186" stroke="#361207" stroke-width="3.8" stroke-linecap="round" fill="none" />
+    <ellipse cx="172" cy="172" rx="9.5" ry="6" fill="#240D04" />
+
+    <!-- Tay phải vẫy chào từ phía sau bảng -->
+    <g class="wb-wave">
+      <path d="M 232 222 C 254 206, 278 178, 272 154 C 266 140, 244 148, 240 166 C 236 184, 228 202, 218 214 Z" fill="url(#wbFur)" />
+      <circle cx="260" cy="154" r="14.5" fill="#361509" />
+      <ellipse cx="260" cy="156" rx="6" ry="4.5" fill="#FF8FA3" />
+    </g>
+  </g>
+
+  <!-- BẢNG BANNER THẺ FLASHCARD CHÀO MỪNG PHÍA TRƯỚC -->
+  <rect x="44" y="226" width="272" height="118" rx="24" fill="url(#wbCard)" stroke="#F59E0B" stroke-width="4" />
+  <rect x="58" y="240" width="244" height="90" rx="16" fill="#FFFFFF" stroke="#FDE68A" stroke-width="2" />
+  <!-- Dòng chữ & Ngôi sao trang trí trên bảng Welcome -->
+  <circle cx="104" cy="285" r="22" fill="#FEF08A" />
+  <polygon points="104,269 109,279 120,281 112,289 114,300 104,294 94,300 96,289 88,281 99,279" fill="#F59E0B" />
+  <rect x="140" y="266" width="132" height="14" rx="7" fill="#F97316" />
+  <rect x="140" y="290" width="96" height="12" rx="6" fill="#FDBA74" />
+
+  <!-- Bàn chân trái bám lên mép trên của bảng Flashcard -->
+  <ellipse cx="112" cy="226" rx="18" ry="13" fill="#361509" />
+  <circle cx="104" cy="224" r="3.5" fill="#FF8FA3" />
+  <circle cx="112" cy="221" r="3.5" fill="#FF8FA3" />
+  <circle cx="120" cy="224" r="3.5" fill="#FF8FA3" />
+</svg>

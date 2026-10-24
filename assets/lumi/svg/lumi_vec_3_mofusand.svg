@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 280" width="100%" height="100%">
+  <defs>
+    <radialGradient id="bg3" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFF0A8" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#FFF0A8" stop-opacity="0"/>
+    </radialGradient>
+    <style>
+      svg { overflow: visible; }
+      .rig-bounce {
+        transform-origin: 140px 235px;
+        animation: bodyBounce 1.8s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+      }
+      .rig-head {
+        transform-origin: 140px 145px;
+        animation: headTilt 2.4s ease-in-out infinite;
+      }
+      .rig-ear-l {
+        transform-origin: 92px 82px;
+        animation: earLeft 2.4s ease-in-out infinite;
+      }
+      .rig-ear-r {
+        transform-origin: 188px 82px;
+        animation: earRight 2.4s ease-in-out infinite;
+      }
+      .rig-tail {
+        transform-origin: 175px 205px;
+        animation: tailWag 1.2s ease-in-out infinite alternate;
+      }
+      .rig-arm-l {
+        transform-origin: 94px 168px;
+        animation: armWave 0.9s ease-in-out infinite alternate;
+      }
+      .rig-arm-r {
+        transform-origin: 186px 168px;
+        animation: armProp 1.5s ease-in-out infinite alternate;
+      }
+      .rig-eyes {
+        transform-origin: 140px 128px;
+        animation: eyeBlink 3.6s ease-in-out infinite;
+      }
+      .rig-cheeks {
+        transform-origin: 140px 138px;
+        animation: cheekPulse 1.8s ease-in-out infinite alternate;
+      }
+      .rig-shadow {
+        transform-origin: 140px 248px;
+        animation: shadowScale 1.8s ease-in-out infinite;
+      }
+      .sparkle-a {
+        transform-origin: 42px 68px;
+        animation: starTwinkle 1.6s ease-in-out infinite;
+      }
+      .sparkle-b {
+        transform-origin: 238px 64px;
+        animation: starTwinkle 2.0s ease-in-out infinite 0.5s;
+      }
+      .float-heart {
+        transform-origin: 140px 36px;
+        animation: heartFloat 2.2s ease-in-out infinite;
+      }
+      @keyframes bodyBounce {
+        0%, 100% { transform: translateY(0px) scale(1.03, 0.97); }
+        45% { transform: translateY(-12px) scale(0.97, 1.04); }
+        75% { transform: translateY(-4px) scale(1.01, 0.99); }
+      }
+      @keyframes headTilt {
+        0%, 100% { transform: rotate(-3.5deg) translateY(0px); }
+        50% { transform: rotate(3.5deg) translateY(-3px); }
+      }
+      @keyframes earLeft {
+        0%, 100% { transform: rotate(0deg); }
+        30% { transform: rotate(-10deg); }
+        60% { transform: rotate(4deg); }
+      }
+      @keyframes earRight {
+        0%, 100% { transform: rotate(0deg); }
+        40% { transform: rotate(11deg); }
+        70% { transform: rotate(-3deg); }
+      }
+      @keyframes tailWag {
+        0% { transform: rotate(-14deg) scale(1); }
+        100% { transform: rotate(16deg) scale(1.04); }
+      }
+      @keyframes armWave {
+        0% { transform: rotate(-18deg); }
+        100% { transform: rotate(28deg); }
+      }
+      @keyframes armProp {
+        0% { transform: rotate(10deg) translateY(0px); }
+        100% { transform: rotate(-16deg) translateY(-4px); }
+      }
+      @keyframes eyeBlink {
+        0%, 44%, 52%, 94%, 100% { transform: scaleY(1); }
+        48%, 97% { transform: scaleY(0.08); }
+      }
+      @keyframes cheekPulse {
+        0% { opacity: 0.65; transform: scale(0.95); }
+        100% { opacity: 0.95; transform: scale(1.08); }
+      }
+      @keyframes shadowScale {
+        0%, 100% { transform: scale(1, 1); opacity: 0.22; }
+        45% { transform: scale(0.82, 0.85); opacity: 0.12; }
+      }
+      @keyframes starTwinkle {
+        0%, 100% { transform: scale(0.65) rotate(0deg); opacity: 0.45; }
+        50% { transform: scale(1.2) rotate(20deg); opacity: 1; }
+      }
+      @keyframes heartFloat {
+        0%, 100% { transform: translateY(0px) scale(0.95); opacity: 0.85; }
+        50% { transform: translateY(-8px) scale(1.12); opacity: 1; }
+      }
+</style>
+  </defs>
+  <circle cx="140" cy="145" r="118" fill="url(#bg3)"/>
+  <ellipse class="rig-shadow" cx="140" cy="248" rx="68" ry="11" fill="#543828" opacity="0.2"/>
+
+  <g class="rig-bounce">
+    <!-- Big Fluffy Tail -->
+    <g class="rig-tail">
+      <path d="M 178 216 C 228 220, 254 176, 240 122 C 222 128, 206 144, 198 164 C 188 182, 182 200, 178 216 Z" fill="#F59656" stroke="#543828" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M 240 122 C 224 128, 212 140, 206 156 C 222 162, 238 152, 240 122 Z" fill="#FFFDF9" stroke="#543828" stroke-width="5" stroke-linejoin="round"/>
+    </g>
+
+    <!-- Cuddly Pear Body -->
+    <path d="M 88 164 C 72 194, 78 234, 104 240 C 124 244, 156 244, 176 240 C 202 234, 208 194, 192 164 Z" fill="#F59656" stroke="#543828" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Fluffy Cream Belly -->
+    <path d="M 106 168 C 96 196, 104 236, 140 236 C 176 236, 184 196, 174 168 Z" fill="#FFFDF9"/>
+    <path d="M 114 176 Q 124 190 134 178 Q 140 192 148 178 Q 158 190 166 176" fill="none" stroke="#D9B89C" stroke-width="3.5" stroke-linecap="round"/>
+
+    <!-- Feet -->
+    <ellipse cx="106" cy="240" rx="16" ry="8" fill="#C47242" stroke="#543828" stroke-width="4.5"/>
+    <ellipse cx="174" cy="240" rx="16" ry="8" fill="#C47242" stroke="#543828" stroke-width="4.5"/>
+
+    <!-- Waving Left Arm with Mofusand Pink Toe Beans! -->
+    <g class="rig-arm-l">
+      <path d="M 92 182 C 66 168, 52 140, 62 124 C 72 110, 92 124, 98 154" fill="#F59656" stroke="#543828" stroke-width="5" stroke-linecap="round"/>
+      <!-- Pink Paw Pad & 4 Toe Beans -->
+      <ellipse cx="70" cy="136" rx="7.5" ry="5.5" fill="#FF9EB5" stroke="#543828" stroke-width="2.5" transform="rotate(-15 70 136)"/>
+      <circle cx="60" cy="127" r="3.2" fill="#FF9EB5" stroke="#543828" stroke-width="2"/>
+      <circle cx="67" cy="123" r="3.2" fill="#FF9EB5" stroke="#543828" stroke-width="2"/>
+      <circle cx="75" cy="123" r="3.2" fill="#FF9EB5" stroke="#543828" stroke-width="2"/>
+      <circle cx="81" cy="128" r="3.2" fill="#FF9EB5" stroke="#543828" stroke-width="2"/>
+    </g>
+
+    <!-- Resting Right Paw on Chest -->
+    <path d="M 188 174 C 176 184, 156 196, 146 186 C 140 178, 152 166, 172 164" fill="#F59656" stroke="#543828" stroke-width="5" stroke-linecap="round"/>
+
+    <!-- Head with Giant Pastel Yellow Star Hoodie -->
+    <g class="rig-head">
+      <!-- Ears peeking out behind star hood -->
+      <path d="M 88 76 C 82 50, 94 44, 112 64 Z" fill="#D47440" stroke="#543828" stroke-width="4.5" stroke-linejoin="round"/>
+      <path d="M 192 76 C 198 50, 186 44, 168 64 Z" fill="#D47440" stroke="#543828" stroke-width="4.5" stroke-linejoin="round"/>
+
+      <!-- Yellow 5-Point Star Hoodie Outer Shape -->
+      <path d="M 140 32 L 168 68 L 214 88 L 192 132 L 188 168 C 166 172, 152 164, 140 160 C 128 164, 114 172, 92 168 L 88 132 L 66 88 L 112 68 Z" fill="#FFF29C" stroke="#543828" stroke-width="5" stroke-linejoin="round"/>
+
+      <!-- Cute Inner Fox Face inside Hood Opening -->
+      <ellipse cx="140" cy="116" rx="52" ry="38" fill="#F59656" stroke="#543828" stroke-width="4.5"/>
+      <path d="M 90 122 C 106 112, 126 114, 140 122 C 154 114, 174 112, 190 122 C 184 146, 164 154, 140 154 C 116 154, 96 146, 90 122 Z" fill="#FFFDF9"/>
+
+      <!-- Hood Button Clasp & Cute Star Pin -->
+      <circle cx="136" cy="158" r="4.5" fill="#F7D056" stroke="#543828" stroke-width="3"/>
+      <path d="M 176 76 L 179 82 L 186 83 L 181 88 L 182 95 L 176 91 L 170 95 L 171 88 L 166 83 L 173 82 Z" fill="#F7D056" stroke="#543828" stroke-width="3" stroke-linejoin="round"/>
+
+      <!-- Face Details -->
+      <ellipse cx="116" cy="98" rx="5" ry="3" fill="#FFFDF9"/>
+      <ellipse cx="164" cy="98" rx="5" ry="3" fill="#FFFDF9"/>
+      <g class="rig-cheeks">
+        <ellipse cx="104" cy="128" rx="12" ry="7" fill="#FF8FA3" opacity="0.75"/>
+        <ellipse cx="176" cy="128" rx="12" ry="7" fill="#FF8FA3" opacity="0.75"/>
+      </g>
+      <g class="rig-eyes">
+        <circle cx="114" cy="116" r="10.5" fill="#4A2C1D"/>
+        <circle cx="111" cy="112" r="3.8" fill="#FFFFFF"/>
+        <circle cx="118" cy="120" r="2" fill="#FFFFFF"/>
+        <circle cx="166" cy="116" r="10.5" fill="#4A2C1D"/>
+        <circle cx="163" cy="112" r="3.8" fill="#FFFFFF"/>
+        <circle cx="170" cy="120" r="2" fill="#FFFFFF"/>
+      </g>
+      <ellipse cx="140" cy="121" rx="4.8" ry="3.4" fill="#4A2C1D"/>
+      <path d="M 131 128 Q 135.5 133 140 128 Q 144.5 133 149 128" fill="none" stroke="#4A2C1D" stroke-width="3.8" stroke-linecap="round"/>
+    </g>
+  </g>
+  <g class="sparkle-a"><path d="M42,54 Q42,68 28,68 Q42,68 42,82 Q42,68 56,68 Q42,68 42,54 Z" fill="#F7D056"/></g>
+  <g class="sparkle-b"><path d="M238,50 Q238,64 224,64 Q238,64 238,78 Q238,64 252,64 Q238,64 238,50 Z" fill="#FF9EB5"/></g>
+</svg>

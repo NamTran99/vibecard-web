@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 380" width="360" height="380" fill="none">
+  <defs>
+    <style>
+      @keyframes a10MoonRock {
+        0%, 100% { transform: rotate(-6deg) translateY(0px); }
+        50%      { transform: rotate(6deg) translateY(-6px); }
+      }
+      @keyframes a10FoxFloat {
+        0%, 100% { transform: translateY(0px) rotate(-1.5deg); }
+        50%      { transform: translateY(-4px) rotate(2deg); }
+      }
+      @keyframes a10StarTwinkle {
+        0%, 100% { transform: scale(0.88) rotate(-8deg); opacity: 0.75; }
+        50%      { transform: scale(1.18) rotate(10deg); opacity: 1; }
+      }
+      @keyframes a10Blink {
+        0%, 46%, 50%, 96%, 100% { transform: scaleY(1); }
+        48%                     { transform: scaleY(0.06); }
+      }
+
+      .a10-cradle { transform-origin: 180px 210px; animation: a10MoonRock 3.6s ease-in-out infinite; }
+      .a10-fox    { transform-origin: 175px 225px; animation: a10FoxFloat 3.6s ease-in-out infinite; }
+      .a10-star   { transform-origin: 244px 108px; animation: a10StarTwinkle 2.2s ease-in-out infinite; }
+      .a10-eyes   { transform-origin: 164px 168px; animation: a10Blink 4.8s infinite; }
+    </style>
+
+    <linearGradient id="a10MoonG" x1="50" y1="60" x2="290" y2="330" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFBEB" />
+      <stop offset="45%" stop-color="#FDE047" />
+      <stop offset="100%" stop-color="#F59E0B" />
+    </linearGradient>
+    <radialGradient id="a10PeachFur" cx="165" cy="175" r="95" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFAD66" />
+      <stop offset="60%" stop-color="#F97316" />
+      <stop offset="100%" stop-color="#C2410C" />
+    </radialGradient>
+  </defs>
+
+  <ellipse cx="180" cy="342" rx="112" ry="18" fill="#312E81" opacity="0.28" />
+
+  <g class="a10-cradle">
+    <!-- Vầng Trăng Lưỡi Liềm Vàng Kem Lớn Đung Đưa -->
+    <path d="M 248 48 C 138 36, 52 126, 62 238 C 72 338, 176 364, 272 312 C 194 324, 128 268, 126 186 C 124 110, 182 58, 248 48 Z" fill="url(#a10MoonG)" stroke="#D97706" stroke-width="2.5" stroke-linejoin="round" />
+    <circle cx="98" cy="212" r="9" fill="#FDBA74" opacity="0.55" />
+    <path d="M 88 188 Q 98 196, 108 188" stroke="#B45309" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6" />
+
+    <!-- Ngôi sao ước nguyện treo lấp lánh trên đỉnh trăng -->
+    <line x1="244" y1="50" x2="244" y2="96" stroke="#FDE047" stroke-width="2" stroke-dasharray="3 3" />
+    <g class="a10-star">
+      <circle cx="244" cy="108" r="22" fill="#FEF08A" opacity="0.3" />
+      <polygon points="244,90 249,101 261,103 252,111 254,123 244,117 234,123 236,111 227,103 239,101" fill="#FEF08A" stroke="#F59E0B" stroke-width="1.8" />
+    </g>
+
+    <!-- Lumi Ngồi Trên Vầng Trăng Mở Mắt Long Lanh Ngắm Sao Đêm -->
+    <g class="a10-fox">
+      <ellipse cx="196" cy="236" rx="58" ry="42" fill="url(#a10PeachFur)" />
+      <ellipse cx="184" cy="236" rx="36" ry="28" fill="#FFFDF9" />
+
+      <path d="M 106 142 C 92 108, 98 72, 116 68 C 134 66, 152 92, 158 122 Z" fill="url(#a10PeachFur)" />
+      <path d="M 100 90 C 104 76, 110 70, 116 68 C 124 68, 134 76, 140 90 C 126 94, 112 94, 100 90 Z" fill="#3B1508" />
+      <path d="M 114 134 C 106 110, 110 86, 118 80 C 128 82, 140 102, 144 122 Z" fill="#FBCFE8" />
+
+      <path d="M 222 142 C 236 108, 230 72, 212 68 C 194 66, 176 92, 170 122 Z" fill="url(#a10PeachFur)" />
+      <path d="M 228 90 C 224 76, 218 70, 212 68 C 204 68, 194 76, 188 90 C 202 94, 216 94, 228 90 Z" fill="#3B1508" />
+
+      <path d="M 164 114 C 210 114, 238 148, 242 188 C 246 202, 236 218, 218 224 C 200 232, 180 234, 164 234 C 142 234, 120 228, 104 218 C 90 210, 84 196, 90 184 C 96 148, 122 114, 164 114 Z" fill="url(#a10PeachFur)" />
+      <path d="M 90 188 C 108 174, 136 174, 154 188 C 160 184, 170 184, 176 188 C 196 174, 224 174, 242 188 C 244 202, 234 218, 218 224 C 200 232, 180 234, 164 234 C 142 234, 120 228, 104 218 C 92 210, 86 198, 90 188 Z" fill="#FFFDF9" />
+
+      <!-- Đôi mắt mở to long lanh ngắm ngôi sao ước nguyện -->
+      <g class="a10-eyes">
+        <ellipse cx="128" cy="168" rx="15" ry="17" fill="#230B38" />
+        <ellipse cx="128" cy="170" rx="11.5" ry="13" fill="#6D28D9" />
+        <circle cx="123" cy="161" r="5" fill="#FFFFFF" />
+        <circle cx="133" cy="174" r="2.8" fill="#FEF08A" />
+
+        <ellipse cx="200" cy="168" rx="15" ry="17" fill="#230B38" />
+        <ellipse cx="200" cy="170" rx="11.5" ry="13" fill="#6D28D9" />
+        <circle cx="195" cy="161" r="5" fill="#FFFFFF" />
+        <circle cx="205" cy="174" r="2.8" fill="#FEF08A" />
+      </g>
+
+      <ellipse cx="106" cy="192" rx="13" ry="7.5" fill="#FB7185" opacity="0.5" />
+      <ellipse cx="222" cy="192" rx="13" ry="7.5" fill="#FB7185" opacity="0.5" />
+
+      <ellipse cx="164" cy="186" rx="7.5" ry="5" fill="#2B0E04" />
+      <path d="M 152 198 Q 164 208, 176 198" stroke="#3B1508" stroke-width="3.2" stroke-linecap="round" fill="none" />
+
+      <!-- Chiếc đuôi bông lớn ôm vòng quanh ấm áp -->
+      <path d="M 238 242 C 266 232, 286 254, 274 278 C 258 304, 206 312, 152 294 C 122 284, 114 256, 138 246 C 166 236, 208 252, 238 242 Z" fill="url(#a10PeachFur)" />
+      <path d="M 152 294 C 122 284, 114 256, 138 246 C 154 240, 170 246, 180 256 C 168 264, 166 278, 174 288 C 164 294, 158 296, 152 294 Z" fill="#FFFDF9" />
+    </g>
+  </g>
+</svg>

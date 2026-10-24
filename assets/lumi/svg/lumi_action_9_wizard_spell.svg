@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 380" width="360" height="380" fill="none">
+  <defs>
+    <style>
+      @keyframes a9Float {
+        0%, 100% { transform: translateY(0px); }
+        50%      { transform: translateY(-6px); }
+      }
+      @keyframes a9WandWave {
+        0%, 100% { transform: rotate(-14deg); }
+        50%      { transform: rotate(18deg); }
+      }
+      @keyframes a9MagicRing {
+        0%   { transform: rotate(0deg) scale(0.95); opacity: 0.75; }
+        50%  { transform: rotate(180deg) scale(1.08); opacity: 1; }
+        100% { transform: rotate(360deg) scale(0.95); opacity: 0.75; }
+      }
+      @keyframes a9HatTip {
+        0%, 100% { transform: rotate(-4deg); }
+        50%      { transform: rotate(5deg); }
+      }
+      @keyframes a9Tail {
+        0%, 100% { transform: rotate(-8deg); }
+        50%      { transform: rotate(12deg); }
+      }
+      @keyframes a9Blink {
+        0%, 45%, 49%, 95%, 100% { transform: scaleY(1); }
+        47%                     { transform: scaleY(0.06); }
+      }
+
+      .a9-body { transform-origin: 162px 320px; animation: a9Float 2.6s ease-in-out infinite; }
+      .a9-wand { transform-origin: 204px 236px; animation: a9WandWave 1.8s ease-in-out infinite; }
+      .a9-ring { transform-origin: 282px 136px; animation: a9MagicRing 5s linear infinite; }
+      .a9-hat  { transform-origin: 162px 76px; animation: a9HatTip 2.6s ease-in-out infinite; }
+      .a9-tail { transform-origin: 200px 312px; animation: a9Tail 2.2s ease-in-out infinite; }
+      .a9-eyes { transform-origin: 162px 158px; animation: a9Blink 4.6s infinite; }
+    </style>
+
+    <radialGradient id="a9Fur" cx="162" cy="128" r="115" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF9E44" />
+      <stop offset="55%" stop-color="#F76414" />
+      <stop offset="100%" stop-color="#C23B00" />
+    </radialGradient>
+    <linearGradient id="a9WizardHat" x1="90" y1="10" x2="220" y2="110" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#6D28D9" />
+      <stop offset="55%" stop-color="#4C1D95" />
+      <stop offset="100%" stop-color="#2E1065" />
+    </linearGradient>
+    <radialGradient id="a9SpellGlow" cx="282" cy="136" r="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#E879F9" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#A855F7" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#6B21A8" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <ellipse cx="164" cy="352" rx="92" ry="13" fill="#1E0B36" opacity="0.32" />
+
+  <g class="a9-body">
+    <!-- Đuôi bông xù -->
+    <g class="a9-tail">
+      <path d="M 192 318 C 198 258, 238 218, 286 222 C 324 226, 338 264, 318 298 C 298 328, 248 338, 192 328 Z" fill="url(#a9Fur)" />
+      <path d="M 252 224 C 278 218, 306 224, 320 244 C 330 262, 326 282, 318 298 C 308 282, 294 280, 284 290 C 284 274, 272 270, 260 278 C 264 260, 252 248, 252 224 Z" fill="#FFFDF9" />
+    </g>
+
+    <!-- Áo choàng phù thủy tím viền vàng kim -->
+    <path d="M 96 222 C 78 268, 76 322, 92 340 L 232 340 C 248 322, 246 268, 228 222 Z" fill="url(#a9WizardHat)" stroke="#FBBF24" stroke-width="2.5" />
+    <ellipse cx="102" cy="340" rx="18" ry="12" fill="#361509" />
+    <ellipse cx="222" cy="340" rx="18" ry="12" fill="#361509" />
+
+    <!-- Thân & Ngực kem -->
+    <path d="M 116 224 C 108 266, 110 322, 128 338 L 196 338 C 214 322, 216 266, 208 224 Z" fill="url(#a9Fur)" />
+    <path d="M 134 238 C 126 274, 130 324, 162 338 C 194 324, 198 274, 190 238 Z" fill="#FFFDF9" />
+
+    <!-- Cổ áo choàng & Huy hiệu Ngọc Lục Bảo -->
+    <path d="M 102 214 Q 162 242, 222 214 L 214 246 Q 162 266, 110 246 Z" fill="#5B21B6" stroke="#FBBF24" stroke-width="2" />
+    <polygon points="162,222 174,234 162,246 150,234" fill="#34D399" stroke="#FEF08A" stroke-width="2" />
+
+    <!-- Tay trái cầm sách cổ ngữ nhỏ -->
+    <path d="M 118 244 C 96 254, 92 278, 112 288 C 126 292, 134 274, 128 256 Z" fill="url(#a9Fur)" />
+    <circle cx="112" cy="284" r="12" fill="#361509" />
+
+    <!-- Tay phải vẫy Đũa Thần Ngôi Sao -->
+    <g class="a9-wand">
+      <path d="M 202 244 C 226 236, 248 214, 246 190 C 244 176, 224 180, 220 196 C 216 212, 208 224, 196 232 Z" fill="url(#a9Fur)" />
+      <circle cx="236" cy="188" r="12" fill="#361509" />
+      <!-- Thân đũa thần gỗ & Ngôi sao phát sáng -->
+      <line x1="232" y1="194" x2="274" y2="144" stroke="#78350F" stroke-width="6" stroke-linecap="round" />
+      <line x1="254" y1="168" x2="274" y2="144" stroke="#FDE047" stroke-width="4" stroke-linecap="round" />
+      <polygon points="278,130 283,140 294,142 286,149 288,160 278,154 268,160 270,149 262,142 273,140" fill="#FEF08A" stroke="#F59E0B" stroke-width="1.8" />
+    </g>
+
+    <!-- Vòng tròn ma thuật & Chữ cái bay quanh đầu đũa thần -->
+    <circle cx="282" cy="136" r="54" fill="url(#a9SpellGlow)" />
+    <g class="a9-ring">
+      <circle cx="282" cy="136" r="38" stroke="#F0ABFC" stroke-width="2" stroke-dasharray="6 6" />
+      <circle cx="282" cy="136" r="26" stroke="#FEF08A" stroke-width="1.5" stroke-dasharray="4 8" />
+      <polygon points="282,92 285,99 292,102 285,105 282,112 279,105 272,102 279,99" fill="#FEF08A" />
+      <polygon points="322,146 324,151 329,153 324,155 322,160 320,155 315,153 320,151" fill="#67E8F9" />
+      <circle cx="246" cy="126" r="4" fill="#F472B6" />
+      <circle cx="276" cy="174" r="3.5" fill="#A7F3D0" />
+    </g>
+
+    <!-- Đầu Cáo Phù Thủy -->
+    <g>
+      <!-- Hai tai lớn -->
+      <path d="M 68 134 C 48 86, 56 32, 80 24 C 104 22, 134 58, 144 102 Z" fill="url(#a9Fur)" />
+      <path d="M 57 60 C 62 36, 70 26, 80 24 C 92 23, 106 36, 116 56 C 96 62, 76 64, 57 60 Z" fill="#2E1207" />
+      <path d="M 78 124 C 66 88, 72 48, 84 38 C 98 40, 116 70, 122 104 Z" fill="#F9BFA8" />
+
+      <path d="M 256 134 C 276 86, 268 32, 244 24 C 220 22, 190 58, 180 102 Z" fill="url(#a9Fur)" />
+      <path d="M 267 60 C 262 36, 254 26, 244 24 C 232 23, 218 36, 208 56 C 228 62, 248 64, 267 60 Z" fill="#2E1207" />
+      <path d="M 246 124 C 258 88, 252 48, 240 38 C 226 40, 208 70, 202 104 Z" fill="#F9BFA8" />
+
+      <!-- Khuôn mặt -->
+      <path d="M 162 74 C 220 74, 256 118, 262 168 C 270 180, 262 200, 244 208 C 222 220, 194 224, 162 224 C 130 224, 102 220, 80 208 C 62 200, 54 180, 62 168 C 68 118, 104 74, 162 74 Z" fill="url(#a9Fur)" />
+      <path d="M 62 172 C 82 154, 120 152, 146 172 C 154 166, 170 166, 178 172 C 204 152, 242 154, 262 172 C 268 184, 260 200, 244 208 C 222 220, 194 224, 162 224 C 130 224, 102 220, 80 208 C 64 200, 56 184, 62 172 Z" fill="#FFFDF9" />
+
+      <!-- Đôi mắt phép thuật tím-vàng lấp lánh -->
+      <g class="a9-eyes">
+        <ellipse cx="115" cy="156" rx="18" ry="20" fill="#230B38" />
+        <ellipse cx="115" cy="158" rx="14" ry="15" fill="#7E22CE" />
+        <ellipse cx="115" cy="156" rx="9" ry="11" fill="#140524" />
+        <circle cx="109" cy="148" r="5.5" fill="#FFFFFF" />
+        <circle cx="121" cy="163" r="3" fill="#FEF08A" />
+
+        <ellipse cx="209" cy="156" rx="18" ry="20" fill="#230B38" />
+        <ellipse cx="209" cy="158" rx="14" ry="15" fill="#7E22CE" />
+        <ellipse cx="209" cy="156" rx="9" ry="11" fill="#140524" />
+        <circle cx="203" cy="148" r="5.5" fill="#FFFFFF" />
+        <circle cx="215" cy="163" r="3" fill="#FEF08A" />
+      </g>
+
+      <ellipse cx="90" cy="182" rx="14" ry="8" fill="#F472B6" opacity="0.45" />
+      <ellipse cx="234" cy="182" rx="14" ry="8" fill="#F472B6" opacity="0.45" />
+
+      <!-- Miệng cười tự tin đọc thần chú -->
+      <path d="M 148 186 Q 162 198, 176 186" stroke="#361207" stroke-width="3.5" stroke-linecap="round" fill="none" />
+      <ellipse cx="162" cy="173" rx="10" ry="6.5" fill="#240D04" />
+
+      <!-- Chiếc Mũ Phù Thủy Sao Đêm đội trên đỉnh đầu -->
+      <g class="a9-hat">
+        <ellipse cx="162" cy="82" rx="76" ry="18" transform="rotate(-4 162 82)" fill="url(#a9WizardHat)" stroke="#FBBF24" stroke-width="2.5" />
+        <path d="M 108 78 C 118 38, 148 10, 198 6 C 184 26, 184 48, 214 74 Z" fill="url(#a9WizardHat)" stroke="#FBBF24" stroke-width="2.5" stroke-linejoin="round" />
+        <!-- Dải ruy-băng vàng & Khóa mũ -->
+        <path d="M 110 74 Q 162 86, 212 70" stroke="#F59E0B" stroke-width="8" stroke-linecap="round" fill="none" />
+        <rect x="152" y="68" width="18" height="14" rx="3" fill="#FEF08A" stroke="#B45309" stroke-width="2" />
+        <circle cx="156" cy="44" r="3.5" fill="#FEF08A" />
+        <circle cx="174" cy="56" r="2.5" fill="#F0ABFC" />
+      </g>
+    </g>
+  </g>
+</svg>

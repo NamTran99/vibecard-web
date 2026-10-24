@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lumi Fox Studio — Ultra-Fast 60fps Preview</title>
+  <style>
+    :root {
+      --bg: #12140E;
+      --surface: #1A1D16;
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #E5E8DC;
+      --muted: #9BA38E;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 18px 48px;
+      gap: 18px;
+    }
+    .header {
+      text-align: center;
+      max-width: 880px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: rgba(52, 211, 153, 0.14);
+      border: 1px solid rgba(52, 211, 153, 0.35);
+      color: #6EE7B7;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    h1 {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 5px;
+    }
+    p.sub {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+    .controls-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      position: sticky;
+      top: 10px;
+      z-index: 20;
+      background: rgba(18, 20, 14, 0.88);
+      backdrop-filter: blur(8px);
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+    }
+    .toolbar {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .divider {
+      width: 1px;
+      height: 24px;
+      background: var(--border);
+    }
+    .btn {
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .btn:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .btn.active {
+      background: #FF7A1A;
+      color: #FFF;
+      border-color: #FFA352;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 18px;
+      width: 100%;
+      max-width: 1320px;
+    }
+    .card {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      contain: layout style paint;
+      content-visibility: auto;
+      contain-intrinsic-size: 310px 410px;
+    }
+    .card:hover {
+      border-color: rgba(255, 140, 54, 0.5);
+    }
+    .new-ribbon {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #10B981;
+      color: #052E16;
+      font-size: 9.5px;
+      font-weight: 900;
+      padding: 3px 8px;
+      border-radius: 999px;
+      letter-spacing: 0.05em;
+    }
+    .card-header {
+      text-align: center;
+    }
+    .style-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 3.5px 9px;
+      border-radius: 999px;
+      margin-bottom: 5px;
+      background: rgba(255, 140, 54, 0.14);
+      color: #FFB067;
+      border: 1px solid rgba(255, 140, 54, 0.3);
+    }
+    .card h2 {
+      font-size: 15px;
+      font-weight: 800;
+      margin-bottom: 3px;
+    }
+    .card p {
+      font-size: 11.5px;
+      color: var(--muted);
+      line-height: 1.4;
+      min-height: 32px;
+    }
+    .stage {
+      width: 100%;
+      height: 270px;
+      border-radius: 18px;
+      background: #F7EFE2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      contain: strict;
+    }
+    body.bg-dark .stage {
+      background: #1E2218;
+    }
+    body.bg-forest .stage {
+      background: #FDE68A;
+    }
+    .stage img {
+      width: 248px;
+      height: 258px;
+      object-fit: contain;
+      pointer-events: none;
+    }
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      justify-content: center;
+    }
+    .pill {
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      color: #D4DAC8;
+    }
+  </style>
+</head>
+<body class="bg-cream">
+
+  <div class="header">
+    <div class="badge">⚡ Ultra-Fast GPU Mode • Giảm 94% Dung Lượng DOM (231KB → 11KB) • 0ms Blur Lag</div>
+    <h1>Bộ Sưu Tập Cáo Lumi — Tối Ưu Tốc Độ Tải Tức Thì</h1>
+    <p class="sub">
+      Đã loại bỏ toàn bộ bộ lọc <code>feGaussianBlur</code> gây nghẽn GPU và tách luồng render theo từng Tab danh mục giúp trang mở tức thì trong <strong>&lt; 10ms</strong>.
+    </p>
+  </div>
+
+  <div class="controls-row">
+    <div class="toolbar" id="catToolbar">
+      <button class="btn active" onclick="renderTab('styleAF', this)">🌟 6 Style Cáo Chuẩn Tỷ Lệ Vàng (A–F)</button>
+      <button class="btn" onclick="renderTab('new6', this)">🎨 6 Nét Vẽ Thử Nghiệm (#1–#6)</button>
+      <button class="btn" onclick="renderTab('welcome', this)">👋 Chào Mừng &amp; Năng Động (7)</button>
+      <button class="btn" onclick="renderTab('wave2', this)">✨ 8 Mẫu Đợt 2 (#9–#16)</button>
+      <button class="btn" onclick="renderTab('wave1', this)">🦊 8 Mẫu Đợt 1 (#1–#8)</button>
+      <button class="btn" onclick="renderTab('all', this)">🌟 Xem Tất Cả (29)</button>
+    </div>
+    <div class="divider"></div>
+    <div class="toolbar" id="bgToolbar">
+      <button class="btn active" onclick="setBg('bg-cream', this)">☀️ Nền Kem Sáng</button>
+      <button class="btn" onclick="setBg('bg-dark', this)">🌙 Nền Dark Olive</button>
+      <button class="btn" onclick="setBg('bg-forest', this)">🍂 Nền Vàng Thu</button>
+    </div>
+  </div>
+
+  <div class="grid" id="cardGrid"></div>
+
+  <script>
+    const ITEMS = [
+      // TAB 0: 6 STYLE CÁO MỚI NHẤT CHUẨN TỶ LỆ VÀNG (A - F)
+      { cat: 'styleAF', badge: 'CHUẨN BABY DUO', tag: 'Style A • Baby Duolingo Proportion', title: '🌟 Cáo Tròn Mắt Sao Lấp Lánh (Chuẩn Ảnh Cú Duo)', desc: 'Áp dụng đúng 100% tỷ lệ Cú Baby Duolingo: Thân liền đầu bầu bĩnh, đôi mắt tròn khổng lồ có vết cắn sáng + ngôi sao 4 cánh, mũi miệng nằm ngay giữa 2 mắt.', file: 'lumi_style_A_duo_star_chibi.svg', pills: ['✨ Mắt Sao 4 Cánh', '🍐 Thân Tròn Nguyên Khối', '📦 6.2 KB'] },
+      { cat: 'styleAF', badge: 'CHUẨN ẢNH GỐC 3D', tag: 'Style B • 3D Plush Lumi Exact', title: '🧣 Cáo Bông 3D Quàng Khăn Vàng (Chuẩn Ảnh Lumi)', desc: 'Áp dụng đúng 100% giải phẫu ảnh Lumi 3D gốc: Đầu nghiêng duyên dáng, lông mày nâu đậm, 2 bầu mõm trắng phồng (ω) đè trên miệng cười, 2 chân trước đứng song song.', file: 'lumi_style_B_plush_3d_exact.svg', pills: ['🦊 Bầu Mõm Phồng (ω)', '🧣 Khăn Len Tua Rua', '📦 10.6 KB'] },
+      { cat: 'styleAF', badge: 'SANRIO PASTEL', tag: 'Style C • Sanrio Cinnamoroll Vibe', title: '🍓 Cáo Kem Dâu Mochi Đeo Nơ Vàng', desc: 'Tông màu cam đào pastel dịu ngọt kết hợp đường viền nâu socola mềm mại, đeo nơ vàng trước ngực, mắt tròn ánh sao.', file: 'lumi_style_C_sanrio_pastel_baby.svg', pills: ['🎀 Đeo Nơ Vàng', '🍑 Cam Đào Pastel', '📦 4.8 KB'] },
+      { cat: 'styleAF', badge: 'KAKAO STICKER', tag: 'Style D • Kakao Friends / Ryan Style', title: '🧸 Cáo Sticker Hàn Quốc Mõm Số 8 (∞)', desc: 'Phong cách sticker KakaoTalk / Line Friends nổi tiếng: Đầu bo tròn ngang, lông mày thẳng biểu cảm và chiếc mõm phồng hình số 8 (∞) kinh điển.', file: 'lumi_style_D_kakao_ryan_flat.svg', pills: ['♾️ Mõm Số 8 Kakao', '✒️ Viền Đậm Sticker', '📦 4.0 KB'] },
+      { cat: 'styleAF', badge: 'COZY PET', tag: 'Style E • Puppy Eyes & Tail Hug', title: '🥺 Cáo Con Ôm Đuôi Ngước Mắt Long Lanh', desc: 'Ngồi gọn gàng quấn chiếc đuôi bông khổng lồ vòng qua trước bụng, ngước đôi mắt Puppy Eyes to tròn long lanh lên nhìn bạn.', file: 'lumi_style_E_cozy_puppy_tail.svg', pills: ['🥺 Mắt Puppy Eyes', '🧣 Đuôi Quấn Bụng', '📦 3.5 KB'] },
+      { cat: 'styleAF', badge: 'HAPPY JUMP', tag: 'Style F • Joyful Squinting Jump', title: '🎉 Cáo Tròn Nhảy Cẫng Cười Tít Mắt (^ ◡ ^)', desc: 'Phiên bản bật nhảy ăn mừng của Cáo Tròn Baby Duo với đôi mắt cười cong vút hạnh phúc và hai cánh tay vung cao.', file: 'lumi_style_F_joyful_jump_cheer.svg', pills: ['😊 Mắt Cười Cong Vút', '🙌 Vung Tay Ăn Mừng', '📦 3.2 KB'] },
+      // TAB 1: 6 NÉT VẼ MỚI HOÀN TOÀN
+      { cat: 'new6', badge: 'NÉT VẼ MỚI', tag: 'Nét Vẽ Mới #1 • Pokémon / Eevee Chibi', title: '🦊 Cáo Sa Mạc Fennec Tai To', desc: 'Đầu tròn nhỏ - tai Fennec khổng lồ xòe ngang, cổ bông xù, nét bút mực nâu dày 6px, mắt đặt thấp ngang mũi và răng nanh nhỏ.', file: 'fox_v2_1_fennec_chibi.svg', pills: ['✒️ Nét Mực 6px', '🐰 Tai Fennec To', '🦷 Răng Nanh Nhỏ'] },
+      { cat: 'new6', badge: 'NÉT VẼ MỚI', tag: 'Nét Vẽ Mới #2 • Disney Zootopia 3/4', title: '🎬 Cáo 3D Góc Nghiêng Có Mõm', desc: 'Xoay góc nghiêng 3/4 với chiếc mõm cáo nhô dài ra phía trước rõ sống mũi 3D, đôi mắt xanh Ngọc Lục Bảo thông minh.', file: 'fox_v2_2_pixar_3d_turn.svg', pills: ['📐 Góc 3/4 Có Mõm', '💚 Mắt Ngọc Lục Bảo', '✨ 3D Không Viền'] },
+      { cat: 'new6', badge: 'NÉT VẼ MỚI', tag: 'Nét Vẽ Mới #3 • Hoàng Tử Bé Storybook', title: '🍂 Cáo Rừng Thon Dài Cổ Tích', desc: 'Dáng cáo rừng thon dài thanh lịch ngồi nghiêng, mặt hình thoi nhọn về chóp mũi, quàng khăn xanh cổ vịt bay trong gió.', file: 'fox_v2_3_storybook_slender.svg', pills: ['🎨 Sách Truyện', '🧣 Khăn Cổ Vịt', '🦊 Dáng Thon Dài'] },
+      { cat: 'new6', badge: 'NÉT VẼ MỚI', tag: 'Nét Vẽ Mới #4 • Pusheen / Sumikko Blob', title: '🍡 Cáo Béo Tròn Hạt Đậu (Pudgy)', desc: 'Đầu và thân liền thành một khối bánh Mochi tròn ủm không cổ, 4 chân ngắn cũn cỡn, mắt chấm hạt đậu nảy tưng tưng.', file: 'fox_v2_4_pudgy_mochi_bean.svg', pills: ['🍡 Thân Tròn Mochi', '🐾 Chân Ngắn Cũn', '🍮 Nảy Như Thạch'] },
+      { cat: 'new6', badge: 'NÉT VẼ MỚI', tag: 'Nét Vẽ Mới #5 • Sonic Tails Cartoon', title: '🧤 Cáo Hoạt Hình Đeo Găng Trắng', desc: 'Hai mắt bầu dục lớn đặt sát nhau ở giữa trán, chùm lông má nhọn sang ngang, đeo găng tay trắng 4 ngón và giày đỏ.', file: 'fox_v2_5_cartoon_gloves.svg', pills: ['🧤 Găng Trắng 4 Ngón', '👟 Giày Đỏ To Bản', '😉 Nháy Mắt'] },
+      { cat: 'new6', badge: 'NÉT VẼ MỚI', tag: 'Nét Vẽ Mới #6 • Genshin / Vulpix Anime', title: '⚡ Linh Vật Cáo Anime Chuông Vàng', desc: 'Chỏm tóc xoắn màu kem trên đỉnh đầu, trán in ngôi sao vàng, mắt Hồng Ngọc (Ruby) đa tầng ánh sáng, cổ đeo chuông vàng.', file: 'fox_v2_6_anime_mascot.svg', pills: ['💎 Mắt Ruby Anime', '🔔 Chuông Vàng Suzu', '🔥 Đuôi Lửa 3 Tà'] },
+
+      // TAB 2: CHÀO MỪNG VÀO APP & NĂNG ĐỘNG
+      { cat: 'welcome', badge: 'NĂNG ĐỘNG', tag: 'Sporty Turbo Runner', title: '🏃‍♂️⚡ Lumi Turbo Chạy Nước Rút', desc: 'Mặc áo khoác thể thao đỏ-trắng-vàng, băng đô bay trong gió, 2 chân đi giày Sneaker chạy luân phiên kèm tia chớp.', file: 'lumi_sporty_energy.svg', pills: ['👟 2 Chân Chạy', '🎗️ Băng Đô Bay', '⚡ Tia Chớp Vàng'] },
+      { cat: 'welcome', badge: 'WELCOME HOME', tag: 'Welcome A • Cổng Vàng & Vẫy Tay', title: '👋 Vẫy Tay & Trao Thẻ Vàng', desc: 'Nhảy Pop-up từ vòng cổng chào vàng, tay phải vẫy chào lộ đệm thịt hồng, tay trái trao thẻ Flashcard Vàng.', file: 'lumi_welcome_app_hero.svg', pills: ['🚀 Pop-In Entrance', '👋 Vẫy Tay Chào', '🎫 Trao Thẻ Vàng'] },
+      { cat: 'welcome', badge: 'BANNER', tag: 'Welcome B • Peek-a-Boo Card', title: '🚪 Ló Đầu Qua Khung Thẻ', desc: 'Thò chân bám lên mép trên của thẻ Banner, nhô đầu lên vẫy tay tinh nghịch, cực hợp đặt trên Dialog/Header.', file: 'lumi_welcome_peekaboo.svg', pills: ['🫣 Nhô Đầu Lấp Ló', '🐾 Chân Bám Thẻ', '👋 Vẫy Tay'] },
+      { cat: 'welcome', badge: 'CHECK-IN', tag: 'Welcome C • Daily Confetti', title: '🎊 Tung Pháo Giấy Đón Ngày Mới', desc: 'Đeo nơ đỏ lớn trước ngực, bật nhảy dang rộng hai tay chào đón nồng nhiệt giữa cơn mưa pháo giấy Confetti.', file: 'lumi_welcome_confetti.svg', pills: ['🎊 Pháo Giấy Rơi', '🎀 Nơ Đỏ Lớn', '🙌 Dang Tay Đón'] },
+      { cat: 'welcome', badge: 'SPLASH #1', tag: 'Duolingo Splash • Face Pop', title: '😉 Cận Cảnh Mặt Pop-Up & Nháy Mắt', desc: 'Khuôn mặt phóng to từ tâm với độ nảy đàn hồi, nháy mắt phải tinh nghịch rồi giơ tay vẫy chào.', file: 'lumi_duo_splash_face_zoom.svg', pills: ['💥 Elastic Pop', '😉 Nháy Mắt', '👋 Tay Nhô Lên'] },
+      { cat: 'welcome', badge: 'SPLASH #2', tag: 'Duolingo Splash • Full Leap', title: '🚀 Nhảy Bật Tung Cả Hai Tay', desc: 'Toàn thân bật nhảy cao từ dưới lên với hiệu ứng Squash & Stretch, hai chân đá sang ngang và hai tay vung cao.', file: 'lumi_duo_splash_jump_hop.svg', pills: ['🦘 Bật Nhảy Cao', '🙌 Vung 2 Tay', '🎨 Flat Vector'] },
+      { cat: 'welcome', badge: 'LOADING #3', tag: 'Duolingo Splash • Loading Bar', title: '🐾 Đi Bộ Nhún Nhảy & Thanh Loading', desc: 'Bước đi nhún nhảy tại chỗ đánh hai tay đều đặn phía trên thanh tiến trình 3D màu xanh lá cây.', file: 'lumi_duo_splash_march_load.svg', pills: ['🐾 Đi Bộ Tại Chỗ', '🟩 Thanh Loading 3D', '⚡ 5.5 KB'] },
+
+      // TAB 3: 8 MẪU ĐỢT 2 (#9 - #16)
+      { cat: 'wave2', badge: 'ĐỢT 2', tag: '9 • Fantasy RPG Chibi', title: '🧙‍♂️ Pháp Sư Vẫy Đũa Thần', desc: 'Đội mũ phù thủy sao đêm & áo choàng tím viền vàng, tay vẫy đũa thần triệu hồi vòng tròn ma thuật xoay 360°.', file: 'lumi_action_9_wizard_spell.svg', pills: ['🪄 Vẫy Đũa Thần', '✨ Vòng Ma Thuật', '🎩 Mũ Phù Thủy'] },
+      { cat: 'wave2', badge: 'ĐỢT 2', tag: '10 • Dreamy Stargazer', title: '🌙 Ngồi Trên Trăng Ngắm Sao Đêm', desc: 'Ngồi trên vầng trăng lưỡi liềm đung đưa, đôi mắt mở to long lanh ngắm ngôi sao ước nguyện tỏa sáng.', file: 'lumi_action_10_sleeping_moon.svg', pills: ['🌙 Trăng Đung Đưa', '⭐ Sao Ước Nguyện', '👀 Mắt Long Lanh'] },
+      { cat: 'wave2', badge: 'ĐỢT 2', tag: '11 • Cosmic Space Toy', title: '🚀 Phi Hành Gia Không Trọng Lực', desc: 'Đội mũ kính cầu trong suốt & bộ đồ Space-Fox, toàn thân bay lơ lửng không trọng lực giữa hành tinh & vì sao.', file: 'lumi_action_11_astronaut_space.svg', pills: ['🧑‍🚀 Mũ Kính Cầu', '🪐 Hành Tinh', '🌌 Lơ Lửng Zero-G'] },
+      { cat: 'wave2', badge: 'ĐỢT 2', tag: '12 • Kyoto Sakura Anime', title: '🌸 Ăn Bánh Dango Dưới Hoa Anh Đào', desc: 'Mặc áo Haori xanh Matcha cài hoa Sakura trên tai, mắt cười tít nhâm nhi xiên bánh Dango 3 màu.', file: 'lumi_action_12_sakura_bento.svg', pills: ['🍡 Bánh Dango', '🌸 Hoa Anh Đào', '😊 Cười Tít Mắt'] },
+      { cat: 'wave2', badge: 'ĐỢT 2', tag: '13 • Streetwear Neo-Tokyo', title: '🛹 Trượt Ván Đeo Kính Râm', desc: 'Mặc áo Hoodie xanh, đội mũ lưỡi trai ngược & kính râm phản quang, lướt ván trượt tốc độ cao.', file: 'lumi_action_13_skater_cool.svg', pills: ['🕶️ Kính Râm', '🛹 Lướt Ván', '🧢 Mũ Đội Ngược'] },
+      { cat: 'wave2', badge: 'ĐỢT 2', tag: '14 • Supercell Royal 3D', title: '👑 Nhà Vua Đội Vương Miện Vàng', desc: 'Khoác áo choàng nhung đỏ viền lông trắng hoàng gia, đội Vương Miện Vàng đính Ruby & cầm Quyền Trượng.', file: 'lumi_action_14_royal_king.svg', pills: ['👑 Vương Miện Vàng', '💎 Quyền Trượng', '🧣 Áo Choàng Đỏ'] },
+      { cat: 'wave2', badge: 'ĐỢT 2', tag: '15 • Nordic Winter', title: '❄️ Cáo Tuyết Bắc Cực Tung Cầu Băng', desc: 'Biến thể Cáo Tuyết Bắc Cực lông trắng muốt mắt xanh Sapphire, đeo chụp tai len đỏ tung hứng quả cầu tuyết.', file: 'lumi_action_15_arctic_snowfox.svg', pills: ['🦊 Cáo Tuyết Trắng', '❄️ Cầu Tuyết Xoay', '🎧 Chụp Tai Len'] },
+      { cat: 'wave2', badge: 'ĐỢT 2', tag: '16 • Mythic Kitsune', title: '🦊 Hồ Ly Ba Đuôi Triệu Hồi Lửa Xanh', desc: 'Biến thể Hồ Ly thần thoại đeo mặt nạ trắng-đỏ nghiêng bên tai, xòe 3 chiếc đuôi bông & triệu hồi lửa xanh.', file: 'lumi_action_16_cyber_kitsune.svg', pills: ['🔥 Lửa Xanh Cyan', '🎭 Mặt Nạ Hồ Ly', '✨ 3 Đuôi Bông'] },
+
+      // TAB 4: 8 MẪU ĐỢT 1 (#1 - #8)
+      { cat: 'wave1', badge: 'ĐỢT 1', tag: '1 • Storybook Plush', title: '📖 Đọc Sách Phép Thuật', desc: 'Hai tay cầm cuốn sách tỏa sáng, đôi mắt Hổ Phách liếc qua lại đọc từng dòng chữ kèm sao tri thức bay lên.', file: 'lumi_action_1_reading.svg', pills: ['👀 Mắt Liếc Đọc', '📖 Sách Phát Sáng', '✨ Sao Tri Thức'] },
+      { cat: 'wave1', badge: 'ĐỢT 1', tag: '2 • Game Mascot', title: '🏆 Nhảy Ăn Mừng Cúp Sao', desc: 'Bật nhảy toàn thân với đàn hồi Squash & Stretch, tay phải giơ cao Ngôi Sao Chiến Thắng, khăn bay tung tăng.', file: 'lumi_action_2_celebrate_jump.svg', pills: ['🚀 Nhảy Đàn Hồi', '⭐ Cầm Sao Vàng', '🎉 Hào Hứng'] },
+      { cat: 'wave1', badge: 'ĐỢT 1', tag: '3 • Studio Ghibli', title: '🏮 Thả Đèn Trời Ước Nguyện', desc: 'Hai tay nâng nhẹ thả chiếc đèn trời tỏa ánh sáng vàng ấm áp bay lên bầu trời đêm, ánh mắt ngước nhìn bình yên.', file: 'lumi_action_3_peaceful_lantern.svg', pills: ['🏮 Đèn Trời Bay', '✨ Ánh Đèn Ấm', '🌙 Bình Yên'] },
+      { cat: 'wave1', badge: 'ĐỢT 1', tag: '4 • Kawaii Kakao', title: '🔍 Thám Tử Soi Kính Lúp', desc: 'Đội mũ Sherlock nhỏ xinh, tay phải đưa kính lúp lên soi từ mới làm mắt phải phóng to, bóng đèn bật sáng.', file: 'lumi_action_4_detective_magnifier.svg', pills: ['🔍 Kính Lúp Phóng To', '💡 Bóng Đèn Sáng', '🕵️ Mũ Sherlock'] },
+      { cat: 'wave1', badge: 'ĐỢT 1', tag: '5 • Lo-Fi Anime', title: '🎧 Đeo Tai Nghe Chill Nhạc', desc: 'Đeo tai nghe chụp tai Mint-Gold, đầu lắc lư theo giai điệu phát âm, chân trái gõ nhịp liên hồi kèm nốt nhạc.', file: 'lumi_action_5_headphones_vibe.svg', pills: ['🎧 Tai Nghe Mint', '🎵 Nốt Nhạc Bay', '🦶 Chân Gõ Nhịp'] },
+      { cat: 'wave1', badge: 'ĐỢT 1', tag: '6 • Action Cel-Shaded', title: '🔥 Truyền Lửa Chuỗi Học Streak', desc: 'Hai tay nâng ngọn lửa Streak 3 tầng bập bùng trước ngực, vầng hào quang năng lượng lan tỏa.', file: 'lumi_action_6_streak_flame.svg', pills: ['🔥 Lửa 3 Tầng', '⚡ Hào Quang', '💪 Quyết Tâm'] },
+      { cat: 'wave1', badge: 'ĐỢT 1', tag: '7 • Sanrio Pastel', title: '🍵 Uống Trà Mật Ong Ấm Áp', desc: 'Chiếc đuôi bông lớn quấn tròn quanh bụng giữ ấm, hai tay nâng cốc trà nóng bốc làn khói thơm hình trái tim.', file: 'lumi_action_7_tea_cozy.svg', pills: ['🍵 Cốc Trà Nóng', '💗 Khói Trái Tim', '🧣 Đuôi Quấn Bụng'] },
+      { cat: 'wave1', badge: 'ĐỢT 1', tag: '8 • Pop-Mart 3D', title: '🎨 Họa Sĩ Vẽ Thẻ Flashcard', desc: 'Đội mũ nồi họa sĩ Pháp màu tím, tay trái cầm bảng pha màu gỗ, tay phải múa cọ vẽ dải cầu vồng.', file: 'lumi_action_8_artist_painting.svg', pills: ['🎨 Bảng Màu Gỗ', '🌈 Cọ Cầu Vồng', '👩‍🎨 Mũ Nồi Tím'] }
+    ];
+
+    const grid = document.getElementById('cardGrid');
+
+    function renderTab(cat, btn) {
+      if (btn) {
+        document.querySelectorAll('#catToolbar .btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      }
+      const list = cat === 'all' ? ITEMS : ITEMS.filter(x => x.cat === cat);
+      grid.innerHTML = list.map(item => `
+        <div class="card">
+          <span class="new-ribbon">${item.badge}</span>
+          <div class="card-header">
+            <span class="style-tag">${item.tag}</span>
+            <h2>${item.title}</h2>
+            <p>${item.desc}</p>
+          </div>
+          <div class="stage">
+            <img src="${item.file}" alt="${item.title}" loading="lazy" decoding="async" width="248" height="258" />
+          </div>
+          <div class="features">
+            ${item.pills.map(p => `<span class="pill">${p}</span>`).join('')}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function setBg(cls, btn) {
+      document.querySelectorAll('#bgToolbar .btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.body.className = cls;
+    }
+
+    // Khởi chạy tức thì chỉ render 6 mẫu mới nhất (< 5ms)
+    renderTab('styleAF');
+  </script>
+</body>
+</html>

@@ -1,0 +1,404 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360" width="360" height="360" fill="none">
+  <defs>
+    <style>
+      /* 1. Thân hộp quà 3D bay lơ lửng nhịp nhàng */
+      @keyframes boxHover {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50%      { transform: translateY(-8px) rotate(-0.8deg); }
+      }
+
+      /* 2. Nắp hộp quà 3D bay lệch pha (Follow-through) và mở hé đón ánh sáng */
+      @keyframes lidFloat {
+        0%, 100% { transform: translate(0px, 0px) rotate(0deg) scale(1); }
+        50%      { transform: translate(3px, -14px) rotate(4.5deg) scale(1.02); }
+      }
+
+      /* 3. Bóng đổ tím dưới sàn co giãn theo độ cao của hộp */
+      @keyframes shadowScale {
+        0%, 100% { transform: scale(1); opacity: 0.42; }
+        50%      { transform: scale(0.84); opacity: 0.24; }
+      }
+
+      /* 4. Lõi ánh sáng vàng rực rỡ trong lòng hộp đập nhịp */
+      @keyframes coreGlowPulse {
+        0%, 100% { transform: scale(1); opacity: 0.92; }
+        50%      { transform: scale(1.14); opacity: 1; }
+      }
+
+      /* 5. Chùm tia sáng bắn vọt lên từ lòng hộp */
+      @keyframes rayBurst {
+        0%, 100% { transform: scaleY(0.94) scaleX(0.98); opacity: 0.78; }
+        50%      { transform: scaleY(1.08) scaleX(1.04); opacity: 1; }
+      }
+
+      /* 6. Dải bụi sao (Stardust Trail) chuyển động lấp lánh quanh hộp */
+      @keyframes stardustFlow {
+        from { stroke-dashoffset: 60; }
+        to   { stroke-dashoffset: 0; }
+      }
+
+      /* 7. Hạt sao nhỏ bắn lên từ lòng hộp */
+      @keyframes sparkRise1 {
+        0%   { transform: translate(0px, 12px) scale(0.4); opacity: 0; }
+        35%  { opacity: 1; }
+        100% { transform: translate(-28px, -38px) scale(1.1); opacity: 0; }
+      }
+      @keyframes sparkRise2 {
+        0%   { transform: translate(0px, 10px) scale(0.4); opacity: 0; }
+        35%  { opacity: 1; }
+        100% { transform: translate(32px, -42px) scale(1.15); opacity: 0; }
+      }
+
+      /* 8. Các ngôi sao 3D tím & vàng bập bềnh xung quanh */
+      @keyframes starFloatA {
+        0%, 100% { transform: translateY(0px) rotate(-8deg) scale(1); }
+        50%      { transform: translateY(-9px) rotate(10deg) scale(1.08); }
+      }
+      @keyframes starFloatB {
+        0%, 100% { transform: translateY(0px) rotate(10deg) scale(1); }
+        50%      { transform: translateY(8px) rotate(-10deg) scale(1.07); }
+      }
+      @keyframes twinkle {
+        0%, 100% { opacity: 0.35; transform: scale(0.8); }
+        50%      { opacity: 1; transform: scale(1.2); }
+      }
+
+      .anim-shadow {
+        transform-origin: 175px 312px;
+        animation: shadowScale 2.8s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+      }
+      .anim-box {
+        transform-origin: 176px 225px;
+        animation: boxHover 2.8s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+      }
+      .anim-lid {
+        transform-origin: 185px 128px;
+        animation: lidFloat 2.8s cubic-bezier(0.45, 0.05, 0.55, 0.95) -0.22s infinite;
+      }
+      .anim-core {
+        transform-origin: 176px 175px;
+        animation: coreGlowPulse 1.8s ease-in-out infinite;
+      }
+      .anim-rays {
+        transform-origin: 176px 190px;
+        animation: rayBurst 1.8s ease-in-out infinite;
+      }
+      .anim-stardust {
+        stroke-dasharray: 2 10;
+        animation: stardustFlow 2.4s linear infinite;
+      }
+      .anim-stardust-fast {
+        stroke-dasharray: 1 8;
+        animation: stardustFlow 1.6s linear infinite;
+      }
+      .anim-star-a {
+        transform-box: fill-box;
+        transform-origin: center;
+        animation: starFloatA 3.1s ease-in-out infinite;
+      }
+      .anim-star-b {
+        transform-box: fill-box;
+        transform-origin: center;
+        animation: starFloatB 2.7s ease-in-out infinite;
+      }
+    </style>
+
+    <!-- Nền Card Pastel Lavender chuẩn 3D Render -->
+    <linearGradient id="bgCardGrad" x1="30" y1="20" x2="330" y2="340" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#B9A3F2" />
+      <stop offset="52%" stop-color="#CDBCF7" />
+      <stop offset="100%" stop-color="#DFD5FC" />
+    </linearGradient>
+
+    <!-- Hào quang vàng rực rỡ phát ra từ lòng hộp -->
+    <radialGradient id="magicAura" cx="176" cy="172" r="115" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFBEB" stop-opacity="1" />
+      <stop offset="28%" stop-color="#FDE047" stop-opacity="0.88" />
+      <stop offset="62%" stop-color="#F59E0B" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#A855F7" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Chùm tia sáng vàng (Light Rays) -->
+    <linearGradient id="rayGrad" x1="176" y1="195" x2="176" y2="110" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFBEB" stop-opacity="0.95" />
+      <stop offset="50%" stop-color="#FDE047" stop-opacity="0.65" />
+      <stop offset="100%" stop-color="#FDE047" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Mặt trái hộp quà 3D (Sáng hơn, phản chiếu ánh sáng) -->
+    <linearGradient id="boxLeftGrad" x1="108" y1="178" x2="176" y2="294" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#9333EA" />
+      <stop offset="45%" stop-color="#6B21A8" />
+      <stop offset="100%" stop-color="#3B0764" />
+    </linearGradient>
+
+    <!-- Mặt phải hộp quà 3D (Đậm hơn tạo chiều sâu khối) -->
+    <linearGradient id="boxRightGrad" x1="176" y1="184" x2="252" y2="288" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#7E22CE" />
+      <stop offset="55%" stop-color="#4C1D95" />
+      <stop offset="100%" stop-color="#2E1065" />
+    </linearGradient>
+
+    <!-- Sống giữa hộp quà (3D Specular Bevel Highlight) -->
+    <linearGradient id="centerBevelGrad" x1="176" y1="205" x2="176" y2="298" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#E9D5FF" stop-opacity="0.85" />
+      <stop offset="50%" stop-color="#A855F7" stop-opacity="0.55" />
+      <stop offset="100%" stop-color="#581C87" stop-opacity="0.2" />
+    </linearGradient>
+
+    <!-- Lòng hộp bên trong rực lửa vàng -->
+    <linearGradient id="innerBoxGrad" x1="176" y1="154" x2="176" y2="208" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#78350F" />
+      <stop offset="45%" stop-color="#F59E0B" />
+      <stop offset="85%" stop-color="#FEF08A" />
+      <stop offset="100%" stop-color="#FFFFFF" />
+    </linearGradient>
+
+    <!-- Dải ruy-băng vàng kim loại 3D -->
+    <linearGradient id="goldRibbonLeft" x1="136" y1="180" x2="136" y2="282" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FDE047" />
+      <stop offset="35%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#B45309" />
+    </linearGradient>
+    <linearGradient id="goldRibbonRight" x1="216" y1="180" x2="216" y2="282" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FBBF24" />
+      <stop offset="50%" stop-color="#D97706" />
+      <stop offset="100%" stop-color="#92400E" />
+    </linearGradient>
+
+    <!-- Mặt nắp hộp 3D bóng mượt -->
+    <linearGradient id="lidTopGrad" x1="125" y1="98" x2="255" y2="152" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#C084FC" />
+      <stop offset="45%" stop-color="#7E22CE" />
+      <stop offset="100%" stop-color="#4C1D95" />
+    </linearGradient>
+    <linearGradient id="lidSideGrad" x1="120" y1="115" x2="262" y2="165" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#A855F7" />
+      <stop offset="48%" stop-color="#6B21A8" />
+      <stop offset="100%" stop-color="#3B0764" />
+    </linearGradient>
+
+    <!-- Nơ vàng 3D phồng (Bow Loops) -->
+    <linearGradient id="bowLoopBright" x1="145" y1="72" x2="225" y2="122" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FEF08A" />
+      <stop offset="40%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#B45309" />
+    </linearGradient>
+    <linearGradient id="bowInnerDark" x1="160" y1="82" x2="210" y2="118" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#B45309" />
+      <stop offset="100%" stop-color="#78350F" />
+    </linearGradient>
+
+    <!-- Ngôi sao 3D Tím & Vàng -->
+    <linearGradient id="purpleStar3D" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E9D5FF" />
+      <stop offset="45%" stop-color="#9333EA" />
+      <stop offset="100%" stop-color="#4C1D95" />
+    </linearGradient>
+    <linearGradient id="goldStar3D" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FEF9C3" />
+      <stop offset="45%" stop-color="#FBBF24" />
+      <stop offset="100%" stop-color="#B45309" />
+    </linearGradient>
+
+    <!-- Bộ lọc Blur cho bóng đổ & hào quang -->
+
+    <!-- Template Ngôi sao 3D Tím Phồng (Puffy 3D Purple Star) -->
+    <g id="starPurple">
+      <path d="M 0 -13 L 3.8 -4.2 L 13.2 -3.0 L 6.2 3.4 L 8.2 12.6 L 0 8.0 L -8.2 12.6 L -6.2 3.4 L -13.2 -3.0 L -3.8 -4.2 Z" fill="#3B0764" transform="translate(1.5, 2)" />
+      <path d="M 0 -13 L 3.8 -4.2 L 13.2 -3.0 L 6.2 3.4 L 8.2 12.6 L 0 8.0 L -8.2 12.6 L -6.2 3.4 L -13.2 -3.0 L -3.8 -4.2 Z" fill="url(#purpleStar3D)" stroke="#D8B4FE" stroke-width="0.8" stroke-linejoin="round" />
+      <ellipse cx="-2.5" cy="-4.5" rx="2.5" ry="1.4" transform="rotate(-25 -2.5 -4.5)" fill="#FAF5FF" opacity="0.7" />
+    </g>
+
+    <!-- Template Ngôi sao 3D Vàng Phồng (Puffy 3D Gold Star) -->
+    <g id="starGold">
+      <path d="M 0 -9.5 L 2.8 -3.0 L 9.5 -2.2 L 4.5 2.4 L 5.9 9.0 L 0 5.7 L -5.9 9.0 L -4.5 2.4 L -9.5 -2.2 L -2.8 -3.0 Z" fill="#92400E" transform="translate(1, 1.5)" />
+      <path d="M 0 -9.5 L 2.8 -3.0 L 9.5 -2.2 L 4.5 2.4 L 5.9 9.0 L 0 5.7 L -5.9 9.0 L -4.5 2.4 L -9.5 -2.2 L -2.8 -3.0 Z" fill="url(#goldStar3D)" stroke="#FEF9C3" stroke-width="0.7" stroke-linejoin="round" />
+    </g>
+  </defs>
+
+  <!-- ==================== 1. KHUNG CARD SQUIRCLE PASTEL LAVENDER & BOKEH ==================== -->
+  <g id="card-backdrop">
+    <rect x="20" y="20" width="320" height="320" rx="54" fill="url(#bgCardGrad)" stroke="#E5E7EB" stroke-width="6" />
+    <!-- Đốm sáng Bokeh mờ ảo phía sau -->
+    <circle cx="96" cy="118" r="14" fill="#FFFFFF" opacity="0.18" />
+    <circle cx="212" cy="74" r="11" fill="#FFFFFF" opacity="0.16" />
+    <circle cx="72" cy="184" r="10" fill="#FFFFFF" opacity="0.15" />
+    <circle cx="282" cy="284" r="13" fill="#FFFFFF" opacity="0.2" />
+  </g>
+
+  <!-- ==================== 2. BÓNG ĐỔ TÍM DƯỚI SÀN (FLOOR SHADOW) ==================== -->
+  <ellipse class="anim-shadow" cx="176" cy="312" rx="68" ry="11" fill="#4C1D95" />
+
+  <!-- ==================== 3. VÒNG XOÁY BỤI SAO PHÍA SAU (BACK STARDUST ORBIT) ==================== -->
+  <path d="M 88 214 C 52 184, 78 138, 146 132" stroke="#FDE047" stroke-width="5" stroke-linecap="round" opacity="0.35" />
+  <path d="M 248 140 C 304 148, 314 198, 266 232" stroke="#FDE047" stroke-width="6" stroke-linecap="round" opacity="0.45" />
+  <path class="anim-stardust" d="M 246 138 C 306 146, 316 198, 264 234" stroke="#FFFBEB" stroke-width="3.5" stroke-linecap="round" />
+
+  <!-- ==================== 4. THÂN HỘP QUÀ 3D + LÒNG HỘP PHÁT SÁNG + NẮP HỘP ==================== -->
+  <g class="anim-box">
+
+    <!-- 4.1. Quầng sáng phép thuật rực rỡ tỏa ra từ giữa hộp -->
+    <circle class="anim-core" cx="176" cy="172" r="96" fill="url(#magicAura)" />
+
+    <!-- 4.2. Lòng hộp mở 3D (Isometric Diamond Opening) -->
+    <path d="M 112 184 L 176 162 L 244 186 L 176 210 Z" fill="url(#innerBoxGrad)" stroke="#581C87" stroke-width="3.5" stroke-linejoin="round" />
+
+    <!-- 4.3. CHÙM TIA SÁNG VÀNG & SAO BĂNG BẮN TỪ LÒNG HỘP (VOLUMETRIC RAYS & COMET ARCS) -->
+    <g class="anim-rays">
+      <!-- Các luồng sáng quạt lên từ đáy hộp -->
+      <polygon points="176,204 128,128 148,122" fill="url(#rayGrad)" />
+      <polygon points="176,204 156,112 178,110" fill="url(#rayGrad)" />
+      <polygon points="176,204 184,114 206,120" fill="url(#rayGrad)" />
+      <polygon points="176,204 212,126 232,138" fill="url(#rayGrad)" />
+
+      <!-- Vệt sao băng cong vút sang trái (Shooting Star Arc Left) -->
+      <path d="M 168 194 Q 134 154, 92 142" stroke="#FEF08A" stroke-width="4" stroke-linecap="round" />
+      <path d="M 162 196 Q 142 162, 118 148" stroke="#FFFBEB" stroke-width="2.5" stroke-linecap="round" />
+
+      <!-- Vệt sao băng cong vút sang phải (Shooting Star Arc Right) -->
+      <path d="M 184 194 Q 218 158, 266 168" stroke="#FEF08A" stroke-width="3.8" stroke-linecap="round" />
+      <path d="M 180 196 Q 206 164, 232 156" stroke="#FFFBEB" stroke-width="2.5" stroke-linecap="round" />
+    </g>
+
+    <!-- Hạt sao lấp lánh bay lên liên tục từ lòng hộp -->
+    <g style="animation: sparkRise1 2.1s ease-out infinite;">
+      <use href="#starGold" x="156" y="176" transform="scale(0.65)" />
+      <circle cx="145" cy="166" r="3" fill="#FFFBEB" />
+    </g>
+    <g style="animation: sparkRise2 2.4s ease-out 0.7s infinite;">
+      <use href="#starGold" x="192" y="176" transform="scale(0.6)" />
+      <circle cx="204" cy="164" r="3" fill="#FFFBEB" />
+    </g>
+
+    <!-- 4.4. MẶT TRƯỚC TRÁI & PHẢI CỦA THÂN HỘP QUÀ 3D -->
+    <!-- Mặt trái (Left Isometric Face) -->
+    <path d="M 110 185 L 176 209 L 176 296 C 166 296, 122 278, 114 270 C 109 265, 108 256, 108 246 Z" fill="url(#boxLeftGrad)" />
+    <!-- Mặt phải (Right Isometric Face) -->
+    <path d="M 176 209 L 244 186 L 242 248 C 242 258, 240 266, 234 271 C 224 280, 186 296, 176 296 Z" fill="url(#boxRightGrad)" />
+
+    <!-- Sống sáng 3D ở góc gập chính giữa hộp -->
+    <line x1="176" y1="210" x2="176" y2="294" stroke="url(#centerBevelGrad)" stroke-width="4" stroke-linecap="round" />
+
+    <!-- 4.5. RUY-BĂNG VÀNG ĐỨNG TRÊN 2 MẶT HỘP (CÓ ĐƯỜNG CHỈ VÀNG NỔI) -->
+    <!-- Ruy-băng mặt trái -->
+    <path d="M 131 193 L 149 199 L 147 284 L 129 277 Z" fill="url(#goldRibbonLeft)" />
+    <line x1="133" y1="194" x2="131" y2="277" stroke="#FEF08A" stroke-width="1" stroke-dasharray="3 2" opacity="0.8" />
+    <line x1="147" y1="199" x2="145" y2="283" stroke="#FEF08A" stroke-width="1" stroke-dasharray="3 2" opacity="0.8" />
+
+    <!-- Ruy-băng mặt phải -->
+    <path d="M 205 199 L 223 193 L 220 278 L 203 284 Z" fill="url(#goldRibbonRight)" />
+    <line x1="207" y1="199" x2="205" y2="283" stroke="#FDE047" stroke-width="1" stroke-dasharray="3 2" opacity="0.75" />
+    <line x1="221" y1="194" x2="218" y2="277" stroke="#FDE047" stroke-width="1" stroke-dasharray="3 2" opacity="0.75" />
+
+    <!-- Viền miệng hộp 3D sắc nét ánh vàng kim & tím sáng -->
+    <path d="M 110 185 L 176 209 L 244 186" stroke="#C084FC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M 130 192 L 176 209 L 222 193" stroke="#FEF08A" stroke-width="2" stroke-linecap="round" opacity="0.85" />
+
+    <!-- ==================== 5. NẮP HỘP 3D BAY LƠ LỬNG & NƠ VÀNG 3D PHỒNG (FLOATING LID & BOW) ==================== -->
+    <g class="anim-lid">
+      <!-- Bóng dưới gầm nắp hộp -->
+      <path d="M 122 132 L 194 156 L 258 158 L 192 134 Z" fill="#2E1065" opacity="0.65" />
+
+      <!-- Mặt trên của nắp hộp nghiêng (Top Surface of Lid) -->
+      <path d="M 126 112 C 130 106, 174 96, 186 98 L 256 134 C 260 137, 260 144, 254 146 L 192 142 L 124 118 Z" fill="url(#lidTopGrad)" />
+
+      <!-- Thành trước bên trái & bên phải của nắp hộp 3D (Extruded Lid Rim) -->
+      <path d="M 120 124 C 120 114, 126 110, 134 113 L 194 134 L 190 158 L 124 136 C 120 134, 119 129, 120 124 Z" fill="url(#lidSideGrad)" />
+      <path d="M 194 134 L 256 138 C 261 139, 262 145, 260 152 C 258 159, 254 162, 248 161 L 190 158 Z" fill="#4C1D95" />
+
+      <!-- Vệt sáng bóng (Specular Gloss) trên góc nắp hộp -->
+      <path d="M 128 118 L 192 138 L 254 142" stroke="#E9D5FF" stroke-width="2.5" stroke-linecap="round" opacity="0.8" />
+      <ellipse cx="188" cy="144" rx="5" ry="11" transform="rotate(10 188 144)" fill="#E9D5FF" opacity="0.55" />
+
+      <!-- Ruy-băng vàng vắt qua nắp hộp (Trái & Phải) -->
+      <path d="M 144 114 L 164 121 L 158 147 L 138 140 Z" fill="url(#goldRibbonLeft)" />
+      <path d="M 144 114 L 178 102 L 194 108 L 164 121 Z" fill="#FBBF24" />
+      <path d="M 220 134 L 238 136 L 233 160 L 215 159 Z" fill="url(#goldRibbonRight)" />
+      <path d="M 188 106 L 238 136 L 220 134 L 178 108 Z" fill="#F59E0B" />
+
+      <!-- CHIẾC NƠ VÀNG 3D 2 CÁNH PHỒNG (3D DOUBLE-LOOP GOLDEN RIBBON BOW) -->
+      <g id="golden-3d-bow">
+        <!-- Lòng trong tối của 2 cánh nơ (Tạo độ phồng 3D) -->
+        <path d="M 182 108 C 162 84, 142 92, 152 110 C 160 120, 174 114, 182 108 Z" fill="url(#bowInnerDark)" />
+        <path d="M 192 110 C 216 90, 240 100, 232 118 C 224 128, 204 118, 192 110 Z" fill="url(#bowInnerDark)" />
+
+        <!-- Cánh nơ phụ phía sau (Back Loops) -->
+        <path d="M 184 104 C 170 76, 146 76, 148 96 C 150 104, 168 106, 184 104 Z" fill="url(#bowLoopBright)" stroke="#FEF08A" stroke-width="1" />
+        <path d="M 192 106 C 212 82, 236 86, 236 106 C 234 116, 212 114, 192 106 Z" fill="url(#bowLoopBright)" stroke="#FEF08A" stroke-width="1" />
+
+        <!-- Cánh nơ chính phía trước bên trái (Front Left 3D Loop) -->
+        <path d="M 182 108 C 164 86, 140 94, 146 112 C 151 124, 172 118, 184 112 Z" fill="url(#bowLoopBright)" stroke="#FEF9C3" stroke-width="1.2" />
+        <!-- Cánh nơ chính phía trước bên phải (Front Right 3D Loop) -->
+        <path d="M 192 110 C 214 92, 242 102, 236 120 C 230 132, 206 122, 190 113 Z" fill="url(#bowLoopBright)" stroke="#FEF9C3" stroke-width="1.2" />
+
+        <!-- Hai dải đuôi nơ uốn lượn trên mặt nắp -->
+        <path d="M 182 111 Q 168 122, 154 120 Q 166 112, 180 108 Z" fill="#F59E0B" stroke="#FEF08A" stroke-width="0.8" />
+        <path d="M 192 112 Q 208 126, 224 126 Q 212 116, 194 109 Z" fill="#D97706" stroke="#FEF08A" stroke-width="0.8" />
+
+        <!-- Nút thắt trung tâm nơ (Center Knot) -->
+        <rect x="178" y="100" width="16" height="14" rx="5" transform="rotate(12 186 107)" fill="url(#bowLoopBright)" stroke="#FEF9C3" stroke-width="1.2" />
+      </g>
+    </g>
+
+    <!-- ==================== 6. DẢI NGÂN HÀ BỤI SAO QUẤN PHÍA TRƯỚC HỘP (FRONT STARDUST SWIRL) ==================== -->
+    <g>
+      <!-- Luồng sáng mờ dẫn đường -->
+      <path d="M 76 226 C 68 264, 136 286, 228 242 C 262 226, 286 198, 286 176" stroke="#FDE047" stroke-width="7" stroke-linecap="round" opacity="0.38" />
+      <!-- Hạt bụi sao chảy liên tục -->
+      <path class="anim-stardust" d="M 76 226 C 68 264, 136 286, 228 242 C 262 226, 286 198, 286 176" stroke="#FFFBEB" stroke-width="4" stroke-linecap="round" />
+      <path class="anim-stardust-fast" d="M 84 238 C 88 268, 152 282, 236 234" stroke="#FDE047" stroke-width="3" stroke-linecap="round" />
+    </g>
+
+  </g>
+
+  <!-- ==================== 7. HỆ THỐNG NGÔI SAO 3D TÍM & VÀNG BAY LƠ LỬNG XUNG QUANH ==================== -->
+  <!-- Nhóm sao bên trái -->
+  <g class="anim-star-a" style="animation-delay: 0s;">
+    <use href="#starPurple" x="98" y="176" transform="rotate(-15 98 176) scale(0.95)" />
+  </g>
+  <g class="anim-star-b" style="animation-delay: -0.6s;">
+    <use href="#starPurple" x="82" y="232" transform="rotate(12 82 232) scale(1.05)" />
+  </g>
+  <g class="anim-star-a" style="animation-delay: -1.2s;">
+    <use href="#starGold" x="92" y="142" transform="scale(0.85)" />
+  </g>
+  <g class="anim-star-b" style="animation-delay: -0.9s;">
+    <use href="#starGold" x="122" y="256" transform="rotate(-18 122 256) scale(0.75)" />
+  </g>
+  <g class="anim-star-a" style="animation-delay: -1.7s;">
+    <use href="#starPurple" x="116" y="282" transform="rotate(20 116 282) scale(0.55)" />
+  </g>
+
+  <!-- Nhóm sao phía trước hộp -->
+  <g class="anim-star-b" style="animation-delay: -0.3s;">
+    <use href="#starPurple" x="158" y="256" transform="rotate(-12 158 256) scale(0.7)" />
+  </g>
+  <g class="anim-star-a" style="animation-delay: -0.8s;">
+    <use href="#starPurple" x="222" y="256" transform="rotate(14 222 256) scale(1.1)" />
+  </g>
+
+  <!-- Nhóm sao bên phải -->
+  <g class="anim-star-b" style="animation-delay: -0.4s;">
+    <use href="#starPurple" x="282" y="156" transform="rotate(18 282 156) scale(0.9)" />
+  </g>
+  <g class="anim-star-a" style="animation-delay: -1.1s;">
+    <use href="#starPurple" x="276" y="204" transform="rotate(-14 276 204) scale(0.88)" />
+  </g>
+  <g class="anim-star-b" style="animation-delay: -1.5s;">
+    <use href="#starGold" x="278" y="238" transform="rotate(15 278 238) scale(0.85)" />
+  </g>
+  <g class="anim-star-a" style="animation-delay: -0.5s;">
+    <use href="#starPurple" x="258" y="266" transform="rotate(-10 258 266) scale(0.95)" />
+  </g>
+  <g class="anim-star-b" style="animation-delay: -1.9s;">
+    <use href="#starGold" x="268" y="136" transform="rotate(-12 268 136) scale(0.65)" />
+  </g>
+
+  <!-- Các đốm sáng kim tuyến lấp lánh (Twinkling Sparkles) -->
+  <circle cx="114" cy="158" r="2.5" fill="#FFFBEB" style="animation: twinkle 1.6s ease-in-out infinite;" />
+  <circle cx="248" cy="122" r="3" fill="#FFFBEB" style="animation: twinkle 2.1s ease-in-out 0.5s infinite;" />
+  <circle cx="182" cy="272" r="2.2" fill="#FEF08A" style="animation: twinkle 1.8s ease-in-out 0.9s infinite;" />
+  <circle cx="294" cy="184" r="2.5" fill="#FFFBEB" style="animation: twinkle 1.9s ease-in-out 0.3s infinite;" />
+  <circle cx="72" cy="208" r="2.5" fill="#FFFBEB" style="animation: twinkle 2.2s ease-in-out 1.1s infinite;" />
+</svg>

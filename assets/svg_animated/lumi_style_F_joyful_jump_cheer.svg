@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360" width="360" height="360" fill="none">
+  <defs>
+    <style>
+      @keyframes sfJump {
+        0%, 100% { transform: translateY(8px) scale(1.06, 0.94); }
+        50%      { transform: translateY(-22px) scale(0.95, 1.05); }
+      }
+      @keyframes sfShadow {
+        0%, 100% { transform: scale(1.05); opacity: 0.85; }
+        50%      { transform: scale(0.68); opacity: 0.45; }
+      }
+      .sf-shadow { transform-origin: 180px 282px; animation: sfShadow 1.2s ease-in-out infinite; }
+      .sf-body   { transform-origin: 180px 270px; animation: sfJump 1.2s ease-in-out infinite; }
+    </style>
+  </defs>
+
+  <ellipse class="sf-shadow" cx="180" cy="276" rx="92" ry="52" fill="#EBEBEB" />
+
+  <g class="sf-body">
+    <path d="M 220 248 C 258 220, 304 202, 326 222 C 344 238, 330 272, 296 282 C 264 292, 234 276, 220 262 Z" fill="#FF781F" />
+    <path d="M 288 212 C 306 210, 320 214, 326 222 C 340 238, 328 270, 296 282 C 294 266, 282 262, 272 268 C 278 252, 272 238, 288 212 Z" fill="#FFFDF7" />
+
+    <!-- Hai tay vung cao chữ V ăn mừng -->
+    <path d="M 104 176 L 46 138 C 36 132, 30 148, 40 166 C 52 188, 78 206, 108 212 Z" fill="#FF781F" />
+    <path d="M 256 176 L 314 138 C 324 132, 330 148, 320 166 C 308 188, 282 206, 252 212 Z" fill="#FF781F" />
+
+    <!-- Thân tròn nguyên khối kiểu Cú Baby Duolingo -->
+    <path d="M 180 68 C 146 68, 124 46, 98 48 C 68 50, 62 94, 66 146 C 70 218, 106 274, 180 274 C 254 274, 290 218, 294 146 C 298 94, 292 50, 262 48 C 236 46, 214 68, 180 68 Z" fill="#FF781F" />
+
+    <path d="M 68 98 C 58 56, 68 18, 94 18 C 118 18, 138 48, 146 72 Z" fill="#FF781F" />
+    <path d="M 64 52 C 68 28, 78 18, 94 18 C 108 18, 120 30, 128 46 C 106 52, 84 54, 64 52 Z" fill="#3C1B08" />
+    <path d="M 80 82 C 74 58, 82 36, 94 34 C 106 34, 118 54, 124 74 Z" fill="#FFB899" />
+
+    <path d="M 292 98 C 302 56, 292 18, 266 18 C 242 18, 222 48, 214 72 Z" fill="#FF781F" />
+    <path d="M 296 52 C 292 28, 282 18, 266 18 C 252 18, 240 30, 232 46 C 254 52, 276 54, 296 52 Z" fill="#3C1B08" />
+    <path d="M 280 82 C 286 58, 278 36, 266 34 C 254 34, 242 54, 236 74 Z" fill="#FFB899" />
+
+    <!-- Mảng má trắng kem lớn & khăn vàng -->
+    <path d="M 68 164 C 94 144, 140 146, 166 168 C 174 162, 186 162, 194 168 C 220 146, 266 144, 292 164 C 286 226, 248 272, 180 272 C 112 272, 74 226, 68 164 Z" fill="#FFFDF7" />
+
+    <!-- Đôi mắt cười cong tít hạnh phúc (^ ^) -->
+    <path d="M 102 146 C 112 122, 146 122, 156 146" stroke="#3C1B08" stroke-width="8" stroke-linecap="round" fill="none" />
+    <path d="M 204 146 C 214 122, 248 122, 258 146" stroke="#3C1B08" stroke-width="8" stroke-linecap="round" fill="none" />
+
+    <ellipse cx="92" cy="168" rx="18" ry="10" fill="#FF8FA3" opacity="0.75" />
+    <ellipse cx="268" cy="168" rx="18" ry="10" fill="#FF8FA3" opacity="0.75" />
+
+    <ellipse cx="180" cy="162" rx="10" ry="7" fill="#3C1B08" />
+    <path d="M 156 174 C 156 212, 204 212, 204 174 Z" fill="#D94E34" />
+    <ellipse cx="180" cy="194" rx="14" ry="8" fill="#FF9EBB" />
+
+    <ellipse cx="122" cy="264" rx="22" ry="16" transform="rotate(24 122 264)" fill="#3C1B08" />
+    <ellipse cx="238" cy="264" rx="22" ry="16" transform="rotate(-24 238 264)" fill="#3C1B08" />
+  </g>
+</svg>

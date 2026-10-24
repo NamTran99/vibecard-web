@@ -1,0 +1,170 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 380" width="360" height="380" fill="none">
+  <defs>
+    <style>
+      @keyframes mochiBounce {
+        0%, 100% { transform: translateY(0px) scale(1, 1); }
+        50%      { transform: translateY(-5px) scale(0.985, 1.02); }
+      }
+      @keyframes mochiShadow {
+        0%, 100% { transform: scale(1); opacity: 0.22; }
+        50%      { transform: scale(0.91); opacity: 0.15; }
+      }
+      @keyframes mochiTailWag {
+        0%, 100% { transform: rotate(-10deg); }
+        50%      { transform: rotate(14deg); }
+      }
+      @keyframes mochiHeadNod {
+        0%, 100% { transform: rotate(-4deg) translateY(0px); }
+        50%      { transform: rotate(3deg) translateY(-3px); }
+      }
+      @keyframes mochiEarL {
+        0%, 100% { transform: rotate(0deg); }
+        50%      { transform: rotate(-7deg); }
+      }
+      @keyframes mochiEarR {
+        0%, 100% { transform: rotate(0deg); }
+        50%      { transform: rotate(7deg); }
+      }
+      @keyframes mochiPawWave {
+        0%, 100% { transform: rotate(-10deg); }
+        50%      { transform: rotate(18deg); }
+      }
+      @keyframes mochiBlink {
+        0%, 44%, 48%, 92%, 96%, 100% { transform: scaleY(1); }
+        46%, 94%                     { transform: scaleY(0.08); }
+      }
+      @keyframes heartFloat {
+        0%, 100% { transform: translateY(0px) scale(0.95) rotate(-8deg); opacity: 0.85; }
+        50%      { transform: translateY(-7px) scale(1.08) rotate(6deg); opacity: 1; }
+      }
+
+      .m-shadow { transform-origin: 168px 346px; animation: mochiShadow 2.2s ease-in-out infinite; }
+      .m-body   { transform-origin: 165px 330px; animation: mochiBounce 2.2s ease-in-out infinite; }
+      .m-tail   { transform-origin: 204px 312px; animation: mochiTailWag 1.5s ease-in-out infinite; }
+      .m-paw-l  { transform-origin: 122px 248px; animation: mochiPawWave 1.4s ease-in-out infinite; }
+      .m-head   { transform-origin: 162px 214px; animation: mochiHeadNod 2.2s ease-in-out infinite; }
+      .m-ear-l  { transform-origin: 102px 102px; animation: mochiEarL 2.2s ease-in-out infinite; }
+      .m-ear-r  { transform-origin: 222px 102px; animation: mochiEarR 2.2s ease-in-out -0.3s infinite; }
+      .m-eyes   { transform-origin: 162px 154px; animation: mochiBlink 4.3s infinite; }
+      .m-heart  { transform-origin: 278px 92px; animation: heartFloat 2.4s ease-in-out infinite; }
+    </style>
+
+    <linearGradient id="kawaiiOrange" x1="162" y1="68" x2="162" y2="335" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF9B54" />
+      <stop offset="65%" stop-color="#F97316" />
+      <stop offset="100%" stop-color="#EA580C" />
+    </linearGradient>
+
+    <linearGradient id="kawaiiScarf" x1="100" y1="205" x2="225" y2="285" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FDE047" />
+      <stop offset="60%" stop-color="#FBBF24" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+  </defs>
+
+  <!-- Bóng đổ sàn -->
+  <ellipse class="m-shadow" cx="168" cy="346" rx="96" ry="14" fill="#2A1205" />
+
+  <!-- Trái tim nhỏ bay lơ lửng kiểu Kawaii Hàn Quốc -->
+  <g class="m-heart">
+    <path d="M 278 98 C 278 98, 262 86, 266 76 C 270 68, 278 74, 278 78 C 278 74, 286 68, 290 76 C 294 86, 278 98, 278 98 Z" fill="#FF6B8B" stroke="#3B1D0E" stroke-width="3" stroke-linejoin="round" />
+  </g>
+
+  <g class="m-body">
+    <!-- Đuôi xù tròn viền nâu đậm kiểu Kakao/Line Friends -->
+    <g class="m-tail">
+      <path d="M 196 320 C 198 258, 236 218, 282 222 C 320 226, 336 264, 318 298 C 300 328, 250 338, 196 328 Z" fill="url(#kawaiiOrange)" stroke="#3B1D0E" stroke-width="4.5" stroke-linejoin="round" />
+      <path d="M 254 225 C 278 218, 304 226, 318 246 C 328 264, 326 282, 318 298 C 306 284, 292 286, 284 294 C 282 278, 268 274, 256 280 C 260 264, 248 252, 254 225 Z" fill="#FFFDF9" stroke="#3B1D0E" stroke-width="4.5" stroke-linejoin="round" />
+    </g>
+
+    <!-- Hai chân sau tròn xoe như bánh Mochi -->
+    <ellipse cx="104" cy="322" rx="22" ry="18" transform="rotate(-12 104 322)" fill="#431E0D" stroke="#3B1D0E" stroke-width="4.5" />
+    <ellipse cx="220" cy="322" rx="22" ry="18" transform="rotate(12 220 322)" fill="#431E0D" stroke="#3B1D0E" stroke-width="4.5" />
+
+    <!-- Thân tròn mũm mĩm -->
+    <path d="M 112 224 C 100 266, 102 322, 124 338 L 200 338 C 222 322, 224 266, 212 224 Z" fill="url(#kawaiiOrange)" stroke="#3B1D0E" stroke-width="4.5" stroke-linejoin="round" />
+    <!-- Bụng kem sữa -->
+    <path d="M 134 240 C 124 274, 128 324, 162 336 C 196 324, 200 274, 190 240 Z" fill="#FFFDF9" />
+
+    <!-- Tay phải chống nhẹ -->
+    <path d="M 178 242 C 182 278, 180 318, 182 338 C 186 346, 206 346, 208 336 C 210 314, 210 276, 206 240 Z" fill="url(#kawaiiOrange)" stroke="#3B1D0E" stroke-width="4.5" stroke-linejoin="round" />
+    <path d="M 180 306 Q 194 312, 209 306 L 208 336 C 206 346, 186 346, 182 338 Z" fill="#431E0D" stroke="#3B1D0E" stroke-width="4.5" stroke-linejoin="round" />
+
+    <!-- Tay trái giơ lên vẫy chào với đệm thịt hồng -->
+    <g class="m-paw-l">
+      <path d="M 124 248 C 102 246, 76 226, 80 198 C 84 180, 106 182, 110 200 C 112 216, 122 228, 132 234 Z" fill="url(#kawaiiOrange)" stroke="#3B1D0E" stroke-width="4.5" stroke-linejoin="round" />
+      <circle cx="94" cy="196" r="15" fill="#431E0D" stroke="#3B1D0E" stroke-width="4.2" />
+      <ellipse cx="94" cy="198" rx="6.5" ry="5" fill="#FF8FA3" />
+      <circle cx="86" cy="189" r="2.3" fill="#FF8FA3" />
+      <circle cx="94" cy="187" r="2.5" fill="#FF8FA3" />
+      <circle cx="102" cy="189" r="2.3" fill="#FF8FA3" />
+    </g>
+
+    <!-- Khăn quàng cổ vàng mù tạt viền nét hoạt họa -->
+    <g>
+      <rect x="100" y="206" width="124" height="32" rx="16" fill="url(#kawaiiScarf)" stroke="#3B1D0E" stroke-width="4.5" />
+      <path d="M 134 232 L 164 232 L 168 284 C 168 290, 130 290, 130 284 Z" fill="url(#kawaiiScarf)" stroke="#3B1D0E" stroke-width="4.5" stroke-linejoin="round" />
+      <rect x="131" y="210" width="34" height="30" rx="10" fill="#FDE047" stroke="#3B1D0E" stroke-width="4.5" />
+    </g>
+
+    <!-- Đầu Cáo Kawaii Mochi -->
+    <g class="m-head">
+      <!-- Tai trái -->
+      <g class="m-ear-l">
+        <path d="M 70 124 C 52 78, 60 26, 82 20 C 106 18, 134 54, 144 96 Z" fill="url(#kawaiiOrange)" stroke="#3B1D0E" stroke-width="4.5" stroke-linejoin="round" />
+        <path d="M 59 54 C 64 32, 72 22, 82 20 C 94 19, 108 30, 118 48 C 98 54, 78 56, 59 54 Z" fill="#431E0D" />
+        <path d="M 80 114 C 70 82, 74 46, 86 38 C 98 40, 114 68, 120 98 Z" fill="#FFD6CC" />
+      </g>
+
+      <!-- Tai phải -->
+      <g class="m-ear-r">
+        <path d="M 254 124 C 272 78, 264 26, 242 20 C 218 18, 190 54, 180 96 Z" fill="url(#kawaiiOrange)" stroke="#3B1D0E" stroke-width="4.5" stroke-linejoin="round" />
+        <path d="M 265 54 C 260 32, 252 22, 242 20 C 230 19, 216 30, 206 48 C 226 54, 246 56, 265 54 Z" fill="#431E0D" />
+        <path d="M 244 114 C 254 82, 250 46, 238 38 C 226 40, 210 68, 204 98 Z" fill="#FFD6CC" />
+      </g>
+
+      <!-- Khối đầu bánh Mochi siêu phúng phính -->
+      <path d="M 162 68 C 220 68, 256 110, 262 162 C 270 176, 262 198, 244 206 C 222 218, 194 222, 162 222 C 130 222, 102 218, 80 206 C 62 198, 54 176, 62 162 C 68 110, 104 68, 162 68 Z" fill="url(#kawaiiOrange)" stroke="#3B1D0E" stroke-width="4.5" stroke-linejoin="round" />
+
+      <!-- Mảng má kem Mochi lượn chữ M mềm mại -->
+      <path d="M 63 166 C 84 146, 124 148, 148 170 C 156 164, 168 164, 176 170 C 200 148, 240 146, 261 166 C 266 180, 258 198, 242 205 C 220 216, 194 220, 162 220 C 130 220, 104 216, 82 205 C 66 198, 58 180, 63 166 Z" fill="#FFFDF9" />
+
+      <!-- Khung viền lại đường cằm để giữ nét stroke chuẩn -->
+      <path d="M 162 68 C 220 68, 256 110, 262 162 C 270 176, 262 198, 244 206 C 222 218, 194 222, 162 222 C 130 222, 102 218, 80 206 C 62 198, 54 176, 62 162 C 68 110, 104 68, 162 68 Z" fill="none" stroke="#3B1D0E" stroke-width="4.5" stroke-linejoin="round" />
+
+      <!-- Hai đốm lông mày hạt đậu trắng kem kiểu Shiba/Fox -->
+      <ellipse cx="122" cy="116" rx="9" ry="5" transform="rotate(-10 122 116)" fill="#FFFDF9" />
+      <ellipse cx="202" cy="116" rx="9" ry="5" transform="rotate(10 202 116)" fill="#FFFDF9" />
+
+      <!-- Má hồng phấn hồng dâu + 2 gạch phấn kawaii -->
+      <ellipse cx="90" cy="178" rx="16" ry="9.5" fill="#FF8FA3" opacity="0.65" />
+      <ellipse cx="234" cy="178" rx="16" ry="9.5" fill="#FF8FA3" opacity="0.65" />
+      <line x1="85" y1="176" x2="88" y2="181" stroke="#FF4D6D" stroke-width="2.2" stroke-linecap="round" />
+      <line x1="93" y1="175" x2="96" y2="180" stroke="#FF4D6D" stroke-width="2.2" stroke-linecap="round" />
+      <line x1="229" y1="175" x2="232" y2="180" stroke="#FF4D6D" stroke-width="2.2" stroke-linecap="round" />
+      <line x1="237" y1="176" x2="240" y2="181" stroke="#FF4D6D" stroke-width="2.2" stroke-linecap="round" />
+
+      <!-- Đôi mắt hạt cà phê đen nhánh long lanh (Dark Espresso Kawaii Bean Eyes — Không có tròng trắng tròn kiểu Duolingo) -->
+      <g class="m-eyes">
+        <!-- Mắt Trái -->
+        <ellipse cx="116" cy="150" rx="13.5" ry="15.5" fill="#2B1206" />
+        <path d="M 107 156 C 110 163, 122 163, 125 156" stroke="#F59E0B" stroke-width="3" stroke-linecap="round" fill="none" />
+        <ellipse cx="111" cy="143" rx="5" ry="3.8" transform="rotate(-20 111 143)" fill="#FFFFFF" />
+        <circle cx="121" cy="155" r="2.2" fill="#FFFFFF" />
+
+        <!-- Mắt Phải -->
+        <ellipse cx="208" cy="150" rx="13.5" ry="15.5" fill="#2B1206" />
+        <path d="M 199 156 C 202 163, 214 163, 217 156" stroke="#F59E0B" stroke-width="3" stroke-linecap="round" fill="none" />
+        <ellipse cx="203" cy="143" rx="5" ry="3.8" transform="rotate(-20 203 143)" fill="#FFFFFF" />
+        <circle cx="213" cy="155" r="2.2" fill="#FFFFFF" />
+      </g>
+
+      <!-- Mũi hạt đậu & Miệng cười chữ ω kèm lưỡi hồng -->
+      <path d="M 148 182 Q 162 190, 176 182 C 174 198, 150 198, 148 182 Z" fill="#3B1D0E" />
+      <ellipse cx="162" cy="190" rx="8" ry="4.5" fill="#FF758F" />
+      <path d="M 142 180 Q 152 188, 162 179 Q 172 188, 182 180" stroke="#3B1D0E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="#FFFDF9" />
+      <ellipse cx="162" cy="171" rx="9.5" ry="6.5" fill="#2B1206" />
+      <ellipse cx="159" cy="169" rx="3.5" ry="1.6" fill="#FFFFFF" opacity="0.75" />
+    </g>
+  </g>
+</svg>

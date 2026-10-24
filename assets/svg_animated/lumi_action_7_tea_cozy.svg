@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 380" width="360" height="380" fill="none">
+  <defs>
+    <style>
+      @keyframes a7Steam1 {
+        0%   { transform: translateY(0px) scale(0.7); opacity: 0; }
+        50%  { transform: translateY(-16px) scale(1.05); opacity: 0.85; }
+        100% { transform: translateY(-32px) scale(1.25); opacity: 0; }
+      }
+      @keyframes a7CozySway {
+        0%, 100% { transform: rotate(-2deg); }
+        50%      { transform: rotate(2deg); }
+      }
+      @keyframes a7MugLift {
+        0%, 100% { transform: translateY(0px); }
+        50%      { transform: translateY(-4px); }
+      }
+
+      .a7-head  { transform-origin: 162px 218px; animation: a7CozySway 3.0s ease-in-out infinite; }
+      .a7-mug   { transform-origin: 162px 268px; animation: a7MugLift 3.0s ease-in-out infinite; }
+      .a7-stm1  { transform-origin: 152px 222px; animation: a7Steam1 2.8s ease-in-out infinite; }
+      .a7-stm2  { transform-origin: 172px 218px; animation: a7Steam1 2.8s ease-in-out -1.4s infinite; }
+    </style>
+
+    <radialGradient id="a7PastelOrange" cx="162" cy="128" r="125" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFAD66" />
+      <stop offset="65%" stop-color="#F97316" />
+      <stop offset="100%" stop-color="#D94E06" />
+    </radialGradient>
+  </defs>
+
+  <ellipse cx="168" cy="352" rx="106" ry="14" fill="#2A1205" opacity="0.24" />
+
+  <g>
+    <!-- Thân ấm áp -->
+    <path d="M 108 220 C 96 264, 100 326, 126 342 L 198 342 C 224 326, 228 264, 216 220 Z" fill="url(#a7PastelOrange)" />
+    <path d="M 132 238 C 122 274, 126 326, 162 340 C 198 326, 202 274, 192 238 Z" fill="#FFFDF9" />
+
+    <!-- Khăn len vàng -->
+    <rect x="98" y="206" width="128" height="32" rx="16" fill="#FDE047" stroke="#D97706" stroke-width="1.5" />
+    <rect x="132" y="210" width="34" height="28" rx="10" fill="#FEF08A" stroke="#D97706" stroke-width="1.5" />
+
+    <!-- Đầu Cáo nhắm mắt tận hưởng hương trà ấm áp -->
+    <g class="a7-head">
+      <path d="M 66 128 C 46 80, 54 24, 78 16 C 102 14, 134 52, 144 96 Z" fill="url(#a7PastelOrange)" />
+      <path d="M 55 52 C 60 28, 68 18, 78 16 C 90 15, 104 28, 114 48 C 94 54, 74 56, 55 52 Z" fill="#3B1709" />
+      <path d="M 76 118 C 64 82, 70 42, 82 32 C 96 34, 116 64, 122 98 Z" fill="#FFD1C7" />
+
+      <path d="M 258 128 C 278 80, 270 24, 246 16 C 222 14, 190 52, 180 96 Z" fill="url(#a7PastelOrange)" />
+      <path d="M 269 52 C 264 28, 256 18, 246 16 C 234 15, 220 28, 210 48 C 230 54, 250 56, 269 52 Z" fill="#3B1709" />
+      <path d="M 248 118 C 260 82, 254 42, 242 32 C 228 34, 208 64, 202 98 Z" fill="#FFD1C7" />
+
+      <path d="M 162 66 C 222 66, 258 112, 264 162 C 272 167, 274 174, 266 180 C 272 186, 266 194, 256 198 C 234 214, 200 222, 162 222 C 124 222, 90 214, 68 198 C 58 194, 52 186, 58 180 C 50 174, 52 167, 60 162 C 66 112, 102 66, 162 66 Z" fill="url(#a7PastelOrange)" />
+      <path d="M 60 166 C 78 148, 118 146, 146 168 C 154 162, 170 162, 178 168 C 206 146, 246 148, 264 166 C 272 170, 272 176, 266 180 C 272 186, 266 194, 256 198 C 234 214, 200 222, 162 222 C 124 222, 90 214, 68 198 C 58 194, 52 186, 58 180 C 52 176, 52 170, 60 166 Z" fill="#FFFDF9" />
+
+      <ellipse cx="88" cy="176" rx="18" ry="10" fill="#FF758F" opacity="0.55" />
+      <ellipse cx="236" cy="176" rx="18" ry="10" fill="#FF758F" opacity="0.55" />
+
+      <!-- Đôi mắt nhắm bình yên hạnh phúc (◡ ◡) -->
+      <path d="M 96 148 C 104 164, 128 164, 136 148" stroke="#3B1709" stroke-width="5" stroke-linecap="round" fill="none" />
+      <path d="M 188 148 C 196 164, 220 164, 228 148" stroke="#3B1709" stroke-width="5" stroke-linecap="round" fill="none" />
+
+      <path d="M 150 184 Q 162 192, 174 184" stroke="#3B1709" stroke-width="3.5" stroke-linecap="round" fill="none" />
+      <ellipse cx="162" cy="170" rx="8.5" ry="5.5" fill="#2B0E04" />
+    </g>
+
+    <!-- Khói trà hình trái tim bay lên -->
+    <g class="a7-stm1">
+      <path d="M 152 224 C 152 224, 140 214, 144 206 C 148 200, 152 204, 152 208 C 152 204, 156 200, 160 206 C 164 214, 152 224, 152 224 Z" fill="#FF9EBB" opacity="0.8" />
+    </g>
+    <g class="a7-stm2">
+      <path d="M 174 220 Q 168 208, 176 198 Q 184 188, 176 178" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.7" />
+    </g>
+
+    <!-- Hai tay ôm Cốc Trà Gốm Mật Ong Ấm Áp -->
+    <g class="a7-mug">
+      <path d="M 182 254 C 198 254, 198 280, 182 280" stroke="#FFFBEB" stroke-width="6" fill="none" />
+      <rect x="138" y="244" width="48" height="46" rx="10" fill="#34D399" stroke="#065F46" stroke-width="2" />
+      <ellipse cx="162" cy="246" rx="22" ry="6" fill="#FEF3C7" />
+      <ellipse cx="162" cy="247" rx="18" ry="4" fill="#D97706" />
+      <!-- Hai bàn chân nâu ôm hai bên cốc -->
+      <ellipse cx="136" cy="268" rx="14" ry="11" fill="#3B1709" />
+      <ellipse cx="188" cy="268" rx="14" ry="11" fill="#3B1709" />
+    </g>
+
+    <!-- Chiếc đuôi to cuộn tròn ôm lấy thân trước như chiếc chăn bông -->
+    <path d="M 214 292 C 272 286, 284 344, 212 354 C 154 362, 86 354, 78 322 C 72 298, 108 286, 146 302 C 178 314, 196 314, 214 292 Z" fill="url(#a7PastelOrange)" />
+    <path d="M 146 302 C 108 286, 72 298, 78 322 C 84 342, 114 352, 152 354 C 142 338, 154 330, 166 336 C 154 322, 162 312, 146 302 Z" fill="#FFFDF9" />
+  </g>
+</svg>

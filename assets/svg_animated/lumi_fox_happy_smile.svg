@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 380" width="360" height="380" fill="none">
+  <defs>
+    <style>
+      @keyframes joyfulJump {
+        0%, 100% { transform: translateY(0px) scale(1.02, 0.98); }
+        50%      { transform: translateY(-10px) scale(0.98, 1.03); }
+      }
+      @keyframes joyfulShadow {
+        0%, 100% { transform: scale(1.04); opacity: 0.28; }
+        50%      { transform: scale(0.84); opacity: 0.16; }
+      }
+      @keyframes joyfulTail {
+        0%, 100% { transform: rotate(-14deg); }
+        50%      { transform: rotate(18deg); }
+      }
+      @keyframes joyfulHead {
+        0%, 100% { transform: rotate(-5deg); }
+        50%      { transform: rotate(5deg); }
+      }
+      @keyframes joyfulArmL {
+        0%, 100% { transform: rotate(-18deg); }
+        50%      { transform: rotate(24deg); }
+      }
+      @keyframes joyfulArmR {
+        0%, 100% { transform: rotate(18deg); }
+        50%      { transform: rotate(-24deg); }
+      }
+      @keyframes happyNote {
+        0%, 100% { transform: translateY(0px) scale(0.9); opacity: 0.7; }
+        50%      { transform: translateY(-8px) scale(1.12); opacity: 1; }
+      }
+
+      .j-shadow { transform-origin: 168px 346px; animation: joyfulShadow 1.6s ease-in-out infinite; }
+      .j-body   { transform-origin: 162px 334px; animation: joyfulJump 1.6s ease-in-out infinite; }
+      .j-tail   { transform-origin: 202px 312px; animation: joyfulTail 0.9s ease-in-out infinite; }
+      .j-head   { transform-origin: 162px 216px; animation: joyfulHead 1.6s ease-in-out infinite; }
+      .j-armL   { transform-origin: 118px 244px; animation: joyfulArmL 1.6s ease-in-out infinite; }
+      .j-armR   { transform-origin: 206px 244px; animation: joyfulArmR 1.6s ease-in-out infinite; }
+      .j-note   { animation: happyNote 1.8s ease-in-out infinite; }
+    </style>
+
+    <radialGradient id="joyOrange" cx="162" cy="118" r="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF9E44" />
+      <stop offset="55%" stop-color="#F96915" />
+      <stop offset="100%" stop-color="#C94102" />
+    </radialGradient>
+
+    <linearGradient id="joyScarf" x1="95" y1="205" x2="230" y2="285" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FEF08A" />
+      <stop offset="50%" stop-color="#FBBF24" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+  </defs>
+
+  <!-- Tia nắng / Hoa văn hân hoan -->
+  <g class="j-note" stroke="#FBBF24" stroke-width="3.5" stroke-linecap="round">
+    <line x1="58" y1="112" x2="44" y2="102" />
+    <line x1="64" y1="96" x2="54" y2="82" />
+    <line x1="268" y1="112" x2="282" y2="102" />
+    <line x1="262" y1="96" x2="272" y2="82" />
+  </g>
+
+  <ellipse class="j-shadow" cx="168" cy="346" rx="98" ry="14" fill="#211005" />
+
+  <g class="j-body">
+    <!-- Đuôi vẫy tít -->
+    <g class="j-tail">
+      <path d="M 194 320 C 196 254, 236 212, 286 216 C 326 220, 342 262, 322 296 C 302 328, 250 340, 194 330 Z" fill="url(#joyOrange)" />
+      <path d="M 250 220 C 276 212, 306 218, 322 240 C 334 258, 332 280, 322 296 C 314 280, 300 276, 288 288 C 288 272, 276 268, 264 276 C 266 260, 254 248, 250 220 Z" fill="#FFFDF9" />
+    </g>
+
+    <!-- Đùi sau & chân sau -->
+    <ellipse cx="110" cy="306" rx="25" ry="30" transform="rotate(-12 110 306)" fill="url(#joyOrange)" />
+    <ellipse cx="214" cy="306" rx="25" ry="30" transform="rotate(12 214 306)" fill="url(#joyOrange)" />
+    <ellipse cx="92" cy="334" rx="19" ry="13" fill="#36160A" />
+    <ellipse cx="232" cy="334" rx="19" ry="13" fill="#36160A" />
+
+    <!-- Thân chính & yếm ngực kem -->
+    <path d="M 112 222 C 102 264, 104 322, 124 338 L 200 338 C 220 322, 222 264, 212 222 Z" fill="url(#joyOrange)" />
+    <path d="M 132 238 C 122 274, 126 326, 162 338 C 198 326, 202 274, 192 238 Z" fill="#FFFDF9" />
+
+    <!-- Hai tay giơ cao ăn mừng lộ đệm thịt hồng! -->
+    <g class="j-armL">
+      <path d="M 122 248 C 98 244, 70 218, 76 190 C 80 174, 102 178, 106 196 C 108 212, 118 226, 128 232 Z" fill="url(#joyOrange)" />
+      <circle cx="90" cy="188" r="15" fill="#36160A" />
+      <ellipse cx="90" cy="190" rx="6.5" ry="5" fill="#FF8FA3" />
+      <circle cx="82" cy="181" r="2.2" fill="#FF8FA3" />
+      <circle cx="90" cy="179" r="2.4" fill="#FF8FA3" />
+      <circle cx="98" cy="181" r="2.2" fill="#FF8FA3" />
+    </g>
+    <g class="j-armR">
+      <path d="M 202 248 C 226 244, 254 218, 248 190 C 244 174, 222 178, 218 196 C 216 212, 206 226, 196 232 Z" fill="url(#joyOrange)" />
+      <circle cx="234" cy="188" r="15" fill="#36160A" />
+      <ellipse cx="234" cy="190" rx="6.5" ry="5" fill="#FF8FA3" />
+      <circle cx="226" cy="181" r="2.2" fill="#FF8FA3" />
+      <circle cx="234" cy="179" r="2.4" fill="#FF8FA3" />
+      <circle cx="242" cy="181" r="2.2" fill="#FF8FA3" />
+    </g>
+
+    <!-- Khăn len vàng -->
+    <path d="M 102 212 C 102 198, 222 200, 222 214 C 222 228, 102 226, 102 212 Z" fill="url(#joyScarf)" stroke="#B45309" stroke-width="1.2" />
+    <path d="M 98 226 C 98 212, 226 214, 226 230 C 226 246, 98 244, 98 226 Z" fill="url(#joyScarf)" stroke="#B45309" stroke-width="1.2" />
+    <path d="M 134 236 L 164 238 L 168 286 C 168 291, 130 291, 130 286 Z" fill="url(#joyScarf)" stroke="#B45309" stroke-width="1.2" />
+    <rect x="131" y="210" width="35" height="33" rx="11" fill="#FEF08A" stroke="#B45309" stroke-width="1.4" />
+
+    <!-- ĐẦU CƯỜI TÍT MẮT HẠNH PHÚC (^ ◡ ^) -->
+    <g class="j-head">
+      <path d="M 66 128 C 46 80, 54 24, 78 16 C 102 14, 134 52, 144 96 Z" fill="url(#joyOrange)" />
+      <path d="M 55 52 C 60 28, 68 18, 78 16 C 90 15, 104 28, 114 48 C 94 54, 74 56, 55 52 Z" fill="#2E1308" />
+      <path d="M 76 118 C 64 82, 70 42, 82 32 C 96 34, 116 64, 122 98 Z" fill="#F9BFA8" />
+
+      <path d="M 258 128 C 278 80, 270 24, 246 16 C 222 14, 190 52, 180 96 Z" fill="url(#joyOrange)" />
+      <path d="M 269 52 C 264 28, 256 18, 246 16 C 234 15, 220 28, 210 48 C 230 54, 250 56, 269 52 Z" fill="#2E1308" />
+      <path d="M 248 118 C 260 82, 254 42, 242 32 C 228 34, 208 64, 202 98 Z" fill="#F9BFA8" />
+
+      <path d="M 140 74 C 138 56, 152 52, 162 64 C 162 48, 178 48, 180 64 C 188 56, 198 62, 192 76 Z" fill="#FF8429" />
+      <path d="M 162 66 C 222 66, 258 112, 264 162 C 272 167, 274 174, 266 180 C 272 186, 266 194, 256 198 C 234 214, 200 222, 162 222 C 124 222, 90 214, 68 198 C 58 194, 52 186, 58 180 C 50 174, 52 167, 60 162 C 66 112, 102 66, 162 66 Z" fill="url(#joyOrange)" />
+      <path d="M 60 166 C 78 148, 118 146, 146 168 C 154 162, 170 162, 178 168 C 206 146, 246 148, 264 166 C 272 170, 272 176, 266 180 C 272 186, 266 194, 256 198 C 234 214, 200 222, 162 222 C 124 222, 90 214, 68 198 C 58 194, 52 186, 58 180 C 52 176, 52 170, 60 166 Z" fill="#FFFDF9" />
+
+      <ellipse cx="122" cy="112" rx="10" ry="5.5" transform="rotate(-12 122 112)" fill="#FFF8EE" />
+      <ellipse cx="202" cy="112" rx="10" ry="5.5" transform="rotate(12 202 112)" fill="#FFF8EE" />
+
+      <!-- Má hồng rực rỡ -->
+      <ellipse cx="86" cy="176" rx="19" ry="11" fill="#FF6B7A" opacity="0.6" />
+      <ellipse cx="238" cy="176" rx="19" ry="11" fill="#FF6B7A" opacity="0.6" />
+
+      <!-- ĐÔI MẮT CƯỜI HÌNH CÁNH CUNG HẠNH PHÚC (^ ◡ ^) -->
+      <path d="M 94 152 C 102 130, 128 130, 136 152" stroke="#2B0E04" stroke-width="6" stroke-linecap="round" fill="none" />
+      <path d="M 94 148 L 87 142" stroke="#2B0E04" stroke-width="4" stroke-linecap="round" />
+      <path d="M 188 152 C 196 130, 222 130, 230 152" stroke="#2B0E04" stroke-width="6" stroke-linecap="round" fill="none" />
+      <path d="M 230 148 L 237 142" stroke="#2B0E04" stroke-width="4" stroke-linecap="round" />
+
+      <!-- Khuôn miệng cười lớn rạng rỡ -->
+      <path d="M 140 182 Q 162 190, 184 182 C 180 208, 144 208, 140 182 Z" fill="#3B1207" />
+      <ellipse cx="162" cy="195" rx="12" ry="7" fill="#FF758F" />
+      <path d="M 134 179 Q 148 190, 162 178 Q 176 190, 190 179" stroke="#3B1207" stroke-width="3.8" stroke-linecap="round" fill="#FFFDF9" />
+      <path d="M 150 166 C 150 160, 174 160, 174 166 C 174 173, 165 179, 162 179 C 159 179, 150 173, 150 166 Z" fill="#240D04" />
+      <ellipse cx="159" cy="164.5" rx="4.5" ry="2" fill="#8C5843" opacity="0.8" />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360" width="360" height="360" fill="none">
+  <defs>
+    <style>
+      @keyframes saBounce {
+        0%, 100% { transform: translateY(6px) scale(1.05, 0.95); }
+        45%, 55% { transform: translateY(-20px) scale(0.96, 1.04); }
+      }
+      @keyframes saShadow {
+        0%, 100% { transform: scale(1.06); opacity: 0.9; }
+        50%      { transform: scale(0.76); opacity: 0.55; }
+      }
+      @keyframes saWingL {
+        0%, 100% { transform: rotate(12deg); }
+        50%      { transform: rotate(-24deg); }
+      }
+      @keyframes saWingR {
+        0%, 100% { transform: rotate(-12deg); }
+        50%      { transform: rotate(24deg); }
+      }
+      @keyframes saStarSparkle {
+        0%, 100% { transform: scale(0.85) rotate(0deg); }
+        50%      { transform: scale(1.22) rotate(12deg); }
+      }
+      @keyframes saTail {
+        0%, 100% { transform: rotate(-12deg); }
+        50%      { transform: rotate(16deg); }
+      }
+
+      .sa-shadow { transform-origin: 180px 282px; animation: saShadow 1.2s ease-in-out infinite; }
+      .sa-body   { transform-origin: 180px 270px; animation: saBounce 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+      .sa-armL   { transform-origin: 96px 190px; animation: saWingL 0.6s ease-in-out infinite; }
+      .sa-armR   { transform-origin: 264px 190px; animation: saWingR 0.6s ease-in-out infinite; }
+      .sa-tail   { transform-origin: 225px 250px; animation: saTail 0.6s ease-in-out infinite; }
+      .sa-star1  { transform-origin: 146px 150px; animation: saStarSparkle 1.2s ease-in-out infinite; }
+      .sa-star2  { transform-origin: 228px 150px; animation: saStarSparkle 1.2s ease-in-out infinite; }
+    </style>
+  </defs>
+
+  <!-- Bóng đổ hình elip xám tròn đúng chuẩn ảnh gốc Duolingo -->
+  <ellipse class="sa-shadow" cx="180" cy="272" rx="96" ry="56" fill="#EBEBEB" />
+
+  <g class="sa-body">
+    <!-- Đuôi bông xù vẫy phía sau -->
+    <g class="sa-tail">
+      <path d="M 222 254 C 258 228, 304 206, 326 226 C 344 242, 332 276, 298 286 C 266 296, 236 280, 222 266 Z" fill="#FF781F" />
+      <path d="M 288 216 C 306 214, 320 218, 328 228 C 340 244, 330 274, 298 286 C 296 270, 284 266, 274 272 C 280 256, 274 242, 288 216 Z" fill="#FFFDF7" />
+    </g>
+
+    <!-- Hai tay ngắn dang sang hai bên đúng dáng Cú Baby Duolingo -->
+    <g class="sa-armL">
+      <path d="M 104 166 L 54 166 C 42 166, 38 184, 46 202 C 56 222, 82 234, 108 228 Z" fill="#FF781F" />
+    </g>
+    <g class="sa-armR">
+      <path d="M 256 166 L 306 166 C 318 166, 322 184, 314 202 C 304 222, 278 234, 252 228 Z" fill="#FF781F" />
+    </g>
+
+    <!-- THÂN LIỀN ĐẦU HÌNH QUẢ LÊ NGƯỢC BẦU BĨNH (CHUẨN SILHOUETTE ẢNH CÚ DUOLINGO) -->
+    <path d="M 180 68 C 146 68, 124 46, 98 48 C 68 50, 62 94, 66 146 C 70 218, 106 278, 180 278 C 254 278, 290 218, 294 146 C 298 94, 292 50, 262 48 C 236 46, 214 68, 180 68 Z" fill="#FF781F" />
+
+    <!-- Hai chóp tai Cáo nhô cao từ 2 đỉnh đầu -->
+    <path d="M 68 98 C 58 56, 68 18, 94 18 C 118 18, 138 48, 146 72 Z" fill="#FF781F" />
+    <path d="M 64 52 C 68 28, 78 18, 94 18 C 108 18, 120 30, 128 46 C 106 52, 84 54, 64 52 Z" fill="#3C1B08" />
+    <path d="M 80 82 C 74 58, 82 36, 94 34 C 106 34, 118 54, 124 74 Z" fill="#FFB899" />
+
+    <path d="M 292 98 C 302 56, 292 18, 266 18 C 242 18, 222 48, 214 72 Z" fill="#FF781F" />
+    <path d="M 296 52 C 292 28, 282 18, 266 18 C 252 18, 240 30, 232 46 C 254 52, 276 54, 296 52 Z" fill="#3C1B08" />
+    <path d="M 280 82 C 286 58, 278 36, 266 34 C 254 34, 242 54, 236 74 Z" fill="#FFB899" />
+
+    <!-- Mặt nạ sáng màu quanh mắt có 2 chùm lông mày 2 đỉnh nhọn giống hệt ảnh mẫu Duolingo -->
+    <path d="M 116 96 L 106 74 L 94 92 L 82 82 L 76 112 C 66 134, 68 176, 98 198 C 126 216, 158 206, 180 192 C 202 206, 234 216, 262 198 C 292 176, 294 134, 284 112 L 278 82 L 266 92 L 254 74 L 244 96 C 222 110, 198 116, 180 116 C 162 116, 138 110, 116 96 Z" fill="#FFA94D" />
+
+    <!-- 3 vệt lông bụng hình bán nguyệt xinh xắn giống hệt ảnh mẫu -->
+    <path d="M 134 234 C 138 246, 162 246, 166 234 Z" fill="#FFA94D" />
+    <path d="M 194 234 C 198 246, 222 246, 226 234 Z" fill="#FFA94D" />
+    <path d="M 164 250 C 168 260, 192 260, 196 250 Z" fill="#FFA94D" />
+
+    <!-- ĐÔI MẮT TRÒN KHỔNG LỒ CÓ KHUYẾT TRÒN & NGÔI SAO 4 CÁNH GIỐNG HỆT 100% ẢNH MẪU -->
+    <!-- Mắt Trái -->
+    <circle cx="132" cy="150" r="44" fill="#FFFFFF" />
+    <circle cx="136" cy="152" r="30" fill="#4A3525" />
+    <!-- Vết cắn sáng tròn góc trên trái -->
+    <circle cx="116" cy="134" r="11" fill="#FFFFFF" />
+    <!-- Đốm sáng hạt đậu góc dưới trái -->
+    <ellipse cx="122" cy="166" rx="8.5" ry="5" transform="rotate(32 122 166)" fill="#FFFFFF" />
+    <!-- Ngôi sao 4 cánh lấp lánh bên phải con ngươi -->
+    <g class="sa-star1">
+      <path d="M 146 136 Q 146 150, 160 150 Q 146 150, 146 164 Q 146 150, 132 150 Q 146 150, 146 136 Z" fill="#FFFFFF" />
+    </g>
+
+    <!-- Mắt Phải -->
+    <circle cx="228" cy="150" r="44" fill="#FFFFFF" />
+    <circle cx="224" cy="152" r="30" fill="#4A3525" />
+    <!-- Vết cắn sáng tròn góc trên trái -->
+    <circle cx="204" cy="134" r="11" fill="#FFFFFF" />
+    <!-- Đốm sáng hạt đậu góc dưới trái -->
+    <ellipse cx="210" cy="166" rx="8.5" ry="5" transform="rotate(32 210 166)" fill="#FFFFFF" />
+    <!-- Ngôi sao 4 cánh lấp lánh bên phải con ngươi -->
+    <g class="sa-star2">
+      <path d="M 228 136 Q 228 150, 242 150 Q 228 150, 228 164 Q 228 150, 214 150 Q 228 150, 228 136 Z" fill="#FFFFFF" />
+    </g>
+
+    <!-- MÕM KEM NHỎ & MIỆNG CƯỜI MỞ NẰM NGAY GIỮA 2 MẮT (CHUẨN TỶ LỆ ẢNH GỐC) -->
+    <path d="M 162 172 C 162 158, 198 158, 198 172 C 198 182, 188 186, 180 186 C 172 186, 162 182, 162 172 Z" fill="#FFFDF7" />
+    <ellipse cx="180" cy="168" rx="9.5" ry="6.5" fill="#3C1B08" />
+    <path d="M 166 178 C 166 212, 194 212, 194 178 Z" fill="#D94E34" stroke="#FFFDF7" stroke-width="4" stroke-linejoin="round" />
+    <ellipse cx="180" cy="196" rx="9" ry="6" fill="#FF9EBB" />
+
+    <!-- Hai bàn chân bầu dục nghiêng ở đáy thân -->
+    <ellipse cx="122" cy="268" rx="22" ry="16" transform="rotate(24 122 268)" fill="#3C1B08" />
+    <ellipse cx="238" cy="268" rx="22" ry="16" transform="rotate(-24 238 268)" fill="#3C1B08" />
+  </g>
+</svg>

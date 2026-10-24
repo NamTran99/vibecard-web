@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 380" width="360" height="380" fill="none">
+  <defs>
+    <style>
+      @keyframes a2Jump {
+        0%, 100% { transform: translateY(8px) scale(1.06, 0.94); }
+        45%, 55% { transform: translateY(-22px) scale(0.96, 1.05); }
+      }
+      @keyframes a2Shadow {
+        0%, 100% { transform: scale(1.08); opacity: 0.34; }
+        50%      { transform: scale(0.68); opacity: 0.14; }
+      }
+      @keyframes a2ArmTrophy {
+        0%, 100% { transform: rotate(12deg); }
+        50%      { transform: rotate(-22deg); }
+      }
+      @keyframes a2ArmWave {
+        0%, 100% { transform: rotate(-14deg); }
+        50%      { transform: rotate(24deg); }
+      }
+      @keyframes a2Tail {
+        0%, 100% { transform: rotate(-16deg); }
+        50%      { transform: rotate(20deg); }
+      }
+      @keyframes a2ScarfFly {
+        0%, 100% { transform: rotate(8deg); }
+        50%      { transform: rotate(-18deg); }
+      }
+      @keyframes a2StarSpin {
+        0%, 100% { transform: scale(1) rotate(-8deg); }
+        50%      { transform: scale(1.14) rotate(12deg); }
+      }
+
+      .a2-shadow { transform-origin: 168px 352px; animation: a2Shadow 1.4s ease-in-out infinite; }
+      .a2-rig    { transform-origin: 162px 330px; animation: a2Jump 1.4s ease-in-out infinite; }
+      .a2-tail   { transform-origin: 202px 306px; animation: a2Tail 0.7s ease-in-out infinite; }
+      .a2-armL   { transform-origin: 118px 242px; animation: a2ArmWave 1.4s ease-in-out infinite; }
+      .a2-armR   { transform-origin: 206px 242px; animation: a2ArmTrophy 1.4s ease-in-out infinite; }
+      .a2-scarf  { transform-origin: 148px 236px; animation: a2ScarfFly 1.4s ease-in-out infinite; }
+      .a2-star   { transform-origin: 268px 142px; animation: a2StarSpin 1.4s ease-in-out infinite; }
+    </style>
+
+    <radialGradient id="a2Orange" cx="162" cy="118" r="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF9E44" />
+      <stop offset="55%" stop-color="#F96915" />
+      <stop offset="100%" stop-color="#C94102" />
+    </radialGradient>
+    <linearGradient id="a2GoldStar" x1="235" y1="110" x2="295" y2="175" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFBEB" />
+      <stop offset="35%" stop-color="#FDE047" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+  </defs>
+
+  <ellipse class="a2-shadow" cx="168" cy="352" rx="95" ry="14" fill="#1F0E05" />
+
+  <g class="a2-rig">
+    <g class="a2-tail">
+      <path d="M 194 312 C 198 248, 240 208, 290 214 C 330 220, 344 262, 322 296 C 300 326, 248 334, 194 322 Z" fill="url(#a2Orange)" />
+      <path d="M 252 216 C 278 210, 308 216, 324 238 C 336 256, 332 278, 322 296 C 314 280, 300 276, 288 288 C 288 272, 276 268, 264 276 C 266 260, 254 248, 252 216 Z" fill="#FFFDF9" />
+    </g>
+
+    <!-- Hai chân sau bật nhảy -->
+    <ellipse cx="122" cy="322" rx="18" ry="26" transform="rotate(18 122 322)" fill="url(#a2Orange)" />
+    <ellipse cx="202" cy="322" rx="18" ry="26" transform="rotate(-18 202 322)" fill="url(#a2Orange)" />
+    <ellipse cx="114" cy="340" rx="16" ry="12" transform="rotate(18 114 340)" fill="#361509" />
+    <ellipse cx="210" cy="340" rx="16" ry="12" transform="rotate(-18 210 340)" fill="#361509" />
+
+    <!-- Thân bật nhảy -->
+    <path d="M 116 220 C 106 260, 110 314, 128 328 L 196 328 C 214 314, 218 260, 208 220 Z" fill="url(#a2Orange)" />
+    <path d="M 134 234 C 126 268, 130 316, 162 328 C 194 316, 198 268, 190 234 Z" fill="#FFFDF9" />
+
+    <!-- Tay trái vẫy cao -->
+    <g class="a2-armL">
+      <path d="M 122 244 C 96 238, 68 212, 74 184 C 78 168, 100 172, 104 190 C 106 206, 116 220, 128 228 Z" fill="url(#a2Orange)" />
+      <circle cx="88" cy="182" r="14" fill="#361509" />
+      <ellipse cx="88" cy="184" rx="6" ry="4.5" fill="#FF8FA3" />
+    </g>
+
+    <!-- Tay phải giơ cao Ngôi Sao Chiến Thắng 3D! -->
+    <g class="a2-armR">
+      <path d="M 202 244 C 228 236, 258 204, 256 172 C 254 156, 232 160, 228 178 C 224 198, 212 216, 196 228 Z" fill="url(#a2Orange)" />
+      <circle cx="244" cy="168" r="14" fill="#361509" />
+      <!-- Ngôi sao vàng lớn tỏa sáng trên tay -->
+      <g class="a2-star">
+        <circle cx="268" cy="142" r="34" fill="#FDE047" opacity="0.35" />
+        <polygon points="268,104 279,128 305,131 285,149 290,175 268,162 246,175 251,149 231,131 257,128" fill="url(#a2GoldStar)" stroke="#B45309" stroke-width="2.5" stroke-linejoin="round" />
+        <circle cx="261" cy="136" r="3" fill="#451A03" />
+        <circle cx="275" cy="136" r="3" fill="#451A03" />
+        <path d="M 263 144 Q 268 149, 273 144" stroke="#451A03" stroke-width="2.2" stroke-linecap="round" fill="none" />
+      </g>
+    </g>
+
+    <!-- Khăn len vàng tung bay -->
+    <path d="M 102 212 C 102 198, 222 200, 222 214 C 222 228, 102 226, 102 212 Z" fill="#FBBF24" stroke="#B45309" stroke-width="1.2" />
+    <g class="a2-scarf">
+      <path d="M 134 228 L 164 230 L 176 278 L 138 278 Z" fill="#FACC15" stroke="#B45309" stroke-width="1.2" />
+    </g>
+    <rect x="131" y="208" width="34" height="30" rx="10" fill="#FEF08A" stroke="#B45309" stroke-width="1.2" />
+
+    <!-- Đầu Cáo hào hứng mắt sáng rực rỡ -->
+    <g>
+      <path d="M 66 128 C 46 80, 54 24, 78 16 C 102 14, 134 52, 144 96 Z" fill="url(#a2Orange)" />
+      <path d="M 55 52 C 60 28, 68 18, 78 16 C 90 15, 104 28, 114 48 C 94 54, 74 56, 55 52 Z" fill="#2E1207" />
+      <path d="M 76 118 C 64 82, 70 42, 82 32 C 96 34, 116 64, 122 98 Z" fill="#F9BFA8" />
+
+      <path d="M 258 128 C 278 80, 270 24, 246 16 C 222 14, 190 52, 180 96 Z" fill="url(#a2Orange)" />
+      <path d="M 269 52 C 264 28, 256 18, 246 16 C 234 15, 220 28, 210 48 C 230 54, 250 56, 269 52 Z" fill="#2E1207" />
+      <path d="M 248 118 C 260 82, 254 42, 242 32 C 228 34, 208 64, 202 98 Z" fill="#F9BFA8" />
+
+      <path d="M 140 74 C 138 56, 152 52, 162 64 C 162 48, 178 48, 180 64 C 188 56, 198 62, 192 76 Z" fill="#FF8429" />
+      <path d="M 162 66 C 222 66, 258 112, 264 162 C 272 167, 274 174, 266 180 C 272 186, 266 194, 256 198 C 234 214, 200 222, 162 222 C 124 222, 90 214, 68 198 C 58 194, 52 186, 58 180 C 50 174, 52 167, 60 162 C 66 112, 102 66, 162 66 Z" fill="url(#a2Orange)" />
+      <path d="M 60 166 C 78 148, 118 146, 146 168 C 154 162, 170 162, 178 168 C 206 146, 246 148, 264 166 C 272 170, 272 176, 266 180 C 272 186, 266 194, 256 198 C 234 214, 200 222, 162 222 C 124 222, 90 214, 68 198 C 58 194, 52 186, 58 180 C 52 176, 52 170, 60 166 Z" fill="#FFFDF9" />
+
+      <ellipse cx="122" cy="110" rx="10" ry="5.5" transform="rotate(-14 122 110)" fill="#FFF8EE" />
+      <ellipse cx="202" cy="110" rx="10" ry="5.5" transform="rotate(14 202 110)" fill="#FFF8EE" />
+      <ellipse cx="88" cy="180" rx="17" ry="9.5" fill="#FF6B7A" opacity="0.55" />
+      <ellipse cx="236" cy="180" rx="17" ry="9.5" fill="#FF6B7A" opacity="0.55" />
+
+      <!-- Đôi mắt mở to lấp lánh niềm vui chiến thắng -->
+      <ellipse cx="115" cy="148" rx="19" ry="21" fill="#2B0E04" />
+      <ellipse cx="115" cy="148" rx="15" ry="17" fill="#7C2D08" />
+      <ellipse cx="115" cy="147" rx="10" ry="12" fill="#170702" />
+      <circle cx="109" cy="139" r="6" fill="#FFFFFF" />
+      <circle cx="121" cy="154" r="3" fill="#FDE047" />
+
+      <ellipse cx="209" cy="148" rx="19" ry="21" fill="#2B0E04" />
+      <ellipse cx="209" cy="148" rx="15" ry="17" fill="#7C2D08" />
+      <ellipse cx="209" cy="147" rx="10" ry="12" fill="#170702" />
+      <circle cx="203" cy="139" r="6" fill="#FFFFFF" />
+      <circle cx="215" cy="154" r="3" fill="#FDE047" />
+
+      <!-- Miệng cười lớn ha hả -->
+      <path d="M 140 180 Q 162 188, 184 180 C 180 208, 144 208, 140 180 Z" fill="#3B1207" />
+      <ellipse cx="162" cy="195" rx="12" ry="7" fill="#FF758F" />
+      <path d="M 150 166 C 150 160, 174 160, 174 166 C 174 173, 165 179, 162 179 C 159 179, 150 173, 150 166 Z" fill="#240D04" />
+    </g>
+  </g>
+</svg>

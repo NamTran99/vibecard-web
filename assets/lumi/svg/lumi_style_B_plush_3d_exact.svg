@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 380" width="360" height="380" fill="none">
+  <defs>
+    <style>
+      @keyframes sbHeadTilt {
+        0%, 100% { transform: rotate(-5.5deg) translateY(0px); }
+        50%      { transform: rotate(-1.5deg) translateY(-4px); }
+      }
+      @keyframes sbBreathe {
+        0%, 100% { transform: scale(1, 1); }
+        50%      { transform: scale(1.015, 0.99); }
+      }
+      @keyframes sbTailWag {
+        0%, 100% { transform: rotate(-6deg); }
+        50%      { transform: rotate(8deg); }
+      }
+      @keyframes sbBlink {
+        0%, 45%, 49%, 95%, 100% { transform: scaleY(1); }
+        47%                     { transform: scaleY(0.06); }
+      }
+
+      .sb-body { transform-origin: 162px 346px; animation: sbBreathe 2.8s ease-in-out infinite; }
+      .sb-head { transform-origin: 162px 214px; animation: sbHeadTilt 2.8s ease-in-out infinite; }
+      .sb-tail { transform-origin: 206px 318px; animation: sbTailWag 2.2s ease-in-out infinite; }
+      .sb-eyes { transform-origin: 162px 148px; animation: sbBlink 4.6s infinite; }
+    </style>
+
+    <radialGradient id="sbHeadGrad" cx="162" cy="118" r="118" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF9838" />
+      <stop offset="55%" stop-color="#F5620F" />
+      <stop offset="100%" stop-color="#C43D00" />
+    </radialGradient>
+    <linearGradient id="sbCream" x1="162" y1="150" x2="162" y2="340" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFDF9" />
+      <stop offset="70%" stop-color="#F7EADF" />
+      <stop offset="100%" stop-color="#DEC6B4" />
+    </linearGradient>
+    <linearGradient id="sbScarf" x1="100" y1="205" x2="225" y2="275" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFD43B" />
+      <stop offset="55%" stop-color="#F59F00" />
+      <stop offset="100%" stop-color="#C97A00" />
+    </linearGradient>
+    <linearGradient id="sbIris" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2B0E04" />
+      <stop offset="50%" stop-color="#6B280A" />
+      <stop offset="100%" stop-color="#D96B18" />
+    </linearGradient>
+    <linearGradient id="sbSock" x1="0" y1="280" x2="0" y2="355" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#4A210D" />
+      <stop offset="100%" stop-color="#260F05" />
+    </linearGradient>
+  </defs>
+
+  <ellipse cx="168" cy="354" rx="102" ry="13" fill="#1F0E05" opacity="0.26" />
+
+  <g class="sb-body">
+    <!-- Đuôi bông lớn uốn cong bên phải với chóp trắng chia 3 ngấn lông đúng ảnh gốc -->
+    <g class="sb-tail">
+      <path d="M 198 326 C 202 256, 242 212, 294 218 C 334 222, 348 266, 326 302 C 304 334, 252 344, 198 334 Z" fill="url(#sbHeadGrad)" />
+      <path d="M 254 220 C 282 212, 312 218, 328 242 C 340 260, 336 284, 326 302 C 318 284, 304 280, 292 292 C 292 276, 280 272, 268 280 C 270 262, 258 248, 254 220 Z" fill="url(#sbCream)" />
+    </g>
+
+    <!-- Hai đùi sau ngồi hai bên -->
+    <ellipse cx="102" cy="308" rx="26" ry="34" transform="rotate(-8 102 308)" fill="url(#sbHeadGrad)" />
+    <ellipse cx="216" cy="308" rx="26" ry="34" transform="rotate(8 216 308)" fill="url(#sbHeadGrad)" />
+    <ellipse cx="84" cy="338" rx="20" ry="14" fill="url(#sbSock)" />
+    <ellipse cx="204" cy="342" rx="20" ry="14" fill="url(#sbSock)" />
+
+    <!-- Thân & Bụng trắng kem ở giữa -->
+    <path d="M 110 218 C 102 262, 104 326, 124 342 L 194 342 C 214 326, 216 262, 208 218 Z" fill="url(#sbHeadGrad)" />
+    <path d="M 132 236 C 122 274, 126 328, 158 342 C 190 328, 194 274, 184 236 Z" fill="url(#sbCream)" />
+
+    <!-- HAI CHÂN TRƯỚC ĐỨNG THẲNG SONG SONG PHÍA TRƯỚC (ĐÚNG 100% ẢNH GỐC LUMI) -->
+    <!-- Chân trước bên trái -->
+    <path d="M 112 238 L 106 342 L 140 342 L 138 244 Z" fill="url(#sbHeadGrad)" />
+    <path d="M 108 296 L 105 344 L 141 344 L 139 296 C 130 302, 118 302, 108 296 Z" fill="url(#sbSock)" />
+    <ellipse cx="122" cy="346" rx="21" ry="13" fill="url(#sbSock)" />
+    <line x1="115" y1="338" x2="114" y2="354" stroke="#1A0903" stroke-width="2.5" stroke-linecap="round" />
+    <line x1="129" y1="338" x2="130" y2="354" stroke="#1A0903" stroke-width="2.5" stroke-linecap="round" />
+
+    <!-- Chân trước bên phải -->
+    <path d="M 178 244 L 174 342 L 208 342 L 204 238 Z" fill="url(#sbHeadGrad)" />
+    <path d="M 175 296 L 173 344 L 209 344 L 206 296 C 196 302, 184 302, 175 296 Z" fill="url(#sbSock)" />
+    <ellipse cx="191" cy="346" rx="21" ry="13" fill="url(#sbSock)" />
+    <line x1="184" y1="338" x2="183" y2="354" stroke="#1A0903" stroke-width="2.5" stroke-linecap="round" />
+    <line x1="198" y1="338" x2="199" y2="354" stroke="#1A0903" stroke-width="2.5" stroke-linecap="round" />
+
+    <!-- CHIẾC KHĂN LEN VÀNG 2 VÒNG CÓ TUA RUA TRƯỚC NGỰC TRÁI (CHUẨN ẢNH GỐC) -->
+    <path d="M 98 206 C 98 190, 222 192, 222 208 C 222 224, 98 222, 98 206 Z" fill="url(#sbScarf)" />
+    <path d="M 94 222 C 94 206, 226 208, 226 226 C 226 244, 94 242, 94 222 Z" fill="url(#sbScarf)" />
+    <!-- Vạt khăn thả xuống bên ngực trái có 4 khấc tua rua -->
+    <path d="M 122 228 L 158 230 L 160 286 L 116 284 Z" fill="url(#sbScarf)" />
+    <line x1="126" y1="274" x2="125" y2="285" stroke="#9C5D00" stroke-width="2.5" stroke-linecap="round" />
+    <line x1="136" y1="275" x2="136" y2="285" stroke="#9C5D00" stroke-width="2.5" stroke-linecap="round" />
+    <line x1="147" y1="275" x2="147" y2="286" stroke="#9C5D00" stroke-width="2.5" stroke-linecap="round" />
+    <!-- Nút thắt khăn dày -->
+    <rect x="122" y="204" width="36" height="34" rx="11" fill="#FFC914" stroke="#B87000" stroke-width="1.5" />
+
+    <!-- ĐẦU CÁO LUMI NGHIÊNG DUYÊN DÁNG VỚI 2 BẦU MÕM PHỒNG (ω) CHUẨN ẢNH GỐC -->
+    <g class="sb-head">
+      <!-- Tai Trái cao -->
+      <path d="M 64 128 C 44 76, 52 18, 78 10 C 104 8, 136 48, 146 94 Z" fill="url(#sbHeadGrad)" />
+      <path d="M 52 50 C 58 24, 66 12, 78 10 C 92 9, 106 24, 116 44 C 96 50, 74 54, 52 50 Z" fill="#2B1005" />
+      <path d="M 74 116 C 62 78, 68 38, 82 28 C 96 30, 118 62, 124 96 Z" fill="#F2B6A0" />
+      <!-- Chùm lông trắng bên trong tai trái -->
+      <path d="M 96 104 L 82 88 L 98 86 L 86 72 L 106 76 L 116 96 Z" fill="#FFFDF9" />
+
+      <!-- Tai Phải nghiêng -->
+      <path d="M 256 132 C 278 82, 272 24, 246 16 C 220 14, 188 52, 178 96 Z" fill="url(#sbHeadGrad)" />
+      <path d="M 268 54 C 262 28, 256 18, 246 16 C 232 15, 218 28, 208 48 C 228 54, 248 58, 268 54 Z" fill="#2B1005" />
+      <path d="M 246 120 C 258 82, 252 42, 240 32 C 226 34, 206 66, 200 98 Z" fill="#F2B6A0" />
+      <path d="M 224 106 L 238 90 L 222 88 L 234 74 L 214 78 L 204 98 Z" fill="#FFFDF9" />
+
+      <!-- Chỏm tóc 3 ngọn trên đỉnh đầu -->
+      <path d="M 142 70 C 134 52, 150 48, 162 60 C 156 42, 174 42, 180 60 C 184 48, 198 54, 192 70 Z" fill="#FF7B1C" />
+
+      <!-- Hộp sọ & 2 chùm lông má trắng xòe 2 nấc mỗi bên -->
+      <path d="M 162 64 C 224 64, 260 110, 266 160 C 276 166, 278 174, 268 180 C 274 186, 266 196, 254 200 C 230 214, 198 220, 162 220 C 126 220, 94 214, 70 200 C 58 196, 50 186, 56 180 C 46 174, 48 166, 58 160 C 64 110, 100 64, 162 64 Z" fill="url(#sbHeadGrad)" />
+
+      <!-- Mảng lông má trắng kem kéo lên sát dưới mắt -->
+      <path d="M 56 164 C 76 146, 116 146, 144 166 C 154 160, 170 160, 180 166 C 208 146, 248 146, 268 164 C 276 168, 276 176, 268 180 C 274 186, 266 196, 254 200 C 230 214, 198 220, 162 220 C 126 220, 94 214, 70 200 C 58 196, 50 186, 56 180 C 48 176, 48 168, 56 164 Z" fill="url(#sbCream)" />
+
+      <!-- LÔNG MÀY NÂU ĐEN DÀY BIỂU CẢM (ĐÚNG ẢNH GỐC LUMI, KHÔNG PHẢI MÀU TRẮNG!) -->
+      <path d="M 98 106 C 110 96, 128 96, 138 104" stroke="#3B1708" stroke-width="6.5" stroke-linecap="round" fill="none" />
+      <path d="M 188 106 C 200 98, 218 102, 226 114" stroke="#3B1708" stroke-width="6.5" stroke-linecap="round" fill="none" />
+
+      <!-- ĐÔI MẮT TO TRÒN NÂU HỔ PHÁCH CÓ VIỀN MI ĐEN DÀY -->
+      <g class="sb-eyes">
+        <!-- Mắt Trái -->
+        <ellipse cx="114" cy="144" rx="22" ry="24" fill="#FFFFFF" stroke="#260D04" stroke-width="3" />
+        <ellipse cx="116" cy="145" rx="17" ry="19" fill="url(#sbIris)" />
+        <ellipse cx="116" cy="145" rx="11" ry="13" fill="#120501" />
+        <circle cx="122" cy="138" r="5" fill="#FFFFFF" />
+        <circle cx="110" cy="152" r="2.2" fill="#FFFFFF" opacity="0.8" />
+        <path d="M 91 140 C 94 116, 132 114, 137 138" stroke="#1E0A03" stroke-width="5.5" stroke-linecap="round" fill="none" />
+
+        <!-- Mắt Phải -->
+        <ellipse cx="210" cy="146" rx="22" ry="24" fill="#FFFFFF" stroke="#260D04" stroke-width="3" />
+        <ellipse cx="208" cy="147" rx="17" ry="19" fill="url(#sbIris)" />
+        <ellipse cx="208" cy="147" rx="11" ry="13" fill="#120501" />
+        <circle cx="214" cy="140" r="5" fill="#FFFFFF" />
+        <circle cx="202" cy="154" r="2.2" fill="#FFFFFF" opacity="0.8" />
+        <path d="M 233 142 C 230 118, 192 116, 187 140" stroke="#1E0A03" stroke-width="5.5" stroke-linecap="round" fill="none" />
+      </g>
+
+      <!-- KHUÔN MIỆNG CƯỜI MỞ HÉ & 2 BẦU MÕM PHỒNG (ω) DƯỚI MŨI (LINH HỒN CỦA ẢNH GỐC!) -->
+      <!-- Khoang miệng mở hé bên dưới 2 bầu mõm -->
+      <path d="M 136 176 C 142 204, 182 204, 188 176 Z" fill="#2E0E05" />
+      <ellipse cx="162" cy="190" rx="13" ry="6.5" fill="#E85D44" />
+
+      <!-- 2 Bầu mõm trắng kem phồng tròn (Puffy Muzzle Pads ω) nằm đè lên trên miệng -->
+      <ellipse cx="144" cy="171" rx="20" ry="13" transform="rotate(8 144 171)" fill="#FFFDF9" />
+      <ellipse cx="180" cy="171" rx="20" ry="13" transform="rotate(-8 180 171)" fill="#FFFDF9" />
+      <!-- Đường viền nụ cười chữ ω nối từ khóe miệng vào giữa mũi -->
+      <path d="M 124 170 C 130 184, 154 186, 162 174 C 170 186, 194 184, 200 170" stroke="#3B1708" stroke-width="3" stroke-linecap="round" fill="none" />
+      <!-- Lúm đồng tiền khóe miệng -->
+      <path d="M 120 167 Q 124 171, 122 175" stroke="#3B1708" stroke-width="2.5" stroke-linecap="round" fill="none" />
+      <path d="M 204 167 Q 200 171, 202 175" stroke="#3B1708" stroke-width="2.5" stroke-linecap="round" fill="none" />
+      <!-- 3 chấm râu nhỏ mỗi bên bầu mõm -->
+      <circle cx="140" cy="170" r="1.3" fill="#B89B86" />
+      <circle cx="145" cy="173" r="1.3" fill="#B89B86" />
+      <circle cx="184" cy="170" r="1.3" fill="#B89B86" />
+      <circle cx="179" cy="173" r="1.3" fill="#B89B86" />
+
+      <!-- Chiếc mũi hạt dẻ nâu đen bóng loáng đặt trên đỉnh 2 bầu mõm -->
+      <path d="M 147 156 C 147 148, 177 148, 177 156 C 177 165, 166 172, 162 172 C 158 172, 147 165, 147 156 Z" fill="#240D04" />
+      <ellipse cx="158" cy="153" rx="5.5" ry="2.5" fill="#7A4B38" />
+    </g>
+  </g>
+</svg>

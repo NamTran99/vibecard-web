@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 380" width="380" height="380" fill="none">
+  <defs>
+    <style>
+      @keyframes f2Bounce {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50%      { transform: translateY(-10px) rotate(1.5deg); }
+      }
+      @keyframes f2HeadTurn {
+        0%, 100% { transform: rotate(-3deg); }
+        50%      { transform: rotate(4deg) translateY(-3px); }
+      }
+      @keyframes f2WaveArm {
+        0%, 100% { transform: rotate(-18deg); }
+        50%      { transform: rotate(22deg); }
+      }
+      @keyframes f2TailSway {
+        0%, 100% { transform: rotate(-10deg); }
+        50%      { transform: rotate(14deg); }
+      }
+      @keyframes f2Blink {
+        0%, 46%, 50%, 96%, 100% { transform: scaleY(1); }
+        48%                     { transform: scaleY(0.06); }
+      }
+
+      .f2-body { transform-origin: 180px 330px; animation: f2Bounce 2s ease-in-out infinite; }
+      .f2-head { transform-origin: 172px 196px; animation: f2HeadTurn 2s ease-in-out infinite; }
+      .f2-armR { transform-origin: 206px 228px; animation: f2WaveArm 1s ease-in-out infinite; }
+      .f2-tail { transform-origin: 210px 298px; animation: f2TailSway 1.5s ease-in-out infinite; }
+      .f2-eyes { transform-origin: 162px 138px; animation: f2Blink 4.5s infinite; }
+    </style>
+
+    <radialGradient id="f2BodyGrad" cx="155" cy="115" r="145" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF9B42" />
+      <stop offset="55%" stop-color="#EA580C" />
+      <stop offset="100%" stop-color="#9A3412" />
+    </radialGradient>
+    <linearGradient id="f2SnoutCream" x1="110" y1="145" x2="210" y2="215" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="65%" stop-color="#FFF7ED" />
+      <stop offset="100%" stop-color="#FED7AA" />
+    </linearGradient>
+    <linearGradient id="f2Emerald" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#064E3B" />
+      <stop offset="50%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#A7F3D0" />
+    </linearGradient>
+  </defs>
+
+  <ellipse cx="185" cy="348" rx="86" ry="13" fill="#1C0A04" opacity="0.32" />
+
+  <g class="f2-body">
+    <!-- Chiếc đuôi 3D uốn lượn chữ S siêu bồng bềnh -->
+    <g class="f2-tail">
+      <path d="M 198 306 C 228 298, 264 232, 314 224 C 354 218, 366 266, 332 302 C 296 338, 236 336, 198 318 Z" fill="url(#f2BodyGrad)" />
+      <path d="M 284 228 C 314 218, 338 224, 348 244 C 356 262, 348 286, 332 302 C 322 284, 306 282, 296 292 C 296 274, 282 270, 270 278 C 278 258, 272 242, 284 228 Z" fill="url(#f2SnoutCream)" />
+    </g>
+
+    <!-- Dáng đứng 2 chân năng động kiểu nhân vật Pixar (Zootopia) -->
+    <!-- Chân trái & Chân phải mang tất nâu đen -->
+    <path d="M 142 286 L 136 338 C 136 346, 160 346, 162 338 L 166 286 Z" fill="#3B1508" />
+    <path d="M 192 286 L 198 338 C 198 346, 222 346, 222 338 L 214 286 Z" fill="#3B1508" />
+    <ellipse cx="146" cy="340" rx="18" ry="9" fill="#270D04" />
+    <ellipse cx="212" cy="340" rx="18" ry="9" fill="#270D04" />
+
+    <!-- Thân thon gọn mặc áo ghi-lê xanh ngọc lục bảo -->
+    <path d="M 136 198 C 124 238, 128 282, 142 296 L 214 296 C 228 282, 230 238, 216 198 Z" fill="url(#f2BodyGrad)" />
+    <path d="M 150 202 C 142 238, 146 282, 178 296 C 206 282, 210 238, 202 202 Z" fill="url(#f2SnoutCream)" />
+
+    <!-- Tay trái chống hông tự tin -->
+    <path d="M 140 212 C 110 226, 106 254, 134 268 C 144 272, 148 258, 138 250 C 126 242, 128 230, 144 222 Z" fill="url(#f2BodyGrad)" />
+    <circle cx="136" cy="264" r="11" fill="#3B1508" />
+
+    <!-- Tay phải giơ cao vẫy chào -->
+    <g class="f2-armR">
+      <path d="M 210 214 C 238 206, 266 178, 262 152 C 258 136, 238 142, 234 160 C 230 178, 220 194, 204 204 Z" fill="url(#f2BodyGrad)" />
+      <circle cx="250" cy="152" r="13" fill="#3B1508" />
+    </g>
+
+    <!-- ĐẦU CÁO GÓC NGHIÊNG 3/4 CÓ CHIẾC MÕM CÁO NHÔ RA RÕ KHỐI 3D -->
+    <g class="f2-head">
+      <!-- Tai Xa (Bên Trái góc 3/4) -->
+      <path d="M 106 106 C 84 62, 88 18, 110 12 C 132 10, 154 46, 158 88 Z" fill="#C2410C" />
+      <path d="M 94 42 C 98 22, 104 14, 110 12 C 120 12, 132 24, 140 42 C 124 46, 108 46, 94 42 Z" fill="#270D04" />
+      <path d="M 112 96 C 98 64, 102 34, 114 26 C 126 28, 140 54, 144 86 Z" fill="#FDBA74" />
+
+      <!-- Tai Gần (Bên Phải góc 3/4 lớn hơn) -->
+      <path d="M 204 102 C 228 54, 258 14, 282 20 C 302 26, 288 82, 252 128 Z" fill="url(#f2BodyGrad)" />
+      <path d="M 254 32 C 266 20, 276 18, 282 20 C 290 24, 292 40, 286 60 C 272 52, 262 42, 254 32 Z" fill="#270D04" />
+      <path d="M 216 106 C 236 68, 258 36, 274 38 C 284 42, 272 84, 244 118 Z" fill="#FDBA74" />
+
+      <!-- Hộp sọ tròn & Chùm lông má bên phải xòe 3 nấc -->
+      <path d="M 168 62 C 222 62, 258 102, 260 150 C 274 156, 278 168, 264 176 C 272 184, 264 196, 246 198 C 218 208, 174 210, 138 202 C 102 194, 88 172, 96 146 C 104 102, 126 62, 168 62 Z" fill="url(#f2BodyGrad)" />
+
+      <!-- Mảng má kem & CHIẾC MÕM CÁO NHÔ RA PHÍA TRƯỚC BÊN TRÁI (3/4 SNOUT) -->
+      <path d="M 96 150 C 72 152, 58 164, 64 178 C 72 194, 112 206, 164 206 C 214 206, 248 198, 262 182 C 272 172, 270 160, 258 154 C 232 144, 198 152, 176 168 C 154 156, 122 148, 96 150 Z" fill="url(#f2SnoutCream)" />
+      <!-- Sống mũi cam kéo từ trán xuống đầu mũi -->
+      <path d="M 142 118 C 118 134, 86 146, 66 154 C 66 164, 82 168, 108 166 C 134 164, 156 152, 168 134 Z" fill="url(#f2BodyGrad)" />
+
+      <!-- Đầu mũi đen bóng nhô ra ở chóp mõm 3/4 -->
+      <ellipse cx="66" cy="158" rx="13" ry="9.5" transform="rotate(-10 66 158)" fill="#1E0903" />
+      <ellipse cx="63" cy="154" rx="5" ry="2.2" transform="rotate(-10 63 154)" fill="#78350F" />
+
+      <!-- Đôi mắt Ngọc Lục Bảo (Emerald Green) góc 3/4 có thần thái thông minh -->
+      <g class="f2-eyes">
+        <!-- Mắt xa (bên trái, nhỏ hơn theo phối cảnh 3/4) -->
+        <ellipse cx="122" cy="134" rx="14" ry="18" fill="#FFFFFF" />
+        <ellipse cx="118" cy="135" rx="10.5" ry="14" fill="url(#f2Emerald)" />
+        <ellipse cx="117" cy="135" rx="6.5" ry="9.5" fill="#062E22" />
+        <circle cx="114" cy="128" r="4" fill="#FFFFFF" />
+
+        <!-- Mắt gần (bên phải, to rõ) -->
+        <ellipse cx="188" cy="138" rx="18" ry="21" fill="#FFFFFF" />
+        <ellipse cx="182" cy="139" rx="13.5" ry="16.5" fill="url(#f2Emerald)" />
+        <ellipse cx="180" cy="139" rx="8.5" ry="11" fill="#062E22" />
+        <circle cx="176" cy="131" r="5.5" fill="#FFFFFF" />
+        <circle cx="186" cy="145" r="2.8" fill="#A7F3D0" />
+      </g>
+
+      <!-- Lông mày biểu cảm 3D -->
+      <path d="M 106 112 Q 122 104, 136 114" stroke="#7C2D12" stroke-width="4.5" stroke-linecap="round" fill="none" />
+      <path d="M 168 112 Q 190 102, 208 116" stroke="#7C2D12" stroke-width="5" stroke-linecap="round" fill="none" />
+
+      <!-- Khuôn miệng cười duyên dưới mõm 3/4 -->
+      <path d="M 88 176 Q 118 192, 152 176 C 146 198, 102 198, 88 176 Z" fill="#451A03" />
+      <ellipse cx="120" cy="187" rx="12" ry="5.5" fill="#FB7185" />
+    </g>
+  </g>
+</svg>

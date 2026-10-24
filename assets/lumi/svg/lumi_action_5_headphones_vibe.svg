@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 380" width="360" height="380" fill="none">
+  <defs>
+    <style>
+      @keyframes a5GrooveHead {
+        0%, 100% { transform: rotate(-6deg) translateY(0px); }
+        50%      { transform: rotate(6deg) translateY(-6px); }
+      }
+      @keyframes a5BodyGroove {
+        0%, 100% { transform: scale(1, 1) translateY(0px); }
+        50%      { transform: scale(1.02, 0.98) translateY(3px); }
+      }
+      @keyframes a5FootTap {
+        0%, 100% { transform: rotate(0deg); }
+        50%      { transform: rotate(-16deg); }
+      }
+      @keyframes a5Note1 {
+        0%, 100% { transform: translate(0px, 0px) scale(0.8); opacity: 0.3; }
+        50%      { transform: translate(-12px, -18px) scale(1.15); opacity: 1; }
+      }
+      @keyframes a5Note2 {
+        0%, 100% { transform: translate(0px, -6px) scale(1.1); opacity: 0.95; }
+        50%      { transform: translate(14px, -22px) scale(0.75); opacity: 0.25; }
+      }
+      @keyframes a5Tail {
+        0%, 100% { transform: rotate(-10deg); }
+        50%      { transform: rotate(14deg); }
+      }
+
+      .a5-body { transform-origin: 162px 338px; animation: a5BodyGroove 1.2s ease-in-out infinite; }
+      .a5-head { transform-origin: 162px 218px; animation: a5GrooveHead 1.2s ease-in-out infinite; }
+      .a5-tap  { transform-origin: 120px 338px; animation: a5FootTap 0.6s ease-in-out infinite; }
+      .a5-tail { transform-origin: 202px 312px; animation: a5Tail 1.2s ease-in-out infinite; }
+      .a5-n1   { animation: a5Note1 1.8s ease-in-out infinite; }
+      .a5-n2   { animation: a5Note2 1.8s ease-in-out infinite; }
+    </style>
+
+    <linearGradient id="a5HeadPhone" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#34D399" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <radialGradient id="a5Fur" cx="162" cy="120" r="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF9848" />
+      <stop offset="60%" stop-color="#F25F11" />
+      <stop offset="100%" stop-color="#C23E00" />
+    </radialGradient>
+  </defs>
+
+  <!-- Nốt nhạc Lo-Fi bay lơ lửng -->
+  <g class="a5-n1" fill="#34D399">
+    <circle cx="52" cy="118" r="6" />
+    <path d="M 56 118 L 56 94 L 70 98 L 70 104 L 56 100" stroke="#34D399" stroke-width="3.5" stroke-linejoin="round" />
+  </g>
+  <g class="a5-n2" fill="#FBBF24">
+    <circle cx="288" cy="108" r="5.5" />
+    <circle cx="306" cy="102" r="5.5" />
+    <path d="M 292 108 L 292 84 L 310 78 L 310 102" stroke="#FBBF24" stroke-width="3.5" fill="none" stroke-linejoin="round" />
+  </g>
+
+  <ellipse cx="168" cy="348" rx="98" ry="14" fill="#1F0E05" opacity="0.28" />
+
+  <g class="a5-body">
+    <g class="a5-tail">
+      <path d="M 194 322 C 196 256, 236 212, 286 216 C 326 220, 342 262, 322 296 C 302 328, 250 340, 194 330 Z" fill="url(#a5Fur)" />
+      <path d="M 250 220 C 276 212, 306 218, 322 240 C 334 258, 332 280, 322 296 C 314 280, 300 276, 288 288 C 288 272, 276 268, 264 276 C 266 260, 254 248, 250 220 Z" fill="#FFFDF9" />
+    </g>
+
+    <ellipse cx="108" cy="306" rx="25" ry="30" transform="rotate(-12 108 306)" fill="url(#a5Fur)" />
+    <ellipse cx="216" cy="306" rx="25" ry="30" transform="rotate(12 216 306)" fill="url(#a5Fur)" />
+    <ellipse cx="234" cy="334" rx="19" ry="13" fill="#361509" />
+
+    <!-- Bàn chân trái gõ nhịp theo nhạc -->
+    <g class="a5-tap">
+      <ellipse cx="92" cy="334" rx="20" ry="13" fill="#361509" />
+      <ellipse cx="84" cy="332" rx="6" ry="3.5" fill="#FF8FA3" />
+    </g>
+
+    <path d="M 112 222 C 102 264, 104 322, 124 338 L 200 338 C 220 322, 222 264, 212 222 Z" fill="url(#a5Fur)" />
+    <path d="M 132 238 C 122 274, 126 326, 162 338 C 198 326, 202 274, 192 238 Z" fill="#FFFDF9" />
+
+    <path d="M 124 244 L 148 244 L 146 340 L 122 340 Z" fill="url(#a5Fur)" />
+    <path d="M 123 298 L 147 298 L 146 340 L 122 340 Z" fill="#361509" />
+    <ellipse cx="134" cy="342" rx="16" ry="11" fill="#361509" />
+
+    <path d="M 176 244 L 200 244 L 202 340 L 178 340 Z" fill="url(#a5Fur)" />
+    <path d="M 177 298 L 201 298 L 202 340 L 178 340 Z" fill="#361509" />
+    <ellipse cx="190" cy="342" rx="16" ry="11" fill="#361509" />
+
+    <!-- Khăn len vàng -->
+    <rect x="100" y="210" width="124" height="28" rx="14" fill="#FBBF24" stroke="#B45309" stroke-width="1.2" />
+    <path d="M 134 234 L 164 236 L 166 286 L 130 286 Z" fill="#F59E0B" stroke="#B45309" stroke-width="1.2" />
+    <rect x="131" y="210" width="34" height="30" rx="10" fill="#FEF08A" stroke="#B45309" stroke-width="1.2" />
+
+    <!-- Đầu Cáo đeo Tai Nghe Studio Mint-Gold lắc lư theo điệu nhạc -->
+    <g class="a5-head">
+      <!-- Vòng cầu tai nghe ôm qua đỉnh đầu -->
+      <path d="M 52 152 C 48 64, 102 38, 162 38 C 222 38, 276 64, 272 152" stroke="#1F2937" stroke-width="11" stroke-linecap="round" fill="none" />
+      <path d="M 110 44 Q 162 32, 214 44" stroke="#34D399" stroke-width="6" stroke-linecap="round" fill="none" />
+
+      <path d="M 66 128 C 46 80, 54 24, 78 16 C 102 14, 134 52, 144 96 Z" fill="url(#a5Fur)" />
+      <path d="M 55 52 C 60 28, 68 18, 78 16 C 90 15, 104 28, 114 48 C 94 54, 74 56, 55 52 Z" fill="#2E1207" />
+      <path d="M 76 118 C 64 82, 70 42, 82 32 C 96 34, 116 64, 122 98 Z" fill="#F9BFA8" />
+
+      <path d="M 258 128 C 278 80, 270 24, 246 16 C 222 14, 190 52, 180 96 Z" fill="url(#a5Fur)" />
+      <path d="M 269 52 C 264 28, 256 18, 246 16 C 234 15, 220 28, 210 48 C 230 54, 250 56, 269 52 Z" fill="#2E1207" />
+      <path d="M 248 118 C 260 82, 254 42, 242 32 C 228 34, 208 64, 202 98 Z" fill="#F9BFA8" />
+
+      <path d="M 162 66 C 222 66, 258 112, 264 162 C 272 167, 274 174, 266 180 C 272 186, 266 194, 256 198 C 234 214, 200 222, 162 222 C 124 222, 90 214, 68 198 C 58 194, 52 186, 58 180 C 50 174, 52 167, 60 162 C 66 112, 102 66, 162 66 Z" fill="url(#a5Fur)" />
+      <path d="M 60 166 C 78 148, 118 146, 146 168 C 154 162, 170 162, 178 168 C 206 146, 246 148, 264 166 C 272 170, 272 176, 266 180 C 272 186, 266 194, 256 198 C 234 214, 200 222, 162 222 C 124 222, 90 214, 68 198 C 58 194, 52 186, 58 180 C 52 176, 52 170, 60 166 Z" fill="#FFFDF9" />
+
+      <!-- Hai chụp tai nghe Mint-Gold áp vào hai bên thái dương -->
+      <rect x="38" y="124" width="24" height="54" rx="12" transform="rotate(-6 50 151)" fill="url(#a5HeadPhone)" stroke="#064E3B" stroke-width="2.5" />
+      <rect x="48" y="128" width="10" height="46" rx="5" transform="rotate(-6 53 151)" fill="#FEF3C7" />
+      <rect x="262" y="124" width="24" height="54" rx="12" transform="rotate(6 274 151)" fill="url(#a5HeadPhone)" stroke="#064E3B" stroke-width="2.5" />
+      <rect x="266" y="128" width="10" height="46" rx="5" transform="rotate(6 271 151)" fill="#FEF3C7" />
+
+      <!-- Đôi mắt nhắm hờ phiêu theo điệu nhạc Lo-Fi -->
+      <path d="M 96 150 Q 116 162, 136 148" stroke="#2B0E04" stroke-width="5" stroke-linecap="round" fill="none" />
+      <path d="M 188 148 Q 208 162, 228 150" stroke="#2B0E04" stroke-width="5" stroke-linecap="round" fill="none" />
+      <ellipse cx="90" cy="174" rx="15" ry="8" fill="#FF758F" opacity="0.5" />
+      <ellipse cx="234" cy="174" rx="15" ry="8" fill="#FF758F" opacity="0.5" />
+
+      <!-- Miệng huýt sáo / mỉm cười chill -->
+      <path d="M 148 184 Q 162 194, 176 184" stroke="#361207" stroke-width="3.6" stroke-linecap="round" fill="none" />
+      <path d="M 150 168 C 150 162, 174 162, 174 168 C 174 175, 165 181, 162 181 C 159 181, 150 175, 150 168 Z" fill="#240D04" />
+    </g>
+  </g>
+</svg>

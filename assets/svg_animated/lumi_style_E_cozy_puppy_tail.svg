@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360" width="360" height="360" fill="none">
+  <defs>
+    <style>
+      @keyframes seHeadTilt {
+        0%, 100% { transform: rotate(-4deg) translateY(0px); }
+        50%      { transform: rotate(4deg) translateY(-4px); }
+      }
+      @keyframes seTailHug {
+        0%, 100% { transform: scale(1, 1); }
+        50%      { transform: scale(1.02, 0.98); }
+      }
+      .se-head { transform-origin: 180px 198px; animation: seHeadTilt 2.4s ease-in-out infinite; }
+      .se-tail { transform-origin: 180px 290px; animation: seTailHug 2.4s ease-in-out infinite; }
+    </style>
+  </defs>
+
+  <ellipse cx="180" cy="326" rx="96" ry="15" fill="#E8DFD5" />
+
+  <!-- Thân ngồi gọn gàng -->
+  <path d="M 134 198 C 122 238, 124 294, 144 312 L 216 312 C 236 294, 238 238, 226 198 Z" fill="#F76B1C" />
+  <path d="M 150 210 C 142 246, 146 294, 180 312 C 214 294, 218 246, 210 210 Z" fill="#FFFDF9" />
+
+  <!-- ĐẦU CÁO CON NGƯỚC LÊN VỚI ĐÔI MẮT LONG LANH KHỔNG LỒ -->
+  <g class="se-head">
+    <path d="M 76 126 C 52 76, 62 20, 90 14 C 118 12, 150 50, 160 94 Z" fill="#F76B1C" />
+    <path d="M 64 50 C 70 26, 78 16, 90 14 C 104 13, 118 26, 128 46 C 108 52, 86 54, 64 50 Z" fill="#2E1207" />
+    <path d="M 88 114 C 74 78, 80 40, 94 32 C 108 34, 128 64, 134 96 Z" fill="#F9BFA8" />
+
+    <path d="M 284 126 C 308 76, 298 20, 270 14 C 242 12, 210 50, 200 94 Z" fill="#F76B1C" />
+    <path d="M 296 50 C 290 26, 282 16, 270 14 C 256 13, 242 26, 232 46 C 252 52, 274 54, 296 50 Z" fill="#2E1207" />
+    <path d="M 272 114 C 286 78, 280 40, 266 32 C 252 34, 232 64, 226 96 Z" fill="#F9BFA8" />
+
+    <path d="M 180 64 C 244 64, 282 108, 288 160 C 296 174, 288 196, 268 204 C 244 216, 214 220, 180 220 C 146 220, 116 216, 92 204 C 72 196, 64 174, 72 160 C 78 108, 116 64, 180 64 Z" fill="#F76B1C" />
+    <path d="M 72 164 C 94 144, 136 144, 164 166 C 172 160, 188 160, 196 166 C 224 144, 266 144, 288 164 C 292 178, 284 196, 268 204 C 244 216, 214 220, 180 220 C 146 220, 116 216, 92 204 C 76 196, 68 178, 72 164 Z" fill="#FFFDF9" />
+
+    <!-- Đôi mắt Puppy Eyes siêu to long lanh như Cú Baby Duolingo -->
+    <circle cx="132" cy="148" r="34" fill="#FFFFFF" />
+    <circle cx="135" cy="150" r="25" fill="#2E1207" />
+    <circle cx="122" cy="137" r="9.5" fill="#FFFFFF" />
+    <ellipse cx="128" cy="162" rx="7" ry="4" transform="rotate(30 128 162)" fill="#FFFFFF" />
+    <path d="M 146 138 Q 146 148, 156 148 Q 146 148, 146 158 Q 146 148, 136 148 Q 146 148, 146 138 Z" fill="#FFFFFF" />
+
+    <circle cx="228" cy="148" r="34" fill="#FFFFFF" />
+    <circle cx="225" cy="150" r="25" fill="#2E1207" />
+    <circle cx="212" cy="137" r="9.5" fill="#FFFFFF" />
+    <ellipse cx="218" cy="162" rx="7" ry="4" transform="rotate(30 218 162)" fill="#FFFFFF" />
+    <path d="M 236 138 Q 236 148, 246 148 Q 236 148, 236 158 Q 236 148, 226 148 Q 236 148, 236 138 Z" fill="#FFFFFF" />
+
+    <ellipse cx="180" cy="168" rx="9" ry="6" fill="#2E1207" />
+    <path d="M 164 178 Q 172 186, 180 178 Q 188 186, 196 178" stroke="#2E1207" stroke-width="3.8" stroke-linecap="round" fill="none" />
+  </g>
+
+  <!-- CHIẾC ĐUÔI BÔNG SIÊU TO QUẤN VÒNG QUA TRƯỚC BỤNG ÔM LẤY CHÂN -->
+  <g class="se-tail">
+    <path d="M 224 256 C 284 252, 304 316, 238 322 C 176 328, 102 322, 88 286 C 78 260, 114 248, 144 264 C 176 280, 198 258, 224 256 Z" fill="#F76B1C" />
+    <path d="M 144 264 C 114 248, 78 260, 88 286 C 96 306, 128 318, 168 322 C 154 306, 156 294, 168 288 C 154 282, 152 270, 144 264 Z" fill="#FFFDF9" />
+  </g>
+</svg>

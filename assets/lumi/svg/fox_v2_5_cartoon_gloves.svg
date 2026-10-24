@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 380" width="380" height="380" fill="none">
+  <defs>
+    <style>
+      @keyframes f5GrooveBounce {
+        0%, 100% { transform: translateY(4px) scale(1.03, 0.97); }
+        50%      { transform: translateY(-12px) scale(0.98, 1.03); }
+      }
+      @keyframes f5GloveWave {
+        0%, 100% { transform: rotate(-18deg) scale(1); }
+        50%      { transform: rotate(24deg) scale(1.06); }
+      }
+      @keyframes f5Tail {
+        0%, 100% { transform: rotate(-12deg); }
+        50%      { transform: rotate(16deg); }
+      }
+      @keyframes f5Wink {
+        0%, 40%, 60%, 100% { transform: scaleY(1); }
+        48%, 52%           { transform: scaleY(0.1); }
+      }
+
+      .f5-body  { transform-origin: 185px 330px; animation: f5GrooveBounce 1.1s ease-in-out infinite; }
+      .f5-glove { transform-origin: 226px 218px; animation: f5GloveWave 0.9s ease-in-out infinite; }
+      .f5-tail  { transform-origin: 214px 288px; animation: f5Tail 0.9s ease-in-out infinite; }
+      .f5-eyeR  { transform-origin: 204px 136px; animation: f5Wink 3.2s infinite; }
+    </style>
+  </defs>
+
+  <ellipse cx="185" cy="348" rx="88" ry="13" fill="#1E0E06" opacity="0.3" />
+
+  <g class="f5-body">
+    <!-- Đuôi vểnh nhọn sắc sảo kiểu hoạt hình Mỹ (Crash / Sonic Tails vibe) -->
+    <g class="f5-tail">
+      <path d="M 206 292 C 238 242, 296 204, 344 218 C 332 242, 348 258, 358 272 C 324 308, 262 320, 206 304 Z" fill="#FF6B1A" stroke="#1E0E06" stroke-width="5.5" stroke-linejoin="round" />
+      <path d="M 294 216 C 314 212, 330 214, 344 218 C 332 242, 348 258, 358 272 C 338 292, 314 304, 290 308 C 296 286, 280 278, 272 284 C 284 260, 278 238, 294 216 Z" fill="#FFFDF7" stroke="#1E0E06" stroke-width="5.5" stroke-linejoin="round" />
+    </g>
+
+    <!-- Đôi giày Sneaker Đỏ Sọc Trắng To Bản (Iconic Cartoon Shoes) -->
+    <path d="M 104 334 C 104 310, 144 306, 166 318 L 166 342 L 104 342 Z" fill="#EF4444" stroke="#1E0E06" stroke-width="5.5" stroke-linejoin="round" />
+    <rect x="100" y="336" width="70" height="10" rx="5" fill="#FFFFFF" stroke="#1E0E06" stroke-width="4.5" />
+    <path d="M 266 334 C 266 310, 226 306, 204 318 L 204 342 L 266 342 Z" fill="#EF4444" stroke="#1E0E06" stroke-width="5.5" stroke-linejoin="round" />
+    <rect x="200" y="336" width="70" height="10" rx="5" fill="#FFFFFF" stroke="#1E0E06" stroke-width="4.5" />
+
+    <!-- Hai cẳng chân thon năng động -->
+    <line x1="152" y1="278" x2="148" y2="318" stroke="#1E0E06" stroke-width="18" stroke-linecap="round" />
+    <line x1="152" y1="278" x2="148" y2="318" stroke="#FF6B1A" stroke-width="9" stroke-linecap="round" />
+    <line x1="218" y1="278" x2="222" y2="318" stroke="#1E0E06" stroke-width="18" stroke-linecap="round" />
+    <line x1="218" y1="278" x2="222" y2="318" stroke="#FF6B1A" stroke-width="9" stroke-linecap="round" />
+
+    <!-- Thân hình quả lê nhỏ gọn linh hoạt -->
+    <path d="M 146 196 C 132 232, 134 278, 152 290 L 218 290 C 236 278, 238 232, 224 196 Z" fill="#FF6B1A" stroke="#1E0E06" stroke-width="5.5" stroke-linejoin="round" />
+    <ellipse cx="185" cy="244" rx="28" ry="38" fill="#FFFDF7" />
+
+    <!-- Tay trái chống hông đeo Găng Tay Trắng Hoạt Hình -->
+    <path d="M 146 212 C 114 222, 108 250, 132 264" stroke="#1E0E06" stroke-width="16" stroke-linecap="round" fill="none" />
+    <path d="M 146 212 C 114 222, 108 250, 132 264" stroke="#FF6B1A" stroke-width="8" stroke-linecap="round" fill="none" />
+    <circle cx="136" cy="264" r="16" fill="#FFFFFF" stroke="#1E0E06" stroke-width="5" />
+
+    <!-- Tay phải đeo Găng Tay Trắng Khổng Lồ Vẫy Chào "HI!" -->
+    <g class="f5-glove">
+      <path d="M 222 212 C 252 204, 276 182, 282 152" stroke="#1E0E06" stroke-width="16" stroke-linecap="round" fill="none" />
+      <path d="M 222 212 C 252 204, 276 182, 282 152" stroke="#FF6B1A" stroke-width="8" stroke-linecap="round" fill="none" />
+      <!-- Găng tay hoạt hình 4 ngón trắng tinh -->
+      <g transform="translate(288, 134) rotate(12)">
+        <circle cx="0" cy="8" r="20" fill="#FFFFFF" stroke="#1E0E06" stroke-width="5" />
+        <ellipse cx="-18" cy="2" rx="9" ry="13" transform="rotate(-25 -18 2)" fill="#FFFFFF" stroke="#1E0E06" stroke-width="4.5" />
+        <ellipse cx="-6" cy="-14" rx="8" ry="14" transform="rotate(-8 -6 -14)" fill="#FFFFFF" stroke="#1E0E06" stroke-width="4.5" />
+        <ellipse cx="8" cy="-14" rx="8" ry="14" transform="rotate(8 8 -14)" fill="#FFFFFF" stroke="#1E0E06" stroke-width="4.5" />
+        <ellipse cx="20" cy="-4" rx="8" ry="12" transform="rotate(25 20 -4)" fill="#FFFFFF" stroke="#1E0E06" stroke-width="4.5" />
+        <circle cx="0" cy="8" r="14" fill="#FFFFFF" />
+        <line x1="-5" y1="4" x2="-5" y2="14" stroke="#1E0E06" stroke-width="3" stroke-linecap="round" />
+        <line x1="5" y1="4" x2="5" y2="14" stroke="#1E0E06" stroke-width="3" stroke-linecap="round" />
+      </g>
+    </g>
+
+    <!-- ĐẦU CÁO HOẠT HÌNH CÓ CHÙM LÔNG MÁ NHỌN & ĐÔI MẮT LỚN ĐẶT SÁT NHAU -->
+    <g>
+      <polygon points="108,108 72,22 152,72" fill="#FF6B1A" stroke="#1E0E06" stroke-width="5.5" stroke-linejoin="round" />
+      <polygon points="112,98 88,42 142,76" fill="#FDE047" />
+
+      <polygon points="262,108 298,22 218,72" fill="#FF6B1A" stroke="#1E0E06" stroke-width="5.5" stroke-linejoin="round" />
+      <polygon points="258,98 282,42 228,76" fill="#FDE047" />
+
+      <!-- Khuôn mặt với 2 tia lông má nhọn sang ngang kiểu Tails/Cartoon -->
+      <path d="M 185 64 C 228 64, 254 96, 258 134 L 292 148 L 262 166 L 280 182 L 242 190 C 224 202, 206 206, 185 206 C 164 206, 146 202, 128 190 L 90 182 L 108 166 L 78 148 L 112 134 C 116 96, 142 64, 185 64 Z" fill="#FF6B1A" stroke="#1E0E06" stroke-width="5.5" stroke-linejoin="round" />
+
+      <!-- Mõm trắng kem cùng 2 chùm má trắng nhọn -->
+      <path d="M 78 148 L 138 146 Q 185 136, 232 146 L 292 148 L 262 166 L 280 182 L 242 190 C 224 202, 206 206, 185 206 C 164 206, 146 202, 128 190 L 90 182 L 108 166 Z" fill="#FFFDF7" stroke="#1E0E06" stroke-width="5.5" stroke-linejoin="round" />
+
+      <!-- Đôi mắt hoạt hình lớn đặt gần nhau ở trung tâm trán (Classic Cartoon Eyes) -->
+      <ellipse cx="164" cy="126" rx="20" ry="28" fill="#FFFFFF" stroke="#1E0E06" stroke-width="5" />
+      <ellipse cx="206" cy="126" rx="20" ry="28" fill="#FFFFFF" stroke="#1E0E06" stroke-width="5" />
+
+      <ellipse cx="168" cy="130" rx="10" ry="15" fill="#0284C7" />
+      <ellipse cx="168" cy="130" rx="6" ry="10" fill="#1E0E06" />
+      <circle cx="164" cy="122" r="4" fill="#FFFFFF" />
+
+      <g class="f5-eyeR">
+        <ellipse cx="202" cy="130" rx="10" ry="15" fill="#0284C7" />
+        <ellipse cx="202" cy="130" rx="6" ry="10" fill="#1E0E06" />
+        <circle cx="198" cy="122" r="4" fill="#FFFFFF" />
+      </g>
+
+      <!-- Chiếc mũi bầu dục nhô lên & Khuôn miệng cười rộng hết cỡ -->
+      <ellipse cx="185" cy="150" rx="12" ry="8" fill="#1E0E06" />
+      <ellipse cx="182" cy="147" rx="4" ry="2" fill="#FFFFFF" />
+
+      <path d="M 142 164 Q 185 176, 228 164 C 220 198, 150 198, 142 164 Z" fill="#991B1B" stroke="#1E0E06" stroke-width="5" stroke-linejoin="round" />
+      <ellipse cx="185" cy="184" rx="18" ry="8" fill="#FB7185" />
+    </g>
+  </g>
+</svg>

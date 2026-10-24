@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 380" width="360" height="380" fill="none">
+  <defs>
+    <style>
+      @keyframes chibiHop {
+        0%, 100% { transform: translateY(0px) scale(1, 1); }
+        50%      { transform: translateY(-6px) scale(0.98, 1.025); }
+      }
+      @keyframes chibiShadow {
+        0%, 100% { transform: scale(1); opacity: 0.24; }
+        50%      { transform: scale(0.88); opacity: 0.16; }
+      }
+      @keyframes chibiHeadTilt {
+        0%, 100% { transform: rotate(-4deg) translateY(0px); }
+        50%      { transform: rotate(4deg) translateY(-4px); }
+      }
+      @keyframes chibiTail {
+        0%, 100% { transform: rotate(-12deg); }
+        50%      { transform: rotate(15deg); }
+      }
+      @keyframes chibiEarL {
+        0%, 100% { transform: rotate(0deg); }
+        50%      { transform: rotate(-8deg); }
+      }
+      @keyframes chibiEarR {
+        0%, 100% { transform: rotate(0deg); }
+        50%      { transform: rotate(8deg); }
+      }
+      @keyframes chibiPaws {
+        0%, 100% { transform: translateY(0px) scale(1); }
+        50%      { transform: translateY(-4px) scale(1.04); }
+      }
+      @keyframes chibiBlink {
+        0%, 45%, 49%, 93%, 97%, 100% { transform: scaleY(1); }
+        47%, 95%                     { transform: scaleY(0.06); }
+      }
+      @keyframes twinkleStar {
+        0%, 100% { transform: scale(0.75) rotate(0deg); opacity: 0.5; }
+        50%      { transform: scale(1.18) rotate(20deg); opacity: 1; }
+      }
+
+      .c-shadow { transform-origin: 170px 346px; animation: chibiShadow 2.1s ease-in-out infinite; }
+      .c-body   { transform-origin: 165px 334px; animation: chibiHop 2.1s ease-in-out infinite; }
+      .c-tail   { transform-origin: 200px 316px; animation: chibiTail 1.4s ease-in-out infinite; }
+      .c-head   { transform-origin: 162px 228px; animation: chibiHeadTilt 2.1s ease-in-out infinite; }
+      .c-ear-l  { transform-origin: 96px 104px; animation: chibiEarL 2.1s ease-in-out infinite; }
+      .c-ear-r  { transform-origin: 228px 104px; animation: chibiEarR 2.1s ease-in-out -0.25s infinite; }
+      .c-paws   { transform-origin: 162px 268px; animation: chibiPaws 1.05s ease-in-out infinite; }
+      .c-eyes   { transform-origin: 162px 162px; animation: chibiBlink 4.4s infinite; }
+      .c-star1  { transform-origin: 64px 96px; animation: twinkleStar 2.0s ease-in-out infinite; }
+      .c-star2  { transform-origin: 288px 118px; animation: twinkleStar 2.0s ease-in-out -0.9s infinite; }
+    </style>
+
+    <radialGradient id="chibiHeadGrad" cx="162" cy="128" r="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFAD66" />
+      <stop offset="60%" stop-color="#FF7B29" />
+      <stop offset="100%" stop-color="#E05306" />
+    </radialGradient>
+
+    <linearGradient id="chibiJewelEye" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2A0B14" />
+      <stop offset="45%" stop-color="#5C1D24" />
+      <stop offset="78%" stop-color="#D95D39" />
+      <stop offset="100%" stop-color="#FFCA61" />
+    </linearGradient>
+
+    <linearGradient id="chibiScarfGrad" x1="90" y1="215" x2="235" y2="290" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FEF08A" />
+      <stop offset="50%" stop-color="#FACC15" />
+      <stop offset="100%" stop-color="#CA8A04" />
+    </linearGradient>
+  </defs>
+
+  <!-- Ngôi sao lấp lánh kiểu Anime Chibi -->
+  <path class="c-star1" d="M 64 84 Q 64 96, 76 96 Q 64 96, 64 108 Q 64 96, 52 96 Q 64 96, 64 84 Z" fill="#FDE047" />
+  <path class="c-star2" d="M 288 108 Q 288 118, 298 118 Q 288 118, 288 128 Q 288 118, 278 118 Q 288 118, 288 108 Z" fill="#FF9EBB" />
+
+  <ellipse class="c-shadow" cx="170" cy="346" rx="92" ry="13" fill="#291206" />
+
+  <g class="c-body">
+    <!-- Đuôi bông tròn siêu to đối xứng tỷ lệ Chibi -->
+    <g class="c-tail">
+      <path d="M 192 324 C 196 254, 240 212, 290 220 C 330 228, 342 272, 318 306 C 296 336, 244 342, 192 332 Z" fill="url(#chibiHeadGrad)" />
+      <path d="M 254 222 C 280 216, 310 226, 324 250 C 334 268, 330 290, 318 306 C 310 290, 296 288, 286 298 C 284 282, 270 278, 258 286 C 262 268, 250 254, 254 222 Z" fill="#FFFDF9" />
+    </g>
+
+    <!-- Hai bàn chân sau mũm mĩm -->
+    <ellipse cx="112" cy="332" rx="22" ry="14" transform="rotate(-8 112 332)" fill="#3D190A" />
+    <ellipse cx="212" cy="332" rx="22" ry="14" transform="rotate(8 212 332)" fill="#3D190A" />
+    <ellipse cx="112" cy="334" rx="7" ry="4.5" fill="#FF9EBB" opacity="0.85" />
+    <ellipse cx="212" cy="334" rx="7" ry="4.5" fill="#FF9EBB" opacity="0.85" />
+
+    <!-- Thân Chibi nhỏ nhắn đáng yêu -->
+    <path d="M 118 232 C 108 268, 110 322, 128 338 L 196 338 C 214 322, 216 268, 206 232 Z" fill="url(#chibiHeadGrad)" />
+    <path d="M 134 244 C 126 276, 130 326, 162 338 C 194 326, 198 276, 190 244 Z" fill="#FFFDF9" />
+
+    <!-- Khăn len vàng cỡ lớn ôm trọn cổ kiểu Chibi -->
+    <path d="M 96 220 C 96 202, 228 202, 228 222 C 228 244, 96 244, 96 220 Z" fill="url(#chibiScarfGrad)" stroke="#B45309" stroke-width="1.5" />
+    <path d="M 102 236 C 102 222, 222 222, 222 238 C 222 254, 102 254, 102 236 Z" fill="url(#chibiScarfGrad)" stroke="#B45309" stroke-width="1.5" />
+    <path d="M 164 238 L 194 238 L 200 288 C 200 294, 162 294, 162 288 Z" fill="url(#chibiScarfGrad)" stroke="#B45309" stroke-width="1.5" />
+    <rect x="156" y="216" width="34" height="32" rx="11" fill="#FEF08A" stroke="#B45309" stroke-width="1.5" />
+
+    <!-- Hai tay Chibi chắp trước ngực hào hứng -->
+    <g class="c-paws">
+      <ellipse cx="140" cy="272" rx="16" ry="22" transform="rotate(24 140 272)" fill="url(#chibiHeadGrad)" />
+      <ellipse cx="184" cy="272" rx="16" ry="22" transform="rotate(-24 184 272)" fill="url(#chibiHeadGrad)" />
+      <circle cx="146" cy="262" r="12.5" fill="#3D190A" />
+      <circle cx="178" cy="262" r="12.5" fill="#3D190A" />
+      <circle cx="146" cy="263" r="4.5" fill="#FF9EBB" />
+      <circle cx="178" cy="263" r="4.5" fill="#FF9EBB" />
+    </g>
+
+    <!-- ĐẦU CHIBI TO TRÒN SIÊU ĐÁNG YÊU -->
+    <g class="c-head">
+      <!-- Đôi tai to vểnh -->
+      <g class="c-ear-l">
+        <path d="M 58 134 C 36 82, 46 22, 74 14 C 102 12, 136 54, 146 102 Z" fill="url(#chibiHeadGrad)" />
+        <path d="M 46 54 C 52 28, 62 16, 74 14 C 88 13, 104 26, 116 48 C 94 56, 68 58, 46 54 Z" fill="#361509" />
+        <path d="M 70 124 C 56 86, 62 44, 76 32 C 92 34, 114 68, 122 104 Z" fill="#FFD1C7" />
+        <path d="M 122 104 C 102 98, 92 90, 90 82 C 102 82, 108 76, 102 68 C 112 72, 118 84, 122 104 Z" fill="#FFFDF9" />
+      </g>
+      <g class="c-ear-r">
+        <path d="M 266 134 C 288 82, 278 22, 250 14 C 222 12, 188 54, 178 102 Z" fill="url(#chibiHeadGrad)" />
+        <path d="M 278 54 C 272 28, 262 16, 250 14 C 236 13, 220 26, 208 48 C 230 56, 256 58, 278 54 Z" fill="#361509" />
+        <path d="M 254 124 C 268 86, 262 44, 248 32 C 232 34, 210 68, 202 104 Z" fill="#FFD1C7" />
+        <path d="M 202 104 C 222 98, 232 90, 234 82 C 222 82, 216 76, 222 68 C 212 72, 206 84, 202 104 Z" fill="#FFFDF9" />
+      </g>
+
+      <!-- Chỏm tóc bông xù -->
+      <path d="M 136 74 C 134 52, 152 46, 162 62 C 164 44, 182 44, 182 62 C 192 52, 204 60, 194 76 Z" fill="#FF984F" />
+
+      <!-- Khuôn mặt bánh bao Chibi -->
+      <path d="M 162 66 C 232 66, 272 114, 276 168 C 284 182, 274 206, 252 214 C 228 226, 198 230, 162 230 C 126 230, 96 226, 72 214 C 50 206, 40 182, 48 168 C 52 114, 92 66, 162 66 Z" fill="url(#chibiHeadGrad)" />
+
+      <!-- Mảng má kem trắng muốt ôm cao lên gần mắt -->
+      <path d="M 48 170 C 72 148, 118 148, 148 174 C 156 168, 168 168, 176 174 C 206 148, 252 148, 276 170 C 282 184, 272 206, 252 214 C 228 226, 198 230, 162 230 C 126 230, 96 226, 72 214 C 52 206, 42 184, 48 170 Z" fill="#FFFDF9" />
+
+      <!-- Lông mày nhỏ nhắn biểu cảm -->
+      <path d="M 104 114 Q 118 106, 130 112" stroke="#4A1D0B" stroke-width="4" stroke-linecap="round" fill="none" />
+      <path d="M 220 114 Q 206 106, 194 112" stroke="#4A1D0B" stroke-width="4" stroke-linecap="round" fill="none" />
+
+      <!-- Má hồng phấn tan mịn -->
+      <ellipse cx="78" cy="186" rx="20" ry="11" fill="#FF758F" opacity="0.55" />
+      <ellipse cx="246" cy="186" rx="20" ry="11" fill="#FF758F" opacity="0.55" />
+
+      <!-- ĐÔI MẮT NGỌC ANIME SHOUJO LONG LANH -->
+      <g class="c-eyes">
+        <!-- Mắt Trái -->
+        <ellipse cx="110" cy="158" rx="22" ry="25" fill="#FFFDF9" />
+        <ellipse cx="112" cy="158" rx="19.5" ry="23" fill="url(#chibiJewelEye)" />
+        <ellipse cx="112" cy="156" rx="11.5" ry="14" fill="#1F080E" />
+        <!-- Ánh sao đôi long lanh -->
+        <circle cx="103" cy="145" r="7" fill="#FFFFFF" />
+        <circle cx="121" cy="166" r="3.8" fill="#FFFFFF" />
+        <circle cx="101" cy="164" r="2" fill="#FFE599" />
+        <path d="M 86 150 C 90 126, 130 126, 134 150" stroke="#2A0B14" stroke-width="5.5" stroke-linecap="round" fill="none" />
+        <path d="M 87 146 L 80 140" stroke="#2A0B14" stroke-width="3.5" stroke-linecap="round" />
+
+        <!-- Mắt Phải -->
+        <ellipse cx="214" cy="158" rx="22" ry="25" fill="#FFFDF9" />
+        <ellipse cx="212" cy="158" rx="19.5" ry="23" fill="url(#chibiJewelEye)" />
+        <ellipse cx="212" cy="156" rx="11.5" ry="14" fill="#1F080E" />
+        <circle cx="203" cy="145" r="7" fill="#FFFFFF" />
+        <circle cx="221" cy="166" r="3.8" fill="#FFFFFF" />
+        <circle cx="201" cy="164" r="2" fill="#FFE599" />
+        <path d="M 238 150 C 234 126, 194 126, 190 150" stroke="#2A0B14" stroke-width="5.5" stroke-linecap="round" fill="none" />
+        <path d="M 237 146 L 244 140" stroke="#2A0B14" stroke-width="3.5" stroke-linecap="round" />
+      </g>
+
+      <!-- Chiếc mũi nhỏ xíu & miệng cười mèo Chibi (:3) -->
+      <path d="M 150 188 Q 162 196, 174 188 C 172 204, 152 204, 150 188 Z" fill="#4A151B" />
+      <ellipse cx="162" cy="196" rx="7.5" ry="4.5" fill="#FF8FA3" />
+      <path d="M 142 185 Q 152 193, 162 184 Q 172 193, 182 185" stroke="#3D150A" stroke-width="3.5" stroke-linecap="round" fill="#FFFDF9" />
+      <ellipse cx="162" cy="176" rx="6.5" ry="4.5" fill="#2A0B14" />
+      <ellipse cx="160" cy="174.5" rx="2.2" ry="1" fill="#FFFFFF" opacity="0.85" />
+    </g>
+  </g>
+</svg>

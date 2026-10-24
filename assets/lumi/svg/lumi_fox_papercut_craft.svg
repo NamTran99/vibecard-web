@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 400" width="380" height="400" fill="none">
+  <defs>
+    <style>
+      @keyframes p3Breathe {
+        0%, 100% { transform: scale(1, 1); }
+        50%      { transform: scale(1.015, 0.99); }
+      }
+      @keyframes p3Head {
+        0%, 100% { transform: rotate(-3deg); }
+        50%      { transform: rotate(3deg); }
+      }
+      @keyframes p3TailWrap {
+        0%, 100% { transform: rotate(0deg) translateY(0px); }
+        50%      { transform: rotate(-2.5deg) translateY(-3px); }
+      }
+      @keyframes p3Leaf1 {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50%      { transform: translateY(-8px) rotate(12deg); }
+      }
+
+      .p3-body { transform-origin: 190px 340px; animation: p3Breathe 3.0s ease-in-out infinite; }
+      .p3-head { transform-origin: 185px 195px; animation: p3Head 3.0s ease-in-out infinite; }
+      .p3-tail { transform-origin: 190px 330px; animation: p3TailWrap 3.0s ease-in-out infinite; }
+      .p3-leaf { transform-origin: 310px 130px; animation: p3Leaf1 3.4s ease-in-out infinite; }
+    </style>
+
+    <!-- Bóng đổ thật giữa các lớp giấy cắt (Tactile Paper-Cut Depth) -->
+  </defs>
+
+  <!-- Vòng nền giấy cắt trang trí mùa thu -->
+  <circle cx="190" cy="220" r="142" fill="#2A1810" opacity="0.22" />
+  <g class="p3-leaf">
+    <path d="M 304 112 Q 328 116, 324 140 Q 300 136, 304 112 Z" fill="#F59E0B" />
+    <line x1="304" y1="112" x2="322" y2="138" stroke="#B45309" stroke-width="2" />
+  </g>
+
+  <g class="p3-body">
+    <!-- LỚP GIẤY 1: Thân cáo màu cam đất -->
+    <path d="M 118 190 C 102 250, 114 334, 190 344 C 266 334, 278 250, 262 190 Z" fill="#D94E1F" />
+    <!-- Lớp giấy cắt sống lưng nửa phải -->
+    <path d="M 190 190 C 266 190, 278 250, 262 190 L 190 344 C 266 334, 278 250, 262 190 Z" fill="#B83B12" />
+
+    <!-- LỚP GIẤY 2: Yếm ngực giấy màu kem xếp nếp Origami -->
+    <polygon points="142,202 238,202 218,308 190,326 162,308" fill="#FAF0CA" />
+    <polygon points="190,202 238,202 218,308 190,326" fill="#EAD8B1" />
+
+    <!-- LỚP GIẤY 3: Khăn quàng cổ xếp lớp giấy vàng nghệ -->
+    <g>
+      <path d="M 112 194 L 268 194 L 258 228 L 122 228 Z" fill="#F4A261" />
+      <path d="M 118 184 L 262 184 L 252 216 L 128 216 Z" fill="#E9C46A" />
+      <polygon points="146,204 184,204 178,286 158,274 138,286" fill="#F4A261" />
+      <polygon points="152,196 188,196 182,272 164,262 146,272" fill="#E9C46A" />
+    </g>
+
+    <!-- LỚP GIẤY 4: ĐẦU CÁO CẮT GIẤY NGHỆ THUẬT (FACETED PAPER SCULPTURE) -->
+    <g class="p3-head">
+      <!-- Hai tai giấy ghép 3 tầng -->
+      <g>
+        <polygon points="84,126 68,24 148,88" fill="#D94E1F" />
+        <polygon points="68,24 108,56 76,74" fill="#2B140B" />
+        <polygon points="94,116 84,48 136,92" fill="#F4A261" />
+
+        <polygon points="296,126 312,24 232,88" fill="#B83B12" />
+        <polygon points="312,24 272,56 304,74" fill="#2B140B" />
+        <polygon points="286,116 296,48 244,92" fill="#E78F4E" />
+      </g>
+
+      <!-- Khối mặt giấy hình lục giác mềm -->
+      <path d="M 190 64 L 268 96 L 298 158 L 256 204 L 190 218 L 124 204 L 82 158 L 112 96 Z" fill="#E76F51" />
+      <path d="M 190 64 L 268 96 L 298 158 L 256 204 L 190 218 Z" fill="#D94E1F" />
+
+      <!-- Hai má giấy màu kem chồng lên nhau -->
+      <path d="M 82 158 L 156 148 L 190 218 L 124 204 Z" fill="#FAF0CA" />
+      <path d="M 298 158 L 224 148 L 190 218 L 256 204 Z" fill="#EAD8B1" />
+
+      <!-- Sống mũi giấy nổi khối 3D ở chính giữa -->
+      <polygon points="190,64 218,148 190,194 162,148" fill="#F4A261" />
+      <polygon points="190,64 218,148 190,194" fill="#E76F51" />
+
+      <!-- Đôi mắt cắt giấy hình lá trúc sắc sảo -->
+      <g>
+        <path d="M 114 136 Q 134 118, 154 138 Q 134 154, 114 136 Z" fill="#2B140B" />
+        <circle cx="136" cy="136" r="8" fill="#E9C46A" />
+        <circle cx="136" cy="136" r="4.5" fill="#2B140B" />
+        <circle cx="133" cy="133" r="2" fill="#FFFFFF" />
+
+        <path d="M 266 136 Q 246 118, 226 138 Q 246 154, 266 136 Z" fill="#2B140B" />
+        <circle cx="244" cy="136" r="8" fill="#E9C46A" />
+        <circle cx="244" cy="136" r="4.5" fill="#2B140B" />
+        <circle cx="241" cy="133" r="2" fill="#FFFFFF" />
+      </g>
+
+      <!-- Chóp mũi kim cương đen -->
+      <polygon points="190,174 204,186 190,198 176,186" fill="#2B140B" />
+    </g>
+
+    <!-- LỚP GIẤY 5: CHIẾC ĐUÔI LỚN CUỘN TRÒN ÔM TRƯỚC CHÂN (CURLED FOX-TAIL) -->
+    <g class="p3-tail">
+      <path d="M 256 278 C 318 278, 332 346, 254 362 C 194 374, 102 366, 86 328 C 74 300, 112 282, 152 298 C 188 312, 218 318, 256 278 Z" fill="#E76F51" />
+      <path d="M 256 278 C 304 296, 286 346, 232 356 C 178 366, 108 356, 86 328 C 122 342, 198 344, 256 278 Z" fill="#D94E1F" />
+      <!-- Chóp đuôi giấy trắng kem ôm gọn phía bên trái -->
+      <path d="M 152 298 C 112 282, 74 300, 86 328 C 96 348, 128 358, 164 360 L 148 336 L 168 326 L 144 314 Z" fill="#FAF0CA" />
+    </g>
+  </g>
+</svg>

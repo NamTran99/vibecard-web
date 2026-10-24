@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360" width="360" height="360" fill="none">
+  <defs>
+    <style>
+      @keyframes scSway {
+        0%, 100% { transform: translateY(0px) rotate(-3deg); }
+        50%      { transform: translateY(-8px) rotate(3deg); }
+      }
+      @keyframes scWave {
+        0%, 100% { transform: rotate(-16deg); }
+        50%      { transform: rotate(24deg); }
+      }
+      @keyframes scTail {
+        0%, 100% { transform: rotate(-10deg); }
+        50%      { transform: rotate(14deg); }
+      }
+      .sc-body { transform-origin: 180px 300px; animation: scSway 2s ease-in-out infinite; }
+      .sc-armR { transform-origin: 228px 228px; animation: scWave 1s ease-in-out infinite; }
+      .sc-tail { transform-origin: 215px 275px; animation: scTail 1.2s ease-in-out infinite; }
+    </style>
+  </defs>
+
+  <ellipse cx="180" cy="322" rx="84" ry="14" fill="#F3E5D8" />
+
+  <g class="sc-body">
+    <g class="sc-tail">
+      <path d="M 212 280 C 248 250, 296 226, 320 248 C 338 264, 324 300, 288 308 C 254 316, 224 298, 212 288 Z" fill="#FF9A62" stroke="#5C2D16" stroke-width="5" stroke-linejoin="round" />
+      <path d="M 282 238 C 300 236, 314 240, 320 248 C 336 264, 322 298, 288 308 C 286 292, 274 288, 264 294 C 272 276, 268 258, 282 238 Z" fill="#FFFDF9" stroke="#5C2D16" stroke-width="5" stroke-linejoin="round" />
+    </g>
+
+    <!-- Thân baby mũm mĩm -->
+    <path d="M 132 212 C 118 248, 122 292, 144 306 L 216 306 C 238 292, 242 248, 228 212 Z" fill="#FF9A62" stroke="#5C2D16" stroke-width="5" stroke-linejoin="round" />
+    <ellipse cx="180" cy="264" rx="34" ry="38" fill="#FFFDF9" />
+
+    <!-- Chiếc nơ cổ vàng kem Pastel -->
+    <polygon points="180,218 148,204 152,234" fill="#FFE066" stroke="#5C2D16" stroke-width="4.5" stroke-linejoin="round" />
+    <polygon points="180,218 212,204 208,234" fill="#FFE066" stroke="#5C2D16" stroke-width="4.5" stroke-linejoin="round" />
+    <circle cx="180" cy="218" r="9" fill="#FFD43B" stroke="#5C2D16" stroke-width="4.5" />
+
+    <!-- Tay trái & Tay phải vẫy chào -->
+    <ellipse cx="126" cy="242" rx="18" ry="12" transform="rotate(-25 126 242)" fill="#5C2D16" />
+    <g class="sc-armR">
+      <ellipse cx="242" cy="214" rx="22" ry="13" transform="rotate(-35 242 214)" fill="#5C2D16" />
+      <circle cx="250" cy="208" r="4" fill="#FF9EBB" />
+    </g>
+
+    <ellipse cx="144" cy="306" rx="18" ry="12" fill="#5C2D16" />
+    <ellipse cx="216" cy="306" rx="18" ry="12" fill="#5C2D16" />
+
+    <!-- Đầu tròn phúng phính kiểu Sanrio -->
+    <path d="M 86 124 C 66 78, 76 28, 102 24 C 126 22, 152 56, 160 94 Z" fill="#FF9A62" stroke="#5C2D16" stroke-width="5" stroke-linejoin="round" />
+    <path d="M 76 54 C 82 32, 90 24, 102 24 C 114 24, 124 34, 132 50 C 114 56, 94 58, 76 54 Z" fill="#5C2D16" />
+    <path d="M 96 112 C 86 82, 92 48, 104 42 C 116 42, 132 68, 138 96 Z" fill="#FFC9B5" />
+
+    <path d="M 274 124 C 294 78, 284 28, 258 24 C 234 22, 208 56, 200 94 Z" fill="#FF9A62" stroke="#5C2D16" stroke-width="5" stroke-linejoin="round" />
+    <path d="M 284 54 C 278 32, 270 24, 258 24 C 246 24, 236 34, 228 50 C 246 56, 266 58, 284 54 Z" fill="#5C2D16" />
+    <path d="M 264 112 C 274 82, 268 48, 256 42 C 244 42, 228 68, 222 96 Z" fill="#FFC9B5" />
+
+    <path d="M 180 72 C 242 72, 278 114, 282 164 C 286 198, 252 218, 180 218 C 108 218, 74 198, 78 164 C 82 114, 118 72, 180 72 Z" fill="#FF9A62" stroke="#5C2D16" stroke-width="5" stroke-linejoin="round" />
+    <path d="M 80 168 C 104 148, 146 152, 168 172 C 174 166, 186 166, 192 172 C 214 152, 256 148, 280 168 C 282 198, 248 216, 180 216 C 112 216, 78 198, 80 168 Z" fill="#FFFDF9" />
+    <path d="M 180 72 C 242 72, 278 114, 282 164 C 286 198, 252 218, 180 218 C 108 218, 74 198, 78 164 C 82 114, 118 72, 180 72 Z" fill="none" stroke="#5C2D16" stroke-width="5" stroke-linejoin="round" />
+
+    <!-- Mắt tròn lấp lánh sao 4 cánh kiểu Cú Baby Duolingo nhưng nét mảnh Sanrio -->
+    <circle cx="132" cy="154" r="24" fill="#5C2D16" />
+    <circle cx="122" cy="144" r="7" fill="#FFFFFF" />
+    <path d="M 140 144 Q 140 154, 150 154 Q 140 154, 140 164 Q 140 154, 130 154 Q 140 154, 140 144 Z" fill="#FFFFFF" />
+
+    <circle cx="228" cy="154" r="24" fill="#5C2D16" />
+    <circle cx="218" cy="144" r="7" fill="#FFFFFF" />
+    <path d="M 236 144 Q 236 154, 246 154 Q 236 154, 236 164 Q 236 154, 226 154 Q 236 154, 236 144 Z" fill="#FFFFFF" />
+
+    <ellipse cx="98" cy="176" rx="15" ry="9" fill="#FF9EBB" opacity="0.75" />
+    <ellipse cx="262" cy="176" rx="15" ry="9" fill="#FF9EBB" opacity="0.75" />
+
+    <!-- Mõm ω phồng tròn & miệng cười -->
+    <path d="M 164 176 Q 172 184, 180 176 Q 188 184, 196 176 C 194 196, 166 196, 164 176 Z" fill="#FF758F" stroke="#5C2D16" stroke-width="4" stroke-linejoin="round" />
+    <ellipse cx="180" cy="168" rx="8" ry="5.5" fill="#5C2D16" />
+  </g>
+</svg>

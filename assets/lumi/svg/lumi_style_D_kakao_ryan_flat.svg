@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360" width="360" height="360" fill="none">
+  <defs>
+    <style>
+      @keyframes sdHop {
+        0%, 100% { transform: translateY(4px) scale(1.03, 0.97); }
+        50%      { transform: translateY(-14px) scale(0.98, 1.03); }
+      }
+      @keyframes sdWave {
+        0%, 100% { transform: rotate(-18deg); }
+        50%      { transform: rotate(22deg); }
+      }
+      .sd-body { transform-origin: 180px 310px; animation: sdHop 1.3s ease-in-out infinite; }
+      .sd-armR { transform-origin: 232px 228px; animation: sdWave 0.65s ease-in-out infinite; }
+    </style>
+  </defs>
+
+  <ellipse cx="180" cy="328" rx="82" ry="12" fill="#E2D9CE" />
+
+  <g class="sd-body">
+    <!-- Đuôi tròn gọn -->
+    <path d="M 216 286 C 258 268, 298 242, 314 264 C 328 282, 304 314, 266 314 C 238 314, 222 300, 216 294 Z" fill="#F77F2F" stroke="#3B1D0E" stroke-width="6" stroke-linejoin="round" />
+    <circle cx="296" cy="278" r="18" fill="#FFFDF9" />
+
+    <!-- Thân gấu/cáo Kakao Friends -->
+    <rect x="128" y="206" width="104" height="106" rx="48" fill="#F77F2F" stroke="#3B1D0E" stroke-width="6" />
+    <ellipse cx="180" cy="262" rx="34" ry="38" fill="#FFFDF9" />
+
+    <ellipse cx="152" cy="312" rx="18" ry="12" fill="#3B1D0E" />
+    <ellipse cx="208" cy="312" rx="18" ry="12" fill="#3B1D0E" />
+
+    <!-- Tay trái & Tay phải vẫy -->
+    <rect x="98" y="218" width="42" height="26" rx="13" transform="rotate(-28 118 231)" fill="#F77F2F" stroke="#3B1D0E" stroke-width="6" />
+    <g class="sd-armR">
+      <rect x="220" y="198" width="48" height="26" rx="13" transform="rotate(-38 232 228)" fill="#F77F2F" stroke="#3B1D0E" stroke-width="6" />
+    </g>
+
+    <!-- Khăn quàng vàng đơn giản -->
+    <rect x="118" y="200" width="124" height="26" rx="13" fill="#FFD43B" stroke="#3B1D0E" stroke-width="6" />
+
+    <!-- Đầu lớn bo tròn với đôi tai tam giác bầu -->
+    <path d="M 88 118 C 72 72, 84 26, 110 26 C 134 26, 154 58, 160 92 Z" fill="#F77F2F" stroke="#3B1D0E" stroke-width="6" stroke-linejoin="round" />
+    <path d="M 82 54 C 88 34, 96 26, 110 26 C 122 26, 132 36, 138 50 C 120 56, 100 58, 82 54 Z" fill="#3B1D0E" />
+
+    <path d="M 272 118 C 288 72, 276 26, 250 26 C 226 26, 206 58, 200 92 Z" fill="#F77F2F" stroke="#3B1D0E" stroke-width="6" stroke-linejoin="round" />
+    <path d="M 278 54 C 272 34, 264 26, 250 26 C 238 26, 228 36, 222 50 C 240 56, 260 58, 278 54 Z" fill="#3B1D0E" />
+
+    <rect x="74" y="68" width="212" height="148" rx="74" fill="#F77F2F" stroke="#3B1D0E" stroke-width="6" />
+    <path d="M 78 158 C 104 138, 146 142, 168 162 C 174 156, 186 156, 192 162 C 214 142, 256 138, 282 158 C 284 194, 252 212, 180 212 C 108 212, 76 194, 78 158 Z" fill="#FFFDF9" />
+    <rect x="74" y="68" width="212" height="148" rx="74" fill="none" stroke="#3B1D0E" stroke-width="6" />
+
+    <!-- Lông mày ngang đặc trưng của Ryan (Kakao Friends) -->
+    <line x1="114" y1="114" x2="144" y2="114" stroke="#3B1D0E" stroke-width="6.5" stroke-linecap="round" />
+    <line x1="216" y1="114" x2="246" y2="114" stroke="#3B1D0E" stroke-width="6.5" stroke-linecap="round" />
+
+    <!-- Đôi mắt đen nhánh lấp lánh -->
+    <circle cx="130" cy="144" r="14" fill="#3B1D0E" />
+    <circle cx="125" cy="139" r="4.5" fill="#FFFFFF" />
+    <circle cx="230" cy="144" r="14" fill="#3B1D0E" />
+    <circle cx="225" cy="139" r="4.5" fill="#FFFFFF" />
+
+    <ellipse cx="98" cy="164" rx="14" ry="8" fill="#FF8FA3" opacity="0.8" />
+    <ellipse cx="262" cy="164" rx="14" ry="8" fill="#FF8FA3" opacity="0.8" />
+
+    <!-- Mõm số 8 (∞) kinh điển của Kakao Friends -->
+    <circle cx="168" cy="166" r="15" fill="#FFFDF9" stroke="#3B1D0E" stroke-width="5.5" />
+    <circle cx="192" cy="166" r="15" fill="#FFFDF9" stroke="#3B1D0E" stroke-width="5.5" />
+    <rect x="164" y="154" width="32" height="22" fill="#FFFDF9" />
+    <ellipse cx="180" cy="154" rx="9" ry="6.5" fill="#3B1D0E" />
+    <path d="M 172 176 C 174 188, 186 188, 188 176 Z" fill="#E11D48" stroke="#3B1D0E" stroke-width="4.5" />
+  </g>
+</svg>

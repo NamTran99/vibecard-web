@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 380" width="360" height="380" fill="none">
+  <defs>
+    <style>
+      @keyframes a16TailFan1 {
+        0%, 100% { transform: rotate(-12deg); }
+        50%      { transform: rotate(6deg); }
+      }
+      @keyframes a16TailFan2 {
+        0%, 100% { transform: rotate(8deg); }
+        50%      { transform: rotate(-10deg); }
+      }
+      @keyframes a16Foxfire1 {
+        0%, 100% { transform: translateY(0px) scale(0.95); }
+        50%      { transform: translateY(-14px) scale(1.12); }
+      }
+      @keyframes a16Foxfire2 {
+        0%, 100% { transform: translateY(-10px) scale(1.1); }
+        50%      { transform: translateY(6px) scale(0.92); }
+      }
+      @keyframes a16Blink {
+        0%, 46%, 50%, 96%, 100% { transform: scaleY(1); }
+        48%                     { transform: scaleY(0.06); }
+      }
+
+      .a16-t1   { transform-origin: 110px 300px; animation: a16TailFan1 2.6s ease-in-out infinite; }
+      .a16-t2   { transform-origin: 214px 300px; animation: a16TailFan2 2.6s ease-in-out infinite; }
+      .a16-orb1 { transform-origin: 54px 168px; animation: a16Foxfire1 2.2s ease-in-out infinite; }
+      .a16-orb2 { transform-origin: 306px 168px; animation: a16Foxfire2 2.2s ease-in-out infinite; }
+      .a16-eyes { transform-origin: 162px 152px; animation: a16Blink 4.8s infinite; }
+    </style>
+
+    <radialGradient id="a16GoldFur" cx="162" cy="126" r="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FDE047" />
+      <stop offset="45%" stop-color="#FB923C" />
+      <stop offset="100%" stop-color="#C2410C" />
+    </radialGradient>
+    <radialGradient id="a16CyanGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#A5F3FC" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#06B6D4" stop-opacity="0.45" />
+      <stop offset="100%" stop-color="#0891B2" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <ellipse cx="162" cy="350" rx="108" ry="13" fill="#083344" opacity="0.34" />
+
+  <!-- 3 ĐUÔI HỒ LY XÒE QUẠT PHÍA SAU (MULTI-TAIL KITSUNE FAN) -->
+  <!-- Đuôi bên trái -->
+  <g class="a16-t1">
+    <path d="M 124 312 C 88 266, 36 232, 22 184 C 14 152, 46 138, 72 164 C 98 190, 118 248, 134 300 Z" fill="url(#a16GoldFur)" />
+    <path d="M 22 184 C 14 152, 46 138, 72 164 C 62 176, 56 188, 62 200 C 48 192, 34 194, 22 184 Z" fill="#FFFDF9" />
+  </g>
+  <!-- Đuôi bên phải -->
+  <g class="a16-t2">
+    <path d="M 200 312 C 236 266, 288 232, 302 184 C 310 152, 278 138, 252 164 C 226 190, 206 248, 190 300 Z" fill="url(#a16GoldFur)" />
+    <path d="M 302 184 C 310 152, 278 138, 252 164 C 262 176, 268 188, 262 200 C 276 192, 290 194, 302 184 Z" fill="#FFFDF9" />
+  </g>
+
+  <!-- ĐỐM LỬA HỒ LY XANH NGỌC CYAN HUYỀN ẢO (KITSUNE-BI) -->
+  <g class="a16-orb1">
+    <circle cx="54" cy="168" r="28" fill="url(#a16CyanGlow)" />
+    <path d="M 54 140 C 40 156, 38 176, 54 184 C 70 176, 68 156, 54 140 Z" fill="#22D3EE" />
+    <path d="M 54 150 C 46 160, 46 172, 54 178 C 62 172, 62 160, 54 150 Z" fill="#ECFEFF" />
+  </g>
+  <g class="a16-orb2">
+    <circle cx="306" cy="168" r="28" fill="url(#a16CyanGlow)" />
+    <path d="M 306 140 C 292 156, 290 176, 306 184 C 322 176, 320 156, 306 140 Z" fill="#22D3EE" />
+    <path d="M 306 150 C 298 160, 298 172, 306 178 C 314 172, 314 160, 306 150 Z" fill="#ECFEFF" />
+  </g>
+
+  <!-- THÂN CÁO HỒ LY KITSUNE -->
+  <g>
+    <ellipse cx="108" cy="316" rx="24" ry="26" transform="rotate(-12 108 316)" fill="url(#a16GoldFur)" />
+    <ellipse cx="216" cy="316" rx="24" ry="26" transform="rotate(12 216 316)" fill="url(#a16GoldFur)" />
+    <ellipse cx="94" cy="338" rx="18" ry="12" fill="#361509" />
+    <ellipse cx="230" cy="338" rx="18" ry="12" fill="#361509" />
+
+    <path d="M 114 222 C 104 264, 106 322, 126 338 L 198 338 C 218 322, 220 264, 210 222 Z" fill="url(#a16GoldFur)" />
+    <path d="M 134 238 C 124 274, 128 324, 162 338 C 196 324, 200 274, 190 238 Z" fill="#FFFDF9" />
+
+    <!-- Dải dây thừng Thần Đạo Đỏ-Trắng & Chuông Vàng Суzu trước ngực -->
+    <path d="M 106 218 Q 162 238, 218 218" stroke="#EF4444" stroke-width="12" stroke-linecap="round" fill="none" />
+    <path d="M 114 220 Q 162 236, 210 220" stroke="#FFFDF9" stroke-width="6" stroke-dasharray="10 10" stroke-linecap="round" fill="none" />
+    <circle cx="162" cy="236" r="14" fill="#FACC15" stroke="#B45309" stroke-width="2.5" />
+    <circle cx="162" cy="240" r="3.5" fill="#451A03" />
+    <line x1="154" y1="232" x2="170" y2="232" stroke="#B45309" stroke-width="2" />
+
+    <!-- Hai tay chụm trước ngực triệu hồi ngọc lửa xanh -->
+    <path d="M 120 250 C 110 264, 120 288, 144 284 C 154 282, 152 264, 140 252 Z" fill="url(#a16GoldFur)" />
+    <path d="M 204 250 C 214 264, 204 288, 180 284 C 170 282, 172 264, 184 252 Z" fill="url(#a16GoldFur)" />
+    <circle cx="144" cy="276" r="11" fill="#361509" />
+    <circle cx="180" cy="276" r="11" fill="#361509" />
+    <circle cx="162" cy="268" r="10" fill="#22D3EE" />
+    <circle cx="162" cy="268" r="5" fill="#ECFEFF" />
+
+    <!-- Đầu Cáo Kitsune + Mặt Nạ Hồ Ly Trắng Đeo Lệch Trên Tai Phải -->
+    <g>
+      <path d="M 66 128 C 46 80, 54 24, 78 16 C 102 14, 134 52, 144 96 Z" fill="url(#a16GoldFur)" />
+      <path d="M 55 52 C 60 28, 68 18, 78 16 C 90 15, 104 28, 114 48 C 94 54, 74 56, 55 52 Z" fill="#B91C1C" />
+      <path d="M 76 118 C 64 82, 70 42, 82 32 C 96 34, 116 64, 122 98 Z" fill="#FDE68A" />
+
+      <path d="M 258 128 C 278 80, 270 24, 246 16 C 222 14, 190 52, 180 96 Z" fill="url(#a16GoldFur)" />
+      <path d="M 269 52 C 264 28, 256 18, 246 16 C 234 15, 220 28, 210 48 C 230 54, 250 56, 269 52 Z" fill="#B91C1C" />
+
+      <path d="M 162 66 C 222 66, 258 112, 264 162 C 272 174, 266 196, 248 204 C 226 218, 196 222, 162 222 C 128 222, 98 218, 76 204 C 58 196, 52 174, 60 162 C 66 112, 102 66, 162 66 Z" fill="url(#a16GoldFur)" />
+      <path d="M 60 166 C 78 148, 118 146, 146 168 C 154 162, 170 162, 178 168 C 206 146, 246 148, 264 166 C 270 178, 264 196, 248 204 C 226 218, 196 222, 162 222 C 128 222, 98 218, 76 204 C 60 196, 54 178, 60 166 Z" fill="#FFFDF9" />
+
+      <!-- Hoa văn lửa đỏ Kitsune trên trán -->
+      <path d="M 162 84 C 154 98, 156 112, 162 120 C 168 112, 170 98, 162 84 Z" fill="#EF4444" />
+
+      <!-- Mặt nạ Kitsune trắng nhỏ đeo nghiêng bên đầu phải -->
+      <g transform="translate(226, 76) rotate(22)">
+        <ellipse cx="0" cy="0" rx="28" ry="24" fill="#FFFFFF" stroke="#EF4444" stroke-width="2.5" />
+        <polygon points="-24,-10 -18,-30 -4,-16" fill="#FFFFFF" stroke="#EF4444" stroke-width="2.5" />
+        <polygon points="24,-10 18,-30 4,-16" fill="#FFFFFF" stroke="#EF4444" stroke-width="2.5" />
+        <path d="M -16 -2 Q -10 -8, -4 -2" stroke="#1E293B" stroke-width="2.5" stroke-linecap="round" fill="none" />
+        <path d="M 4 -2 Q 10 -8, 16 -2" stroke="#1E293B" stroke-width="2.5" stroke-linecap="round" fill="none" />
+        <circle cx="0" cy="8" r="3.5" fill="#EF4444" />
+      </g>
+
+      <!-- Đôi mắt Vàng Kim Rực Sáng Huyền Bí -->
+      <g class="a16-eyes">
+        <ellipse cx="115" cy="150" rx="18" ry="20" fill="#2B0E04" />
+        <ellipse cx="115" cy="152" rx="14" ry="15" fill="#06B6D4" />
+        <ellipse cx="115" cy="150" rx="9" ry="11" fill="#083344" />
+        <circle cx="109" cy="142" r="5.5" fill="#FFFFFF" />
+        <circle cx="121" cy="157" r="3" fill="#A5F3FC" />
+
+        <ellipse cx="209" cy="150" rx="18" ry="20" fill="#2B0E04" />
+        <ellipse cx="209" cy="152" rx="14" ry="15" fill="#06B6D4" />
+        <ellipse cx="209" cy="150" rx="9" ry="11" fill="#083344" />
+        <circle cx="203" cy="142" r="5.5" fill="#FFFFFF" />
+        <circle cx="215" cy="157" r="3" fill="#A5F3FC" />
+      </g>
+
+      <!-- Vệt đỏ Kitsune hai bên má -->
+      <path d="M 76 172 Q 92 168, 102 176" stroke="#EF4444" stroke-width="3.5" stroke-linecap="round" fill="none" />
+      <path d="M 248 172 Q 232 168, 222 176" stroke="#EF4444" stroke-width="3.5" stroke-linecap="round" fill="none" />
+
+      <path d="M 148 184 Q 162 194, 176 184" stroke="#361207" stroke-width="3.5" stroke-linecap="round" fill="none" />
+      <ellipse cx="162" cy="170" rx="9" ry="6" fill="#240D04" />
+    </g>
+  </g>
+</svg>

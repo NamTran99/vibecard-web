@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 420" width="360" height="420" fill="none">
+  <defs>
+    <style>
+      @keyframes d2DuoLeap {
+        0%, 100% { transform: translateY(12px) scale(1.12, 0.88); }
+        15%      { transform: translateY(-42px) scale(0.92, 1.08); }
+        32%      { transform: translateY(-48px) rotate(-3deg) scale(0.96, 1.04); }
+        50%      { transform: translateY(10px) scale(1.10, 0.90); }
+        65%      { transform: translateY(-14px) scale(0.97, 1.03); }
+        80%      { transform: translateY(0px) scale(1, 1); }
+      }
+      @keyframes d2Shadow {
+        0%, 50%, 80%, 100% { transform: scale(1.1); opacity: 0.32; }
+        25%                { transform: scale(0.55); opacity: 0.12; }
+        65%                { transform: scale(0.82); opacity: 0.2; }
+      }
+      @keyframes d2ArmFlapL {
+        0%, 50%, 80%, 100% { transform: rotate(24deg); }
+        25%                { transform: rotate(-42deg); }
+        65%                { transform: rotate(-20deg); }
+      }
+      @keyframes d2ArmFlapR {
+        0%, 50%, 80%, 100% { transform: rotate(-24deg); }
+        25%                { transform: rotate(42deg); }
+        65%                { transform: rotate(20deg); }
+      }
+      @keyframes d2LegKickL {
+        0%, 50%, 80%, 100% { transform: rotate(0deg); }
+        25%                { transform: rotate(28deg) translateY(-6px); }
+      }
+      @keyframes d2LegKickR {
+        0%, 50%, 80%, 100% { transform: rotate(0deg); }
+        25%                { transform: rotate(-28deg) translateY(-6px); }
+      }
+      @keyframes d2TailWag {
+        0%, 100% { transform: rotate(-18deg); }
+        50%      { transform: rotate(22deg); }
+      }
+
+      .d2-fox    { transform-origin: 180px 320px; animation: d2DuoLeap 2.2s cubic-bezier(0.25, 1, 0.5, 1) infinite; }
+      .d2-shadow { transform-origin: 180px 338px; animation: d2Shadow 2.2s ease-in-out infinite; }
+      .d2-armL   { transform-origin: 132px 228px; animation: d2ArmFlapL 2.2s ease-in-out infinite; }
+      .d2-armR   { transform-origin: 228px 228px; animation: d2ArmFlapR 2.2s ease-in-out infinite; }
+      .d2-legL   { transform-origin: 152px 302px; animation: d2LegKickL 2.2s ease-in-out infinite; }
+      .d2-legR   { transform-origin: 208px 302px; animation: d2LegKickR 2.2s ease-in-out infinite; }
+      .d2-tail   { transform-origin: 212px 292px; animation: d2TailWag 0.55s ease-in-out infinite; }
+    </style>
+  </defs>
+
+  <ellipse class="d2-shadow" cx="180" cy="338" rx="78" ry="12" fill="#1F0E05" />
+
+  <g class="d2-fox">
+    <!-- Đuôi vẫy tít -->
+    <g class="d2-tail">
+      <path d="M 206 298 C 218 242, 260 206, 308 214 C 342 220, 352 258, 330 288 C 308 316, 258 320, 206 308 Z" fill="#E05A00" />
+      <path d="M 268 214 C 294 208, 320 216, 332 236 C 342 252, 338 272, 330 288 C 320 272, 306 268, 294 278 C 294 264, 282 260, 272 268 C 276 250, 266 238, 268 214 Z" fill="#FFFDF7" />
+    </g>
+
+    <!-- Hai chân bật nhảy đá sang hai bên kiểu Duolingo -->
+    <g class="d2-legL">
+      <rect x="136" y="292" width="28" height="38" rx="14" fill="#E05A00" />
+      <ellipse cx="148" cy="328" rx="18" ry="11" fill="#3C1B08" />
+    </g>
+    <g class="d2-legR">
+      <rect x="196" y="292" width="28" height="38" rx="14" fill="#E05A00" />
+      <ellipse cx="212" cy="328" rx="18" ry="11" fill="#3C1B08" />
+    </g>
+
+    <!-- Thân hình viên thuốc tròn trĩnh kiểu Duolingo -->
+    <rect x="124" y="204" width="112" height="106" rx="52" fill="#FF781F" />
+    <ellipse cx="180" cy="262" rx="38" ry="44" fill="#FFFDF7" />
+
+    <!-- Hai cánh tay vung cao ăn mừng -->
+    <g class="d2-armL">
+      <rect x="82" y="196" width="62" height="30" rx="15" transform="rotate(28 132 228)" fill="#FF781F" />
+      <circle cx="92" cy="202" r="14" fill="#3C1B08" />
+    </g>
+    <g class="d2-armR">
+      <rect x="216" y="196" width="62" height="30" rx="15" transform="rotate(-28 228 228)" fill="#FF781F" />
+      <circle cx="268" cy="202" r="14" fill="#3C1B08" />
+    </g>
+
+    <!-- Khăn quàng vàng Duolingo -->
+    <rect x="116" y="202" width="128" height="26" rx="13" fill="#FFC800" />
+    <path d="M 156 222 L 186 222 L 192 264 L 150 264 Z" fill="#FFB100" />
+
+    <!-- Đầu Cáo Duolingo Flat Vector -->
+    <g>
+      <path d="M 88 128 C 68 82, 76 30, 100 22 C 124 20, 152 54, 160 96 Z" fill="#FF781F" />
+      <path d="M 78 54 C 84 32, 90 24, 100 22 C 112 21, 124 32, 134 50 C 114 56, 96 58, 78 54 Z" fill="#3C1B08" />
+      <path d="M 98 118 C 86 84, 92 48, 104 40 C 118 42, 134 68, 140 98 Z" fill="#FFB49A" />
+
+      <path d="M 272 128 C 292 82, 284 30, 260 22 C 236 20, 208 54, 200 96 Z" fill="#FF781F" />
+      <path d="M 282 54 C 276 32, 270 24, 260 22 C 248 21, 236 32, 226 50 C 246 56, 264 58, 282 54 Z" fill="#3C1B08" />
+      <path d="M 262 118 C 274 84, 268 48, 256 40 C 242 42, 226 68, 220 98 Z" fill="#FFB49A" />
+
+      <path d="M 180 68 C 240 68, 274 110, 280 162 C 286 176, 278 198, 258 206 C 236 218, 210 222, 180 222 C 150 222, 124 218, 102 206 C 82 198, 74 176, 80 162 C 86 110, 120 68, 180 68 Z" fill="#FF781F" />
+      <path d="M 80 166 C 100 146, 140 146, 166 168 C 174 162, 186 162, 194 168 C 220 146, 260 146, 280 166 C 284 178, 276 198, 258 206 C 236 218, 210 222, 180 222 C 150 222, 124 218, 102 206 C 84 198, 76 178, 80 166 Z" fill="#FFFDF7" />
+
+      <rect x="114" y="128" width="44" height="56" rx="22" fill="#FFFFFF" />
+      <rect x="122" y="136" width="32" height="44" rx="16" fill="#3C1B08" />
+      <circle cx="132" cy="148" r="8" fill="#FFFFFF" />
+
+      <rect x="202" y="128" width="44" height="56" rx="22" fill="#FFFFFF" />
+      <rect x="206" y="136" width="32" height="44" rx="16" fill="#3C1B08" />
+      <circle cx="216" cy="148" r="8" fill="#FFFFFF" />
+
+      <ellipse cx="180" cy="170" rx="11" ry="7" fill="#3C1B08" />
+      <path d="M 156 184 L 204 184 C 204 208, 156 208, 156 184 Z" fill="#3C1B08" />
+      <ellipse cx="180" cy="197" rx="13" ry="6.5" fill="#FF6B8B" />
+    </g>
+  </g>
+
+  <text x="180" y="388" text-anchor="middle" fill="#58CC02" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="26" letter-spacing="1.5">READY TO LEARN!</text>
+</svg>

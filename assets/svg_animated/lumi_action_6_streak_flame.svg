@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 380" width="360" height="380" fill="none">
+  <defs>
+    <style>
+      @keyframes a6FlamePulse {
+        0%, 100% { transform: scale(1, 1) translateY(0px); }
+        50%      { transform: scale(1.12, 1.18) translateY(-6px); }
+      }
+      @keyframes a6Aura {
+        0%, 100% { transform: scale(0.95); opacity: 0.35; }
+        50%      { transform: scale(1.12); opacity: 0.7; }
+      }
+      @keyframes a6HeadPower {
+        0%, 100% { transform: translateY(0px); }
+        50%      { transform: translateY(-4px); }
+      }
+      @keyframes a6ScarfWind {
+        0%, 100% { transform: rotate(-8deg) skewX(0deg); }
+        50%      { transform: rotate(12deg) skewX(-8deg); }
+      }
+      @keyframes a6Tail {
+        0%, 100% { transform: rotate(-10deg); }
+        50%      { transform: rotate(14deg); }
+      }
+
+      .a6-flame { transform-origin: 162px 276px; animation: a6FlamePulse 0.85s ease-in-out infinite; }
+      .a6-aura  { transform-origin: 168px 346px; animation: a6Aura 0.85s ease-in-out infinite; }
+      .a6-head  { transform-origin: 162px 214px; animation: a6HeadPower 1.7s ease-in-out infinite; }
+      .a6-scarf { transform-origin: 195px 218px; animation: a6ScarfWind 0.85s ease-in-out infinite; }
+      .a6-tail  { transform-origin: 202px 312px; animation: a6Tail 1.1s ease-in-out infinite; }
+    </style>
+
+    <radialGradient id="a6FlameGlow" cx="162" cy="260" r="70" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FEF08A" stop-opacity="0.85" />
+      <stop offset="55%" stop-color="#F97316" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#EA580C" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Vòng hào quang năng lượng Streak dưới chân -->
+  <ellipse class="a6-aura" cx="168" cy="346" rx="112" ry="18" fill="none" stroke="#F59E0B" stroke-width="4" />
+  <ellipse cx="168" cy="346" rx="92" ry="13" fill="#EA580C" opacity="0.28" />
+
+  <g>
+    <g class="a6-tail">
+      <path d="M 194 322 C 196 256, 236 212, 286 216 C 326 220, 342 262, 322 296 C 302 328, 250 340, 194 330 Z" fill="#EA580C" stroke="#2B0E04" stroke-width="3.5" />
+      <path d="M 250 220 C 276 212, 306 218, 322 240 C 334 258, 332 280, 322 296 C 314 280, 300 276, 288 288 C 288 272, 276 268, 264 276 C 266 260, 254 248, 250 220 Z" fill="#FFFDF9" />
+    </g>
+
+    <ellipse cx="108" cy="306" rx="25" ry="30" transform="rotate(-12 108 306)" fill="#EA580C" stroke="#2B0E04" stroke-width="3.5" />
+    <ellipse cx="216" cy="306" rx="25" ry="30" transform="rotate(12 216 306)" fill="#EA580C" stroke="#2B0E04" stroke-width="3.5" />
+    <ellipse cx="90" cy="334" rx="19" ry="13" fill="#2B0E04" />
+    <ellipse cx="234" cy="334" rx="19" ry="13" fill="#2B0E04" />
+
+    <path d="M 112 222 C 102 264, 104 322, 124 338 L 200 338 C 220 322, 222 264, 212 222 Z" fill="#F97316" stroke="#2B0E04" stroke-width="3.5" />
+    <path d="M 132 238 C 122 274, 126 326, 162 338 C 198 326, 202 274, 192 238 Z" fill="#FFF7ED" />
+
+    <!-- Vạt khăn tung bay mạnh trong luồng khí nóng của Lửa Streak -->
+    <g class="a6-scarf">
+      <path d="M 192 208 C 236 192, 284 198, 312 224 L 296 250 C 264 232, 228 226, 188 228 Z" fill="#FACC15" stroke="#2B0E04" stroke-width="3.5" stroke-linejoin="round" />
+    </g>
+    <rect x="100" y="208" width="124" height="28" rx="14" fill="#FACC15" stroke="#2B0E04" stroke-width="3.5" />
+
+    <!-- Đầu Cáo ánh mắt rực lửa quyết tâm -->
+    <g class="a6-head">
+      <path d="M 66 128 C 46 80, 54 24, 78 16 C 102 14, 134 52, 144 96 Z" fill="#F97316" stroke="#2B0E04" stroke-width="3.5" />
+      <path d="M 55 52 C 60 28, 68 18, 78 16 C 90 15, 104 28, 114 48 C 94 54, 74 56, 55 52 Z" fill="#2B0E04" />
+      <path d="M 76 118 C 64 82, 70 42, 82 32 C 96 34, 116 64, 122 98 Z" fill="#FDBA74" />
+
+      <path d="M 258 128 C 278 80, 270 24, 246 16 C 222 14, 190 52, 180 96 Z" fill="#F97316" stroke="#2B0E04" stroke-width="3.5" />
+      <path d="M 269 52 C 264 28, 256 18, 246 16 C 234 15, 220 28, 210 48 C 230 54, 250 56, 269 52 Z" fill="#2B0E04" />
+      <path d="M 248 118 C 260 82, 254 42, 242 32 C 228 34, 208 64, 202 98 Z" fill="#FDBA74" />
+
+      <path d="M 162 66 C 222 66, 258 112, 264 162 C 272 167, 274 174, 266 180 C 272 186, 266 194, 256 198 C 234 214, 200 222, 162 222 C 124 222, 90 214, 68 198 C 58 194, 52 186, 58 180 C 50 174, 52 167, 60 162 C 66 112, 102 66, 162 66 Z" fill="#F97316" stroke="#2B0E04" stroke-width="3.5" />
+      <path d="M 60 166 C 78 148, 118 146, 146 168 C 154 162, 170 162, 178 168 C 206 146, 246 148, 264 166 C 272 170, 272 176, 266 180 C 272 186, 266 194, 256 198 C 234 214, 200 222, 162 222 C 124 222, 90 214, 68 198 C 58 194, 52 186, 58 180 C 52 176, 52 170, 60 166 Z" fill="#FFF7ED" />
+      <path d="M 162 66 C 222 66, 258 112, 264 162 C 272 167, 274 174, 266 180 C 272 186, 266 194, 256 198 C 234 214, 200 222, 162 222 C 124 222, 90 214, 68 198 C 58 194, 52 186, 58 180 C 50 174, 52 167, 60 162 C 66 112, 102 66, 162 66 Z" fill="none" stroke="#2B0E04" stroke-width="3.5" />
+
+      <!-- Lông mày quyết tâm & Đôi mắt rực ánh lửa vàng -->
+      <path d="M 96 118 L 134 128" stroke="#2B0E04" stroke-width="5.5" stroke-linecap="round" />
+      <path d="M 228 118 L 190 128" stroke="#2B0E04" stroke-width="5.5" stroke-linecap="round" />
+
+      <ellipse cx="116" cy="150" rx="16.5" ry="18" fill="#2B0E04" />
+      <ellipse cx="116" cy="152" rx="12" ry="13" fill="#F59E0B" />
+      <ellipse cx="116" cy="150" rx="7.5" ry="9" fill="#170702" />
+      <circle cx="111" cy="144" r="4.5" fill="#FFFFFF" />
+
+      <ellipse cx="208" cy="150" rx="16.5" ry="18" fill="#2B0E04" />
+      <ellipse cx="208" cy="152" rx="12" ry="13" fill="#F59E0B" />
+      <ellipse cx="208" cy="150" rx="7.5" ry="9" fill="#170702" />
+      <circle cx="203" cy="144" r="4.5" fill="#FFFFFF" />
+
+      <path d="M 146 184 Q 162 194, 178 184" stroke="#2B0E04" stroke-width="4" stroke-linecap="round" fill="none" />
+      <ellipse cx="162" cy="170" rx="10" ry="6.5" fill="#2B0E04" />
+    </g>
+
+    <!-- NGỌN LỬA STREAK BÙNG CHÁY GIỮA HAI BÀN TAY -->
+    <circle cx="162" cy="264" r="65" fill="url(#a6FlameGlow)" />
+    <g class="a6-flame">
+      <path d="M 162 204 C 188 232, 204 256, 196 282 C 190 302, 176 312, 162 312 C 148 312, 134 302, 128 282 C 120 256, 136 232, 162 204 Z" fill="#EA580C" stroke="#2B0E04" stroke-width="3" />
+      <path d="M 162 222 C 180 244, 190 262, 184 282 C 180 296, 172 304, 162 304 C 152 304, 144 296, 140 282 C 134 262, 144 244, 162 222 Z" fill="#FACC15" />
+      <path d="M 162 246 C 172 260, 176 272, 172 284 C 170 292, 166 296, 162 296 C 158 296, 154 292, 152 284 C 148 272, 152 260, 162 246 Z" fill="#FFFBEB" />
+    </g>
+
+    <!-- Hai bàn chân trước chưởng năng lượng hai bên ngọn lửa -->
+    <ellipse cx="108" cy="278" rx="18" ry="13" transform="rotate(-20 108 278)" fill="#2B0E04" />
+    <ellipse cx="216" cy="278" rx="18" ry="13" transform="rotate(20 216 278)" fill="#2B0E04" />
+  </g>
+</svg>

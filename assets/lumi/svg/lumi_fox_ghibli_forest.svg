@@ -1,0 +1,164 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 380" width="360" height="380" fill="none">
+  <defs>
+    <style>
+      @keyframes ghibliBreathe {
+        0%, 100% { transform: translateY(0px) scale(1, 1); }
+        50%      { transform: translateY(-3px) scale(0.994, 1.012); }
+      }
+      @keyframes ghibliTail {
+        0%, 100% { transform: rotate(-6deg); }
+        50%      { transform: rotate(9deg); }
+      }
+      @keyframes ghibliHead {
+        0%, 100% { transform: rotate(-3deg) translateY(0px); }
+        50%      { transform: rotate(2deg) translateY(-2.5px); }
+      }
+      @keyframes ghibliScarfWind {
+        0%, 100% { transform: rotate(-5deg) skewX(0deg); }
+        50%      { transform: rotate(6deg) skewX(-4deg); }
+      }
+      @keyframes ghibliBlink {
+        0%, 46%, 50%, 94%, 98%, 100% { transform: scaleY(1); }
+        48%, 96%                     { transform: scaleY(0.06); }
+      }
+      @keyframes fireflyFloat {
+        0%, 100% { transform: translate(0px, 0px) scale(0.85); opacity: 0.45; }
+        50%      { transform: translate(6px, -10px) scale(1.2); opacity: 0.95; }
+      }
+
+      .g-body  { transform-origin: 162px 338px; animation: ghibliBreathe 3.0s ease-in-out infinite; }
+      .g-tail  { transform-origin: 198px 318px; animation: ghibliTail 2.4s ease-in-out infinite; }
+      .g-head  { transform-origin: 158px 206px; animation: ghibliHead 3.0s ease-in-out infinite; }
+      .g-scarf { transform-origin: 185px 218px; animation: ghibliScarfWind 2.2s ease-in-out infinite; }
+      .g-eyes  { transform-origin: 158px 146px; animation: ghibliBlink 5.0s infinite; }
+      .g-fly1  { animation: fireflyFloat 3.2s ease-in-out infinite; }
+      .g-fly2  { animation: fireflyFloat 3.8s ease-in-out -1.4s infinite; }
+      .g-fly3  { animation: fireflyFloat 2.9s ease-in-out -0.7s infinite; }
+    </style>
+
+    <linearGradient id="ghibliRustFur" x1="110" y1="65" x2="225" y2="338" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F2722B" />
+      <stop offset="55%" stop-color="#D44B10" />
+      <stop offset="100%" stop-color="#9A2B04" />
+    </linearGradient>
+
+    <linearGradient id="ghibliCream" x1="158" y1="145" x2="158" y2="335" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFDF7" />
+      <stop offset="65%" stop-color="#F5E6D0" />
+      <stop offset="100%" stop-color="#D9C0A3" />
+    </linearGradient>
+
+    <linearGradient id="ghibliGoldScarf" x1="105" y1="198" x2="265" y2="275" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FDE68A" />
+      <stop offset="50%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#B45309" />
+    </linearGradient>
+  </defs>
+
+  <!-- Đom đóm rừng Ghibli bay lơ lửng -->
+  <g class="g-fly1">
+    <circle cx="62" cy="148" r="6" fill="#FDE047" opacity="0.45" />
+    <circle cx="62" cy="148" r="2.5" fill="#FFFBEB" />
+  </g>
+  <g class="g-fly2">
+    <circle cx="292" cy="108" r="7" fill="#FDE047" opacity="0.45" />
+    <circle cx="292" cy="108" r="2.8" fill="#FFFBEB" />
+  </g>
+  <g class="g-fly3">
+    <circle cx="284" cy="192" r="5" fill="#FDE047" opacity="0.4" />
+    <circle cx="284" cy="192" r="2" fill="#FFFBEB" />
+  </g>
+
+  <ellipse cx="168" cy="346" rx="95" ry="13" fill="#1C0E06" opacity="0.28" />
+
+  <g class="g-body">
+    <!-- Đuôi cáo thon dài thanh thoát uốn lượn kiểu Hoàng Tử Bé / Ghibli -->
+    <g class="g-tail">
+      <path d="M 192 328 C 204 268, 248 214, 304 206 C 338 202, 344 246, 320 286 C 296 324, 246 340, 192 334 Z" fill="url(#ghibliRustFur)" />
+      <path d="M 266 214 C 288 206, 314 204, 330 218 C 340 232, 332 260, 320 286 C 314 268, 302 266, 294 276 C 292 260, 280 256, 270 264 C 274 246, 264 232, 266 214 Z" fill="url(#ghibliCream)" />
+    </g>
+
+    <!-- Thân cáo thon gọn ngồi thanh lịch (4 chân chụm gọn gàng như ảnh mẫu) -->
+    <ellipse cx="114" cy="302" rx="22" ry="32" transform="rotate(-10 114 302)" fill="url(#ghibliRustFur)" />
+    <ellipse cx="204" cy="302" rx="22" ry="32" transform="rotate(10 204 302)" fill="url(#ghibliRustFur)" />
+    <ellipse cx="98" cy="334" rx="16" ry="11" fill="#2B1107" />
+    <ellipse cx="220" cy="334" rx="16" ry="11" fill="#2B1107" />
+
+    <path d="M 118 206 C 110 254, 112 318, 128 338 L 190 338 C 206 318, 208 254, 200 206 Z" fill="url(#ghibliRustFur)" />
+    <!-- Yếm lông ngực trắng ngà thanh mảnh -->
+    <path d="M 136 220 C 128 260, 132 322, 159 338 C 186 322, 190 260, 182 220 Z" fill="url(#ghibliCream)" />
+
+    <!-- Hai chân trước thon dài đi tất nâu đậm -->
+    <path d="M 122 232 L 146 232 L 150 340 L 124 340 Z" fill="url(#ghibliRustFur)" />
+    <path d="M 123 288 Q 136 294, 149 288 L 150 340 L 124 340 Z" fill="#2B1107" />
+    <ellipse cx="137" cy="342" rx="16" ry="10" fill="#2B1107" />
+
+    <path d="M 172 232 L 196 232 L 194 340 L 168 340 Z" fill="url(#ghibliRustFur)" />
+    <path d="M 170 288 Q 183 294, 195 288 L 194 340 L 168 340 Z" fill="#2B1107" />
+    <ellipse cx="181" cy="342" rx="16" ry="10" fill="#2B1107" />
+
+    <!-- Khăn quàng cổ bay nhẹ trong gió thu -->
+    <g>
+      <g class="g-scarf">
+        <path d="M 186 212 C 218 214, 252 228, 266 252 C 254 262, 238 266, 226 262 C 212 246, 196 234, 180 228 Z" fill="url(#ghibliGoldScarf)" />
+      </g>
+      <path d="M 110 204 C 110 192, 208 192, 208 206 C 208 220, 110 220, 110 204 Z" fill="url(#ghibliGoldScarf)" />
+      <path d="M 106 218 C 106 206, 212 206, 212 220 C 212 234, 106 234, 106 218 Z" fill="url(#ghibliGoldScarf)" />
+      <path d="M 134 224 L 162 226 L 164 276 C 164 282, 130 282, 130 276 Z" fill="url(#ghibliGoldScarf)" />
+      <rect x="132" y="202" width="30" height="28" rx="9" fill="#FDE68A" stroke="#B45309" stroke-width="1.2" />
+    </g>
+
+    <!-- ĐẦU CÁO GHIBLI THANH TÚ & CÓ HỒN -->
+    <g class="g-head">
+      <!-- Đôi tai cao thanh thoát -->
+      <path d="M 76 118 C 56 66, 64 14, 88 10 C 112 10, 138 52, 144 94 Z" fill="url(#ghibliRustFur)" />
+      <path d="M 64 46 C 68 24, 76 12, 88 10 C 100 10, 114 24, 122 44 C 102 50, 82 50, 64 46 Z" fill="#2B1107" />
+      <path d="M 86 110 C 74 74, 78 34, 90 24 C 104 28, 120 60, 126 94 Z" fill="#F5B89E" />
+
+      <path d="M 240 118 C 260 66, 252 14, 228 10 C 204 10, 178 52, 172 94 Z" fill="url(#ghibliRustFur)" />
+      <path d="M 252 46 C 248 24, 240 12, 228 10 C 216 10, 202 24, 194 44 C 214 50, 234 50, 252 46 Z" fill="#2B1107" />
+      <path d="M 230 110 C 242 74, 238 34, 226 24 C 212 28, 196 60, 190 94 Z" fill="#F5B89E" />
+
+      <!-- Khối đầu hình thoi mềm mại đặc trưng của cáo rừng -->
+      <path d="M 158 64 C 212 64, 244 106, 252 152 C 262 160, 256 172, 246 178 C 224 196, 192 206, 158 206 C 124 206, 92 196, 70 178 C 60 172, 54 160, 64 152 C 72 106, 104 64, 158 64 Z" fill="url(#ghibliRustFur)" />
+
+      <!-- Đường lông má trắng kem vuốt nhọn về phía mõm -->
+      <path d="M 64 154 C 86 142, 122 146, 146 168 C 154 164, 162 164, 170 168 C 194 146, 230 142, 252 154 C 260 162, 254 172, 246 178 C 224 196, 192 206, 158 206 C 124 206, 92 196, 70 178 C 62 172, 56 162, 64 154 Z" fill="url(#ghibliCream)" />
+
+      <!-- Sống mũi cam thanh mảnh chạy dọc xuống mũi -->
+      <path d="M 144 118 C 144 142, 148 164, 158 170 C 168 164, 172 142, 172 118 Z" fill="#E05514" opacity="0.65" />
+
+      <!-- Lông mày nâu trầm ấm -->
+      <path d="M 102 112 Q 118 104, 134 112" stroke="#3D1708" stroke-width="4" stroke-linecap="round" fill="none" />
+      <path d="M 214 112 Q 198 104, 182 112" stroke="#3D1708" stroke-width="4" stroke-linecap="round" fill="none" />
+
+      <!-- Đôi mắt hạnh nhân nâu ấm có viền sáng vàng hổ phách -->
+      <g class="g-eyes">
+        <g transform="rotate(-5 114 142)">
+          <ellipse cx="114" cy="142" rx="16.5" ry="18" fill="#FFFDF7" />
+          <ellipse cx="116" cy="142" rx="14" ry="16.5" fill="#4A1A08" />
+          <path d="M 105 148 C 109 156, 123 156, 127 148" stroke="#F59E0B" stroke-width="2.8" stroke-linecap="round" fill="none" />
+          <ellipse cx="116" cy="141" rx="9" ry="10.5" fill="#1A0702" />
+          <circle cx="111" cy="134" r="4.5" fill="#FFFFFF" />
+          <circle cx="121" cy="147" r="2" fill="#FFFFFF" />
+          <path d="M 96 138 C 100 120, 128 120, 132 138" stroke="#2B0E04" stroke-width="4.2" stroke-linecap="round" fill="none" />
+        </g>
+        <g transform="rotate(5 202 142)">
+          <ellipse cx="202" cy="142" rx="16.5" ry="18" fill="#FFFDF7" />
+          <ellipse cx="200" cy="142" rx="14" ry="16.5" fill="#4A1A08" />
+          <path d="M 189 148 C 193 156, 207 156, 211 148" stroke="#F59E0B" stroke-width="2.8" stroke-linecap="round" fill="none" />
+          <ellipse cx="200" cy="141" rx="9" ry="10.5" fill="#1A0702" />
+          <circle cx="195" cy="134" r="4.5" fill="#FFFFFF" />
+          <circle cx="205" cy="147" r="2" fill="#FFFFFF" />
+          <path d="M 220 138 C 216 120, 188 120, 184 138" stroke="#2B0E04" stroke-width="4.2" stroke-linecap="round" fill="none" />
+        </g>
+      </g>
+
+      <!-- Mũi & Nụ cười hiền dịu -->
+      <path d="M 140 178 Q 158 188, 176 178" stroke="#3D1708" stroke-width="3.2" stroke-linecap="round" fill="none" />
+      <path d="M 148 182 Q 158 194, 168 182 Z" fill="#D95338" />
+      <path d="M 149 166 C 149 161, 167 161, 167 166 C 167 172, 160 176, 158 176 C 156 176, 149 172, 149 166 Z" fill="#240C04" />
+      <ellipse cx="156" cy="164.5" rx="3.5" ry="1.5" fill="#8C5A46" />
+    </g>
+  </g>
+</svg>

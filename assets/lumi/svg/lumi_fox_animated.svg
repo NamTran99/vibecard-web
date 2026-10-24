@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 380" width="360" height="380" fill="none">
+  <defs>
+    <style>
+      @keyframes a1Breathe {
+        0%, 100% { transform: translateY(0px) scale(1, 1); }
+        50%      { transform: translateY(-3.5px) scale(0.992, 1.012); }
+      }
+      @keyframes a1HeadRead {
+        0%, 100% { transform: rotate(-2.5deg) translateY(1px); }
+        50%      { transform: rotate(2.5deg) translateY(-2px); }
+      }
+      @keyframes a1EyeScan {
+        0%, 100% { transform: translateX(-3.5px) translateY(2px); }
+        50%      { transform: translateX(3.5px) translateY(2px); }
+      }
+      @keyframes a1Blink {
+        0%, 46%, 50%, 94%, 98%, 100% { transform: scaleY(1); }
+        48%, 96%                     { transform: scaleY(0.06); }
+      }
+      @keyframes a1Tail {
+        0%, 100% { transform: rotate(-6deg); }
+        50%      { transform: rotate(10deg); }
+      }
+      @keyframes a1BookFloat {
+        0%, 100% { transform: translateY(0px) rotate(-1deg); }
+        50%      { transform: translateY(-4px) rotate(1.5deg); }
+      }
+      @keyframes a1Sparkle1 {
+        0%, 100% { transform: translateY(0px) scale(0.6); opacity: 0.2; }
+        50%      { transform: translateY(-18px) scale(1.15); opacity: 1; }
+      }
+      @keyframes a1Sparkle2 {
+        0%, 100% { transform: translateY(-4px) scale(1.1); opacity: 0.95; }
+        50%      { transform: translateY(-22px) scale(0.5); opacity: 0.15; }
+      }
+
+      .a1-body { transform-origin: 162px 334px; animation: a1Breathe 2.8s ease-in-out infinite; }
+      .a1-tail { transform-origin: 204px 312px; animation: a1Tail 2.2s ease-in-out infinite; }
+      .a1-head { transform-origin: 162px 214px; animation: a1HeadRead 3.2s ease-in-out infinite; }
+      .a1-eyes { transform-origin: 162px 152px; animation: a1Blink 4.8s infinite; }
+      .a1-iris { animation: a1EyeScan 3.2s ease-in-out infinite; }
+      .a1-book { transform-origin: 162px 282px; animation: a1BookFloat 2.8s ease-in-out infinite; }
+      .a1-sp1  { transform-origin: 132px 245px; animation: a1Sparkle1 2.4s ease-in-out infinite; }
+      .a1-sp2  { transform-origin: 192px 240px; animation: a1Sparkle2 2.4s ease-in-out infinite; }
+    </style>
+
+    <radialGradient id="a1HeadG" cx="162" cy="116" r="115" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF9A47" />
+      <stop offset="55%" stop-color="#F76414" />
+      <stop offset="100%" stop-color="#C43E00" />
+    </radialGradient>
+    <linearGradient id="a1Amber" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1F0B04" />
+      <stop offset="50%" stop-color="#4A1A08" />
+      <stop offset="100%" stop-color="#FFA62B" />
+    </linearGradient>
+    <linearGradient id="a1Scarf" x1="100" y1="205" x2="225" y2="265" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FDE047" />
+      <stop offset="50%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#B45309" />
+    </linearGradient>
+    <radialGradient id="a1BookGlow" cx="162" cy="265" r="55" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FEF08A" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#F59E0B" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <ellipse cx="168" cy="348" rx="102" ry="14" fill="#1F0E05" opacity="0.28" />
+
+  <g class="a1-body">
+    <!-- Đuôi bông xù vẫy nhẹ -->
+    <g class="a1-tail">
+      <path d="M 194 322 C 196 256, 236 212, 286 216 C 326 220, 342 262, 322 296 C 302 328, 250 340, 194 330 Z" fill="url(#a1HeadG)" />
+      <path d="M 250 220 C 276 212, 306 218, 322 240 C 334 258, 332 280, 322 296 C 314 280, 300 276, 288 288 C 288 272, 276 268, 264 276 C 266 260, 254 248, 250 220 Z" fill="#FFFDF9" />
+    </g>
+
+    <!-- Đùi & Chân sau -->
+    <ellipse cx="108" cy="306" rx="25" ry="30" transform="rotate(-12 108 306)" fill="url(#a1HeadG)" />
+    <ellipse cx="216" cy="306" rx="25" ry="30" transform="rotate(12 216 306)" fill="url(#a1HeadG)" />
+    <ellipse cx="90" cy="334" rx="19" ry="13" fill="#361509" />
+    <ellipse cx="234" cy="334" rx="19" ry="13" fill="#361509" />
+
+    <!-- Thân & Ngực kem -->
+    <path d="M 112 222 C 102 264, 104 322, 124 338 L 200 338 C 220 322, 222 264, 212 222 Z" fill="url(#a1HeadG)" />
+    <path d="M 132 238 C 122 274, 126 326, 162 338 C 198 326, 202 274, 192 238 Z" fill="#FFFDF9" />
+
+    <!-- Khăn len vàng ấm áp -->
+    <path d="M 102 212 C 102 198, 222 200, 222 214 C 222 228, 102 226, 102 212 Z" fill="url(#a1Scarf)" stroke="#B45309" stroke-width="1.2" />
+    <path d="M 98 226 C 98 212, 226 214, 226 230 C 226 246, 98 244, 98 226 Z" fill="url(#a1Scarf)" stroke="#B45309" stroke-width="1.2" />
+    <rect x="132" y="210" width="34" height="30" rx="10" fill="#FEF08A" stroke="#B45309" stroke-width="1.2" />
+
+    <!-- Đầu Cáo Lumi cúi nhẹ chăm chú đọc sách -->
+    <g class="a1-head">
+      <path d="M 66 128 C 46 80, 54 24, 78 16 C 102 14, 134 52, 144 96 Z" fill="url(#a1HeadG)" />
+      <path d="M 55 52 C 60 28, 68 18, 78 16 C 90 15, 104 28, 114 48 C 94 54, 74 56, 55 52 Z" fill="#2E1207" />
+      <path d="M 76 118 C 64 82, 70 42, 82 32 C 96 34, 116 64, 122 98 Z" fill="#F9BFA8" />
+
+      <path d="M 258 128 C 278 80, 270 24, 246 16 C 222 14, 190 52, 180 96 Z" fill="url(#a1HeadG)" />
+      <path d="M 269 52 C 264 28, 256 18, 246 16 C 234 15, 220 28, 210 48 C 230 54, 250 56, 269 52 Z" fill="#2E1207" />
+      <path d="M 248 118 C 260 82, 254 42, 242 32 C 228 34, 208 64, 202 98 Z" fill="#F9BFA8" />
+
+      <path d="M 140 74 C 138 56, 152 52, 162 64 C 162 48, 178 48, 180 64 C 188 56, 198 62, 192 76 Z" fill="#FF8429" />
+      <path d="M 162 66 C 222 66, 258 112, 264 162 C 272 167, 274 174, 266 180 C 272 186, 266 194, 256 198 C 234 214, 200 222, 162 222 C 124 222, 90 214, 68 198 C 58 194, 52 186, 58 180 C 50 174, 52 167, 60 162 C 66 112, 102 66, 162 66 Z" fill="url(#a1HeadG)" />
+      <path d="M 60 166 C 78 148, 118 146, 146 168 C 154 162, 170 162, 178 168 C 206 146, 246 148, 264 166 C 272 170, 272 176, 266 180 C 272 186, 266 194, 256 198 C 234 214, 200 222, 162 222 C 124 222, 90 214, 68 198 C 58 194, 52 186, 58 180 C 52 176, 52 170, 60 166 Z" fill="#FFFDF9" />
+
+      <ellipse cx="122" cy="112" rx="10" ry="5.5" transform="rotate(-12 122 112)" fill="#FFF8EE" />
+      <ellipse cx="202" cy="112" rx="10" ry="5.5" transform="rotate(12 202 112)" fill="#FFF8EE" />
+      <ellipse cx="88" cy="182" rx="16" ry="9" fill="#FF756B" opacity="0.48" />
+      <ellipse cx="236" cy="182" rx="16" ry="9" fill="#FF756B" opacity="0.48" />
+
+      <!-- Đôi mắt liếc qua lại đọc từng dòng sách -->
+      <g class="a1-eyes">
+        <ellipse cx="114" cy="150" rx="19.5" ry="21.5" fill="#FFFDF9" />
+        <ellipse cx="210" cy="150" rx="19.5" ry="21.5" fill="#FFFDF9" />
+        <g class="a1-iris">
+          <ellipse cx="116" cy="152" rx="16.5" ry="19" fill="url(#a1Amber)" />
+          <ellipse cx="116" cy="152" rx="10" ry="12" fill="#170702" />
+          <circle cx="110" cy="144" r="5" fill="#FFFFFF" />
+          <circle cx="122" cy="158" r="2.5" fill="#FEF08A" />
+
+          <ellipse cx="208" cy="152" rx="16.5" ry="19" fill="url(#a1Amber)" />
+          <ellipse cx="208" cy="152" rx="10" ry="12" fill="#170702" />
+          <circle cx="202" cy="144" r="5" fill="#FFFFFF" />
+          <circle cx="214" cy="158" r="2.5" fill="#FEF08A" />
+        </g>
+        <path d="M 94 146 C 96 126, 128 124, 136 144" stroke="#260D04" stroke-width="5" stroke-linecap="round" fill="none" />
+        <path d="M 230 146 C 228 126, 196 124, 188 144" stroke="#260D04" stroke-width="5" stroke-linecap="round" fill="none" />
+      </g>
+
+      <path d="M 148 184 Q 162 194, 176 184" stroke="#361207" stroke-width="3.6" stroke-linecap="round" fill="none" />
+      <path d="M 150 168 C 150 162, 174 162, 174 168 C 174 175, 165 181, 162 181 C 159 181, 150 175, 150 168 Z" fill="#240D04" />
+      <ellipse cx="159" cy="166.5" rx="4.5" ry="2" fill="#8C5843" />
+    </g>
+
+    <!-- CUỐN SÁCH FLASHCARD PHÉP THUẬT TỎA SÁNG TRÊN TAY -->
+    <circle cx="162" cy="265" r="55" fill="url(#a1BookGlow)" />
+    <g class="a1-sp1">
+      <path d="M 132 235 Q 132 245, 142 245 Q 132 245, 132 255 Q 132 245, 122 245 Q 132 245, 132 235 Z" fill="#FEF08A" />
+    </g>
+    <g class="a1-sp2">
+      <path d="M 192 230 Q 192 240, 202 240 Q 192 240, 192 250 Q 192 240, 182 240 Q 192 240, 192 230 Z" fill="#FDE047" />
+    </g>
+
+    <g class="a1-book">
+      <!-- Bìa sách gỗ đỏ & Trang giấy kem mở rộng -->
+      <path d="M 96 266 L 162 278 L 228 266 L 222 316 L 162 328 L 102 316 Z" fill="#991B1B" stroke="#450A0A" stroke-width="2.5" stroke-linejoin="round" />
+      <path d="M 102 260 Q 132 256, 162 272 Q 192 256, 222 260 L 218 308 Q 190 304, 162 320 Q 134 304, 106 308 Z" fill="#FFFBEB" stroke="#D97706" stroke-width="2" />
+      <line x1="162" y1="272" x2="162" y2="320" stroke="#D97706" stroke-width="2.5" />
+      <!-- Dòng chữ giả lập trên sách -->
+      <line x1="116" y1="276" x2="148" y2="282" stroke="#D97706" stroke-width="2.5" stroke-linecap="round" opacity="0.6" />
+      <line x1="116" y1="288" x2="144" y2="293" stroke="#D97706" stroke-width="2.5" stroke-linecap="round" opacity="0.6" />
+      <line x1="208" y1="276" x2="176" y2="282" stroke="#D97706" stroke-width="2.5" stroke-linecap="round" opacity="0.6" />
+      <line x1="208" y1="288" x2="180" y2="293" stroke="#D97706" stroke-width="2.5" stroke-linecap="round" opacity="0.6" />
+
+      <!-- Hai bàn chân nâu socola ôm hai mép sách -->
+      <ellipse cx="102" cy="292" rx="16" ry="13" transform="rotate(18 102 292)" fill="#361509" />
+      <ellipse cx="222" cy="292" rx="16" ry="13" transform="rotate(-18 222 292)" fill="#361509" />
+    </g>
+  </g>
+</svg>

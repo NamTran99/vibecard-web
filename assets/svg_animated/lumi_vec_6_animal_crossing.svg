@@ -1,0 +1,195 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 280" width="100%" height="100%">
+  <defs>
+    <radialGradient id="bg6" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFE8B6" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#FFE8B6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="fur6" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FF9A4D"/>
+      <stop offset="100%" stop-color="#E06D2B"/>
+    </linearGradient>
+    <linearGradient id="vest6" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F2B84B"/>
+      <stop offset="100%" stop-color="#C98A26"/>
+    </linearGradient>
+    <style>
+      svg { overflow: visible; }
+      .rig-bounce {
+        transform-origin: 140px 235px;
+        animation: bodyBounce 1.7s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+      }
+      .rig-head {
+        transform-origin: 140px 145px;
+        animation: headTilt 2.2s ease-in-out infinite;
+      }
+      .rig-ear-l {
+        transform-origin: 92px 82px;
+        animation: earLeft 2.0s ease-in-out infinite;
+      }
+      .rig-ear-r {
+        transform-origin: 188px 82px;
+        animation: earRight 2.0s ease-in-out infinite;
+      }
+      .rig-tail {
+        transform-origin: 175px 205px;
+        animation: tailWag 0.95s ease-in-out infinite alternate;
+      }
+      .rig-arm-l {
+        transform-origin: 90px 168px;
+        animation: armWave 0.75s ease-in-out infinite alternate;
+      }
+      .rig-arm-r {
+        transform-origin: 186px 168px;
+        animation: armProp 1.1s ease-in-out infinite alternate;
+      }
+      .rig-eyes {
+        transform-origin: 140px 124px;
+        animation: eyeBlink 3.4s ease-in-out infinite;
+      }
+      .rig-cheeks {
+        transform-origin: 140px 138px;
+        animation: cheekPulse 1.5s ease-in-out infinite alternate;
+      }
+      .rig-shadow {
+        transform-origin: 140px 248px;
+        animation: shadowScale 1.7s ease-in-out infinite;
+      }
+      .sparkle-a {
+        transform-origin: 42px 68px;
+        animation: starTwinkle 1.5s ease-in-out infinite;
+      }
+      .sparkle-b {
+        transform-origin: 238px 64px;
+        animation: starTwinkle 1.9s ease-in-out infinite 0.5s;
+      }
+      .float-heart {
+        transform-origin: 140px 36px;
+        animation: heartFloat 1.8s ease-in-out infinite;
+      }
+      @keyframes bodyBounce {
+        0%, 100% { transform: translateY(0px) scale(1.03, 0.97); }
+        45% { transform: translateY(-13px) scale(0.97, 1.04); }
+        75% { transform: translateY(-4px) scale(1.01, 0.99); }
+      }
+      @keyframes headTilt {
+        0%, 100% { transform: rotate(-4deg) translateY(0px); }
+        50% { transform: rotate(4deg) translateY(-3px); }
+      }
+      @keyframes earLeft {
+        0%, 100% { transform: rotate(0deg); }
+        30% { transform: rotate(-12deg); }
+        60% { transform: rotate(5deg); }
+      }
+      @keyframes earRight {
+        0%, 100% { transform: rotate(0deg); }
+        40% { transform: rotate(12deg); }
+        70% { transform: rotate(-4deg); }
+      }
+      @keyframes tailWag {
+        0% { transform: rotate(-16deg) scale(1); }
+        100% { transform: rotate(18deg) scale(1.05); }
+      }
+      @keyframes armWave {
+        0% { transform: rotate(-22deg); }
+        100% { transform: rotate(30deg); }
+      }
+      @keyframes armProp {
+        0% { transform: rotate(12deg) translateY(0px); }
+        100% { transform: rotate(-18deg) translateY(-4px); }
+      }
+      @keyframes eyeBlink {
+        0%, 44%, 52%, 94%, 100% { transform: scaleY(1); }
+        48%, 97% { transform: scaleY(0.08); }
+      }
+      @keyframes cheekPulse {
+        0% { opacity: 0.65; transform: scale(0.95); }
+        100% { opacity: 0.98; transform: scale(1.1); }
+      }
+      @keyframes shadowScale {
+        0%, 100% { transform: scale(1, 1); opacity: 0.22; }
+        45% { transform: scale(0.82, 0.85); opacity: 0.12; }
+      }
+      @keyframes starTwinkle {
+        0%, 100% { transform: scale(0.65) rotate(0deg); opacity: 0.45; }
+        50% { transform: scale(1.22) rotate(22deg); opacity: 1; }
+      }
+      @keyframes heartFloat {
+        0%, 100% { transform: translateY(0px) scale(0.95); opacity: 0.85; }
+        50% { transform: translateY(-9px) scale(1.15); opacity: 1; }
+      }
+</style>
+  </defs>
+  <circle cx="140" cy="145" r="118" fill="url(#bg6)"/>
+  <ellipse class="rig-shadow" cx="140" cy="248" rx="60" ry="10" fill="#3D2314" opacity="0.22"/>
+
+  <g class="rig-bounce">
+    <g class="rig-tail">
+      <path d="M 168 206 C 214 214, 238 182, 228 140 C 206 144, 190 164, 168 206 Z" fill="url(#fur6)"/>
+      <path d="M 228 140 C 214 142, 202 152, 198 166 C 212 172, 226 160, 228 140 Z" fill="#FFFBF2"/>
+    </g>
+
+    <rect x="104" y="206" width="28" height="38" rx="14" fill="url(#fur6)"/>
+    <rect x="148" y="206" width="28" height="38" rx="14" fill="url(#fur6)"/>
+    <ellipse cx="118" cy="240" rx="15" ry="7" fill="#B85622"/>
+    <ellipse cx="162" cy="240" rx="15" ry="7" fill="#B85622"/>
+
+    <path d="M 102 162 C 80 176, 74 202, 86 210 C 96 216, 108 196, 112 174 Z" fill="url(#fur6)"/>
+
+    <ellipse cx="140" cy="192" rx="44" ry="34" fill="url(#fur6)"/>
+    <ellipse cx="140" cy="196" rx="28" ry="24" fill="#FFFBF2"/>
+    <path d="M 104 156 L 128 176 L 140 212 L 102 216 C 94 198, 96 174, 104 156 Z" fill="url(#vest6)"/>
+    <path d="M 176 156 L 152 176 L 136 184 L 136 212 L 178 216 C 186 198, 184 174, 176 156 Z" fill="url(#vest6)"/>
+    <circle cx="144" cy="190" r="3.5" fill="#9E6514"/>
+    <circle cx="144" cy="202" r="3.5" fill="#9E6514"/>
+    <path d="M 164 172 L 166 177 L 172 178 L 168 182 L 169 188 L 164 185 L 159 188 L 160 182 L 156 178 L 162 177 Z" fill="#FFE066" stroke="#9E6514" stroke-width="1.5"/>
+
+    <g class="rig-head">
+      <g class="rig-ear-l">
+        <path d="M 76 96 C 64 46, 88 34, 118 66 Z" fill="url(#fur6)"/>
+        <path d="M 84 88 C 76 58, 90 50, 110 70 Z" fill="#FFF3D6"/>
+      </g>
+      <g class="rig-ear-r">
+        <path d="M 204 96 C 216 46, 192 34, 162 66 Z" fill="url(#fur6)"/>
+        <path d="M 196 88 C 204 58, 190 50, 170 70 Z" fill="#FFF3D6"/>
+      </g>
+
+      <path d="M 68 118 C 68 74, 100 62, 140 62 C 180 62, 212 74, 212 118 L 220 124 L 210 138 C 196 160, 170 168, 140 168 C 110 168, 84 160, 70 138 L 60 124 Z" fill="url(#fur6)"/>
+      <path d="M 64 126 C 88 114, 118 118, 140 128 C 162 118, 192 114, 216 126 C 202 156, 174 168, 140 168 C 106 168, 78 156, 64 126 Z" fill="#FFFBF2"/>
+
+      <ellipse cx="110" cy="94" rx="6" ry="3.2" fill="#FFFBF2"/>
+      <ellipse cx="170" cy="94" rx="6" ry="3.2" fill="#FFFBF2"/>
+      <g class="rig-cheeks">
+        <ellipse cx="90" cy="136" rx="15" ry="9" fill="#FF8FA3" opacity="0.68"/>
+        <ellipse cx="190" cy="136" rx="15" ry="9" fill="#FF8FA3" opacity="0.68"/>
+      </g>
+
+      <!-- Warm Expressive Animal Crossing Eyes with Curved Eyelashes -->
+      <g class="rig-eyes">
+        <path d="M 92 112 Q 110 98 124 114" fill="none" stroke="#3D200A" stroke-width="4.5" stroke-linecap="round"/>
+        <circle cx="110" cy="116" r="13.5" fill="#4A2518"/>
+        <circle cx="110" cy="118" r="9" fill="#8C5220"/>
+        <circle cx="106" cy="111" r="4.5" fill="#FFFFFF"/>
+        <circle cx="115" cy="121" r="2.2" fill="#FFFFFF"/>
+
+        <path d="M 188 112 Q 170 98 156 114" fill="none" stroke="#3D200A" stroke-width="4.5" stroke-linecap="round"/>
+        <circle cx="170" cy="116" r="13.5" fill="#4A2518"/>
+        <circle cx="170" cy="118" r="9" fill="#8C5220"/>
+        <circle cx="166" cy="111" r="4.5" fill="#FFFFFF"/>
+        <circle cx="175" cy="121" r="2.2" fill="#FFFFFF"/>
+      </g>
+
+      <ellipse cx="140" cy="124" rx="6.5" ry="4.5" fill="#2E180B"/>
+      <path d="M 126 134 Q 140 152 154 134 Q 140 138 126 134 Z" fill="#8C2D2D" stroke="#4A2518" stroke-width="3" stroke-linejoin="round"/>
+      <ellipse cx="140" cy="141" rx="8" ry="4" fill="#F27979"/>
+    </g>
+
+    <!-- Waving Right Arm in front -->
+    <g class="rig-arm-r">
+      <path d="M 176 168 C 202 158, 222 138, 212 122 C 204 110, 184 128, 168 156 Z" fill="url(#fur6)"/>
+      <circle cx="203" cy="130" r="5" fill="#F4A28C"/>
+      <circle cx="197" cy="122" r="2.2" fill="#F4A28C"/>
+      <circle cx="204" cy="120" r="2.2" fill="#F4A28C"/>
+      <circle cx="210" cy="124" r="2.2" fill="#F4A28C"/>
+    </g>
+  </g>
+</svg>

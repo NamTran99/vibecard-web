@@ -1,0 +1,300 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" fill="none">
+  <defs>
+    <style>
+      /* 1. Chuyển động bật nhảy chạy nước rút toàn thân (Dynamic Sprint Bounce) */
+      @keyframes spSprintBody {
+        0%, 100% { transform: translateY(6px) rotate(5deg) scale(1.03, 0.97); }
+        25%      { transform: translateY(-16px) rotate(2deg) scale(0.98, 1.03); }
+        50%      { transform: translateY(5px) rotate(6deg) scale(1.04, 0.96); }
+        75%      { transform: translateY(-14px) rotate(1deg) scale(0.98, 1.03); }
+      }
+      /* 2. Bóng đổ mặt đất co giãn theo nhịp bật nhảy */
+      @keyframes spShadowPulse {
+        0%, 50%, 100% { transform: scaleX(1.08) scaleY(1); opacity: 0.36; }
+        25%, 75%      { transform: scaleX(0.74) scaleY(0.75); opacity: 0.16; }
+      }
+      /* 3. Đầu nhún nhẹ lệch pha (Overlapping Head Action) */
+      @keyframes spHeadBob {
+        0%, 50%, 100% { transform: rotate(-3deg) translateY(2px); }
+        25%, 75%      { transform: rotate(4deg) translateY(-4px); }
+      }
+      /* 4. Hai tai vẫy đàn hồi theo quán tính gió */
+      @keyframes spEarLeft {
+        0%, 50%, 100% { transform: rotate(-8deg); }
+        25%, 75%      { transform: rotate(6deg); }
+      }
+      @keyframes spEarRight {
+        0%, 50%, 100% { transform: rotate(-10deg); }
+        25%, 75%      { transform: rotate(5deg); }
+      }
+      /* 5. Chân trái & Chân phải đạp chạy luân phiên (Alternating Sprint Cycle) */
+      @keyframes spLegLeft {
+        0%, 100% { transform: rotate(-34deg) translateY(-4px); }
+        50%      { transform: rotate(28deg) translateY(2px); }
+      }
+      @keyframes spLegRight {
+        0%, 100% { transform: rotate(30deg) translateY(2px); }
+        50%      { transform: rotate(-32deg) translateY(-4px); }
+      }
+      /* 6. Hai tay đánh nhịp chạy năng động (Athletic Arm Pump) */
+      @keyframes spArmFront {
+        0%, 100% { transform: rotate(26deg); }
+        50%      { transform: rotate(-28deg); }
+      }
+      @keyframes spArmBack {
+        0%, 100% { transform: rotate(-28deg); }
+        50%      { transform: rotate(24deg); }
+      }
+      /* 7. Đuôi bông lớn quẫy mạnh trong gió */
+      @keyframes spTailWhip {
+        0%, 50%, 100% { transform: rotate(-14deg) scaleY(0.97); }
+        25%, 75%      { transform: rotate(16deg) scaleY(1.03); }
+      }
+      /* 8. Dải băng đô & Khăn thể thao bay phần phật sau lưng */
+      @keyframes spRibbonFly {
+        0%, 50%, 100% { transform: rotate(-10deg) skewX(-6deg); }
+        25%, 75%      { transform: rotate(14deg) skewX(6deg); }
+      }
+      /* 9. Chớp mắt tự nhiên */
+      @keyframes spBlink {
+        0%, 46%, 50%, 96%, 100% { transform: scaleY(1); }
+        48%                     { transform: scaleY(0.06); }
+      }
+      /* 10. Vệt gió tốc độ & Khói bụi bước chạy (Kinetic Speed & Dust) */
+      @keyframes spSpeedLines {
+        0%   { transform: translateX(35px); opacity: 0; }
+        40%  { opacity: 0.9; }
+        100% { transform: translateX(-55px); opacity: 0; }
+      }
+      @keyframes spDustPuff {
+        0%, 50%, 100% { transform: translate(0px, 0px) scale(0.4); opacity: 0; }
+        15%, 65%      { opacity: 0.85; }
+        45%, 95%      { transform: translate(38px, -14px) scale(1.25); opacity: 0; }
+      }
+      @keyframes spBoltPulse {
+        0%, 100% { transform: scale(0.94) rotate(-6deg); }
+        50%      { transform: scale(1.14) rotate(6deg); }
+      }
+
+      .sp-shadow  { transform-origin: 195px 362px; animation: spShadowPulse 1.1s ease-in-out infinite; }
+      .sp-rig     { transform-origin: 195px 280px; animation: spSprintBody 1.1s ease-in-out infinite; }
+      .sp-head    { transform-origin: 182px 198px; animation: spHeadBob 1.1s ease-in-out infinite; }
+      .sp-earL    { transform-origin: 128px 92px; animation: spEarLeft 1.1s ease-in-out infinite; }
+      .sp-earR    { transform-origin: 214px 92px; animation: spEarRight 1.1s ease-in-out infinite; }
+      .sp-legL    { transform-origin: 168px 294px; animation: spLegLeft 0.55s ease-in-out infinite; }
+      .sp-legR    { transform-origin: 212px 294px; animation: spLegRight 0.55s ease-in-out infinite; }
+      .sp-armL    { transform-origin: 148px 228px; animation: spArmFront 0.55s ease-in-out infinite; }
+      .sp-armR    { transform-origin: 218px 228px; animation: spArmBack 0.55s ease-in-out infinite; }
+      .sp-tail    { transform-origin: 228px 282px; animation: spTailWhip 1.1s ease-in-out infinite; }
+      .sp-ribbon  { transform-origin: 242px 118px; animation: spRibbonFly 0.55s ease-in-out infinite; }
+      .sp-eyes    { transform-origin: 174px 146px; animation: spBlink 4.2s infinite; }
+      .sp-speed1  { animation: spSpeedLines 0.65s linear infinite; }
+      .sp-speed2  { animation: spSpeedLines 0.65s linear 0.32s infinite; }
+      .sp-dust    { transform-origin: 256px 348px; animation: spDustPuff 1.1s ease-out infinite; }
+      .sp-bolt    { transform-origin: 72px 192px; animation: spBoltPulse 0.8s ease-in-out infinite; }
+    </style>
+
+    <!-- Bộ lông Cam Hổ Phách Năng Động 3D -->
+    <radialGradient id="spFurMain" cx="172" cy="116" r="128" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFA94D" />
+      <stop offset="52%" stop-color="#FF6B1A" />
+      <stop offset="100%" stop-color="#C93B00" />
+    </radialGradient>
+
+    <linearGradient id="spCream" x1="174" y1="145" x2="174" y2="310" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="70%" stop-color="#FFF8EC" />
+      <stop offset="100%" stop-color="#FDE6C4" />
+    </linearGradient>
+
+    <!-- Áo khoác thể thao Varsity Đỏ-Trắng-Vàng Năng Động -->
+    <linearGradient id="spJersey" x1="130" y1="205" x2="235" y2="305" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#EF4444" />
+      <stop offset="60%" stop-color="#DC2626" />
+      <stop offset="100%" stop-color="#991B1B" />
+    </linearGradient>
+
+    <!-- Đôi mắt Hổ Phách Rực Lửa Quyết Tâm -->
+    <linearGradient id="spEyeAmber" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#240B03" />
+      <stop offset="45%" stop-color="#6B2106" />
+      <stop offset="82%" stop-color="#F97316" />
+      <stop offset="100%" stop-color="#FEF08A" />
+    </linearGradient>
+
+    <!-- Tia Chớp Vàng Turbo -->
+    <linearGradient id="spGoldBolt" x1="45" y1="150" x2="95" y2="235" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFBEB" />
+      <stop offset="40%" stop-color="#FDE047" />
+      <stop offset="100%" stop-color="#EA580C" />
+    </linearGradient>
+
+    <radialGradient id="spAuraGlow" cx="190" cy="210" r="155" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FACC15" stop-opacity="0.24" />
+      <stop offset="55%" stop-color="#F97316" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#F97316" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Vầng hào quang năng lượng nền -->
+  <circle cx="190" cy="210" r="150" fill="url(#spAuraGlow)" />
+
+  <!-- Vệt gió tốc độ xé gió (Kinetic Speed Lines) -->
+  <g class="sp-speed1">
+    <line x1="285" y1="102" x2="365" y2="102" stroke="#FEF08A" stroke-width="4" stroke-linecap="round" opacity="0.8" />
+    <line x1="305" y1="215" x2="382" y2="215" stroke="#38BDF8" stroke-width="4.5" stroke-linecap="round" opacity="0.85" />
+    <line x1="275" y1="322" x2="355" y2="322" stroke="#FB923C" stroke-width="3.5" stroke-linecap="round" opacity="0.75" />
+  </g>
+  <g class="sp-speed2">
+    <line x1="65" y1="88" x2="125" y2="88" stroke="#38BDF8" stroke-width="3.5" stroke-linecap="round" opacity="0.7" />
+    <line x1="295" y1="158" x2="375" y2="158" stroke="#FDE047" stroke-width="3.5" stroke-linecap="round" opacity="0.8" />
+  </g>
+
+  <!-- Bóng đổ mặt đất co giãn theo nhịp chạy -->
+  <ellipse class="sp-shadow" cx="195" cy="362" rx="96" ry="13" fill="#1E0C04" />
+
+  <!-- Đám mây bụi nhỏ bật tung dưới gót giày chạy -->
+  <g class="sp-dust">
+    <circle cx="258" cy="348" r="12" fill="#FFF8EC" opacity="0.75" />
+    <circle cx="274" cy="342" r="16" fill="#FDE6C4" opacity="0.65" />
+    <circle cx="290" cy="350" r="10" fill="#FFF8EC" opacity="0.6" />
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- RIG CHÍNH: CÁO LUMI CHẠY NƯỚC RÚT SIÊU NĂNG ĐỘNG (60FPS)      -->
+  <!-- ============================================================ -->
+  <g class="sp-rig">
+
+    <!-- 1. ĐUÔI BÔNG LỚN TUNG BAY MẠNH MẼ PHÍA SAU -->
+    <g class="sp-tail">
+      <path d="M 222 288 C 242 232, 294 196, 344 208 C 378 216, 384 260, 356 292 C 328 322, 274 320, 222 302 Z" fill="url(#spFurMain)" />
+      <path d="M 298 206 C 326 202, 352 210, 366 232 C 376 250, 370 274, 356 292 C 346 274, 332 270, 320 282 C 320 264, 306 260, 294 268 C 300 250, 290 232, 298 206 Z" fill="url(#spCream)" />
+    </g>
+
+    <!-- 2. CHÂN SAU BÊN PHẢI (Đạp mạnh về phía sau) -->
+    <g class="sp-legR">
+      <path d="M 196 286 C 194 310, 206 328, 224 338 L 242 322 C 228 310, 220 294, 218 280 Z" fill="url(#spFurMain)" />
+      <!-- Giày Sneaker Thể Thao Đỏ-Trắng-Vàng (Chân Phải) -->
+      <g transform="translate(226, 330) rotate(24)">
+        <rect x="-20" y="-12" width="42" height="24" rx="12" fill="#EF4444" stroke="#7F1D1D" stroke-width="2.5" />
+        <path d="M -20 4 L 22 4 L 22 12 C 22 14, -20 14, -20 12 Z" fill="#FFFFFF" />
+        <path d="M -6 -6 L 8 -2 L -2 4" stroke="#FDE047" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+      </g>
+    </g>
+
+    <!-- 3. TAY PHẢI ĐÁNH VỀ PHÍA SAU THEO NHỊP CHẠY -->
+    <g class="sp-armR">
+      <path d="M 210 226 C 236 232, 260 250, 266 268 C 270 282, 250 290, 240 276 C 230 262, 218 250, 204 244 Z" fill="url(#spFurMain)" />
+      <!-- Băng cổ tay thể thao (Sweatband) -->
+      <rect x="240" y="256" width="20" height="10" rx="4" transform="rotate(32 250 261)" fill="#FEF08A" stroke="#CA8A04" stroke-width="1.8" />
+      <circle cx="256" cy="272" r="13" fill="#361509" />
+    </g>
+
+    <!-- 4. THÂN CÁO MẶC ÁO KHOÁC THỂ THAO VARSITY NĂNG ĐỘNG -->
+    <g>
+      <path d="M 134 212 C 122 252, 126 296, 146 310 L 218 310 C 234 296, 236 252, 222 212 Z" fill="url(#spJersey)" stroke="#7F1D1D" stroke-width="2.5" />
+      <!-- Mảng ngực trắng & sọc vàng thể thao -->
+      <path d="M 152 216 C 144 252, 148 296, 180 310 C 208 296, 212 252, 204 216 Z" fill="url(#spCream)" />
+      <!-- Bo gấu áo sọc đỏ-vàng-trắng -->
+      <path d="M 138 298 Q 182 310, 224 298" stroke="#FDE047" stroke-width="5" stroke-linecap="round" fill="none" />
+      <!-- Huy hiệu Tia Chớp Vàng trước ngực áo -->
+      <polygon points="182,238 170,258 181,258 175,278 195,254 183,254" fill="#FDE047" stroke="#B45309" stroke-width="1.8" stroke-linejoin="round" />
+    </g>
+
+    <!-- 5. CHÂN TRƯỚC BÊN TRÁI (Bước sải cao về phía trước) -->
+    <g class="sp-legL">
+      <path d="M 154 284 C 142 304, 128 318, 114 326 L 128 344 C 146 334, 162 316, 174 294 Z" fill="url(#spFurMain)" />
+      <!-- Giày Sneaker Thể Thao Đỏ-Trắng-Vàng (Chân Trái) -->
+      <g transform="translate(114, 334) rotate(-22)">
+        <rect x="-24" y="-12" width="44" height="24" rx="12" fill="#EF4444" stroke="#7F1D1D" stroke-width="2.5" />
+        <path d="M -24 4 L 20 4 L 20 12 C 20 14, -24 14, -24 12 Z" fill="#FFFFFF" />
+        <path d="M -10 -6 L 6 -2 L -4 4" stroke="#FDE047" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+      </g>
+    </g>
+
+    <!-- 6. TAY TRÁI ĐÁNH CAO VỀ PHÍA TRƯỚC + CẦM TIA CHỚP NĂNG LƯỢNG -->
+    <g class="sp-armL">
+      <path d="M 150 226 C 122 222, 96 206, 92 186 C 88 170, 110 166, 118 184 C 124 198, 136 208, 154 214 Z" fill="url(#spFurMain)" />
+      <!-- Băng cổ tay thể thao (Sweatband) -->
+      <rect x="92" y="186" width="22" height="10" rx="4" transform="rotate(-18 103 191)" fill="#FEF08A" stroke="#CA8A04" stroke-width="1.8" />
+      <circle cx="100" cy="178" r="13.5" fill="#361509" />
+      <ellipse cx="100" cy="180" rx="5.5" ry="4" fill="#FF8FA3" />
+    </g>
+
+    <!-- Biểu tượng Tia Chớp & Ngôi Sao Năng Lượng Bùng Nổ Phía Trước -->
+    <g class="sp-bolt">
+      <circle cx="72" cy="192" r="34" fill="#FDE047" opacity="0.3" />
+      <polygon points="82,148 52,190 74,190 62,232 98,184 76,184" fill="url(#spGoldBolt)" stroke="#B45309" stroke-width="2.5" stroke-linejoin="round" />
+      <polygon points="42,146 45,154 53,157 45,160 42,168 39,160 31,157 39,154" fill="#38BDF8" />
+    </g>
+
+    <!-- 7. ĐẦU CÁO LUMI ĐỘI BĂNG ĐÔ THỂ THAO & ÁNH MẮT RỰC LỬA HÀO HỨNG -->
+    <g class="sp-head">
+
+      <!-- Dải đuôi băng đô thể thao bay phần phật phía sau đầu -->
+      <g class="sp-ribbon">
+        <path d="M 234 114 C 268 102, 304 108, 326 126 C 304 134, 274 132, 238 126 Z" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2" />
+        <path d="M 238 124 C 272 120, 302 132, 318 152 C 294 154, 266 146, 236 134 Z" fill="#EF4444" stroke="#991B1B" stroke-width="2" />
+      </g>
+
+      <!-- Tai Trái -->
+      <g class="sp-earL">
+        <path d="M 78 124 C 54 78, 60 22, 84 14 C 108 12, 140 48, 152 92 Z" fill="url(#spFurMain)" />
+        <path d="M 65 50 C 70 26, 76 16, 84 14 C 96 13, 110 26, 120 46 C 100 52, 82 54, 65 50 Z" fill="#2E1207" />
+        <path d="M 88 114 C 74 78, 78 40, 90 30 C 104 32, 122 62, 130 94 Z" fill="#F9BFA8" />
+      </g>
+
+      <!-- Tai Phải -->
+      <g class="sp-earR">
+        <path d="M 266 124 C 290 78, 284 22, 260 14 C 236 12, 204 48, 192 92 Z" fill="url(#spFurMain)" />
+        <path d="M 279 50 C 274 26, 268 16, 260 14 C 248 13, 234 26, 224 46 C 244 52, 262 54, 279 50 Z" fill="#2E1207" />
+        <path d="M 256 114 C 270 78, 266 40, 254 30 C 240 32, 222 62, 214 94 Z" fill="#F9BFA8" />
+      </g>
+
+      <!-- Khuôn mặt tròn bầu bĩnh với hai chùm lông má bông xù -->
+      <path d="M 172 62 C 232 62, 268 106, 274 156 C 282 162, 284 170, 276 176 C 282 182, 276 192, 266 196 C 244 212, 210 220, 172 220 C 134 220, 100 212, 78 196 C 68 192, 62 182, 68 176 C 60 170, 62 162, 70 156 C 76 106, 112 62, 172 62 Z" fill="url(#spFurMain)" />
+
+      <!-- Mảng má trắng kem đối xứng -->
+      <path d="M 70 160 C 88 142, 128 140, 156 162 C 164 156, 180 156, 188 162 C 216 140, 256 142, 274 160 C 282 164, 282 172, 276 176 C 282 182, 276 192, 266 196 C 244 212, 210 220, 172 220 C 134 220, 100 212, 78 196 C 68 192, 62 182, 68 176 C 62 172, 62 164, 70 160 Z" fill="url(#spCream)" />
+
+      <!-- BĂNG ĐÔ THỂ THAO TRẮNG-ĐỎ-VÀNG (SPORTY HEADBAND) NGANG TRÁN -->
+      <path d="M 78 112 C 112 92, 232 92, 266 112 C 268 122, 266 128, 262 130 C 228 112, 116 112, 82 130 C 78 128, 76 122, 78 112 Z" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2" />
+      <path d="M 80 120 C 114 102, 230 102, 264 120" stroke="#EF4444" stroke-width="5.5" stroke-linecap="round" fill="none" />
+      <!-- Ngôi sao vàng đính giữa băng đô trán -->
+      <polygon points="172,96 176,105 186,106 178,112 180,122 172,117 164,122 166,112 158,106 168,105" fill="#FDE047" stroke="#B45309" stroke-width="1.6" />
+
+      <!-- Lông mày kem nhướn lên đầy quyết tâm và năng lượng -->
+      <ellipse cx="128" cy="116" rx="11" ry="5" transform="rotate(-8 128 116)" fill="#FFF8EE" />
+      <ellipse cx="216" cy="116" rx="11" ry="5" transform="rotate(8 216 116)" fill="#FFF8EE" />
+
+      <!-- Má hồng khỏe khoắn -->
+      <ellipse cx="96" cy="176" rx="16" ry="9" fill="#FF6B7A" opacity="0.52" />
+      <ellipse cx="248" cy="176" rx="16" ry="9" fill="#FF6B7A" opacity="0.52" />
+
+      <!-- ĐÔI MẮT HỔ PHÁCH TO TRÒN RỰC SÁNG NĂNG LƯỢNG -->
+      <g class="sp-eyes">
+        <!-- Mắt Trái -->
+        <ellipse cx="124" cy="146" rx="19.5" ry="21.5" fill="#FFFDF9" />
+        <ellipse cx="125" cy="146" rx="16.5" ry="19" fill="url(#spEyeAmber)" />
+        <ellipse cx="125" cy="145" rx="10" ry="12" fill="#170702" />
+        <circle cx="118" cy="137" r="6" fill="#FFFFFF" />
+        <circle cx="131" cy="152" r="3" fill="#FEF08A" />
+        <path d="M 103 142 C 106 120, 138 120, 145 140" stroke="#260D04" stroke-width="5.2" stroke-linecap="round" fill="none" />
+
+        <!-- Mắt Phải -->
+        <ellipse cx="220" cy="146" rx="19.5" ry="21.5" fill="#FFFDF9" />
+        <ellipse cx="219" cy="146" rx="16.5" ry="19" fill="url(#spEyeAmber)" />
+        <ellipse cx="219" cy="145" rx="10" ry="12" fill="#170702" />
+        <circle cx="212" cy="137" r="6" fill="#FFFFFF" />
+        <circle cx="225" cy="152" r="3" fill="#FEF08A" />
+        <path d="M 241 142 C 238 120, 206 120, 199 140" stroke="#260D04" stroke-width="5.2" stroke-linecap="round" fill="none" />
+      </g>
+
+      <!-- Miệng cười lớn tràn đầy sinh lực & Mũi đen bóng -->
+      <path d="M 150 176 Q 172 184, 194 176 C 190 204, 154 204, 150 176 Z" fill="#3B1207" />
+      <ellipse cx="172" cy="191" rx="12.5" ry="7" fill="#FF758F" />
+      <path d="M 160 163 C 160 157, 184 157, 184 163 C 184 170, 175 176, 172 176 C 169 176, 160 170, 160 163 Z" fill="#240D04" />
+      <ellipse cx="169" cy="161" rx="4.5" ry="2" fill="#8C5843" />
+    </g>
+  </g>
+</svg>

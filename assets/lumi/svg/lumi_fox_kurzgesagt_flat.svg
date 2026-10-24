@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 400" width="380" height="400" fill="none">
+  <defs>
+    <style>
+      @keyframes k2Float {
+        0%, 100% { transform: translateY(0px); }
+        50%      { transform: translateY(-4px); }
+      }
+      @keyframes k2Tail {
+        0%, 100% { transform: rotate(-5deg); }
+        50%      { transform: rotate(8deg); }
+      }
+      @keyframes k2ScarfWave {
+        0%, 100% { transform: rotate(-4deg) skewY(0deg); }
+        50%      { transform: rotate(6deg) skewY(-3deg); }
+      }
+      @keyframes k2Head {
+        0%, 100% { transform: rotate(-2deg); }
+        50%      { transform: rotate(3deg); }
+      }
+      @keyframes k2Blink {
+        0%, 46%, 50%, 94%, 98%, 100% { transform: scaleY(1); }
+        48%, 96%                     { transform: scaleY(0.08); }
+      }
+
+      .k2-body  { transform-origin: 170px 340px; animation: k2Float 2.6s ease-in-out infinite; }
+      .k2-tail  { transform-origin: 218px 320px; animation: k2Tail 2.0s ease-in-out infinite; }
+      .k2-scarf { transform-origin: 192px 212px; animation: k2ScarfWave 1.8s ease-in-out infinite; }
+      .k2-head  { transform-origin: 162px 195px; animation: k2Head 2.6s ease-in-out infinite; }
+      .k2-eye   { transform-origin: 138px 146px; animation: k2Blink 4.4s infinite; }
+    </style>
+  </defs>
+
+  <!-- Bóng sàn Flat Geometric -->
+  <rect x="78" y="346" width="210" height="16" rx="8" fill="#180D06" opacity="0.32" />
+
+  <g class="k2-body">
+    <!-- Đuôi phẳng hình học 3 lớp màu cắt lát (Kurzgesagt Cel-Shading) -->
+    <g class="k2-tail">
+      <path d="M 206 336 C 216 250, 274 196, 336 212 C 364 252, 344 316, 294 340 C 260 354, 224 348, 206 336 Z" fill="#E04806" />
+      <!-- Lớp sáng mặt trên đuôi -->
+      <path d="M 206 336 C 216 250, 274 196, 336 212 C 308 258, 266 296, 206 336 Z" fill="#FF6B1A" />
+      <!-- Mảng chóp đuôi trắng kem cắt Zíc-zắc hình học -->
+      <path d="M 278 212 C 300 204, 320 206, 336 212 C 354 238, 348 278, 326 310 L 310 282 L 292 296 L 288 264 L 266 272 Z" fill="#FFF7EB" />
+    </g>
+
+    <!-- Chân sau hình học tối giản -->
+    <path d="M 176 268 L 228 268 C 244 296, 240 332, 220 350 L 166 350 Z" fill="#C93B00" />
+    <rect x="190" y="334" width="44" height="18" rx="9" fill="#2A0E05" />
+
+    <!-- Thân hình thang vát chéo mạnh mẽ -->
+    <path d="M 122 196 L 198 196 L 216 350 L 114 350 Z" fill="#FF5E0E" />
+    <!-- Bóng Cel-Shading nửa lưng phải -->
+    <path d="M 164 196 L 198 196 L 216 350 L 172 350 Z" fill="#D94300" />
+    <!-- Yếm ngực trắng kem hình khiên nhọn -->
+    <polygon points="122,196 170,196 154,316 118,288" fill="#FFF7EB" />
+
+    <!-- Hai chân trước dạng cột trụ sắc nét -->
+    <rect x="114" y="256" width="24" height="96" rx="12" fill="#FF6B1A" />
+    <path d="M 114 304 L 138 304 L 138 340 C 138 347, 114 347, 114 340 Z" fill="#2A0E05" />
+    <rect x="104" y="336" width="34" height="16" rx="8" fill="#2A0E05" />
+
+    <rect x="148" y="256" width="24" height="96" rx="12" fill="#E04806" />
+    <path d="M 148 304 L 172 304 L 172 340 C 172 347, 148 347, 148 340 Z" fill="#1F0903" />
+    <rect x="138" y="336" width="34" height="16" rx="8" fill="#1F0903" />
+
+    <!-- Dải khăn vàng bay dài sang bên phải theo phong cách Graphic Flat -->
+    <g class="k2-scarf">
+      <path d="M 184 202 C 232 198, 282 212, 316 238 L 302 266 C 266 244, 224 232, 180 228 Z" fill="#F59E0B" />
+      <path d="M 184 202 C 232 198, 282 212, 316 238 L 310 250 C 272 226, 228 214, 182 214 Z" fill="#FACC15" />
+      <!-- Tua rua cắt vuông hình học -->
+      <polygon points="316,238 328,246 314,274 302,266" fill="#D97706" />
+    </g>
+    <!-- Vòng khăn ôm cổ -->
+    <rect x="110" y="190" width="96" height="28" rx="14" fill="#FACC15" />
+    <path d="M 110 204 L 206 204 C 206 212, 200 218, 192 218 L 124 218 C 116 218, 110 212, 110 204 Z" fill="#F59E0B" />
+    <rect x="132" y="208" width="28" height="62" rx="6" fill="#FBBF24" />
+    <rect x="132" y="258" width="28" height="12" rx="3" fill="#D97706" />
+
+    <!-- ĐẦU CÁO HÌNH HỌC GÓC NGHIÊNG (GEOMETRIC WEDGE SNOUT) -->
+    <g class="k2-head">
+      <!-- Tai sau (Phải) -->
+      <polygon points="172,110 218,32 232,122" fill="#C93B00" />
+      <polygon points="195,71 218,32 225,77" fill="#2A0E05" />
+
+      <!-- Khối đầu & Mõm nhọn phóng khoáng vươn sang trái -->
+      <path d="M 52 156 L 142 96 C 186 96, 214 126, 214 166 C 214 190, 194 202, 158 202 L 88 186 C 64 180, 52 168, 52 156 Z" fill="#FF6B1A" />
+      <!-- Mảng má và hàm dưới màu kem cắt phẳng sắc nét -->
+      <path d="M 52 156 L 118 164 L 146 148 L 214 166 C 214 190, 194 202, 158 202 L 88 186 C 64 180, 52 168, 52 156 Z" fill="#FFF7EB" />
+      <!-- Mảng bóng Cel-Shading dưới cằm -->
+      <path d="M 88 186 L 158 202 L 194 194 L 122 180 Z" fill="#E8D3B9" />
+
+      <!-- Tai trước (Trái) -->
+      <polygon points="144,108 178,22 206,118" fill="#FF6B1A" />
+      <polygon points="154,104 176,42 194,112" fill="#FCA5A5" />
+      <polygon points="161,64 178,22 192,70" fill="#2A0E05" />
+
+      <!-- Mắt hình thoi bo góc sắc sảo + Miệng cười nghiêng -->
+      <g class="k2-eye">
+        <rect x="122" y="132" width="26" height="28" rx="13" fill="#2A0E05" />
+        <circle cx="130" cy="141" r="5" fill="#FFFFFF" />
+        <circle cx="140" cy="151" r="2.2" fill="#FACC15" />
+      </g>
+      <!-- Chân mày phẳng -->
+      <rect x="120" y="118" width="28" height="6" rx="3" transform="rotate(-10 134 121)" fill="#2A0E05" />
+
+      <!-- Nụ cười nghiêng Side-Smile (Không phải miệng mèo :3) -->
+      <path d="M 86 168 Q 112 180, 134 168" stroke="#2A0E05" stroke-width="4" stroke-linecap="round" fill="none" />
+      <path d="M 96 172 Q 112 188, 126 172 Z" fill="#EF4444" />
+
+      <!-- Chóp mũi tam giác bo góc ở đầu mõm -->
+      <circle cx="54" cy="154" r="10" fill="#2A0E05" />
+      <circle cx="51" cy="151" r="3" fill="#FFFFFF" />
+    </g>
+  </g>
+</svg>

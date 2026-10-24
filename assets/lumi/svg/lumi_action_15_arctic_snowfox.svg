@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 380" width="360" height="380" fill="none">
+  <defs>
+    <style>
+      @keyframes a15SnowballBounce {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50%      { transform: translateY(-22px) rotate(180deg); }
+      }
+      @keyframes a15PawsJuggle {
+        0%, 100% { transform: translateY(0px); }
+        50%      { transform: translateY(-8px); }
+      }
+      @keyframes a15TailWag {
+        0%, 100% { transform: rotate(-8deg); }
+        50%      { transform: rotate(12deg); }
+      }
+      @keyframes a15Blink {
+        0%, 46%, 50%, 96%, 100% { transform: scaleY(1); }
+        48%                     { transform: scaleY(0.06); }
+      }
+
+      .a15-snowball { transform-origin: 162px 238px; animation: a15SnowballBounce 1.8s ease-in-out infinite; }
+      .a15-paws     { transform-origin: 162px 264px; animation: a15PawsJuggle 1.8s ease-in-out infinite; }
+      .a15-tail     { transform-origin: 202px 314px; animation: a15TailWag 2s ease-in-out infinite; }
+      .a15-eyes     { transform-origin: 162px 152px; animation: a15Blink 4.6s infinite; }
+    </style>
+
+    <!-- Bộ lông Cáo Tuyết Bắc Cực Trắng Muốt pha Xanh Băng -->
+    <radialGradient id="a15SnowFur" cx="162" cy="120" r="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="65%" stop-color="#E0F2FE" />
+      <stop offset="100%" stop-color="#93C5FD" />
+    </radialGradient>
+    <radialGradient id="a15IceOrb" cx="162" cy="238" r="38" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="50%" stop-color="#7DD3FC" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <ellipse cx="168" cy="350" rx="98" ry="13" fill="#0C4A6E" opacity="0.28" />
+
+  <g>
+    <!-- Đuôi Cáo Tuyết trắng xanh bông xù -->
+    <g class="a15-tail">
+      <path d="M 194 322 C 198 258, 238 214, 288 218 C 328 222, 342 262, 322 296 C 302 328, 250 338, 194 328 Z" fill="url(#a15SnowFur)" stroke="#7DD3FC" stroke-width="2" />
+      <path d="M 252 220 C 278 214, 306 220, 322 242 C 334 258, 330 280, 322 296 C 314 280, 300 276, 288 288 C 288 272, 276 268, 264 276 C 266 260, 254 248, 252 220 Z" fill="#FFFFFF" />
+    </g>
+
+    <ellipse cx="108" cy="312" rx="24" ry="28" transform="rotate(-12 108 312)" fill="url(#a15SnowFur)" stroke="#7DD3FC" stroke-width="2" />
+    <ellipse cx="216" cy="312" rx="24" ry="28" transform="rotate(12 216 312)" fill="url(#a15SnowFur)" stroke="#7DD3FC" stroke-width="2" />
+    <ellipse cx="92" cy="336" rx="18" ry="12" fill="#475569" />
+    <ellipse cx="232" cy="336" rx="18" ry="12" fill="#475569" />
+
+    <!-- Thân Cáo Tuyết Bắc Cực -->
+    <path d="M 114 222 C 104 264, 106 322, 126 338 L 198 338 C 218 322, 220 264, 210 222 Z" fill="url(#a15SnowFur)" stroke="#7DD3FC" stroke-width="2" />
+    <path d="M 134 238 C 124 274, 128 324, 162 338 C 196 324, 200 274, 190 238 Z" fill="#FFFFFF" />
+
+    <!-- Khăn len Đỏ-Trắng mùa đông Bắc Âu -->
+    <rect x="102" y="210" width="120" height="28" rx="14" fill="#EF4444" stroke="#991B1B" stroke-width="2" />
+    <line x1="126" y1="210" x2="126" y2="238" stroke="#FFFFFF" stroke-width="5" />
+    <line x1="162" y1="210" x2="162" y2="238" stroke="#FFFFFF" stroke-width="5" />
+    <line x1="198" y1="210" x2="198" y2="238" stroke="#FFFFFF" stroke-width="5" />
+
+    <!-- Đầu Cáo Tuyết Bắc Cực + Chụp Tai Len Đỏ Ấm Áp -->
+    <g>
+      <path d="M 66 128 C 46 80, 54 24, 78 16 C 102 14, 134 52, 144 96 Z" fill="url(#a15SnowFur)" stroke="#7DD3FC" stroke-width="2" />
+      <path d="M 55 52 C 60 28, 68 18, 78 16 C 90 15, 104 28, 114 48 C 94 54, 74 56, 55 52 Z" fill="#64748B" />
+      <path d="M 76 118 C 64 82, 70 42, 82 32 C 96 34, 116 64, 122 98 Z" fill="#BAE6FD" />
+
+      <path d="M 258 128 C 278 80, 270 24, 246 16 C 222 14, 190 52, 180 96 Z" fill="url(#a15SnowFur)" stroke="#7DD3FC" stroke-width="2" />
+      <path d="M 269 52 C 264 28, 256 18, 246 16 C 234 15, 220 28, 210 48 C 230 54, 250 56, 269 52 Z" fill="#64748B" />
+      <path d="M 248 118 C 260 82, 254 42, 242 32 C 228 34, 208 64, 202 98 Z" fill="#BAE6FD" />
+
+      <!-- Vòng chụp tai bông mùa đông (Winter Earmuffs) -->
+      <path d="M 68 116 C 88 52, 236 52, 256 116" stroke="#EF4444" stroke-width="7" fill="none" />
+      <circle cx="66" cy="122" r="18" fill="#EF4444" stroke="#FFF" stroke-width="3" />
+      <circle cx="258" cy="122" r="18" fill="#EF4444" stroke="#FFF" stroke-width="3" />
+
+      <path d="M 162 68 C 222 68, 258 112, 264 162 C 272 174, 266 196, 248 204 C 226 218, 196 222, 162 222 C 128 222, 98 218, 76 204 C 58 196, 52 174, 60 162 C 66 112, 102 68, 162 68 Z" fill="url(#a15SnowFur)" stroke="#7DD3FC" stroke-width="2" />
+      <path d="M 60 166 C 78 148, 118 146, 146 168 C 154 162, 170 162, 178 168 C 206 146, 246 148, 264 166 C 270 178, 264 196, 248 204 C 226 218, 196 222, 162 222 C 128 222, 98 218, 76 204 C 60 196, 54 178, 60 166 Z" fill="#FFFFFF" />
+
+      <!-- Đôi mắt Xanh Ngọc Bích Sapphire trong veo -->
+      <g class="a15-eyes">
+        <ellipse cx="115" cy="150" rx="18" ry="20" fill="#0C4A6E" />
+        <ellipse cx="115" cy="152" rx="14" ry="15" fill="#0284C7" />
+        <ellipse cx="115" cy="150" rx="9" ry="11" fill="#082F49" />
+        <circle cx="109" cy="142" r="5.5" fill="#FFFFFF" />
+        <circle cx="121" cy="157" r="3" fill="#BAE6FD" />
+
+        <ellipse cx="209" cy="150" rx="18" ry="20" fill="#0C4A6E" />
+        <ellipse cx="209" cy="152" rx="14" ry="15" fill="#0284C7" />
+        <ellipse cx="209" cy="150" rx="9" ry="11" fill="#082F49" />
+        <circle cx="203" cy="142" r="5.5" fill="#FFFFFF" />
+        <circle cx="215" cy="157" r="3" fill="#BAE6FD" />
+      </g>
+
+      <ellipse cx="88" cy="178" rx="15" ry="8.5" fill="#F472B6" opacity="0.45" />
+      <ellipse cx="236" cy="178" rx="15" ry="8.5" fill="#F472B6" opacity="0.45" />
+
+      <path d="M 148 184 Q 162 196, 176 184" stroke="#334155" stroke-width="3.5" stroke-linecap="round" fill="none" />
+      <ellipse cx="162" cy="170" rx="9" ry="6" fill="#334155" />
+    </g>
+
+    <!-- Hai tay tung hứng Quả Cầu Tuyết Pha Lê -->
+    <g class="a15-paws">
+      <path d="M 122 254 C 108 264, 114 288, 134 288 C 146 288, 148 268, 138 254 Z" fill="url(#a15SnowFur)" stroke="#7DD3FC" stroke-width="2" />
+      <path d="M 202 254 C 216 264, 210 288, 190 288 C 178 288, 176 268, 186 254 Z" fill="url(#a15SnowFur)" stroke="#7DD3FC" stroke-width="2" />
+      <circle cx="132" cy="280" r="12" fill="#475569" />
+      <circle cx="192" cy="280" r="12" fill="#475569" />
+    </g>
+
+    <!-- Quả Cầu Tuyết Pha Lê & Bông Tuyết 6 Cánh Nảy Lên Giữa Hai Tay -->
+    <g class="a15-snowball">
+      <circle cx="162" cy="242" r="36" fill="url(#a15IceOrb)" />
+      <circle cx="162" cy="242" r="22" fill="#F0F9FF" stroke="#38BDF8" stroke-width="2.5" />
+      <line x1="162" y1="226" x2="162" y2="258" stroke="#0284C7" stroke-width="3" stroke-linecap="round" />
+      <line x1="148" y1="234" x2="176" y2="250" stroke="#0284C7" stroke-width="3" stroke-linecap="round" />
+      <line x1="176" y1="234" x2="148" y2="250" stroke="#0284C7" stroke-width="3" stroke-linecap="round" />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 380" width="360" height="380" fill="none">
+  <defs>
+    <style>
+      @keyframes a8BrushStroke {
+        0%, 100% { transform: rotate(-18deg); }
+        50%      { transform: rotate(24deg); }
+      }
+      @keyframes a8HeadTilt {
+        0%, 100% { transform: rotate(-3.5deg); }
+        50%      { transform: rotate(3.5deg); }
+      }
+      @keyframes a8Tail {
+        0%, 100% { transform: rotate(-8deg); }
+        50%      { transform: rotate(10deg); }
+      }
+      @keyframes a8Blink {
+        0%, 46%, 50%, 94%, 98%, 100% { transform: scaleY(1); }
+        48%, 96%                     { transform: scaleY(0.08); }
+      }
+
+      .a8-head  { transform-origin: 158px 218px; animation: a8HeadTilt 2.4s ease-in-out infinite; }
+      .a8-brush { transform-origin: 204px 248px; animation: a8BrushStroke 1.5s ease-in-out infinite; }
+      .a8-tail  { transform-origin: 202px 312px; animation: a8Tail 1.8s ease-in-out infinite; }
+      .a8-eyes  { transform-origin: 158px 156px; animation: a8Blink 4.6s infinite; }
+    </style>
+
+    <radialGradient id="a8Vinyl" cx="145" cy="110" r="135" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFA95C" />
+      <stop offset="50%" stop-color="#FF6B1A" />
+      <stop offset="100%" stop-color="#B83600" />
+    </radialGradient>
+    <linearGradient id="a8Rainbow" x1="220" y1="150" x2="320" y2="230" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F43F5E" />
+      <stop offset="50%" stop-color="#FACC15" />
+      <stop offset="100%" stop-color="#38BDF8" />
+    </linearGradient>
+  </defs>
+
+  <ellipse cx="166" cy="348" rx="98" ry="14" fill="#1F0E05" opacity="0.28" />
+
+  <!-- Vệt màu cầu vồng nghệ thuật lơ lửng khi vung cọ -->
+  <path d="M 244 162 Q 288 142, 314 182 Q 332 214, 296 234" stroke="url(#a8Rainbow)" stroke-width="10" stroke-linecap="round" fill="none" opacity="0.85" />
+  <circle cx="242" cy="142" r="5" fill="#FACC15" />
+  <circle cx="322" cy="162" r="6" fill="#F43F5E" />
+  <circle cx="326" cy="212" r="4.5" fill="#38BDF8" />
+
+  <g>
+    <g class="a8-tail">
+      <path d="M 194 318 C 200 256, 242 218, 288 226 C 326 232, 334 276, 310 306 C 286 334, 238 338, 194 326 Z" fill="url(#a8Vinyl)" />
+      <path d="M 260 226 C 286 222, 312 234, 322 258 C 328 278, 320 296, 310 306 C 294 292, 274 286, 258 272 C 254 254, 254 238, 260 226 Z" fill="#FFFDF9" />
+    </g>
+
+    <ellipse cx="108" cy="322" rx="22" ry="18" transform="rotate(-10 108 322)" fill="#3B1709" />
+    <ellipse cx="208" cy="322" rx="22" ry="18" transform="rotate(10 208 322)" fill="#3B1709" />
+
+    <path d="M 110 222 C 96 264, 100 322, 124 338 L 194 338 C 218 322, 222 264, 208 222 Z" fill="url(#a8Vinyl)" />
+    <ellipse cx="158" cy="288" rx="32" ry="42" fill="#FFFDF9" />
+
+    <!-- Khăn quàng cổ vàng -->
+    <rect x="96" y="206" width="124" height="30" rx="15" fill="#FBBF24" />
+    <path d="M 132 230 L 160 230 L 164 280 L 128 280 Z" fill="#F59E0B" />
+    <rect x="128" y="208" width="34" height="30" rx="10" fill="#FEF08A" />
+
+    <!-- Tay trái cầm Bảng Pha Màu (Wooden Artist Palette) -->
+    <g>
+      <ellipse cx="94" cy="272" rx="34" ry="24" transform="rotate(-14 94 272)" fill="#FDE68A" stroke="#92400E" stroke-width="2.5" />
+      <circle cx="110" cy="274" r="5" fill="#1A1D16" />
+      <circle cx="76" cy="264" r="6" fill="#F43F5E" />
+      <circle cx="88" cy="256" r="6" fill="#38BDF8" />
+      <circle cx="104" cy="258" r="6" fill="#10B981" />
+      <circle cx="82" cy="280" r="6" fill="#F59E0B" />
+      <circle cx="104" cy="276" r="12" fill="#3B1709" />
+    </g>
+
+    <!-- Tay phải vung Cọ Vẽ Nghệ Thuật -->
+    <g class="a8-brush">
+      <path d="M 198 248 C 224 242, 254 218, 254 190 C 254 176, 234 178, 228 194 C 222 212, 210 226, 194 234 Z" fill="url(#a8Vinyl)" />
+      <!-- Cán cọ vẽ & Đầu lông cọ chấm sơn hồng -->
+      <line x1="226" y1="218" x2="276" y2="154" stroke="#78350F" stroke-width="8" stroke-linecap="round" />
+      <path d="M 272 158 C 278 144, 292 140, 298 134 C 296 150, 286 162, 278 164 Z" fill="#FEF3C7" />
+      <path d="M 282 146 C 288 140, 294 137, 298 134 C 296 144, 290 152, 284 154 Z" fill="#F43F5E" />
+      <circle cx="244" cy="192" r="13" fill="#3B1709" />
+    </g>
+
+    <!-- Đầu Cáo đội Mũ Nồi Họa Sĩ (Artist Beret) -->
+    <g class="a8-head">
+      <path d="M 64 130 C 46 82, 56 26, 82 20 C 106 18, 134 56, 144 98 Z" fill="url(#a8Vinyl)" />
+      <path d="M 54 56 C 58 32, 68 22, 82 20 C 96 19, 110 32, 118 50 C 96 56, 74 58, 54 56 Z" fill="#3B1709" />
+      <ellipse cx="94" cy="80" rx="15" ry="30" transform="rotate(-14 94 80)" fill="#FFC4B8" />
+
+      <path d="M 252 130 C 270 82, 260 26, 234 20 C 210 18, 182 56, 172 98 Z" fill="url(#a8Vinyl)" />
+      <path d="M 262 56 C 258 32, 248 22, 234 20 C 220 19, 206 32, 198 50 C 220 56, 242 58, 262 56 Z" fill="#3B1709" />
+      <ellipse cx="222" cy="80" rx="15" ry="30" transform="rotate(14 222 80)" fill="#FFC4B8" />
+
+      <rect x="50" y="68" width="216" height="154" rx="74" fill="url(#a8Vinyl)" />
+      <path d="M 52 162 C 76 140, 120 142, 146 168 C 154 162, 162 162, 170 168 C 196 142, 240 140, 264 162 C 266 198, 228 222, 158 222 C 88 222, 50 198, 52 162 Z" fill="#FFFDF9" />
+
+      <!-- Mũ Beret Họa Sĩ Màu Vàng Mù Tạt Đội Lệch -->
+      <g transform="rotate(8 168 62)">
+        <ellipse cx="168" cy="58" rx="58" ry="22" fill="#FACC15" stroke="#B45309" stroke-width="2.5" />
+        <rect x="122" y="68" width="92" height="10" rx="5" fill="#B45309" />
+        <path d="M 168 36 L 172 24" stroke="#B45309" stroke-width="4" stroke-linecap="round" />
+      </g>
+
+      <!-- Vệt sơn hồng dính đáng yêu trên má -->
+      <ellipse cx="86" cy="176" rx="14" ry="7" transform="rotate(-12 86 176)" fill="#F43F5E" opacity="0.65" />
+      <ellipse cx="230" cy="176" rx="14" ry="7" transform="rotate(12 230 176)" fill="#38BDF8" opacity="0.65" />
+
+      <g class="a8-eyes">
+        <circle cx="106" cy="156" r="16" fill="#1F0A04" />
+        <circle cx="106" cy="156" r="12.5" fill="#3B1508" />
+        <circle cx="100" cy="149" r="5" fill="#FFFFFF" />
+        <circle cx="112" cy="161" r="2.2" fill="#FFFFFF" />
+
+        <circle cx="210" cy="156" r="16" fill="#1F0A04" />
+        <circle cx="210" cy="156" r="12.5" fill="#3B1508" />
+        <circle cx="204" cy="149" r="5" fill="#FFFFFF" />
+        <circle cx="216" cy="161" r="2.2" fill="#FFFFFF" />
+      </g>
+
+      <!-- Miệng cười lè nhẹ đầu lưỡi tập trung vẽ tranh -->
+      <path d="M 144 182 Q 158 192, 172 182" stroke="#3B1508" stroke-width="3.6" stroke-linecap="round" fill="none" />
+      <ellipse cx="166" cy="188" rx="5.5" ry="4" transform="rotate(15 166 188)" fill="#FF758F" />
+      <ellipse cx="158" cy="170" rx="8.5" ry="6" fill="#290D04" />
+      <ellipse cx="155" cy="168" rx="3" ry="1.5" fill="#FFFFFF" opacity="0.85" />
+    </g>
+  </g>
+</svg>

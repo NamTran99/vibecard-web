@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 380" width="360" height="380" fill="none">
+  <defs>
+    <style>
+      @keyframes a3LanternRise {
+        0%, 100% { transform: translateY(0px) rotate(-2deg); }
+        50%      { transform: translateY(-14px) rotate(2.5deg); }
+      }
+      @keyframes a3HeadGaze {
+        0%, 100% { transform: rotate(-2deg) translateY(0px); }
+        50%      { transform: rotate(2deg) translateY(-4px); }
+      }
+      @keyframes a3PawsLift {
+        0%, 100% { transform: translateY(0px); }
+        50%      { transform: translateY(-6px); }
+      }
+      @keyframes a3Tail {
+        0%, 100% { transform: rotate(-5deg); }
+        50%      { transform: rotate(8deg); }
+      }
+      @keyframes a3Blink {
+        0%, 46%, 50%, 94%, 98%, 100% { transform: scaleY(1); }
+        48%, 96%                     { transform: scaleY(0.06); }
+      }
+
+      .a3-lantern { transform-origin: 162px 58px; animation: a3LanternRise 3.4s ease-in-out infinite; }
+      .a3-head    { transform-origin: 162px 232px; animation: a3HeadGaze 3.4s ease-in-out infinite; }
+      .a3-paws    { transform-origin: 162px 258px; animation: a3PawsLift 3.4s ease-in-out infinite; }
+      .a3-tail    { transform-origin: 202px 322px; animation: a3Tail 2.6s ease-in-out infinite; }
+      .a3-eyes    { transform-origin: 162px 164px; animation: a3Blink 5.2s infinite; }
+    </style>
+
+    <radialGradient id="a3LanternGlow" cx="162" cy="58" r="76" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FEF08A" stop-opacity="0.85" />
+      <stop offset="50%" stop-color="#F59E0B" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#F59E0B" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="a3LanternBody" x1="162" y1="24" x2="162" y2="92" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#EA580C" />
+      <stop offset="55%" stop-color="#FACC15" />
+      <stop offset="100%" stop-color="#FEF9C3" />
+    </linearGradient>
+    <linearGradient id="a3RustFur" x1="110" y1="95" x2="225" y2="345" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF9442" />
+      <stop offset="55%" stop-color="#E05310" />
+      <stop offset="100%" stop-color="#9A2B04" />
+    </linearGradient>
+  </defs>
+
+  <ellipse cx="168" cy="354" rx="96" ry="13" fill="#1C0E06" opacity="0.3" />
+
+  <!-- CHIẾC ĐÈN TRỜI ƯỚC NGUYỆN TỎA SÁNG BAY LÊN -->
+  <g class="a3-lantern">
+    <circle cx="162" cy="58" r="72" fill="url(#a3LanternGlow)" />
+    <path d="M 136 38 C 136 22, 188 22, 188 38 L 180 82 C 180 88, 144 88, 144 82 Z" fill="url(#a3LanternBody)" stroke="#9A3412" stroke-width="2" />
+    <ellipse cx="162" cy="82" rx="18" ry="5" fill="#78350F" />
+    <circle cx="162" cy="78" r="6" fill="#FFFFFF" />
+    <!-- Đốm sáng đom đóm bay quanh đèn -->
+    <circle cx="108" cy="68" r="2.5" fill="#FEF08A" />
+    <circle cx="218" cy="52" r="3" fill="#FEF08A" />
+    <circle cx="122" cy="28" r="2" fill="#FEF08A" />
+  </g>
+
+  <g>
+    <g class="a3-tail">
+      <path d="M 192 332 C 202 272, 246 224, 298 222 C 334 220, 342 262, 318 298 C 296 330, 246 344, 192 338 Z" fill="url(#a3RustFur)" />
+      <path d="M 260 226 C 284 218, 310 220, 326 236 C 336 252, 330 276, 318 298 C 312 280, 298 278, 290 288 C 288 272, 276 268, 266 276 C 270 258, 258 244, 260 226 Z" fill="#FFFDF7" />
+    </g>
+
+    <ellipse cx="112" cy="316" rx="22" ry="28" transform="rotate(-10 112 316)" fill="url(#a3RustFur)" />
+    <ellipse cx="212" cy="316" rx="22" ry="28" transform="rotate(10 212 316)" fill="url(#a3RustFur)" />
+    <ellipse cx="96" cy="344" rx="17" ry="11" fill="#2B1107" />
+    <ellipse cx="228" cy="344" rx="17" ry="11" fill="#2B1107" />
+
+    <path d="M 118 226 C 108 268, 110 326, 128 346 L 196 346 C 214 326, 216 268, 206 226 Z" fill="url(#a3RustFur)" />
+    <path d="M 134 240 C 126 274, 130 330, 162 346 C 194 330, 198 274, 190 240 Z" fill="#FFFDF7" />
+
+    <!-- Khăn len vàng -->
+    <rect x="104" y="216" width="116" height="28" rx="14" fill="#F59E0B" stroke="#92400E" stroke-width="1.2" />
+    <path d="M 136 238 L 164 238 L 166 286 L 132 286 Z" fill="#FBBF24" stroke="#92400E" stroke-width="1.2" />
+
+    <!-- Hai tay nâng nhẹ thả đèn trời -->
+    <g class="a3-paws">
+      <path d="M 124 256 C 108 242, 112 214, 128 210 C 142 208, 146 228, 140 252 Z" fill="url(#a3RustFur)" />
+      <path d="M 200 256 C 216 242, 212 214, 196 210 C 182 208, 178 228, 184 252 Z" fill="url(#a3RustFur)" />
+      <circle cx="128" cy="214" r="12" fill="#2B1107" />
+      <circle cx="196" cy="214" r="12" fill="#2B1107" />
+    </g>
+
+    <!-- Đầu Cáo ngước nhìn lên chiếc đèn trời đầy bình yên -->
+    <g class="a3-head">
+      <path d="M 72 152 C 52 104, 60 52, 84 44 C 108 42, 136 78, 144 120 Z" fill="url(#a3RustFur)" />
+      <path d="M 61 78 C 66 56, 74 46, 84 44 C 96 43, 110 56, 118 74 C 98 80, 78 82, 61 78 Z" fill="#2B1107" />
+      <path d="M 82 142 C 70 106, 76 68, 88 58 C 102 62, 118 92, 124 122 Z" fill="#F5B89E" />
+
+      <path d="M 252 152 C 272 104, 264 52, 240 44 C 216 42, 188 78, 180 120 Z" fill="url(#a3RustFur)" />
+      <path d="M 263 78 C 258 56, 250 46, 240 44 C 228 43, 214 56, 206 74 C 226 80, 246 82, 263 78 Z" fill="#2B1107" />
+      <path d="M 242 142 C 254 106, 248 68, 236 58 C 222 62, 206 92, 200 122 Z" fill="#F5B89E" />
+
+      <path d="M 162 92 C 218 92, 252 134, 258 182 C 266 196, 256 214, 236 222 C 214 232, 190 236, 162 236 C 134 236, 110 232, 88 222 C 68 214, 58 196, 66 182 C 72 134, 106 92, 162 92 Z" fill="url(#a3RustFur)" />
+      <path d="M 66 184 C 86 168, 122 168, 148 186 C 156 180, 168 180, 176 186 C 202 168, 238 168, 258 184 C 264 198, 254 214, 236 222 C 214 232, 190 236, 162 236 C 134 236, 110 232, 88 222 C 70 214, 60 198, 66 184 Z" fill="#FFFDF7" />
+
+      <!-- Đôi mắt ngước lên phản chiếu ánh đèn vàng ấm -->
+      <g class="a3-eyes">
+        <ellipse cx="116" cy="166" rx="17.5" ry="19.5" fill="#FFFDF7" />
+        <ellipse cx="116" cy="162" rx="15" ry="16.5" fill="#4A1A08" />
+        <ellipse cx="116" cy="159" rx="9.5" ry="11" fill="#170702" />
+        <ellipse cx="116" cy="151" rx="6" ry="4.5" fill="#FEF08A" />
+        <circle cx="122" cy="165" r="2.2" fill="#FFFFFF" />
+
+        <ellipse cx="208" cy="166" rx="17.5" ry="19.5" fill="#FFFDF7" />
+        <ellipse cx="208" cy="162" rx="15" ry="16.5" fill="#4A1A08" />
+        <ellipse cx="208" cy="159" rx="9.5" ry="11" fill="#170702" />
+        <ellipse cx="208" cy="151" rx="6" ry="4.5" fill="#FEF08A" />
+        <circle cx="214" cy="165" r="2.2" fill="#FFFFFF" />
+      </g>
+
+      <!-- Nụ cười thanh thản & chiếc mũi hướng lên -->
+      <path d="M 148 198 Q 162 206, 176 198" stroke="#3B1508" stroke-width="3.2" stroke-linecap="round" fill="none" />
+      <ellipse cx="162" cy="182" rx="9" ry="6" fill="#240C04" />
+      <ellipse cx="162" cy="180" rx="4" ry="1.8" fill="#FDE047" opacity="0.65" />
+    </g>
+  </g>
+</svg>
